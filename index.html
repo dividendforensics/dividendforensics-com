@@ -3529,23 +3529,43 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 14px;
+  background: var(--paper-deep, #ECE4D2);
+  border: 0.5px solid rgba(162,123,71,0.25);
 }
 .colophon-swatch {
   width: 100%;
   height: 96px;
   background: var(--paper);
-  border: 1px solid var(--rule);
+  border: 1px solid var(--gold, #A27B47);
   position: relative;
   overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.6),
+    inset 0 -1px 3px rgba(78,30,40,0.07),
+    0 1px 0 rgba(162,123,71,0.18);
 }
 .colophon-swatch::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: 
-    radial-gradient(circle at 30% 40%, rgba(162,123,71,0.04) 1px, transparent 1px),
-    radial-gradient(circle at 70% 60%, rgba(106,19,40,0.03) 1px, transparent 1px);
-  background-size: 6px 6px, 8px 8px;
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(162,123,71,0.11) 0.8px, transparent 1.4px),
+    radial-gradient(circle at 70% 60%, rgba(78,30,40,0.09) 0.8px, transparent 1.4px),
+    radial-gradient(circle at 15% 80%, rgba(162,123,71,0.07) 0.6px, transparent 1px);
+  background-size: 6px 6px, 8px 8px, 11px 11px;
+}
+.colophon-swatch::after {
+  content: 'Heritage Cream';
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(78,30,40,0.42);
+  pointer-events: none;
 }
 .colophon-swatch-meta {
   font-family: 'JetBrains Mono', monospace;
@@ -6686,7 +6706,7 @@ h1, h2, h3, .standfirst, .pull-quote, .hero-title, .section-title { text-wrap: b
             <span class="covenant-recall-attr">— THE EDITOR &middot; <a href="charter.html">DFB Covenant, Article II</a></span>
           </p>
           <p class="codex-colophon-body">
-            This issue of the <em>Dividend Forensics Bureau</em> was set in <strong>Fraunces</strong> at display sizes (opsz 72&ndash;144, with WONK and SOFT axes engaged at the Dispatch level) and <strong>Newsreader</strong> for long-form prose (opsz 14&ndash;24, oldstyle figures throughout). Marginalia is set in <strong>Cormorant Garamond</strong> italic. Hairline rules are drawn at 0.5&nbsp;px in antique brass (#A27B47). The wax seal was cast in muted Imperial burgundy (#4E1E28) on Heritage Cream (#F6F1E8). Composed in Seoul, transmitted from <span class="cc-mono">DFBUREAU.COM</span>.
+            This issue of the <em>Dividend Forensics Bureau</em> was set in <strong>Fraunces</strong> at display sizes (opsz 72&ndash;144, with WONK and SOFT axes engaged at the Dispatch level) and <strong>Newsreader</strong> for long-form prose (opsz 14&ndash;24, oldstyle figures throughout). Marginalia is set in <strong>Cormorant Garamond</strong> italic. Hairline rules are drawn at 0.5&nbsp;px in antique brass (#A27B47). The wax seal was cast in muted Imperial burgundy (#4E1E28) on Heritage Cream (#F6F1E8). Composed in Seoul, transmitted from <span class="cc-mono">DIVIDENDFORENSICS.COM</span>.
           </p>
           <p class="codex-colophon-issued">
             <span class="cc-rule"></span>
