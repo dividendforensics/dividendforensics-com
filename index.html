@@ -5133,6 +5133,60 @@ h1, h2, h3, .standfirst, .pull-quote, .hero-title, .section-title { text-wrap: b
   align-items: baseline;
 }
 
+/* ─── Site Directory (footer navigation hub) ─── */
+.site-directory {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.4rem;
+  padding: 2.4rem var(--s-xl);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin: 2.4rem 0 0;
+  font-family: 'Inter', sans-serif;
+}
+.sd-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.sd-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.site-directory a {
+  font-family: 'Newsreader', serif;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  padding-bottom: 1px;
+  border-bottom: 0.5px solid transparent;
+  line-height: 1.4;
+}
+.site-directory a:hover {
+  color: var(--burgundy);
+  border-bottom-color: var(--burgundy);
+}
+@media (max-width: 880px) {
+  .site-directory {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    padding: 2rem var(--s-md);
+  }
+}
+@media (max-width: 580px) {
+  .site-directory {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem;
+  }
+}
+
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,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">
 <link rel="icon" type="image/png" sizes="192x192" href="/img/dfb_seal_favicon_192.png">
@@ -6840,6 +6894,38 @@ h1, h2, h3, .standfirst, .pull-quote, .hero-title, .section-title { text-wrap: b
       <span class="motto-translation">&mdash; Without a foundation, no fruit.</span>
       <span class="motto-rule"></span>
     </div>
+
+    <nav class="site-directory" aria-label="Site directory">
+      <div class="sd-column">
+        <h4 class="sd-heading">Editorial</h4>
+        <a href="about.html">About</a>
+        <a href="charter.html">Charter</a>
+        <a href="chambers.html">Reading Chambers</a>
+      </div>
+      <div class="sd-column">
+        <h4 class="sd-heading">Reading</h4>
+        <a href="archive.html">Archive</a>
+        <a href="concordance.html">Concordance</a>
+        <a href="errata.html">Errata</a>
+      </div>
+      <div class="sd-column">
+        <h4 class="sd-heading">Editions</h4>
+        <a href="/">Day Bureau</a>
+        <a href="midnight.html">Midnight Bureau</a>
+      </div>
+      <div class="sd-column">
+        <h4 class="sd-heading">Legal</h4>
+        <a href="legal.html">Legal</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+      <div class="sd-column">
+        <h4 class="sd-heading">External</h4>
+        <a href="https://jungmoku.substack.com">Substack</a>
+        <a href="https://dividendforensics.gumroad.com">Research Library</a>
+        <a href="https://medium.com/@dividendforensics">Medium</a>
+      </div>
+    </nav>
 
     <div class="footer-bottom">
       <div>© 2026 Dividend Forensics Bureau · All Rights Reserved</div>
