@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contents · Dividend Forensics Bureau</title>
+<meta name="description" content="Site directory of the Dividend Forensics Bureau — editorial pages, reading chambers, archive, legal terms, and external channels.">
+<link rel="canonical" href="https://dividendforensics.com/contents.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,400..600&family=Inter:wght@400..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Newsreader', Georgia, serif;
+    font-variation-settings: "opsz" 18, "wght" 380;
+    background: #F6F1E8;
+    color: #171411;
+    line-height: 1.72;
+    font-size: 17px;
+    padding: 4rem 1.5rem 3rem;
+    max-width: 780px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+    min-height: 100vh;
+  }
+  .masthead {
+    text-align: center;
+    margin-bottom: 3.4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #DCD3C4;
+  }
+  .masthead a.brand {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: "opsz" 36, "wght" 500, "SOFT" 60;
+    font-size: 1.18rem;
+    letter-spacing: -0.005em;
+    color: #171411;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .masthead-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #7B5A45;
+    margin-top: 0.7rem;
+    font-weight: 500;
+  }
+  .meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #A27B47;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "wght" 500, "SOFT" 100;
+    font-size: clamp(2.6rem, 6vw, 4rem);
+    font-weight: 500;
+    letter-spacing: -0.032em;
+    line-height: 1.05;
+    margin-bottom: 1.6rem;
+    color: #171411;
+  }
+  .lead {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1.18rem;
+    line-height: 1.5;
+    color: #2C2622;
+    margin-bottom: 3rem;
+    text-wrap: balance;
+  }
+  .volume {
+    margin-top: 2.6rem;
+    padding-top: 1.4rem;
+    border-top: 0.5px solid #DCD3C4;
+  }
+  .volume:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .volume-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: #A27B47;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .volume-name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: "opsz" 72, "wght" 500;
+    font-size: 1.78rem;
+    letter-spacing: -0.022em;
+    color: #171411;
+    margin-bottom: 1.4rem;
+    line-height: 1.1;
+  }
+  .entries {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .entry {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 2fr;
+    gap: 1.6rem;
+    align-items: baseline;
+  }
+  .entry-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: "opsz" 36, "wght" 500;
+    font-size: 1.18rem;
+    letter-spacing: -0.005em;
+  }
+  .entry-title a {
+    color: #171411;
+    text-decoration: none;
+    border-bottom: 0.5px solid rgba(78, 30, 40, 0.32);
+    padding-bottom: 1px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .entry-title a:hover {
+    color: #4E1E28;
+    border-bottom-color: #4E1E28;
+  }
+  .entry-desc {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #2C2622;
+    opacity: 0.78;
+  }
+  .entry-ark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    color: #A27B47;
+    margin-left: 0.5rem;
+    text-transform: uppercase;
+  }
+  .external-note {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: #7B5A45;
+    margin-top: 0.6rem;
+    opacity: 0.78;
+  }
+  @media (max-width: 640px) {
+    .entry {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+  }
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid #DCD3C4;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #7B5A45;
+    text-align: center;
+    font-weight: 500;
+  }
+  .imprint {
+    margin-top: 1rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.42em;
+    color: #2E2616;
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+  <header class="masthead">
+    <a href="/" class="brand">Dividend Forensics Bureau</a>
+    <div class="masthead-sub">Independent Structural Research · Seoul</div>
+  </header>
+
+  <main>
+    <div class="meta">Bureau Contents · DFB-N-0001</div>
+    <h1>Contents of the Bureau</h1>
+    <p class="lead">The site is bound in five volumes &mdash; Editorial, Reading, Editions, Legal, External.</p>
+
+    <!-- ═════════ I · EDITORIAL ═════════ -->
+    <section class="volume">
+      <div class="volume-label">§ I</div>
+      <h2 class="volume-name">Editorial</h2>
+      <div class="entries">
+        <div class="entry">
+          <div class="entry-title"><a href="about.html">About the Bureau</a></div>
+          <div class="entry-desc">Who we are, what we do, where we publish from.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-title"><a href="charter.html">The Charter</a></div>
+          <div class="entry-desc">Editorial covenant. The four articles by which the Bureau is bound.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-title"><a href="chambers.html">Reading Chambers</a></div>
+          <div class="entry-desc">Doctrinal annex &mdash; Aurora, Vesper, Nox. Filed monthly.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ II · READING ═════════ -->
+    <section class="volume">
+      <div class="volume-label">§ II</div>
+      <h2 class="volume-name">Reading</h2>
+      <div class="entries">
+        <div class="entry">
+          <div class="entry-title"><a href="archive.html">Archive</a></div>
+          <div class="entry-desc">All dispatches, indexed by issue and date.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-title"><a href="concordance.html">Concordance</a></div>
+          <div class="entry-desc">Terms, references, and recurring vocabulary of the Bureau.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ III · EDITIONS ═════════ -->
+    <section class="volume">
+      <div class="volume-label">§ III</div>
+      <h2 class="volume-name">Editions</h2>
+      <div class="entries">
+        <div class="entry">
+          <div class="entry-title"><a href="/">Day Bureau</a></div>
+          <div class="entry-desc">Heritage Cream &middot; Recto. The Bureau in its daylight setting.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-title"><a href="midnight.html">Midnight Bureau</a></div>
+          <div class="entry-desc">Obsidian &middot; Verso. The Bureau after hours.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ IV · LEGAL ═════════ -->
+    <section class="volume">
+      <div class="volume-label">§ IV</div>
+      <h2 class="volume-name">Legal</h2>
+      <div class="entries">
+        <div class="entry">
+          <div class="entry-title"><a href="legal.html">Legal Terms</a></div>
+          <div class="entry-desc">Publisher exception, trademarks, copyright, jurisdiction.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-title"><a href="disclaimer.html">Disclaimer</a></div>
+          <div class="entry-desc">Generalized research only. Not investment advice.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-title"><a href="privacy.html">Privacy Policy</a></div>
+          <div class="entry-desc">Email, cookies, third-party services, reader rights.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-title"><a href="errata.html">Errata</a></div>
+          <div class="entry-desc">Corrections and clarifications to published material.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ V · EXTERNAL ═════════ -->
+    <section class="volume">
+      <div class="volume-label">§ V</div>
+      <h2 class="volume-name">External Channels</h2>
+      <div class="entries">
+        <div class="entry">
+          <div class="entry-title"><a href="https://jungmoku.substack.com">Substack</a></div>
+          <div class="entry-desc">Dispatches and structural readings, delivered by email.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-title"><a href="https://dividendforensics.gumroad.com">Research Library</a></div>
+          <div class="entry-desc">Free primers and paid structural studies on Gumroad.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-title"><a href="https://medium.com/@dividendforensics">Medium</a></div>
+          <div class="entry-desc">Selected essays for general readers.</div>
+        </div>
+      </div>
+      <p class="external-note">External channels operate under their own privacy and content policies.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>contact &nbsp;&middot;&nbsp; <a href="mailto:desk@dividendforensics.com" style="color:#7B5A45;text-decoration:none;border-bottom:0.5px solid rgba(123,90,69,0.4)">desk@dividendforensics.com</a></div>
+    <div class="imprint">veritas &middot; disciplina &middot; claritas</div>
+  </footer>
+</body>
+</html>
