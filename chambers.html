@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dividend Forensics Bureau · The Reading Chambers</title>
+<meta name="description" content="A doctrinal annex of the Dividend Forensics Bureau. Aurora · Vesper · Nox.">
+<link rel="canonical" href="https://dividendforensics.com/chambers.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=EB+Garamond:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1;
+    position: relative;
+    --progress: 0;
+    --bg-r: calc(34 + (28 - 34) * var(--progress) + (10 - 28) * max(0, var(--progress) - 0.5) * 2);
+    --bg-g: calc(25 + (12 - 25) * var(--progress) + (11 - 12) * max(0, var(--progress) - 0.5) * 2);
+    --bg-b: calc(18 + (15 - 18) * var(--progress) + (15 - 15) * max(0, var(--progress) - 0.5) * 2);
+    background-color: rgb(var(--bg-r), var(--bg-g), var(--bg-b));
+    color: #C8B894;
+    transition: color 1.2s ease;
+  }
+
+  .aurora-wave {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    mix-blend-mode: screen; filter: blur(32px);
+    opacity: calc(0.42 - var(--progress) * 0.40);
+    background:
+      radial-gradient(ellipse 42vw 18vh at 50% 11%, rgba(150, 116, 68, calc(0.09 - var(--progress) * 0.04)) 0%, transparent 65%),
+      radial-gradient(ellipse 48vw 22vh at 58% 18%, rgba(132, 76, 52, calc(0.05 + var(--progress) * 0.02)) 0%, transparent 65%),
+      radial-gradient(ellipse 36vw 18vh at 50% 9%, rgba(180, 154, 116, calc(0.03 - var(--progress) * 0.015)) 0%, transparent 70%);
+    animation: aurora-drift 92s ease-in-out infinite;
+  }
+  @keyframes aurora-drift {
+    0%, 100% { transform: translateX(0) scale(1); }
+    50%      { transform: translateX(-0.8vw) scale(1.02); }
+  }
+
+  .stars {
+    position: fixed; inset: 0; pointer-events: none; z-index: 1;
+    mix-blend-mode: screen;
+    opacity: calc(0.10 + var(--progress) * 0.42);
+    transition: opacity 0.6s ease;
+  }
+  .star {
+    position: absolute;
+    background: radial-gradient(circle, rgba(232, 216, 178, 0.70) 0%, rgba(184, 162, 124, 0.22) 40%, transparent 70%);
+    border-radius: 50%; opacity: 0.30; filter: blur(0.2px);
+    animation: star-twinkle 10s ease-in-out infinite;
+  }
+  .star-1 { top: 12%; left: 16%; width: 1px; height: 1px; animation-delay: 0s; }
+  .star-2 { top: 22%; left: 78%; width: 1px; height: 1px; animation-delay: 2.5s; }
+  .star-3 { top: 62%; left: 70%; width: 1px; height: 1px; animation-delay: 5.0s; }
+  .star-4 { top: 84%; left: 22%; width: 1px; height: 1px; animation-delay: 7.5s; }
+  @keyframes star-twinkle {
+    0%, 100% { opacity: 0.30; transform: scale(1); }
+    50%      { opacity: 0.08; transform: scale(0.78); }
+  }
+
+  .chamber-shadow {
+    position: fixed; inset: 0; pointer-events: none; z-index: 2;
+    background:
+      radial-gradient(
+        ellipse at 50% calc(42% - var(--progress) * 16%),
+        transparent 0%,
+        rgba(0, 0, 0, calc(0.14 + var(--progress) * 0.44)) 46%,
+        rgba(0, 0, 0, calc(0.30 + var(--progress) * 0.72)) 100%
+      );
+    transition: background 0.3s linear;
+  }
+
+  .chamber-frame {
+    position: fixed; inset: 5.2% 6.4% 4.8% 5.8%;
+    pointer-events: none; z-index: 3;
+    border-left: 0.5px solid rgba(110, 95, 65, calc(0.09 - var(--progress) * 0.05));
+    border-right: 0.5px solid rgba(110, 95, 65, calc(0.07 - var(--progress) * 0.04));
+    border-radius: 50% 50% 0 0 / 18% 17.2% 0 0;
+  }
+  .chamber-frame::before {
+    content: ''; position: absolute; left: 14.4%; right: 15.6%; top: 0; height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%, rgba(110, 95, 65, 0.06) 42%,
+      rgba(110, 95, 65, 0.09) 51%, rgba(110, 95, 65, 0.06) 62%, transparent 100%);
+  }
+
+  .vellum-aging {
+    position: fixed; inset: 0; pointer-events: none; z-index: 3;
+    background:
+      linear-gradient(180deg,
+        rgba(110, 78, 44, 0.12) 0%, rgba(110, 78, 44, 0.05) 18%,
+        transparent 35%, transparent 65%,
+        rgba(95, 64, 32, 0.12) 88%, rgba(72, 48, 24, 0.18) 100%),
+      radial-gradient(ellipse 30% 68% at 0% 56%, rgba(42, 24, 10, 0.32) 0%, transparent 50%),
+      radial-gradient(ellipse 18% 50% at 100% 48%, rgba(55, 34, 14, 0.18) 0%, transparent 40%),
+      radial-gradient(ellipse 34% 24% at 88% 14%, rgba(72, 44, 18, 0.16) 0%, transparent 56%),
+      radial-gradient(ellipse 24% 20% at 8% 92%, rgba(44, 28, 14, 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 22% 18% at 4% 6%, rgba(50, 32, 14, 0.18) 0%, transparent 50%);
+    opacity: calc(0.78 + var(--progress) * 0.22);
+    mix-blend-mode: multiply;
+  }
+
+  .paper-grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 4;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' seed='23'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 220px 220px;
+    opacity: calc(0.22 + var(--progress) * 0.10);
+    mix-blend-mode: overlay;
+  }
+
+  .vellum-fiber {
+    position: fixed; inset: 0; pointer-events: none; z-index: 4;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 1.2' numOctaves='2' seed='11'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.30 0 0 0 0 0.18 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23f)'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    opacity: calc(0.10 + var(--progress) * 0.05);
+    mix-blend-mode: soft-light;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora-wave, .star { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  .inscription {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 1.4rem 1rem 0.9rem;
+    text-align: center; z-index: 10;
+    background: linear-gradient(180deg, rgba(0,0,0,calc(0.12 + var(--progress) * 0.42)), transparent);
+    transition: background 0.4s ease;
+  }
+  .inscription-text {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 0.66rem; font-variant: small-caps; letter-spacing: 0.46em;
+    color: #3F3422; opacity: 0.08; font-weight: 500;
+  }
+  .inscription-text strong {
+    color: #5E5038; font-weight: 600; opacity: 0.26;
+    transition: color 0.6s ease;
+  }
+
+  .descent-marker {
+    position: fixed; top: 50%; right: 3vw;
+    transform: translateY(-50%); z-index: 10;
+    display: flex; flex-direction: column; gap: 1.6rem;
+    align-items: center; pointer-events: none;
+  }
+  .descent-marker .mark {
+    width: 2.5px; height: 2.5px; border-radius: 50%;
+    background: rgba(110, 95, 65, 0.08);
+    transition: background 0.5s ease, transform 0.5s ease;
+  }
+  .descent-marker .mark.active {
+    background: #4D4128; transform: scale(1.15);
+  }
+
+  .chamber {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; z-index: 5;
+  }
+
+  .chamber-hero {
+    width: 100%;
+    margin: 0 auto 3.2rem;
+    position: relative;
+    border: 0.5px solid rgba(110, 95, 65, 0.18);
+    box-shadow:
+      0 14px 44px rgba(0, 0, 0, 0.56),
+      inset 0 1px 0 rgba(220, 200, 160, 0.04);
+    overflow: hidden;
+  }
+  .chamber-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .chamber-aurora .chamber-hero { max-width: 880px; }
+  .chamber-vesper .chamber-hero {
+    max-width: 760px;
+    border-color: rgba(99, 82, 50, 0.18);
+  }
+  .chamber-nox .chamber-hero {
+    max-width: 640px;
+    opacity: 0.92;
+    border-color: rgba(64, 54, 38, 0.18);
+  }
+  @media (max-width: 768px) {
+    .chamber-hero { margin-bottom: 2rem; }
+    .chamber-aurora .chamber-hero,
+    .chamber-vesper .chamber-hero,
+    .chamber-nox .chamber-hero { max-width: 100%; }
+  }
+  .chamber-aurora { padding: 8rem 8vw 4rem; }
+  .chamber-aurora .chamber-content { max-width: 680px; }
+  .chamber-vesper { padding: 4rem 12vw 4rem; }
+  .chamber-vesper .chamber-content { max-width: 580px; transform: translateX(-2vw); }
+  .chamber-vesper h1 { line-height: 0.80; letter-spacing: -0.072em; }
+  .chamber-vesper .body { line-height: 1.76; max-width: 520px; }
+  .chamber-nox { padding: 4rem 18vw 8rem; }
+  .chamber-nox .chamber-content { max-width: 460px; transform: translateX(-4vw); }
+  .chamber-nox h1 { line-height: 0.88; letter-spacing: -0.044em; font-weight: 400; opacity: 0.58; }
+  .chamber-nox .body {
+    line-height: 2.0; max-width: 440px;
+    letter-spacing: 0.04em; opacity: 0.52; font-weight: 400;
+  }
+  .chamber-content { width: 100%; text-align: center; }
+
+  .seal {
+    width: 42px; height: 42px; margin: 0 auto 2.4rem;
+    border-radius: 49% 51% 50% 49% / 50% 49% 51% 50%;
+    background: linear-gradient(138deg, rgba(220, 200, 160, 0.03) 0%, rgba(0, 0, 0, 0.10) 75%);
+    border: 0.5px solid rgba(110, 95, 65, 0.10);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(110, 95, 65, 0.30);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 0.70rem; font-variant: small-caps;
+    letter-spacing: 0.18em; font-weight: 600;
+    box-shadow:
+      inset 0 1px 0 rgba(220, 200, 160, 0.05),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.36),
+      0 1px 1px rgba(0, 0, 0, 0.16);
+  }
+  .chamber-vesper .seal { border-color: rgba(99, 82, 50, 0.12); color: rgba(99, 82, 50, 0.30); }
+  .chamber-nox .seal { border-color: rgba(64, 54, 38, 0.10); color: rgba(64, 54, 38, 0.16); opacity: 0.32; }
+
+  .meta {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 0.78rem; font-variant: small-caps;
+    letter-spacing: 0.36em; color: #5E5038;
+    margin-bottom: 0.6rem; font-weight: 600; opacity: 0.66;
+  }
+  .chamber-vesper .meta { color: #635232; opacity: 0.68; }
+  .chamber-nox .meta { color: #403626; opacity: 0.40; letter-spacing: 0.44em; }
+
+  .cadence {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic; font-size: 0.94rem; color: #5E5038;
+    margin-bottom: 1.4rem; letter-spacing: 0.02em;
+    font-weight: 500; opacity: 0.58;
+  }
+  .chamber-vesper .cadence { color: #635232; opacity: 0.60; }
+  .chamber-nox .cadence { color: #403626; opacity: 0.32; }
+
+  .filing {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 0.64rem; font-variant: small-caps;
+    letter-spacing: 0.36em; color: #403626;
+    opacity: 0.30; margin: 0 auto 2.4rem; font-weight: 500;
+  }
+  .filing em {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic; font-variant: normal;
+    letter-spacing: 0.04em; opacity: 0.82;
+  }
+  .chamber-nox .filing { opacity: 0.18; }
+
+  h1 {
+    font-family: 'Fraunces', 'EB Garamond', Georgia, serif;
+    font-size: clamp(3.6rem, 7vw, 6.6rem);
+    line-height: 0.82; font-weight: 500; letter-spacing: -0.065em;
+    margin-bottom: 1.5rem;
+    color: inherit; text-wrap: balance; max-width: 100%;
+    transform: skewX(-0.18deg);
+    text-shadow:
+      0 1px 0 rgba(220, 200, 160, 0.03),
+      0 2px 8px rgba(0, 0, 0, 0.64),
+      0 28px 88px rgba(0, 0, 0, 0.60);
+  }
+  .chamber-aurora h1 { color: #AA9878; }
+  .chamber-vesper h1 { color: #D6B98F; }
+  .chamber-nox h1 { color: #A08C70; }
+
+  .lead {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic; font-size: 1.12rem; color: #5E5038;
+    margin-bottom: 1.8rem; letter-spacing: 0.02em;
+    font-weight: 500; opacity: 0.70;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  .chamber-vesper .lead { color: #635232; opacity: 0.72; }
+  .chamber-nox .lead { color: #403626; opacity: 0.38; }
+
+  hr {
+    width: 44px; border: none;
+    border-top: 0.5px solid rgba(110, 95, 65, 0.16);
+    margin: 1.6rem auto;
+  }
+  .chamber-nox hr { width: 24px; border-top-color: rgba(64, 54, 38, 0.18); }
+
+  .spine {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic; font-size: 1.32rem; line-height: 1.5;
+    margin-bottom: 1.6rem; font-weight: 500;
+    color: inherit; opacity: 0.92;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  }
+  .chamber-aurora .spine { opacity: 0.82; }
+  .chamber-nox .spine { opacity: 0.50; font-weight: 400; }
+
+  .body {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1.08rem; line-height: 1.84;
+    margin-bottom: 1.2rem;
+    max-width: 560px; margin-left: auto; margin-right: auto;
+    text-align: left; font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.48);
+    color: inherit;
+  }
+  .chamber-aurora .body { opacity: 0.84; }
+  .chamber-vesper .body::first-of-type::first-letter {
+    font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+    font-size: 3.6em; font-weight: 600; line-height: 0.85;
+    float: left; margin: 0.05em 0.14em 0 0; color: #856336;
+    text-shadow:
+      0 1px 0 rgba(220, 200, 160, 0.12),
+      0 2px 4px rgba(0, 0, 0, 0.58),
+      0 0 22px rgba(120, 84, 42, 0.04);
+  }
+
+  .essay-spine {
+    text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.20rem;
+    line-height: 1.5;
+    margin: 2rem auto;
+    max-width: 480px;
+    opacity: 0.94;
+    color: inherit;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.52);
+  }
+  .chamber-aurora .essay-spine { opacity: 0.86; }
+  .chamber-nox .essay-spine { opacity: 0.58; font-weight: 400; }
+
+  .cadence-close {
+    text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.06rem;
+    line-height: 1.7;
+    margin: 2.4rem auto 1.4rem;
+    max-width: 460px;
+    opacity: 0.82;
+    color: inherit;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  .chamber-aurora .cadence-close { opacity: 0.76; }
+  .chamber-nox .cadence-close { opacity: 0.48; font-weight: 400; }
+
+  .archive-link {
+    margin: 2.4rem auto 0;
+    text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.90rem;
+    color: #5E5038;
+    opacity: 0.48;
+    letter-spacing: 0.02em;
+  }
+  .archive-link a {
+    color: inherit; text-decoration: none;
+    border-bottom: 0.5px solid rgba(94, 80, 56, 0.22);
+    padding-bottom: 2px;
+    transition: opacity 0.4s ease, border-color 0.4s ease;
+  }
+  .archive-link a:hover {
+    opacity: 1; border-bottom-color: rgba(94, 80, 56, 0.55);
+  }
+  .chamber-vesper .archive-link { color: #635232; opacity: 0.52; }
+  .chamber-vesper .archive-link a { border-bottom-color: rgba(99, 82, 50, 0.22); }
+  .chamber-nox .archive-link { color: #403626; opacity: 0.30; }
+  .chamber-nox .archive-link a { border-bottom-color: rgba(64, 54, 38, 0.22); }
+
+  .ornament {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem; color: #5E5038; text-align: center;
+    margin: 2rem auto 1.2rem;
+    letter-spacing: 0.6em; opacity: 0.18;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  .chamber-vesper .ornament { color: #635232; opacity: 0.26; }
+  .chamber-nox .ornament {
+    color: #403626; opacity: 0.10;
+    font-size: 1.35rem; letter-spacing: 0.92em;
+  }
+
+  .signature {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic; font-weight: 400;
+    font-size: 0.96rem; color: #403626;
+    margin-top: 2.2rem; opacity: 0.28;
+    letter-spacing: 0.018em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  }
+
+  footer {
+    padding: 5rem 1rem 3rem;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+  }
+  .registry {
+    display: flex; justify-content: center;
+    gap: 2.2rem; flex-wrap: wrap;
+    margin-bottom: 1.8rem;
+  }
+  .registry a {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 0.62rem; font-variant: small-caps;
+    letter-spacing: 0.42em; color: #4D4128;
+    opacity: 0.38; text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.4s ease;
+  }
+  .registry a:hover { opacity: 0.72; }
+  .imprint {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 0.58rem; font-variant: small-caps;
+    letter-spacing: 0.58em; color: #2E2616;
+    opacity: 0.20; font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+  <div class="aurora-wave"></div>
+  <div class="stars">
+    <div class="star star-1"></div>
+    <div class="star star-2"></div>
+    <div class="star star-3"></div>
+    <div class="star star-4"></div>
+  </div>
+  <div class="chamber-shadow"></div>
+  <div class="chamber-frame"></div>
+  <div class="vellum-aging"></div>
+  <div class="vellum-fiber"></div>
+  <div class="paper-grain"></div>
+
+  <div class="inscription">
+    <div class="inscription-text">
+      <strong id="current-chamber">Aurora</strong>
+    </div>
+  </div>
+
+  <div class="descent-marker">
+    <div class="mark active" data-chamber="aurora"></div>
+    <div class="mark" data-chamber="vesper"></div>
+    <div class="mark" data-chamber="nox"></div>
+  </div>
+
+  <!-- ═══════════════ I · AURORA · Initiation ═══════════════ -->
+  <section class="chamber chamber-aurora" id="aurora">
+    <div class="chamber-hero">
+      <img src="aurora_hero.png" alt="Aurora · The Morning Ledger — first light over the Bureau" loading="eager">
+    </div>
+    <div class="chamber-content">
+      <div class="seal">DFB</div>
+      <div class="meta">I &middot; Aurora</div>
+      <div class="cadence">Monthly &middot; <em>the pre-dawn desk</em></div>
+      <div class="filing">Filed Under &middot; <em>Entrance · Initiation · MMXXVI</em></div>
+      <h1>The Morning Ledger</h1>
+      <p class="lead">Before first light.</p>
+      <hr>
+      <p class="spine">Yield is what you're paid.<br>Buffer is what's paying it.</p>
+
+      <p class="body">The Bureau opens before first light. No one announces it. The door is not locked, nor was it ever locked, in two hundred years of opening.</p>
+
+      <p class="body">A reader arrives. They have followed a yield &mdash; eight, perhaps nine percent &mdash; across some other ledger, some other recommendation, and the yield has held. The dividend has printed. The deposit has cleared. They are not in distress. They have a question for which they do not yet have the words.</p>
+
+      <p class="body">The Bureau receives them the way it has always received readers: without ceremony, without alarm.</p>
+
+      <p class="body">The first reading is the same as it has always been.</p>
+
+      <p class="essay-spine">The yield is what you are paid.<br>The buffer is what is paying it.</p>
+
+      <p class="body">The Bureau does not begin with the dividend, because the dividend is the easy part. The dividend is a press release. The dividend is a number that has already happened. The Bureau begins instead with what stands behind the dividend &mdash; the coverage that funds it, the maturity wall that lies further out, the refinancing that has not yet been done, the spread that has not yet widened.</p>
+
+      <p class="body">The Bureau has only one craft.</p>
+
+      <p class="body">It does not predict. It does not recommend. It does not rank. It reads the structure beneath the payment and notes, in small careful entries, how much of the yield is owed to the present and how much is owed to a future that has not yet arrived.</p>
+
+      <p class="body">A first-time reader sometimes asks the Bureau to be more direct &mdash; to say <em>buy</em> or <em>do not buy</em>, to say <em>safe</em> or <em>unsafe</em>. The Bureau does not answer in those words. The Bureau answers in the language of buffers, of spreads, of clocks that have begun to move.</p>
+
+      <p class="body">The reader leaves Aurora with no instruction, only with the first sentence of a longer reading. The reading does not end in Aurora. Other hours remain.</p>
+
+      <p class="cadence-close">The Bureau opens before first light.<br>The reader has arrived.<br>The reading has begun.</p>
+
+      <div class="archive-link">
+        <a href="https://medium.com/tag/aurora">Filed in the living archive &nbsp;&rarr;</a>
+      </div>
+
+      <div class="ornament">☙</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ II · VESPER · Rereading ═══════════════ -->
+  <section class="chamber chamber-vesper" id="vesper">
+    <div class="chamber-hero">
+      <img src="vesper_hero.png" alt="Vesper · Margins on the Reading — the candlelit hour" loading="lazy">
+    </div>
+    <div class="chamber-content">
+      <div class="seal">DFB</div>
+      <div class="meta">II &middot; Vesper</div>
+      <div class="cadence">Monthly &middot; <em>the candlelit hour</em></div>
+      <div class="filing">Filed Under &middot; <em>Rereading · Vol. I §02</em></div>
+      <h1>Margins on the Reading</h1>
+      <p class="lead">The dusk reflection.</p>
+      <hr>
+      <p class="spine">A buffer is borrowed time.<br>The Bureau watches it spend.</p>
+
+      <p class="body">A quarter has passed.</p>
+
+      <p class="body">The dispatch from the pre-dawn desk lies on the Bureau's table again &mdash; the same paper, the same readings, the same coverage and maturity and spread. The dividend, then as now, is still printing. The deposit, then as now, still clears.</p>
+
+      <p class="body">But the reading is not the same.</p>
+
+      <p class="body">The yield has not moved. The headline number on the screens is unchanged. And yet, when the Bureau places the new quarterly filings against the dispatch, something has shifted. The spread has narrowed first &mdash; quietly, without alarm. The maturity wall has come closer by ninety days, the way maturity walls do. A refinancing that was hypothetical in winter is now scheduled in late summer. The dividend is unchanged. The structure beneath it is not.</p>
+
+      <p class="body">The Vesper hour is when the Bureau learns this. It is the hour of rereading.</p>
+
+      <p class="essay-spine">The dispatch was not wrong.<br>The dispatch was a photograph.<br>Photographs do not move; structures do.</p>
+
+      <p class="body">This is the work of Buffer Half-Life&trade;. A buffer is not a number. A buffer is a clock. Each quarter the clock runs forward. Each quarter the Bureau returns to its own readings and asks whether the clock has moved, and by how much, and toward what.</p>
+
+      <p class="body">The market hears the dividend. The Bureau hears the refinancing.</p>
+
+      <p class="body">When the dispatch is reread in the candlelit hour, what looked like a payment becomes a sequence &mdash; yield received in the present, drawn against a buffer that is being spent in the future. The buffer is what is paying. The buffer is also what is running out.</p>
+
+      <p class="body">Most structures fade before they fail. The Bureau has noted, in two centuries of rereading, that the failure is rarely the surprise. The surprise is how long the failure was visible before anyone read it.</p>
+
+      <p class="body">The reader is no longer in the room. The reading remains.</p>
+
+      <p class="body">The Vesper hour ends. The dispatch returns to the archive, marked with a date, marked with a clock, marked with the small revision the Bureau adds each quarter, in the same careful hand.</p>
+
+      <p class="cadence-close">The next reading belongs to a darker room.</p>
+
+      <div class="archive-link">
+        <a href="https://medium.com/tag/vesper">Filed in the living archive &nbsp;&rarr;</a>
+      </div>
+
+      <div class="ornament">❧</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ III · NOX · Vigilance ═══════════════ -->
+  <section class="chamber chamber-nox" id="nox">
+    <div class="chamber-hero">
+      <img src="nox_hero.png" alt="Nox · What Ages in the Silence — the vigil hour" loading="lazy">
+    </div>
+    <div class="chamber-content">
+      <div class="seal">DFB</div>
+      <div class="meta">III &middot; Nox</div>
+      <div class="cadence">Filed in silence &middot; <em>the vigil hour</em></div>
+      <div class="filing">Filed Under &middot; <em>Vigilance · Vigil Note 001</em></div>
+      <h1>What Ages in the Silence</h1>
+      <p class="lead">The quiet hour.</p>
+      <hr>
+      <p class="spine">When the market sleeps,<br>the structure does not.</p>
+
+      <p class="body">It is midnight.</p>
+
+      <p class="body">The market has closed. The dividend has been paid. The deposit has cleared. The headline numbers are unchanged from the morning, unchanged from the quarter before. By every published measure, nothing is happening.</p>
+
+      <p class="body">The Bureau is awake.</p>
+
+      <p class="body">Nox is the hour the Bureau does not share with the reader. It is the hour after the dispatch has been written, after the rereading has been filed, after the candle in Vesper's room has been put out. The reader has gone. The structure has not.</p>
+
+      <p class="body">The Buffer Half-Life counts in silence.</p>
+
+      <p class="body">Each hour after midnight, the buffer is being spent &mdash; not visibly, not on any screen, not in any release. The dividend will still print at the next quarterly meeting. The yield will still be the yield. But the clock the Bureau set in Aurora, and revised in Vesper, continues to turn. The spread that narrowed in the candlelit hour narrows further. The refinancing that was scheduled in late summer is now ninety days closer than it was last week. None of this is news. All of it is the reading.</p>
+
+      <p class="essay-spine">The market sleeps.<br>The structure does not.</p>
+
+      <p class="body">In two hundred years of Nox hours, the Bureau has rarely been the one to announce the failure. The failure is announced by the company, by the rating agency, by the press release that arrives at the same hour as the dividend cut. The Bureau, by then, has already watched the clock run forward through several Nox hours, several Vesper rereadings, several Aurora arrivals.</p>
+
+      <p class="body">This is the work of the vigil. Not the alarm. The watch.</p>
+
+      <p class="body">A buffer is borrowed time. The Nox hour is when the borrowed time is most quietly spent.</p>
+
+      <p class="body">The market will open. The reader will return to Aurora. The dispatch will be written. The quarter will pass, and the Bureau will reread.</p>
+
+      <p class="body">And in the small hours between, when no one is reading, the Bureau is reading.</p>
+
+      <p class="cadence-close">The vigil continues.</p>
+
+      <div class="archive-link">
+        <a href="https://medium.com/tag/nox">Filed in the living archive &nbsp;&rarr;</a>
+      </div>
+
+      <div class="ornament">⁂</div>
+      <p class="signature">The Bureau keeps watch.</p>
+    </div>
+  </section>
+
+  <footer>
+    <nav class="registry">
+      <a href="/">Bureau</a>
+      <a href="https://medium.com/@dividendforensics">Medium</a>
+      <a href="/charter">Charter</a>
+      <a href="/archive">Archive</a>
+      <a href="/errata">Errata</a>
+    </nav>
+    <div class="imprint">
+      veritas &middot; disciplina &middot; claritas
+    </div>
+  </footer>
+
+  <script>
+    const chambers = ['aurora', 'vesper', 'nox'];
+    const chamberLabel = document.getElementById('current-chamber');
+    const marks = document.querySelectorAll('.descent-marker .mark');
+
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = Math.max(0, Math.min(1, scrollTop / docHeight));
+      document.body.style.setProperty('--progress', progress);
+
+      let currentChamber = 'aurora';
+      const viewCenter = scrollTop + window.innerHeight / 2;
+      chambers.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const top = el.offsetTop;
+        const bottom = top + el.offsetHeight;
+        if (viewCenter >= top && viewCenter < bottom) currentChamber = id;
+      });
+
+      const display = currentChamber.charAt(0).toUpperCase() + currentChamber.slice(1);
+      if (chamberLabel.textContent !== display) chamberLabel.textContent = display;
+
+      marks.forEach(m => m.classList.toggle('active', m.dataset.chamber === currentChamber));
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  </script>
+
+</body>
+</html>
