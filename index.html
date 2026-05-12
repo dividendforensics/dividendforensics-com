@@ -5106,6 +5106,103 @@ h1, h2, h3, .standfirst, .pull-quote, .hero-title, .section-title { text-wrap: b
   color: var(--ink);
 }
 
+/* ────────────────────────────────────────────────
+   Chambers annex — quiet entrance to doctrinal reading
+   (v3.3 · Aurora · Vesper · Nox)
+   ──────────────────────────────────────────────── */
+.chambers-entrance {
+  margin: 56px auto 0;
+  padding-top: 28px;
+  max-width: 480px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+.chambers-entrance::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 0.5px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--gold-deep) 50%,
+    transparent 100%);
+  opacity: 0.45;
+}
+.chambers-entrance-marker {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-variant: small-caps;
+  letter-spacing: 0.42em;
+  color: var(--gold-deep);
+  opacity: 0.68;
+  font-weight: 500;
+  text-indent: 0.42em; /* optical centering for tracked small-caps */
+}
+.chambers-entrance-link {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 1.42rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.004em;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.42em;
+  line-height: 1.2;
+  transition: color var(--duration-base) var(--ease-expo-out);
+  font-weight: 500;
+}
+.chambers-entrance-link em {
+  font-style: italic;
+  border-bottom: 0.5px solid transparent;
+  transition: border-color var(--duration-base) var(--ease-expo-out);
+}
+.chambers-entrance-link:hover {
+  color: var(--burgundy);
+}
+.chambers-entrance-link:hover em {
+  border-bottom-color: var(--burgundy-soft);
+}
+.chambers-entrance-link:focus-visible {
+  outline: 1px dashed var(--gold-deep);
+  outline-offset: 4px;
+  border-radius: 1px;
+}
+.chambers-entrance-arrow {
+  font-family: var(--font-italic);
+  font-style: normal;
+  color: var(--gold-deep);
+  opacity: 0.62;
+  transition: transform var(--duration-base) var(--ease-expo-out),
+              opacity var(--duration-base) var(--ease-expo-out);
+}
+.chambers-entrance-link:hover .chambers-entrance-arrow {
+  transform: translateX(3px);
+  opacity: 0.92;
+}
+.chambers-entrance-caption {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+  opacity: 0.72;
+  letter-spacing: 0.012em;
+  margin-top: 2px;
+  text-wrap: pretty;
+}
+@media (max-width: 640px) {
+  .chambers-entrance { margin-top: 40px; padding-top: 22px; }
+  .chambers-entrance-link { font-size: 1.24rem; }
+  .chambers-entrance-caption { font-size: 0.88rem; }
+}
+
 .dispatch-state {
   display: flex;
   gap: 24px;
@@ -5923,6 +6020,16 @@ h1, h2, h3, .standfirst, .pull-quote, .hero-title, .section-title { text-wrap: b
     <p class="methods-inquiry-footer" data-reveal>
       Each instrument is applied per dispatch. <em>The Bureau reads, before it diagnoses. Diagnoses, before it computes. Computes, before it publishes.</em> Generalized research only — no personalized advice.
     </p>
+
+    <!-- ─── Chambers annex · quiet entrance to the doctrinal reading ─── -->
+    <div class="chambers-entrance" data-reveal>
+      <span class="chambers-entrance-marker">Annex</span>
+      <a href="chambers.html" class="chambers-entrance-link" aria-label="Enter the Reading Chambers — doctrinal annex">
+        <em>The Reading Chambers</em>
+        <span class="chambers-entrance-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <span class="chambers-entrance-caption">Aurora &middot; Vesper &middot; Nox &mdash; the same reading, read more slowly.</span>
+    </div>
 
   </div>
 </section>
