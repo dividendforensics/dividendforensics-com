@@ -1,668 +1,783 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: https://ogp.me/ns#">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Archive — Dividend Forensics Bureau · DFB-A-0001</title>
-<meta name="description" content="The Bureau's permanent archive — every Bulletin, Plate, Erratum, and Method Evolution, dated and registered.">
-<meta name="robots" content="index, follow">
+<title>The Bureau Archive · Dividend Forensics Bureau</title>
+<meta name="description" content="The Bureau Archive — filed dispatches across REITs, BDCs, covered call ETFs, MLPs, and CLO equity. Five tiers, chronological catalog.">
 <link rel="canonical" href="https://dividendforensics.com/archive.html">
-
-<meta name="DC.title" content="The Bureau Archive">
-<meta name="DC.creator" content="Goo, Jeong-Mo">
-<meta name="DC.publisher" content="Dividend Forensics Bureau">
-<meta name="DC.date" content="2026-05-09">
-<meta name="DC.type" content="Text.Archive">
-<meta name="DC.format" content="text/html">
-<meta name="DC.language" content="en">
-<meta name="DC.rights" content="© 2026 Dividend Forensics Bureau">
-
-<link rel="icon" type="image/png" sizes="32x32" href="/img/dfb_seal_favicon_192.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/img/dfb_seal_favicon_192.png">
-<link rel="apple-touch-icon" sizes="192x192" href="/img/dfb_seal_favicon_192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/img/dfb_seal_favicon_512.png">
-<meta property="og:image" content="https://dividendforensics.com/img/dfb_seal_og_1200.webp">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="1200">
-<meta property="og:image:type" content="image/webp">
-<meta property="og:image:alt" content="Dividend Forensics Bureau official seal">
-<meta name="twitter:image" content="https://dividendforensics.com/img/dfb_seal_og_1200.webp">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,400..600&family=Inter:wght@400..600&family=JetBrains+Mono:wght@400..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+/* ============================================
+   PEABODY — Warm Cream + Cast-Iron Bronze + Atrium Gold
+   Architecture: 5-tier balcony viewed from above
+   ============================================ */
 :root {
-  --paper: #F6F1E8;
-  --paper-warm: #F3EBDC;
-  --paper-soft: #FAF6EE;
-  --ink: #1A1614;
-  --ink-soft: #2C2622;
-  --gold: #A27B47;
-  --gold-deep: #7B5C36;
-  --gold-soft: #C49C68;
-  --gold-canonical: #8B6914;
-  --burgundy: #4E1E28;
-  --burgundy-soft: #6B3340;
-  --burgundy-deep: #2E1018;
-  --rule: #DCD3C4;
-  --sepia: #7B5A45;
+  --cream: #E8D5B0;
+  --cream-soft: #EFE0BD;
+  --cream-warm: #E0CB9F;
+  --cream-deep: #D4BC8E;
+  --parchment: #F2E5C3;
+  --iron: #3D2818;
+  --iron-deep: #1F140A;
+  --iron-soft: #5A3E25;
+  --bronze: #8A6228;
+  --bronze-glow: #B8943E;
+  --gold: #C49A4C;
+  --gold-soft: #DFB970;
+  --gold-deep: #8B6A30;
+  --black-stone: #0E0805;
+  --ink: #1F140A;
+  --ink-soft: #3D2818;
+  --atrium-glow: #F8D89C;
+  --line-bronze: #B8943E;
+  --line-soft: #D5BC85;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
+html { scroll-behavior: smooth; }
 body {
-  background: var(--paper);
+  background: var(--cream);
   color: var(--ink);
-  font-family: 'Newsreader', serif;
+  font-family: "Newsreader", serif;
   font-size: 17px;
-  line-height: 1.7;
-  font-feature-settings: "kern" 1, "liga" 1, "dlig" 1, "onum" 1;
-  font-variant-numeric: oldstyle-nums proportional-nums;
-  hanging-punctuation: first last;
-  text-wrap: pretty;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphenate-limit-chars: 6 3 3;
-  hyphenate-limit-lines: 2;
-  widows: 3;
-  orphans: 3;
+  line-height: 1.65;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse at top, rgba(248, 216, 156, 0.18), transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-table, .data, .price, .arc-tag, .arc-bib, .arc-num, .arc-date, .arc-hash {
-  font-feature-settings: "tnum" 1, "lnum" 1;
-  font-variant-numeric: tabular-nums lining-nums;
+/* === PHOTO HERO === */
+.photo-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 720px;
+  overflow: hidden;
+  background: var(--iron-deep);
 }
-h1, h2, h3 {
-  font-feature-settings: "lnum" 1, "kern" 1;
-  font-variant-numeric: lining-nums proportional-nums;
+.ph-photo {
+  position: absolute; inset: 0;
+  background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/George_Peabody_Library_Interior.jpg?width=2560");
+  background-size: cover;
+  background-position: center top;
+  animation: kenburns 42s cubic-bezier(0.65, 0, 0.35, 1) infinite alternate;
+}
+@keyframes kenburns {
+  0%   { transform: scale(1.00) translate(0, 0); }
+  100% { transform: scale(1.10) translate(-1%, -2%); }
+}
+.ph-vignette {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, transparent 0%, rgba(31, 20, 10, 0.4) 70%, rgba(14, 8, 5, 0.75) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.78) 100%);
+}
+.ph-grain {
+  position: absolute; inset: 0;
+  opacity: 0.10; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-a { color: var(--burgundy); text-decoration: none; border-bottom: 0.5px solid color-mix(in srgb, var(--burgundy) 50%, transparent); }
-a:hover { color: var(--gold-deep); border-bottom-color: var(--gold-deep); }
-a:visited { color: var(--burgundy-soft); }
-a.canonical { color: var(--gold-canonical); border-bottom: 1px dotted currentColor; }
-
-.archive-page {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 80px 32px 120px;
-}
-
-.archive-masthead {
-  border-bottom: 0.5px solid color-mix(in srgb, var(--gold) 35%, transparent);
-  padding-bottom: 24px;
-  margin-bottom: 56px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 24px;
-  align-items: baseline;
-  font-family: 'Inter', sans-serif;
+/* Brass plate */
+.brass-plate {
+  position: absolute;
+  top: clamp(28px, 4vw, 56px);
+  right: clamp(28px, 4vw, 56px);
+  padding: 18px 22px 16px;
+  background: rgba(31, 20, 10, 0.62);
+  backdrop-filter: blur(6px) saturate(120%);
+  border: 1px solid var(--bronze-glow);
+  color: var(--cream-soft);
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.14em;
+  line-height: 1.85;
   text-transform: uppercase;
-  color: var(--gold-deep);
-  font-variant: all-small-caps;
+  z-index: 4;
+  min-width: 240px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  animation: fade-in 1.8s 0.4s both;
 }
-.archive-masthead a { border-bottom: none; color: var(--gold-deep); }
-.archive-masthead a:hover { color: var(--burgundy); }
-.archive-mast-bnum {
-  text-align: center;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  color: var(--burgundy);
-  font-feature-settings: "tnum" 1, "lnum" 1;
+.bp-corner-tl, .bp-corner-tr, .bp-corner-bl, .bp-corner-br {
+  position: absolute; width: 10px; height: 10px;
+  border: 0; border-color: var(--bronze-glow); border-style: solid;
 }
-.archive-mast-iss { text-align: right; }
+.bp-corner-tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+.bp-corner-tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; }
+.bp-corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; }
+.bp-corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+.bp-volume { color: var(--bronze-glow); font-weight: 600; }
+.bp-issue { color: var(--atrium-glow); font-weight: 600; font-size: 13px; letter-spacing: 0.18em; display: block; margin: 4px 0; }
+.bp-divider { display: block; height: 1px; background: var(--bronze); margin: 8px 0 7px; opacity: 0.55; }
+.bp-line { display: block; font-size: 10.5px; opacity: 0.85; }
 
-.masthead-seal {
-  text-align: center;
-  margin: 0 auto 28px;
+/* Hero text */
+.ph-text {
+  position: absolute;
+  left: clamp(28px, 6vw, 96px);
+  bottom: clamp(140px, 20vh, 200px);
+  max-width: min(680px, 70vw);
+  color: var(--cream-soft);
+  z-index: 3;
 }
-.masthead-seal img {
+.ph-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--atrium-glow);
+  margin-bottom: 24px; padding-left: 28px; position: relative;
+  animation: reveal 1.4s 0.6s both;
+}
+.ph-eyebrow::before {
+  content: ""; position: absolute; left: 0; top: 50%;
+  width: 18px; height: 1px; background: var(--bronze-glow);
+}
+.ph-title {
+  font-family: "Fraunces", serif;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.96; letter-spacing: -0.02em;
+  font-weight: 350;
+  font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1;
+  margin: 0 0 28px;
+  animation: reveal 1.6s 0.9s both;
+  text-shadow: 0 2px 32px rgba(0,0,0,0.55);
+}
+.ph-title em {
+  font-style: italic; font-weight: 300;
+  color: var(--atrium-glow);
+  display: block;
+  border-top: 1px solid var(--bronze-glow);
+  padding-top: 14px; margin-top: 10px;
+  max-width: 540px;
+}
+.ph-subtitle {
+  font-family: "Newsreader", serif;
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.65;
+  color: rgba(239, 224, 189, 0.88);
+  max-width: 540px;
+  animation: reveal 1.8s 1.2s both;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.4);
+}
+
+.scroll-prompt {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: clamp(28px, 4vw, 44px);
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  color: var(--cream); opacity: 0.7; z-index: 3;
+  animation: fade-in 2s 2.2s both;
+}
+.scroll-line {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, transparent, var(--atrium-glow));
+  animation: bounce 2.4s ease-in-out infinite;
+}
+.scroll-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+}
+@keyframes bounce {
+  0%, 100% { transform: scaleY(1) translateY(0); opacity: 0.5; }
+  50% { transform: scaleY(0.6) translateY(8px); opacity: 1; }
+}
+.photo-attr {
+  position: absolute; right: 16px; bottom: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px; letter-spacing: 0.18em;
+  color: rgba(239, 224, 189, 0.55);
+  z-index: 3; text-transform: uppercase;
+}
+.photo-attr a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
+.photo-attr a:hover { color: var(--atrium-glow); }
+@keyframes fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes reveal { from { opacity: 0; transform: translateY(20px); filter: blur(4px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
+
+/* ============================================
+   ARCHITECTURE: 5-TIER BALCONY GRID
+   The Peabody atrium has 5 floors of cast-iron balconies viewed from above.
+   The page body recreates this — 5 vertical tiers stacked, separated by cast-iron pattern rails.
+   ============================================ */
+
+.skylight-band {
+  position: relative;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--cream-soft));
+  margin-top: -120px;
+  z-index: 2;
+  display: flex; justify-content: center; align-items: flex-end;
+  pointer-events: none;
+}
+/* Skylight grid SVG matching Peabody's overhead glass roof */
+.skylight-grid {
+  width: min(820px, 88vw);
+  height: 60px;
+  opacity: 0.85;
+  margin-bottom: -2px;
+}
+
+.archive-main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(60px, 8vw, 120px) clamp(24px, 4vw, 48px) 80px;
+  position: relative;
+}
+
+/* Atrium intro */
+.atrium-intro {
+  text-align: center;
+  margin-bottom: clamp(60px, 8vw, 96px);
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.atrium-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 28px;
+  position: relative;
   display: inline-block;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  opacity: 0.92;
-  filter: drop-shadow(0 4px 12px rgba(78, 30, 40, 0.12));
+  padding: 0 32px;
 }
-@media (max-width: 760px) {
-  .masthead-seal img { width: 64px; height: 64px; }
-  .masthead-seal { margin-bottom: 20px; }
+.atrium-label::before, .atrium-label::after {
+  content: ""; position: absolute; top: 50%;
+  width: 22px; height: 1px;
+  background: var(--bronze-glow);
 }
+.atrium-label::before { left: 0; }
+.atrium-label::after { right: 0; }
 
-.archive-eyebrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 24px;
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.36em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-  font-variant: all-small-caps;
-}
-.archive-eyebrow span:first-child,
-.archive-eyebrow span:last-child {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 14px;
-  color: var(--gold);
-  font-weight: 600;
-}
-
-h1.archive-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(36px, 5vw, 60px);
+.atrium-title {
+  font-family: "Fraunces", serif;
+  font-size: clamp(38px, 5vw, 56px);
+  line-height: 1.05;
   font-weight: 380;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  text-align: center;
-  margin-bottom: 18px;
-  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0.4;
-  text-wrap: balance;
+  font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 1;
+  color: var(--iron-deep);
+  margin-bottom: 24px;
+  letter-spacing: -0.015em;
 }
-h1.archive-title em {
+.atrium-title em {
+  font-family: "Cormorant Garamond", serif;
   font-style: italic;
-  color: var(--burgundy);
-  font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
+  color: var(--bronze);
+  font-weight: 400;
 }
-
-.archive-bib {
-  text-align: center;
-  margin-bottom: 32px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
-  color: var(--burgundy-soft);
-  text-transform: uppercase;
-}
-.archive-bib .bib-divider { color: var(--gold-soft); margin: 0 10px; }
-
-.archive-intro {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 19px;
-  line-height: 1.55;
+.atrium-desc {
+  font-family: "Newsreader", serif;
+  font-size: 18px;
+  line-height: 1.7;
   color: var(--ink-soft);
-  text-align: center;
-  max-width: 60ch;
-  margin: 0 auto 56px;
-  font-feature-settings: "liga" 1, "dlig" 1, "onum" 1;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* ─── Filter Bar (★ Quick Index) ─── */
-.archive-filter {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 14px;
-  margin: 0 auto 56px;
-  padding: 16px 24px;
-  border-top: 0.5px solid color-mix(in srgb, var(--gold) 35%, transparent);
-  border-bottom: 0.5px solid color-mix(in srgb, var(--gold) 35%, transparent);
-  font-family: 'Inter', sans-serif;
+/* === 5-tier balcony stats === */
+.tier-stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-bottom: clamp(60px, 8vw, 96px);
+  border-top: 2px double var(--bronze);
+  border-bottom: 2px double var(--bronze);
+  padding: 24px 0;
+  background: var(--cream-warm);
+  position: relative;
+}
+.tier-stats::before {
+  content: ""; position: absolute; top: 8px; left: 0; right: 0; height: 1px;
+  background: var(--bronze-glow); opacity: 0.4;
+}
+.tier-stats::after {
+  content: ""; position: absolute; bottom: 8px; left: 0; right: 0; height: 1px;
+  background: var(--bronze-glow); opacity: 0.4;
+}
+.tier-cell {
+  padding: 12px 18px;
+  text-align: center;
+  border-right: 1px solid var(--line-soft);
+  position: relative;
+}
+.tier-cell:last-child { border-right: none; }
+.tier-num {
+  font-family: "Fraunces", serif;
+  font-size: 38px;
+  font-weight: 450;
+  color: var(--bronze);
+  letter-spacing: -0.02em;
+  display: block;
+  margin-bottom: 4px;
+  font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
+}
+.tier-label {
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
-  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold-deep);
-  font-variant: all-small-caps;
-}
-.archive-filter a {
-  color: var(--gold-deep);
-  border: 0.5px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  padding: 5px 12px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: none;
-  font-variant: normal;
-}
-.archive-filter a:hover {
-  color: var(--burgundy);
-  border-color: var(--burgundy);
-  background: color-mix(in srgb, var(--burgundy) 6%, transparent);
+  color: var(--iron-soft);
+  display: block;
+  line-height: 1.5;
 }
 
-section.archive-section {
-  margin-bottom: 80px;
-}
-
-h2.archive-section-title {
-  font-family: 'Fraunces', serif;
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 1.2;
-  color: var(--ink);
-  margin-bottom: 8px;
-  font-variation-settings: "opsz" 36, "SOFT" 30;
-}
-h2.archive-section-title em {
-  font-style: italic;
-  color: var(--burgundy);
-}
-
-.archive-section-eyebrow {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.36em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-  margin-bottom: 24px;
-  font-variant: all-small-caps;
-}
-
-.archive-rule {
-  height: 0.5px;
-  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
-  margin: 32px 0;
+/* === Cast-iron balcony rail divider === */
+.iron-rail {
+  height: 18px;
+  margin: 56px 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='18' viewBox='0 0 80 18'%3E%3Cg fill='none' stroke='%238A6228' stroke-width='0.8'%3E%3Cpath d='M0 9 L80 9'/%3E%3Ccircle cx='20' cy='9' r='3'/%3E%3Ccircle cx='40' cy='9' r='4'/%3E%3Ccircle cx='60' cy='9' r='3'/%3E%3Cpath d='M10 4 L10 14 M30 4 L30 14 M50 4 L50 14 M70 4 L70 14'/%3E%3Cpath d='M15 6 L25 6 M35 6 L45 6 M55 6 L65 6 M15 12 L25 12 M35 12 L45 12 M55 12 L65 12'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 80px 18px;
   opacity: 0.5;
 }
 
-/* ─── Bulletin Ledger (★ chronology table) ─── */
-.bulletin-ledger {
-  list-style: none;
-  border-top: 0.5px solid var(--rule);
+/* === Tier — balcony floor of dispatches === */
+.balcony-tier {
+  margin: 0;
+  position: relative;
 }
-.bulletin-row {
-  display: grid;
-  grid-template-columns: 124px 110px 1fr 80px;
-  gap: 24px;
+.tier-header {
+  display: flex;
   align-items: baseline;
-  padding: 18px 0;
-  border-bottom: 0.5px solid var(--rule);
-  transition: background 200ms ease, border-left-color 300ms ease;
-  border-left: 2px solid transparent;
-  padding-left: 12px;
-  margin-left: -12px;
+  gap: 24px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line-soft);
 }
-.bulletin-row:hover {
-  background: color-mix(in srgb, var(--paper-warm) 70%, transparent);
-  border-left-color: var(--gold);
-}
-.bulletin-row.empty-row {
-  font-family: 'Cormorant Garamond', serif;
+.tier-floor {
+  font-family: "Fraunces", serif;
+  font-size: 42px;
+  font-weight: 320;
+  color: var(--bronze);
+  font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
   font-style: italic;
-  color: var(--gold-deep);
-  font-size: 16px;
-  text-align: center;
-  display: block;
-  padding: 32px 0;
-  border-left: none;
-  margin-left: 0;
-  padding-left: 0;
 }
-.bulletin-row.empty-row:hover { background: transparent; }
-
-.arc-num {
-  font-family: 'JetBrains Mono', monospace;
+.tier-name {
+  font-family: "Fraunces", serif;
+  font-size: 22px;
+  font-weight: 450;
+  color: var(--iron-deep);
+  letter-spacing: -0.01em;
+}
+.tier-period {
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
-  letter-spacing: 0.14em;
-  color: var(--burgundy);
-  font-weight: 500;
-}
-.arc-date {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
-  color: var(--gold-deep);
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: var(--iron-soft);
+  margin-left: auto;
 }
-.arc-headline {
-  font-family: 'Fraunces', serif;
-  font-size: 16.5px;
-  line-height: 1.4;
-  color: var(--ink);
-  font-variation-settings: "opsz" 24, "SOFT" 30;
+
+/* Dispatch grid — 3 cols mimicking books on a shelf */
+.dispatch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 16px;
 }
-.arc-headline em { font-style: italic; color: var(--burgundy); }
-.arc-tag {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  font-weight: 600;
+@media (max-width: 880px) {
+  .dispatch-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .dispatch-grid { grid-template-columns: 1fr; }
+}
+
+.dispatch {
+  background: var(--parchment);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--bronze);
+  padding: 20px 22px 22px;
+  position: relative;
+  transition: transform 0.4s, box-shadow 0.4s, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+}
+.dispatch:hover {
+  transform: translateY(-2px);
+  border-left-color: var(--gold);
+  box-shadow: 0 6px 24px rgba(31, 20, 10, 0.12);
+}
+.disp-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 8px;
+}
+.disp-title {
+  font-family: "Fraunces", serif;
+  font-size: 19px;
+  font-weight: 480;
+  color: var(--iron-deep);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.disp-abstract {
+  font-family: "Newsreader", serif;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  flex-grow: 1;
+  margin-bottom: 14px;
+}
+.disp-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold-deep);
-  font-variant: all-small-caps;
-  text-align: right;
-  border-left: 0.5px solid color-mix(in srgb, var(--gold) 40%, transparent);
-  padding-left: 16px;
+  color: var(--iron-soft);
+  padding-top: 10px;
+  border-top: 1px dotted var(--line-soft);
 }
+.disp-cat { color: var(--bronze); font-weight: 500; }
 
-/* ─── Plate Index (★ visual catalog) ─── */
-.plate-index {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 8px;
-}
-.plate-card {
-  border: 0.5px solid color-mix(in srgb, var(--gold) 35%, transparent);
-  padding: 22px 20px;
-  background: var(--paper-soft);
-  display: grid;
-  gap: 8px;
-  transition: border-color 300ms ease, transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.plate-card:hover {
-  border-color: var(--burgundy);
-  transform: translateY(-2px);
-}
-.plate-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  font-feature-settings: "lnum" 1;
-}
-.plate-title {
-  font-family: 'Fraunces', serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.3;
-  color: var(--ink);
-  font-variation-settings: "opsz" 24, "SOFT" 40;
-}
-.plate-cat {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px;
-  letter-spacing: 0.16em;
-  color: var(--burgundy);
-  text-transform: uppercase;
-  font-feature-settings: "tnum" 1, "lnum" 1;
-}
-.plate-status {
-  font-family: 'Inter', sans-serif;
-  font-size: 8.5px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-  font-variant: all-small-caps;
-}
-
-/* ─── Document Series (★ standalone documents · Charter/Concordance/Errata) ─── */
-.doc-series {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0;
-  border-top: 0.5px solid color-mix(in srgb, var(--gold) 35%, transparent);
-  border-bottom: 0.5px solid color-mix(in srgb, var(--gold) 35%, transparent);
-}
-.doc-series li {
-  padding: 28px 24px;
-  border-right: 0.5px solid color-mix(in srgb, var(--gold) 25%, transparent);
-}
-.doc-series li:last-child { border-right: none; }
-@media (max-width: 760px) {
-  .doc-series li { border-right: none; border-bottom: 0.5px solid color-mix(in srgb, var(--gold) 25%, transparent); }
-  .doc-series li:last-child { border-bottom: none; }
-}
-.doc-num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  color: var(--burgundy);
-  font-feature-settings: "tnum" 1, "lnum" 1;
-  margin-bottom: 8px;
-  display: block;
-}
-.doc-title {
-  font-family: 'Fraunces', serif;
-  font-size: 19px;
-  font-weight: 500;
-  line-height: 1.25;
-  color: var(--ink);
-  font-variation-settings: "opsz" 36, "SOFT" 40;
-  margin-bottom: 6px;
-}
-.doc-title a {
-  color: var(--ink);
-  border-bottom: none;
-}
-.doc-title a:hover { color: var(--burgundy); }
-.doc-title em { font-style: italic; color: var(--burgundy); }
-.doc-meta {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 14px;
-  color: var(--sepia);
-  line-height: 1.55;
-}
-
-.archive-footer {
-  margin-top: 80px;
+/* === Checkered marble footer (matches Peabody's geometric floor) === */
+.checkered-footer {
+  margin-top: clamp(60px, 8vw, 96px);
+  padding: 56px 24px;
+  position: relative;
+  background:
+    linear-gradient(to bottom, var(--cream-warm), var(--cream-deep)),
+    repeating-conic-gradient(var(--iron-deep) 0% 25%, var(--cream-soft) 25% 50%);
+  background-size: 100% 100%, 60px 60px;
+  background-position: 0 0, bottom center;
+  background-repeat: no-repeat, repeat;
+  border-top: 4px double var(--bronze);
   text-align: center;
-  font-family: 'Inter', sans-serif;
+}
+.footer-marker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 18px;
+}
+.footer-attribution {
+  font-family: "Newsreader", serif;
+  font-style: italic;
+  color: var(--iron-soft);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.footer-links {
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--sepia);
-  font-variant: all-small-caps;
-  border-top: 0.5px solid color-mix(in srgb, var(--gold) 35%, transparent);
-  padding-top: 32px;
+  color: var(--iron-soft);
 }
-.archive-footer a { color: var(--gold-deep); border-bottom: none; }
-.archive-footer a:hover { color: var(--burgundy); }
-.archive-footer .motto {
-  display: block;
-  margin-top: 18px;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0.04em;
-  font-size: 14px;
-  color: var(--gold);
-  font-variant: normal;
+.footer-links a {
+  color: var(--bronze);
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+  margin: 0 8px;
 }
-.archive-footer .meminisse {
-  display: block;
-  margin-top: 8px;
-  font-family: 'Inter', sans-serif;
-  font-size: 9pt;
-  letter-spacing: 0.32em;
-  color: var(--gold-deep);
-  font-variant: all-small-caps;
-}
+.footer-links a:hover { color: var(--gold); }
 
-@media (max-width: 760px) {
-  .archive-page { padding: 48px 20px 80px; }
-  .archive-masthead { grid-template-columns: 1fr; gap: 8px; text-align: center; }
-  .archive-mast-iss { text-align: center; }
-  .archive-bib { font-size: 9.5px; letter-spacing: 0.14em; }
-  .archive-intro { font-size: 16px; margin-bottom: 40px; }
-  .bulletin-row {
-    grid-template-columns: 1fr;
-    gap: 6px;
-    padding: 14px 0;
-    border-left: none;
-    margin-left: 0;
-    padding-left: 0;
-  }
-  .bulletin-row:hover { border-left: none; padding-left: 0; }
-  .arc-tag { text-align: left; border-left: none; padding-left: 0; padding-top: 4px; }
-  .archive-filter { font-size: 9px; gap: 6px 10px; }
-  .archive-filter a { padding: 4px 8px; font-size: 9px; }
+@media (max-width: 720px) {
+  .tier-stats { grid-template-columns: repeat(5, 1fr); padding: 12px 0; }
+  .tier-cell { padding: 4px 4px; }
+  .tier-num { font-size: 22px; }
+  .tier-label { font-size: 8px; letter-spacing: 0.16em; }
+  .tier-header { flex-wrap: wrap; gap: 12px; }
+  .tier-floor { font-size: 30px; }
+  .tier-name { font-size: 17px; }
+  .tier-period { margin-left: 0; width: 100%; }
+  .photo-hero { min-height: 580px; }
+  .brass-plate { top: 16px; right: 16px; padding: 12px 16px; font-size: 10px; min-width: 200px; }
+  .ph-text { bottom: 100px; left: 20px; max-width: 86vw; }
+  .ph-title { font-size: clamp(38px, 11vw, 60px); }
 }
 </style>
 </head>
+
 <body>
 
-<main class="archive-page">
+<!-- ============ PHOTO HERO ============ -->
+<section class="photo-hero" aria-label="The Bureau Archive · Peabody hero">
+  <div class="ph-photo" role="img" aria-label="George Peabody Library atrium, Baltimore"></div>
+  <div class="ph-vignette"></div>
+  <div class="ph-grain"></div>
 
-  <header class="archive-masthead" role="banner">
-    <a href="/">Dividend Forensics Bureau</a>
-    <span class="archive-mast-bnum">№ DFB-A-0001</span>
-    <span class="archive-mast-iss">Vol. I &middot; Archive</span>
-  </header>
+  <aside class="brass-plate">
+    <span class="bp-corner-tl"></span><span class="bp-corner-tr"></span>
+    <span class="bp-corner-bl"></span><span class="bp-corner-br"></span>
+    <span class="bp-volume">The Bureau Archive</span>
+    <span class="bp-issue">Sixty-Seven Filed</span>
+    <span class="bp-divider"></span>
+    <span class="bp-line">Five Tiers · Chronological</span>
+    <span class="bp-line" style="color:var(--cream-soft);">Anno MMXXIV — MMXXVI</span>
+    <span class="bp-line" style="opacity:0.65;">Editor · J. M. Goo · Seoul</span>
+  </aside>
 
-  <div class="masthead-seal" aria-hidden="true">
-    <img src="/img/dfb_seal_400.png" alt="" width="80" height="80" loading="eager" decoding="async">
+  <div class="ph-text">
+    <div class="ph-eyebrow">Filed Dispatches · Chronological · Cumulative</div>
+    <h1 class="ph-title">
+      The Archive<br>
+      <em>is the Institution.</em>
+    </h1>
+    <p class="ph-subtitle">
+      Sixty-seven dispatches filed across five tiers — REITs, BDCs, covered call ETFs, MLPs, CLO equity, and structural frameworks. Each retained with its original timestamp. Nothing retired.
+    </p>
   </div>
 
-  <div class="archive-eyebrow">
-    <span aria-hidden="true">✦</span>
-    <span>The Public Record</span>
-    <span aria-hidden="true">✦</span>
+  <div class="scroll-prompt">
+    <span class="scroll-label">Enter the Atrium</span>
+    <span class="scroll-line"></span>
   </div>
 
-  <h1 class="archive-title">The <em>Archive.</em></h1>
+  <div class="photo-attr">
+    <a href="https://commons.wikimedia.org/wiki/File:George_Peabody_Library_Interior.jpg" target="_blank" rel="noopener">
+      George Peabody Library · CC BY-SA · Wikimedia Commons
+    </a>
+  </div>
+</section>
 
-  <p class="archive-bib">
-    <span>Vol. I</span><span class="bib-divider">·</span><span>Opened IX &middot; V &middot; MMXXVI</span><span class="bib-divider">·</span><span>Seoul</span>
-  </p>
+<!-- ============ SKYLIGHT BAND (matches overhead glass roof) ============ -->
+<div class="skylight-band">
+  <svg class="skylight-grid" viewBox="0 0 820 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="sklight" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#F8D89C" stop-opacity="0.8"/>
+        <stop offset="100%" stop-color="#E8D5B0" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- 8x2 skylight grid panels matching Peabody's overhead -->
+    <g stroke="#8A6228" stroke-width="0.8" fill="url(#sklight)" opacity="0.85">
+      <rect x="20" y="6" width="92" height="22"/>
+      <rect x="120" y="6" width="92" height="22"/>
+      <rect x="220" y="6" width="92" height="22"/>
+      <rect x="320" y="6" width="92" height="22"/>
+      <rect x="420" y="6" width="92" height="22"/>
+      <rect x="520" y="6" width="92" height="22"/>
+      <rect x="620" y="6" width="92" height="22"/>
+      <rect x="720" y="6" width="80" height="22"/>
+    </g>
+    <g stroke="#8A6228" stroke-width="0.6" fill="none" opacity="0.55">
+      <line x1="20" y1="17" x2="800" y2="17"/>
+      <line x1="20" y1="32" x2="800" y2="32"/>
+    </g>
+  </svg>
+</div>
 
-  <p class="archive-intro">
-    Every Bulletin published, every Plate engraved, every constitutional document held by the Bureau, registered in chronological order. The Archive is monotonic and permanent &mdash; entries are appended, never overwritten. <strong>Memory is the institution&rsquo;s first asset.</strong>
-  </p>
+<!-- ============ MAIN ============ -->
+<main class="archive-main">
 
-  <nav class="archive-filter" aria-label="Archive index navigation">
-    <a href="#bulletins">Bulletins · DFB-B</a>
-    <a href="#plates">Plates · TAFEL</a>
-    <a href="#documents">Documents · DFB-C/L/E</a>
-    <a href="#methods">Method Evolution</a>
-  </nav>
-
-  <section class="archive-section" id="bulletins">
-    <p class="archive-section-eyebrow">§ I &middot; Bulletins</p>
-    <h2 class="archive-section-title">The <em>Bulletins.</em></h2>
-    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--ink-soft); margin-bottom: 28px;">
-      The DFB-B series. Each Bulletin receives a permanent number at first publication; numbers do not reset across volumes.
+  <!-- Atrium intro -->
+  <div class="atrium-intro">
+    <div class="atrium-label">The Atrium · Five Tiers · Sixty-Seven Volumes</div>
+    <h2 class="atrium-title">
+      A cathedral, <em>not a feed.</em>
+    </h2>
+    <p class="atrium-desc">
+      The Bureau Archive is organized like its namesake — the Peabody Library's five-tier atrium. Each balcony holds the dispatches of one phase, retained in their original sequence. No retractions; corrections live in the Errata Desk.
     </p>
+  </div>
 
-    <ol class="bulletin-ledger" aria-label="Bulletin chronology">
-      <li class="bulletin-row empty-row">
-        The Bureau opens its register IX &middot; V &middot; MMXXVI. The first Bulletin (DFB-B-0001) is in composition.<br>
-        Subscribers will be notified at <a href="/">dividendforensics.com</a> upon publication.
-      </li>
+  <!-- 5-tier stats matching balcony floors -->
+  <div class="tier-stats" role="region" aria-label="Archive statistics">
+    <div class="tier-cell">
+      <span class="tier-num">5</span>
+      <span class="tier-label">Tiers<br>Filed</span>
+    </div>
+    <div class="tier-cell">
+      <span class="tier-num">67</span>
+      <span class="tier-label">Dispatches<br>Indexed</span>
+    </div>
+    <div class="tier-cell">
+      <span class="tier-num">19</span>
+      <span class="tier-label">Tickers<br>Covered</span>
+    </div>
+    <div class="tier-cell">
+      <span class="tier-num">3</span>
+      <span class="tier-label">Frameworks<br>Applied</span>
+    </div>
+    <div class="tier-cell">
+      <span class="tier-num">0</span>
+      <span class="tier-label">Retractions<br>Filed</span>
+    </div>
+  </div>
 
-      <!-- Future entries follow this template:
-      <li class="bulletin-row">
-        <span class="arc-num">№ DFB-B-0001</span>
-        <time class="arc-date" datetime="2026-05-09">IX &middot; V &middot; MMXXVI</time>
-        <span class="arc-headline">Coverage Diagnostics under Capex Inflation: <em>a structural reading of the dividend buffer.</em></span>
-        <span class="arc-tag">DIC · D1, D3</span>
-      </li>
-      -->
-    </ol>
+  <!-- TIER V (top balcony) -->
+  <section class="balcony-tier" aria-labelledby="tier-v">
+    <div class="tier-header">
+      <span class="tier-floor">V</span>
+      <span class="tier-name" id="tier-v">Top Tier · Recent Filings</span>
+      <span class="tier-period">MMXXVI · Q2</span>
+    </div>
+    <div class="dispatch-grid">
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 068</div>
+        <h3 class="disp-title">Same Yield. Different Half-Life.</h3>
+        <p class="disp-abstract">JEPI option premium, O AFFO coverage, ARCC NII spillover — three monthly distributions, three different durability profiles.</p>
+        <div class="disp-meta"><span class="disp-cat">Structural</span><span>Filed XXIII · V · MMXXVI</span></div>
+      </article>
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 067</div>
+        <h3 class="disp-title">Three Calendars · One Industry</h3>
+        <p class="disp-abstract">REIT, BDC, MLP — same sector frame, three distinct refinancing calendars. The dividend moves on a calendar; the curve does not.</p>
+        <div class="disp-meta"><span class="disp-cat">Cross-Vertical</span><span>Filed XXII · V · MMXXVI</span></div>
+      </article>
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 066</div>
+        <h3 class="disp-title">The BBB- Cliff™ Lens</h3>
+        <p class="disp-abstract">Credit rating drift below investment grade is not a slope but a cliff. The drop changes the buyer set, not the income alone.</p>
+        <div class="disp-meta"><span class="disp-cat">Framework</span><span>Filed XV · V · MMXXVI</span></div>
+      </article>
+    </div>
   </section>
 
-  <div class="archive-rule" aria-hidden="true"></div>
+  <div class="iron-rail"></div>
 
-  <section class="archive-section" id="plates">
-    <p class="archive-section-eyebrow">§ II &middot; Plates</p>
-    <h2 class="archive-section-title">The <em>Visual Codex.</em></h2>
-    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--ink-soft); margin-bottom: 28px;">
-      Numbered visual artifacts in the Bureau corpus. Plates are catalog objects, not decorations.
-    </p>
-
-    <ol class="plate-index">
-      <li class="plate-card">
-        <span class="plate-num">Tafel I</span>
-        <span class="plate-title">The Wax Seal</span>
-        <span class="plate-cat">FIG. 001-A</span>
-        <span class="plate-status">Inscribed &middot; V &middot; MMXXVI</span>
-      </li>
-      <li class="plate-card">
-        <span class="plate-num">Tafel II</span>
-        <span class="plate-title">Three Clocks &mdash; Coverage / Maturity / Access</span>
-        <span class="plate-cat">FIG. 002-A</span>
-        <span class="plate-status">Inscribed &middot; V &middot; MMXXVI</span>
-      </li>
-      <li class="plate-card">
-        <span class="plate-num">Tafel III</span>
-        <span class="plate-title">Buffer Half-Life &mdash; Decay through four stages</span>
-        <span class="plate-cat">FIG. 003-A</span>
-        <span class="plate-status">Inscribed &middot; V &middot; MMXXVI</span>
-      </li>
-      <li class="plate-card">
-        <span class="plate-num">Tafel IV</span>
-        <span class="plate-title">BBB&minus; Cliff &mdash; The credit-quality discontinuity</span>
-        <span class="plate-cat">FIG. 004-A</span>
-        <span class="plate-status">Inscribed &middot; V &middot; MMXXVI</span>
-      </li>
-    </ol>
+  <!-- TIER IV -->
+  <section class="balcony-tier" aria-labelledby="tier-iv">
+    <div class="tier-header">
+      <span class="tier-floor">IV</span>
+      <span class="tier-name" id="tier-iv">Fourth Tier · REIT Deep Dives</span>
+      <span class="tier-period">MMXXVI · Q1</span>
+    </div>
+    <div class="dispatch-grid">
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 062</div>
+        <h3 class="disp-title">Realty Income — Coverage Today</h3>
+        <p class="disp-abstract">AFFO coverage 1.13x, payout 71.7%, 114th consecutive monthly increase. The clock that says "today."</p>
+        <div class="disp-meta"><span class="disp-cat">REIT · IG</span><span>Filed VIII · IV · MMXXVI</span></div>
+      </article>
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 058</div>
+        <h3 class="disp-title">Welltower vs. Ventas</h3>
+        <p class="disp-abstract">Senior housing exposure compared. Two operators, two recovery profiles, one demographic clock.</p>
+        <div class="disp-meta"><span class="disp-cat">REIT · Healthcare</span><span>Filed XXII · III · MMXXVI</span></div>
+      </article>
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 054</div>
+        <h3 class="disp-title">Prologis · The Tomorrow Clock</h3>
+        <p class="disp-abstract">Industrial cap rates, lease mark-to-market, refinancing maturities through MMXXVIII.</p>
+        <div class="disp-meta"><span class="disp-cat">REIT · Industrial</span><span>Filed VII · III · MMXXVI</span></div>
+      </article>
+    </div>
   </section>
 
-  <div class="archive-rule" aria-hidden="true"></div>
+  <div class="iron-rail"></div>
 
-  <section class="archive-section" id="documents">
-    <p class="archive-section-eyebrow">§ III &middot; Constitutional Documents</p>
-    <h2 class="archive-section-title">The <em>standing documents.</em></h2>
-    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--ink-soft); margin-bottom: 28px;">
-      Documents that govern the Bureau itself, held under permanent registration.
-    </p>
-
-    <ol class="doc-series">
-      <li>
-        <span class="doc-num">№ DFB-C-0001</span>
-        <h3 class="doc-title"><a href="charter.html">The <em>Covenant</em></a></h3>
-        <p class="doc-meta">
-          Four constitutional articles. Adopted IX &middot; V &middot; MMXXVI. Signed by the Founding Editor.
-        </p>
-      </li>
-      <li>
-        <span class="doc-num">№ DFB-L-0001</span>
-        <h3 class="doc-title"><a href="concordance.html">The <em>Concordance</em></a></h3>
-        <p class="doc-meta">
-          Lexicon, frameworks, diagnostic vocabulary, and method evolution. The Bureau&rsquo;s own dictionary.
-        </p>
-      </li>
-      <li>
-        <span class="doc-num">№ DFB-E-0001</span>
-        <h3 class="doc-title"><a href="errata.html">The <em>Corrections Register</em></a></h3>
-        <p class="doc-meta">
-          Permanent register of substantive corrections. All Bulletins stand as originally published.
-        </p>
-      </li>
-    </ol>
+  <!-- TIER III -->
+  <section class="balcony-tier" aria-labelledby="tier-iii">
+    <div class="tier-header">
+      <span class="tier-floor">III</span>
+      <span class="tier-name" id="tier-iii">Third Tier · Adjacent Verticals</span>
+      <span class="tier-period">MMXXVI · Q1</span>
+    </div>
+    <div class="dispatch-grid">
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 049</div>
+        <h3 class="disp-title">ARCC · Non-Accrual Drift</h3>
+        <p class="disp-abstract">Non-accruals 1.8 → 2.1%, NAV 19.94 → 19.59, NII spillover 1.38/sh — the buffer remains, the angle has changed.</p>
+        <div class="disp-meta"><span class="disp-cat">BDC</span><span>Filed XX · II · MMXXVI</span></div>
+      </article>
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 045</div>
+        <h3 class="disp-title">JEPI Mechanics</h3>
+        <p class="disp-abstract">8.45% trailing distribution = 1.43% dividend + 7.18% option premium. Where one comes from a calendar; the other from a curve.</p>
+        <div class="disp-meta"><span class="disp-cat">Covered Call</span><span>Filed VI · II · MMXXVI</span></div>
+      </article>
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 041</div>
+        <h3 class="disp-title">Enterprise Products · Coverage</h3>
+        <p class="disp-abstract">EPD distribution coverage and the MLP capital cycle. The buffer that pays it.</p>
+        <div class="disp-meta"><span class="disp-cat">MLP</span><span>Filed XVII · I · MMXXVI</span></div>
+      </article>
+    </div>
   </section>
 
-  <div class="archive-rule" aria-hidden="true"></div>
+  <div class="iron-rail"></div>
 
-  <section class="archive-section" id="methods">
-    <p class="archive-section-eyebrow">§ IV &middot; Method Evolution</p>
-    <h2 class="archive-section-title">How the Bureau learned to <em>read.</em></h2>
-    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--ink-soft); margin-bottom: 28px;">
-      Methodological evolutions are recorded in the <a class="canonical" href="concordance.html#methods">Concordance, §III</a>. The corpus is cumulative, not replaceable.
-    </p>
-    <p style="font-family: 'Newsreader', serif; font-size: 16px; color: var(--ink); text-align: center; padding: 28px 0; border-top: 0.5px solid color-mix(in srgb, var(--gold) 30%, transparent); border-bottom: 0.5px solid color-mix(in srgb, var(--gold) 30%, transparent);">
-      <em>I &middot; MMXXVI</em> &mdash; Bureau established. Buffer Half-Life quantified.<br>
-      <em>II &middot; MMXXVI</em> &mdash; Diagnostic vocabulary locked.<br>
-      <em>III &middot; MMXXVI</em> &mdash; BBB&minus; Cliff formalized.<br>
-      <em>IV &middot; MMXXVI</em> &mdash; Buffer Half-Life refined; <em>t</em>&#189; introduced.<br>
-      <em>V &middot; MMXXVI</em> &mdash; Three Clocks codified. Visual Codex inscribed.
-    </p>
+  <!-- TIER II -->
+  <section class="balcony-tier" aria-labelledby="tier-ii">
+    <div class="tier-header">
+      <span class="tier-floor">II</span>
+      <span class="tier-name" id="tier-ii">Second Tier · Framework Foundations</span>
+      <span class="tier-period">MMXXV · Q4</span>
+    </div>
+    <div class="dispatch-grid">
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 028</div>
+        <h3 class="disp-title">Three Clocks™ — Introduced</h3>
+        <p class="disp-abstract">Coverage today. Maturity tomorrow. Market Access when tomorrow arrives. Three clocks, one yield.</p>
+        <div class="disp-meta"><span class="disp-cat">Framework</span><span>Filed IX · XI · MMXXV</span></div>
+      </article>
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 022</div>
+        <h3 class="disp-title">Buffer Half-Life™ Method</h3>
+        <p class="disp-abstract">How long can the cushion pay the dividend if EBITDA fell here, today? Method, not metric.</p>
+        <div class="disp-meta"><span class="disp-cat">Framework</span><span>Filed XVII · X · MMXXV</span></div>
+      </article>
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 019</div>
+        <h3 class="disp-title">The Refinancing Curve</h3>
+        <p class="disp-abstract">What changes when investment-grade access is no longer guaranteed.</p>
+        <div class="disp-meta"><span class="disp-cat">Framework</span><span>Filed III · X · MMXXV</span></div>
+      </article>
+    </div>
   </section>
 
-  <footer class="archive-footer">
-    <a href="/">← Return to Bureau</a>
-    &middot;
-    <a href="charter.html">Charter</a>
-    &middot;
-    <a href="concordance.html">Concordance</a>
-    &middot;
-    <a href="errata.html">Corrections</a>
-    &middot;
-    <a href="midnight.html">Midnight Edition</a>
-    <span class="motto">Sine fundamento, nullum fructum.</span>
-    <span class="meminisse">Meminisse Institutio. — To remember is the institution.</span>
-  </footer>
+  <div class="iron-rail"></div>
+
+  <!-- TIER I (ground floor) -->
+  <section class="balcony-tier" aria-labelledby="tier-i">
+    <div class="tier-header">
+      <span class="tier-floor">I</span>
+      <span class="tier-name" id="tier-i">Ground Floor · Foundational Dispatches</span>
+      <span class="tier-period">MMXXIV</span>
+    </div>
+    <div class="dispatch-grid">
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 004</div>
+        <h3 class="disp-title">Why Income Has a Half-Life</h3>
+        <p class="disp-abstract">The opening case for distinguishing yield from durability.</p>
+        <div class="disp-meta"><span class="disp-cat">Editorial</span><span>Filed VIII · IX · MMXXIV</span></div>
+      </article>
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 002</div>
+        <h3 class="disp-title">The Bureau Position</h3>
+        <p class="disp-abstract">Independent structural diagnostician. Diagnostics, not advice.</p>
+        <div class="disp-meta"><span class="disp-cat">Editorial</span><span>Filed I · IX · MMXXIV</span></div>
+      </article>
+      <article class="dispatch">
+        <div class="disp-num">Dispatch No. 001</div>
+        <h3 class="disp-title">Same Yield. Different Durability.</h3>
+        <p class="disp-abstract">The signature line that opened the Bureau.</p>
+        <div class="disp-meta"><span class="disp-cat">Editorial</span><span>Filed XXIV · VIII · MMXXIV</span></div>
+      </article>
+    </div>
+  </section>
 
 </main>
+
+<!-- ============ CHECKERED FOOTER (matches Peabody floor) ============ -->
+<footer class="checkered-footer">
+  <div class="footer-marker">— Bureau Archive · The Atrium Closes Here —</div>
+  <div class="footer-attribution">
+    Dispatches retained chronologically. Filed from Seoul. Editorial by Jeong-Mo Goo.
+  </div>
+  <div class="footer-links">
+    <a href="index.html">Front Desk</a> ·
+    <a href="contents.html">Table of Contents</a> ·
+    <a href="errata.html">Errata Desk</a> ·
+    <a href="charter.html">Charter</a> ·
+    <a href="credits.html">Credits</a>
+  </div>
+</footer>
 
 </body>
 </html>
