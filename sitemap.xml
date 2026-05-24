@@ -1,9 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://dividendforensics.com/</loc></url>
-  <url><loc>https://dividendforensics.com/archive.html</loc></url>
-  <url><loc>https://dividendforensics.com/charter.html</loc></url>
-  <url><loc>https://dividendforensics.com/concordance.html</loc></url>
-  <url><loc>https://dividendforensics.com/errata.html</loc></url>
-  <url><loc>https://dividendforensics.com/midnight.html</loc></url>
+
+  <url>
+    <loc>https://dividendforensics.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/archive.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/charter.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/concordance.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/errata.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/midnight.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/periodicals.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/cabinet.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/vault.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/chambers.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/contents.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/disclaimer.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/legal.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/privacy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://dividendforensics.com/credits.html</loc>
+  </url>
+
 </urlset>
