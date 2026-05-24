@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cabinet · Dividend Forensics Bureau</title>
+<meta name="description" content="The Cabinet — curated specimen display, organized by analytical framework. Selected works from the Bureau Archive. An annex of the Bureau Doctrinal Wing.">
+<meta name="author" content="Jeong-Mo Goo">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dividendforensics.com/cabinet.html">
+
+<meta name="DC.title" content="The Cabinet">
+<meta name="DC.creator" content="Goo, Jeong-Mo">
+<meta name="DC.publisher" content="Dividend Forensics Bureau">
+<meta name="DC.date" content="2026-05-24">
+<meta name="DC.type" content="Text.Annex">
+<meta name="DC.format" content="text/html">
+<meta name="DC.language" content="en">
+<meta name="DC.rights" content="© 2026 Dividend Forensics Bureau">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dividendforensics.com/cabinet.html">
+<meta property="og:title" content="The Cabinet · Dividend Forensics Bureau">
+<meta property="og:description" content="Curated specimen display, organized by analytical framework.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,400..600&family=Inter:wght@400..600&family=JetBrains+Mono:wght@400..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  color-scheme: light;
+
+  /* === The Cabinet palette — Aged Amber & Antique Brass === */
+  --paper: #E8DBC0;
+  --paper-soft: #EEE4CD;
+  --paper-warm: #E3D4B3;
+  --paper-deep: #D9C9A5;
+  --ink: #1F1610;
+  --ink-soft: #2D211A;
+  --ink-deep: #0C0805;
+  --sepia: #6B4A30;
+  --sepia-soft: #8B6940;
+  --sepia-deep: #4A2F1C;
+  --gold: #8B6B3F;
+  --gold-soft: #A88654;
+  --gold-deep: #5E4626;
+  --burgundy: #5A2230;
+  --burgundy-soft: #783847;
+  --line: #C9B898;
+  --line-soft: #D8C9A8;
+  --stone: #B8A684;
+  --red-ink: #8A2C1E;
+  --pearl: #F8EFD9;
+
+  --grain-opacity: 0.055;
+
+  /* Typography */
+  --font-display: 'Fraunces', 'Optima', 'Hoefler Text', Garamond, serif;
+  --font-body: 'Newsreader', 'Charter', Georgia, serif;
+  --font-italic: 'Cormorant Garamond', serif;
+  --font-ui: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+
+  /* Spacing scale */
+  --s-xs: 0.444rem;
+  --s-sm: 0.667rem;
+  --s-md: 1rem;
+  --s-lg: 1.5rem;
+  --s-xl: 2.25rem;
+  --s-2xl: 3.375rem;
+  --s-3xl: 5.0625rem;
+
+  /* Easing & duration */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --d-base: 400ms;
+  --d-slow: 800ms;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Paper grain overlay === */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.48 0 0 0 0 0.36 0 0 0 0 0.27 0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 420px 420px;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: multiply;
+}
+
+/* === Diagonal scratch marks (subtle) === */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  background-image:
+    linear-gradient(127deg, transparent 49.9%, rgba(123,90,69,0.04) 50%, transparent 50.1%),
+    linear-gradient(-43deg, transparent 49.9%, rgba(123,90,69,0.025) 50%, transparent 50.1%);
+  background-size: 800px 800px, 600px 600px;
+  opacity: 0.7;
+}
+
+/* === Outer frame === */
+.page-frame {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: var(--s-xl) var(--s-xl);
+  position: relative;
+  border: 1px solid var(--line);
+  margin-top: var(--s-xl);
+  margin-bottom: var(--s-xl);
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 50%, var(--paper) 100%);
+}
+
+/* Corner monograms */
+.page-frame::before,
+.page-frame::after {
+  content: "";
+  position: absolute;
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--gold-deep);
+}
+.page-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.page-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.corner-tr,
+.corner-bl {
+  position: absolute;
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--gold-deep);
+}
+.corner-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+
+/* === Header === */
+.periodicals-header {
+  text-align: center;
+  padding: var(--s-2xl) 0 var(--s-xl);
+  border-bottom: 1px solid var(--line);
+}
+
+.ph-bureau {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sepia-deep);
+  font-weight: 500;
+  margin-bottom: var(--s-md);
+}
+
+.ph-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-md);
+  margin: var(--s-md) auto;
+  color: var(--gold-deep);
+}
+.ph-ornament .rule {
+  width: 80px;
+  height: 1px;
+  background: var(--gold-deep);
+}
+.ph-ornament .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold-deep);
+}
+
+.ph-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  margin: var(--s-md) 0 var(--s-sm);
+  letter-spacing: -0.01em;
+  font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 0.4;
+  line-height: 1.05;
+}
+
+.ph-subtitle {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--sepia-deep);
+  margin: var(--s-sm) 0 var(--s-md);
+}
+
+.ph-marker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--sepia);
+  text-transform: uppercase;
+  margin-top: var(--s-md);
+}
+
+/* === Latest Specimen === */
+.latest-specimen {
+  padding: var(--s-2xl) 0 var(--s-xl);
+  text-align: center;
+  border-bottom: 1px dashed var(--line);
+}
+
+.section-marker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: var(--s-lg);
+  display: inline-block;
+  padding: 0 var(--s-md);
+  position: relative;
+}
+.section-marker::before,
+.section-marker::after {
+  content: "—";
+  color: var(--gold-deep);
+  padding: 0 var(--s-sm);
+}
+
+.ls-issue {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  color: var(--sepia);
+  text-transform: uppercase;
+  margin-bottom: var(--s-md);
+}
+
+.ls-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.1;
+  margin: var(--s-md) 0 var(--s-lg);
+  letter-spacing: -0.015em;
+  font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 0;
+}
+.ls-title em {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
+}
+
+.ls-subtitle {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--sepia-deep);
+  max-width: 580px;
+  margin: 0 auto var(--s-xl);
+}
+
+/* === SVG chart === */
+.ls-chart {
+  display: flex;
+  justify-content: center;
+  margin: var(--s-xl) 0;
+}
+
+.ls-chart svg {
+  max-width: 480px;
+  width: 100%;
+  height: auto;
+}
+
+.ls-meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  color: var(--sepia);
+  text-transform: uppercase;
+  margin: var(--s-lg) 0;
+}
+.ls-meta .ls-divider {
+  padding: 0 var(--s-sm);
+  color: var(--gold-deep);
+}
+
+.ls-cta {
+  display: inline-block;
+  margin-top: var(--s-md);
+  padding: var(--s-sm) var(--s-xl);
+  border: 1px solid var(--sepia-deep);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all var(--d-base) var(--ease-out);
+  background: transparent;
+  font-style: italic;
+}
+.ls-cta:hover {
+  background: var(--sepia-deep);
+  color: var(--paper);
+}
+.ls-cta .arrow {
+  margin-left: var(--s-sm);
+  font-style: normal;
+}
+
+/* === Open Shelf === */
+.open-shelf {
+  padding: var(--s-2xl) 0 var(--s-xl);
+  border-bottom: 1px dashed var(--line);
+}
+
+.os-header {
+  text-align: center;
+  margin-bottom: var(--s-md);
+}
+
+.os-subtitle {
+  text-align: center;
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--sepia);
+  margin: 0 0 var(--s-2xl);
+  font-size: 1.05rem;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--s-xl) var(--s-lg);
+  margin-top: var(--s-lg);
+}
+
+.specimen-card {
+  border: 1px solid var(--line);
+  padding: var(--s-lg);
+  background: var(--paper-soft);
+  position: relative;
+  transition: all var(--d-base) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+}
+
+.specimen-card:hover {
+  border-color: var(--gold-deep);
+  background: var(--paper);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(123,90,69,0.08);
+}
+
+.specimen-card::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 16px; height: 16px;
+  border-left: 1.5px solid var(--gold-deep);
+  border-top: 1.5px solid var(--gold-deep);
+}
+.specimen-card::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; right: -1px;
+  width: 16px; height: 16px;
+  border-right: 1.5px solid var(--gold-deep);
+  border-bottom: 1.5px solid var(--gold-deep);
+}
+
+.sc-channel {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: var(--s-sm);
+}
+
+.sc-issue {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--sepia);
+  margin-bottom: var(--s-sm);
+}
+
+.sc-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.25;
+  margin: var(--s-sm) 0;
+  font-variation-settings: 'opsz' 24;
+}
+.sc-title em {
+  font-style: italic;
+}
+
+.sc-abstract {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--sepia-deep);
+  line-height: 1.5;
+  margin: var(--s-sm) 0 var(--s-md);
+  flex-grow: 1;
+}
+
+.sc-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: var(--s-md);
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--sepia);
+  letter-spacing: 0.08em;
+}
+
+.sc-meta .sc-date { text-transform: uppercase; }
+.sc-meta .sc-link {
+  text-decoration: none;
+  color: var(--sepia-deep);
+  font-style: italic;
+  font-family: var(--font-italic);
+  letter-spacing: 0;
+  font-size: 0.85rem;
+}
+.sc-meta .sc-link:hover {
+  color: var(--burgundy);
+}
+
+/* === Free Reading Shelf === */
+.free-shelf {
+  padding: var(--s-2xl) 0 var(--s-xl);
+  text-align: center;
+}
+
+.fs-card {
+  max-width: 580px;
+  margin: var(--s-xl) auto 0;
+  padding: var(--s-xl);
+  border: 1px solid var(--gold-deep);
+  background: var(--paper-soft);
+  position: relative;
+}
+
+.fs-card::before {
+  content: "FREE PRIMER";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  padding: 0 var(--s-md);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--gold-deep);
+}
+
+.fs-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--ink);
+  margin: var(--s-sm) 0;
+  font-variation-settings: 'opsz' 36, 'SOFT' 60, 'WONK' 0.4;
+}
+
+.fs-subtitle {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--sepia-deep);
+  font-size: 1.05rem;
+  margin: var(--s-sm) 0 var(--s-md);
+}
+
+.fs-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--sepia-deep);
+  max-width: 480px;
+  margin: 0 auto var(--s-lg);
+  line-height: 1.55;
+}
+
+.fs-cta {
+  display: inline-block;
+  padding: var(--s-sm) var(--s-xl);
+  background: var(--gold-deep);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all var(--d-base) var(--ease-out);
+  font-style: italic;
+}
+.fs-cta:hover {
+  background: var(--ink);
+}
+
+/* === Annex footer === */
+.annex-footer {
+  padding: var(--s-2xl) 0 var(--s-xl);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  margin-top: var(--s-xl);
+}
+
+.af-attribution {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sepia);
+  margin-bottom: var(--s-lg);
+}
+
+.af-annexes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--s-lg);
+  margin: var(--s-lg) 0;
+  flex-wrap: wrap;
+}
+
+.af-annexes a {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--sepia-deep);
+  text-decoration: none;
+  padding: var(--s-xs) var(--s-md);
+  border-bottom: 1px solid transparent;
+  transition: all var(--d-base) var(--ease-out);
+}
+.af-annexes a:hover {
+  color: var(--burgundy);
+  border-bottom-color: var(--gold-deep);
+}
+.af-annexes .here {
+  color: var(--gold-deep);
+  border-bottom: 1px solid var(--gold-deep);
+  font-weight: 500;
+}
+
+.af-divider {
+  color: var(--gold-deep);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.af-back {
+  margin: var(--s-xl) 0 var(--s-md);
+}
+
+.af-back a {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-deep);
+  padding-bottom: 2px;
+  transition: all var(--d-base) var(--ease-out);
+}
+.af-back a:hover {
+  color: var(--burgundy);
+}
+
+.af-closer {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--sepia-deep);
+  font-size: 1rem;
+  margin: var(--s-lg) 0 var(--s-sm);
+}
+
+.af-signoff {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--sepia);
+  text-transform: uppercase;
+}
+
+/* === Reveal animation === */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+[data-reveal] {
+  animation: reveal var(--d-slow) var(--ease-out) both;
+}
+
+[data-reveal-delay="1"] { animation-delay: 100ms; }
+[data-reveal-delay="2"] { animation-delay: 200ms; }
+[data-reveal-delay="3"] { animation-delay: 300ms; }
+[data-reveal-delay="4"] { animation-delay: 400ms; }
+[data-reveal-delay="5"] { animation-delay: 500ms; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-frame {
+    padding: var(--s-lg) var(--s-md);
+    margin-top: var(--s-md);
+    margin-bottom: var(--s-md);
+  }
+  .ph-title {
+    font-size: 2.6rem;
+  }
+  .ls-title {
+    font-size: 2.2rem;
+  }
+  .af-annexes {
+    flex-direction: column;
+    gap: var(--s-sm);
+  }
+  .af-divider { display: none; }
+}
+
+</style>
+</head>
+<body>
+<div class="page-frame">
+<span class="corner-tr"></span>
+<span class="corner-bl"></span>
+
+<!-- ============ Header ============ -->
+<header class="periodicals-header" data-reveal>
+  <div class="ph-bureau">Dividend Forensics Bureau</div>
+
+  <div class="ph-ornament">
+    <span class="rule"></span>
+    <span class="dot"></span>
+    <span class="rule"></span>
+  </div>
+
+  <h1 class="ph-title">The Cabinet</h1>
+  <div class="ph-subtitle">— Curated by Framework · Anno MMXXVI —</div>
+  <div class="ph-marker">An Annex of the Bureau Doctrinal Wing</div>
+</header>
+
+<!-- ============ Latest Specimen ============ -->
+<section class="latest-specimen" data-reveal data-reveal-delay="1">
+  <div class="section-marker">Featured Specimen</div>
+  <div class="ls-issue">Framework Centerpiece · Three Clocks™</div>
+
+  <h2 class="ls-title">Three Clocks.<br><em>One Dividend.</em></h2>
+  <p class="ls-subtitle">Coverage today. Maturity tomorrow. Market access when tomorrow arrives.</p>
+
+  <!-- Three Clocks visualization — Coverage / Maturity / Access -->
+  <div class="ls-chart">
+    <svg viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg" aria-label="Three Clocks framework">
+      <defs>
+        <pattern id="hatch1" patternUnits="userSpaceOnUse" width="4" height="4">
+          <path d="M 0 4 L 4 0" stroke="#6B4A30" stroke-width="0.5" opacity="0.55"/>
+        </pattern>
+        <pattern id="hatch2" patternUnits="userSpaceOnUse" width="4" height="4">
+          <path d="M 0 0 L 4 4" stroke="#6B4A30" stroke-width="0.5" opacity="0.55"/>
+        </pattern>
+      </defs>
+
+      <!-- Clock I: Coverage -->
+      <g transform="translate(95, 120)">
+        <circle cx="0" cy="0" r="52" fill="url(#hatch1)" stroke="#4A2F1C" stroke-width="1"/>
+        <circle cx="0" cy="0" r="52" fill="none" stroke="#4A2F1C" stroke-width="1.5"/>
+        <line x1="0" y1="0" x2="0" y2="-38" stroke="#4A2F1C" stroke-width="2"/>
+        <line x1="0" y1="0" x2="28" y2="14" stroke="#5A2230" stroke-width="1.5"/>
+        <circle cx="0" cy="0" r="2.5" fill="#4A2F1C"/>
+        <text x="0" y="-70" font-family="Fraunces, serif" font-style="italic" font-size="13" fill="#1F1610" text-anchor="middle">Coverage</text>
+        <text x="0" y="82" font-family="JetBrains Mono, monospace" font-size="9" fill="#6B4A30" text-anchor="middle" letter-spacing="0.15em">TODAY</text>
+      </g>
+
+      <!-- Clock II: Maturity -->
+      <g transform="translate(240, 120)">
+        <circle cx="0" cy="0" r="52" fill="url(#hatch2)" stroke="#4A2F1C" stroke-width="1"/>
+        <circle cx="0" cy="0" r="52" fill="none" stroke="#4A2F1C" stroke-width="1.5"/>
+        <line x1="0" y1="0" x2="20" y2="-32" stroke="#4A2F1C" stroke-width="2"/>
+        <line x1="0" y1="0" x2="-30" y2="10" stroke="#5A2230" stroke-width="1.5"/>
+        <circle cx="0" cy="0" r="2.5" fill="#4A2F1C"/>
+        <text x="0" y="-70" font-family="Fraunces, serif" font-style="italic" font-size="13" fill="#1F1610" text-anchor="middle">Maturity</text>
+        <text x="0" y="82" font-family="JetBrains Mono, monospace" font-size="9" fill="#6B4A30" text-anchor="middle" letter-spacing="0.15em">TOMORROW</text>
+      </g>
+
+      <!-- Clock III: Market Access -->
+      <g transform="translate(385, 120)">
+        <circle cx="0" cy="0" r="52" fill="url(#hatch1)" stroke="#4A2F1C" stroke-width="1"/>
+        <circle cx="0" cy="0" r="52" fill="none" stroke="#4A2F1C" stroke-width="1.5"/>
+        <line x1="0" y1="0" x2="-22" y2="-30" stroke="#4A2F1C" stroke-width="2"/>
+        <line x1="0" y1="0" x2="32" y2="-8" stroke="#5A2230" stroke-width="1.5"/>
+        <circle cx="0" cy="0" r="2.5" fill="#4A2F1C"/>
+        <text x="0" y="-70" font-family="Fraunces, serif" font-style="italic" font-size="13" fill="#1F1610" text-anchor="middle">Market Access</text>
+        <text x="0" y="82" font-family="JetBrains Mono, monospace" font-size="9" fill="#6B4A30" text-anchor="middle" letter-spacing="0.15em">WHEN ARRIVES</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="ls-meta">
+    <span class="ls-date">Doctrine · Established MMXXVI</span>
+    <span class="ls-divider">·</span>
+    <span class="ls-ark">Framework I of III</span>
+  </div>
+
+  <a class="ls-cta" href="#methodology-plate">
+    Study the Methodology <span class="arrow">→</span>
+  </a>
+</section>
+
+<!-- ============ Open Shelf ============ -->
+<section class="open-shelf" data-reveal data-reveal-delay="2">
+  <div class="os-header">
+    <span class="section-marker">Cabinet Drawers</span>
+  </div>
+  <p class="os-subtitle">Selected works, organized by analytical framework</p>
+
+  <div class="catalog-grid">
+
+    <article class="specimen-card">
+      <div class="sc-channel">Drawer I · REIT</div>
+      <div class="sc-issue">Three Clocks™ Applied</div>
+      <h3 class="sc-title">Net Lease — <em>Maturity Calendar Read</em></h3>
+      <p class="sc-abstract">O, NNN, ADC, WPC compared on refinancing cadence rather than headline yield. Surface covered, structure compressing in select names.</p>
+      <div class="sc-meta">
+        <span class="sc-date">Curated · MMXXVI</span>
+        <a class="sc-link" href="#">Open Drawer →</a>
+      </div>
+    </article>
+
+    <article class="specimen-card">
+      <div class="sc-channel">Drawer I · REIT</div>
+      <div class="sc-issue">Buffer Half-Life™ Applied</div>
+      <h3 class="sc-title">Storage Cohort — <em>Structural Stability Read</em></h3>
+      <p class="sc-abstract">PSA, EXR, CUBE. AFFO coverage durability and balance sheet construction under Buffer Half-Life™ framework.</p>
+      <div class="sc-meta">
+        <span class="sc-date">Curated · MMXXVI</span>
+        <a class="sc-link" href="#">Open Drawer →</a>
+      </div>
+    </article>
+
+    <article class="specimen-card">
+      <div class="sc-channel">Drawer II · BDC</div>
+      <div class="sc-issue">Buffer Half-Life™ Applied</div>
+      <h3 class="sc-title">ARCC — <em>NII Spillover Read</em></h3>
+      <p class="sc-abstract">Non-accrual trajectory, NAV compression, NII coverage. Where the buffer sits and how long it persists under spread compression.</p>
+      <div class="sc-meta">
+        <span class="sc-date">Curated · MMXXVI</span>
+        <a class="sc-link" href="#">Open Drawer →</a>
+      </div>
+    </article>
+
+    <article class="specimen-card">
+      <div class="sc-channel">Drawer III · Structural Income</div>
+      <div class="sc-issue">Three Clocks™ Applied</div>
+      <h3 class="sc-title">JEPI — <em>Option Premium Surface Read</em></h3>
+      <p class="sc-abstract">85% of distribution is option premium, not dividend. What that means for the maturity clock when the volatility regime shifts.</p>
+      <div class="sc-meta">
+        <span class="sc-date">Curated · MMXXVI</span>
+        <a class="sc-link" href="#">Open Drawer →</a>
+      </div>
+    </article>
+
+    <article class="specimen-card">
+      <div class="sc-channel">Drawer IV · Methodology</div>
+      <div class="sc-issue">Framework Foundation</div>
+      <h3 class="sc-title">Three Clocks™ — <em>Doctrine</em></h3>
+      <p class="sc-abstract">Coverage today. Maturity tomorrow. Market Access when tomorrow arrives. The Bureau's framework for diagnosing dividend durability across three independent time horizons.</p>
+      <div class="sc-meta">
+        <span class="sc-date">Methodology · MMXXVI</span>
+        <a class="sc-link" href="#">Open Drawer →</a>
+      </div>
+    </article>
+
+    <article class="specimen-card">
+      <div class="sc-channel">Drawer IV · Methodology</div>
+      <div class="sc-issue">Framework Foundation</div>
+      <h3 class="sc-title">BBB- Cliff™ — <em>Doctrine</em></h3>
+      <p class="sc-abstract">Non-linear cost-of-capital impairment posture at the IG/HY threshold. Why the BBB- rating is a structural cliff, not a gradient.</p>
+      <div class="sc-meta">
+        <span class="sc-date">Methodology · MMXXVI</span>
+        <a class="sc-link" href="#">Open Drawer →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ Free Reading Shelf ============ -->
+<section class="free-shelf" data-reveal data-reveal-delay="3">
+  <div class="section-marker">Methodology Plate</div>
+
+  <div class="fs-card">
+    <h3 class="fs-title">The Three Framework Spine</h3>
+    <p class="fs-subtitle">All Cabinet specimens are organized through one of three lenses</p>
+    <p class="fs-desc">
+      <strong>Buffer Half-Life™</strong> — How long the structural buffer persists.<br>
+      <strong>Three Clocks™</strong> — Coverage, Maturity, Market Access.<br>
+      <strong>BBB- Cliff™</strong> — Non-linear cost-of-capital impairment posture.
+    </p>
+    <a class="fs-cta" href="https://dividendforensics.gumroad.com/l/bhlife" target="_blank" rel="noopener">
+      Begin with Buffer Half-Life™ →
+    </a>
+  </div>
+</section>
+
+<!-- ============ Annex footer ============ -->
+<footer class="annex-footer" data-reveal data-reveal-delay="4">
+  <div class="af-attribution">Annex II of III · Bureau Doctrinal Wing</div>
+
+  <nav class="af-annexes" aria-label="Bureau Annexes">
+    <a href="periodicals.html">The Periodicals Room</a>
+    <span class="af-divider">·</span>
+    <a href="cabinet.html" class="here">The Cabinet</a>
+    <span class="af-divider">·</span>
+    <a href="vault.html">The Vault</a>
+    <span class="af-divider">·</span>
+    <a href="chambers.html">Reading Chambers</a>
+  </nav>
+
+  <div class="af-back">
+    <a href="index.html">Return to the Front Desk →</a>
+  </div>
+
+  <div class="af-closer">Surface premium. Structure proprietary.</div>
+  <div class="af-signoff">Published by the Bureau · MMXXVI · J. M. Goo, Editor</div>
+</footer>
+
+</div><!-- /page-frame -->
+</body>
+</html>
