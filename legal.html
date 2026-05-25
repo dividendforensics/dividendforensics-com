@@ -48,7 +48,7 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 @keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 @keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
 
-.main-body { max-width: 1100px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
+.main-body { max-width: 1240px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
 .section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
 .si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; }
 .si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; }
@@ -56,24 +56,6 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 .si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 1; margin-bottom: 24px; letter-spacing: -0.015em; }
 .si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; }
 .si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; }
-
-/* 8 sections · octagonal symmetry · 2-column grid */
-.octagon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 2.5vw, 32px); margin-bottom: clamp(64px,8vw,96px); }
-@media (max-width: 760px) { .octagon-grid { grid-template-columns: 1fr; } }
-.legal-panel { padding: clamp(28px, 3vw, 36px); background: var(--paper-soft); border-left: 3px solid var(--steel); position: relative; transition: 0.25s; }
-.legal-panel:hover { background: var(--paper-warm); border-left-color: var(--ink); transform: translateX(2px); }
-.lp-roman { font-family: "Fraunces", serif; font-style: italic; font-size: clamp(36px, 4vw, 48px); font-weight: 350; color: var(--brass-deep); line-height: 1; margin-bottom: 14px; font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1; opacity: 0.7; }
-.lp-heading { font-family: "Fraunces", serif; font-size: 22px; font-weight: 460; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; line-height: 1.2; }
-.lp-body { font-family: "Newsreader", serif; font-size: 15.5px; line-height: 1.7; color: var(--ink-soft); }
-.lp-body strong { font-weight: 600; color: var(--ink); }
-.lp-body a { color: var(--steel); text-decoration: none; border-bottom: 1px dotted var(--steel); }
-
-.companion-note { padding: clamp(28px,3vw,36px); background: var(--paper-warm); border-top: 3px double var(--brass); border-bottom: 3px double var(--brass); text-align: center; margin-bottom: clamp(56px,7vw,80px); }
-.cn-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.28em; color: var(--brass-deep); text-transform: uppercase; margin-bottom: 12px; }
-.cn-text { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(17px,2vw,21px); line-height: 1.5; color: var(--ink); max-width: 620px; margin: 0 auto; }
-
-.concrete-arch-band { position: relative; height: 220px; margin-top: -180px; z-index: 5; display: flex; justify-content: center; align-items: flex-start; pointer-events: none; padding-top: 20px; }
-.concrete-arch-band svg { width: min(1100px, 94vw); height: 200px; }
 
 .page-footer { padding: 56px 24px; text-align: center; border-top: 4px double currentColor; margin-top: clamp(60px,8vw,96px); }
 .pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; }
@@ -88,17 +70,76 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
   .ph-title { font-size: clamp(38px,11vw,60px); }
 }
 
+/* ============================================
+   SAINTE-GENEVIÈVE palette · Henri Labrouste · Paris · 1851
+   cast-iron arched ribs (charcoal) + cool cream walls + dim amber lamp glow
+   ============================================ */
 :root {
-  --paper: #E5E2DC; --paper-soft: #EFECE4; --paper-warm: #D5D2CA; --paper-deep: #C4C2BA;
-  --ink: #1F2026; --ink-soft: #2E3036; --ink-dim: #5A5C62;
-  --brass: #9A9A95; --brass-deep: #6C6E68; --glow: #C0BFB8;
-  --concrete: #A8A8A4; --concrete-deep: #6E6E6A; --sage: #889E83; --steel: #4A4D52;
+  --paper: #E5E2D6; --paper-soft: #ECE9DD; --paper-warm: #D4D0C2; --paper-deep: #B8B4A6;
+  --ink: #1A1816; --ink-soft: #2A2826; --ink-dim: #4A4842;
+  --iron: #2E2A28; --iron-deep: #14120F; --iron-light: #4A4540;
+  --amber: #A88E5F; --amber-light: #D4B477; --amber-deep: #7A6440;
+  --brass: #8B7048; --brass-deep: #5C4530;
 }
 body { background: var(--paper); color: var(--ink); background-image:
-  radial-gradient(ellipse at top, rgba(168,168,164,0.10), transparent 50%),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  radial-gradient(ellipse at top, rgba(46,42,40,0.16), transparent 55%),
+  radial-gradient(ellipse at bottom, rgba(168,142,95,0.14), transparent 55%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.ph-eyebrow::before { background: var(--brass); }
+.ph-eyebrow::before { background: var(--amber); }
+
+/* Labrouste iron-arch band */
+.iron-arch-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
+.iron-arch-band svg { width: min(1000px, 94vw); height: 180px; }
+
+/* 8 sections · 2-column · 4 rows · iron + amber alternating like Labrouste's nave bays */
+.legal-nave { max-width: 1100px; margin: 0 auto; background: var(--paper-soft); border-top: 2px solid var(--iron); border-bottom: 2px solid var(--amber); padding: 0; position: relative; }
+.octagon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+@media (max-width: 760px) { .octagon-grid { grid-template-columns: 1fr; } }
+
+.legal-panel { padding: clamp(32px, 4vw, 42px); position: relative; border-right: 1px solid var(--paper-deep); border-bottom: 1px solid var(--paper-deep); transition: 0.3s; }
+.legal-panel:nth-child(even) { border-right: none; }
+.legal-panel:nth-last-child(-n+2) { border-bottom: none; }
+@media (max-width: 760px) { 
+  .legal-panel { border-right: none; }
+  .legal-panel:not(:last-child) { border-bottom: 1px solid var(--paper-deep); }
+}
+
+/* Iron panels (I · IV · V · VIII) — odd index 1,4,5,8 */
+.legal-panel.iron { background: linear-gradient(135deg, var(--paper-soft) 0%, rgba(46,42,40,0.10) 100%); border-left: 4px solid var(--iron); }
+.legal-panel.iron:hover { background: linear-gradient(135deg, var(--paper-warm) 0%, rgba(46,42,40,0.18) 100%); }
+.legal-panel.iron .lp-roman { color: var(--iron); }
+.legal-panel.iron .lp-heading { color: var(--ink); }
+.legal-panel.iron::before { content: ""; position: absolute; left: 0; top: 50%; width: 4px; height: 70%; background: var(--iron); transform: translateY(-50%); }
+
+/* Amber panels (II · III · VI · VII) — warm lamp glow */
+.legal-panel.amber { background: linear-gradient(135deg, var(--paper-soft) 0%, rgba(168,142,95,0.14) 100%); border-left: 4px solid var(--amber); }
+.legal-panel.amber:hover { background: linear-gradient(135deg, var(--paper-warm) 0%, rgba(168,142,95,0.24) 100%); }
+.legal-panel.amber .lp-roman { color: var(--amber-deep); }
+.legal-panel.amber .lp-heading { color: var(--ink); }
+.legal-panel.amber::before { content: ""; position: absolute; left: 0; top: 50%; width: 4px; height: 70%; background: var(--amber); transform: translateY(-50%); }
+
+.lp-roman { font-family: "Fraunces", serif; font-style: italic; font-size: clamp(48px, 5.5vw, 64px); font-weight: 350; line-height: 1; margin-bottom: 18px; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; opacity: 0.85; }
+.lp-heading { font-family: "Fraunces", serif; font-size: 22px; font-weight: 470; margin-bottom: 14px; letter-spacing: -0.01em; line-height: 1.25; }
+.lp-body { font-family: "Newsreader", serif; font-size: 15.5px; line-height: 1.7; color: var(--ink-soft); }
+.lp-body strong { font-weight: 600; color: var(--ink); }
+.lp-body a { color: var(--amber-deep); text-decoration: none; border-bottom: 1px dotted var(--amber-deep); }
+
+/* Companion note — warm amber glow */
+.companion-note { padding: clamp(32px,4vw,44px); background: linear-gradient(135deg, rgba(168,142,95,0.10) 0%, rgba(168,142,95,0.22) 100%); border-top: 3px solid var(--amber); border-bottom: 3px solid var(--iron); text-align: center; margin: clamp(56px,7vw,80px) auto 0; max-width: 1100px; }
+.cn-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.28em; color: var(--amber-deep); text-transform: uppercase; margin-bottom: 14px; }
+.cn-text { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(18px,2.2vw,22px); line-height: 1.55; color: var(--ink); max-width: 640px; margin: 0 auto; }
+.cn-text a { color: var(--iron); border-bottom: 1px solid var(--iron); text-decoration: none; }
+
+/* Bottom decorative — iron grille pattern (Labrouste's ceiling lattice) */
+.iron-grille { margin-top: 80px; height: 60px; background:
+  repeating-linear-gradient(0deg, var(--iron) 0px, var(--iron) 2px, transparent 2px, transparent 14px),
+  repeating-linear-gradient(90deg, var(--iron) 0px, var(--iron) 2px, transparent 2px, transparent 14px),
+  linear-gradient(180deg, rgba(168,142,95,0.18) 0%, rgba(168,142,95,0.05) 100%);
+  border-top: 2px solid var(--iron);
+  border-bottom: 2px solid var(--amber);
+  opacity: 0.45;
+}
 </style>
 </head>
 <body>
@@ -194,127 +235,175 @@ body.dfb-menu-open { overflow: hidden; }
 <!-- HERO · Bibliothèque Sainte-Geneviève · Paris (Henri Labrouste · 1851) -->
 <section class="photo-hero" aria-label="Bibliothèque Sainte-Geneviève · Paris (Henri Labrouste · 1851)">
   <div class="ph-photo" role="img" aria-label="Bibliothèque Sainte-Geneviève · Paris (Henri Labrouste · 1851)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Bibliothèque_Sainte-Geneviève_-_Intérieur_001.jpg?width=2560');"></div>
-  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#0E0F1266 70%,#0E0F12C0 100%),linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.1) 60%,#0E0F12C8 100%);"></div>
+  <!-- Cool charcoal top + warm amber lamp glow middle -->
+  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#0E0A0866 70%,#0E0A08C8 100%),linear-gradient(to bottom,rgba(14,10,8,0.45) 0%,rgba(14,10,8,0.05) 30%,rgba(168,142,95,0.10) 60%,#0E0A08CC 100%);"></div>
   <div class="ph-grain"></div>
-  <aside class="brass-plate" style="background:rgba(28,30,36,0.72);border:1px solid #9A9A95;color:#EDEAE2;">
-    <span class="bp-corner-tl" style="border-color:#9A9A95;"></span>
-    <span class="bp-corner-tr" style="border-color:#9A9A95;"></span>
-    <span class="bp-corner-bl" style="border-color:#9A9A95;"></span>
-    <span class="bp-corner-br" style="border-color:#9A9A95;"></span>
-    <span style="color:#9A9A95;font-weight:600;">Legal Notice</span>
-    <span class="bp-issue" style="color:#C0BFB8;">Anno MMXXVI</span>
-    <span class="bp-divider" style="background:#6C6E68;"></span>
+  <aside class="brass-plate" style="background:rgba(20, 18, 15, 0.76);border:1px solid #A88E5F;color:#ECE9DD;">
+    <span class="bp-corner-tl" style="border-color:#A88E5F;"></span>
+    <span class="bp-corner-tr" style="border-color:#A88E5F;"></span>
+    <span class="bp-corner-bl" style="border-color:#A88E5F;"></span>
+    <span class="bp-corner-br" style="border-color:#A88E5F;"></span>
+    <span style="color:#A88E5F;font-weight:600;">Legal Notice</span>
+    <span class="bp-issue" style="color:#D4B477;">Anno MMXXVI</span>
+    <span class="bp-divider" style="background:#4A4540;"></span>
     <span class="bp-line">Terms of Use · Jurisdiction</span>
-    <span class="bp-line" style="color:#EDEAE2;">Eight Sections</span>
-    <span class="bp-line" style="opacity:0.65;">Reader-Facing</span>
+    <span class="bp-line" style="color:#ECE9DD;">Eight Sections</span>
+    <span class="bp-line" style="opacity:0.7;">Reader-Facing</span>
   </aside>
-  <div class="ph-text" style="color:#EDEAE2;">
-    <div class="ph-eyebrow" style="color:#C0BFB8;">Legal Notice · Terms of Reading · Jurisdiction</div>
-    <h1 class="ph-title">The legal frame<br><em style="color:#C0BFB8;border-top-color:#9A9A95;">around the room.</em></h1>
-    <p class="ph-subtitle" style="color:#EDEAE2DD;">Standard legal notice covering the use of the Bureau site and its publications. Eight short sections, arranged in symmetrical pairs — companion to the editorial Disclaimer, which addresses what the Bureau publishes.</p>
+  <div class="ph-text" style="color:#ECE9DD;">
+    <div class="ph-eyebrow" style="color:#D4B477;">Legal Notice · Terms of Reading · Jurisdiction</div>
+    <h1 class="ph-title">The legal frame<br><em style="color:#D4B477;border-top-color:#A88E5F;">around the room.</em></h1>
+    <p class="ph-subtitle" style="color:#ECE9DDDD;">Standard legal notice covering the use of the Bureau site and its publications. Eight short sections, arranged in symmetrical pairs — companion to the editorial Disclaimer, which addresses what the Bureau publishes.</p>
   </div>
-  <div class="scroll-prompt" style="color:#E5E2DC;">
+  <div class="scroll-prompt" style="color:#E5E2D6;">
     <span class="scroll-label">Read the terms</span>
-    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#C0BFB8);"></span>
+    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#A88E5F);"></span>
   </div>
-  <div class="photo-attr" style="color:#EDEAE288;">
+  <div class="photo-attr" style="color:#ECE9DD88;">
     <a href="https://commons.wikimedia.org/wiki/File:Biblioth%C3%A8que_Sainte-Genevi%C3%A8ve_-_Int%C3%A9rieur_001.jpg" target="_blank" rel="noopener">Bibliothèque Sainte-Geneviève · Paris · Henri Labrouste · 1851 · Wikimedia Commons · CC BY-SA</a>
   </div>
 </section>
 
-<div class="concrete-arch-band">
-  <svg viewBox="0 0 1100 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<!-- Iron-arch band · Labrouste's cast-iron arched ribs -->
+<div class="iron-arch-band">
+  <svg viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <linearGradient id="concreteGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#A8A8A4" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#E5E2DC" stop-opacity="0"/>
+      <linearGradient id="ironGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#14120F" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#2E2A28" stop-opacity="0.4"/>
       </linearGradient>
-      <pattern id="concreteTexture" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
-        <circle cx="2" cy="2" r="0.4" fill="#6E6E6A" opacity="0.2"/>
-      </pattern>
+      <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#D4B477" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#A88E5F" stop-opacity="0"/>
+      </radialGradient>
     </defs>
-    <g fill="none" stroke="#6E6E6A" stroke-width="1.5">
-      <path d="M 50 200 Q 50 100 150 100 L 270 100 Q 370 100 370 200" opacity="0.85"/>
-      <path d="M 130 200 Q 130 70 270 70 L 430 70 Q 570 70 570 200" opacity="0.85"/>
-      <path d="M 270 200 Q 270 40 470 40 L 630 40 Q 830 40 830 200" opacity="0.85"/>
-      <path d="M 460 200 Q 460 60 620 60 L 800 60 Q 950 60 950 200" opacity="0.85"/>
-      <path d="M 620 200 Q 620 90 740 90 L 880 90 Q 1020 90 1020 200" opacity="0.6"/>
-      <path d="M 780 200 Q 780 120 860 120 L 980 120 Q 1080 120 1080 200" opacity="0.45"/>
+    <!-- 3 cast-iron arches (Labrouste's nave) -->
+    <g stroke="#14120F" stroke-width="2.5" fill="none">
+      <path d="M 80 180 Q 80 40 200 40 L 280 40 Q 400 40 400 180" opacity="0.9"/>
+      <path d="M 380 180 Q 380 20 500 20 Q 620 20 620 180" opacity="0.95"/>
+      <path d="M 600 180 Q 600 40 720 40 L 800 40 Q 920 40 920 180" opacity="0.9"/>
     </g>
-    <g fill="url(#concreteGrad)" opacity="0.5">
-      <path d="M 50 200 Q 50 100 150 100 L 270 100 Q 370 100 370 200 Z"/>
-      <path d="M 270 200 Q 270 40 470 40 L 630 40 Q 830 40 830 200 Z"/>
-      <path d="M 620 200 Q 620 90 740 90 L 880 90 Q 1020 90 1020 200 Z"/>
+    <!-- Inner iron lines (rib structure) -->
+    <g stroke="#2E2A28" stroke-width="1.4" fill="none" opacity="0.7">
+      <path d="M 100 180 Q 100 55 210 55 L 270 55 Q 380 55 380 180"/>
+      <path d="M 395 180 Q 395 38 500 38 Q 605 38 605 180"/>
+      <path d="M 620 180 Q 620 55 730 55 L 790 55 Q 900 55 900 180"/>
     </g>
-    <rect x="0" y="0" width="1100" height="200" fill="url(#concreteTexture)" opacity="0.4"/>
-    <text x="550" y="190" font-family="JetBrains Mono, monospace" font-size="9" fill="#6C6E68" text-anchor="middle" letter-spacing="3">— THE LEGAL FRAME · EIGHT PANELS —</text>
+    <!-- Rivets along arches (Labrouste's iconic riveted iron) -->
+    <g fill="#14120F" opacity="0.85">
+      <circle cx="100" cy="80" r="2"/>
+      <circle cx="140" cy="56" r="2"/>
+      <circle cx="200" cy="44" r="2"/>
+      <circle cx="280" cy="44" r="2"/>
+      <circle cx="340" cy="56" r="2"/>
+      <circle cx="380" cy="80" r="2"/>
+      <circle cx="400" cy="60" r="2"/>
+      <circle cx="450" cy="30" r="2"/>
+      <circle cx="500" cy="22" r="2"/>
+      <circle cx="550" cy="30" r="2"/>
+      <circle cx="600" cy="60" r="2"/>
+      <circle cx="620" cy="80" r="2"/>
+      <circle cx="660" cy="56" r="2"/>
+      <circle cx="720" cy="44" r="2"/>
+      <circle cx="800" cy="44" r="2"/>
+      <circle cx="860" cy="56" r="2"/>
+      <circle cx="900" cy="80" r="2"/>
+    </g>
+    <!-- Hanging amber lamps under each arch -->
+    <g>
+      <line x1="240" y1="44" x2="240" y2="100" stroke="#4A4540" stroke-width="0.8"/>
+      <circle cx="240" cy="105" r="14" fill="url(#lampGlow)"/>
+      <circle cx="240" cy="105" r="6" fill="#D4B477"/>
+      <line x1="500" y1="20" x2="500" y2="80" stroke="#4A4540" stroke-width="1"/>
+      <circle cx="500" cy="88" r="18" fill="url(#lampGlow)"/>
+      <circle cx="500" cy="88" r="8" fill="#D4B477"/>
+      <line x1="760" y1="44" x2="760" y2="100" stroke="#4A4540" stroke-width="0.8"/>
+      <circle cx="760" cy="105" r="14" fill="url(#lampGlow)"/>
+      <circle cx="760" cy="105" r="6" fill="#D4B477"/>
+    </g>
+    <!-- Iron capitals at column tops -->
+    <g fill="#1A1816">
+      <rect x="72" y="178" width="20" height="3"/>
+      <rect x="388" y="178" width="20" height="3"/>
+      <rect x="612" y="178" width="20" height="3"/>
+      <rect x="908" y="178" width="20" height="3"/>
+    </g>
+    <!-- Center medallion -->
+    <ellipse cx="500" cy="140" rx="58" ry="20" fill="#ECE9DD" stroke="#14120F" stroke-width="1.4" opacity="0.92"/>
+    <text x="500" y="146" font-family="Fraunces, serif" font-style="italic" font-size="15" fill="#1A1816" text-anchor="middle">Legal Frame</text>
   </svg>
 </div>
 
 <main class="main-body">
   <div class="section-intro">
-    <div class="si-label" style="color:var(--brass-deep);">— Eight Sections · Beaux-Arts Symmetry —</div>
-    <h2 class="si-title" style="color:var(--ink);">The legal frame, <em style="color:var(--steel);">read in eight panels.</em></h2>
+    <div class="si-label" style="color:var(--iron);">— Eight Sections · Beaux-Arts Symmetry —</div>
+    <h2 class="si-title" style="color:var(--ink);">The legal frame, <em style="color:var(--amber-deep);">read in eight panels.</em></h2>
     <p class="si-desc" style="color:var(--ink-soft);">Standard reader-facing legal notice. Eight short sections, arranged in symmetrical pairs. Companion to the editorial Disclaimer, which addresses the substance of what the Bureau publishes; this page addresses the use of the site itself.</p>
   </div>
 
-  <div class="octagon-grid">
-    <div class="legal-panel">
-      <div class="lp-roman">I</div>
-      <h3 class="lp-heading">Acceptance of Terms</h3>
-      <p class="lp-body">By accessing this site, you agree to these terms as written. If you do not accept any portion, the appropriate course is to stop reading.</p>
-    </div>
-    <div class="legal-panel">
-      <div class="lp-roman">II</div>
-      <h3 class="lp-heading">Permitted Use</h3>
-      <p class="lp-body">Site content is provided for personal, non-commercial reading. Quotation for review or commentary is permitted with attribution. Wholesale republication is not permitted.</p>
-    </div>
-    <div class="legal-panel">
-      <div class="lp-roman">III</div>
-      <h3 class="lp-heading">Intellectual Property</h3>
-      <p class="lp-body">Buffer Half-Life™, Three Clocks™, and BBB- Cliff™ are Bureau marks. The text and analytical structure of dispatches is the editor's copyrighted work, <strong>© Dividend Forensics Bureau, MMXXIV–MMXXVI</strong>.</p>
-    </div>
-    <div class="legal-panel">
-      <div class="lp-roman">IV</div>
-      <h3 class="lp-heading">Disclaimer of Advice</h3>
-      <p class="lp-body">See <a href="disclaimer.html">disclaimer.html</a> for the editorial position in full. In short: <strong>diagnostics, not advice</strong>. Nothing here constitutes a recommendation.</p>
-    </div>
-    <div class="legal-panel">
-      <div class="lp-roman">V</div>
-      <h3 class="lp-heading">No Warranty</h3>
-      <p class="lp-body">Site content is provided "as is" without warranty of any kind. The editor uses best efforts but makes <strong>no guarantee of completeness, timeliness, or freedom from error</strong>.</p>
-    </div>
-    <div class="legal-panel">
-      <div class="lp-roman">VI</div>
-      <h3 class="lp-heading">Limitation of Liability</h3>
-      <p class="lp-body">To the maximum extent permitted by law, the Bureau is not liable for any loss arising from reliance on site content. <strong>Readers retain full responsibility for their own decisions.</strong></p>
-    </div>
-    <div class="legal-panel">
-      <div class="lp-roman">VII</div>
-      <h3 class="lp-heading">External Links</h3>
-      <p class="lp-body">Links to external sites are for reader convenience. The Bureau does not control, endorse, or take responsibility for the content of external sites linked from these pages.</p>
-    </div>
-    <div class="legal-panel">
-      <div class="lp-roman">VIII</div>
-      <h3 class="lp-heading">Jurisdiction · Contact</h3>
-      <p class="lp-body">The Bureau is operated from <strong>Seoul, Republic of Korea</strong>. These terms are governed by Korean law without regard to conflict-of-laws principles. Reader correspondence may be directed via the Substack contact form.</p>
+  <!-- 8 sections · 2-column · iron + amber alternating -->
+  <div class="legal-nave">
+    <div class="octagon-grid">
+      <article class="legal-panel iron">
+        <div class="lp-roman">I</div>
+        <h3 class="lp-heading">Acceptance of Terms</h3>
+        <p class="lp-body">By accessing this site, you agree to these terms as written. If you do not accept any portion, the appropriate course is to stop reading.</p>
+      </article>
+      <article class="legal-panel amber">
+        <div class="lp-roman">II</div>
+        <h3 class="lp-heading">Permitted Use</h3>
+        <p class="lp-body">Site content is provided for personal, non-commercial reading. Quotation for review or commentary is permitted with attribution. Wholesale republication is not permitted.</p>
+      </article>
+      <article class="legal-panel amber">
+        <div class="lp-roman">III</div>
+        <h3 class="lp-heading">Intellectual Property</h3>
+        <p class="lp-body">Buffer Half-Life™, Three Clocks™, and BBB- Cliff™ are Bureau marks. The text and analytical structure of dispatches is the editor's copyrighted work, <strong>© Dividend Forensics Bureau, MMXXIV–MMXXVI</strong>.</p>
+      </article>
+      <article class="legal-panel iron">
+        <div class="lp-roman">IV</div>
+        <h3 class="lp-heading">Disclaimer of Advice</h3>
+        <p class="lp-body">See <a href="disclaimer.html">disclaimer.html</a> for the editorial position in full. In short: <strong>diagnostics, not advice</strong>. Nothing here constitutes a recommendation.</p>
+      </article>
+      <article class="legal-panel iron">
+        <div class="lp-roman">V</div>
+        <h3 class="lp-heading">No Warranty</h3>
+        <p class="lp-body">Site content is provided "as is" without warranty of any kind. The editor uses best efforts but makes <strong>no guarantee of completeness, timeliness, or freedom from error</strong>.</p>
+      </article>
+      <article class="legal-panel amber">
+        <div class="lp-roman">VI</div>
+        <h3 class="lp-heading">Limitation of Liability</h3>
+        <p class="lp-body">To the maximum extent permitted by law, the Bureau is not liable for any loss arising from reliance on site content. <strong>Readers retain full responsibility for their own decisions.</strong></p>
+      </article>
+      <article class="legal-panel amber">
+        <div class="lp-roman">VII</div>
+        <h3 class="lp-heading">External Links</h3>
+        <p class="lp-body">Links to external sites are for reader convenience. The Bureau does not control, endorse, or take responsibility for the content of external sites linked from these pages.</p>
+      </article>
+      <article class="legal-panel iron">
+        <div class="lp-roman">VIII</div>
+        <h3 class="lp-heading">Jurisdiction · Contact</h3>
+        <p class="lp-body">The Bureau is operated from <strong>Seoul, Republic of Korea</strong>. These terms are governed by Korean law without regard to conflict-of-laws principles. Reader correspondence may be directed via the Substack contact form.</p>
+      </article>
     </div>
   </div>
 
   <div class="companion-note">
     <div class="cn-label">— Companion · The Editorial Position —</div>
-    <p class="cn-text">The legal frame addresses <em>how the site is used.</em><br>The editorial <a href="disclaimer.html" style="color:var(--steel);border-bottom:1px solid var(--steel);text-decoration:none;">Disclaimer</a> addresses <em>what the Bureau publishes.</em><br>Read both.</p>
+    <p class="cn-text">The legal frame addresses <em>how the site is used.</em><br>The editorial <a href="disclaimer.html">Disclaimer</a> addresses <em>what the Bureau publishes.</em><br>Read both.</p>
   </div>
 
+  <!-- Bottom decorative — iron grille (Labrouste's ceiling lattice) -->
+  <div class="iron-grille" aria-hidden="true"></div>
+
   <div class="section-intro" style="margin-top:clamp(56px,7vw,80px);">
-    <div class="si-label" style="color:var(--brass-deep);">— Legal frame · Eight sections —</div>
-    <h2 class="si-title" style="color:var(--ink);font-size:clamp(28px,3.5vw,38px);">The terms apply equally <em style="color:var(--steel);">to every page of the Bureau site.</em></h2>
+    <div class="si-label" style="color:var(--iron);">— Legal frame · Eight sections —</div>
+    <h2 class="si-title" style="color:var(--ink);font-size:clamp(28px,3.5vw,38px);">The terms apply equally <em style="color:var(--amber-deep);">to every page of the Bureau site.</em></h2>
     <p class="si-desc" style="color:var(--ink-soft);font-size:16px;">No exception per room. The Bureau editor reserves the right to amend these terms; material amendments will be filed with a date in the page footer.</p>
   </div>
 </main>
 
-<footer class="page-footer" style="background:#D5D2CA;color:#2E3036;border-top-color:#9A9A95;">
-  <div class="pf-marker" style="color:#9A9A95;">— Legal Notice · Eight Panels —</div>
+<footer class="page-footer" style="background:#D4D0C2;color:#2A2826;border-top-color:#2E2A28;">
+  <div class="pf-marker" style="color:#2E2A28;">— Legal Notice · Eight Panels —</div>
   <div class="pf-attr">Terms of use · Jurisdiction · Korean law. Reader retains responsibility.</div>
   <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="archive.html">Archive</a> · <a href="charter.html">Charter</a> · <a href="credits.html">Credits</a></div>
 </footer>
