@@ -105,9 +105,213 @@ body { background: var(--paper); color: var(--ink); background-image:
 .drawer-list li:last-child { border-bottom: none; }
 .drawer-list .lens { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--brass); text-transform: uppercase; }
 
+
+/* === INLINE LIBRARY PHOTO inside cabinet body === */
+.library-figure { max-width: 1100px; margin: 0 auto clamp(56px,8vw,80px); position: relative; padding: 0; }
+.library-figure-frame { position: relative; overflow: hidden; border: 2px solid var(--brass); padding: 8px; background: var(--walnut); box-shadow: 0 12px 40px rgba(31, 20, 10, 0.18); }
+.library-figure-img { width: 100%; height: auto; display: block; aspect-ratio: 16/9; object-fit: cover; background: var(--walnut-deep); }
+.library-figure-frame::before, .library-figure-frame::after { content: ""; position: absolute; pointer-events: none; }
+.library-figure-frame::before { top: 4px; left: 4px; right: 4px; bottom: 4px; border: 1px solid var(--glow); opacity: 0.6; z-index: 1; }
+.library-figure-caption { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 4px 0; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brass-deep); }
+.library-figure-caption .lf-title { color: var(--walnut-deep); font-weight: 600; }
+.library-figure-caption .lf-license { opacity: 0.7; }
+
 </style>
 </head>
 <body>
+<!-- ============ UNIVERSAL STICKY TOP NAV ============ -->
+<style>
+.dfb-topnav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px clamp(20px, 4vw, 40px);
+  background: transparent;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+.dfb-topnav.scrolled {
+  background: rgba(14, 8, 5, 0.86);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-bottom-color: rgba(212, 168, 86, 0.25);
+}
+.dfb-brand {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 380;
+  font-size: 18px; letter-spacing: 0.02em;
+  color: #F0E2C5; text-decoration: none;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  transition: color 0.2s;
+  font-variation-settings: 'opsz' 48, 'SOFT' 80, 'WONK' 1;
+}
+.dfb-brand:hover { color: #D4A856; }
+.dfb-brand span { color: #B58A48; font-style: normal; padding: 0 6px; }
+.dfb-menu-toggle {
+  display: flex; align-items: center; gap: 10px;
+  background: transparent; border: 1px solid rgba(181, 138, 72, 0.5);
+  padding: 8px 16px; cursor: pointer;
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: #F0E2C5;
+  transition: 0.2s; border-radius: 0;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+}
+.dfb-menu-toggle:hover { background: rgba(181, 138, 72, 0.15); border-color: #D4A856; color: #D4A856; }
+.dfb-menu-toggle .dfb-bars { font-size: 14px; line-height: 1; }
+.dfb-topnav.scrolled .dfb-brand,
+.dfb-topnav.scrolled .dfb-menu-toggle { text-shadow: none; }
+
+/* Full-screen overlay menu */
+.dfb-menu-overlay {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(14, 8, 5, 0.96);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  display: flex; flex-direction: column;
+  padding: clamp(20px, 4vw, 40px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+  overflow-y: auto;
+}
+.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
+.dfb-menu-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(181, 138, 72, 0.25);
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+.dfb-menu-title {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 380;
+  font-size: clamp(24px, 3vw, 32px); color: #F0E2C5;
+  font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
+}
+.dfb-menu-close {
+  background: transparent; border: 1px solid rgba(181, 138, 72, 0.5);
+  padding: 8px 16px; cursor: pointer;
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: #F0E2C5; transition: 0.2s;
+}
+.dfb-menu-close:hover { background: rgba(181, 138, 72, 0.15); color: #D4A856; }
+.dfb-menu-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 4vw, 48px);
+  max-width: 1240px; margin: 0 auto; width: 100%;
+}
+@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
+.dfb-menu-col-title {
+  font-family: "JetBrains Mono", monospace; font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: #B58A48; margin-bottom: 18px; padding-bottom: 10px;
+  border-bottom: 1px solid rgba(181, 138, 72, 0.2);
+}
+.dfb-menu-link {
+  display: block; padding: 10px 14px; margin-bottom: 6px;
+  background: rgba(31, 20, 10, 0.5); border-left: 2px solid rgba(181, 138, 72, 0.4);
+  color: #F0E2C5; text-decoration: none;
+  transition: 0.2s;
+}
+.dfb-menu-link:hover {
+  background: rgba(181, 138, 72, 0.12);
+  border-left-color: #D4A856;
+  transform: translateX(4px);
+}
+.dfb-menu-link .dfb-roman {
+  font-family: "JetBrains Mono", monospace; font-size: 9px;
+  letter-spacing: 0.22em; color: #B58A48;
+  display: block; margin-bottom: 2px;
+}
+.dfb-menu-link .dfb-name {
+  font-family: "Fraunces", serif; font-weight: 460;
+  font-size: 16px; color: #F0E2C5;
+}
+.dfb-menu-link.current { background: rgba(212, 168, 86, 0.18); border-left-color: #D4A856; }
+.dfb-menu-link.current .dfb-name { color: #ECC078; }
+.dfb-menu-footer {
+  margin-top: auto; padding-top: 32px;
+  text-align: center; opacity: 0.7;
+  font-family: "JetBrains Mono", monospace; font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: #B58A48;
+}
+body.dfb-menu-open { overflow: hidden; }
+</style>
+
+<header class="dfb-topnav" id="dfbTopNav">
+  <a class="dfb-brand" href="index.html">DFB<span>·</span>Bureau</a>
+  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu">
+    <span class="dfb-bars">☰</span> Menu
+  </button>
+</header>
+
+<nav class="dfb-menu-overlay" id="dfbMenu" aria-hidden="true">
+  <div class="dfb-menu-head">
+    <div class="dfb-menu-title">The Sixteen Rooms</div>
+    <button class="dfb-menu-close" onclick="dfbToggleMenu()" aria-label="Close menu">✕ Close</button>
+  </div>
+  <div class="dfb-menu-grid">
+    <div>
+      <div class="dfb-menu-col-title">— Imperial Lock —</div>
+      <a href="index.html" class="dfb-menu-link" data-page="index.html"><span class="dfb-roman">I · Front Desk</span><span class="dfb-name">Bureau Index</span></a>
+      <a href="midnight.html" class="dfb-menu-link" data-page="midnight.html"><span class="dfb-roman">II · After Hours</span><span class="dfb-name">Midnight</span></a>
+      <a href="archive.html" class="dfb-menu-link" data-page="archive.html"><span class="dfb-roman">III · Filed Dispatches</span><span class="dfb-name">Archive</span></a>
+      <a href="charter.html" class="dfb-menu-link" data-page="charter.html"><span class="dfb-roman">IV · Founding Doctrine</span><span class="dfb-name">Charter</span></a>
+      <a href="concordance.html" class="dfb-menu-link" data-page="concordance.html"><span class="dfb-roman">V · Index of Terms</span><span class="dfb-name">Concordance</span></a>
+      <a href="errata.html" class="dfb-menu-link" data-page="errata.html"><span class="dfb-roman">VI · Corrections</span><span class="dfb-name">Errata</span></a>
+    </div>
+    <div>
+      <div class="dfb-menu-col-title">— Doctrinal Wing —</div>
+      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I · Open Shelf</span><span class="dfb-name">Periodicals</span></a>
+      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II · Curated</span><span class="dfb-name">Cabinet</span></a>
+      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III · Restricted</span><span class="dfb-name">Vault</span></a>
+      <a href="chambers.html" class="dfb-menu-link" data-page="chambers.html"><span class="dfb-roman">X · Literary Annex</span><span class="dfb-name">Chambers</span></a>
+      <a href="about.html" class="dfb-menu-link" data-page="about.html"><span class="dfb-roman">XI · Editorial Office</span><span class="dfb-name">About</span></a>
+    </div>
+    <div>
+      <div class="dfb-menu-col-title">— Front-Matter —</div>
+      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Site Directory</span><span class="dfb-name">Contents</span></a>
+      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Editorial Notice</span><span class="dfb-name">Disclaimer</span></a>
+      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms · Jurisdiction</span><span class="dfb-name">Legal</span></a>
+      <a href="privacy.html" class="dfb-menu-link" data-page="privacy.html"><span class="dfb-roman">XV · Reader Notice</span><span class="dfb-name">Privacy</span></a>
+      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Photo · Type</span><span class="dfb-name">Credits</span></a>
+    </div>
+  </div>
+  <div class="dfb-menu-footer">Same yield. Different durability. · Anno MMXXVI</div>
+</nav>
+
+<script>
+(function() {
+  var nav = document.getElementById('dfbTopNav');
+  var menu = document.getElementById('dfbMenu');
+  var body = document.body;
+  
+  function onScroll() {
+    if (window.scrollY > 60) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  
+  window.dfbToggleMenu = function() {
+    var isOpen = menu.classList.toggle('open');
+    body.classList.toggle('dfb-menu-open', isOpen);
+    menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+  
+  // Highlight current page
+  var current = location.pathname.split('/').pop() || 'index.html';
+  if (current === '') current = 'index.html';
+  var currentLink = menu.querySelector('[data-page="' + current + '"]');
+  if (currentLink) currentLink.classList.add('current');
+  
+  // ESC to close
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) { dfbToggleMenu(); }
+  });
+})();
+</script>
+<!-- ============ END UNIVERSAL NAV ============ -->
+
 <section class="photo-hero" aria-label="Royal Library of El Escorial · Madrid (Barrel Vault Hall)">
   <div class="ph-photo" role="img" aria-label="Royal Library of El Escorial · Madrid (Barrel Vault Hall)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/097_-_Escorial_-_die_Bibliothek.jpg?width=2560');"></div>
   <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#0C080566 70%,#0C0805C0 100%),linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.1) 60%,#0C0805C8 100%);"></div>
@@ -173,6 +377,21 @@ body { background: var(--paper); color: var(--ink); background-image:
     <h2 class="si-title" style="color:var(--walnut-deep);">Each specimen, <em style="color:var(--brass);">read through three clocks.</em></h2>
     <p class="si-desc" style="color:var(--ink-soft);">The Bureau's curatorial filter is layered. Coverage today; Maturity tomorrow; Market Access when tomorrow arrives. Every drawer below is organized through these three lenses.</p>
   </div>
+
+  <!-- Prominent library photo: El Escorial barrel vault hall -->
+  <figure class="library-figure">
+    <div class="library-figure-frame">
+      <img class="library-figure-img" 
+           src="https://commons.wikimedia.org/wiki/Special:FilePath/097_-_Escorial_-_die_Bibliothek.jpg?width=1800"
+           alt="Royal Library of El Escorial — long frescoed barrel vault hall lined with walnut bookcases"
+           loading="lazy">
+    </div>
+    <figcaption class="library-figure-caption">
+      <span class="lf-title">— The Royal Library of El Escorial · Madrid —</span>
+      <span class="lf-license">Wikimedia Commons · CC BY-SA</span>
+    </figcaption>
+  </figure>
+
 
   <!-- Three Clocks™ visualization -->
   <div class="three-clocks">
