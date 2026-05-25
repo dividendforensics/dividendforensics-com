@@ -97,25 +97,101 @@ body { background: var(--paper); color: var(--ink); background-image:
 .ab-locked::before { content: "🗝"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 18px; opacity: 0.4; }
 @media (max-width: 720px) { .amber-cube-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(5, 1fr); } }
 
-.membership-entry { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 36px; align-items: start; padding: 32px; background: var(--paper-soft); border: 2px solid var(--brass); }
-@media (max-width: 860px) { .membership-entry { grid-template-columns: 1fr; } }
-.wax-seal-wrap { text-align: center; padding-top: 12px; }
-.wax-seal { width: 200px; height: 200px; margin: 0 auto; }
-.membership-content h3 { font-family: "Fraunces", serif; font-size: 28px; font-weight: 480; color: var(--cream-soft); margin-bottom: 8px; }
-.membership-content h3 em { font-style: italic; color: var(--amber); font-family: "Cormorant Garamond", serif; }
-.membership-content .ms-sub { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--brass); margin-bottom: 20px; }
-.membership-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
-@media (max-width: 560px) { .membership-tiers { grid-template-columns: 1fr; } }
-.tier { padding: 16px 12px; background: var(--paper-deep); border-top: 2px solid var(--brass); }
-.tier-name { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
-.tier-price { font-family: "Fraunces", serif; font-size: 22px; font-weight: 380; color: var(--cream); }
-.tier-price small { font-size: 12px; opacity: 0.7; }
+
+
+
+/* === MEMBERSHIP REDESIGN — Beinecke vault aesthetic === */
+.membership-section { max-width: 1100px; margin: 0 auto; padding: 56px 40px; background: linear-gradient(180deg, #1F1F22 0%, #14141A 100%); border: 1px solid var(--marble-light); position: relative; }
+.membership-section::before, .membership-section::after { content: ""; position: absolute; top: 12px; bottom: 12px; width: 1px; background: var(--marble-light); opacity: 0.5; }
+.membership-section::before { left: 12px; }
+.membership-section::after { right: 12px; }
+
+.ms-header { text-align: center; margin-bottom: 44px; padding-bottom: 32px; border-bottom: 1px solid #4A4D52; position: relative; }
+.ms-keyhole { margin: 0 auto 24px; }
+.ms-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.34em; text-transform: uppercase; color: var(--amber); margin-bottom: 16px; }
+.ms-title { font-family: "Fraunces", serif; font-size: clamp(28px,3.5vw,38px); font-weight: 380; color: var(--cream); line-height: 1.15; margin-bottom: 14px; font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 1; letter-spacing: -0.015em; }
+.ms-title em { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--amber); font-weight: 400; }
+.ms-blurb { font-family: "Newsreader", serif; font-size: 15px; line-height: 1.65; color: var(--ink-soft); max-width: 560px; margin: 0 auto; }
+
+/* Three tiers as amber book cubes (matching the vault grid above) */
+.tier-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: stretch; }
+@media (max-width: 760px) { .tier-row { grid-template-columns: 1fr; gap: 16px; } }
+
+.tier-card { position: relative; padding: 32px 24px 28px; text-align: center; transition: 0.4s; cursor: pointer; display: flex; flex-direction: column; min-height: 380px; }
+.tier-card:hover { transform: translateY(-4px); }
+
+/* Core tier — soft amber glow (entry-level) */
+.tier-card.tier-core { background: linear-gradient(180deg, #5C4830 0%, #3D2D18 100%); border: 1px solid #8A6E40; box-shadow: inset 0 0 24px rgba(212, 160, 86, 0.15); }
+.tier-card.tier-core:hover { box-shadow: inset 0 0 32px rgba(212, 160, 86, 0.3), 0 8px 24px rgba(0,0,0,0.4); border-color: #B89860; }
+
+/* Pro tier — medium amber backlit */
+.tier-card.tier-pro { background: linear-gradient(180deg, #8A6E40 0%, #5C4830 100%); border: 1px solid #B89860; box-shadow: inset 0 0 28px rgba(212, 160, 86, 0.25); }
+.tier-card.tier-pro:hover { box-shadow: inset 0 0 36px rgba(236, 192, 120, 0.4), 0 8px 28px rgba(0,0,0,0.4); border-color: var(--amber-glow); }
+
+/* Founding Circle — brightest, marble-framed */
+.tier-card.tier-founding { background: linear-gradient(180deg, var(--amber-glow) 0%, var(--amber) 40%, var(--amber-deep) 100%); border: 2px solid var(--cream); box-shadow: inset 0 0 32px rgba(236, 192, 120, 0.5), 0 0 32px rgba(212, 160, 86, 0.25); }
+.tier-card.tier-founding:hover { box-shadow: inset 0 0 40px rgba(255, 220, 140, 0.6), 0 0 48px rgba(236, 192, 120, 0.4); }
+
+.tier-card.tier-founding::before {
+  content: "100 SEATS"; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: var(--paper-deep); color: var(--amber-glow);
+  padding: 4px 12px; font-family: "JetBrains Mono", monospace;
+  font-size: 9px; letter-spacing: 0.28em; border: 1px solid var(--amber);
+  white-space: nowrap;
+}
+
+.tier-tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; }
+.tier-core .tier-tag { color: var(--amber-glow); }
+.tier-pro .tier-tag { color: var(--cream); }
+.tier-founding .tier-tag { color: var(--paper-deep); opacity: 0.8; }
+
+.tier-headline { font-family: "Fraunces", serif; font-size: 22px; font-weight: 470; line-height: 1.2; margin-bottom: 20px; }
+.tier-core .tier-headline { color: var(--cream); }
+.tier-pro .tier-headline { color: var(--cream-soft); }
+.tier-founding .tier-headline { color: var(--paper-deep); }
+.tier-headline em { font-style: italic; font-family: "Cormorant Garamond", serif; font-weight: 400; }
+.tier-founding .tier-headline em { color: #2A1A06; }
+
+.tier-divider { width: 32px; height: 1px; margin: 0 auto 20px; }
+.tier-core .tier-divider { background: var(--amber); opacity: 0.6; }
+.tier-pro .tier-divider { background: var(--amber-glow); opacity: 0.8; }
+.tier-founding .tier-divider { background: var(--paper-deep); opacity: 0.7; }
+
+.tier-price-num { font-family: "Fraunces", serif; font-weight: 320; line-height: 1; margin-bottom: 4px; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; letter-spacing: -0.03em; }
+.tier-core .tier-price-num { color: var(--amber-glow); font-size: clamp(44px,5vw,56px); }
+.tier-pro .tier-price-num { color: var(--cream); font-size: clamp(52px,6vw,68px); }
+.tier-founding .tier-price-num { color: var(--paper-deep); font-size: clamp(58px,7vw,76px); }
+
+.tier-price-unit { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 24px; }
+.tier-core .tier-price-unit { color: var(--amber); opacity: 0.7; }
+.tier-pro .tier-price-unit { color: var(--cream-soft); opacity: 0.7; }
+.tier-founding .tier-price-unit { color: var(--paper-deep); opacity: 0.7; }
+
+.tier-features { list-style: none; padding: 0; margin: 0 0 20px; flex-grow: 1; text-align: left; }
+.tier-features li { padding: 6px 0 6px 16px; font-family: "Inter", sans-serif; font-size: 12.5px; line-height: 1.5; position: relative; }
+.tier-features li::before { content: "▸"; position: absolute; left: 0; font-size: 10px; }
+.tier-core .tier-features li { color: var(--ink-soft); }
+.tier-core .tier-features li::before { color: var(--amber); }
+.tier-pro .tier-features li { color: var(--cream-soft); }
+.tier-pro .tier-features li::before { color: var(--amber-glow); }
+.tier-founding .tier-features li { color: #2A1A06; }
+.tier-founding .tier-features li::before { color: #2A1A06; }
+
+.tier-cta { display: block; padding: 11px 16px; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none; text-align: center; border: 1px solid; transition: 0.2s; }
+.tier-core .tier-cta { background: transparent; color: var(--amber-glow); border-color: var(--amber); }
+.tier-core .tier-cta:hover { background: var(--amber); color: var(--paper-deep); }
+.tier-pro .tier-cta { background: rgba(0,0,0,0.25); color: var(--cream-soft); border-color: var(--amber-glow); }
+.tier-pro .tier-cta:hover { background: var(--amber-glow); color: var(--paper-deep); }
+.tier-founding .tier-cta { background: var(--paper-deep); color: var(--amber-glow); border-color: var(--paper-deep); }
+.tier-founding .tier-cta:hover { background: #1F1208; }
+
+.ms-footnote { text-align: center; margin-top: 32px; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-dim); opacity: 0.8; }
 
 </style>
 </head>
 <body>
 <section class="photo-hero" aria-label="Beinecke Rare Book Library · Yale">
-  <div class="ph-photo" role="img" aria-label="Beinecke Rare Book Library · Yale" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Beinecke_Rare_Book_%26_Manuscript_Library.jpg?width=2560');"></div>
+  <div class="ph-photo" role="img" aria-label="Beinecke Rare Book Library · Yale" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/20170420_Beinecke_Rare_Book_Library_Interior_Yale_University_New_Haven_Connecticut.jpg?width=2560');"></div>
   <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#00000066 70%,#000000C0 100%),linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.1) 60%,#000000C8 100%);"></div>
   <div class="ph-grain"></div>
   <aside class="brass-plate" style="background:rgba(20, 20, 22, 0.75);border:1px solid #B89860;color:#EAE5D5;">
@@ -140,7 +216,7 @@ body { background: var(--paper); color: var(--ink); background-image:
     <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#D4A056);"></span>
   </div>
   <div class="photo-attr" style="color:#EAE5D588;">
-    <a href="https://commons.wikimedia.org/wiki/File:Beinecke_Rare_Book_%26_Manuscript_Library.jpg" target="_blank" rel="noopener">Beinecke Rare Book Library · Yale · Wikimedia Commons contributor · CC BY-SA</a>
+    <a href="https://commons.wikimedia.org/wiki/File:20170420_Beinecke_Rare_Book_Library_Interior_Yale_University_New_Haven_Connecticut.jpg" target="_blank" rel="noopener">Beinecke Rare Book Library · Yale · Wikimedia Commons contributor · CC BY-SA</a>
   </div>
 </section>
 <div class="beinecke-cube">
@@ -262,40 +338,85 @@ body { background: var(--paper); color: var(--ink); background-image:
     </div>
   </div>
 
-  <!-- Membership entry -->
-  <section class="membership-entry">
-    <div class="wax-seal-wrap">
-      <svg class="wax-seal" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Bureau wax seal">
+  <!-- Structural Income Desk Membership · Beinecke vault aesthetic -->
+  <section class="membership-section">
+    <div class="ms-header">
+      <!-- Brass key SVG replacing the red wax seal -->
+      <svg class="ms-keyhole" width="64" height="80" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg" aria-label="Vault key">
         <defs>
-          <radialGradient id="waxGrad">
-            <stop offset="0%" stop-color="#A02838"/>
-            <stop offset="60%" stop-color="#6E1E28"/>
-            <stop offset="100%" stop-color="#3A0E15"/>
-          </radialGradient>
+          <linearGradient id="keyMetal" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ECC078"/>
+            <stop offset="50%" stop-color="#B89860"/>
+            <stop offset="100%" stop-color="#8A6E40"/>
+          </linearGradient>
         </defs>
-        <circle cx="100" cy="100" r="88" fill="url(#waxGrad)" stroke="#2A0810" stroke-width="2"/>
-        <circle cx="100" cy="100" r="76" fill="none" stroke="#3A0E15" stroke-width="0.8" opacity="0.7"/>
-        <circle cx="100" cy="100" r="68" fill="none" stroke="#A02838" stroke-width="0.5" opacity="0.5"/>
-        <text x="100" y="116" font-family="Fraunces, serif" font-size="48" font-style="italic" fill="#E0DCD0" text-anchor="middle" font-variation-settings="'opsz' 96, 'SOFT' 80">DFB</text>
-        <text x="100" y="38" font-family="JetBrains Mono, monospace" font-size="9" fill="#E0DCD0" text-anchor="middle" letter-spacing="2">— STRUCTURAL —</text>
-        <text x="100" y="172" font-family="JetBrains Mono, monospace" font-size="9" fill="#E0DCD0" text-anchor="middle" letter-spacing="2">— INCOME · DESK —</text>
-        <g stroke="#E0DCD0" stroke-width="0.6" fill="none" opacity="0.6">
-          <path d="M 30 30 L 50 50 M 150 50 L 170 30 M 30 170 L 50 150 M 150 150 L 170 170"/>
-        </g>
+        <!-- Key bow (top ring) -->
+        <circle cx="32" cy="18" r="14" fill="none" stroke="url(#keyMetal)" stroke-width="3"/>
+        <circle cx="32" cy="18" r="6" fill="#1F1F22" stroke="url(#keyMetal)" stroke-width="1.5"/>
+        <!-- Key shaft -->
+        <rect x="30" y="30" width="4" height="38" fill="url(#keyMetal)"/>
+        <!-- Key teeth (warding bits) -->
+        <rect x="34" y="56" width="8" height="4" fill="url(#keyMetal)"/>
+        <rect x="34" y="62" width="6" height="4" fill="url(#keyMetal)"/>
+        <rect x="34" y="68" width="10" height="5" fill="url(#keyMetal)"/>
+        <!-- Subtle highlight -->
+        <rect x="30.5" y="32" width="1" height="36" fill="#ECC078" opacity="0.6"/>
       </svg>
+      <div class="ms-eyebrow">— Structural Income Desk™ · Membership Entry —</div>
+      <h2 class="ms-title">Three keys. <em>One vault.</em></h2>
+      <p class="ms-blurb">Pre-publication track of forthcoming dispatches, structural alerts ahead of public release, and the quarterly Structural Income Outlook. Choose the access tier that fits the way you read.</p>
     </div>
-    <div class="membership-content">
-      <div class="ms-sub">— Structural Income Desk™ · Membership Entry —</div>
-      <h3>The desk behind the seal. <em>Access by member only.</em></h3>
-      <p style="font-family:'Newsreader',serif;font-size:16px;line-height:1.7;color:var(--ink-soft);margin-bottom:18px;">
-        The Bureau's full pre-publication track, structural alerts ahead of public dispatches, and the quarterly Structural Income Outlook. Three tiers; founding-circle cap at 100 seats.
-      </p>
-      <div class="membership-tiers">
-        <div class="tier"><div class="tier-name">Core</div><div class="tier-price">$29<small>/mo</small></div></div>
-        <div class="tier"><div class="tier-name">Pro</div><div class="tier-price">$79<small>/mo</small></div></div>
-        <div class="tier"><div class="tier-name">Founding</div><div class="tier-price">$199<small>/mo</small></div></div>
-      </div>
+
+    <div class="tier-row">
+      <article class="tier-card tier-core">
+        <div class="tier-tag">— Tier I · Core —</div>
+        <h3 class="tier-headline">The <em>reader's</em> entry.</h3>
+        <div class="tier-divider"></div>
+        <div class="tier-price-num">$29</div>
+        <div class="tier-price-unit">per month</div>
+        <ul class="tier-features">
+          <li>All public dispatches</li>
+          <li>Weekly Substack delivery</li>
+          <li>Errata access</li>
+          <li>Concordance updates</li>
+        </ul>
+        <a class="tier-cta" href="https://dividendforensics.gumroad.com" target="_blank" rel="noopener">Open Core →</a>
+      </article>
+
+      <article class="tier-card tier-pro">
+        <div class="tier-tag">— Tier II · Pro —</div>
+        <h3 class="tier-headline">The <em>analyst's</em> desk.</h3>
+        <div class="tier-divider"></div>
+        <div class="tier-price-num">$79</div>
+        <div class="tier-price-unit">per month</div>
+        <ul class="tier-features">
+          <li>Everything in Core</li>
+          <li>Pre-publication preview</li>
+          <li>Structural alerts</li>
+          <li>Quarterly Outlook archive</li>
+          <li>Deep-Dive SKUs included</li>
+        </ul>
+        <a class="tier-cta" href="https://dividendforensics.gumroad.com" target="_blank" rel="noopener">Open Pro →</a>
+      </article>
+
+      <article class="tier-card tier-founding">
+        <div class="tier-tag">— Tier III · Founding —</div>
+        <h3 class="tier-headline">The <em>charter</em> seat.</h3>
+        <div class="tier-divider"></div>
+        <div class="tier-price-num">$199</div>
+        <div class="tier-price-unit">per month · capped</div>
+        <ul class="tier-features">
+          <li>Everything in Pro</li>
+          <li>Founding-circle roster</li>
+          <li>Quarterly editor session</li>
+          <li>Direct correspondence line</li>
+          <li>Locked rate · permanent</li>
+        </ul>
+        <a class="tier-cta" href="https://dividendforensics.gumroad.com" target="_blank" rel="noopener">Open Founding →</a>
+      </article>
     </div>
+
+    <div class="ms-footnote">— Founding Circle capped at 100 seats · Joining order preserved · No refunds —</div>
   </section>
 </main>
 <footer class="page-footer" style="background:#3A3A3D;color:#D0CCC0;border-top-color:#B89860;">
