@@ -7218,5 +7218,137 @@ h1, h2, h3, .standfirst, .pull-quote, .hero-title, .section-title { text-wrap: b
 })();
 </script>
 
+
+<!-- ============ NAVIGATION GRID — Quick access to all 16 rooms ============ -->
+<section id="bureau-navigation" style="
+  background: linear-gradient(180deg, #1A1006 0%, #0E0805 100%);
+  padding: clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px);
+  border-top: 4px double #B58A48;
+  position: relative;
+">
+  <div style="max-width: 1240px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: clamp(40px, 5vw, 64px);">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; color: #D4A856; margin-bottom: 20px; display: inline-block; padding: 0 32px; position: relative;">
+        <span style="position: absolute; left: 0; top: 50%; width: 22px; height: 1px; background: #B58A48;"></span>
+        — The Sixteen Rooms · Direct Access —
+        <span style="position: absolute; right: 0; top: 50%; width: 22px; height: 1px; background: #B58A48;"></span>
+      </div>
+      <h2 style="font-family: 'Fraunces', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 380; color: #F0E2C5; line-height: 1.1; margin-bottom: 16px; font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 1; letter-spacing: -0.015em;">
+        Every room, <em style="font-family: 'Cormorant Garamond', serif; font-style: italic; color: #D4A856;">one tap away.</em>
+      </h2>
+      <p style="font-family: 'Newsreader', serif; font-size: 16px; line-height: 1.65; color: #C9B98A; max-width: 600px; margin: 0 auto;">
+        Sixteen pages, sixteen architectures. Direct navigation from the Front Desk to any room in the Bureau.
+      </p>
+    </div>
+
+    <!-- Navigation grid — grouped by section -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(24px, 3vw, 40px);" class="nav-grid">
+
+      <!-- Group 1: Imperial Lock -->
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #B58A48; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid #5A3E25;">
+          — Imperial Lock —
+        </div>
+        <a href="midnight.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">II · After Hours</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Midnight</div>
+        </a>
+        <a href="archive.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">III · Filed Dispatches</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Archive</div>
+        </a>
+        <a href="charter.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">IV · Founding Doctrine</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Charter</div>
+        </a>
+        <a href="concordance.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">V · Index of Terms</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Concordance</div>
+        </a>
+        <a href="errata.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">VI · Corrections</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Errata</div>
+        </a>
+      </div>
+
+      <!-- Group 2: Doctrinal Wing (Annexes + Chambers) -->
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#B58A48;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #5A3E25;">
+          — Doctrinal Wing —
+        </div>
+        <a href="periodicals.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">VII · Annex I · Open Shelf</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Periodicals</div>
+        </a>
+        <a href="cabinet.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">VIII · Annex II · Curated</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Cabinet</div>
+        </a>
+        <a href="vault.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">IX · Annex III · Restricted</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Vault</div>
+        </a>
+        <a href="chambers.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">X · Literary Annex</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Chambers</div>
+        </a>
+        <a href="about.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">XI · Editorial Office</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">About</div>
+        </a>
+      </div>
+
+      <!-- Group 3: Front-matter -->
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#B58A48;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #5A3E25;">
+          — Front-Matter —
+        </div>
+        <a href="contents.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">XII · Site Directory</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Contents</div>
+        </a>
+        <a href="disclaimer.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">XIII · Editorial Notice</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Disclaimer</div>
+        </a>
+        <a href="legal.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">XIV · Terms · Jurisdiction</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Legal</div>
+        </a>
+        <a href="privacy.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">XV · Reader Notice</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Privacy</div>
+        </a>
+        <a href="credits.html" class="nav-card" style="display:block;padding:14px 18px;margin-bottom:10px;background:#1F140A;border:1px solid #3D2818;border-left:3px solid #D4A856;color:#F0E2C5;text-decoration:none;transition:0.2s;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.22em;color:#B58A48;text-transform:uppercase;margin-bottom:4px;">XVI · Photo · Type</div>
+          <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:470;color:#F0E2C5;">Credits</div>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Mobile responsive override -->
+    <style>
+      .nav-card:hover {
+        background: #2A1F12 !important;
+        border-left-color: #ECC078 !important;
+        transform: translateX(4px);
+      }
+      @media (max-width: 860px) {
+        .nav-grid { grid-template-columns: 1fr 1fr !important; }
+      }
+      @media (max-width: 560px) {
+        .nav-grid { grid-template-columns: 1fr !important; }
+      }
+    </style>
+
+    <!-- Tap hint at bottom -->
+    <div style="text-align:center;margin-top:clamp(32px,4vw,48px);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#8A6630;opacity:0.7;">
+      — Sixteen rooms · Anno MMXXVI · From the Front Desk —
+    </div>
+
+  </div>
+</section>
+
 </body>
 </html>
