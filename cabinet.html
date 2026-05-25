@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Cabinet · Dividend Forensics Bureau</title>
-<meta name="description" content="The Cabinet — specimens curated by analytical framework. Four drawers, three lenses, the Bureau's editorial filter.">
-<link rel="canonical" href="https://dividendforensics.com/cabinet.html">
+<title>Legal Notice · Dividend Forensics Bureau</title>
+<meta name="description" content="Bureau legal notice — terms of use, intellectual property, no-warranty, jurisdiction. Eight-section reader-facing notice.">
+<link rel="canonical" href="https://dividendforensics.com/legal.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -69,52 +69,28 @@ body {
 }
 
 :root { 
-          --paper: #E5D5B0; --paper-soft: #EDDFC0; --paper-warm: #DCCB9F; --paper-deep: #CDB988;
-          --ink: #1F1610; --ink-soft: #2D211A; --ink-dim: #4A2F1C;
-          --brass: #9A7A48; --brass-deep: #74582E; --glow: #D2A86A;
-          --walnut: #3A2010; --walnut-deep: #1F1208; --amber: #B58658; --amber-glow: #DCB078;
+          --paper: #E0DDD2; --paper-soft: #EAE7DC; --paper-warm: #CCC8B8; --paper-deep: #ACA890;
+          --ink: #1A2028; --ink-soft: #28303A; --ink-dim: #485058;
+          --brass: #C89858; --brass-deep: #8E6A2E; --glow: #DCAC60;
+          --bronze: #8A6428; --sage: #6E7E58; --deep-brown: #2A3038;
+          --iron-blue: #3E4A56; --iron-deep: #1F2830; --amber-warm: #DCAC60;
          }
 body { background: var(--paper); color: var(--ink); background-image:
-  radial-gradient(ellipse at top, rgba(210, 168, 106, 0.10), transparent 50%),
+  radial-gradient(ellipse at top, rgba(212, 168, 86, 0.12), transparent 50%),
   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .ph-eyebrow::before { background: var(--brass); }
 
-.vault-arch-band { position: relative; height: 180px; margin-top: -180px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
-.vault-arch-band svg { width: min(960px, 92vw); height: 160px; }
-.three-clocks { max-width: 900px; margin: 0 auto clamp(60px,8vw,96px); padding: 36px 24px; background: var(--walnut); border: 2px solid var(--brass); position: relative; }
-.three-clocks-title { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--glow); text-align: center; margin-bottom: 28px; }
-.clocks-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start; }
-@media (max-width: 760px) { .clocks-row { grid-template-columns: 1fr; } }
-.clock-piece { text-align: center; padding: 16px 12px; }
-.clock-face { width: 110px; height: 110px; margin: 0 auto 16px; }
-.clock-label { font-family: "Fraunces", serif; font-size: 18px; color: var(--cream); margin-bottom: 8px; font-weight: 480; }
-.clock-when { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 14px; color: var(--amber-glow); }
-.cabinet-drawers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
-@media (max-width: 760px) { .cabinet-drawers { grid-template-columns: 1fr; } }
-.drawer { background: var(--paper-soft); border: 1px solid var(--brass); border-left: 6px solid var(--walnut); padding: 0; overflow: hidden; transition: 0.3s; }
-.drawer:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(31, 20, 10, 0.18); border-left-color: var(--amber); }
-.drawer-vault-arch { height: 50px; background: linear-gradient(135deg, var(--walnut) 0%, var(--walnut-deep) 100%); position: relative; overflow: hidden; }
-.drawer-vault-arch::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 90%; height: 30px; background: var(--paper-soft); border-top-left-radius: 100% 100%; border-top-right-radius: 100% 100%; }
-.drawer-vault-arch svg { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); }
-.drawer-body { padding: 8px 28px 28px; }
-.drawer-num { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; color: var(--brass-deep); text-transform: uppercase; margin-bottom: 10px; }
-.drawer-title { font-family: "Fraunces", serif; font-size: 22px; font-weight: 480; color: var(--walnut-deep); margin-bottom: 14px; letter-spacing: -0.01em; }
-.drawer-list { list-style: none; padding: 0; margin: 0; }
-.drawer-list li { padding: 8px 0; border-bottom: 1px dotted var(--brass)66; font-family: "Newsreader", serif; font-size: 15px; color: var(--ink-soft); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.drawer-list li:last-child { border-bottom: none; }
-.drawer-list .lens { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--brass); text-transform: uppercase; }
-
-
-/* === INLINE LIBRARY PHOTO inside cabinet body === */
-.library-figure { max-width: 1100px; margin: 0 auto clamp(56px,8vw,80px); position: relative; padding: 0; }
-.library-figure-frame { position: relative; overflow: hidden; border: 2px solid var(--brass); padding: 8px; background: var(--walnut); box-shadow: 0 12px 40px rgba(31, 20, 10, 0.18); }
-.library-figure-img { width: 100%; height: auto; display: block; aspect-ratio: 16/9; object-fit: cover; background: var(--walnut-deep); }
-.library-figure-frame::before, .library-figure-frame::after { content: ""; position: absolute; pointer-events: none; }
-.library-figure-frame::before { top: 4px; left: 4px; right: 4px; bottom: 4px; border: 1px solid var(--glow); opacity: 0.6; z-index: 1; }
-.library-figure-caption { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 4px 0; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brass-deep); }
-.library-figure-caption .lf-title { color: var(--walnut-deep); font-weight: 600; }
-.library-figure-caption .lf-license { opacity: 0.7; }
+.octagon-band { position: relative; height: 200px; margin-top: -160px; z-index: 5; display: flex; justify-content: center; align-items: flex-start; padding-top: 20px; pointer-events: none; }
+.octagon-band svg { width: 220px; height: 180px; }
+.legal-octagonal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+@media (max-width: 760px) { .legal-octagonal-grid { grid-template-columns: 1fr; } }
+.legal-section { background: var(--paper-soft); padding: 28px clamp(24px,3vw,40px); border: 1px solid var(--brass)55; position: relative; clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px); }
+.legal-section::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--brass); }
+.ls-num { font-family: "Fraunces", serif; font-style: italic; font-size: 32px; color: var(--brass); font-weight: 350; line-height: 1; margin-bottom: 12px; font-variation-settings: 'opsz' 96; }
+.ls-title { font-family: "Fraunces", serif; font-size: 19px; font-weight: 480; color: var(--ink); margin-bottom: 14px; line-height: 1.3; letter-spacing: -0.01em; }
+.ls-body { font-family: "Newsreader", serif; font-size: 14.5px; line-height: 1.7; color: var(--ink-soft); }
+.ls-body p { margin-bottom: 10px; }
 
 </style>
 </head>
@@ -312,203 +288,117 @@ body.dfb-menu-open { overflow: hidden; }
 </script>
 <!-- ============ END UNIVERSAL NAV ============ -->
 
-<section class="photo-hero" aria-label="Royal Library of El Escorial · Madrid (Barrel Vault Hall)">
-  <div class="ph-photo" role="img" aria-label="Royal Library of El Escorial · Madrid (Barrel Vault Hall)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/097_-_Escorial_-_die_Bibliothek.jpg?width=2560');"></div>
-  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#0C080566 70%,#0C0805C0 100%),linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.1) 60%,#0C0805C8 100%);"></div>
+<section class="photo-hero" aria-label="Bibliothèque Sainte-Geneviève · Paris · Washington">
+  <div class="ph-photo" role="img" aria-label="Bibliothèque Sainte-Geneviève · Paris · Washington" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Biblioth%C3%A8que_Sainte-Genevi%C3%A8ve_-_Int%C3%A9rieur_001.jpg?width=2560');"></div>
+  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#0E080566 70%,#0E0805C0 100%),linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.1) 60%,#0E0805C8 100%);"></div>
   <div class="ph-grain"></div>
-  <aside class="brass-plate" style="background:rgba(58, 32, 16, 0.72);border:1px solid #9A7A48;color:#F4EBD0;">
-    <span class="bp-corner-tl" style="border-color:#9A7A48;"></span>
-    <span class="bp-corner-tr" style="border-color:#9A7A48;"></span>
-    <span class="bp-corner-bl" style="border-color:#9A7A48;"></span>
-    <span class="bp-corner-br" style="border-color:#9A7A48;"></span>
-    <span style="color:#9A7A48;font-weight:600;">Curated · Annex II</span>
-    <span class="bp-issue" style="color:#D2A86A;">Framework Lenses</span>
-    <span class="bp-divider" style="background:#74582E;"></span>
-    <span class="bp-line">Editorial Filter</span>
-    <span class="bp-line" style="color:#F4EBD0;">Curated under three lenses</span>
-    <span class="bp-line" style="opacity:0.65;">Doctrinal Wing</span>
+  <aside class="brass-plate" style="background:rgba(38, 30, 18, 0.72);border:1px solid #A88840;color:#F4ECD0;">
+    <span class="bp-corner-tl" style="border-color:#A88840;"></span>
+    <span class="bp-corner-tr" style="border-color:#A88840;"></span>
+    <span class="bp-corner-bl" style="border-color:#A88840;"></span>
+    <span class="bp-corner-br" style="border-color:#A88840;"></span>
+    <span style="color:#A88840;font-weight:600;">Legal Notice</span>
+    <span class="bp-issue" style="color:#D4A856;">Anno MMXXVI</span>
+    <span class="bp-divider" style="background:#7A6228;"></span>
+    <span class="bp-line">Terms of Use · Jurisdiction</span>
+    <span class="bp-line" style="color:#F4ECD0;">Octagonal · 8 sections</span>
+    <span class="bp-line" style="opacity:0.65;">Reader-Facing</span>
   </aside>
-  <div class="ph-text" style="color:#F4EBD0;">
-    <div class="ph-eyebrow" style="color:#D2A86A;">Annex II · Curated · By Framework</div>
-    <h1 class="ph-title">Specimens<br><em style="color:#D2A86A;border-top-color:#9A7A48;">by framework.</em></h1>
-    <p class="ph-subtitle" style="color:#F4EBD0DD;">Where the Periodicals Room orders by date, the Cabinet orders by framework. Four drawers — REIT, BDC, Structural Income, Methodology — each filed through one of the Bureau's three lenses.</p>
+  <div class="ph-text" style="color:#F4ECD0;">
+    <div class="ph-eyebrow" style="color:#D4A856;">Legal Notice · Terms of Reading · Jurisdiction</div>
+    <h1 class="ph-title">The legal frame<br><em style="color:#D4A856;border-top-color:#A88840;">around the room.</em></h1>
+    <p class="ph-subtitle" style="color:#F4ECD0DD;">Standard legal notice covering the use of the Bureau site and its publications. Eight sections, presented in the same Beaux-Arts octagonal symmetry as the Bibliothèque Sainte-Geneviève · Paris.</p>
   </div>
-  <div class="scroll-prompt" style="color:#E8DBC0;">
-    <span class="scroll-label">Open a drawer</span>
-    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#D2A86A);"></span>
+  <div class="scroll-prompt" style="color:#EFE2C5;">
+    <span class="scroll-label">Read the terms</span>
+    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#D4A856);"></span>
   </div>
-  <div class="photo-attr" style="color:#F4EBD088;">
-    <a href="https://commons.wikimedia.org/wiki/File:097_-_Escorial_-_die_Bibliothek.jpg" target="_blank" rel="noopener">Royal Library of El Escorial · Madrid (Barrel Vault Hall) · Wikimedia Commons contributor · CC BY-SA</a>
+  <div class="photo-attr" style="color:#F4ECD088;">
+    <a href="https://commons.wikimedia.org/wiki/File:Biblioth%C3%A8que_Sainte-Genevi%C3%A8ve_-_Int%C3%A9rieur_001.jpg" target="_blank" rel="noopener">Bibliothèque Sainte-Geneviève · Paris · Washington · Carol M. Highsmith / USCapitol · Public Domain</a>
   </div>
 </section>
-<div class="vault-arch-band">
-  <svg viewBox="0 0 960 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<div class="octagon-band">
+  <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <linearGradient id="vaultArch" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#3A2010" stop-opacity="0.95"/>
-        <stop offset="100%" stop-color="#DCCB9F" stop-opacity="0"/>
-      </linearGradient>
-      <pattern id="frescoLunette" x="0" y="0" width="100" height="80" patternUnits="userSpaceOnUse">
-        <ellipse cx="50" cy="40" rx="40" ry="28" fill="#B58658" opacity="0.4"/>
-        <ellipse cx="50" cy="40" rx="40" ry="28" fill="none" stroke="#9A7A48" stroke-width="0.6"/>
-      </pattern>
+      <radialGradient id="domeGlow">
+        <stop offset="0%" stop-color="#D4A856" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#D4A856" stop-opacity="0"/>
+      </radialGradient>
     </defs>
-    <!-- Single massive barrel vault (El Escorial signature) -->
-    <path d="M 0 160 Q 480 -20 960 160 Z" fill="url(#vaultArch)"/>
-    <!-- Lunette frescoes along the vault -->
-    <g fill="url(#frescoLunette)" stroke="#74582E" stroke-width="1">
-      <ellipse cx="160" cy="100" rx="50" ry="22"/>
-      <ellipse cx="320" cy="60" rx="60" ry="25"/>
-      <ellipse cx="480" cy="40" rx="70" ry="28"/>
-      <ellipse cx="640" cy="60" rx="60" ry="25"/>
-      <ellipse cx="800" cy="100" rx="50" ry="22"/>
+    <!-- LOC octagonal dome (top-down view) -->
+    <polygon points="110,20 165,40 185,90 165,140 110,160 55,140 35,90 55,40" fill="url(#domeGlow)" stroke="#7A6228" stroke-width="2"/>
+    <!-- 8-fold division lines -->
+    <g stroke="#A88840" stroke-width="1" fill="none">
+      <line x1="110" y1="20" x2="110" y2="160"/>
+      <line x1="35" y1="90" x2="185" y2="90"/>
+      <line x1="55" y1="40" x2="165" y2="140"/>
+      <line x1="55" y1="140" x2="165" y2="40"/>
     </g>
-    <!-- Decorative ornament strip -->
-    <path d="M 0 158 L 960 158" stroke="#9A7A48" stroke-width="2"/>
-    <path d="M 0 154 L 960 154" stroke="#D2A86A" stroke-width="0.6" opacity="0.7"/>
-    <g fill="#D2A86A">
-      <circle cx="80" cy="156" r="2"/><circle cx="240" cy="156" r="2"/><circle cx="400" cy="156" r="2"/><circle cx="560" cy="156" r="2"/><circle cx="720" cy="156" r="2"/><circle cx="880" cy="156" r="2"/>
+    <!-- Inner octagonal frame -->
+    <polygon points="110,50 145,60 160,90 145,120 110,130 75,120 60,90 75,60" fill="none" stroke="#7A6228" stroke-width="0.8" opacity="0.7"/>
+    <!-- Central inscription -->
+    <circle cx="110" cy="90" r="22" fill="#EEDFB8" stroke="#A88840" stroke-width="1.2"/>
+    <text x="110" y="86" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#7A6228" text-anchor="middle" font-variation-settings="'opsz' 48">DFB</text>
+    <text x="110" y="98" font-family="JetBrains Mono, monospace" font-size="6" fill="#7A6228" text-anchor="middle" letter-spacing="1">LEGAL</text>
+    <!-- 8 numeric points around the dome -->
+    <g fill="#7A6228" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">
+      <text x="110" y="14">I</text><text x="170" y="36">II</text><text x="194" y="92">III</text><text x="170" y="148">IV</text><text x="110" y="170">V</text><text x="50" y="148">VI</text><text x="26" y="92">VII</text><text x="50" y="36">VIII</text>
     </g>
   </svg>
 </div>
 <main class="main-body">
   <div class="section-intro">
-    <div class="si-label" style="color:var(--brass-deep);">— The Three Lenses · Curatorial Filter —</div>
-    <h2 class="si-title" style="color:var(--walnut-deep);">Each specimen, <em style="color:var(--brass);">read through three clocks.</em></h2>
-    <p class="si-desc" style="color:var(--ink-soft);">The Bureau's curatorial filter is layered. Coverage today; Maturity tomorrow; Market Access when tomorrow arrives. Every drawer below is organized through these three lenses.</p>
+    <div class="si-label" style="color:var(--brass-deep);">— Eight Sections · Beaux-Arts Symmetry —</div>
+    <h2 class="si-title" style="color:var(--ink);">The legal frame, <em style="color:var(--brass);">read in eight panels.</em></h2>
+    <p class="si-desc" style="color:var(--ink-soft);">Standard reader-facing legal notice. Eight short sections, octagonally arranged. Companion to the editorial Disclaimer, which addresses the substance of what the Bureau publishes; this page addresses the use of the site itself.</p>
   </div>
 
-  <!-- Prominent library photo: El Escorial barrel vault hall -->
-  <figure class="library-figure">
-    <div class="library-figure-frame">
-      <img class="library-figure-img" 
-           src="https://commons.wikimedia.org/wiki/Special:FilePath/097_-_Escorial_-_die_Bibliothek.jpg?width=1800"
-           alt="Royal Library of El Escorial — long frescoed barrel vault hall lined with walnut bookcases"
-           loading="lazy">
-    </div>
-    <figcaption class="library-figure-caption">
-      <span class="lf-title">— The Royal Library of El Escorial · Madrid —</span>
-      <span class="lf-license">Wikimedia Commons · CC BY-SA</span>
-    </figcaption>
-  </figure>
-
-
-  <!-- Three Clocks™ visualization -->
-  <div class="three-clocks">
-    <div class="three-clocks-title">— Three Clocks™ · The Curatorial Filter —</div>
-    <div class="clocks-row">
-      <div class="clock-piece">
-        <svg class="clock-face" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="55" cy="55" r="50" fill="none" stroke="#9A7A48" stroke-width="1.5"/>
-          <circle cx="55" cy="55" r="44" fill="none" stroke="#9A7A48" stroke-width="0.5" opacity="0.5"/>
-          <g stroke="#D2A86A" stroke-width="1.2">
-            <line x1="55" y1="13" x2="55" y2="20"/><line x1="97" y1="55" x2="90" y2="55"/><line x1="55" y1="97" x2="55" y2="90"/><line x1="13" y1="55" x2="20" y2="55"/>
-          </g>
-          <!-- Coverage today: hand at 12, short -->
-          <line x1="55" y1="55" x2="55" y2="22" stroke="#DCB078" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="55" cy="55" r="3" fill="#DCB078"/>
-        </svg>
-        <div class="clock-label">Coverage</div>
-        <div class="clock-when">today</div>
-      </div>
-      <div class="clock-piece">
-        <svg class="clock-face" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="55" cy="55" r="50" fill="none" stroke="#9A7A48" stroke-width="1.5"/>
-          <circle cx="55" cy="55" r="44" fill="none" stroke="#9A7A48" stroke-width="0.5" opacity="0.5"/>
-          <g stroke="#D2A86A" stroke-width="1.2">
-            <line x1="55" y1="13" x2="55" y2="20"/><line x1="97" y1="55" x2="90" y2="55"/><line x1="55" y1="97" x2="55" y2="90"/><line x1="13" y1="55" x2="20" y2="55"/>
-          </g>
-          <!-- Maturity tomorrow: hand at 3 -->
-          <line x1="55" y1="55" x2="88" y2="55" stroke="#DCB078" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="55" cy="55" r="3" fill="#DCB078"/>
-        </svg>
-        <div class="clock-label">Maturity</div>
-        <div class="clock-when">tomorrow</div>
-      </div>
-      <div class="clock-piece">
-        <svg class="clock-face" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="55" cy="55" r="50" fill="none" stroke="#9A7A48" stroke-width="1.5"/>
-          <circle cx="55" cy="55" r="44" fill="none" stroke="#9A7A48" stroke-width="0.5" opacity="0.5"/>
-          <g stroke="#D2A86A" stroke-width="1.2">
-            <line x1="55" y1="13" x2="55" y2="20"/><line x1="97" y1="55" x2="90" y2="55"/><line x1="55" y1="97" x2="55" y2="90"/><line x1="13" y1="55" x2="20" y2="55"/>
-          </g>
-          <!-- Market Access: hand at 8 (refinancing window) -->
-          <line x1="55" y1="55" x2="32" y2="78" stroke="#DCB078" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="55" cy="55" r="3" fill="#DCB078"/>
-        </svg>
-        <div class="clock-label">Market Access</div>
-        <div class="clock-when">when tomorrow arrives</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cabinet-drawers">
-    <article class="drawer">
-      <div class="drawer-vault-arch">
-        <svg width="46" height="44" viewBox="0 0 46 44" xmlns="http://www.w3.org/2000/svg"><text x="23" y="32" font-family="Fraunces, serif" font-style="italic" font-size="28" fill="#D2A86A" text-anchor="middle" font-variation-settings="'opsz' 96">I</text></svg>
-      </div>
-      <div class="drawer-body">
-        <div class="drawer-num">Drawer I · The REIT Bay</div>
-        <h3 class="drawer-title">Equity REITs · IG · Tier 1</h3>
-        <ul class="drawer-list">
-          <li>Realty Income · O <span class="lens">Coverage</span></li>
-          <li>Prologis · PLD <span class="lens">Maturity</span></li>
-          <li>Welltower · WELL <span class="lens">Coverage</span></li>
-          <li>American Tower · AMT <span class="lens">Market Access</span></li>
-          <li>Public Storage · PSA <span class="lens">Coverage</span></li>
-        </ul>
-      </div>
+  <div class="legal-octagonal-grid">
+    <article class="legal-section">
+      <div class="ls-num">I</div>
+      <h3 class="ls-title">Acceptance of Terms</h3>
+      <div class="ls-body"><p>By accessing this site, you agree to these terms as written. If you do not accept any portion, the appropriate course is to stop reading.</p></div>
     </article>
-    <article class="drawer">
-      <div class="drawer-vault-arch">
-        <svg width="46" height="44" viewBox="0 0 46 44" xmlns="http://www.w3.org/2000/svg"><text x="23" y="32" font-family="Fraunces, serif" font-style="italic" font-size="28" fill="#D2A86A" text-anchor="middle" font-variation-settings="'opsz' 96">II</text></svg>
-      </div>
-      <div class="drawer-body">
-        <div class="drawer-num">Drawer II · The BDC Bay</div>
-        <h3 class="drawer-title">BDCs · NAV-driven · Tier 1</h3>
-        <ul class="drawer-list">
-          <li>Ares Capital · ARCC <span class="lens">Coverage</span></li>
-          <li>Blue Owl Capital · OBDC <span class="lens">Coverage</span></li>
-          <li>Hercules Capital · HTGC <span class="lens">Market Access</span></li>
-          <li>BlackRock TCP · TCPC <span class="lens">Maturity</span></li>
-        </ul>
-      </div>
+    <article class="legal-section">
+      <div class="ls-num">II</div>
+      <h3 class="ls-title">Permitted Use</h3>
+      <div class="ls-body"><p>Site content is provided for personal, non-commercial reading. Quotation for review or commentary is permitted with attribution. Wholesale republication is not.</p></div>
     </article>
-    <article class="drawer">
-      <div class="drawer-vault-arch">
-        <svg width="46" height="44" viewBox="0 0 46 44" xmlns="http://www.w3.org/2000/svg"><text x="23" y="32" font-family="Fraunces, serif" font-style="italic" font-size="28" fill="#D2A86A" text-anchor="middle" font-variation-settings="'opsz' 96">III</text></svg>
-      </div>
-      <div class="drawer-body">
-        <div class="drawer-num">Drawer III · Adjacent Verticals</div>
-        <h3 class="drawer-title">Cov-Call · MLP · CLO · Preferred</h3>
-        <ul class="drawer-list">
-          <li>JEPI · option premium <span class="lens">Coverage</span></li>
-          <li>Enterprise Products · EPD <span class="lens">Coverage</span></li>
-          <li>Eagle Point · ECC · CLO <span class="lens">Market Access</span></li>
-          <li>Pref baskets · IG / HY <span class="lens">Maturity</span></li>
-        </ul>
-      </div>
+    <article class="legal-section">
+      <div class="ls-num">III</div>
+      <h3 class="ls-title">Intellectual Property</h3>
+      <div class="ls-body"><p>Buffer Half-Life™, Three Clocks™, and BBB- Cliff™ are Bureau marks. The text and analytical structure of dispatches is the editor's copyrighted work, © Dividend Forensics Bureau, MMXXIV–MMXXVI.</p></div>
     </article>
-    <article class="drawer">
-      <div class="drawer-vault-arch">
-        <svg width="46" height="44" viewBox="0 0 46 44" xmlns="http://www.w3.org/2000/svg"><text x="23" y="32" font-family="Fraunces, serif" font-style="italic" font-size="28" fill="#D2A86A" text-anchor="middle" font-variation-settings="'opsz' 96">IV</text></svg>
-      </div>
-      <div class="drawer-body">
-        <div class="drawer-num">Drawer IV · Methodology</div>
-        <h3 class="drawer-title">Frameworks · Method · Glossary</h3>
-        <ul class="drawer-list">
-          <li>Buffer Half-Life™ · introduction <span class="lens">Method</span></li>
-          <li>Three Clocks™ · the layered lens <span class="lens">Method</span></li>
-          <li>BBB- Cliff™ · the discontinuity <span class="lens">Method</span></li>
-          <li>Yield · four sources of <span class="lens">Glossary</span></li>
-        </ul>
-      </div>
+    <article class="legal-section">
+      <div class="ls-num">IV</div>
+      <h3 class="ls-title">Disclaimer of Advice</h3>
+      <div class="ls-body"><p>See <a href="disclaimer.html" style="color:var(--brass-deep);">disclaimer.html</a> for the editorial position in full. In short: diagnostics, not advice. Nothing here constitutes a recommendation.</p></div>
+    </article>
+    <article class="legal-section">
+      <div class="ls-num">V</div>
+      <h3 class="ls-title">No Warranty</h3>
+      <div class="ls-body"><p>Site content is provided "as is" without warranty of any kind. The editor uses best efforts but makes no guarantee of completeness, timeliness, or freedom from error.</p></div>
+    </article>
+    <article class="legal-section">
+      <div class="ls-num">VI</div>
+      <h3 class="ls-title">Limitation of Liability</h3>
+      <div class="ls-body"><p>To the maximum extent permitted by law, the Bureau is not liable for any loss arising from reliance on site content. Readers retain full responsibility for their own decisions.</p></div>
+    </article>
+    <article class="legal-section">
+      <div class="ls-num">VII</div>
+      <h3 class="ls-title">External Links</h3>
+      <div class="ls-body"><p>Links to external sites are for reader convenience. The Bureau does not control, endorse, or take responsibility for the content of external sites linked from these pages.</p></div>
+    </article>
+    <article class="legal-section">
+      <div class="ls-num">VIII</div>
+      <h3 class="ls-title">Jurisdiction · Contact</h3>
+      <div class="ls-body"><p>The Bureau is operated from Seoul, Republic of Korea. These terms are governed by Korean law without regard to conflict-of-laws principles. Reader correspondence may be directed via the Substack contact form.</p></div>
     </article>
   </div>
 </main>
-<footer class="page-footer" style="background:#DCCB9F;color:#2D211A;border-top-color:#9A7A48;">
-  <div class="pf-marker" style="color:#9A7A48;">— Annex II · The Cabinet —</div>
-  <div class="pf-attr">Specimens curated under three lenses. Reading order by drawer, not by date.</div>
+<footer class="page-footer" style="background:#E5D5A8;color:#2E2410;border-top-color:#A88840;">
+  <div class="pf-marker" style="color:#A88840;">— Legal frame · Eight sections —</div>
+  <div class="pf-attr">The terms apply equally to every page of the Bureau site.</div>
   <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="archive.html">Archive</a> · <a href="charter.html">Charter</a> · <a href="credits.html">Credits</a></div>
 </footer>
 </body>
