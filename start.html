@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Here · Dividend Forensics Bureau</title>
+<meta name="description" content="Newcomer entry to the Dividend Forensics Bureau — a 5-minute orientation. What the Bureau is, three dispatches to read first, three frameworks to remember.">
+<link rel="canonical" href="https://dividendforensics.com/start.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Start Here · Dividend Forensics Bureau">
+<meta property="og:description" content="A five-minute orientation to independent structural research on dividend durability.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dividendforensics.com/start.html">
+<meta property="og:site_name" content="Dividend Forensics Bureau">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   START HERE · Newcomer Entry · Same design system as about.html
+   ========================================================================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* --- Photo hero (same architecture as about.html) --- */
+.photo-hero { position: relative; width: 100%; height: 100vh; min-height: 720px; overflow: hidden; }
+.ph-photo { position: absolute; inset: 0; background-size: cover; background-position: center; animation: kenburns 42s cubic-bezier(0.65,0,0.35,1) infinite alternate; }
+@keyframes kenburns { 0%{transform:scale(1.00) translate(0,0);} 100%{transform:scale(1.10) translate(-1%,-2%);} }
+.ph-vignette { position: absolute; inset: 0; pointer-events: none; }
+.ph-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; backdrop-filter: blur(6px) saturate(120%); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.5); animation: fade-in 1.8s 0.4s both; }
+.bp-corner-tl, .bp-corner-tr, .bp-corner-bl, .bp-corner-br { position: absolute; width: 10px; height: 10px; border: 0; border-style: solid; }
+.bp-corner-tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+.bp-corner-tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; }
+.bp-corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; }
+.bp-corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+.bp-issue { font-weight: 600; font-size: 13px; letter-spacing: 0.18em; display: block; margin: 4px 0; }
+.bp-divider { display: block; height: 1px; margin: 8px 0 7px; opacity: 0.55; }
+.bp-line { display: block; font-size: 10.5px; opacity: 0.85; }
+
+.ph-text { position: absolute; left: clamp(28px,6vw,96px); bottom: clamp(140px,20vh,200px); max-width: min(680px,70vw); z-index: 3; }
+.ph-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 24px; padding-left: 28px; position: relative; animation: reveal 1.4s 0.6s both; }
+.ph-eyebrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; }
+.ph-title { font-family: "Fraunces", serif; font-size: clamp(48px,7vw,96px); line-height: 0.96; letter-spacing: -0.02em; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin: 0 0 28px; animation: reveal 1.6s 0.9s both; text-shadow: 0 2px 32px rgba(0,0,0,0.55); }
+.ph-title em { font-style: italic; font-weight: 300; display: block; padding-top: 14px; margin-top: 10px; max-width: 540px; border-top-width: 1px; border-top-style: solid; }
+.ph-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 540px; animation: reveal 1.8s 1.2s both; text-shadow: 0 1px 12px rgba(0,0,0,0.4); }
+
+.scroll-prompt { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.7; z-index: 3; animation: fade-in 2s 2.2s both; }
+.scroll-line { width: 1px; height: 36px; animation: bounce 2.4s ease-in-out infinite; }
+.scroll-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; }
+@keyframes bounce { 0%,100%{transform:scaleY(1) translateY(0);opacity:0.5;} 50%{transform:scaleY(0.6) translateY(8px);opacity:1;} }
+
+.photo-attr { position: absolute; right: 16px; bottom: 8px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.18em; z-index: 3; text-transform: uppercase; }
+.photo-attr a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
+
+@keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+@keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
+
+/* --- Main body --- */
+.main-body { max-width: 1080px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
+.section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
+.si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; }
+.si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; }
+.si-label::before { left: 0; }
+.si-label::after { right: 0; }
+.si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 1; margin-bottom: 24px; letter-spacing: -0.015em; }
+.si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; }
+.si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+
+/* --- Step blocks (1 · 2 · 3 · 4) --- */
+.step-row { display: grid; grid-template-columns: 1fr; gap: clamp(40px,5vw,64px); margin-bottom: clamp(64px,8vw,96px); }
+.step-card { padding: clamp(28px,3.5vw,40px) clamp(28px,3.5vw,44px); background: var(--paper-soft); border-left: 4px solid var(--steel); position: relative; }
+.step-card.coverage { border-left-color: var(--ink); }
+.step-card.frameworks { border-left-color: var(--sage); }
+.step-card.archive { border-left-color: var(--brass-deep); }
+.step-card.next { border-left-color: var(--steel); }
+.step-number { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--brass-deep); margin-bottom: 14px; }
+.step-headline { font-family: "Fraunces", serif; font-size: clamp(28px,3.5vw,38px); font-weight: 400; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.015em; line-height: 1.15; }
+.step-headline em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; }
+.step-body { font-family: "Newsreader", serif; font-size: 16.5px; line-height: 1.75; color: var(--ink-soft); margin-bottom: 24px; }
+.step-body p { margin-bottom: 12px; }
+.step-body p:last-child { margin-bottom: 0; }
+.step-body strong { font-weight: 600; color: var(--ink); }
+
+/* Dispatch list inside step card */
+.dispatch-list { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--concrete-deep); }
+.dispatch-link { display: flex; flex-direction: column; gap: 4px; padding: 14px 18px; background: var(--paper-warm); border-left: 2px solid var(--brass); text-decoration: none; transition: 0.25s; }
+.dispatch-link:hover { background: var(--paper-deep); border-left-color: var(--steel); transform: translateX(3px); }
+.dl-number { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--brass-deep); text-transform: uppercase; }
+.dl-title { font-family: "Fraunces", serif; font-size: 17px; font-weight: 460; color: var(--ink); letter-spacing: -0.01em; }
+.dl-title em { font-family: "Cormorant Garamond", serif; font-style: italic; }
+.dl-tagline { font-family: "Newsreader", serif; font-style: italic; font-size: 14px; color: var(--ink-dim); margin-top: 2px; }
+
+/* Framework grid */
+.framework-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 16px; }
+@media (max-width: 760px) { .framework-grid { grid-template-columns: 1fr; } }
+.framework-cell { padding: 22px 20px; background: var(--paper-warm); border-top: 3px solid var(--sage); }
+.fc-name { font-family: "Fraunces", serif; font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.fc-tm { font-family: "JetBrains Mono", monospace; font-size: 9px; vertical-align: top; }
+.fc-defn { font-family: "Newsreader", serif; font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); }
+
+/* Next CTAs */
+.next-cta-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px; }
+@media (max-width: 760px) { .next-cta-row { grid-template-columns: 1fr; } }
+.next-cta { display: block; padding: 22px 24px; background: var(--paper-warm); border-left: 3px solid var(--brass); text-decoration: none; transition: 0.25s; }
+.next-cta:hover { background: var(--paper-deep); border-left-color: var(--ink); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+.nc-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; color: var(--brass-deep); text-transform: uppercase; margin-bottom: 8px; }
+.nc-headline { font-family: "Fraunces", serif; font-size: 18px; font-weight: 460; color: var(--ink); letter-spacing: -0.01em; line-height: 1.25; }
+.nc-tagline { font-family: "Newsreader", serif; font-style: italic; font-size: 13.5px; color: var(--ink-dim); margin-top: 6px; }
+
+/* Pull quote */
+.pull-quote { margin: clamp(64px,8vw,96px) auto; max-width: 720px; padding: clamp(36px,4vw,48px); background: var(--paper-soft); border-top: 4px double var(--brass); border-bottom: 4px double var(--brass); text-align: center; }
+.pq-quote { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(20px,2.4vw,26px); line-height: 1.45; color: var(--ink); margin-bottom: 18px; }
+.pq-attr { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; color: var(--brass-deep); text-transform: uppercase; }
+
+/* Footer */
+.page-footer { padding: 56px 24px; text-align: center; border-top: 4px double currentColor; margin-top: clamp(60px,8vw,96px); }
+.pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; }
+.pf-attr { font-family: "Newsreader", serif; font-style: italic; font-size: 13px; margin-bottom: 8px; opacity: 0.85; }
+.pf-links { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
+.pf-links a { text-decoration: none; border-bottom: 1px dotted currentColor; margin: 0 8px; }
+
+/* Concrete arch band (same shape as about.html) */
+.concrete-arch-band { position: relative; height: 220px; margin-top: -180px; z-index: 5; display: flex; justify-content: center; align-items: flex-start; pointer-events: none; padding-top: 20px; }
+.concrete-arch-band svg { width: min(1100px, 94vw); height: 200px; }
+
+@media (max-width: 720px) {
+  .photo-hero { min-height: 580px; }
+  .brass-plate { top: 16px; right: 16px; padding: 12px 16px; font-size: 10px; min-width: 200px; }
+  .ph-text { bottom: 100px; left: 20px; max-width: 86vw; }
+  .ph-title { font-size: clamp(38px,11vw,60px); }
+}
+
+/* --- Color tokens (same as about.html) --- */
+:root {
+  --paper: #E5E2DC; --paper-soft: #EFECE4; --paper-warm: #D5D2CA; --paper-deep: #C4C2BA;
+  --ink: #1F2026; --ink-soft: #2E3036; --ink-dim: #5A5C62;
+  --brass: #9A9A95; --brass-deep: #6C6E68; --glow: #C0BFB8;
+  --concrete: #A8A8A4; --concrete-deep: #6E6E6A; --sage: #889E83; --steel: #4A4D52;
+}
+body { background: var(--paper); color: var(--ink); background-image:
+  radial-gradient(ellipse at top, rgba(168, 168, 164, 0.10), transparent 50%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.ph-eyebrow::before { background: var(--brass); }
+
+</style>
+</head>
+<body>
+<!-- ============ UNIVERSAL STICKY TOP NAV (identical to about.html) ============ -->
+<style>
+.dfb-topnav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px clamp(20px, 4vw, 40px);
+  background: transparent;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+.dfb-topnav.scrolled {
+  background: rgba(14, 8, 5, 0.86);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-bottom-color: rgba(212, 168, 86, 0.25);
+}
+.dfb-brand {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 380;
+  font-size: 18px; letter-spacing: 0.02em;
+  color: #F0E2C5; text-decoration: none;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  transition: color 0.2s;
+  font-variation-settings: 'opsz' 48, 'SOFT' 80, 'WONK' 1;
+}
+.dfb-brand:hover { color: #D4A856; }
+.dfb-brand span { color: #B58A48; font-style: normal; padding: 0 6px; }
+.dfb-menu-toggle {
+  display: flex; align-items: center; gap: 10px;
+  background: transparent; border: 1px solid rgba(181, 138, 72, 0.5);
+  padding: 8px 16px; cursor: pointer;
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: #F0E2C5;
+  transition: 0.2s; border-radius: 0;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+}
+.dfb-menu-toggle:hover { background: rgba(181, 138, 72, 0.15); border-color: #D4A856; color: #D4A856; }
+.dfb-menu-toggle .dfb-bars { font-size: 14px; line-height: 1; }
+.dfb-topnav.scrolled .dfb-brand,
+.dfb-topnav.scrolled .dfb-menu-toggle { text-shadow: none; }
+
+.dfb-menu-overlay {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(14, 8, 5, 0.96);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  display: flex; flex-direction: column;
+  padding: clamp(20px, 4vw, 40px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+  overflow-y: auto;
+}
+.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
+.dfb-menu-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(181, 138, 72, 0.25);
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+.dfb-menu-title {
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 380;
+  font-size: clamp(24px, 3vw, 32px); color: #F0E2C5;
+  font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
+}
+.dfb-menu-close {
+  background: transparent; border: 1px solid rgba(181, 138, 72, 0.5);
+  padding: 8px 16px; cursor: pointer;
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: #F0E2C5; transition: 0.2s;
+}
+.dfb-menu-close:hover { background: rgba(181, 138, 72, 0.15); color: #D4A856; }
+.dfb-menu-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 4vw, 48px);
+  max-width: 1240px; margin: 0 auto; width: 100%;
+}
+@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
+.dfb-menu-col-title {
+  font-family: "JetBrains Mono", monospace; font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: #B58A48; margin-bottom: 18px; padding-bottom: 10px;
+  border-bottom: 1px solid rgba(181, 138, 72, 0.2);
+}
+.dfb-menu-link {
+  display: block; padding: 10px 14px; margin-bottom: 6px;
+  background: rgba(31, 20, 10, 0.5); border-left: 2px solid rgba(181, 138, 72, 0.4);
+  color: #F0E2C5; text-decoration: none;
+  transition: 0.2s;
+}
+.dfb-menu-link:hover {
+  background: rgba(181, 138, 72, 0.12);
+  border-left-color: #D4A856;
+  transform: translateX(4px);
+}
+.dfb-menu-link .dfb-roman {
+  font-family: "JetBrains Mono", monospace; font-size: 9px;
+  letter-spacing: 0.22em; color: #B58A48;
+  display: block; margin-bottom: 2px;
+}
+.dfb-menu-link .dfb-name {
+  font-family: "Fraunces", serif; font-weight: 460;
+  font-size: 16px; color: #F0E2C5;
+}
+.dfb-menu-link.current { background: rgba(212, 168, 86, 0.18); border-left-color: #D4A856; }
+.dfb-menu-link.current .dfb-name { color: #ECC078; }
+.dfb-menu-footer {
+  margin-top: auto; padding-top: 32px;
+  text-align: center; opacity: 0.7;
+  font-family: "JetBrains Mono", monospace; font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: #B58A48;
+}
+body.dfb-menu-open { overflow: hidden; }
+</style>
+
+<header class="dfb-topnav" id="dfbTopNav">
+  <a class="dfb-brand" href="index.html">DFB<span>·</span>Bureau</a>
+  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu">
+    <span class="dfb-bars">☰</span> Menu
+  </button>
+</header>
+
+<nav class="dfb-menu-overlay" id="dfbMenu" aria-hidden="true">
+  <div class="dfb-menu-head">
+    <div class="dfb-menu-title">The Sixteen Rooms</div>
+    <button class="dfb-menu-close" onclick="dfbToggleMenu()" aria-label="Close menu">✕ Close</button>
+  </div>
+  <div class="dfb-menu-grid">
+    <div>
+      <div class="dfb-menu-col-title">— Imperial Lock —</div>
+      <a href="index.html" class="dfb-menu-link" data-page="index.html"><span class="dfb-roman">I · Front Desk</span><span class="dfb-name">Bureau Index</span></a>
+      <a href="midnight.html" class="dfb-menu-link" data-page="midnight.html"><span class="dfb-roman">II · After Hours</span><span class="dfb-name">Midnight</span></a>
+      <a href="archive.html" class="dfb-menu-link" data-page="archive.html"><span class="dfb-roman">III · Filed Dispatches</span><span class="dfb-name">Archive</span></a>
+      <a href="charter.html" class="dfb-menu-link" data-page="charter.html"><span class="dfb-roman">IV · Founding Doctrine</span><span class="dfb-name">Charter</span></a>
+      <a href="concordance.html" class="dfb-menu-link" data-page="concordance.html"><span class="dfb-roman">V · Index of Terms</span><span class="dfb-name">Concordance</span></a>
+      <a href="errata.html" class="dfb-menu-link" data-page="errata.html"><span class="dfb-roman">VI · Corrections</span><span class="dfb-name">Errata</span></a>
+    </div>
+    <div>
+      <div class="dfb-menu-col-title">— Doctrinal Wing —</div>
+      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I · Open Shelf</span><span class="dfb-name">Periodicals</span></a>
+      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II · Curated</span><span class="dfb-name">Cabinet</span></a>
+      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III · Restricted</span><span class="dfb-name">Vault</span></a>
+      <a href="chambers.html" class="dfb-menu-link" data-page="chambers.html"><span class="dfb-roman">X · Literary Annex</span><span class="dfb-name">Chambers</span></a>
+      <a href="about.html" class="dfb-menu-link" data-page="about.html"><span class="dfb-roman">XI · Editorial Office</span><span class="dfb-name">About</span></a>
+    </div>
+    <div>
+      <div class="dfb-menu-col-title">— Front-Matter —</div>
+      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Site Directory</span><span class="dfb-name">Contents</span></a>
+      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Editorial Notice</span><span class="dfb-name">Disclaimer</span></a>
+      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms · Jurisdiction</span><span class="dfb-name">Legal</span></a>
+      <a href="privacy.html" class="dfb-menu-link" data-page="privacy.html"><span class="dfb-roman">XV · Reader Notice</span><span class="dfb-name">Privacy</span></a>
+      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Photo · Type</span><span class="dfb-name">Credits</span></a>
+    </div>
+  </div>
+  <div class="dfb-menu-footer">Same yield. Different durability. · Anno MMXXVI</div>
+</nav>
+
+<script>
+(function() {
+  var nav = document.getElementById('dfbTopNav');
+  var menu = document.getElementById('dfbMenu');
+  var body = document.body;
+  
+  function onScroll() {
+    if (window.scrollY > 60) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  
+  window.dfbToggleMenu = function() {
+    var isOpen = menu.classList.toggle('open');
+    body.classList.toggle('dfb-menu-open', isOpen);
+    menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+  
+  // Current-page highlight — start.html is OUTSIDE the 16-room nav by design,
+  // so no menu link is highlighted. This is intentional: start.html is the
+  // welcome mat, not one of the rooms.
+  var current = location.pathname.split('/').pop() || 'index.html';
+  if (current === '') current = 'index.html';
+  var currentLink = menu.querySelector('[data-page="' + current + '"]');
+  if (currentLink) currentLink.classList.add('current');
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) { dfbToggleMenu(); }
+  });
+})();
+</script>
+<!-- ============ END UNIVERSAL NAV ============ -->
+
+<!-- Photo hero -->
+<!-- Hero photo: Helsinki Oodi Library (ALA Architects, 2018). Wikimedia Commons / CC BY-SA. 
+     If 대표님 prefer a different library, replace the background-image URL below + the .photo-attr text. -->
+<section class="photo-hero" aria-label="Helsinki Central Library Oodi · ALA Architects · 2018">
+  <div class="ph-photo" role="img" aria-label="Helsinki Central Library Oodi · ALA Architects · 2018" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Helsinki_Central_Library_Oodi_5.jpg?width=2560');"></div>
+  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#0E0F1266 70%,#0E0F12C0 100%),linear-gradient(to bottom,rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.1) 60%,#0E0F12C8 100%);"></div>
+  <div class="ph-grain"></div>
+  <aside class="brass-plate" style="background:rgba(28, 30, 36, 0.72);border:1px solid #9A9A95;color:#EDEAE2;">
+    <span class="bp-corner-tl" style="border-color:#9A9A95;"></span>
+    <span class="bp-corner-tr" style="border-color:#9A9A95;"></span>
+    <span class="bp-corner-bl" style="border-color:#9A9A95;"></span>
+    <span class="bp-corner-br" style="border-color:#9A9A95;"></span>
+    <span style="color:#9A9A95;font-weight:600;">Start Here</span>
+    <span class="bp-issue" style="color:#C0BFB8;">Newcomer Entry</span>
+    <span class="bp-divider" style="background:#6C6E68;"></span>
+    <span class="bp-line">Five-Minute Orientation</span>
+    <span class="bp-line" style="color:#EDEAE2;">Outside the Sixteen Rooms</span>
+    <span class="bp-line" style="opacity:0.65;">Anno MMXXVI</span>
+  </aside>
+  <div class="ph-text" style="color:#EDEAE2;">
+    <div class="ph-eyebrow" style="color:#C0BFB8;">The Welcome · The Orientation · The Path</div>
+    <h1 class="ph-title">New here?<br><em style="color:#C0BFB8;border-top-color:#9A9A95;">Start in this room.</em></h1>
+    <p class="ph-subtitle" style="color:#EDEAE2DD;">A five-minute orientation to what the Bureau is, three dispatches to read first, and three frameworks worth remembering. The sixteen rooms open after this.</p>
+  </div>
+  <div class="scroll-prompt" style="color:#E5E2DC;">
+    <span class="scroll-label">Begin the orientation</span>
+    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#C0BFB8);"></span>
+  </div>
+  <div class="photo-attr" style="color:#EDEAE288;">
+    <a href="https://commons.wikimedia.org/wiki/Category:Helsinki_Central_Library_Oodi" target="_blank" rel="noopener">Helsinki Central Library Oodi · ALA Architects · 2018 · Wikimedia Commons · CC BY-SA</a>
+  </div>
+</section>
+
+<!-- Concrete arch band (visual continuity with about.html) -->
+<div class="concrete-arch-band">
+  <svg viewBox="0 0 1100 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="concreteGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#A8A8A4" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#E5E2DC" stop-opacity="0"/>
+      </linearGradient>
+      <pattern id="concreteTexture" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="0.4" fill="#6E6E6A" opacity="0.2"/>
+      </pattern>
+    </defs>
+    <g fill="none" stroke="#6E6E6A" stroke-width="1.5">
+      <path d="M 50 200 Q 50 100 150 100 L 270 100 Q 370 100 370 200" opacity="0.85"/>
+      <path d="M 130 200 Q 130 70 270 70 L 430 70 Q 570 70 570 200" opacity="0.85"/>
+      <path d="M 270 200 Q 270 40 470 40 L 630 40 Q 830 40 830 200" opacity="0.85"/>
+      <path d="M 460 200 Q 460 60 620 60 L 800 60 Q 950 60 950 200" opacity="0.85"/>
+      <path d="M 620 200 Q 620 90 740 90 L 880 90 Q 1020 90 1020 200" opacity="0.6"/>
+      <path d="M 780 200 Q 780 120 860 120 L 980 120 Q 1080 120 1080 200" opacity="0.45"/>
+    </g>
+    <g fill="url(#concreteGrad)" opacity="0.5">
+      <path d="M 50 200 Q 50 100 150 100 L 270 100 Q 370 100 370 200 Z"/>
+      <path d="M 270 200 Q 270 40 470 40 L 630 40 Q 830 40 830 200 Z"/>
+      <path d="M 620 200 Q 620 90 740 90 L 880 90 Q 1020 90 1020 200 Z"/>
+    </g>
+    <rect x="0" y="0" width="1100" height="200" fill="url(#concreteTexture)" opacity="0.4"/>
+    <text x="550" y="190" font-family="JetBrains Mono, monospace" font-size="9" fill="#6C6E68" text-anchor="middle" letter-spacing="3">— THE WELCOME · ANNO MMXXVI —</text>
+  </svg>
+</div>
+
+<!-- Main body -->
+<main class="main-body">
+  <div class="section-intro">
+    <div class="si-label" style="color:var(--brass-deep);">— Five Minutes · Four Steps —</div>
+    <h2 class="si-title" style="color:var(--ink);">A short tour <em style="color:var(--steel);">before the rooms.</em></h2>
+    <p class="si-desc" style="color:var(--ink-soft);">The Bureau is a museum of structural diagnostics on dividend-paying U.S. issuers — sixteen rooms, each with a single purpose. This page is the welcome mat. Read these four steps, then the rooms make sense.</p>
+  </div>
+
+  <!-- Step 1 — What the Bureau is -->
+  <div class="step-row">
+    <div class="step-card coverage">
+      <div class="step-number">Step 1 · What the Bureau is</div>
+      <h3 class="step-headline">Diagnostics, <em>not advice.</em></h3>
+      <div class="step-body">
+        <p>The Dividend Forensics Bureau is an <strong>independent research boutique</strong> publishing structural diagnostics on U.S.-listed dividend-paying issuers. It is operated from Seoul by a single editor, Jeong-Mo Goo, and funded directly by readers — through a Substack subscription and Gumroad deep-dive purchases.</p>
+        <p>The Bureau does <strong>not</strong> recommend transactions. The Bureau does <strong>not</strong> address individual circumstances. The Bureau does <strong>not</strong> use action verbs — no "buy", no "sell", no "hold". The Bureau uses <strong>diagnostic verbs</strong> — improving, stable, pressured, compressing, migrating.</p>
+        <p>The full editorial position is in the <a href="charter.html" style="color:var(--steel);border-bottom:1px dotted var(--steel);text-decoration:none;">Charter</a>; the legal frame is in the <a href="disclaimer.html" style="color:var(--steel);border-bottom:1px dotted var(--steel);text-decoration:none;">Disclaimer</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pull quote -->
+  <div class="pull-quote">
+    <p class="pq-quote">"Yield is observed. Structure is examined.<br>The buffer is what is paying it."</p>
+    <p class="pq-attr">— Bureau standing line · Charter</p>
+  </div>
+
+  <!-- Step 2 — Three dispatches -->
+  <div class="step-row">
+    <div class="step-card archive">
+      <div class="step-number">Step 2 · Three dispatches to read first</div>
+      <h3 class="step-headline">A short reading <em>list.</em></h3>
+      <div class="step-body">
+        <p>If you read only three dispatches before deciding whether to subscribe, read these. Each is short. Each illustrates one of the Bureau's three frameworks. None requires prior context.</p>
+      </div>
+      <div class="dispatch-list">
+        <a class="dispatch-link" href="archive.html#disp-001">
+          <span class="dl-number">Disp. 001 · MMXXIV · IX</span>
+          <span class="dl-title">Same Yield. <em>Different Durability.</em></span>
+          <span class="dl-tagline">The signature line that opened the Bureau.</span>
+        </a>
+        <a class="dispatch-link" href="archive.html#disp-022">
+          <span class="dl-number">Disp. 022 · MMXXV · X</span>
+          <span class="dl-title">Buffer Half-Life<span class="fc-tm">™</span> · Method</span>
+          <span class="dl-tagline">How long can the cushion pay the dividend if EBITDA fell here, today?</span>
+        </a>
+        <a class="dispatch-link" href="archive.html#disp-028">
+          <span class="dl-number">Disp. 028 · MMXXV · XI</span>
+          <span class="dl-title">Three Clocks<span class="fc-tm">™</span> · Introduced</span>
+          <span class="dl-tagline">Coverage today. Maturity tomorrow. Market access when tomorrow arrives.</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 — Three frameworks -->
+  <div class="step-row">
+    <div class="step-card frameworks">
+      <div class="step-number">Step 3 · Three frameworks worth remembering</div>
+      <h3 class="step-headline">Three lenses, <em>one yield.</em></h3>
+      <div class="step-body">
+        <p>The Bureau publishes through three analytical frameworks. They are <strong>lenses</strong>, not predictive instruments. They do not forecast prices. They read the structure underneath a headline distribution.</p>
+      </div>
+      <div class="framework-grid">
+        <div class="framework-cell">
+          <div class="fc-name">Buffer Half-Life<span class="fc-tm">™</span></div>
+          <div class="fc-defn">How long the cushion paying the dividend would last if cash flow fell here, today.</div>
+        </div>
+        <div class="framework-cell">
+          <div class="fc-name">Three Clocks<span class="fc-tm">™</span></div>
+          <div class="fc-defn">Coverage today · Maturity tomorrow · Market access when tomorrow arrives — layered time horizons.</div>
+        </div>
+        <div class="framework-cell">
+          <div class="fc-name">BBB- Cliff<span class="fc-tm">™</span></div>
+          <div class="fc-defn">The non-linear drop in capital access when a credit rating crosses from investment-grade into high-yield.</div>
+        </div>
+      </div>
+      <div class="step-body" style="margin-top:24px;">
+        <p>Definitions of every recurring term sit in the <a href="concordance.html" style="color:var(--steel);border-bottom:1px dotted var(--steel);text-decoration:none;">Concordance</a>. Where each framework appears in the corpus is filed in the <a href="cabinet.html" style="color:var(--steel);border-bottom:1px dotted var(--steel);text-decoration:none;">Cabinet</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 — What's next -->
+  <div class="step-row">
+    <div class="step-card next">
+      <div class="step-number">Step 4 · What to do next</div>
+      <h3 class="step-headline">Three doors. <em>Choose one.</em></h3>
+      <div class="step-body">
+        <p>The orientation is complete. From here, three paths.</p>
+      </div>
+      <div class="next-cta-row">
+        <a class="next-cta" href="https://dividendforensics.gumroad.com/l/bhlife" target="_blank" rel="noopener">
+          <div class="nc-label">Free · No subscription</div>
+          <div class="nc-headline">Buffer Half-Life™ · 5-Minute Guide</div>
+          <div class="nc-tagline">PDF · open access via Gumroad</div>
+        </a>
+        <a class="next-cta" href="https://jungmoku.substack.com/" target="_blank" rel="noopener">
+          <div class="nc-label">Subscribe · Weekly</div>
+          <div class="nc-headline">Bureau Substack</div>
+          <div class="nc-tagline">Mon · Wed · Fri 09:30 ET — free tier available</div>
+        </a>
+        <a class="next-cta" href="index.html">
+          <div class="nc-label">Enter · The Sixteen Rooms</div>
+          <div class="nc-headline">Front Desk</div>
+          <div class="nc-tagline">The main building — index of all rooms</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Closing note -->
+  <div class="section-intro" style="margin-top:clamp(72px,9vw,112px);">
+    <div class="si-label" style="color:var(--brass-deep);">— Orientation closes —</div>
+    <h2 class="si-title" style="color:var(--ink);font-size:clamp(28px,3.5vw,38px);">The reader-funded <em style="color:var(--steel);">research boutique.</em></h2>
+    <p class="si-desc" style="color:var(--ink-soft);font-size:16px;">No issuer pays for coverage. No platform pays for placement. The editor is independent, the readers fund the work, and the dispatches stay free at the entrance and behind the gate for members. This is not a prediction — structural assessment.</p>
+  </div>
+</main>
+
+<footer class="page-footer" style="background:#D5D2CA;color:#2E3036;border-top-color:#9A9A95;">
+  <div class="pf-marker" style="color:#9A9A95;">— Welcome mat closes —</div>
+  <div class="pf-attr">Outside the sixteen rooms. The orientation. Five minutes.</div>
+  <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="charter.html">Charter</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="credits.html">Credits</a></div>
+</footer>
+</body>
+</html>
