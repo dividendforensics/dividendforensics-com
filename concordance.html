@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; }
@@ -48,7 +49,7 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 @keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 @keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
 
-.main-body { max-width: 1100px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
+.main-body { max-width: 1240px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
 .section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
 .si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; }
 .si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; }
@@ -56,32 +57,6 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 .si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 1; margin-bottom: 24px; letter-spacing: -0.015em; }
 .si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; }
 .si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; }
-
-/* Alphabet jump bar */
-.alphabet-jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 48px auto 64px; padding: 18px 24px; background: var(--paper-soft); border-top: 1px solid var(--brass); border-bottom: 1px solid var(--brass); max-width: 880px; }
-.aj-link { font-family: "JetBrains Mono", monospace; font-size: 14px; letter-spacing: 0.18em; padding: 8px 14px; background: var(--paper-warm); color: var(--ink); text-decoration: none; border: 1px solid var(--concrete); transition: 0.25s; min-width: 40px; text-align: center; }
-.aj-link:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); transform: translateY(-2px); }
-
-/* Letter section */
-.letter-section { margin-bottom: clamp(48px,6vw,72px); }
-.letter-label { display: flex; align-items: baseline; gap: 24px; margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px solid var(--concrete-deep); }
-.ll-glyph { font-family: "Fraunces", serif; font-size: clamp(56px,7vw,88px); line-height: 1; font-weight: 350; color: var(--brass-deep); font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; }
-.ll-tag { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.28em; color: var(--brass-deep); text-transform: uppercase; }
-
-/* Reference card */
-.ref-card { display: grid; grid-template-columns: 90px 1fr 130px; gap: clamp(16px,2vw,28px); padding: 22px 24px; background: var(--paper-soft); border-left: 3px solid var(--steel); margin-bottom: 14px; align-items: start; transition: 0.25s; }
-.ref-card:hover { background: var(--paper-warm); border-left-color: var(--ink); transform: translateX(3px); }
-@media (max-width: 720px) { .ref-card { grid-template-columns: 1fr; gap: 12px; } }
-.rc-code { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.18em; color: var(--brass-deep); text-transform: uppercase; padding-top: 4px; }
-.rc-body .rc-term { font-family: "Fraunces", serif; font-size: 22px; font-weight: 460; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
-.rc-body .rc-term .tm { font-family: "JetBrains Mono", monospace; font-size: 10px; vertical-align: top; padding-left: 1px; }
-.rc-body .rc-defn { font-family: "Newsreader", serif; font-size: 15.5px; line-height: 1.6; color: var(--ink-soft); }
-.rc-ref { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--ink-dim); text-align: right; text-transform: uppercase; padding-top: 6px; line-height: 1.7; }
-@media (max-width: 720px) { .rc-ref { text-align: left; padding-top: 0; } }
-
-/* Concrete arch band */
-.concrete-arch-band { position: relative; height: 220px; margin-top: -180px; z-index: 5; display: flex; justify-content: center; align-items: flex-start; pointer-events: none; padding-top: 20px; }
-.concrete-arch-band svg { width: min(1100px, 94vw); height: 200px; }
 
 .page-footer { padding: 56px 24px; text-align: center; border-top: 4px double currentColor; margin-top: clamp(60px,8vw,96px); }
 .pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; }
@@ -96,17 +71,78 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
   .ph-title { font-size: clamp(38px,11vw,60px); }
 }
 
+/* ============================================
+   CUYPERS LIBRARY palette · Rijksmuseum Amsterdam
+   brick-red painted walls + gold polychromed cast-iron colonettes + iron spiral
+   ============================================ */
 :root {
-  --paper: #E5E2DC; --paper-soft: #EFECE4; --paper-warm: #D5D2CA; --paper-deep: #C4C2BA;
-  --ink: #1F2026; --ink-soft: #2E3036; --ink-dim: #5A5C62;
-  --brass: #9A9A95; --brass-deep: #6C6E68; --glow: #C0BFB8;
-  --concrete: #A8A8A4; --concrete-deep: #6E6E6A; --sage: #889E83; --steel: #4A4D52;
+  --paper: #ECE3D2; --paper-soft: #F2EAD8; --paper-warm: #DECDB0; --paper-deep: #C5B190;
+  --ink: #2A1A0F; --ink-soft: #3E2E20; --ink-dim: #5C4530;
+  --brass: #8B6F4F; --brass-deep: #5C4530; --glow: #DEC9AC;
+  --brick: #8B3A2C; --brick-deep: #5C2418; --brick-light: #B05745;
+  --gold: #C9A14F; --gold-deep: #9A7838; --gold-light: #DEC180;
 }
 body { background: var(--paper); color: var(--ink); background-image:
-  radial-gradient(ellipse at top, rgba(168,168,164,0.10), transparent 50%),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  radial-gradient(ellipse at top, rgba(139,58,44,0.18), transparent 55%),
+  radial-gradient(ellipse at bottom, rgba(201,161,79,0.14), transparent 55%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.ph-eyebrow::before { background: var(--brass); }
+.ph-eyebrow::before { background: var(--gold); }
+
+/* Colonette band — Cuypers's gold cast-iron columns echo */
+.colonette-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
+.colonette-band svg { width: min(900px, 92vw); height: 180px; }
+
+/* Index list — alternating brick/gold cards */
+.index-list { max-width: 1080px; margin: 0 auto; background: var(--paper-soft); border-top: 2px solid var(--brick); border-bottom: 2px solid var(--gold); padding: 0; position: relative; }
+
+/* Alphabet jump bar (brick + gold gradient) */
+.alphabet-jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 48px auto 0; padding: 22px 24px; background: linear-gradient(90deg, rgba(139,58,44,0.12) 0%, rgba(201,161,79,0.18) 50%, rgba(139,58,44,0.12) 100%); border-top: 2px solid var(--brick); border-bottom: 2px solid var(--gold); max-width: 1080px; }
+.aj-link { font-family: "JetBrains Mono", monospace; font-size: 14px; letter-spacing: 0.18em; padding: 10px 16px; background: var(--paper-warm); color: var(--ink); text-decoration: none; border: 1px solid var(--brass); transition: 0.25s; min-width: 44px; text-align: center; font-weight: 500; }
+.aj-link:hover { background: var(--brick); color: var(--paper-soft); border-color: var(--brick-deep); transform: translateY(-2px); }
+
+/* Letter section */
+.letter-section { padding: 36px 0 20px; border-bottom: 1px solid var(--paper-deep); }
+.letter-section:last-of-type { border-bottom: none; }
+.letter-label { display: flex; align-items: center; gap: 24px; margin: 0 32px 24px; padding-bottom: 14px; border-bottom: 2px solid var(--brick); }
+.ll-glyph { font-family: "Fraunces", serif; font-size: clamp(64px,8vw,96px); line-height: 1; font-weight: 350; color: var(--brick); font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; }
+.letter-section:nth-of-type(even) .ll-glyph { color: var(--gold-deep); }
+.letter-section:nth-of-type(even) .letter-label { border-bottom-color: var(--gold-deep); }
+.ll-tag { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.28em; color: var(--brass-deep); text-transform: uppercase; }
+
+/* Reference entry — alternating brick/gold left bars, like errata's ::before */
+.ref-entry { padding: 22px 32px 22px 48px; position: relative; border-bottom: 1px solid var(--paper-deep); transition: 0.25s; }
+.ref-entry:last-child { border-bottom: none; }
+.ref-entry::before { content: ""; position: absolute; left: 0; top: 50%; width: 6px; height: 70%; background: var(--brick); transform: translateY(-50%); }
+.ref-entry:nth-child(even of .ref-entry)::before { background: var(--gold); }
+.letter-section:nth-of-type(even) .ref-entry::before { background: var(--gold); }
+.letter-section:nth-of-type(even) .ref-entry:nth-child(even of .ref-entry)::before { background: var(--brick); }
+.ref-entry:hover { background: linear-gradient(90deg, rgba(139,58,44,0.06) 0%, transparent 100%); }
+.letter-section:nth-of-type(even) .ref-entry:hover { background: linear-gradient(90deg, rgba(201,161,79,0.10) 0%, transparent 100%); }
+
+.re-grid { display: grid; grid-template-columns: 80px 1fr 130px; gap: clamp(16px,2vw,28px); align-items: start; }
+@media (max-width: 720px) { .re-grid { grid-template-columns: 1fr; gap: 8px; } }
+.re-code { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.2em; color: var(--brick-deep); text-transform: uppercase; padding-top: 4px; font-weight: 500; }
+.letter-section:nth-of-type(even) .re-code { color: var(--gold-deep); }
+.re-body { }
+.re-term { font-family: "Fraunces", serif; font-size: 23px; font-weight: 460; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
+.re-term .tm { font-family: "JetBrains Mono", monospace; font-size: 10px; vertical-align: top; padding-left: 1px; color: var(--brick); }
+.letter-section:nth-of-type(even) .re-term .tm { color: var(--gold-deep); }
+.re-defn { font-family: "Newsreader", serif; font-size: 15.5px; line-height: 1.6; color: var(--ink-soft); }
+.re-ref { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--ink-dim); text-align: right; text-transform: uppercase; line-height: 1.7; padding-top: 6px; }
+@media (max-width: 720px) { .re-ref { text-align: left; padding-top: 0; } }
+
+/* Bottom decorative band — Cuypers's iron lattice pattern */
+.lattice-band { margin-top: 80px; height: 60px; background:
+  repeating-linear-gradient(45deg, var(--brick) 0px, var(--brick) 2px, transparent 2px, transparent 18px),
+  repeating-linear-gradient(-45deg, var(--gold-deep) 0px, var(--gold-deep) 2px, transparent 2px, transparent 18px),
+  var(--paper-warm);
+  background-size: 18px 18px;
+  border-top: 2px solid var(--brick);
+  border-bottom: 2px solid var(--gold-deep);
+  opacity: 0.55;
+}
+
 </style>
 </head>
 <body>
@@ -202,71 +238,102 @@ body.dfb-menu-open { overflow: hidden; }
 <!-- HERO · Cuypers Library · Rijksmuseum Amsterdam (Pierre Cuypers · 1885) -->
 <section class="photo-hero" aria-label="Cuypers Library · Rijksmuseum, Amsterdam (Pierre Cuypers · 1885)">
   <div class="ph-photo" role="img" aria-label="Cuypers Library · Rijksmuseum, Amsterdam (Pierre Cuypers · 1885)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Bibliotheek_van_het_Rijksmuseum.jpg?width=2560');"></div>
-  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#0E0F1266 70%,#0E0F12C0 100%),linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.1) 60%,#0E0F12C8 100%);"></div>
+  <!-- Warm brick-red + gold overlay (NOT generic black) -->
+  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#2A100866 70%,#2A1008C8 100%),linear-gradient(to bottom,rgba(40,15,12,0.35) 0%,rgba(40,15,12,0.05) 30%,rgba(40,15,12,0.12) 60%,#2A1008CC 100%);"></div>
   <div class="ph-grain"></div>
-  <aside class="brass-plate" style="background:rgba(28,30,36,0.72);border:1px solid #9A9A95;color:#EDEAE2;">
-    <span class="bp-corner-tl" style="border-color:#9A9A95;"></span>
-    <span class="bp-corner-tr" style="border-color:#9A9A95;"></span>
-    <span class="bp-corner-bl" style="border-color:#9A9A95;"></span>
-    <span class="bp-corner-br" style="border-color:#9A9A95;"></span>
-    <span style="color:#9A9A95;font-weight:600;">The Concordance</span>
-    <span class="bp-issue" style="color:#C0BFB8;">Index of Terms</span>
-    <span class="bp-divider" style="background:#6C6E68;"></span>
+  <aside class="brass-plate" style="background:rgba(58, 28, 22, 0.66);border:1px solid #C9A14F;color:#F2EAD8;">
+    <span class="bp-corner-tl" style="border-color:#C9A14F;"></span>
+    <span class="bp-corner-tr" style="border-color:#C9A14F;"></span>
+    <span class="bp-corner-bl" style="border-color:#C9A14F;"></span>
+    <span class="bp-corner-br" style="border-color:#C9A14F;"></span>
+    <span style="color:#C9A14F;font-weight:600;">The Concordance</span>
+    <span class="bp-issue" style="color:#DEC180;">Index of Terms</span>
+    <span class="bp-divider" style="background:#8B3A2C;"></span>
     <span class="bp-line">Cross-Reference</span>
-    <span class="bp-line" style="color:#EDEAE2;">Living Document</span>
-    <span class="bp-line" style="opacity:0.65;">Last revised · MMXXVI</span>
+    <span class="bp-line" style="color:#F2EAD8;">Living Document</span>
+    <span class="bp-line" style="opacity:0.7;">Last revised · MMXXVI</span>
   </aside>
-  <div class="ph-text" style="color:#EDEAE2;">
-    <div class="ph-eyebrow" style="color:#C0BFB8;">Index · Frameworks · Tickers · Cross-Reference</div>
-    <h1 class="ph-title">Every term.<br><em style="color:#C0BFB8;border-top-color:#9A9A95;">Every reading.</em></h1>
-    <p class="ph-subtitle" style="color:#EDEAE2DD;">If you remember a term, a framework, or a ticker but not the dispatch number — the concordance is the place to search. Each entry links back to its source reading.</p>
+  <div class="ph-text" style="color:#F2EAD8;">
+    <div class="ph-eyebrow" style="color:#DEC180;">Index · Frameworks · Tickers · Cross-Reference</div>
+    <h1 class="ph-title">Every term.<br><em style="color:#DEC180;border-top-color:#C9A14F;">Every reading.</em></h1>
+    <p class="ph-subtitle" style="color:#F2EAD8DD;">If you remember a term, a framework, or a ticker but not the dispatch number — the concordance is the place to search. Each entry links back to its source reading.</p>
   </div>
-  <div class="scroll-prompt" style="color:#E5E2DC;">
+  <div class="scroll-prompt" style="color:#ECE3D2;">
     <span class="scroll-label">Enter the index</span>
-    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#C0BFB8);"></span>
+    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#C9A14F);"></span>
   </div>
-  <div class="photo-attr" style="color:#EDEAE288;">
+  <div class="photo-attr" style="color:#F2EAD888;">
     <a href="https://commons.wikimedia.org/wiki/File:Bibliotheek_van_het_Rijksmuseum.jpg" target="_blank" rel="noopener">Cuypers Library · Rijksmuseum, Amsterdam · Pierre Cuypers · 1885 · Wikimedia Commons · CC BY-SA</a>
   </div>
 </section>
 
-<div class="concrete-arch-band">
-  <svg viewBox="0 0 1100 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<!-- Colonette band — Cuypers's iron spiral staircase + gold cast-iron columns -->
+<div class="colonette-band">
+  <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <linearGradient id="concreteGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#A8A8A4" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#E5E2DC" stop-opacity="0"/>
+      <linearGradient id="brickGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#8B3A2C" stop-opacity="0.85"/>
+        <stop offset="100%" stop-color="#ECE3D2" stop-opacity="0"/>
       </linearGradient>
-      <pattern id="concreteTexture" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
-        <circle cx="2" cy="2" r="0.4" fill="#6E6E6A" opacity="0.2"/>
-      </pattern>
+      <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#C9A14F" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#ECE3D2" stop-opacity="0"/>
+      </linearGradient>
     </defs>
-    <g fill="none" stroke="#6E6E6A" stroke-width="1.5">
-      <path d="M 50 200 Q 50 100 150 100 L 270 100 Q 370 100 370 200" opacity="0.85"/>
-      <path d="M 130 200 Q 130 70 270 70 L 430 70 Q 570 70 570 200" opacity="0.85"/>
-      <path d="M 270 200 Q 270 40 470 40 L 630 40 Q 830 40 830 200" opacity="0.85"/>
-      <path d="M 460 200 Q 460 60 620 60 L 800 60 Q 950 60 950 200" opacity="0.85"/>
-      <path d="M 620 200 Q 620 90 740 90 L 880 90 Q 1020 90 1020 200" opacity="0.6"/>
-      <path d="M 780 200 Q 780 120 860 120 L 980 120 Q 1080 120 1080 200" opacity="0.45"/>
+    <!-- Five cast-iron colonettes (Cuypers's polychrome columns) -->
+    <g>
+      <rect x="80" y="30" width="14" height="150" fill="url(#goldGrad)" stroke="#9A7838" stroke-width="0.8"/>
+      <rect x="240" y="30" width="14" height="150" fill="url(#brickGrad)" stroke="#5C2418" stroke-width="0.8"/>
+      <rect x="440" y="18" width="18" height="162" fill="url(#goldGrad)" stroke="#9A7838" stroke-width="1"/>
+      <rect x="640" y="30" width="14" height="150" fill="url(#brickGrad)" stroke="#5C2418" stroke-width="0.8"/>
+      <rect x="800" y="30" width="14" height="150" fill="url(#goldGrad)" stroke="#9A7838" stroke-width="0.8"/>
     </g>
-    <g fill="url(#concreteGrad)" opacity="0.5">
-      <path d="M 50 200 Q 50 100 150 100 L 270 100 Q 370 100 370 200 Z"/>
-      <path d="M 270 200 Q 270 40 470 40 L 630 40 Q 830 40 830 200 Z"/>
-      <path d="M 620 200 Q 620 90 740 90 L 880 90 Q 1020 90 1020 200 Z"/>
+    <!-- Capitals (decorative tops) -->
+    <g fill="#9A7838" opacity="0.85">
+      <ellipse cx="87" cy="28" rx="14" ry="5"/>
+      <ellipse cx="247" cy="28" rx="14" ry="5"/>
+      <ellipse cx="449" cy="16" rx="18" ry="6"/>
+      <ellipse cx="647" cy="28" rx="14" ry="5"/>
+      <ellipse cx="807" cy="28" rx="14" ry="5"/>
     </g>
-    <rect x="0" y="0" width="1100" height="200" fill="url(#concreteTexture)" opacity="0.4"/>
-    <text x="550" y="190" font-family="JetBrains Mono, monospace" font-size="9" fill="#6C6E68" text-anchor="middle" letter-spacing="3">— THE CROSS-REFERENCE · ANNO MMXXVI —</text>
+    <!-- Bases (decorative bottoms) -->
+    <g fill="#5C4530" opacity="0.75">
+      <rect x="74" y="175" width="26" height="5"/>
+      <rect x="234" y="175" width="26" height="5"/>
+      <rect x="434" y="175" width="30" height="5"/>
+      <rect x="634" y="175" width="26" height="5"/>
+      <rect x="794" y="175" width="26" height="5"/>
+    </g>
+    <!-- Iron spiral staircase silhouette (center) -->
+    <g stroke="#5C2418" stroke-width="1.2" fill="none" opacity="0.7">
+      <ellipse cx="449" cy="120" rx="36" ry="10"/>
+      <ellipse cx="449" cy="105" rx="32" ry="8"/>
+      <ellipse cx="449" cy="92" rx="28" ry="6"/>
+      <ellipse cx="449" cy="82" rx="24" ry="5"/>
+      <line x1="425" y1="82" x2="425" y2="130" stroke-width="1"/>
+      <line x1="473" y1="82" x2="473" y2="130" stroke-width="1"/>
+    </g>
+    <!-- Central oval medallion -->
+    <ellipse cx="449" cy="60" rx="58" ry="22" fill="#F2EAD8" stroke="#8B3A2C" stroke-width="1.2" opacity="0.9"/>
+    <text x="449" y="66" font-family="Fraunces, serif" font-style="italic" font-size="16" fill="#5C2418" text-anchor="middle">Concordance</text>
+    <!-- Polychrome scrollwork at top -->
+    <g stroke="#C9A14F" stroke-width="0.8" fill="none" opacity="0.6">
+      <path d="M 150 50 Q 180 35 210 50"/>
+      <path d="M 690 50 Q 720 35 750 50"/>
+      <path d="M 280 40 Q 320 25 360 40"/>
+      <path d="M 540 40 Q 580 25 620 40"/>
+    </g>
   </svg>
 </div>
 
 <main class="main-body">
   <div class="section-intro">
-    <div class="si-label" style="color:var(--brass-deep);">— Cross-Reference · A through Z —</div>
-    <h2 class="si-title" style="color:var(--ink);">If you remember the term, <em style="color:var(--steel);">the room finds the reading.</em></h2>
+    <div class="si-label" style="color:var(--brick-deep);">— Cross-Reference · A through Z —</div>
+    <h2 class="si-title" style="color:var(--ink);">If you remember the term, <em style="color:var(--gold-deep);">the room finds the reading.</em></h2>
     <p class="si-desc" style="color:var(--ink-soft);">Frameworks, named methods, recurring metaphors, and tickers — indexed alphabetically with one-line definitions and a pointer to the source dispatch. Living document.</p>
   </div>
 
-  <!-- Alphabet jump -->
+  <!-- Alphabet jump bar (brick + gold) -->
   <nav class="alphabet-jump" aria-label="Alphabet jump">
     <a class="aj-link" href="#a">A</a>
     <a class="aj-link" href="#b">B</a>
@@ -277,143 +344,167 @@ body.dfb-menu-open { overflow: hidden; }
     <a class="aj-link" href="#y">Y</a>
   </nav>
 
-  <!-- A -->
-  <section class="letter-section" id="a">
-    <div class="letter-label">
-      <div class="ll-glyph">A</div>
-      <div class="ll-tag">— Two entries —</div>
-    </div>
-    <div class="ref-card">
-      <div class="rc-code">A · 01</div>
-      <div class="rc-body">
-        <div class="rc-term">AFFO Coverage</div>
-        <div class="rc-defn">Adjusted funds from operations divided by distribution; the "Coverage today" clock for equity REITs.</div>
+  <!-- Index list with alternating brick/gold letter sections -->
+  <div class="index-list" role="region" aria-label="Concordance entries">
+    <!-- A · brick letter -->
+    <section class="letter-section" id="a">
+      <div class="letter-label">
+        <div class="ll-glyph">A</div>
+        <div class="ll-tag">— Two entries —</div>
       </div>
-      <div class="rc-ref">Disp. 062<br>Disp. 068</div>
-    </div>
-    <div class="ref-card">
-      <div class="rc-code">A · 02</div>
-      <div class="rc-body">
-        <div class="rc-term">ARCC · Non-Accruals</div>
-        <div class="rc-defn">Loans on non-accrual status as % of fair value; structural buffer indicator for BDCs.</div>
-      </div>
-      <div class="rc-ref">Disp. 049<br>Disp. 068</div>
-    </div>
-  </section>
+      <article class="ref-entry">
+        <div class="re-grid">
+          <div class="re-code">A · 01</div>
+          <div class="re-body">
+            <div class="re-term">AFFO Coverage</div>
+            <div class="re-defn">Adjusted funds from operations divided by distribution; the "Coverage today" clock for equity REITs.</div>
+          </div>
+          <div class="re-ref">Disp. 062<br>Disp. 068</div>
+        </div>
+      </article>
+      <article class="ref-entry">
+        <div class="re-grid">
+          <div class="re-code">A · 02</div>
+          <div class="re-body">
+            <div class="re-term">ARCC · Non-Accruals</div>
+            <div class="re-defn">Loans on non-accrual status as % of fair value; structural buffer indicator for BDCs.</div>
+          </div>
+          <div class="re-ref">Disp. 049<br>Disp. 068</div>
+        </div>
+      </article>
+    </section>
 
-  <!-- B -->
-  <section class="letter-section" id="b">
-    <div class="letter-label">
-      <div class="ll-glyph">B</div>
-      <div class="ll-tag">— Two entries · Frameworks —</div>
-    </div>
-    <div class="ref-card">
-      <div class="rc-code">B · 01</div>
-      <div class="rc-body">
-        <div class="rc-term">BBB- Cliff<span class="tm">™</span></div>
-        <div class="rc-defn">The non-linear drop in market access when an issuer falls below investment-grade. Lens, not metric.</div>
+    <!-- B · gold letter -->
+    <section class="letter-section" id="b">
+      <div class="letter-label">
+        <div class="ll-glyph">B</div>
+        <div class="ll-tag">— Two entries · Frameworks —</div>
       </div>
-      <div class="rc-ref">Disp. 066<br>Framework</div>
-    </div>
-    <div class="ref-card">
-      <div class="rc-code">B · 02</div>
-      <div class="rc-body">
-        <div class="rc-term">Buffer Half-Life<span class="tm">™</span></div>
-        <div class="rc-defn">How long the cushion can pay the dividend if EBITDA fell here, today. The Bureau's foundational method.</div>
-      </div>
-      <div class="rc-ref">Disp. 022<br>Framework</div>
-    </div>
-  </section>
+      <article class="ref-entry">
+        <div class="re-grid">
+          <div class="re-code">B · 01</div>
+          <div class="re-body">
+            <div class="re-term">BBB- Cliff<span class="tm">™</span></div>
+            <div class="re-defn">The non-linear drop in market access when an issuer falls below investment-grade. Lens, not metric.</div>
+          </div>
+          <div class="re-ref">Disp. 066<br>Framework</div>
+        </div>
+      </article>
+      <article class="ref-entry">
+        <div class="re-grid">
+          <div class="re-code">B · 02</div>
+          <div class="re-body">
+            <div class="re-term">Buffer Half-Life<span class="tm">™</span></div>
+            <div class="re-defn">How long the cushion can pay the dividend if EBITDA fell here, today. The Bureau's foundational method.</div>
+          </div>
+          <div class="re-ref">Disp. 022<br>Framework</div>
+        </div>
+      </article>
+    </section>
 
-  <!-- C -->
-  <section class="letter-section" id="c">
-    <div class="letter-label">
-      <div class="ll-glyph">C</div>
-      <div class="ll-tag">— One entry —</div>
-    </div>
-    <div class="ref-card">
-      <div class="rc-code">C · 01</div>
-      <div class="rc-body">
-        <div class="rc-term">Cov-Call · Premium Share</div>
-        <div class="rc-defn">Share of distribution derived from option premium versus dividend income; volatility-dependent.</div>
+    <!-- C · brick -->
+    <section class="letter-section" id="c">
+      <div class="letter-label">
+        <div class="ll-glyph">C</div>
+        <div class="ll-tag">— One entry —</div>
       </div>
-      <div class="rc-ref">Disp. 045<br>Method</div>
-    </div>
-  </section>
+      <article class="ref-entry">
+        <div class="re-grid">
+          <div class="re-code">C · 01</div>
+          <div class="re-body">
+            <div class="re-term">Cov-Call · Premium Share</div>
+            <div class="re-defn">Share of distribution derived from option premium versus dividend income; volatility-dependent.</div>
+          </div>
+          <div class="re-ref">Disp. 045<br>Method</div>
+        </div>
+      </article>
+    </section>
 
-  <!-- M -->
-  <section class="letter-section" id="m">
-    <div class="letter-label">
-      <div class="ll-glyph">M</div>
-      <div class="ll-tag">— One entry —</div>
-    </div>
-    <div class="ref-card">
-      <div class="rc-code">M · 01</div>
-      <div class="rc-body">
-        <div class="rc-term">Market Access · the third clock</div>
-        <div class="rc-defn">Whether the issuer can refinance at acceptable terms when the maturity arrives. The "when tomorrow arrives" clock.</div>
+    <!-- M · gold -->
+    <section class="letter-section" id="m">
+      <div class="letter-label">
+        <div class="ll-glyph">M</div>
+        <div class="ll-tag">— One entry —</div>
       </div>
-      <div class="rc-ref">Disp. 028<br>Three Clocks<span style="font-family:'JetBrains Mono',monospace;font-size:8px;vertical-align:top;">™</span></div>
-    </div>
-  </section>
+      <article class="ref-entry">
+        <div class="re-grid">
+          <div class="re-code">M · 01</div>
+          <div class="re-body">
+            <div class="re-term">Market Access · the third clock</div>
+            <div class="re-defn">Whether the issuer can refinance at acceptable terms when the maturity arrives. The "when tomorrow arrives" clock.</div>
+          </div>
+          <div class="re-ref">Disp. 028<br>Three Clocks<span style="font-family:'JetBrains Mono',monospace;font-size:8px;vertical-align:top;">™</span></div>
+        </div>
+      </article>
+    </section>
 
-  <!-- R -->
-  <section class="letter-section" id="r">
-    <div class="letter-label">
-      <div class="ll-glyph">R</div>
-      <div class="ll-tag">— One entry —</div>
-    </div>
-    <div class="ref-card">
-      <div class="rc-code">R · 01</div>
-      <div class="rc-body">
-        <div class="rc-term">Refinancing Curve</div>
-        <div class="rc-defn">The shape of debt maturities mapped against credit spreads; structural picture of the refinancing risk.</div>
+    <!-- R · brick -->
+    <section class="letter-section" id="r">
+      <div class="letter-label">
+        <div class="ll-glyph">R</div>
+        <div class="ll-tag">— One entry —</div>
       </div>
-      <div class="rc-ref">Disp. 019<br>Disp. 067</div>
-    </div>
-  </section>
+      <article class="ref-entry">
+        <div class="re-grid">
+          <div class="re-code">R · 01</div>
+          <div class="re-body">
+            <div class="re-term">Refinancing Curve</div>
+            <div class="re-defn">The shape of debt maturities mapped against credit spreads; structural picture of the refinancing risk.</div>
+          </div>
+          <div class="re-ref">Disp. 019<br>Disp. 067</div>
+        </div>
+      </article>
+    </section>
 
-  <!-- T -->
-  <section class="letter-section" id="t">
-    <div class="letter-label">
-      <div class="ll-glyph">T</div>
-      <div class="ll-tag">— One entry · Framework —</div>
-    </div>
-    <div class="ref-card">
-      <div class="rc-code">T · 01</div>
-      <div class="rc-body">
-        <div class="rc-term">Three Clocks<span class="tm">™</span></div>
-        <div class="rc-defn">Coverage today · Maturity tomorrow · Market Access when tomorrow arrives. Layered time horizons.</div>
+    <!-- T · gold -->
+    <section class="letter-section" id="t">
+      <div class="letter-label">
+        <div class="ll-glyph">T</div>
+        <div class="ll-tag">— One entry · Framework —</div>
       </div>
-      <div class="rc-ref">Disp. 028<br>Framework</div>
-    </div>
-  </section>
+      <article class="ref-entry">
+        <div class="re-grid">
+          <div class="re-code">T · 01</div>
+          <div class="re-body">
+            <div class="re-term">Three Clocks<span class="tm">™</span></div>
+            <div class="re-defn">Coverage today · Maturity tomorrow · Market Access when tomorrow arrives. Layered time horizons.</div>
+          </div>
+          <div class="re-ref">Disp. 028<br>Framework</div>
+        </div>
+      </article>
+    </section>
 
-  <!-- Y -->
-  <section class="letter-section" id="y">
-    <div class="letter-label">
-      <div class="ll-glyph">Y</div>
-      <div class="ll-tag">— One entry —</div>
-    </div>
-    <div class="ref-card">
-      <div class="rc-code">Y · 01</div>
-      <div class="rc-body">
-        <div class="rc-term">Yield · the four sources</div>
-        <div class="rc-defn">AFFO · NII · option premium · return of capital. The Bureau separates them; the screen does not.</div>
+    <!-- Y · brick -->
+    <section class="letter-section" id="y">
+      <div class="letter-label">
+        <div class="ll-glyph">Y</div>
+        <div class="ll-tag">— One entry —</div>
       </div>
-      <div class="rc-ref">Disp. 045<br>Charter II</div>
-    </div>
-  </section>
+      <article class="ref-entry">
+        <div class="re-grid">
+          <div class="re-code">Y · 01</div>
+          <div class="re-body">
+            <div class="re-term">Yield · the four sources</div>
+            <div class="re-defn">AFFO · NII · option premium · return of capital. The Bureau separates them; the screen does not.</div>
+          </div>
+          <div class="re-ref">Disp. 045<br>Charter II</div>
+        </div>
+      </article>
+    </section>
+  </div>
 
-  <div class="section-intro" style="margin-top:clamp(72px,9vw,112px);">
-    <div class="si-label" style="color:var(--brass-deep);">— Concordance · Living document —</div>
-    <h2 class="si-title" style="color:var(--ink);font-size:clamp(28px,3.5vw,38px);">New terms enter <em style="color:var(--steel);">as dispatches are filed.</em></h2>
+  <!-- Bottom decorative band — Cuypers's iron lattice -->
+  <div class="lattice-band" aria-hidden="true"></div>
+
+  <div class="section-intro" style="margin-top:clamp(56px,7vw,80px);">
+    <div class="si-label" style="color:var(--brick-deep);">— Concordance · Living document —</div>
+    <h2 class="si-title" style="color:var(--ink);font-size:clamp(28px,3.5vw,38px);">New terms enter <em style="color:var(--gold-deep);">as dispatches are filed.</em></h2>
     <p class="si-desc" style="color:var(--ink-soft);font-size:16px;">The room remains open. Each new dispatch may introduce a term to the index, or extend an existing one with a new cross-reference. Filed under doctrine — not advice.</p>
   </div>
 </main>
 
-<footer class="page-footer" style="background:#D5D2CA;color:#2E3036;border-top-color:#9A9A95;">
-  <div class="pf-marker" style="color:#9A9A95;">— Concordance · Cross-Reference —</div>
+<footer class="page-footer" style="background:#DECDB0;color:#3E2E20;border-top-color:#8B3A2C;">
+  <div class="pf-marker" style="color:#8B3A2C;">— Concordance · Cross-Reference —</div>
   <div class="pf-attr">Living document. New entries appear as dispatches are filed.</div>
   <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="archive.html">Archive</a> · <a href="charter.html">Charter</a> · <a href="credits.html">Credits</a></div>
 </footer>
