@@ -5770,45 +5770,346 @@ body.dfb-menu-open { overflow: hidden; }
 }
 </style>
 
-<section class="photo-hero-block" aria-label="The Bureau · Trinity Long Room hero">
-  <div class="ph-photo" role="img" aria-label="Trinity College Long Room, Dublin"></div>
-  <div class="ph-vignette" aria-hidden="true"></div>
-  <div class="ph-grain" aria-hidden="true"></div>
+<!-- ====== DFB CAROUSEL HERO · self-contained · 14 rooms · index excluded · credits excluded ====== -->
+<style id="dfb-carousel-styles">
+.dfb-carousel-hero { position: relative; width: 100%; height: 100vh; min-height: 720px; overflow: hidden; background: #1A0F08; font-family: "Newsreader", serif; box-sizing: border-box; }
+.dfb-carousel-hero *, .dfb-carousel-hero *::before, .dfb-carousel-hero *::after { box-sizing: border-box; }
+.dfb-carousel-hero .dfb-track { position: absolute; inset: 0; }
+.dfb-carousel-hero .dfb-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none; }
+.dfb-carousel-hero .dfb-slide.active { opacity: 1; pointer-events: auto; }
+.dfb-carousel-hero .dfb-photo { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; }
+.dfb-carousel-hero .dfb-slide.active .dfb-photo { animation: dfb-kenburns 16s cubic-bezier(0.65,0,0.35,1) infinite alternate; }
+@keyframes dfb-kenburns { 0%{transform:scale(1.00) translate(0,0);} 100%{transform:scale(1.12) translate(-1.5%,-2%);} }
+.dfb-carousel-hero .dfb-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, transparent 0%, rgba(26,15,8,0.4) 70%, rgba(26,15,8,0.85) 100%), linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.15) 60%, rgba(26,15,8,0.85) 100%); pointer-events: none; }
+.dfb-carousel-hero .dfb-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.dfb-carousel-hero .dfb-link { position: absolute; inset: 0; text-decoration: none; color: inherit; display: block; cursor: pointer; z-index: 3; }
+.dfb-carousel-hero .dfb-text { position: absolute; left: clamp(28px,6vw,96px); bottom: clamp(140px,20vh,200px); max-width: min(720px,72vw); }
+.dfb-carousel-hero .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: #DEC180; margin-bottom: 24px; padding-left: 28px; position: relative; }
+.dfb-carousel-hero .dfb-roman::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; background: #C9A14F; }
+.dfb-carousel-hero .dfb-title { font-family: "Fraunces", serif; font-size: clamp(46px,7vw,92px); line-height: 0.96; letter-spacing: -0.02em; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin: 0 0 28px; color: #F2E8D2; text-shadow: 0 2px 32px rgba(0,0,0,0.6); }
+.dfb-carousel-hero .dfb-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; display: block; padding-top: 14px; margin-top: 10px; max-width: 560px; border-top: 1px solid #C9A14F; color: #DEC180; }
+.dfb-carousel-hero .dfb-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 560px; color: #ECE0C8; text-shadow: 0 1px 12px rgba(0,0,0,0.5); margin-bottom: 28px; }
+.dfb-carousel-hero .dfb-cta { display: inline-flex; align-items: center; gap: 12px; padding: 14px 26px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #F2E8D2; background: rgba(107, 58, 31, 0.55); border: 1px solid #C9A14F; backdrop-filter: blur(4px); transition: 0.25s; }
+.dfb-carousel-hero .dfb-link:hover .dfb-cta { background: rgba(201, 161, 79, 0.85); color: #1F1612; }
+.dfb-carousel-hero .dfb-cta-arrow { transition: transform 0.25s; }
+.dfb-carousel-hero .dfb-link:hover .dfb-cta-arrow { transform: translateX(4px); }
+.dfb-carousel-hero .dfb-photo-attr { position: absolute; right: 16px; bottom: 8px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.18em; z-index: 5; text-transform: uppercase; color: rgba(242, 232, 210, 0.6); }
+.dfb-carousel-hero .dfb-photo-attr a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
+.dfb-carousel-hero .dfb-brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; backdrop-filter: blur(6px) saturate(120%); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.5); background: rgba(31, 22, 18, 0.78); border: 1px solid #C9A14F; color: #F2E8D2; animation: dfb-fade-in 1.8s 0.4s both; }
+.dfb-carousel-hero .dfb-bp-corner-tl,.dfb-carousel-hero .dfb-bp-corner-tr,.dfb-carousel-hero .dfb-bp-corner-bl,.dfb-carousel-hero .dfb-bp-corner-br { position: absolute; width: 10px; height: 10px; border-style: solid; border-color: #C9A14F; border-width: 0; }
+.dfb-carousel-hero .dfb-bp-corner-tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+.dfb-carousel-hero .dfb-bp-corner-tr { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
+.dfb-carousel-hero .dfb-bp-corner-bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
+.dfb-carousel-hero .dfb-bp-corner-br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+.dfb-carousel-hero .dfb-brass-plate > span { display: block; }
+.dfb-carousel-hero .dfb-bpf-mark { color: #C9A14F; font-weight: 600; }
+.dfb-carousel-hero .dfb-bpf-issue { color: #DEC180; font-weight: 600; font-size: 13px; letter-spacing: 0.18em; margin: 4px 0; }
+.dfb-carousel-hero .dfb-bpf-divider { background: #4A2614; height: 1px; margin: 8px 0 7px; opacity: 0.7; }
+.dfb-carousel-hero .dfb-bpf-line { font-size: 10.5px; opacity: 0.88; }
+.dfb-carousel-hero .dfb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; background: rgba(31, 22, 18, 0.55); border: 1px solid #C9A14F; color: #F2E8D2; font-family: "JetBrains Mono", monospace; font-size: 18px; cursor: pointer; transition: 0.25s; z-index: 5; backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 0; }
+.dfb-carousel-hero .dfb-arrow:hover { background: rgba(201, 161, 79, 0.85); color: #1F1612; }
+.dfb-carousel-hero .dfb-arrow.prev { left: clamp(16px, 3vw, 32px); }
+.dfb-carousel-hero .dfb-arrow.next { right: clamp(16px, 3vw, 32px); }
+@media (max-width: 720px) { .dfb-carousel-hero .dfb-arrow { width: 40px; height: 40px; font-size: 16px; } }
+.dfb-carousel-hero .dfb-dots { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; gap: 8px; z-index: 5; align-items: center; flex-wrap: wrap; max-width: 80vw; justify-content: center; }
+.dfb-carousel-hero .dfb-dot { width: 8px; height: 8px; background: rgba(242, 232, 210, 0.4); border: 1px solid rgba(201, 161, 79, 0.5); cursor: pointer; transition: 0.25s; padding: 0; }
+.dfb-carousel-hero .dfb-dot.active { width: 28px; background: #C9A14F; border-color: #DEC180; }
+.dfb-carousel-hero .dfb-dot:hover { background: #DEC180; }
+.dfb-carousel-hero .dfb-progress { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: rgba(31, 22, 18, 0.3); z-index: 4; }
+.dfb-carousel-hero .dfb-progress-bar { height: 100%; background: linear-gradient(90deg, #C9A14F, #DEC180); width: 0%; transition: width 0.1s linear; }
+@keyframes dfb-fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+@media (max-width: 720px) {
+  .dfb-carousel-hero { min-height: 580px; }
+  .dfb-carousel-hero .dfb-brass-plate { top: 16px; right: 16px; padding: 12px 16px; font-size: 10px; min-width: 200px; }
+  .dfb-carousel-hero .dfb-text { bottom: 130px; left: 20px; max-width: 86vw; }
+  .dfb-carousel-hero .dfb-title { font-size: clamp(36px,11vw,58px); }
+  .dfb-carousel-hero .dfb-dot.active { width: 20px; }
+}
+</style>
 
-  <div class="ph-brass-plate" role="complementary">
-    <span class="bp-corner-bl"></span><span class="bp-corner-br"></span>
-    <span class="bp-volume">Volume I · Spring MMXXVI</span>
-    <span class="bp-issue">Issue No. 068</span>
-    <span class="bp-divider"></span>
-    <span class="bp-line">From the Desk of</span>
-    <span class="bp-line" style="color:var(--ph-cream);">Jeong-Mo Goo · Editor</span>
-    <span class="bp-line" style="opacity:0.65;">Seoul · Independent</span>
+<section class="dfb-carousel-hero" id="dfbCarousel" aria-label="The Sixteen Rooms · Featured Fourteen">
+  <div class="dfb-progress"><div class="dfb-progress-bar" id="dfbProgressBar"></div></div>
+  <div class="dfb-track" id="dfbCarouselTrack">
+
+    <div class="dfb-slide active" data-slide="0">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Interior_do_Real_Gabinete_Português_de_Leitura_(5580114063).jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="midnight.html" aria-label="Enter Midnight">
+        <div class="dfb-text">
+          <div class="dfb-roman">II · After Hours</div>
+          <h1 class="dfb-title">Off-hours.<em>Open shelf.</em></h1>
+          <p class="dfb-subtitle">The Bureau's after-hours room — informal observations, marginalia, working notes still warm from the desk.</p>
+          <span class="dfb-cta">Enter Midnight <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Interior_do_Real_Gabinete_Português_de_Leitura_(5580114063).jpg" target="_blank" rel="noopener">Real Gabinete Português · Rio de Janeiro · 1887 · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="1">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/George_Peabody_Library_Interior.jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="archive.html" aria-label="Enter Archive">
+        <div class="dfb-text">
+          <div class="dfb-roman">III · Filed Dispatches</div>
+          <h1 class="dfb-title">The filed record,<em>five tiers high.</em></h1>
+          <p class="dfb-subtitle">Every Bureau dispatch is filed here. Filter by sector, framework, or quarter.</p>
+          <span class="dfb-cta">Open the Archive <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:George_Peabody_Library_Interior.jpg" target="_blank" rel="noopener">George Peabody Library · Johns Hopkins · Baltimore · 1878 · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="2">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/The_Library_of_Parliament_(14579981339).jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="charter.html" aria-label="Enter Charter">
+        <div class="dfb-text">
+          <div class="dfb-roman">IV · Founding Doctrine</div>
+          <h1 class="dfb-title">Frameworks.<em>Not forecasts.</em></h1>
+          <p class="dfb-subtitle">The Bureau's founding doctrine — six articles. Diagnostics, not advice. Structural, not surface.</p>
+          <span class="dfb-cta">Read the Charter <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:The_Library_of_Parliament_(14579981339).jpg" target="_blank" rel="noopener">Library of Parliament · Ottawa · Gothic Revival · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="3">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Bibliotheek_van_het_Rijksmuseum.jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="concordance.html" aria-label="Enter Concordance">
+        <div class="dfb-text">
+          <div class="dfb-roman">V · Index of Terms</div>
+          <h1 class="dfb-title">Every term.<em>Every reading.</em></h1>
+          <p class="dfb-subtitle">Frameworks, named methods, recurring metaphors — indexed with cross-references to the source dispatch.</p>
+          <span class="dfb-cta">Open the Concordance <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Bibliotheek_van_het_Rijksmuseum.jpg" target="_blank" rel="noopener">Cuypers Library · Rijksmuseum · Amsterdam · 1885 · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="4">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Kloster_Wiblingen_Bibliothekssaal_01.jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="errata.html" aria-label="Enter Errata">
+        <div class="dfb-text">
+          <div class="dfb-roman">VI · Corrections</div>
+          <h1 class="dfb-title">Honest readings<em>admit corrections.</em></h1>
+          <p class="dfb-subtitle">Where a Bureau dispatch contained an error, the correction is filed alongside the original.</p>
+          <span class="dfb-cta">See the Errata Desk <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Kloster_Wiblingen_Bibliothekssaal_01.jpg" target="_blank" rel="noopener">Wiblingen · Germany · CC BY-SA 4.0</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="5">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Duke_Humfrey%27s_Library_Interior_1,_Bodleian_Library,_Oxford,_UK_-_Diliff.jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="periodicals.html" aria-label="Enter Periodicals">
+        <div class="dfb-text">
+          <div class="dfb-roman">VII · Annex I · Open Shelf</div>
+          <h1 class="dfb-title">Latest dispatches.<em>Open access.</em></h1>
+          <p class="dfb-subtitle">The Bureau's most-visited annex. Latest specimen on display, recent dispatches on the open shelf.</p>
+          <span class="dfb-cta">Enter the Periodicals Room <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Duke_Humfrey%27s_Library_Interior_1,_Bodleian_Library,_Oxford,_UK_-_Diliff.jpg" target="_blank" rel="noopener">Duke Humfrey's Library · Bodleian Oxford · Anglican · CC BY-SA 3.0</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="6">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Cmglee_Cambridge_Wren_Library_University_Library.jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="cabinet.html" aria-label="Enter Cabinet">
+        <div class="dfb-text">
+          <div class="dfb-roman">VIII · Annex II · Curated</div>
+          <h1 class="dfb-title">Specimens,<em>on display.</em></h1>
+          <p class="dfb-subtitle">The Bureau's curated catalog — single-ticker deep dives, sector readings, framework methods.</p>
+          <span class="dfb-cta">Open the Cabinet <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Cmglee_Cambridge_Wren_Library_University_Library.jpg" target="_blank" rel="noopener">Wren Library · Trinity College Cambridge · Christopher Wren · 1676 · Anglican · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="7">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Beinecke_Rare_Book_and_Manuscript_Library_(2).jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="vault.html" aria-label="Enter Vault">
+        <div class="dfb-text">
+          <div class="dfb-roman">IX · Annex III · Restricted</div>
+          <h1 class="dfb-title">Structural Income Desk<em>&trade; · Restricted Wing.</em></h1>
+          <p class="dfb-subtitle">Founding membership — three tiers. Working notes, the watchlist, editor commentary.</p>
+          <span class="dfb-cta">Open the Vault <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Beinecke_Rare_Book_and_Manuscript_Library_(2).jpg" target="_blank" rel="noopener">Beinecke Rare Book Library · Yale · 1963 · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="8">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Bates_Hall_-_Boston_Public_Library.jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="chambers.html" aria-label="Enter Chambers">
+        <div class="dfb-text">
+          <div class="dfb-roman">X · Literary Annex</div>
+          <h1 class="dfb-title">The literary annex,<em>after hours.</em></h1>
+          <p class="dfb-subtitle">The Bureau's chambers — extended readings, doctrinal annexes, and literary explorations of the income discipline.</p>
+          <span class="dfb-cta">Enter the Chambers <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Bates_Hall_-_Boston_Public_Library.jpg" target="_blank" rel="noopener">Bates Hall · Boston Public Library · McKim · 1895 · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="9">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Tama_Art_University_Library.JPG?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="about.html" aria-label="Enter About">
+        <div class="dfb-text">
+          <div class="dfb-roman">XI · Editorial Office</div>
+          <h1 class="dfb-title">The editor.<em>The position.</em></h1>
+          <p class="dfb-subtitle">Jeong-Mo Goo — independent researcher, dividend durability + refinancing risk. Author of Buffer Half-Life&trade; / Three Clocks&trade; / BBB- Cliff&trade;.</p>
+          <span class="dfb-cta">Read About <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Tama_Art_University_Library.JPG" target="_blank" rel="noopener">Tama Art University Library · Toyo Ito · 2007 · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="10">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Stadsbiblioteket_Stockholm_2009b.jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="contents.html" aria-label="Enter Contents">
+        <div class="dfb-text">
+          <div class="dfb-roman">XII · Site Directory</div>
+          <h1 class="dfb-title">The site directory,<em>every room mapped.</em></h1>
+          <p class="dfb-subtitle">Sixteen rooms, mapped — the Bureau's contents page is the floor-plan of the site.</p>
+          <span class="dfb-cta">Open the Directory <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Stadsbiblioteket_Stockholm_2009b.jpg" target="_blank" rel="noopener">Stockholm Public Library · Gunnar Asplund · 1928 · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="11">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Wright_Library,_Princeton_Theological_Seminary.jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="disclaimer.html" aria-label="Enter Disclaimer">
+        <div class="dfb-text">
+          <div class="dfb-roman">XIII · Editorial Notice</div>
+          <h1 class="dfb-title">Diagnostics,<em>not advice.</em></h1>
+          <p class="dfb-subtitle">The Bureau's editorial position — read once and stands. Three tiers attached to every reading.</p>
+          <span class="dfb-cta">Read the Position <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Wright_Library,_Princeton_Theological_Seminary.jpg" target="_blank" rel="noopener">Wright Library · Princeton Theological Seminary · Presbyterian / Reformed · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="12">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Bibliothèque_Sainte-Geneviève_-_Intérieur_001.jpg?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="legal.html" aria-label="Enter Legal">
+        <div class="dfb-text">
+          <div class="dfb-roman">XIV · Terms · Jurisdiction</div>
+          <h1 class="dfb-title">The legal frame<em>around the room.</em></h1>
+          <p class="dfb-subtitle">Standard reader-facing legal notice — eight short sections arranged in symmetrical pairs.</p>
+          <span class="dfb-cta">Read the Notice <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Bibliothèque_Sainte-Geneviève_-_Intérieur_001.jpg" target="_blank" rel="noopener">Bibliothèque Sainte-Geneviève · Paris · Henri Labrouste · 1851 · CC BY-SA</a></div>
+    </div>
+    <div class="dfb-slide" data-slide="13">
+      <div class="dfb-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Dome_Main_Reading_Room_Library_of_Congress.JPG?width=2560');"></div>
+      <div class="dfb-vignette"></div>
+      <div class="dfb-grain"></div>
+      <a class="dfb-link" href="privacy.html" aria-label="Enter Privacy">
+        <div class="dfb-text">
+          <div class="dfb-roman">XV · Reader Notice</div>
+          <h1 class="dfb-title">Reader privacy.<em>Plainly stated.</em></h1>
+          <p class="dfb-subtitle">What the Bureau collects, what it does not, and how reader data is handled — plainly and briefly.</p>
+          <span class="dfb-cta">Read the Notice <span class="dfb-cta-arrow">&rarr;</span></span>
+        </div>
+      </a>
+      <div class="dfb-photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Dome_Main_Reading_Room_Library_of_Congress.JPG" target="_blank" rel="noopener">Library of Congress · Main Reading Room · Washington · 1897 · CC BY-SA</a></div>
+    </div>
+
   </div>
 
-  <div class="ph-text-block">
-    <div class="ph-eyebrow">Structural Diagnostics · Dividend Durability · Refinancing Risk</div>
-    <h1 class="ph-title">
-      Same Yield.<br>
-      <em>Different Structure.</em>
-    </h1>
-    <p class="ph-subtitle">
-      The Bureau publishes structural diagnostics for income assets — applied across REITs, BDCs, covered call ETFs, MLPs, CLO equity, and preferreds. Diagnostics, not advice.
-    </p>
-  </div>
+  <aside class="dfb-brass-plate">
+    <span class="dfb-bp-corner-tl"></span><span class="dfb-bp-corner-tr"></span><span class="dfb-bp-corner-bl"></span><span class="dfb-bp-corner-br"></span>
+    <span class="dfb-bpf-mark">The Front Desk</span>
+    <span class="dfb-bpf-issue">Volume I &middot; Spring MMXXVI</span>
+    <span class="dfb-bpf-divider"></span>
+    <span class="dfb-bpf-line">Issue No. 068</span>
+    <span class="dfb-bpf-line" style="color:#F2E8D2;">From the Desk of Jeong-Mo Goo</span>
+    <span class="dfb-bpf-line" style="opacity:0.65;">Seoul &middot; Independent</span>
+  </aside>
 
-  <div class="ph-scroll-prompt" aria-hidden="true">
-    <span class="ph-scroll-label">Continue</span>
-    <span class="ph-scroll-line"></span>
-  </div>
+  <button class="dfb-arrow prev" id="dfbPrev" aria-label="Previous room">&lsaquo;</button>
+  <button class="dfb-arrow next" id="dfbNext" aria-label="Next room">&rsaquo;</button>
 
-  <div class="ph-photo-attr">
-    <a href="https://commons.wikimedia.org/wiki/File:Long_Room_Interior,_Trinity_College_Dublin,_Ireland_-_Diliff.jpg" target="_blank" rel="noopener">
-      Trinity Long Room · Photo by David Iliff · CC BY-SA 3.0
-    </a>
+  <div class="dfb-dots" id="dfbDots" role="tablist" aria-label="Room selector">
+    <button class="dfb-dot active" data-target="0" aria-label="Room 1 · Midnight"></button>
+    <button class="dfb-dot" data-target="1" aria-label="Room 2 · Archive"></button>
+    <button class="dfb-dot" data-target="2" aria-label="Room 3 · Charter"></button>
+    <button class="dfb-dot" data-target="3" aria-label="Room 4 · Concordance"></button>
+    <button class="dfb-dot" data-target="4" aria-label="Room 5 · Errata"></button>
+    <button class="dfb-dot" data-target="5" aria-label="Room 6 · Periodicals"></button>
+    <button class="dfb-dot" data-target="6" aria-label="Room 7 · Cabinet"></button>
+    <button class="dfb-dot" data-target="7" aria-label="Room 8 · Vault"></button>
+    <button class="dfb-dot" data-target="8" aria-label="Room 9 · Chambers"></button>
+    <button class="dfb-dot" data-target="9" aria-label="Room 10 · About"></button>
+    <button class="dfb-dot" data-target="10" aria-label="Room 11 · Contents"></button>
+    <button class="dfb-dot" data-target="11" aria-label="Room 12 · Disclaimer"></button>
+    <button class="dfb-dot" data-target="12" aria-label="Room 13 · Legal"></button>
+    <button class="dfb-dot" data-target="13" aria-label="Room 14 · Privacy"></button>
   </div>
 </section>
 
-<div class="ph-transition" aria-hidden="true"></div>
+<script id="dfb-carousel-script">
+(function() {
+  var SLIDE_DURATION_MS = 7500;
+  var carousel = document.getElementById('dfbCarousel');
+  if (!carousel) return;
+  var slides = carousel.querySelectorAll('.dfb-slide');
+  var dots = carousel.querySelectorAll('.dfb-dot');
+  var progressBar = document.getElementById('dfbProgressBar');
+  var prevBtn = document.getElementById('dfbPrev');
+  var nextBtn = document.getElementById('dfbNext');
+  var current = 0, paused = false, lastTick = Date.now(), elapsed = 0;
+  function show(idx) {
+    slides[current].classList.remove('active'); dots[current].classList.remove('active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active'); dots[current].classList.add('active');
+    elapsed = 0; progressBar.style.width = '0%'; lastTick = Date.now();
+  }
+  function tick() {
+    if (!paused) {
+      var now = Date.now(); elapsed += (now - lastTick); lastTick = now;
+      var pct = Math.min(100, (elapsed / SLIDE_DURATION_MS) * 100);
+      progressBar.style.width = pct + '%';
+      if (elapsed >= SLIDE_DURATION_MS) { show(current + 1); }
+    } else { lastTick = Date.now(); }
+    requestAnimationFrame(tick);
+  }
+  prevBtn.addEventListener('click', function() { show(current - 1); });
+  nextBtn.addEventListener('click', function() { show(current + 1); });
+  dots.forEach(function(dot) { dot.addEventListener('click', function() { show(parseInt(dot.getAttribute('data-target'), 10)); }); });
+  carousel.addEventListener('mouseenter', function() { paused = true; });
+  carousel.addEventListener('mouseleave', function() { paused = false; });
+  document.addEventListener('keydown', function(e) {
+    if (document.body.classList.contains('dfb-menu-open')) return;
+    if (e.target && /INPUT|TEXTAREA/.test(e.target.tagName)) return;
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
+  var touchStartX = null;
+  carousel.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+  carousel.addEventListener('touchend', function(e) {
+    if (touchStartX === null) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) { if (dx < 0) show(current + 1); else show(current - 1); }
+    touchStartX = null;
+  }, { passive: true });
+  tick();
+})();
+</script>
+<!-- ====== END DFB CAROUSEL HERO ====== -->
 
 <!-- ============ Pull Quote ============ -->
 <section class="pq-bleed" aria-labelledby="pq-bleed-title">
