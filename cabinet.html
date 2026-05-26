@@ -4,28 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Cabinet · Dividend Forensics Bureau</title>
-<meta name="description" content="The Cabinet — specimens curated by analytical framework. Four drawers, three lenses, the Bureau's editorial filter.">
+<meta name="description" content="The Bureau Cabinet — curated deep-dive catalog. Annex II of the Doctrinal Wing. Premium specimens, structured catalog, full readings.">
 <link rel="canonical" href="https://dividendforensics.com/cabinet.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="The Cabinet · Dividend Forensics Bureau">
+<meta property="og:description" content="Curated deep-dive catalog · premium specimens · full readings.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dividendforensics.com/cabinet.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body {
-  font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65;
-  overflow-x: hidden;
-}
+body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; }
+
 .photo-hero { position: relative; width: 100%; height: 100vh; min-height: 720px; overflow: hidden; }
 .ph-photo { position: absolute; inset: 0; background-size: cover; background-position: center; animation: kenburns 42s cubic-bezier(0.65,0,0.35,1) infinite alternate; }
 @keyframes kenburns { 0%{transform:scale(1.00) translate(0,0);} 100%{transform:scale(1.10) translate(-1%,-2%);} }
 .ph-vignette { position: absolute; inset: 0; pointer-events: none; }
-.ph-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+.ph-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
 .brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; backdrop-filter: blur(6px) saturate(120%); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.5); animation: fade-in 1.8s 0.4s both; }
-.bp-corner-tl, .bp-corner-tr, .bp-corner-bl, .bp-corner-br { position: absolute; width: 10px; height: 10px; border: 0; border-style: solid; }
+.bp-corner-tl,.bp-corner-tr,.bp-corner-bl,.bp-corner-br { position: absolute; width: 10px; height: 10px; border: 0; border-style: solid; }
 .bp-corner-tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
 .bp-corner-tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; }
 .bp-corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; }
@@ -47,20 +47,22 @@ body {
 .photo-attr a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
 @keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 @keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
-.main-body { max-width: 1240px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
+
+.main-body { max-width: 1140px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
 .section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
 .si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; }
 .si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; }
-.si-label::before { left: 0; }
-.si-label::after { right: 0; }
+.si-label::before { left: 0; } .si-label::after { right: 0; }
 .si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 1; margin-bottom: 24px; letter-spacing: -0.015em; }
 .si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; }
 .si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+
 .page-footer { padding: 56px 24px; text-align: center; border-top: 4px double currentColor; margin-top: clamp(60px,8vw,96px); }
 .pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; }
 .pf-attr { font-family: "Newsreader", serif; font-style: italic; font-size: 13px; margin-bottom: 8px; opacity: 0.85; }
 .pf-links { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
 .pf-links a { text-decoration: none; border-bottom: 1px dotted currentColor; margin: 0 8px; }
+
 @media (max-width: 720px) {
   .photo-hero { min-height: 580px; }
   .brass-plate { top: 16px; right: 16px; padding: 12px 16px; font-size: 10px; min-width: 200px; }
@@ -68,171 +70,128 @@ body {
   .ph-title { font-size: clamp(38px,11vw,60px); }
 }
 
-:root { 
-          --paper: #F2E5D2; --paper-soft: #F7ECDC; --paper-warm: #E8D5BE; --paper-deep: #D8C0A4;
-          --ink: #2A140C; --ink-soft: #3D1F14; --ink-dim: #6B4530;
-          --brass: #B87048; --brass-deep: #8A4A28; --glow: #D89858;
-          --walnut: #A8483A; --walnut-deep: #7A2A20; --amber: #C48858; --amber-glow: #DCAC70;
-          --cinnabar: #C85848; --cinnabar-deep: #A0382A; --gold-bright: #D4A856; --black-lacquer: #1F0E08;
-         }
+/* ============================================
+   HEKMAN LIBRARY palette · Calvin University · Reformed/Calvinist
+   warm cream paper + mahogany cabinet + Reformed deep blue + brass hardware
+   ============================================ */
+:root {
+  --paper: #EFEAD8; --paper-soft: #F3EEDF; --paper-warm: #DCD3B8; --paper-deep: #BAAF93;
+  --ink: #1F1815; --ink-soft: #2E2521; --ink-dim: #4A3F38;
+  --mahogany: #5C2E1F; --mahogany-deep: #3F1F12; --mahogany-light: #7A4530;
+  --reformed: #2A3855; --reformed-deep: #1A2A45; --reformed-light: #45567A;
+  --brass: #9A7838; --brass-deep: #6C5428; --brass-light: #C9A14F;
+  --glow: #DEC893;
+}
 body { background: var(--paper); color: var(--ink); background-image:
-  radial-gradient(ellipse at top, rgba(210, 168, 106, 0.10), transparent 50%),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  radial-gradient(ellipse at top, rgba(92,46,31,0.16), transparent 55%),
+  radial-gradient(ellipse at bottom, rgba(42,56,85,0.12), transparent 55%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 .ph-eyebrow::before { background: var(--brass); }
 
-.vault-arch-band { position: relative; height: 180px; margin-top: -180px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
-.vault-arch-band svg { width: min(960px, 92vw); height: 160px; }
-.three-clocks { max-width: 900px; margin: 0 auto clamp(60px,8vw,96px); padding: 36px 24px; background: var(--walnut); border: 2px solid var(--brass); position: relative; }
-.three-clocks-title { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--glow); text-align: center; margin-bottom: 28px; }
-.clocks-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start; }
-@media (max-width: 760px) { .clocks-row { grid-template-columns: 1fr; } }
-.clock-piece { text-align: center; padding: 16px 12px; }
-.clock-face { width: 110px; height: 110px; margin: 0 auto 16px; }
-.clock-label { font-family: "Fraunces", serif; font-size: 18px; color: var(--cream); margin-bottom: 8px; font-weight: 480; }
-.clock-when { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 14px; color: var(--amber-glow); }
-.cabinet-drawers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
-@media (max-width: 760px) { .cabinet-drawers { grid-template-columns: 1fr; } }
-.drawer { background: var(--paper-soft); border: 1px solid var(--brass); border-left: 6px solid var(--walnut); padding: 0; overflow: hidden; transition: 0.3s; }
-.drawer:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(31, 20, 10, 0.18); border-left-color: var(--amber); }
-.drawer-vault-arch { height: 50px; background: linear-gradient(135deg, var(--walnut) 0%, var(--walnut-deep) 100%); position: relative; overflow: hidden; }
-.drawer-vault-arch::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 90%; height: 30px; background: var(--paper-soft); border-top-left-radius: 100% 100%; border-top-right-radius: 100% 100%; }
-.drawer-vault-arch svg { position: absolute; top: 6px; left: 50%; transform: translateX(-50%); }
-.drawer-body { padding: 8px 28px 28px; }
-.drawer-num { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; color: var(--brass-deep); text-transform: uppercase; margin-bottom: 10px; }
-.drawer-title { font-family: "Fraunces", serif; font-size: 22px; font-weight: 480; color: var(--walnut-deep); margin-bottom: 14px; letter-spacing: -0.01em; }
-.drawer-list { list-style: none; padding: 0; margin: 0; }
-.drawer-list li { padding: 8px 0; border-bottom: 1px dotted var(--brass)66; font-family: "Newsreader", serif; font-size: 15px; color: var(--ink-soft); display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.drawer-list li:last-child { border-bottom: none; }
-.drawer-list .lens { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.2em; color: var(--brass); text-transform: uppercase; }
+/* Cabinet display band — 7-compartment vitrine display rack with brass hinges */
+.cabinet-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
+.cabinet-band svg { width: min(1000px, 94vw); height: 180px; }
 
+/* About this room intro box */
+.room-context { max-width: 880px; margin: 0 auto 64px; padding: clamp(24px,3vw,32px) clamp(28px,3.5vw,40px); background: linear-gradient(135deg, var(--paper-soft) 0%, rgba(92,46,31,0.14) 100%); border-left: 4px solid var(--mahogany); border-right: 4px solid var(--brass); position: relative; }
+.rc-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--mahogany); text-transform: uppercase; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dotted var(--brass); display: inline-block; padding-right: 18px; }
+.rc-body { font-family: "Newsreader", serif; font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
+.rc-body strong { font-weight: 600; color: var(--ink); }
+.rc-body em { font-style: italic; color: var(--mahogany); }
 
+/* Featured Specimen — main display vitrine */
+.featured-specimen { max-width: 1020px; margin: 0 auto 80px; padding: clamp(40px,5vw,60px); background: linear-gradient(135deg, var(--paper-soft) 0%, rgba(92,46,31,0.18) 100%); border: 3px solid var(--mahogany); border-top: 8px solid var(--mahogany-deep); border-bottom: 8px solid var(--mahogany-deep); position: relative; text-align: center; }
+.featured-specimen::before, .featured-specimen::after { content: ""; position: absolute; width: 16px; height: 16px; background: var(--brass); border: 2px solid var(--mahogany-deep); }
+.featured-specimen::before { top: 12px; left: 12px; }
+.featured-specimen::after { top: 12px; right: 12px; }
+.fs-tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.30em; color: var(--brass-deep); text-transform: uppercase; margin-bottom: 14px; padding: 4px 16px; border: 1px solid var(--brass); display: inline-block; background: var(--paper-soft); }
+.fs-meta { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.20em; color: var(--ink-dim); text-transform: uppercase; margin-bottom: 18px; }
+.fs-title { font-family: "Fraunces", serif; font-size: clamp(32px,4.5vw,48px); font-weight: 400; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.015em; line-height: 1.1; font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1; }
+.fs-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; color: var(--mahogany); }
+.fs-tag-line { font-family: "Newsreader", serif; font-style: italic; font-size: 16px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 28px; max-width: 640px; margin-left: auto; margin-right: auto; }
+.fs-cta { display: inline-block; padding: 14px 32px; background: var(--mahogany); color: var(--paper-soft); text-decoration: none; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; border: 2px solid var(--mahogany-deep); transition: 0.25s; }
+.fs-cta:hover { background: var(--mahogany-deep); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(63,31,18,0.30); }
+
+/* Catalog Grid — 7 compartments · alternating mahogany/reformed-blue */
+.catalog-section { max-width: 1100px; margin: 0 auto 48px; }
+.catalog-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--mahogany); }
+.ch-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.28em; color: var(--mahogany); text-transform: uppercase; font-weight: 500; }
+.ch-tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--reformed); text-transform: uppercase; opacity: 0.85; }
+.catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 880px) { .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .catalog-grid { grid-template-columns: 1fr; } }
+
+.specimen-card { display: block; padding: 24px 26px; background: var(--paper-soft); border: 1px solid var(--paper-deep); border-top: 4px solid var(--mahogany); text-decoration: none; transition: 0.3s; position: relative; }
+.specimen-card:nth-child(even) { border-top-color: var(--reformed); }
+.specimen-card::before { content: ""; position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; background: var(--brass); border: 1px solid var(--mahogany-deep); }
+.specimen-card:nth-child(even)::before { background: var(--reformed-light); border-color: var(--reformed-deep); }
+.specimen-card:hover { background: var(--paper-warm); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(63,31,18,0.16); border-top-color: var(--mahogany-deep); }
+.specimen-card:nth-child(even):hover { border-top-color: var(--reformed-deep); box-shadow: 0 6px 20px rgba(26,42,69,0.16); }
+.sc-sector { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--brass-deep); text-transform: uppercase; margin-bottom: 10px; padding: 3px 10px; background: var(--paper-warm); border: 1px solid var(--brass); }
+.specimen-card:nth-child(even) .sc-sector { color: var(--reformed-deep); border-color: var(--reformed-light); }
+.sc-sku { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--ink-dim); margin-bottom: 8px; text-transform: uppercase; }
+.sc-name { font-family: "Fraunces", serif; font-size: 19px; font-weight: 470; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 8px; line-height: 1.25; }
+.sc-tagline { font-family: "Newsreader", serif; font-style: italic; font-size: 14px; color: var(--ink-soft); line-height: 1.5; margin-bottom: 12px; }
+.sc-meta { display: flex; justify-content: space-between; align-items: baseline; padding-top: 10px; border-top: 1px dotted var(--paper-deep); }
+.sc-pages { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--ink-dim); text-transform: uppercase; }
+.sc-cta { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; color: var(--mahogany); text-transform: uppercase; font-weight: 500; }
+.specimen-card:nth-child(even) .sc-cta { color: var(--reformed-deep); }
+
+/* Catalog full-CTA bar */
+.full-catalog { padding: clamp(32px,4vw,44px); background: linear-gradient(135deg, rgba(92,46,31,0.10) 0%, rgba(42,56,85,0.14) 100%); border-top: 3px solid var(--mahogany); border-bottom: 3px solid var(--reformed); text-align: center; margin: clamp(56px,7vw,80px) auto 0; max-width: 1000px; }
+.fc-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.28em; color: var(--mahogany); text-transform: uppercase; margin-bottom: 14px; }
+.fc-text { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(18px,2.2vw,22px); line-height: 1.55; color: var(--ink); max-width: 600px; margin: 0 auto 22px; }
+.fc-cta { display: inline-block; padding: 14px 30px; background: var(--reformed); color: var(--paper-soft); text-decoration: none; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; border: 2px solid var(--reformed-deep); transition: 0.25s; }
+.fc-cta:hover { background: var(--reformed-deep); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,42,69,0.30); }
+
+/* Bottom decorative — mahogany cabinet door pattern */
+.cabinet-door { margin-top: 80px; height: 70px; background:
+  repeating-linear-gradient(90deg, var(--mahogany) 0px, var(--mahogany) 4px, transparent 4px, transparent 80px),
+  repeating-linear-gradient(0deg, transparent 0px, transparent 18px, var(--brass) 18px, var(--brass) 19px, transparent 19px, transparent 50px),
+  linear-gradient(180deg, rgba(92,46,31,0.18) 0%, rgba(154,120,56,0.12) 100%);
+  border-top: 3px solid var(--mahogany);
+  border-bottom: 3px solid var(--brass);
+  opacity: 0.5;
+}
 </style>
 </head>
 <body>
+
 <!-- ============ UNIVERSAL STICKY TOP NAV ============ -->
 <style>
-.dfb-topnav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px clamp(20px, 4vw, 40px);
-  background: transparent;
-  transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom-color 0.4s ease;
-  border-bottom: 1px solid transparent;
-}
-.dfb-topnav.scrolled {
-  background: rgba(14, 8, 5, 0.86);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border-bottom-color: rgba(212, 168, 86, 0.25);
-}
-.dfb-brand {
-  font-family: "Fraunces", serif; font-style: italic; font-weight: 380;
-  font-size: 18px; letter-spacing: 0.02em;
-  color: #F0E2C5; text-decoration: none;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-  transition: color 0.2s;
-  font-variation-settings: 'opsz' 48, 'SOFT' 80, 'WONK' 1;
-}
+.dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom-color 0.4s ease; border-bottom: 1px solid transparent; }
+.dfb-topnav.scrolled { background: rgba(14, 8, 5, 0.86); backdrop-filter: blur(12px) saturate(140%); -webkit-backdrop-filter: blur(12px) saturate(140%); border-bottom-color: rgba(212, 168, 86, 0.25); }
+.dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; letter-spacing: 0.02em; color: #F0E2C5; text-decoration: none; text-shadow: 0 1px 8px rgba(0,0,0,0.5); transition: color 0.2s; font-variation-settings: 'opsz' 48, 'SOFT' 80, 'WONK' 1; }
 .dfb-brand:hover { color: #D4A856; }
 .dfb-brand span { color: #B58A48; font-style: normal; padding: 0 6px; }
-.dfb-menu-toggle {
-  display: flex; align-items: center; gap: 10px;
-  background: transparent; border: 1px solid rgba(181, 138, 72, 0.5);
-  padding: 8px 16px; cursor: pointer;
-  font-family: "JetBrains Mono", monospace; font-size: 11px;
-  letter-spacing: 0.24em; text-transform: uppercase;
-  color: #F0E2C5;
-  transition: 0.2s; border-radius: 0;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
-}
+.dfb-menu-toggle { display: flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(181, 138, 72, 0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: #F0E2C5; transition: 0.2s; border-radius: 0; text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
 .dfb-menu-toggle:hover { background: rgba(181, 138, 72, 0.15); border-color: #D4A856; color: #D4A856; }
 .dfb-menu-toggle .dfb-bars { font-size: 14px; line-height: 1; }
-.dfb-topnav.scrolled .dfb-brand,
-.dfb-topnav.scrolled .dfb-menu-toggle { text-shadow: none; }
-
-/* Full-screen overlay menu */
-.dfb-menu-overlay {
-  position: fixed; inset: 0; z-index: 10000;
-  background: rgba(14, 8, 5, 0.96);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  display: flex; flex-direction: column;
-  padding: clamp(20px, 4vw, 40px);
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.4s ease;
-  overflow-y: auto;
-}
+.dfb-topnav.scrolled .dfb-brand, .dfb-topnav.scrolled .dfb-menu-toggle { text-shadow: none; }
+.dfb-menu-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(14, 8, 5, 0.96); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); display: flex; flex-direction: column; padding: clamp(20px, 4vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.4s ease; overflow-y: auto; }
 .dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
-.dfb-menu-head {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(181, 138, 72, 0.25);
-  margin-bottom: clamp(32px, 5vw, 56px);
-}
-.dfb-menu-title {
-  font-family: "Fraunces", serif; font-style: italic; font-weight: 380;
-  font-size: clamp(24px, 3vw, 32px); color: #F0E2C5;
-  font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
-}
-.dfb-menu-close {
-  background: transparent; border: 1px solid rgba(181, 138, 72, 0.5);
-  padding: 8px 16px; cursor: pointer;
-  font-family: "JetBrains Mono", monospace; font-size: 11px;
-  letter-spacing: 0.24em; text-transform: uppercase;
-  color: #F0E2C5; transition: 0.2s;
-}
+.dfb-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid rgba(181, 138, 72, 0.25); margin-bottom: clamp(32px, 5vw, 56px); }
+.dfb-menu-title { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: clamp(24px, 3vw, 32px); color: #F0E2C5; font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1; }
+.dfb-menu-close { background: transparent; border: 1px solid rgba(181, 138, 72, 0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: #F0E2C5; transition: 0.2s; }
 .dfb-menu-close:hover { background: rgba(181, 138, 72, 0.15); color: #D4A856; }
-.dfb-menu-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: clamp(28px, 4vw, 48px);
-  max-width: 1240px; margin: 0 auto; width: 100%;
-}
+.dfb-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); max-width: 1240px; margin: 0 auto; width: 100%; }
 @media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
-.dfb-menu-col-title {
-  font-family: "JetBrains Mono", monospace; font-size: 10px;
-  letter-spacing: 0.28em; text-transform: uppercase;
-  color: #B58A48; margin-bottom: 18px; padding-bottom: 10px;
-  border-bottom: 1px solid rgba(181, 138, 72, 0.2);
-}
-.dfb-menu-link {
-  display: block; padding: 10px 14px; margin-bottom: 6px;
-  background: rgba(31, 20, 10, 0.5); border-left: 2px solid rgba(181, 138, 72, 0.4);
-  color: #F0E2C5; text-decoration: none;
-  transition: 0.2s;
-}
-.dfb-menu-link:hover {
-  background: rgba(181, 138, 72, 0.12);
-  border-left-color: #D4A856;
-  transform: translateX(4px);
-}
-.dfb-menu-link .dfb-roman {
-  font-family: "JetBrains Mono", monospace; font-size: 9px;
-  letter-spacing: 0.22em; color: #B58A48;
-  display: block; margin-bottom: 2px;
-}
-.dfb-menu-link .dfb-name {
-  font-family: "Fraunces", serif; font-weight: 460;
-  font-size: 16px; color: #F0E2C5;
-}
+.dfb-menu-col-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #B58A48; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(181, 138, 72, 0.2); }
+.dfb-menu-link { display: block; padding: 10px 14px; margin-bottom: 6px; background: rgba(31, 20, 10, 0.5); border-left: 2px solid rgba(181, 138, 72, 0.4); color: #F0E2C5; text-decoration: none; transition: 0.2s; }
+.dfb-menu-link:hover { background: rgba(181, 138, 72, 0.12); border-left-color: #D4A856; transform: translateX(4px); }
+.dfb-menu-link .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: #B58A48; display: block; margin-bottom: 2px; }
+.dfb-menu-link .dfb-name { font-family: "Fraunces", serif; font-weight: 460; font-size: 16px; color: #F0E2C5; }
 .dfb-menu-link.current { background: rgba(212, 168, 86, 0.18); border-left-color: #D4A856; }
 .dfb-menu-link.current .dfb-name { color: #ECC078; }
-.dfb-menu-footer {
-  margin-top: auto; padding-top: 32px;
-  text-align: center; opacity: 0.7;
-  font-family: "JetBrains Mono", monospace; font-size: 10px;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: #B58A48;
-}
+.dfb-menu-footer { margin-top: auto; padding-top: 32px; text-align: center; opacity: 0.7; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #B58A48; }
 body.dfb-menu-open { overflow: hidden; }
 </style>
 
 <header class="dfb-topnav" id="dfbTopNav">
   <a class="dfb-brand" href="index.html">DFB<span>·</span>Bureau</a>
-  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu">
-    <span class="dfb-bars">☰</span> Menu
-  </button>
+  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu"><span class="dfb-bars">☰</span> Menu</button>
 </header>
 
 <nav class="dfb-menu-overlay" id="dfbMenu" aria-hidden="true">
@@ -275,216 +234,228 @@ body.dfb-menu-open { overflow: hidden; }
   var nav = document.getElementById('dfbTopNav');
   var menu = document.getElementById('dfbMenu');
   var body = document.body;
-  
-  function onScroll() {
-    if (window.scrollY > 60) { nav.classList.add('scrolled'); }
-    else { nav.classList.remove('scrolled'); }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-  
-  window.dfbToggleMenu = function() {
-    var isOpen = menu.classList.toggle('open');
-    body.classList.toggle('dfb-menu-open', isOpen);
-    menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-  };
-  
-  // Highlight current page
+  function onScroll() { if (window.scrollY > 60) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  window.dfbToggleMenu = function() { var isOpen = menu.classList.toggle('open'); body.classList.toggle('dfb-menu-open', isOpen); menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true'); };
   var current = location.pathname.split('/').pop() || 'index.html';
   if (current === '') current = 'index.html';
   var currentLink = menu.querySelector('[data-page="' + current + '"]');
   if (currentLink) currentLink.classList.add('current');
-  
-  // ESC to close
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && menu.classList.contains('open')) { dfbToggleMenu(); }
-  });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && menu.classList.contains('open')) { dfbToggleMenu(); } });
 })();
 </script>
 <!-- ============ END UNIVERSAL NAV ============ -->
 
-<section class="photo-hero" aria-label="Biblioteca Joanina · University of Coimbra (Baroque · Red & Gold)">
-  <div class="ph-photo" role="img" aria-label="Biblioteca Joanina · University of Coimbra (Baroque · Red & Gold)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Biblioteca_Joanina,_Coimbra.jpg?width=2560');"></div>
-  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#0C080566 70%,#0C0805C0 100%),linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.1) 60%,#0C0805C8 100%);"></div>
+<!-- HERO · Hekman Library · Calvin University (Reformed/Calvinist) -->
+<section class="photo-hero" aria-label="Hekman Library · Calvin University (Reformed/Calvinist)">
+  <div class="ph-photo" role="img" aria-label="Hekman Library · Calvin University (Reformed/Calvinist)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Hekman_Library_Calvin_University.jpg?width=2560');"></div>
+  <!-- Mahogany + Reformed deep blue overlay -->
+  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#1A0F0866 70%,#1A0F08CC 100%),linear-gradient(to bottom,rgba(26,15,8,0.45) 0%,rgba(26,15,8,0.05) 30%,rgba(42,56,85,0.10) 60%,#1A0F08D0 100%);"></div>
   <div class="ph-grain"></div>
-  <aside class="brass-plate" style="background:rgba(58, 32, 16, 0.72);border:1px solid #9A7A48;color:#F4EBD0;">
-    <span class="bp-corner-tl" style="border-color:#9A7A48;"></span>
-    <span class="bp-corner-tr" style="border-color:#9A7A48;"></span>
-    <span class="bp-corner-bl" style="border-color:#9A7A48;"></span>
-    <span class="bp-corner-br" style="border-color:#9A7A48;"></span>
-    <span style="color:#9A7A48;font-weight:600;">Curated · Annex II</span>
-    <span class="bp-issue" style="color:#D2A86A;">Framework Lenses</span>
-    <span class="bp-divider" style="background:#74582E;"></span>
-    <span class="bp-line">Editorial Filter</span>
-    <span class="bp-line" style="color:#F4EBD0;">Curated under three lenses</span>
-    <span class="bp-line" style="opacity:0.65;">Doctrinal Wing</span>
+  <aside class="brass-plate" style="background:rgba(40, 22, 14, 0.78);border:1px solid #9A7838;color:#F3EEDF;">
+    <span class="bp-corner-tl" style="border-color:#9A7838;"></span>
+    <span class="bp-corner-tr" style="border-color:#9A7838;"></span>
+    <span class="bp-corner-bl" style="border-color:#9A7838;"></span>
+    <span class="bp-corner-br" style="border-color:#9A7838;"></span>
+    <span style="color:#9A7838;font-weight:600;">The Cabinet</span>
+    <span class="bp-issue" style="color:#C9A14F;">Annex II · Curated</span>
+    <span class="bp-divider" style="background:#3F1F12;"></span>
+    <span class="bp-line">Deep Dives</span>
+    <span class="bp-line" style="color:#F3EEDF;">Premium Specimens</span>
+    <span class="bp-line" style="opacity:0.7;">Doctrinal Wing</span>
   </aside>
-  <div class="ph-text" style="color:#F4EBD0;">
-    <div class="ph-eyebrow" style="color:#D2A86A;">Annex II · Curated · By Framework</div>
-    <h1 class="ph-title">Specimens<br><em style="color:#D2A86A;border-top-color:#9A7A48;">by framework.</em></h1>
-    <p class="ph-subtitle" style="color:#F4EBD0DD;">Where the Periodicals Room orders by date, the Cabinet orders by framework. Four drawers — REIT, BDC, Structural Income, Methodology — each filed through one of the Bureau's three lenses.</p>
+  <div class="ph-text" style="color:#F3EEDF;">
+    <div class="ph-eyebrow" style="color:#C9A14F;">Annex II · Curated · Deep-Dive Catalog</div>
+    <h1 class="ph-title">Specimens,<br><em style="color:#C9A14F;border-top-color:#9A7838;">on display.</em></h1>
+    <p class="ph-subtitle" style="color:#F3EEDFDD;">The Bureau's curated catalog — single-ticker deep dives, sector readings, and framework methods. Each piece is a full reading: source-cited, structurally argued, and filed for paying readers.</p>
   </div>
-  <div class="scroll-prompt" style="color:#E8DBC0;">
-    <span class="scroll-label">Open a drawer</span>
-    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#D2A86A);"></span>
+  <div class="scroll-prompt" style="color:#EFEAD8;">
+    <span class="scroll-label">Open the cabinet</span>
+    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#9A7838);"></span>
   </div>
-  <div class="photo-attr" style="color:#F4EBD088;">
-    <a href="https://commons.wikimedia.org/wiki/File:Biblioteca_Joanina,_Coimbra.jpg" target="_blank" rel="noopener">Biblioteca Joanina · University of Coimbra (Baroque · Red & Gold) · Wikimedia Commons contributor · CC BY-SA</a>
+  <div class="photo-attr" style="color:#F3EEDF88;">
+    <a href="https://commons.wikimedia.org/wiki/Category:Calvin_University" target="_blank" rel="noopener">Hekman Library · Calvin University · Reformed/Calvinist · 1981 · Wikimedia Commons · CC BY-SA</a>
   </div>
 </section>
-<div class="vault-arch-band">
-  <svg viewBox="0 0 960 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+<!-- Cabinet display band · 7 compartments + brass hinges (museum vitrine) -->
+<div class="cabinet-band">
+  <svg viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <linearGradient id="vaultArch" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#3A2010" stop-opacity="0.95"/>
-        <stop offset="100%" stop-color="#DCCB9F" stop-opacity="0"/>
+      <linearGradient id="mahoganyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3F1F12" stop-opacity="0.95"/>
+        <stop offset="100%" stop-color="#5C2E1F" stop-opacity="0.5"/>
       </linearGradient>
-      <pattern id="frescoLunette" x="0" y="0" width="100" height="80" patternUnits="userSpaceOnUse">
-        <ellipse cx="50" cy="40" rx="40" ry="28" fill="#B58658" opacity="0.4"/>
-        <ellipse cx="50" cy="40" rx="40" ry="28" fill="none" stroke="#9A7A48" stroke-width="0.6"/>
-      </pattern>
+      <linearGradient id="reformedGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1A2A45" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#2A3855" stop-opacity="0.4"/>
+      </linearGradient>
+      <linearGradient id="brassGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#C9A14F" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#9A7838" stop-opacity="0.5"/>
+      </linearGradient>
     </defs>
-    <!-- Single massive barrel vault (El Escorial signature) -->
-    <path d="M 0 160 Q 480 -20 960 160 Z" fill="url(#vaultArch)"/>
-    <!-- Lunette frescoes along the vault -->
-    <g fill="url(#frescoLunette)" stroke="#74582E" stroke-width="1">
-      <ellipse cx="160" cy="100" rx="50" ry="22"/>
-      <ellipse cx="320" cy="60" rx="60" ry="25"/>
-      <ellipse cx="480" cy="40" rx="70" ry="28"/>
-      <ellipse cx="640" cy="60" rx="60" ry="25"/>
-      <ellipse cx="800" cy="100" rx="50" ry="22"/>
+    <!-- Cabinet frame (top + bottom rails) -->
+    <rect x="40" y="10" width="920" height="6" fill="#3F1F12"/>
+    <rect x="40" y="170" width="920" height="6" fill="#3F1F12"/>
+    <!-- 7 vitrine compartments · alternating mahogany/reformed-blue -->
+    <g>
+      <!-- 1 -->
+      <rect x="50" y="20" width="120" height="150" fill="url(#mahoganyGrad)" stroke="#5C2E1F" stroke-width="1.5"/>
+      <!-- 2 -->
+      <rect x="180" y="20" width="120" height="150" fill="url(#reformedGrad)" stroke="#2A3855" stroke-width="1.5"/>
+      <!-- 3 -->
+      <rect x="310" y="20" width="120" height="150" fill="url(#mahoganyGrad)" stroke="#5C2E1F" stroke-width="1.5"/>
+      <!-- 4 · center · larger -->
+      <rect x="440" y="14" width="120" height="156" fill="url(#brassGrad)" stroke="#6C5428" stroke-width="2"/>
+      <!-- 5 -->
+      <rect x="570" y="20" width="120" height="150" fill="url(#mahoganyGrad)" stroke="#5C2E1F" stroke-width="1.5"/>
+      <!-- 6 -->
+      <rect x="700" y="20" width="120" height="150" fill="url(#reformedGrad)" stroke="#2A3855" stroke-width="1.5"/>
+      <!-- 7 -->
+      <rect x="830" y="20" width="120" height="150" fill="url(#mahoganyGrad)" stroke="#5C2E1F" stroke-width="1.5"/>
     </g>
-    <!-- Decorative ornament strip -->
-    <path d="M 0 158 L 960 158" stroke="#9A7A48" stroke-width="2"/>
-    <path d="M 0 154 L 960 154" stroke="#D2A86A" stroke-width="0.6" opacity="0.7"/>
-    <g fill="#D2A86A">
-      <circle cx="80" cy="156" r="2"/><circle cx="240" cy="156" r="2"/><circle cx="400" cy="156" r="2"/><circle cx="560" cy="156" r="2"/><circle cx="720" cy="156" r="2"/><circle cx="880" cy="156" r="2"/>
+    <!-- Brass hinges on each compartment (top + bottom) -->
+    <g fill="#9A7838" stroke="#6C5428" stroke-width="0.7">
+      <!-- compartment 1 -->
+      <rect x="56" y="22" width="6" height="10"/><rect x="56" y="158" width="6" height="10"/>
+      <!-- compartment 2 -->
+      <rect x="186" y="22" width="6" height="10"/><rect x="186" y="158" width="6" height="10"/>
+      <!-- compartment 3 -->
+      <rect x="316" y="22" width="6" height="10"/><rect x="316" y="158" width="6" height="10"/>
+      <!-- compartment 4 (center, brass) -->
+      <rect x="446" y="16" width="8" height="12" fill="#3F1F12"/><rect x="446" y="156" width="8" height="12" fill="#3F1F12"/>
+      <!-- compartment 5 -->
+      <rect x="576" y="22" width="6" height="10"/><rect x="576" y="158" width="6" height="10"/>
+      <!-- compartment 6 -->
+      <rect x="706" y="22" width="6" height="10"/><rect x="706" y="158" width="6" height="10"/>
+      <!-- compartment 7 -->
+      <rect x="836" y="22" width="6" height="10"/><rect x="836" y="158" width="6" height="10"/>
     </g>
+    <!-- Specimen labels (small parchment cards inside each compartment) -->
+    <g fill="#F3EEDF" stroke="#5C2E1F" stroke-width="0.6" opacity="0.92">
+      <rect x="80" y="78" width="60" height="34"/>
+      <rect x="210" y="78" width="60" height="34"/>
+      <rect x="340" y="78" width="60" height="34"/>
+      <rect x="470" y="74" width="60" height="42"/>
+      <rect x="600" y="78" width="60" height="34"/>
+      <rect x="730" y="78" width="60" height="34"/>
+      <rect x="860" y="78" width="60" height="34"/>
+    </g>
+    <!-- Label text -->
+    <g font-family="JetBrains Mono, monospace" font-size="8" fill="#3F1F12" text-anchor="middle">
+      <text x="110" y="92">REIT</text><text x="110" y="103">Sector</text>
+      <text x="240" y="92" fill="#1A2A45">BDC</text><text x="240" y="103" fill="#1A2A45">Credit</text>
+      <text x="370" y="92">Net</text><text x="370" y="103">Lease</text>
+      <text x="500" y="89" font-size="10">Cabinet</text><text x="500" y="101" font-size="8">Specimens</text>
+      <text x="630" y="92">CLO</text><text x="630" y="103">CEF</text>
+      <text x="760" y="92" fill="#1A2A45">MLP</text><text x="760" y="103" fill="#1A2A45">Infra</text>
+      <text x="890" y="92">Cov</text><text x="890" y="103">Call</text>
+    </g>
+    <!-- Central medallion -->
+    <ellipse cx="500" cy="155" rx="64" ry="14" fill="#F3EEDF" stroke="#3F1F12" stroke-width="1.3" opacity="0.95"/>
+    <text x="500" y="160" font-family="Fraunces, serif" font-style="italic" font-size="12" fill="#3F1F12" text-anchor="middle">Cabinet of Curiosities</text>
   </svg>
 </div>
+
 <main class="main-body">
-  <div class="section-intro">
-    <div class="si-label" style="color:var(--brass-deep);">— The Three Lenses · Curatorial Filter —</div>
-    <h2 class="si-title" style="color:var(--walnut-deep);">Each specimen, <em style="color:var(--brass);">read through three clocks.</em></h2>
-    <p class="si-desc" style="color:var(--ink-soft);">The Bureau's curatorial filter is layered. Coverage today; Maturity tomorrow; Market Access when tomorrow arrives. Every drawer below is organized through these three lenses.</p>
-  </div>
-<!-- Three Clocks™ visualization -->
-  <div class="three-clocks">
-    <div class="three-clocks-title">— Three Clocks™ · The Curatorial Filter —</div>
-    <div class="clocks-row">
-      <div class="clock-piece">
-        <svg class="clock-face" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="55" cy="55" r="50" fill="none" stroke="#7A2A20" stroke-width="1.8"/>
-          <circle cx="55" cy="55" r="44" fill="none" stroke="#A8483A" stroke-width="0.7" opacity="0.65"/>
-          <g stroke="#C85848" stroke-width="1.6">
-            <line x1="55" y1="13" x2="55" y2="20"/><line x1="97" y1="55" x2="90" y2="55"/><line x1="55" y1="97" x2="55" y2="90"/><line x1="13" y1="55" x2="20" y2="55"/>
-          </g>
-          <!-- Coverage today: hand at 12, short -->
-          <line x1="55" y1="55" x2="55" y2="22" stroke="#7A2A20" stroke-width="3.2" stroke-linecap="round"/>
-          <circle cx="55" cy="55" r="3.5" fill="#7A2A20"/>
-        </svg>
-        <div class="clock-label">Coverage</div>
-        <div class="clock-when">today</div>
-      </div>
-      <div class="clock-piece">
-        <svg class="clock-face" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="55" cy="55" r="50" fill="none" stroke="#7A2A20" stroke-width="1.8"/>
-          <circle cx="55" cy="55" r="44" fill="none" stroke="#A8483A" stroke-width="0.7" opacity="0.65"/>
-          <g stroke="#C85848" stroke-width="1.6">
-            <line x1="55" y1="13" x2="55" y2="20"/><line x1="97" y1="55" x2="90" y2="55"/><line x1="55" y1="97" x2="55" y2="90"/><line x1="13" y1="55" x2="20" y2="55"/>
-          </g>
-          <!-- Maturity tomorrow: hand at 3 -->
-          <line x1="55" y1="55" x2="88" y2="55" stroke="#7A2A20" stroke-width="3.2" stroke-linecap="round"/>
-          <circle cx="55" cy="55" r="3.5" fill="#7A2A20"/>
-        </svg>
-        <div class="clock-label">Maturity</div>
-        <div class="clock-when">tomorrow</div>
-      </div>
-      <div class="clock-piece">
-        <svg class="clock-face" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="55" cy="55" r="50" fill="none" stroke="#7A2A20" stroke-width="1.8"/>
-          <circle cx="55" cy="55" r="44" fill="none" stroke="#A8483A" stroke-width="0.7" opacity="0.65"/>
-          <g stroke="#C85848" stroke-width="1.6">
-            <line x1="55" y1="13" x2="55" y2="20"/><line x1="97" y1="55" x2="90" y2="55"/><line x1="55" y1="97" x2="55" y2="90"/><line x1="13" y1="55" x2="20" y2="55"/>
-          </g>
-          <!-- Market Access: hand at 8 (refinancing window) -->
-          <line x1="55" y1="55" x2="32" y2="78" stroke="#7A2A20" stroke-width="3.2" stroke-linecap="round"/>
-          <circle cx="55" cy="55" r="3.5" fill="#7A2A20"/>
-        </svg>
-        <div class="clock-label">Market Access</div>
-        <div class="clock-when">when tomorrow arrives</div>
-      </div>
+
+  <!-- About this room intro -->
+  <aside class="room-context" aria-label="About this room">
+    <div class="rc-label">— About this room —</div>
+    <div class="rc-body">
+      The <strong>Cabinet</strong> is the Bureau's <strong>curated catalog</strong>. Where the Periodicals Room shows the latest dispatch on the open shelf, the Cabinet holds the longer, source-cited deep dives — single-ticker readings, sector overviews, and framework methods. These are full readings, not summaries, and require a small reader fee. (From French <em>cabinet</em> — "the chamber where specimens are displayed".)
     </div>
+  </aside>
+
+  <div class="section-intro">
+    <div class="si-label" style="color:var(--mahogany);">— Featured Specimen · On Display —</div>
+    <h2 class="si-title" style="color:var(--ink);">The current full reading, <em style="color:var(--brass-deep);">behind the glass.</em></h2>
+    <p class="si-desc" style="color:var(--ink-soft);">One specimen is featured at the center of the cabinet. The catalog beneath holds the rest of the deep-dive collection — grouped by sector, framework, and reading depth.</p>
   </div>
 
-  <div class="cabinet-drawers">
-    <article class="drawer">
-      <div class="drawer-vault-arch">
-        <svg width="46" height="44" viewBox="0 0 46 44" xmlns="http://www.w3.org/2000/svg"><text x="23" y="33" font-family="Fraunces, serif" font-style="italic" font-size="32" fill="#ECC078" text-anchor="middle" font-variation-settings="'opsz' 96" font-weight="500">I</text></svg>
-      </div>
-      <div class="drawer-body">
-        <div class="drawer-num">Drawer I · The REIT Bay</div>
-        <h3 class="drawer-title">Equity REITs · IG · Tier 1</h3>
-        <ul class="drawer-list">
-          <li>Realty Income · O <span class="lens">Coverage</span></li>
-          <li>Prologis · PLD <span class="lens">Maturity</span></li>
-          <li>Welltower · WELL <span class="lens">Coverage</span></li>
-          <li>American Tower · AMT <span class="lens">Market Access</span></li>
-          <li>Public Storage · PSA <span class="lens">Coverage</span></li>
-        </ul>
-      </div>
-    </article>
-    <article class="drawer">
-      <div class="drawer-vault-arch">
-        <svg width="46" height="44" viewBox="0 0 46 44" xmlns="http://www.w3.org/2000/svg"><text x="23" y="33" font-family="Fraunces, serif" font-style="italic" font-size="32" fill="#ECC078" text-anchor="middle" font-variation-settings="'opsz' 96" font-weight="500">II</text></svg>
-      </div>
-      <div class="drawer-body">
-        <div class="drawer-num">Drawer II · The BDC Bay</div>
-        <h3 class="drawer-title">BDCs · NAV-driven · Tier 1</h3>
-        <ul class="drawer-list">
-          <li>Ares Capital · ARCC <span class="lens">Coverage</span></li>
-          <li>Blue Owl Capital · OBDC <span class="lens">Coverage</span></li>
-          <li>Hercules Capital · HTGC <span class="lens">Market Access</span></li>
-          <li>BlackRock TCP · TCPC <span class="lens">Maturity</span></li>
-        </ul>
-      </div>
-    </article>
-    <article class="drawer">
-      <div class="drawer-vault-arch">
-        <svg width="46" height="44" viewBox="0 0 46 44" xmlns="http://www.w3.org/2000/svg"><text x="23" y="33" font-family="Fraunces, serif" font-style="italic" font-size="32" fill="#ECC078" text-anchor="middle" font-variation-settings="'opsz' 96" font-weight="500">III</text></svg>
-      </div>
-      <div class="drawer-body">
-        <div class="drawer-num">Drawer III · Adjacent Verticals</div>
-        <h3 class="drawer-title">Cov-Call · MLP · CLO · Preferred</h3>
-        <ul class="drawer-list">
-          <li>JEPI · option premium <span class="lens">Coverage</span></li>
-          <li>Enterprise Products · EPD <span class="lens">Coverage</span></li>
-          <li>Eagle Point · ECC · CLO <span class="lens">Market Access</span></li>
-          <li>Pref baskets · IG / HY <span class="lens">Maturity</span></li>
-        </ul>
-      </div>
-    </article>
-    <article class="drawer">
-      <div class="drawer-vault-arch">
-        <svg width="46" height="44" viewBox="0 0 46 44" xmlns="http://www.w3.org/2000/svg"><text x="23" y="33" font-family="Fraunces, serif" font-style="italic" font-size="32" fill="#ECC078" text-anchor="middle" font-variation-settings="'opsz' 96" font-weight="500">IV</text></svg>
-      </div>
-      <div class="drawer-body">
-        <div class="drawer-num">Drawer IV · Methodology</div>
-        <h3 class="drawer-title">Frameworks · Method · Glossary</h3>
-        <ul class="drawer-list">
-          <li>Buffer Half-Life™ · introduction <span class="lens">Method</span></li>
-          <li>Three Clocks™ · the layered lens <span class="lens">Method</span></li>
-          <li>BBB- Cliff™ · the discontinuity <span class="lens">Method</span></li>
-          <li>Yield · four sources of <span class="lens">Glossary</span></li>
-        </ul>
-      </div>
-    </article>
+  <!-- Featured Specimen · main vitrine -->
+  <article class="featured-specimen">
+    <div class="fs-tag">Featured · Behind the Glass</div>
+    <div class="fs-meta">Deep Dive · 28 pages · MMXXVI</div>
+    <h3 class="fs-title">Realty Income <em>— Coverage Today.</em></h3>
+    <p class="fs-tag-line">A full structural reading: AFFO coverage, the BBB+ buffer, the refinancing wall, and the three clocks applied. Source-cited from the Q1 supplement and the 10-K.</p>
+    <a class="fs-cta" href="https://dividendforensics.gumroad.com/" target="_blank" rel="noopener">Open the deep dive →</a>
+  </article>
+
+  <!-- Catalog · By Sector -->
+  <section class="catalog-section">
+    <div class="catalog-header">
+      <div class="ch-label">Catalog · Deep Dives by Sector</div>
+      <div class="ch-tag">— Each is a full reading —</div>
+    </div>
+    <div class="catalog-grid">
+      <a class="specimen-card" href="https://dividendforensics.gumroad.com/" target="_blank" rel="noopener">
+        <span class="sc-sector">REIT · Net Lease</span>
+        <div class="sc-sku">Specimen · L01</div>
+        <div class="sc-name">Realty Income — Deep Dive</div>
+        <div class="sc-tagline">Coverage today · the BBB+ buffer · refinancing wall mapped.</div>
+        <div class="sc-meta"><span class="sc-pages">28 pages</span><span class="sc-cta">Open →</span></div>
+      </a>
+      <a class="specimen-card" href="https://dividendforensics.gumroad.com/" target="_blank" rel="noopener">
+        <span class="sc-sector">REIT · Self-Storage</span>
+        <div class="sc-sku">Specimen · L02</div>
+        <div class="sc-name">Public Storage — Deep Dive</div>
+        <div class="sc-tagline">A-rated balance sheet, what that buys, and the buffer half-life.</div>
+        <div class="sc-meta"><span class="sc-pages">24 pages</span><span class="sc-cta">Open →</span></div>
+      </a>
+      <a class="specimen-card" href="https://dividendforensics.gumroad.com/" target="_blank" rel="noopener">
+        <span class="sc-sector">BDC · Credit</span>
+        <div class="sc-sku">Specimen · L03</div>
+        <div class="sc-name">Ares Capital — Deep Dive</div>
+        <div class="sc-tagline">Non-accrual drift, NII coverage, and the credit cliff lens applied.</div>
+        <div class="sc-meta"><span class="sc-pages">26 pages</span><span class="sc-cta">Open →</span></div>
+      </a>
+      <a class="specimen-card" href="https://dividendforensics.gumroad.com/" target="_blank" rel="noopener">
+        <span class="sc-sector">Cov-Call · ETF</span>
+        <div class="sc-sku">Specimen · L04</div>
+        <div class="sc-name">JEPI — Mechanics &amp; Half-Life</div>
+        <div class="sc-tagline">The four sources of the trailing distribution, separated and labeled.</div>
+        <div class="sc-meta"><span class="sc-pages">22 pages</span><span class="sc-cta">Open →</span></div>
+      </a>
+      <a class="specimen-card" href="https://dividendforensics.gumroad.com/" target="_blank" rel="noopener">
+        <span class="sc-sector">MLP · Midstream</span>
+        <div class="sc-sku">Specimen · L05</div>
+        <div class="sc-name">Enterprise Products Partners — Deep Dive</div>
+        <div class="sc-tagline">Distribution coverage, contracted cash flow, and the long-dated debt ladder.</div>
+        <div class="sc-meta"><span class="sc-pages">26 pages</span><span class="sc-cta">Open →</span></div>
+      </a>
+      <a class="specimen-card" href="https://dividendforensics.gumroad.com/" target="_blank" rel="noopener">
+        <span class="sc-sector">CLO · CEF</span>
+        <div class="sc-sku">Specimen · L06</div>
+        <div class="sc-name">CLO CEFs — Structural Reading</div>
+        <div class="sc-tagline">Why the same headline yield is paid from very different engines.</div>
+        <div class="sc-meta"><span class="sc-pages">24 pages</span><span class="sc-cta">Open →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Full catalog CTA -->
+  <div class="full-catalog">
+    <div class="fc-label">— Full Catalog · 23 Specimens · Gumroad —</div>
+    <p class="fc-text">Six specimens displayed here. The full Bureau catalog of <strong>23 deep-dive readings</strong> is held in the Gumroad cabinet, grouped by sector, framework, and bundle.</p>
+    <a class="fc-cta" href="https://dividendforensics.gumroad.com/" target="_blank" rel="noopener">Open the full catalog →</a>
+  </div>
+
+  <!-- Bottom decorative — mahogany cabinet door + brass hardware -->
+  <div class="cabinet-door" aria-hidden="true"></div>
+
+  <div class="section-intro" style="margin-top:clamp(56px,7vw,80px);">
+    <div class="si-label" style="color:var(--mahogany);">— Annex II · The Cabinet —</div>
+    <h2 class="si-title" style="color:var(--ink);font-size:clamp(28px,3.5vw,38px);">Each specimen is <em style="color:var(--brass-deep);">a full reading.</em></h2>
+    <p class="si-desc" style="color:var(--ink-soft);font-size:16px;">Source-cited. Structurally argued. Filed for paying readers. This is not a prediction — structural assessment.</p>
   </div>
 </main>
-<footer class="page-footer" style="background:#DCCB9F;color:#2D211A;border-top-color:#9A7A48;">
-  <div class="pf-marker" style="color:#9A7A48;">— Annex II · The Cabinet —</div>
-  <div class="pf-attr">Specimens curated under three lenses. Reading order by drawer, not by date.</div>
-  <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="archive.html">Archive</a> · <a href="charter.html">Charter</a> · <a href="credits.html">Credits</a></div>
+
+<footer class="page-footer" style="background:#DCD3B8;color:#2E2521;border-top-color:#5C2E1F;">
+  <div class="pf-marker" style="color:#5C2E1F;">— Annex II · The Cabinet · Curated Specimens —</div>
+  <div class="pf-attr">Curated deep-dive catalog. Each specimen is a full reading. Filed for paying readers.</div>
+  <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="archive.html">Archive</a> · <a href="periodicals.html">Periodicals</a> · <a href="vault.html">Vault</a> · <a href="credits.html">Credits</a></div>
 </footer>
 </body>
 </html>
