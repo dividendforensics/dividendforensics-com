@@ -3,65 +3,141 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Bureau Charter · Dividend Forensics Bureau</title>
-<meta name="description" content="Founding principles, doctrinal commitments, and editorial stance of the Dividend Forensics Bureau.">
+<title>Charter · Founding Doctrine · Dividend Forensics Bureau</title>
+<meta name="description" content="The Bureau Charter — founding doctrine in six articles. Position, Method, Universe, Cadence, Independence, the Reader.">
 <link rel="canonical" href="https://dividendforensics.com/charter.html">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="The Bureau Charter · Dividend Forensics Bureau">
-<meta property="og:description" content="Founding principles and editorial doctrine.">
+<meta property="og:title" content="Charter · Founding Doctrine · Dividend Forensics Bureau">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dividendforensics.com/charter.html">
+<meta name="theme-color" content="#0E2630">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; }
+
+/* === CHARTER · SOUTH WING · DEEP OCEAN TEAL · Ottawa Library of Parliament · Gothic Revival 1876 === */
+:root {
+  --paper: #0E2630;
+  --paper-soft: #16323E;
+  --paper-warm: #1F3E4A;
+  --paper-deep: #061620;
+  --ink: #EDDDB8;
+  --ink-soft: #D8C597;
+  --ink-dim: #8C9AB0;
+  --oak: #6B5132;
+  --oak-light: #9A7838;
+  --oak-warm: #B58A48;
+  --copper-roof: #4A8868;
+  --copper-light: #5C9A7A;
+  --gold: #C9A14F;
+  --gold-light: #DEC893;
+  --vellum: #DEC893;
+  --sandstone: #A89570;
+}
+body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; background: var(--paper); color: var(--ink); background-image:
+  radial-gradient(ellipse at top, rgba(222,200,147,0.10), transparent 55%),
+  radial-gradient(ellipse 60% 30% at center, rgba(74,136,104,0.08), transparent 65%),
+  radial-gradient(ellipse at bottom, rgba(181,138,72,0.08), transparent 55%);
+}
 
 .photo-hero { position: relative; width: 100%; height: 100vh; min-height: 720px; overflow: hidden; }
 .ph-photo { position: absolute; inset: 0; background-size: cover; background-position: center; animation: kenburns 42s cubic-bezier(0.65,0,0.35,1) infinite alternate; }
 @keyframes kenburns { 0%{transform:scale(1.00) translate(0,0);} 100%{transform:scale(1.10) translate(-1%,-2%);} }
-.ph-vignette { position: absolute; inset: 0; pointer-events: none; }
+.ph-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 30%, transparent 0%, rgba(14,38,48,0.62) 70%, rgba(14,38,48,0.95) 100%), linear-gradient(to bottom, rgba(6,22,32,0.55) 0%, rgba(6,22,32,0.05) 30%, rgba(74,136,104,0.10) 55%, var(--paper) 100%); }
 .ph-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; backdrop-filter: blur(6px) saturate(120%); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.5); animation: fade-in 1.8s 0.4s both; }
-.bp-corner-tl,.bp-corner-tr,.bp-corner-bl,.bp-corner-br { position: absolute; width: 10px; height: 10px; border: 0; border-style: solid; }
-.bp-corner-tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
-.bp-corner-tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; }
-.bp-corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; }
-.bp-corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
-.bp-issue { font-weight: 600; font-size: 13px; letter-spacing: 0.18em; display: block; margin: 4px 0; }
-.bp-divider { display: block; height: 1px; margin: 8px 0 7px; opacity: 0.55; }
+.brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; background: rgba(6,22,32,0.88); border: 1px solid var(--gold); color: var(--ink); backdrop-filter: blur(6px); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.7); animation: fade-in 1.8s 0.4s both; }
+.bp-corner-tl,.bp-corner-tr,.bp-corner-bl,.bp-corner-br { position: absolute; width: 10px; height: 10px; border-style: solid; border-color: var(--gold); border-width: 0; }
+.bp-corner-tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+.bp-corner-tr { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
+.bp-corner-bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
+.bp-corner-br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+.bp-mark { color: var(--gold); font-weight: 600; }
+.bp-issue { color: var(--gold-light); font-weight: 600; font-size: 13px; letter-spacing: 0.18em; display: block; margin: 4px 0; }
+.bp-divider { display: block; height: 1px; margin: 8px 0 7px; background: var(--paper-warm); opacity: 0.7; }
 .bp-line { display: block; font-size: 10.5px; opacity: 0.85; }
 .ph-text { position: absolute; left: clamp(28px,6vw,96px); bottom: clamp(140px,20vh,200px); max-width: min(680px,70vw); z-index: 3; }
-.ph-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 24px; padding-left: 28px; position: relative; animation: reveal 1.4s 0.6s both; }
-.ph-eyebrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; }
-.ph-title { font-family: "Fraunces", serif; font-size: clamp(48px,7vw,96px); line-height: 0.96; letter-spacing: -0.02em; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin: 0 0 28px; animation: reveal 1.6s 0.9s both; text-shadow: 0 2px 32px rgba(0,0,0,0.55); }
-.ph-title em { font-style: italic; font-weight: 300; display: block; padding-top: 14px; margin-top: 10px; max-width: 540px; border-top-width: 1px; border-top-style: solid; }
-.ph-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 540px; animation: reveal 1.8s 1.2s both; text-shadow: 0 1px 12px rgba(0,0,0,0.4); }
-.scroll-prompt { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.7; z-index: 3; animation: fade-in 2s 2.2s both; }
-.scroll-line { width: 1px; height: 36px; animation: bounce 2.4s ease-in-out infinite; }
+.ph-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 24px; padding-left: 28px; position: relative; color: var(--gold-light); animation: reveal 1.4s 0.6s both; }
+.ph-eyebrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; background: var(--gold); }
+.ph-title { font-family: "Fraunces", serif; font-size: clamp(48px,7vw,96px); line-height: 0.96; letter-spacing: -0.02em; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin: 0 0 28px; color: var(--ink); text-shadow: 0 2px 32px rgba(0,0,0,0.7); animation: reveal 1.6s 0.9s both; }
+.ph-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; display: block; padding-top: 14px; margin-top: 10px; max-width: 540px; border-top: 1px solid var(--gold); color: var(--gold-light); }
+.ph-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 540px; color: var(--ink-soft); text-shadow: 0 1px 12px rgba(0,0,0,0.5); animation: reveal 1.8s 1.2s both; }
+.scroll-prompt { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.7; z-index: 3; color: var(--gold-light); animation: fade-in 2s 2.2s both; }
+.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--gold)); animation: bounce 2.4s ease-in-out infinite; }
 .scroll-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; }
 @keyframes bounce { 0%,100%{transform:scaleY(1) translateY(0);opacity:0.5;} 50%{transform:scaleY(0.6) translateY(8px);opacity:1;} }
-.photo-attr { position: absolute; right: 16px; bottom: 8px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.18em; z-index: 3; text-transform: uppercase; }
+.photo-attr { position: absolute; right: 16px; bottom: 8px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.18em; z-index: 3; text-transform: uppercase; color: rgba(216,197,151,0.6); }
 .photo-attr a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
 @keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 @keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
 
-.main-body { max-width: 1100px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
-.section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
-.si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; }
-.si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; }
-.si-label::before { left: 0; } .si-label::after { right: 0; }
-.si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 1; margin-bottom: 24px; letter-spacing: -0.015em; }
-.si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; }
-.si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+/* Gothic vault band */
+.vault-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
+.vault-band svg { width: min(1000px, 94vw); height: 180px; }
 
-.page-footer { padding: 56px 24px; text-align: center; border-top: 4px double currentColor; margin-top: clamp(60px,8vw,96px); }
-.pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; }
-.pf-attr { font-family: "Newsreader", serif; font-style: italic; font-size: 13px; margin-bottom: 8px; opacity: 0.85; }
+.main-body { max-width: 1080px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
+
+.room-context { max-width: 880px; margin: 0 auto 56px; padding: clamp(28px,3vw,36px) clamp(28px,3.5vw,40px); background: rgba(22,50,62,0.82); border-left: 4px solid var(--gold); border-right: 4px solid var(--copper-roof); position: relative; box-shadow: 0 4px 24px rgba(0,0,0,0.40); }
+.room-context::before { content: "FILED · IV"; position: absolute; top: 12px; right: 16px; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: 0.32em; color: var(--gold-light); opacity: 0.55; text-transform: uppercase; }
+.rc-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--gold-light); text-transform: uppercase; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dotted var(--gold); display: inline-block; padding-right: 18px; }
+.rc-body { font-family: "Newsreader", serif; font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
+.rc-body strong { font-weight: 600; color: var(--ink); }
+.rc-body em { font-style: italic; color: var(--gold-light); }
+
+.section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
+.si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; color: var(--gold); }
+.si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; background: var(--gold); }
+.si-label::before { left: 0; } .si-label::after { right: 0; }
+.si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; margin-bottom: 24px; letter-spacing: -0.015em; color: var(--ink); }
+.si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; color: var(--gold-light); }
+.si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; color: var(--ink-soft); }
+
+/* 6 Articles · declarative chamber */
+.articles-list { max-width: 940px; margin: 0 auto; }
+.article-row { position: relative; padding: 32px 36px 32px 100px; background: rgba(22,50,62,0.78); border-left: 4px solid var(--gold); border-top: 1px solid rgba(201,161,79,0.18); border-right: 1px solid rgba(201,161,79,0.18); border-bottom: 1px solid rgba(201,161,79,0.20); margin-bottom: 14px; transition: 0.25s; box-shadow: 0 3px 14px rgba(0,0,0,0.30); }
+.article-row:nth-child(even) { border-left-color: var(--copper-roof); background: rgba(31,62,74,0.78); }
+.article-row:hover { transform: translateX(3px); box-shadow: 0 6px 22px rgba(0,0,0,0.40); }
+@media (max-width: 720px) { .article-row { padding: 24px 22px 24px 22px; } }
+
+.ar-roman { position: absolute; left: 28px; top: 32px; font-family: "Fraunces", serif; font-style: italic; font-size: 44px; line-height: 1; font-weight: 350; color: var(--gold); font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1; }
+.article-row:nth-child(even) .ar-roman { color: var(--copper-light); }
+@media (max-width: 720px) { .ar-roman { position: static; margin-bottom: 8px; font-size: 38px; } }
+
+.ar-head { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; color: var(--gold-light); text-transform: uppercase; margin-bottom: 10px; }
+.article-row:nth-child(even) .ar-head { color: var(--copper-light); }
+.ar-title { font-family: "Fraunces", serif; font-size: 22px; font-weight: 470; color: var(--ink); margin-bottom: 14px; line-height: 1.3; letter-spacing: -0.01em; }
+.ar-title em { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--gold-light); }
+.article-row:nth-child(even) .ar-title em { color: var(--copper-light); }
+.ar-body { font-family: "Newsreader", serif; font-size: 15.5px; line-height: 1.7; color: var(--ink-soft); }
+.ar-body p { margin-bottom: 10px; }
+.ar-body p:last-child { margin-bottom: 0; }
+.ar-body strong { font-weight: 600; color: var(--ink); }
+.ar-body em { font-style: italic; }
+.ar-cat { position: absolute; top: 14px; right: 16px; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: 0.22em; color: var(--ink-dim); text-transform: uppercase; opacity: 0.65; }
+
+/* Imprimatur block */
+.imprimatur-block { max-width: 720px; margin: clamp(56px,7vw,80px) auto 0; padding: clamp(36px,4vw,48px); background: linear-gradient(180deg, rgba(31,62,74,0.85) 0%, rgba(22,50,62,0.85) 100%); border-top: 3px double var(--gold); border-bottom: 3px double var(--gold); text-align: center; box-shadow: 0 6px 24px rgba(0,0,0,0.45); }
+.ib-mark { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.40em; color: var(--gold); text-transform: uppercase; margin-bottom: 18px; }
+.ib-seal { font-family: "Fraunces", serif; font-style: italic; font-size: clamp(28px,3.5vw,36px); color: var(--gold-light); margin-bottom: 14px; letter-spacing: -0.01em; }
+.ib-line { font-family: "Newsreader", serif; font-style: italic; font-size: 15px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 6px; }
+.ib-rule { width: 60px; height: 1px; background: var(--gold); margin: 18px auto; opacity: 0.7; }
+.ib-date { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; }
+
+.gothic-arches { margin-top: 80px; height: 70px; background:
+  repeating-linear-gradient(90deg, transparent 0px, transparent 18px, var(--gold) 18px, var(--gold) 19.5px, transparent 19.5px, transparent 38px),
+  repeating-linear-gradient(0deg, var(--copper-roof) 0px, var(--copper-roof) 1px, transparent 1px, transparent 24px),
+  linear-gradient(180deg, rgba(201,161,79,0.10) 0%, rgba(74,136,104,0.08) 100%);
+  border-top: 1px solid var(--gold); border-bottom: 1px solid var(--copper-roof); opacity: 0.55;
+}
+
+.page-footer { padding: 56px 24px; text-align: center; border-top: 4px double var(--gold); margin-top: clamp(60px,8vw,96px); background: var(--paper-deep); color: var(--ink-soft); position: relative; }
+.page-footer::before { content: "DFB · MMXXVI · Cat. № SC-IV"; position: absolute; bottom: 8px; right: 14px; font-family: "JetBrains Mono", monospace; font-size: 8px; letter-spacing: 0.28em; color: var(--gold); opacity: 0.55; text-transform: uppercase; }
+.pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; color: var(--gold); }
+.pf-attr { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 14px; margin-bottom: 8px; color: var(--gold-light); }
 .pf-links { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
-.pf-links a { text-decoration: none; border-bottom: 1px dotted currentColor; margin: 0 8px; }
+.pf-links a { color: var(--gold-light); text-decoration: none; border-bottom: 1px dotted var(--gold); margin: 0 8px; }
 
 @media (max-width: 720px) {
   .photo-hero { min-height: 580px; }
@@ -70,123 +146,44 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
   .ph-title { font-size: clamp(38px,11vw,60px); }
 }
 
-/* ============================================
-   OTTAWA LIBRARY OF PARLIAMENT palette
-   hexadecagonal Gothic Revival · dark stained oak + carved sandstone + central skylight
-   ============================================ */
-:root {
-  --paper: #EBE0C8; --paper-soft: #F0E6D2; --paper-warm: #D8CAA8; --paper-deep: #B8A982;
-  --ink: #2A1F12; --ink-soft: #3F3020; --ink-dim: #5C4530;
-  --oak: #5C4530; --oak-deep: #3F2D1F; --oak-light: #7A5C40;
-  --sandstone: #C9A14F; --sandstone-deep: #9A7838; --sandstone-light: #DEC893;
-  --brass: #8B6F4F; --brass-deep: #5C4530; --glow: #DEC893;
-}
-body { background: var(--paper); color: var(--ink); background-image:
-  radial-gradient(ellipse at top, rgba(92,69,48,0.18), transparent 55%),
-  radial-gradient(ellipse at bottom, rgba(201,161,79,0.14), transparent 55%),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.ph-eyebrow::before { background: var(--sandstone); }
-
-/* Gothic arch band — Ottawa's hexadecagonal pointed arches */
-.gothic-arch-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
-.gothic-arch-band svg { width: min(1000px, 94vw); height: 180px; }
-
-/* Charter doctrine container · 6 articles natural order I→VI */
-.doctrine-hall { max-width: 980px; margin: 0 auto; background: var(--paper-soft); border-top: 3px solid var(--oak); border-bottom: 3px solid var(--sandstone-deep); padding: 0; position: relative; }
-
-/* Article row — alternating oak / sandstone */
-.article-row { padding: clamp(28px,3.5vw,40px) clamp(28px,3.5vw,44px); position: relative; border-bottom: 1px solid var(--paper-deep); transition: 0.3s; display: grid; grid-template-columns: 100px 1fr; gap: clamp(20px,2.5vw,32px); align-items: start; }
-.article-row:last-child { border-bottom: none; }
-@media (max-width: 720px) { .article-row { grid-template-columns: 1fr; gap: 12px; } }
-
-/* Oak articles (I · III · V) — dark stained */
-.article-row.oak { background: linear-gradient(90deg, rgba(92,69,48,0.12) 0%, transparent 60%); }
-.article-row.oak::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--oak); }
-.article-row.oak:hover { background: linear-gradient(90deg, rgba(92,69,48,0.22) 0%, rgba(92,69,48,0.04) 100%); }
-.article-row.oak .ar-roman { color: var(--oak); }
-
-/* Sandstone articles (II · IV · VI) — carved honey */
-.article-row.sandstone { background: linear-gradient(90deg, rgba(201,161,79,0.18) 0%, transparent 60%); }
-.article-row.sandstone::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--sandstone); }
-.article-row.sandstone:hover { background: linear-gradient(90deg, rgba(201,161,79,0.28) 0%, rgba(201,161,79,0.06) 100%); }
-.article-row.sandstone .ar-roman { color: var(--sandstone-deep); }
-
-.ar-roman { font-family: "Fraunces", serif; font-style: italic; font-size: clamp(54px,6vw,76px); line-height: 1; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; padding-top: 4px; }
-.ar-content .ar-heading { font-family: "Fraunces", serif; font-size: clamp(24px,3vw,30px); font-weight: 460; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.015em; line-height: 1.2; }
-.ar-content .ar-heading em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; }
-.article-row.oak .ar-heading em { color: var(--oak); }
-.article-row.sandstone .ar-heading em { color: var(--sandstone-deep); }
-.ar-content .ar-body { font-family: "Newsreader", serif; font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
-.ar-content .ar-body p { margin-bottom: 12px; }
-.ar-content .ar-body p:last-child { margin-bottom: 0; }
-.ar-content .ar-body strong { font-weight: 600; color: var(--ink); }
-.ar-content .ar-body a { color: var(--sandstone-deep); text-decoration: none; border-bottom: 1px dotted var(--sandstone-deep); }
-
-/* Bureau Seal — central skylight medallion (Ottawa's central oculus) */
-.bureau-seal { margin: clamp(56px,7vw,80px) auto; max-width: 720px; padding: clamp(40px,5vw,60px); background: radial-gradient(ellipse at center, rgba(222,200,147,0.40) 0%, rgba(201,161,79,0.16) 60%, var(--paper-soft) 100%); border: 2px solid var(--sandstone-deep); border-top: 4px solid var(--oak); border-bottom: 4px solid var(--oak); text-align: center; position: relative; }
-.bs-mark { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.3em; color: var(--oak); text-transform: uppercase; margin-bottom: 22px; display: inline-block; padding: 6px 18px; border: 1px solid var(--sandstone-deep); background: var(--paper-soft); }
-.bs-quote { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(20px,2.5vw,26px); line-height: 1.55; color: var(--ink); margin-bottom: 22px; }
-.bs-attribution { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; color: var(--sandstone-deep); text-transform: uppercase; }
-
-/* Bottom decorative — gothic tracery pattern */
-.gothic-tracery { margin-top: 80px; height: 70px; background:
-  repeating-linear-gradient(90deg, var(--oak) 0px, var(--oak) 2px, transparent 2px, transparent 30px),
-  repeating-radial-gradient(circle at 15px 35px, var(--sandstone-deep) 0px, var(--sandstone-deep) 1.5px, transparent 1.5px, transparent 14px),
-  var(--paper-warm);
-  background-size: 30px 70px, 30px 70px, auto;
-  border-top: 2px solid var(--oak);
-  border-bottom: 2px solid var(--sandstone-deep);
-  opacity: 0.5;
-}
+/* Universal nav (dark teal) */
+.dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: 0.4s; border-bottom: 1px solid transparent; }
+.dfb-topnav.scrolled { background: rgba(6,22,32,0.92); backdrop-filter: blur(12px); border-bottom-color: rgba(201,161,79,0.30); }
+.dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; color: var(--ink); text-decoration: none; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+.dfb-brand:hover { color: var(--gold-light); }
+.dfb-brand span { color: var(--gold); font-style: normal; padding: 0 6px; }
+.dfb-menu-toggle { display: flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(201,161,79,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); transition: 0.2s; }
+.dfb-menu-toggle:hover { background: rgba(201,161,79,0.15); color: var(--gold-light); }
+.dfb-menu-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(6,22,32,0.97); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: clamp(20px, 4vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.4s; overflow-y: auto; }
+.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
+.dfb-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid rgba(201,161,79,0.25); margin-bottom: clamp(32px, 5vw, 56px); }
+.dfb-menu-title { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: clamp(24px, 3vw, 32px); color: var(--ink); }
+.dfb-menu-close { background: transparent; border: 1px solid rgba(201,161,79,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); }
+.dfb-menu-close:hover { background: rgba(201,161,79,0.15); color: var(--gold-light); }
+.dfb-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); max-width: 1240px; margin: 0 auto; width: 100%; }
+@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
+.dfb-menu-col-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(201,161,79,0.2); }
+.dfb-menu-link { display: block; padding: 10px 14px; margin-bottom: 6px; background: rgba(22,50,62,0.55); border-left: 2px solid rgba(201,161,79,0.4); color: var(--ink); text-decoration: none; transition: 0.2s; }
+.dfb-menu-link:hover { background: rgba(201,161,79,0.12); border-left-color: var(--gold-light); transform: translateX(4px); }
+.dfb-menu-link .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--gold); display: block; margin-bottom: 2px; }
+.dfb-menu-link .dfb-name { font-family: "Fraunces", serif; font-weight: 460; font-size: 16px; color: var(--ink); }
+.dfb-menu-link.current { background: rgba(222,200,147,0.18); border-left-color: var(--gold-light); }
+.dfb-menu-link.current .dfb-name { color: var(--gold-light); }
+.dfb-menu-footer { margin-top: auto; padding-top: 32px; text-align: center; opacity: 0.7; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+body.dfb-menu-open { overflow: hidden; }
 </style>
 </head>
 <body>
 
-<!-- ============ UNIVERSAL STICKY TOP NAV ============ -->
-<style>
-.dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom-color 0.4s ease; border-bottom: 1px solid transparent; }
-.dfb-topnav.scrolled { background: rgba(14, 8, 5, 0.86); backdrop-filter: blur(12px) saturate(140%); -webkit-backdrop-filter: blur(12px) saturate(140%); border-bottom-color: rgba(212, 168, 86, 0.25); }
-.dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; letter-spacing: 0.02em; color: #F0E2C5; text-decoration: none; text-shadow: 0 1px 8px rgba(0,0,0,0.5); transition: color 0.2s; font-variation-settings: 'opsz' 48, 'SOFT' 80, 'WONK' 1; }
-.dfb-brand:hover { color: #D4A856; }
-.dfb-brand span { color: #B58A48; font-style: normal; padding: 0 6px; }
-.dfb-menu-toggle { display: flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(181, 138, 72, 0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: #F0E2C5; transition: 0.2s; border-radius: 0; text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
-.dfb-menu-toggle:hover { background: rgba(181, 138, 72, 0.15); border-color: #D4A856; color: #D4A856; }
-.dfb-menu-toggle .dfb-bars { font-size: 14px; line-height: 1; }
-.dfb-topnav.scrolled .dfb-brand, .dfb-topnav.scrolled .dfb-menu-toggle { text-shadow: none; }
-.dfb-menu-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(14, 8, 5, 0.96); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); display: flex; flex-direction: column; padding: clamp(20px, 4vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.4s ease; overflow-y: auto; }
-.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
-.dfb-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid rgba(181, 138, 72, 0.25); margin-bottom: clamp(32px, 5vw, 56px); }
-.dfb-menu-title { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: clamp(24px, 3vw, 32px); color: #F0E2C5; font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1; }
-.dfb-menu-close { background: transparent; border: 1px solid rgba(181, 138, 72, 0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: #F0E2C5; transition: 0.2s; }
-.dfb-menu-close:hover { background: rgba(181, 138, 72, 0.15); color: #D4A856; }
-.dfb-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); max-width: 1240px; margin: 0 auto; width: 100%; }
-@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
-.dfb-menu-col-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #B58A48; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(181, 138, 72, 0.2); }
-.dfb-menu-link { display: block; padding: 10px 14px; margin-bottom: 6px; background: rgba(31, 20, 10, 0.5); border-left: 2px solid rgba(181, 138, 72, 0.4); color: #F0E2C5; text-decoration: none; transition: 0.2s; }
-.dfb-menu-link:hover { background: rgba(181, 138, 72, 0.12); border-left-color: #D4A856; transform: translateX(4px); }
-.dfb-menu-link .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: #B58A48; display: block; margin-bottom: 2px; }
-.dfb-menu-link .dfb-name { font-family: "Fraunces", serif; font-weight: 460; font-size: 16px; color: #F0E2C5; }
-.dfb-menu-link.current { background: rgba(212, 168, 86, 0.18); border-left-color: #D4A856; }
-.dfb-menu-link.current .dfb-name { color: #ECC078; }
-.dfb-menu-footer { margin-top: auto; padding-top: 32px; text-align: center; opacity: 0.7; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #B58A48; }
-body.dfb-menu-open { overflow: hidden; }
-</style>
-
 <header class="dfb-topnav" id="dfbTopNav">
   <a class="dfb-brand" href="index.html">DFB<span>·</span>Bureau</a>
-  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu"><span class="dfb-bars">☰</span> Menu</button>
+  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu"><span style="font-size:14px;line-height:1;">☰</span> Menu</button>
 </header>
-
 <nav class="dfb-menu-overlay" id="dfbMenu" aria-hidden="true">
-  <div class="dfb-menu-head">
-    <div class="dfb-menu-title">The Sixteen Rooms</div>
-    <button class="dfb-menu-close" onclick="dfbToggleMenu()" aria-label="Close menu">✕ Close</button>
-  </div>
+  <div class="dfb-menu-head"><div class="dfb-menu-title">The Sixteen Rooms</div><button class="dfb-menu-close" onclick="dfbToggleMenu()">✕ Close</button></div>
   <div class="dfb-menu-grid">
-    <div>
-      <div class="dfb-menu-col-title">— Imperial Lock —</div>
+    <div><div class="dfb-menu-col-title">— Imperial Lock —</div>
       <a href="index.html" class="dfb-menu-link" data-page="index.html"><span class="dfb-roman">I · Front Desk</span><span class="dfb-name">Bureau Index</span></a>
       <a href="midnight.html" class="dfb-menu-link" data-page="midnight.html"><span class="dfb-roman">II · After Hours</span><span class="dfb-name">Midnight</span></a>
       <a href="archive.html" class="dfb-menu-link" data-page="archive.html"><span class="dfb-roman">III · Filed Dispatches</span><span class="dfb-name">Archive</span></a>
@@ -194,231 +191,208 @@ body.dfb-menu-open { overflow: hidden; }
       <a href="concordance.html" class="dfb-menu-link" data-page="concordance.html"><span class="dfb-roman">V · Index of Terms</span><span class="dfb-name">Concordance</span></a>
       <a href="errata.html" class="dfb-menu-link" data-page="errata.html"><span class="dfb-roman">VI · Corrections</span><span class="dfb-name">Errata</span></a>
     </div>
-    <div>
-      <div class="dfb-menu-col-title">— Doctrinal Wing —</div>
-      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I · Open Shelf</span><span class="dfb-name">Periodicals</span></a>
-      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II · Curated</span><span class="dfb-name">Cabinet</span></a>
-      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III · Restricted</span><span class="dfb-name">Vault</span></a>
+    <div><div class="dfb-menu-col-title">— Doctrinal Wing —</div>
+      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I</span><span class="dfb-name">Periodicals</span></a>
+      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II</span><span class="dfb-name">Cabinet</span></a>
+      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III</span><span class="dfb-name">Vault</span></a>
       <a href="chambers.html" class="dfb-menu-link" data-page="chambers.html"><span class="dfb-roman">X · Literary Annex</span><span class="dfb-name">Chambers</span></a>
       <a href="about.html" class="dfb-menu-link" data-page="about.html"><span class="dfb-roman">XI · Editorial Office</span><span class="dfb-name">About</span></a>
     </div>
-    <div>
-      <div class="dfb-menu-col-title">— Front-Matter —</div>
-      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Site Directory</span><span class="dfb-name">Contents</span></a>
-      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Editorial Notice</span><span class="dfb-name">Disclaimer</span></a>
-      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms · Jurisdiction</span><span class="dfb-name">Legal</span></a>
+    <div><div class="dfb-menu-col-title">— Front-Matter —</div>
+      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Directory</span><span class="dfb-name">Contents</span></a>
+      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Notice</span><span class="dfb-name">Disclaimer</span></a>
+      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms</span><span class="dfb-name">Legal</span></a>
       <a href="privacy.html" class="dfb-menu-link" data-page="privacy.html"><span class="dfb-roman">XV · Reader Notice</span><span class="dfb-name">Privacy</span></a>
-      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Photo · Type</span><span class="dfb-name">Credits</span></a>
+      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Credits</span><span class="dfb-name">Credits</span></a>
     </div>
   </div>
   <div class="dfb-menu-footer">Same yield. Different durability. · Anno MMXXVI</div>
 </nav>
-
 <script>
-(function() {
-  var nav = document.getElementById('dfbTopNav');
-  var menu = document.getElementById('dfbMenu');
-  var body = document.body;
-  function onScroll() { if (window.scrollY > 60) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } }
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  window.dfbToggleMenu = function() { var isOpen = menu.classList.toggle('open'); body.classList.toggle('dfb-menu-open', isOpen); menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true'); };
-  var current = location.pathname.split('/').pop() || 'index.html';
-  if (current === '') current = 'index.html';
-  var currentLink = menu.querySelector('[data-page="' + current + '"]');
-  if (currentLink) currentLink.classList.add('current');
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && menu.classList.contains('open')) { dfbToggleMenu(); } });
-})();
+(function(){var n=document.getElementById('dfbTopNav'),m=document.getElementById('dfbMenu'),b=document.body;function s(){if(window.scrollY>60)n.classList.add('scrolled');else n.classList.remove('scrolled');}window.addEventListener('scroll',s,{passive:true});s();window.dfbToggleMenu=function(){var o=m.classList.toggle('open');b.classList.toggle('dfb-menu-open',o);m.setAttribute('aria-hidden',o?'false':'true');};var c=location.pathname.split('/').pop()||'index.html';if(c==='')c='index.html';var l=m.querySelector('[data-page="'+c+'"]');if(l)l.classList.add('current');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))dfbToggleMenu();});})();
 </script>
-<!-- ============ END UNIVERSAL NAV ============ -->
 
-<!-- HERO · Library of Parliament · Ottawa, Canada (Hexadecagonal Gothic Revival) -->
-<section class="photo-hero" aria-label="Library of Parliament · Ottawa, Canada (Gothic Revival · 16-sided polygon)">
-  <div class="ph-photo" role="img" aria-label="Library of Parliament · Ottawa, Canada (Gothic Revival · 16-sided polygon)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/The_Library_of_Parliament_(14579981339).jpg?width=2560');"></div>
-  <!-- Warm honey-sepia overlay (NOT generic black) -->
-  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#1A100866 70%,#1A1008C8 100%),linear-gradient(to bottom,rgba(26,16,8,0.42) 0%,rgba(26,16,8,0.05) 30%,rgba(201,161,79,0.10) 60%,#1A1008CC 100%);"></div>
+<section class="photo-hero" aria-label="Library of Parliament · Ottawa · Gothic Revival 1876">
+  <div class="ph-photo" role="img" aria-label="Library of Parliament · Ottawa · 1876" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/The_Library_of_Parliament_(14579981339).jpg?width=2560');"></div>
+  <div class="ph-vignette"></div>
   <div class="ph-grain"></div>
-  <aside class="brass-plate" style="background:rgba(40, 28, 18, 0.72);border:1px solid #C9A14F;color:#F0E6D2;">
-    <span class="bp-corner-tl" style="border-color:#C9A14F;"></span>
-    <span class="bp-corner-tr" style="border-color:#C9A14F;"></span>
-    <span class="bp-corner-bl" style="border-color:#C9A14F;"></span>
-    <span class="bp-corner-br" style="border-color:#C9A14F;"></span>
-    <span style="color:#C9A14F;font-weight:600;">The Bureau Charter</span>
-    <span class="bp-issue" style="color:#DEC893;">Founding Doctrine</span>
-    <span class="bp-divider" style="background:#5C4530;"></span>
-    <span class="bp-line">Editorial Position</span>
-    <span class="bp-line" style="color:#F0E6D2;">Independent · Seoul</span>
-    <span class="bp-line" style="opacity:0.7;">Last revised · MMXXVI</span>
+  <aside class="brass-plate">
+    <span class="bp-corner-tl"></span><span class="bp-corner-tr"></span><span class="bp-corner-bl"></span><span class="bp-corner-br"></span>
+    <span class="bp-mark">The Charter</span>
+    <span class="bp-issue">Founding Doctrine</span>
+    <span class="bp-divider"></span>
+    <span class="bp-line">Six Articles</span>
+    <span class="bp-line" style="color:var(--gold-light);">Signed · Standing</span>
+    <span class="bp-line" style="opacity:0.7;">Cat. № SC-IV</span>
   </aside>
-  <div class="ph-text" style="color:#F0E6D2;">
-    <div class="ph-eyebrow" style="color:#DEC893;">Founding Principles · Editorial Doctrine · Position</div>
-    <h1 class="ph-title">Yield = paid.<br><em style="color:#DEC893;border-top-color:#C9A14F;">Buffer = paying it.</em></h1>
-    <p class="ph-subtitle" style="color:#F0E6D2DD;">The Bureau is an independent research boutique focused on dividend durability and refinancing risk. Diagnostics, not advice. Frameworks, not forecasts. Structural reads on U.S. income assets, published from Seoul.</p>
+  <div class="ph-text">
+    <div class="ph-eyebrow">Founding Doctrine · Six Articles · Declarative Chamber</div>
+    <h1 class="ph-title">The Bureau<br><em>Charter.</em></h1>
+    <p class="ph-subtitle">Founding doctrine. Six articles. Signed once. Stands.</p>
   </div>
-  <div class="scroll-prompt" style="color:#EBE0C8;">
-    <span class="scroll-label">Read the charter</span>
-    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#C9A14F);"></span>
-  </div>
-  <div class="photo-attr" style="color:#F0E6D288;">
-    <a href="https://commons.wikimedia.org/wiki/File:The_Library_of_Parliament_(14579981339).jpg" target="_blank" rel="noopener">Library of Parliament · Ottawa, Canada · Hexadecagonal Gothic Revival · Wikimedia Commons · CC BY-SA</a>
-  </div>
+  <div class="scroll-prompt"><span class="scroll-label">Read the Articles</span><span class="scroll-line"></span></div>
+  <div class="photo-attr"><a href="https://commons.wikimedia.org/wiki/File:The_Library_of_Parliament_(14579981339).jpg" target="_blank" rel="noopener">Library of Parliament · Ottawa · Gothic Revival · 1876 · CC BY-SA</a></div>
 </section>
 
-<!-- Gothic arch band — Ottawa's hexadecagonal pointed arches + 16-sided polygon -->
-<div class="gothic-arch-band">
+<!-- Gothic vault band · Ottawa Parliament pointed arches + ribbed vault + oak medallion -->
+<div class="vault-band">
   <svg viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <linearGradient id="oakGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#3F2D1F" stop-opacity="0.9"/>
-        <stop offset="100%" stop-color="#5C4530" stop-opacity="0.4"/>
-      </linearGradient>
-      <linearGradient id="sandstoneGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#C9A14F" stop-opacity="0.85"/>
-        <stop offset="100%" stop-color="#DEC893" stop-opacity="0.2"/>
-      </linearGradient>
-      <radialGradient id="skylightGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#DEC893" stop-opacity="0.9"/>
-        <stop offset="100%" stop-color="#C9A14F" stop-opacity="0"/>
+      <radialGradient id="vaultGlowTeal" cx="50%" cy="0%" r="60%">
+        <stop offset="0%" stop-color="#DEC893" stop-opacity="0.55"/>
+        <stop offset="60%" stop-color="#4A8868" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="#0E2630" stop-opacity="0"/>
       </radialGradient>
     </defs>
-    <!-- 5 pointed gothic arches (Ottawa nave) -->
-    <g stroke="#3F2D1F" stroke-width="2" fill="none">
-      <!-- Pointed arches (Gothic style, NOT round) -->
-      <path d="M 60 180 L 60 60 L 130 20 L 200 60 L 200 180" opacity="0.92"/>
-      <path d="M 230 180 L 230 50 L 310 10 L 390 50 L 390 180" opacity="0.92"/>
-      <path d="M 420 180 L 420 40 L 500 0 L 580 40 L 580 180" opacity="0.95"/>
-      <path d="M 610 180 L 610 50 L 690 10 L 770 50 L 770 180" opacity="0.92"/>
-      <path d="M 800 180 L 800 60 L 870 20 L 940 60 L 940 180" opacity="0.92"/>
+    <ellipse cx="500" cy="20" rx="320" ry="34" fill="url(#vaultGlowTeal)"/>
+    <!-- 6 Gothic pointed arches across (Ottawa's signature) -->
+    <g fill="none" stroke="#C9A14F" stroke-width="1.6">
+      <path d="M 60 170 L 60 100 L 130 40 L 200 100 L 200 170"/>
+      <path d="M 200 170 L 200 100 L 270 40 L 340 100 L 340 170"/>
+      <path d="M 340 170 L 340 100 L 410 30 L 480 100 L 480 170"/>
+      <path d="M 480 170 L 480 95 L 550 25 L 620 95 L 620 170"/>
+      <path d="M 620 170 L 620 100 L 690 40 L 760 100 L 760 170"/>
+      <path d="M 760 170 L 760 100 L 830 40 L 900 100 L 900 170"/>
     </g>
-    <!-- Sandstone tracery inside arches -->
-    <g fill="url(#sandstoneGrad)" opacity="0.7">
-      <path d="M 60 180 L 60 60 L 130 20 L 200 60 L 200 180 Z"/>
-      <path d="M 420 180 L 420 40 L 500 0 L 580 40 L 580 180 Z"/>
-      <path d="M 800 180 L 800 60 L 870 20 L 940 60 L 940 180 Z"/>
+    <g stroke="#9A7838" stroke-width="0.8" opacity="0.65">
+      <line x1="130" y1="50" x2="130" y2="170"/><line x1="270" y1="50" x2="270" y2="170"/>
+      <line x1="410" y1="40" x2="410" y2="170"/><line x1="550" y1="35" x2="550" y2="170"/>
+      <line x1="690" y1="50" x2="690" y2="170"/><line x1="830" y1="50" x2="830" y2="170"/>
     </g>
-    <g fill="url(#oakGrad)" opacity="0.65">
-      <path d="M 230 180 L 230 50 L 310 10 L 390 50 L 390 180 Z"/>
-      <path d="M 610 180 L 610 50 L 690 10 L 770 50 L 770 180 Z"/>
+    <g fill="#B58A48" opacity="0.75">
+      <circle cx="130" cy="50" r="3"/><circle cx="270" cy="50" r="3"/><circle cx="410" cy="40" r="3"/>
+      <circle cx="550" cy="35" r="4"/><circle cx="690" cy="50" r="3"/><circle cx="830" cy="50" r="3"/>
     </g>
-    <!-- Gothic tracery details inside center arch (quatrefoil-like) -->
-    <g stroke="#9A7838" stroke-width="1" fill="none" opacity="0.75">
-      <circle cx="500" cy="80" r="8"/>
-      <path d="M 500 72 L 500 88 M 492 80 L 508 80"/>
-      <circle cx="500" cy="120" r="6"/>
-      <circle cx="500" cy="60" r="4"/>
+    <!-- Central oak medallion (Queen Victoria's place at Ottawa) -->
+    <circle cx="500" cy="118" r="22" fill="#1F3E4A" stroke="#B58A48" stroke-width="1.6"/>
+    <circle cx="500" cy="118" r="14" fill="none" stroke="#9A7838" stroke-width="0.8"/>
+    <circle cx="500" cy="118" r="6" fill="#DEC893" opacity="0.85"/>
+    <g stroke="#9A7838" stroke-width="0.6" opacity="0.85">
+      <line x1="500" y1="100" x2="500" y2="106"/><line x1="500" y1="130" x2="500" y2="136"/>
+      <line x1="482" y1="118" x2="488" y2="118"/><line x1="512" y1="118" x2="518" y2="118"/>
     </g>
-    <!-- 16-sided polygon silhouette (Ottawa's hexadecagonal floorplan) -->
-    <g transform="translate(500 145)" stroke="#C9A14F" stroke-width="1.2" fill="none" opacity="0.85">
-      <polygon points="0,-25 9.6,-23.1 17.7,-17.7 23.1,-9.6 25,0 23.1,9.6 17.7,17.7 9.6,23.1 0,25 -9.6,23.1 -17.7,17.7 -23.1,9.6 -25,0 -23.1,-9.6 -17.7,-17.7 -9.6,-23.1"/>
+    <!-- Copper roof color hint -->
+    <g stroke="#4A8868" stroke-width="0.7" opacity="0.45">
+      <line x1="55" y1="105" x2="135" y2="45"/><line x1="265" y1="55" x2="195" y2="105"/>
+      <line x1="275" y1="55" x2="335" y2="105"/><line x1="405" y1="45" x2="335" y2="105"/>
+      <line x1="415" y1="45" x2="475" y2="105"/><line x1="545" y1="30" x2="475" y2="100"/>
+      <line x1="555" y1="30" x2="615" y2="100"/><line x1="685" y1="45" x2="625" y2="105"/>
+      <line x1="695" y1="45" x2="755" y2="105"/><line x1="825" y1="55" x2="765" y2="105"/>
+      <line x1="835" y1="55" x2="895" y2="105"/>
     </g>
-    <!-- Skylight glow at top center -->
-    <ellipse cx="500" cy="5" rx="40" ry="14" fill="url(#skylightGlow)"/>
-    <!-- Central medallion -->
-    <ellipse cx="500" cy="160" rx="62" ry="16" fill="#F0E6D2" stroke="#3F2D1F" stroke-width="1.2" opacity="0.95"/>
-    <text x="500" y="166" font-family="Fraunces, serif" font-style="italic" font-size="14" fill="#3F2D1F" text-anchor="middle">Founding Doctrine</text>
+    <line x1="40" y1="170" x2="960" y2="170" stroke="#9A7838" stroke-width="1.5"/>
+    <ellipse cx="500" cy="172" rx="68" ry="6" fill="#16323E" stroke="#C9A14F" stroke-width="1.2"/>
+    <text x="500" y="175" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#DEC893" text-anchor="middle">The Declarative Chamber</text>
   </svg>
 </div>
 
 <main class="main-body">
+
+  <aside class="room-context" aria-label="About this room">
+    <div class="rc-label">— Climate · South Wing —</div>
+    <div class="rc-body"><strong>A charter is signed once. It stands.</strong> The Bureau's founding doctrine, in six articles. Read once; binding thereafter. (From Latin <em>carta</em> — "paper, formal grant"; the document on which an institution is founded.)</div>
+  </aside>
+
   <div class="section-intro">
-    <div class="si-label" style="color:var(--oak);">— The Founding Doctrine · Six Articles —</div>
-    <h2 class="si-title" style="color:var(--ink);">The position, <em style="color:var(--sandstone-deep);">in plain words.</em></h2>
-    <p class="si-desc" style="color:var(--ink-soft);">Six articles. One sentence at the head; commentary beneath. The full position is short on purpose — anything that does not fit here does not belong in the charter.</p>
+    <div class="si-label">— Six Articles · Declarative Chamber —</div>
+    <h2 class="si-title">Founding doctrine, <em>in six.</em></h2>
+    <p class="si-desc">Position, Method, Universe, Cadence, Independence, the Reader. Each article stands; together, they bind.</p>
   </div>
 
-  <!-- Doctrine Hall · 6 articles natural reading order I→II→III→IV→V→VI · oak/sandstone alternating -->
-  <div class="doctrine-hall">
-    <!-- I · Oak -->
-    <article class="article-row oak">
+  <div class="articles-list">
+
+    <article class="article-row">
+      <span class="ar-cat">Art. № I</span>
       <div class="ar-roman">I.</div>
-      <div class="ar-content">
-        <h3 class="ar-heading">Diagnostics, <em>not advice.</em></h3>
-        <div class="ar-body">
-          <p>The Bureau publishes structural reads. We do not name personal positions, we do not recommend transactions, we do not address individual circumstances.</p>
-          <p><strong>Action verbs</strong> — buy, sell, hold — do not appear in our copy. <strong>Diagnostic verbs</strong> — improving, stable, pressured — do.</p>
-        </div>
+      <div class="ar-head">— Article I · Position —</div>
+      <h3 class="ar-title">The Bureau is <em>independent.</em></h3>
+      <div class="ar-body">
+        <p>Reader-funded. Sell-side detached. <strong>No issuer, platform, or asset manager pays the Bureau.</strong> No sponsored content. No affiliate revenue on covered names. No compensation tied to ratings.</p>
+        <p>Independent by construction &mdash; not aspiration.</p>
       </div>
     </article>
 
-    <!-- II · Sandstone -->
-    <article class="article-row sandstone">
+    <article class="article-row">
+      <span class="ar-cat">Art. № II</span>
       <div class="ar-roman">II.</div>
-      <div class="ar-content">
-        <h3 class="ar-heading">Structural, <em>not surface.</em></h3>
-        <div class="ar-body">
-          <p>The same headline yield can be paid from four very different sources: AFFO, NII, option premium, return of capital. The Bureau separates them.</p>
-          <p>What the screen shows as "yield" is, structurally, four different promises. We label which is which.</p>
-        </div>
+      <div class="ar-head">— Article II · Method —</div>
+      <h3 class="ar-title">Diagnostic, <em>not advisory.</em></h3>
+      <div class="ar-body">
+        <p>The Bureau reads <strong>engines, not yields.</strong> Three signal frameworks govern every dispatch:</p>
+        <p><strong>Buffer Half-Life&trade;</strong> — the time-axis of the cushion. <strong>Three Clocks&trade;</strong> — coverage, maturity, market access. <strong>BBB- Cliff&trade;</strong> — the credit migration threshold.</p>
+        <p>Diagnostic language only. No buy / sell / hold.</p>
       </div>
     </article>
 
-    <!-- III · Oak -->
-    <article class="article-row oak">
+    <article class="article-row">
+      <span class="ar-cat">Art. № III</span>
       <div class="ar-roman">III.</div>
-      <div class="ar-content">
-        <h3 class="ar-heading">Frameworks, <em>not forecasts.</em></h3>
-        <div class="ar-body">
-          <p>Buffer Half-Life™, Three Clocks™, BBB- Cliff™ — three lenses through which the same dividend looks structurally different.</p>
-          <p>We do not predict. We measure how much cushion is paying for the distribution, how soon the refinancing window opens, and what happens at the credit cliff.</p>
-        </div>
+      <div class="ar-head">— Article III · Universe —</div>
+      <h3 class="ar-title">Locked coverage. <em>May MMXXVI.</em></h3>
+      <div class="ar-body">
+        <p><strong>Core Coverage</strong> (40%) — large-cap IG REITs, BDCs.<br><strong>Satellite Income</strong> (25%) — cov-call ETFs, MLPs.<br><strong>Structured Yield</strong> (25%) — CLO CEFs, preferreds.<br><strong>Adjacent Territory</strong> (10%) — utilities, global infra.</p>
+        <p><em>Excluded Territory:</em> small-cap, mREITs, distressed.</p>
       </div>
     </article>
 
-    <!-- IV · Sandstone -->
-    <article class="article-row sandstone">
+    <article class="article-row">
+      <span class="ar-cat">Art. № IV</span>
       <div class="ar-roman">IV.</div>
-      <div class="ar-content">
-        <h3 class="ar-heading">Independent, <em>from Seoul.</em></h3>
-        <div class="ar-body">
-          <p>No issuer pays for coverage. No platform pays for placement. The Bureau is funded by readers — through Substack subscriptions and Gumroad deep-dive sales.</p>
-          <p>The editor is based in Seoul. The coverage is U.S. income assets. The lens is structural.</p>
-        </div>
+      <div class="ar-head">— Article IV · Cadence —</div>
+      <h3 class="ar-title">Fixed schedule. <em>No off-cycle alerts.</em></h3>
+      <div class="ar-body">
+        <p>Monday, Wednesday, Friday — dispatches to the Archive. Saturday — the Substack letter. No emergency notes. No market-hour bulletins.</p>
+        <p>The Bureau publishes by the clock, not by the headline.</p>
       </div>
     </article>
 
-    <!-- V · Oak -->
-    <article class="article-row oak">
+    <article class="article-row">
+      <span class="ar-cat">Art. № V</span>
       <div class="ar-roman">V.</div>
-      <div class="ar-content">
-        <h3 class="ar-heading">Closed positions <em>disclosed.</em></h3>
-        <div class="ar-body">
-          <p>The editor holds no positions in the names covered. Where this changes — even briefly — disclosure is filed before the dispatch.</p>
-        </div>
+      <div class="ar-head">— Article V · Independence —</div>
+      <h3 class="ar-title">The position is independent <em>because the money is.</em></h3>
+      <div class="ar-body">
+        <p>No advertising on Bureau pages. No sponsored research. No paid promotional placements in dispatches. Reader funding only — through the <a href="vault.html" style="color:var(--gold-light);border-bottom:1px dotted var(--gold);text-decoration:none;">Vault</a>'s Structural Income Desk&trade;.</p>
+        <p>One source of revenue. One direction of accountability.</p>
       </div>
     </article>
 
-    <!-- VI · Sandstone -->
-    <article class="article-row sandstone">
+    <article class="article-row">
+      <span class="ar-cat">Art. № VI</span>
       <div class="ar-roman">VI.</div>
-      <div class="ar-content">
-        <h3 class="ar-heading">Corrections <em>preserved.</em></h3>
-        <div class="ar-body">
-          <p>The original is not deleted. The correction is filed alongside. The <a href="errata.html">Errata Desk</a> is open.</p>
-        </div>
+      <div class="ar-head">— Article VI · The Reader —</div>
+      <h3 class="ar-title">The Bureau serves <em>the reader.</em></h3>
+      <div class="ar-body">
+        <p>Not the issuer. Not the platform. Not the broker. <strong>No personal advice.</strong> No portfolio recommendations. No predictions of price.</p>
+        <p>Structural diagnostics, filed openly, read at the reader's own discretion. <em>This is not a prediction — structural assessment.</em></p>
       </div>
     </article>
+
   </div>
 
-  <!-- Bureau Seal · skylight medallion -->
-  <div class="bureau-seal">
-    <div class="bs-mark">— DFB · Anno MMXXIV · Seoul · The Bureau Seal —</div>
-    <p class="bs-quote">"Yield is observed.<br>Structure is examined.<br>The buffer is what is paying it."</p>
-    <div class="bs-attribution">— Editorial standing line —</div>
+  <div class="imprimatur-block">
+    <div class="ib-mark">— Imprimatur —</div>
+    <div class="ib-seal">Dividend Forensics Bureau</div>
+    <div class="ib-line">Founded Anno MMXXIV.</div>
+    <div class="ib-line">Charter signed by the editor &amp; sole proprietor:</div>
+    <div class="ib-line"><strong style="color:var(--gold-light);font-style:normal;">Jeong-Mo Goo</strong> · Seoul · Independent.</div>
+    <div class="ib-rule"></div>
+    <div class="ib-date">Anno MMXXVI · Standing</div>
   </div>
 
-  <!-- Bottom decorative — gothic tracery -->
-  <div class="gothic-tracery" aria-hidden="true"></div>
+  <div class="gothic-arches" aria-hidden="true"></div>
 
   <div class="section-intro" style="margin-top:clamp(56px,7vw,80px);">
-    <div class="si-label" style="color:var(--oak);">— Filed under doctrine —</div>
-    <h2 class="si-title" style="color:var(--ink);font-size:clamp(28px,3.5vw,38px);">The charter is short <em style="color:var(--sandstone-deep);">by intention.</em></h2>
-    <p class="si-desc" style="color:var(--ink-soft);font-size:16px;">Read with the dispatches. The position lives in the work, not in the manifesto. This is not a prediction — structural assessment.</p>
+    <div class="si-label">— The Charter · Six Articles · Standing —</div>
+    <h2 class="si-title" style="font-size:clamp(28px,3.5vw,38px);">Read once. <em>Binding thereafter.</em></h2>
+    <p class="si-desc" style="font-size:16px;">Amendments filed at the <a href="errata.html" style="color:var(--gold-light);border-bottom:1px dotted var(--gold);text-decoration:none;">Errata</a> desk only. This is not a prediction — structural assessment.</p>
   </div>
 </main>
 
-<footer class="page-footer" style="background:#D8CAA8;color:#3F3020;border-top-color:#5C4530;">
-  <div class="pf-marker" style="color:#5C4530;">— The Bureau Charter · Six Articles —</div>
-  <div class="pf-attr">Founding doctrine. Filed from Seoul. Independent and reader-funded.</div>
-  <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="archive.html">Archive</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="credits.html">Credits</a></div>
+<footer class="page-footer">
+  <div class="pf-marker">— IV · The Charter · South Wing —</div>
+  <div class="pf-attr">Six articles · signed once · standing. Reader-funded by doctrine.</div>
+  <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="archive.html">Archive</a> · <a href="concordance.html">Concordance</a> · <a href="errata.html">Errata</a> · <a href="credits.html">Credits</a></div>
 </footer>
 </body>
 </html>
