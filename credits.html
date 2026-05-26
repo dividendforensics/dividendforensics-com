@@ -1,784 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Credits · Image Attributions · Dividend Forensics Bureau</title>
-<meta name="description" content="Image and font credits for the Bureau site. All library photographs are CC BY-SA / public domain works from Wikimedia Commons.">
-<meta name="author" content="Jeong-Mo Goo">
-<meta name="robots" content="index, follow">
+<title>Credits · Photography · Typography · Dividend Forensics Bureau</title>
+<meta name="description" content="The Bureau's photo and type credits. Sixteen libraries · five typefaces · Wikimedia Commons license terms.">
 <link rel="canonical" href="https://dividendforensics.com/credits.html">
-
-<meta name="DC.title" content="Credits · Image Attributions">
-<meta name="DC.creator" content="Goo, Jeong-Mo">
-<meta name="DC.publisher" content="Dividend Forensics Bureau">
-<meta name="DC.date" content="2026-05-24">
-<meta name="DC.type" content="Text.Annex">
-<meta name="DC.format" content="text/html">
-<meta name="DC.language" content="en">
-<meta name="DC.rights" content="© 2026 Dividend Forensics Bureau">
-
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Credits · Dividend Forensics Bureau">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dividendforensics.com/credits.html">
-<meta property="og:title" content="Credits · Dividend Forensics Bureau">
-<meta property="og:description" content="Image attributions and font credits for the Bureau site.">
-
+<meta name="theme-color" content="#2A1A0E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,400..600&family=Inter:wght@400..600&family=JetBrains+Mono:wght@400..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* === CREDITS · RICH SEPIA BROWN DARK MODE · 19c colophon page === */
 :root {
-  color-scheme: light;
-
-  /* === Credits palette — Pale Cream & Slate (auxiliary tier) === */
-  --paper: #F4EEE0;
-  --paper-soft: #F8F2E5;
-  --paper-warm: #F0E9D8;
-  --paper-deep: #E8E0CC;
-  --ink: #1F1B16;
-  --ink-soft: #36312A;
-  --ink-deep: #10100C;
-  --sepia: #6E665B;
-  --sepia-soft: #877E70;
-  --sepia-deep: #4D463D;
-  --gold: #8E7A52;
-  --gold-soft: #A8946A;
-  --gold-deep: #685A3B;
-  --burgundy: #5E3038;
-  --burgundy-soft: #7C434C;
-  --line: #D2C9B7;
-  --line-soft: #DDD5C3;
-  --stone: #B5AA94;
-  --red-ink: #7C434C;
-  --pearl: #F9F3E3;
-
-  --grain-opacity: 0.055;
-
-  /* Typography */
-  --font-display: 'Fraunces', 'Optima', 'Hoefler Text', Garamond, serif;
-  --font-body: 'Newsreader', 'Charter', Georgia, serif;
-  --font-italic: 'Cormorant Garamond', serif;
-  --font-ui: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
-
-  /* Spacing scale */
-  --s-xs: 0.444rem;
-  --s-sm: 0.667rem;
-  --s-md: 1rem;
-  --s-lg: 1.5rem;
-  --s-xl: 2.25rem;
-  --s-2xl: 3.375rem;
-  --s-3xl: 5.0625rem;
-
-  /* Easing & duration */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --d-base: 400ms;
-  --d-slow: 800ms;
+  --paper: #2A1A0E;
+  --paper-soft: #3A2418;
+  --paper-warm: #4A2F1F;
+  --paper-deep: #14090A;
+  --ink: #EDDDB8;
+  --ink-soft: #D8C597;
+  --ink-dim: #A8956A;
+  --sepia: #B58A48;
+  --sepia-deep: #8B6432;
+  --sepia-light: #DEC893;
+  --gold: #C9A14F;
+  --gold-light: #E8DCC0;
+  --rust: #A04A2A;
+}
+body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; background: var(--paper); color: var(--ink); background-image:
+  radial-gradient(ellipse at top, rgba(222,200,147,0.08), transparent 55%),
+  radial-gradient(ellipse at center, rgba(181,138,72,0.08), transparent 60%),
+  radial-gradient(ellipse at bottom, rgba(160,74,42,0.06), transparent 55%);
 }
 
-* { box-sizing: border-box; }
+/* === FRONTISPIECE HERO (NO PHOTO · SVG ornament + typography) === */
+.frontispiece { position: relative; width: 100%; min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(60px,8vh,100px) clamp(24px,4vw,48px); overflow: hidden; }
+.frontispiece::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(222,200,147,0.10) 0%, transparent 60%), linear-gradient(180deg, rgba(58,36,24,0.40) 0%, transparent 50%, rgba(20,9,10,0.60) 100%); pointer-events: none; }
+.fp-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
-html, body {
-  margin: 0; padding: 0;
-  background: var(--paper);
-  color: var(--ink-soft);
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.6;
-  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+.fp-ornament-top { width: min(640px, 84vw); height: 80px; margin-bottom: 40px; opacity: 0.85; }
+.fp-ornament-bottom { width: min(640px, 84vw); height: 80px; margin-top: 40px; opacity: 0.85; transform: scaleY(-1); }
 
-/* === Paper grain overlay === */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 100;
-  background-image:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.48 0 0 0 0 0.36 0 0 0 0 0.27 0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  background-size: 420px 420px;
-  opacity: var(--grain-opacity);
-  mix-blend-mode: multiply;
-}
+.fp-mark { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.42em; text-transform: uppercase; color: var(--sepia); margin-bottom: 22px; padding: 8px 28px; border-top: 1px solid var(--sepia); border-bottom: 1px solid var(--sepia); }
+.fp-roman { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(64px,9vw,128px); line-height: 0.95; font-weight: 400; color: var(--gold-light); margin-bottom: 16px; text-shadow: 0 4px 24px rgba(0,0,0,0.6); }
+.fp-title { font-family: "Fraunces", serif; font-size: clamp(40px,5.5vw,64px); line-height: 1.05; font-weight: 380; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 12px; text-align: center; max-width: 800px; }
+.fp-title em { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--sepia-light); }
+.fp-subtitle { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(18px,1.6vw,22px); color: var(--sepia-light); margin-bottom: 28px; text-align: center; max-width: 640px; }
+.fp-imprint { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 24px 36px; border: 1px solid var(--sepia-deep); background: rgba(20,9,10,0.55); margin-top: 24px; }
+.fp-imprint-line { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--ink-soft); text-transform: uppercase; }
+.fp-imprint-mark { font-family: "Fraunces", serif; font-style: italic; font-size: 17px; color: var(--gold-light); letter-spacing: 0.02em; }
+.fp-divider { width: 60px; height: 1px; background: var(--sepia); margin: 6px 0; opacity: 0.7; }
 
-/* === Diagonal scratch marks (subtle) === */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 99;
-  background-image:
-    linear-gradient(127deg, transparent 49.9%, rgba(123,90,69,0.04) 50%, transparent 50.1%),
-    linear-gradient(-43deg, transparent 49.9%, rgba(123,90,69,0.025) 50%, transparent 50.1%);
-  background-size: 800px 800px, 600px 600px;
-  opacity: 0.7;
-}
+.main-body { max-width: 1140px; margin: 0 auto; padding: clamp(40px,5vw,72px) clamp(24px,4vw,48px) 80px; position: relative; }
+.section-intro { text-align: center; margin-bottom: clamp(40px,5vw,60px); max-width: 760px; margin-left: auto; margin-right: auto; }
+.si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 24px; display: inline-block; padding: 0 32px; position: relative; color: var(--sepia); }
+.si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; background: var(--sepia); }
+.si-label::before { left: 0; } .si-label::after { right: 0; }
+.si-title { font-family: "Fraunces", serif; font-size: clamp(32px,4vw,44px); line-height: 1.05; font-weight: 380; margin-bottom: 18px; letter-spacing: -0.015em; color: var(--ink); }
+.si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; color: var(--sepia-light); }
+.si-desc { font-family: "Newsreader", serif; font-size: 16.5px; line-height: 1.7; max-width: 600px; margin: 0 auto; color: var(--ink-soft); }
 
-/* === Outer frame === */
-.page-frame {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: var(--s-xl) var(--s-xl);
-  position: relative;
-  border: 1px solid var(--line);
-  margin-top: var(--s-xl);
-  margin-bottom: var(--s-xl);
-  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 50%, var(--paper) 100%);
-}
+/* Photo credits table — 16 libraries · 19c book index page feel */
+.credits-table { max-width: 1100px; margin: 0 auto; background: rgba(58,36,24,0.75); border-top: 3px solid var(--sepia); border-bottom: 3px solid var(--sepia); padding: 0; box-shadow: 0 4px 18px rgba(0,0,0,0.35); }
+.credit-row { display: grid; grid-template-columns: 60px 1fr 1.4fr 140px; gap: 18px; padding: 18px 24px; border-bottom: 1px solid rgba(201,161,79,0.18); align-items: baseline; transition: 0.22s; }
+.credit-row:last-child { border-bottom: none; }
+.credit-row:hover { background: rgba(74,47,31,0.45); }
+.credit-row:nth-child(even) { background: rgba(74,47,31,0.30); }
+.credit-row:nth-child(even):hover { background: rgba(74,47,31,0.55); }
+@media (max-width: 760px) { .credit-row { grid-template-columns: 50px 1fr; gap: 10px; } .cr-lib, .cr-license { grid-column: 1 / -1; padding-top: 6px; padding-left: 60px; } }
 
-/* Corner monograms */
-.page-frame::before,
-.page-frame::after {
-  content: "";
-  position: absolute;
-  width: 28px; height: 28px;
-  border: 1.5px solid var(--gold-deep);
-}
-.page-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-.page-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.cr-roman { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--sepia-light); text-transform: uppercase; font-weight: 500; }
+.cr-page { font-family: "Fraunces", serif; font-size: 17px; font-weight: 470; color: var(--ink); letter-spacing: -0.005em; }
+.cr-page-tag { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 13.5px; color: var(--ink-dim); display: block; margin-top: 2px; }
+.cr-lib { font-family: "Newsreader", serif; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+.cr-lib a { color: var(--sepia-light); text-decoration: none; border-bottom: 1px dotted var(--sepia); }
+.cr-lib a:hover { color: var(--gold-light); }
+.cr-lib-arch { display: block; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 12.5px; color: var(--ink-dim); margin-top: 2px; }
+.cr-license { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--ink-dim); text-transform: uppercase; text-align: right; }
+.cr-license .lc-tag { display: inline-block; padding: 3px 9px; border: 1px solid var(--sepia-deep); background: rgba(20,9,10,0.55); color: var(--sepia-light); }
+@media (max-width: 760px) { .cr-license { text-align: left; } }
 
-.corner-tr,
-.corner-bl {
-  position: absolute;
-  width: 28px; height: 28px;
-  border: 1.5px solid var(--gold-deep);
-}
-.corner-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
-.corner-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+/* Type credits block */
+.type-block { max-width: 880px; margin: 64px auto 0; padding: clamp(28px,3vw,40px); background: rgba(58,36,24,0.75); border-left: 4px solid var(--gold); border-right: 4px solid var(--rust); position: relative; box-shadow: 0 4px 18px rgba(0,0,0,0.35); }
+.tb-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--sepia-light); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px dotted var(--sepia); }
+.type-list { list-style: none; padding: 0; margin: 0; }
+.type-list li { padding: 14px 0; border-bottom: 1px dotted rgba(201,161,79,0.22); display: grid; grid-template-columns: 200px 1fr; gap: 16px; align-items: baseline; }
+.type-list li:last-child { border-bottom: none; }
+@media (max-width: 640px) { .type-list li { grid-template-columns: 1fr; gap: 4px; } }
+.tl-name { font-size: 18px; }
+.tl-name.frau { font-family: "Fraunces", serif; font-weight: 460; color: var(--gold-light); }
+.tl-name.news { font-family: "Newsreader", serif; color: var(--gold-light); }
+.tl-name.cor { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--gold-light); }
+.tl-name.inter { font-family: "Inter", sans-serif; color: var(--gold-light); }
+.tl-name.mono { font-family: "JetBrains Mono", monospace; color: var(--gold-light); font-size: 16px; }
+.tl-desc { font-family: "Newsreader", serif; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+.tl-desc em { font-style: italic; color: var(--sepia-light); }
 
-/* === Header === */
-.periodicals-header {
-  text-align: center;
-  padding: var(--s-2xl) 0 var(--s-xl);
-  border-bottom: 1px solid var(--line);
-}
+/* Bureau attribution block */
+.attribution-block { max-width: 880px; margin: 48px auto 0; padding: clamp(36px,4vw,52px); background: linear-gradient(180deg, rgba(74,47,31,0.85) 0%, rgba(58,36,24,0.85) 100%); border-top: 3px double var(--sepia-light); border-bottom: 3px double var(--sepia-light); text-align: center; box-shadow: 0 6px 24px rgba(0,0,0,0.4); }
+.ab-mark { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.40em; color: var(--sepia); text-transform: uppercase; margin-bottom: 18px; }
+.ab-seal { font-family: "Fraunces", serif; font-style: italic; font-size: clamp(28px,3.5vw,40px); color: var(--gold-light); margin-bottom: 14px; letter-spacing: -0.01em; }
+.ab-line { font-family: "Newsreader", serif; font-size: 15px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 8px; }
+.ab-line em { font-style: italic; color: var(--sepia-light); }
+.ab-rule { width: 80px; height: 1px; background: var(--sepia); margin: 20px auto; opacity: 0.7; }
+.ab-imprint { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 14px; color: var(--ink-dim); }
 
-.ph-bureau {
-  font-family: var(--font-display);
-  font-size: 0.7rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--sepia-deep);
-  font-weight: 500;
-  margin-bottom: var(--s-md);
-}
+/* License footer */
+.license-block { max-width: 1020px; margin: 48px auto 0; padding: 28px 32px; background: rgba(20,9,10,0.65); border: 1px solid var(--sepia-deep); }
+.lc-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--sepia); text-transform: uppercase; margin-bottom: 14px; }
+.lc-body { font-family: "Newsreader", serif; font-size: 14.5px; line-height: 1.7; color: var(--ink-soft); }
+.lc-body p { margin-bottom: 10px; }
+.lc-body p:last-child { margin-bottom: 0; }
+.lc-body a { color: var(--sepia-light); border-bottom: 1px dotted var(--sepia); text-decoration: none; }
+.lc-body em { font-style: italic; color: var(--sepia-light); }
 
-.ph-ornament {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--s-md);
-  margin: var(--s-md) auto;
-  color: var(--gold-deep);
-}
-.ph-ornament .rule {
-  width: 80px;
-  height: 1px;
-  background: var(--gold-deep);
-}
-.ph-ornament .dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--gold-deep);
-}
+.page-footer { padding: 56px 24px; text-align: center; border-top: 4px double var(--sepia); margin-top: clamp(60px,8vw,96px); background: var(--paper-deep); color: var(--ink-soft); }
+.pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; color: var(--sepia); }
+.pf-attr { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 14px; margin-bottom: 8px; color: var(--sepia-light); }
+.pf-links { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
+.pf-links a { color: var(--sepia-light); text-decoration: none; border-bottom: 1px dotted var(--sepia); margin: 0 8px; }
 
-.ph-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
-  font-weight: 400;
-  font-style: italic;
-  color: var(--ink);
-  margin: var(--s-md) 0 var(--s-sm);
-  letter-spacing: -0.01em;
-  font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 0.4;
-  line-height: 1.05;
-}
-
-.ph-subtitle {
-  font-family: var(--font-italic);
-  font-style: italic;
-  font-size: 1.15rem;
-  color: var(--sepia-deep);
-  margin: var(--s-sm) 0 var(--s-md);
-}
-
-.ph-marker {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  color: var(--sepia);
-  text-transform: uppercase;
-  margin-top: var(--s-md);
-}
-
-/* === Latest Specimen === */
-.latest-specimen {
-  padding: var(--s-2xl) 0 var(--s-xl);
-  text-align: center;
-  border-bottom: 1px dashed var(--line);
-}
-
-.section-marker {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-  margin-bottom: var(--s-lg);
-  display: inline-block;
-  padding: 0 var(--s-md);
-  position: relative;
-}
-.section-marker::before,
-.section-marker::after {
-  content: "—";
-  color: var(--gold-deep);
-  padding: 0 var(--s-sm);
-}
-
-.ls-issue {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
-  color: var(--sepia);
-  text-transform: uppercase;
-  margin-bottom: var(--s-md);
-}
-
-.ls-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 3.6rem);
-  font-weight: 400;
-  color: var(--ink);
-  line-height: 1.1;
-  margin: var(--s-md) 0 var(--s-lg);
-  letter-spacing: -0.015em;
-  font-variation-settings: 'opsz' 96, 'SOFT' 60, 'WONK' 0;
-}
-.ls-title em {
-  font-family: var(--font-display);
-  font-style: italic;
-  color: var(--ink);
-  font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
-}
-
-.ls-subtitle {
-  font-family: var(--font-italic);
-  font-style: italic;
-  font-size: 1.2rem;
-  color: var(--sepia-deep);
-  max-width: 580px;
-  margin: 0 auto var(--s-xl);
-}
-
-/* === SVG chart === */
-.ls-chart {
-  display: flex;
-  justify-content: center;
-  margin: var(--s-xl) 0;
-}
-
-.ls-chart svg {
-  max-width: 480px;
-  width: 100%;
-  height: auto;
-}
-
-.ls-meta {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-  color: var(--sepia);
-  text-transform: uppercase;
-  margin: var(--s-lg) 0;
-}
-.ls-meta .ls-divider {
-  padding: 0 var(--s-sm);
-  color: var(--gold-deep);
-}
-
-.ls-cta {
-  display: inline-block;
-  margin-top: var(--s-md);
-  padding: var(--s-sm) var(--s-xl);
-  border: 1px solid var(--sepia-deep);
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  transition: all var(--d-base) var(--ease-out);
-  background: transparent;
-  font-style: italic;
-}
-.ls-cta:hover {
-  background: var(--sepia-deep);
-  color: var(--paper);
-}
-.ls-cta .arrow {
-  margin-left: var(--s-sm);
-  font-style: normal;
-}
-
-/* === Open Shelf === */
-.open-shelf {
-  padding: var(--s-2xl) 0 var(--s-xl);
-  border-bottom: 1px dashed var(--line);
-}
-
-.os-header {
-  text-align: center;
-  margin-bottom: var(--s-md);
-}
-
-.os-subtitle {
-  text-align: center;
-  font-family: var(--font-italic);
-  font-style: italic;
-  color: var(--sepia);
-  margin: 0 0 var(--s-2xl);
-  font-size: 1.05rem;
-}
-
-.catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--s-xl) var(--s-lg);
-  margin-top: var(--s-lg);
-}
-
-.specimen-card {
-  border: 1px solid var(--line);
-  padding: var(--s-lg);
-  background: var(--paper-soft);
-  position: relative;
-  transition: all var(--d-base) var(--ease-out);
-  display: flex;
-  flex-direction: column;
-}
-
-.specimen-card:hover {
-  border-color: var(--gold-deep);
-  background: var(--paper);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(123,90,69,0.08);
-}
-
-.specimen-card::before {
-  content: "";
-  position: absolute;
-  top: -1px; left: -1px;
-  width: 16px; height: 16px;
-  border-left: 1.5px solid var(--gold-deep);
-  border-top: 1.5px solid var(--gold-deep);
-}
-.specimen-card::after {
-  content: "";
-  position: absolute;
-  bottom: -1px; right: -1px;
-  width: 16px; height: 16px;
-  border-right: 1.5px solid var(--gold-deep);
-  border-bottom: 1.5px solid var(--gold-deep);
-}
-
-.sc-channel {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-  margin-bottom: var(--s-sm);
-}
-
-.sc-issue {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  color: var(--sepia);
-  margin-bottom: var(--s-sm);
-}
-
-.sc-title {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 500;
-  color: var(--ink);
-  line-height: 1.25;
-  margin: var(--s-sm) 0;
-  font-variation-settings: 'opsz' 24;
-}
-.sc-title em {
-  font-style: italic;
-}
-
-.sc-abstract {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--sepia-deep);
-  line-height: 1.5;
-  margin: var(--s-sm) 0 var(--s-md);
-  flex-grow: 1;
-}
-
-.sc-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-top: var(--s-md);
-  border-top: 1px solid var(--line-soft);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--sepia);
-  letter-spacing: 0.08em;
-}
-
-.sc-meta .sc-date { text-transform: uppercase; }
-.sc-meta .sc-link {
-  text-decoration: none;
-  color: var(--sepia-deep);
-  font-style: italic;
-  font-family: var(--font-italic);
-  letter-spacing: 0;
-  font-size: 0.85rem;
-}
-.sc-meta .sc-link:hover {
-  color: var(--burgundy);
-}
-
-/* === Free Reading Shelf === */
-.free-shelf {
-  padding: var(--s-2xl) 0 var(--s-xl);
-  text-align: center;
-}
-
-.fs-card {
-  max-width: 580px;
-  margin: var(--s-xl) auto 0;
-  padding: var(--s-xl);
-  border: 1px solid var(--gold-deep);
-  background: var(--paper-soft);
-  position: relative;
-}
-
-.fs-card::before {
-  content: "FREE PRIMER";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--paper);
-  padding: 0 var(--s-md);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
-  color: var(--gold-deep);
-}
-
-.fs-title {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-style: italic;
-  color: var(--ink);
-  margin: var(--s-sm) 0;
-  font-variation-settings: 'opsz' 36, 'SOFT' 60, 'WONK' 0.4;
-}
-
-.fs-subtitle {
-  font-family: var(--font-italic);
-  font-style: italic;
-  color: var(--sepia-deep);
-  font-size: 1.05rem;
-  margin: var(--s-sm) 0 var(--s-md);
-}
-
-.fs-desc {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--sepia-deep);
-  max-width: 480px;
-  margin: 0 auto var(--s-lg);
-  line-height: 1.55;
-}
-
-.fs-cta {
-  display: inline-block;
-  padding: var(--s-sm) var(--s-xl);
-  background: var(--gold-deep);
-  color: var(--paper);
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  transition: all var(--d-base) var(--ease-out);
-  font-style: italic;
-}
-.fs-cta:hover {
-  background: var(--ink);
-}
-
-/* === Annex footer === */
-.annex-footer {
-  padding: var(--s-2xl) 0 var(--s-xl);
-  text-align: center;
-  border-top: 1px solid var(--line);
-  margin-top: var(--s-xl);
-}
-
-.af-attribution {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--sepia);
-  margin-bottom: var(--s-lg);
-}
-
-.af-annexes {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--s-lg);
-  margin: var(--s-lg) 0;
-  flex-wrap: wrap;
-}
-
-.af-annexes a {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--sepia-deep);
-  text-decoration: none;
-  padding: var(--s-xs) var(--s-md);
-  border-bottom: 1px solid transparent;
-  transition: all var(--d-base) var(--ease-out);
-}
-.af-annexes a:hover {
-  color: var(--burgundy);
-  border-bottom-color: var(--gold-deep);
-}
-.af-annexes .here {
-  color: var(--gold-deep);
-  border-bottom: 1px solid var(--gold-deep);
-  font-weight: 500;
-}
-
-.af-divider {
-  color: var(--gold-deep);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-}
-
-.af-back {
-  margin: var(--s-xl) 0 var(--s-md);
-}
-
-.af-back a {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--gold-deep);
-  padding-bottom: 2px;
-  transition: all var(--d-base) var(--ease-out);
-}
-.af-back a:hover {
-  color: var(--burgundy);
-}
-
-.af-closer {
-  font-family: var(--font-italic);
-  font-style: italic;
-  color: var(--sepia-deep);
-  font-size: 1rem;
-  margin: var(--s-lg) 0 var(--s-sm);
-}
-
-.af-signoff {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
-  color: var(--sepia);
-  text-transform: uppercase;
-}
-
-/* === Reveal animation === */
-@keyframes reveal {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-[data-reveal] {
-  animation: reveal var(--d-slow) var(--ease-out) both;
-}
-
-[data-reveal-delay="1"] { animation-delay: 100ms; }
-[data-reveal-delay="2"] { animation-delay: 200ms; }
-[data-reveal-delay="3"] { animation-delay: 300ms; }
-[data-reveal-delay="4"] { animation-delay: 400ms; }
-[data-reveal-delay="5"] { animation-delay: 500ms; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .page-frame {
-    padding: var(--s-lg) var(--s-md);
-    margin-top: var(--s-md);
-    margin-bottom: var(--s-md);
-  }
-  .ph-title {
-    font-size: 2.6rem;
-  }
-  .ls-title {
-    font-size: 2.2rem;
-  }
-  .af-annexes {
-    flex-direction: column;
-    gap: var(--s-sm);
-  }
-  .af-divider { display: none; }
-}
-
+/* Universal nav (dark sepia) */
+.dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: 0.4s; border-bottom: 1px solid transparent; }
+.dfb-topnav.scrolled { background: rgba(20,9,10,0.92); backdrop-filter: blur(12px); border-bottom-color: rgba(181,138,72,0.30); }
+.dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; color: var(--ink); text-decoration: none; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
+.dfb-brand:hover { color: var(--sepia-light); }
+.dfb-brand span { color: var(--sepia); font-style: normal; padding: 0 6px; }
+.dfb-menu-toggle { display: flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(181,138,72,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); transition: 0.2s; }
+.dfb-menu-toggle:hover { background: rgba(181,138,72,0.15); color: var(--sepia-light); }
+.dfb-menu-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(20,9,10,0.97); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: clamp(20px, 4vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.4s; overflow-y: auto; }
+.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
+.dfb-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid rgba(181,138,72,0.25); margin-bottom: clamp(32px, 5vw, 56px); }
+.dfb-menu-title { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: clamp(24px, 3vw, 32px); color: var(--ink); }
+.dfb-menu-close { background: transparent; border: 1px solid rgba(181,138,72,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); }
+.dfb-menu-close:hover { background: rgba(181,138,72,0.15); color: var(--sepia-light); }
+.dfb-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); max-width: 1240px; margin: 0 auto; width: 100%; }
+@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
+.dfb-menu-col-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--sepia); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(181,138,72,0.2); }
+.dfb-menu-link { display: block; padding: 10px 14px; margin-bottom: 6px; background: rgba(58,36,24,0.55); border-left: 2px solid rgba(181,138,72,0.4); color: var(--ink); text-decoration: none; transition: 0.2s; }
+.dfb-menu-link:hover { background: rgba(181,138,72,0.12); border-left-color: var(--sepia-light); transform: translateX(4px); }
+.dfb-menu-link .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--sepia); display: block; margin-bottom: 2px; }
+.dfb-menu-link .dfb-name { font-family: "Fraunces", serif; font-weight: 460; font-size: 16px; color: var(--ink); }
+.dfb-menu-link.current { background: rgba(232,220,192,0.18); border-left-color: var(--gold-light); }
+.dfb-menu-link.current .dfb-name { color: var(--gold-light); }
+.dfb-menu-footer { margin-top: auto; padding-top: 32px; text-align: center; opacity: 0.7; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sepia); }
+body.dfb-menu-open { overflow: hidden; }
 </style>
 </head>
 <body>
-<!-- ============ UNIVERSAL STICKY TOP NAV ============ -->
-<style>
-.dfb-topnav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px clamp(20px, 4vw, 40px);
-  background: transparent;
-  transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom-color 0.4s ease;
-  border-bottom: 1px solid transparent;
-}
-.dfb-topnav.scrolled {
-  background: rgba(14, 8, 5, 0.86);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  border-bottom-color: rgba(212, 168, 86, 0.25);
-}
-.dfb-brand {
-  font-family: "Fraunces", serif; font-style: italic; font-weight: 380;
-  font-size: 18px; letter-spacing: 0.02em;
-  color: #F0E2C5; text-decoration: none;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-  transition: color 0.2s;
-  font-variation-settings: 'opsz' 48, 'SOFT' 80, 'WONK' 1;
-}
-.dfb-brand:hover { color: #D4A856; }
-.dfb-brand span { color: #B58A48; font-style: normal; padding: 0 6px; }
-.dfb-menu-toggle {
-  display: flex; align-items: center; gap: 10px;
-  background: transparent; border: 1px solid rgba(181, 138, 72, 0.5);
-  padding: 8px 16px; cursor: pointer;
-  font-family: "JetBrains Mono", monospace; font-size: 11px;
-  letter-spacing: 0.24em; text-transform: uppercase;
-  color: #F0E2C5;
-  transition: 0.2s; border-radius: 0;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
-}
-.dfb-menu-toggle:hover { background: rgba(181, 138, 72, 0.15); border-color: #D4A856; color: #D4A856; }
-.dfb-menu-toggle .dfb-bars { font-size: 14px; line-height: 1; }
-.dfb-topnav.scrolled .dfb-brand,
-.dfb-topnav.scrolled .dfb-menu-toggle { text-shadow: none; }
-
-/* Full-screen overlay menu */
-.dfb-menu-overlay {
-  position: fixed; inset: 0; z-index: 10000;
-  background: rgba(14, 8, 5, 0.96);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  display: flex; flex-direction: column;
-  padding: clamp(20px, 4vw, 40px);
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.4s ease;
-  overflow-y: auto;
-}
-.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
-.dfb-menu-head {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(181, 138, 72, 0.25);
-  margin-bottom: clamp(32px, 5vw, 56px);
-}
-.dfb-menu-title {
-  font-family: "Fraunces", serif; font-style: italic; font-weight: 380;
-  font-size: clamp(24px, 3vw, 32px); color: #F0E2C5;
-  font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1;
-}
-.dfb-menu-close {
-  background: transparent; border: 1px solid rgba(181, 138, 72, 0.5);
-  padding: 8px 16px; cursor: pointer;
-  font-family: "JetBrains Mono", monospace; font-size: 11px;
-  letter-spacing: 0.24em; text-transform: uppercase;
-  color: #F0E2C5; transition: 0.2s;
-}
-.dfb-menu-close:hover { background: rgba(181, 138, 72, 0.15); color: #D4A856; }
-.dfb-menu-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: clamp(28px, 4vw, 48px);
-  max-width: 1240px; margin: 0 auto; width: 100%;
-}
-@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
-.dfb-menu-col-title {
-  font-family: "JetBrains Mono", monospace; font-size: 10px;
-  letter-spacing: 0.28em; text-transform: uppercase;
-  color: #B58A48; margin-bottom: 18px; padding-bottom: 10px;
-  border-bottom: 1px solid rgba(181, 138, 72, 0.2);
-}
-.dfb-menu-link {
-  display: block; padding: 10px 14px; margin-bottom: 6px;
-  background: rgba(31, 20, 10, 0.5); border-left: 2px solid rgba(181, 138, 72, 0.4);
-  color: #F0E2C5; text-decoration: none;
-  transition: 0.2s;
-}
-.dfb-menu-link:hover {
-  background: rgba(181, 138, 72, 0.12);
-  border-left-color: #D4A856;
-  transform: translateX(4px);
-}
-.dfb-menu-link .dfb-roman {
-  font-family: "JetBrains Mono", monospace; font-size: 9px;
-  letter-spacing: 0.22em; color: #B58A48;
-  display: block; margin-bottom: 2px;
-}
-.dfb-menu-link .dfb-name {
-  font-family: "Fraunces", serif; font-weight: 460;
-  font-size: 16px; color: #F0E2C5;
-}
-.dfb-menu-link.current { background: rgba(212, 168, 86, 0.18); border-left-color: #D4A856; }
-.dfb-menu-link.current .dfb-name { color: #ECC078; }
-.dfb-menu-footer {
-  margin-top: auto; padding-top: 32px;
-  text-align: center; opacity: 0.7;
-  font-family: "JetBrains Mono", monospace; font-size: 10px;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: #B58A48;
-}
-body.dfb-menu-open { overflow: hidden; }
-</style>
 
 <header class="dfb-topnav" id="dfbTopNav">
   <a class="dfb-brand" href="index.html">DFB<span>·</span>Bureau</a>
-  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu">
-    <span class="dfb-bars">☰</span> Menu
-  </button>
+  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu"><span style="font-size:14px;line-height:1;">☰</span> Menu</button>
 </header>
-
 <nav class="dfb-menu-overlay" id="dfbMenu" aria-hidden="true">
-  <div class="dfb-menu-head">
-    <div class="dfb-menu-title">The Sixteen Rooms</div>
-    <button class="dfb-menu-close" onclick="dfbToggleMenu()" aria-label="Close menu">✕ Close</button>
-  </div>
+  <div class="dfb-menu-head"><div class="dfb-menu-title">The Sixteen Rooms</div><button class="dfb-menu-close" onclick="dfbToggleMenu()">✕ Close</button></div>
   <div class="dfb-menu-grid">
-    <div>
-      <div class="dfb-menu-col-title">— Imperial Lock —</div>
+    <div><div class="dfb-menu-col-title">— Imperial Lock —</div>
       <a href="index.html" class="dfb-menu-link" data-page="index.html"><span class="dfb-roman">I · Front Desk</span><span class="dfb-name">Bureau Index</span></a>
       <a href="midnight.html" class="dfb-menu-link" data-page="midnight.html"><span class="dfb-roman">II · After Hours</span><span class="dfb-name">Midnight</span></a>
       <a href="archive.html" class="dfb-menu-link" data-page="archive.html"><span class="dfb-roman">III · Filed Dispatches</span><span class="dfb-name">Archive</span></a>
@@ -786,390 +172,262 @@ body.dfb-menu-open { overflow: hidden; }
       <a href="concordance.html" class="dfb-menu-link" data-page="concordance.html"><span class="dfb-roman">V · Index of Terms</span><span class="dfb-name">Concordance</span></a>
       <a href="errata.html" class="dfb-menu-link" data-page="errata.html"><span class="dfb-roman">VI · Corrections</span><span class="dfb-name">Errata</span></a>
     </div>
-    <div>
-      <div class="dfb-menu-col-title">— Doctrinal Wing —</div>
-      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I · Open Shelf</span><span class="dfb-name">Periodicals</span></a>
-      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II · Curated</span><span class="dfb-name">Cabinet</span></a>
-      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III · Restricted</span><span class="dfb-name">Vault</span></a>
+    <div><div class="dfb-menu-col-title">— Doctrinal Wing —</div>
+      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I</span><span class="dfb-name">Periodicals</span></a>
+      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II</span><span class="dfb-name">Cabinet</span></a>
+      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III</span><span class="dfb-name">Vault</span></a>
       <a href="chambers.html" class="dfb-menu-link" data-page="chambers.html"><span class="dfb-roman">X · Literary Annex</span><span class="dfb-name">Chambers</span></a>
       <a href="about.html" class="dfb-menu-link" data-page="about.html"><span class="dfb-roman">XI · Editorial Office</span><span class="dfb-name">About</span></a>
     </div>
-    <div>
-      <div class="dfb-menu-col-title">— Front-Matter —</div>
-      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Site Directory</span><span class="dfb-name">Contents</span></a>
-      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Editorial Notice</span><span class="dfb-name">Disclaimer</span></a>
-      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms · Jurisdiction</span><span class="dfb-name">Legal</span></a>
+    <div><div class="dfb-menu-col-title">— Front-Matter —</div>
+      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Directory</span><span class="dfb-name">Contents</span></a>
+      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Notice</span><span class="dfb-name">Disclaimer</span></a>
+      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms</span><span class="dfb-name">Legal</span></a>
       <a href="privacy.html" class="dfb-menu-link" data-page="privacy.html"><span class="dfb-roman">XV · Reader Notice</span><span class="dfb-name">Privacy</span></a>
-      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Photo · Type</span><span class="dfb-name">Credits</span></a>
+      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Credits</span><span class="dfb-name">Credits</span></a>
     </div>
   </div>
   <div class="dfb-menu-footer">Same yield. Different durability. · Anno MMXXVI</div>
 </nav>
-
 <script>
-(function() {
-  var nav = document.getElementById('dfbTopNav');
-  var menu = document.getElementById('dfbMenu');
-  var body = document.body;
-  
-  function onScroll() {
-    if (window.scrollY > 60) { nav.classList.add('scrolled'); }
-    else { nav.classList.remove('scrolled'); }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-  
-  window.dfbToggleMenu = function() {
-    var isOpen = menu.classList.toggle('open');
-    body.classList.toggle('dfb-menu-open', isOpen);
-    menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-  };
-  
-  // Highlight current page
-  var current = location.pathname.split('/').pop() || 'index.html';
-  if (current === '') current = 'index.html';
-  var currentLink = menu.querySelector('[data-page="' + current + '"]');
-  if (currentLink) currentLink.classList.add('current');
-  
-  // ESC to close
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && menu.classList.contains('open')) { dfbToggleMenu(); }
-  });
-})();
+(function(){var n=document.getElementById('dfbTopNav'),m=document.getElementById('dfbMenu'),b=document.body;function s(){if(window.scrollY>60)n.classList.add('scrolled');else n.classList.remove('scrolled');}window.addEventListener('scroll',s,{passive:true});s();window.dfbToggleMenu=function(){var o=m.classList.toggle('open');b.classList.toggle('dfb-menu-open',o);m.setAttribute('aria-hidden',o?'false':'true');};var c=location.pathname.split('/').pop()||'index.html';if(c==='')c='index.html';var l=m.querySelector('[data-page="'+c+'"]');if(l)l.classList.add('current');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))dfbToggleMenu();});})();
 </script>
-<!-- ============ END UNIVERSAL NAV ============ -->
 
+<!-- FRONTISPIECE (no photo · SVG-based 19c book frontispiece) -->
+<section class="frontispiece" aria-label="Credits Frontispiece">
+  <div class="fp-grain"></div>
 
-<!-- Library photo strip (5 library glimpses) -->
-<div style="max-width: 1140px; margin: 88px auto 24px; padding: 0 clamp(12px,3vw,32px); display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px;">
-  <div style="aspect-ratio: 16/10; background: url('https://commons.wikimedia.org/wiki/Special:FilePath/Long_Room_Interior,_Trinity_College_Dublin,_Ireland_-_Diliff.jpg?width=400') center/cover; opacity: 0.85; filter: sepia(15%);" title="Trinity College Long Room (index)"></div>
-  <div style="aspect-ratio: 16/10; background: url('https://commons.wikimedia.org/wiki/Special:FilePath/George_Peabody_Library_Interior.jpg?width=400') center/cover; opacity: 0.85; filter: sepia(15%);" title="George Peabody Library (archive)"></div>
-  <div style="aspect-ratio: 16/10; background: url('https://commons.wikimedia.org/wiki/Special:FilePath/Biblioteca_Joanina,_Coimbra.jpg?width=400') center/cover; opacity: 0.85; filter: sepia(15%);" title="Biblioteca Joanina (cabinet)"></div>
-  <div style="aspect-ratio: 16/10; background: url('https://commons.wikimedia.org/wiki/Special:FilePath/20170420_Beinecke_Rare_Book_Library_Interior_Yale_University_New_Haven_Connecticut.jpg?width=400') center/cover; opacity: 0.85; filter: sepia(15%);" title="Beinecke Library Interior (vault)"></div>
-  <div style="aspect-ratio: 16/10; background: url('https://commons.wikimedia.org/wiki/Special:FilePath/Kloster_Wiblingen_Bibliothekssaal_01.jpg?width=400') center/cover; opacity: 0.85; filter: sepia(15%);" title="Wiblingen Library (errata)"></div>
-</div>
-<div style="max-width: 1140px; margin: 0 auto 16px; padding: 0 clamp(12px,3vw,32px); text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: #6E665B; opacity: 0.75;">
-  — A glimpse of the sixteen rooms · Five of sixteen shown —
-</div>
+  <!-- Top ornament · 19c book engraving style -->
+  <svg class="fp-ornament-top" viewBox="0 0 640 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#DEC893" stop-opacity="0.9"/><stop offset="100%" stop-color="#B58A48" stop-opacity="0"/></radialGradient>
+    </defs>
+    <!-- Center medallion -->
+    <circle cx="320" cy="40" r="20" fill="none" stroke="#C9A14F" stroke-width="1.5"/>
+    <circle cx="320" cy="40" r="14" fill="none" stroke="#B58A48" stroke-width="0.8"/>
+    <circle cx="320" cy="40" r="6" fill="#DEC893" opacity="0.7"/>
+    <ellipse cx="320" cy="40" rx="30" ry="14" fill="url(#centerGlow)" opacity="0.5"/>
+    <!-- Left scroll flourish -->
+    <g fill="none" stroke="#C9A14F" stroke-width="1.4">
+      <path d="M 60 40 L 290 40"/>
+      <path d="M 100 30 Q 160 10 200 30 Q 240 50 280 35"/>
+      <path d="M 100 50 Q 160 70 200 50 Q 240 30 280 45"/>
+      <circle cx="60" cy="40" r="4"/>
+      <circle cx="60" cy="40" r="1.5" fill="#DEC893"/>
+    </g>
+    <!-- Right scroll flourish (mirror) -->
+    <g fill="none" stroke="#C9A14F" stroke-width="1.4">
+      <path d="M 350 40 L 580 40"/>
+      <path d="M 360 30 Q 400 10 440 30 Q 480 50 540 30"/>
+      <path d="M 360 50 Q 400 70 440 50 Q 480 30 540 50"/>
+      <circle cx="580" cy="40" r="4"/>
+      <circle cx="580" cy="40" r="1.5" fill="#DEC893"/>
+    </g>
+    <!-- Small stars -->
+    <g fill="#DEC893" opacity="0.8">
+      <circle cx="180" cy="20" r="1.5"/><circle cx="220" cy="60" r="1.5"/><circle cx="460" cy="60" r="1.5"/><circle cx="420" cy="20" r="1.5"/>
+    </g>
+  </svg>
 
-<div class="page-frame">
-<span class="corner-tr"></span>
-<span class="corner-bl"></span>
+  <div class="fp-mark">Sexta Decima · Room XVI</div>
+  <div class="fp-roman">XVI.</div>
+  <h1 class="fp-title">Credits &amp; <em>Colophon.</em></h1>
+  <p class="fp-subtitle">The Bureau's photo and type credits. Sixteen libraries, five typefaces — printed for the record.</p>
 
-<!-- ============ Header ============ -->
-<header class="periodicals-header" data-reveal>
-  <div class="ph-bureau">Dividend Forensics Bureau</div>
-
-  <div class="ph-ornament">
-    <span class="rule"></span>
-    <span class="dot"></span>
-    <span class="rule"></span>
+  <div class="fp-imprint">
+    <div class="fp-imprint-line">Imprimatur</div>
+    <div class="fp-divider"></div>
+    <div class="fp-imprint-mark">Dividend Forensics Bureau</div>
+    <div class="fp-imprint-line">Seoul · Independent · MMXXVI</div>
   </div>
 
-  <h1 class="ph-title">Credits</h1>
-  <div class="ph-subtitle">— Image Attributions · Font Credits · License Notice —</div>
-  <div class="ph-marker">Auxiliary · License Compliance · Anno MMXXVI</div>
-</header>
-
-<!-- ============ Latest Specimen ============ -->
-<section class="latest-specimen" data-reveal data-reveal-delay="1">
-  <div class="section-marker">Notice</div>
-  <div class="ls-issue">License Compliance · CC BY-SA · Public Domain</div>
-
-  <h2 class="ls-title">Attribution<br><em>where attribution is due.</em></h2>
-  <p class="ls-subtitle">The Bureau site uses freely licensed photographs of world libraries to evoke the spirit of institutional research. Every image is credited to its photographer, with license terms preserved and linked.</p>
-
-  <!-- Creative Commons icon group -->
-  <div class="ls-chart">
-    <svg viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg" aria-label="Creative Commons license symbols">
-      <defs>
-        <pattern id="crGrain" patternUnits="userSpaceOnUse" width="4" height="4">
-          <circle cx="2" cy="2" r="0.3" fill="#6E665B" opacity="0.3"/>
-        </pattern>
-      </defs>
-
-      <!-- Three license badges -->
-      <g transform="translate(120, 120)">
-        <circle cx="0" cy="0" r="44" fill="url(#crGrain)" stroke="#4D463D" stroke-width="1.2"/>
-        <text x="0" y="8" font-family="Fraunces, serif" font-style="italic" font-size="28" fill="#1F1B16" text-anchor="middle" font-variation-settings="'opsz' 48">CC</text>
-        <text x="0" y="-58" font-family="JetBrains Mono, monospace" font-size="8" fill="#6E665B" text-anchor="middle" letter-spacing="0.2em">CREATIVE</text>
-        <text x="0" y="62" font-family="JetBrains Mono, monospace" font-size="8" fill="#6E665B" text-anchor="middle" letter-spacing="0.2em">COMMONS</text>
-      </g>
-
-      <g transform="translate(240, 120)">
-        <circle cx="0" cy="0" r="44" fill="url(#crGrain)" stroke="#4D463D" stroke-width="1.2"/>
-        <text x="0" y="8" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="#1F1B16" text-anchor="middle" font-variation-settings="'opsz' 48">BY-SA</text>
-        <text x="0" y="-58" font-family="JetBrains Mono, monospace" font-size="8" fill="#6E665B" text-anchor="middle" letter-spacing="0.2em">SHARE</text>
-        <text x="0" y="62" font-family="JetBrains Mono, monospace" font-size="8" fill="#6E665B" text-anchor="middle" letter-spacing="0.2em">ALIKE</text>
-      </g>
-
-      <g transform="translate(360, 120)">
-        <circle cx="0" cy="0" r="44" fill="url(#crGrain)" stroke="#4D463D" stroke-width="1.2"/>
-        <text x="0" y="8" font-family="Fraunces, serif" font-style="italic" font-size="22" fill="#1F1B16" text-anchor="middle" font-variation-settings="'opsz' 48">PD</text>
-        <text x="0" y="-58" font-family="JetBrains Mono, monospace" font-size="8" fill="#6E665B" text-anchor="middle" letter-spacing="0.2em">PUBLIC</text>
-        <text x="0" y="62" font-family="JetBrains Mono, monospace" font-size="8" fill="#6E665B" text-anchor="middle" letter-spacing="0.2em">DOMAIN</text>
-      </g>
-    </svg>
-  </div>
-
-  <div class="ls-meta">
-    <span class="ls-date">Last revised · XXV · V · MMXXVI</span>
-    <span class="ls-divider">·</span>
-    <span class="ls-ark">Living document</span>
-  </div>
-
-  <a class="ls-cta" href="#image-credits">
-    See Image Credits <span class="arrow">→</span>
-  </a>
+  <!-- Bottom ornament (mirrored top) -->
+  <svg class="fp-ornament-bottom" viewBox="0 0 640 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="320" cy="40" r="20" fill="none" stroke="#C9A14F" stroke-width="1.5"/>
+    <circle cx="320" cy="40" r="14" fill="none" stroke="#B58A48" stroke-width="0.8"/>
+    <circle cx="320" cy="40" r="6" fill="#DEC893" opacity="0.7"/>
+    <g fill="none" stroke="#C9A14F" stroke-width="1.4">
+      <path d="M 60 40 L 290 40"/>
+      <path d="M 100 30 Q 160 10 200 30 Q 240 50 280 35"/>
+      <path d="M 100 50 Q 160 70 200 50 Q 240 30 280 45"/>
+      <circle cx="60" cy="40" r="4"/><circle cx="60" cy="40" r="1.5" fill="#DEC893"/>
+    </g>
+    <g fill="none" stroke="#C9A14F" stroke-width="1.4">
+      <path d="M 350 40 L 580 40"/>
+      <path d="M 360 30 Q 400 10 440 30 Q 480 50 540 30"/>
+      <path d="M 360 50 Q 400 70 440 50 Q 480 30 540 50"/>
+      <circle cx="580" cy="40" r="4"/><circle cx="580" cy="40" r="1.5" fill="#DEC893"/>
+    </g>
+    <g fill="#DEC893" opacity="0.8">
+      <circle cx="180" cy="20" r="1.5"/><circle cx="220" cy="60" r="1.5"/><circle cx="460" cy="60" r="1.5"/><circle cx="420" cy="20" r="1.5"/>
+    </g>
+  </svg>
 </section>
 
-<!-- ============ Open Shelf ============ -->
-<section class="open-shelf" data-reveal data-reveal-delay="2">
-  <div class="os-header">
-    <span class="section-marker">Image Credits</span>
-  </div>
-  <p class="os-subtitle">Library photographs used across the Bureau site — sourced from Wikimedia Commons</p>
+<main class="main-body">
 
-  <div class="catalog-grid" id="image-credits">
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · index.html</div>
-      <div class="sc-issue">Dublin · Wikimedia Featured Picture</div>
-      <h3 class="sc-title">Trinity College Long Room</h3>
-      <p class="sc-abstract">Photograph by <strong>David Iliff</strong>. Licensed under <strong>CC BY-SA 3.0</strong>. Sourced from Wikimedia Commons.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA 3.0</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Long_Room_Interior,_Trinity_College_Dublin,_Ireland_-_Diliff.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · midnight.html</div>
-      <div class="sc-issue">Rio de Janeiro</div>
-      <h3 class="sc-title">Real Gabinete Português de Leitura</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA 4.0</strong>. Sourced from Wikimedia Commons.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA 4.0</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Real_Gabinete_Portugu%C3%AAs_de_Leitura_-_Rio_de_Janeiro_-_20220930151436.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · archive.html</div>
-      <div class="sc-issue">Baltimore · "Cathedral of Books"</div>
-      <h3 class="sc-title">George Peabody Library</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:George_Peabody_Library_Interior.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · charter.html</div>
-      <div class="sc-issue">Ottawa · 16-sided polygon · Gothic Revival</div>
-      <h3 class="sc-title">Library of Parliament · Canada</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons. Hexadecagonal Gothic Revival interior — survived 1916 Centre Block fire. 5,760 × 3,840.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:The_Library_of_Parliament_(14579981339).jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · concordance.html</div>
-      <div class="sc-issue">Amsterdam · Pierre Cuypers · 1885</div>
-      <h3 class="sc-title">Cuypers Library · Rijksmuseum</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons. Brick-red painted brick walls + gold polychromed cast-iron colonettes + iron spiral staircase. 5,472 × 3,648.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Bibliotheek_van_het_Rijksmuseum.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · errata.html</div>
-      <div class="sc-issue">Germany · Baroque trompe-l'œil</div>
-      <h3 class="sc-title">Wiblingen Monastery Library</h3>
-      <p class="sc-abstract">Photograph by <strong>Spatzameez</strong>. Licensed under <strong>CC BY-SA 4.0</strong>. Sourced from Wikimedia Commons.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA 4.0</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Kloster_Wiblingen_Bibliothekssaal_01.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · periodicals.html</div>
-      <div class="sc-issue">Austria · largest monastic library</div>
-      <h3 class="sc-title">Admont Monastery Library</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Austria_-_Admont_Abbey_Library_-_1203.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · cabinet.html</div>
-      <div class="sc-issue">Coimbra · Baroque · Red & Gold</div>
-      <h3 class="sc-title">Biblioteca Joanina · University of Coimbra</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons. Baroque hall (1717–1728) — red lacquered shelves with gold chinoiserie gilding, 3,483 × 2,773.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Biblioteca_Joanina,_Coimbra.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · vault.html</div>
-      <div class="sc-issue">Yale · Gordon Bunshaft, 1963 · Interior</div>
-      <h3 class="sc-title">Beinecke Rare Book Library · Interior</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons. Interior view of the six-tier amber-lit book tower (2017).</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:20170420_Beinecke_Rare_Book_Library_Interior_Yale_University_New_Haven_Connecticut.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · chambers.html</div>
-      <div class="sc-issue">Boston · McKim · 1895 · Green Reading Lamps</div>
-      <h3 class="sc-title">Boston Public Library · Bates Hall</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons. Barrel-vaulted reading room — 56 iconic green-shaded reading lamps on solid oak tables, English oak bookcases, limestone balcony.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Bates_Hall_-_Boston_Public_Library_-_edit1.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · about.html</div>
-      <div class="sc-issue">Tokyo · Toyo Ito, 2007</div>
-      <h3 class="sc-title">Tama Art University Library</h3>
-      <p class="sc-abstract">Photograph by <strong>Wiiii</strong>. Licensed under <strong>CC BY-SA 4.0</strong>. Sourced from Wikimedia Commons. Sweeping concrete arches, architect Toyo Ito (Pritzker laureate 2013).</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA 4.0</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Tama_Art_University_Library.JPG" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · contents.html</div>
-      <div class="sc-issue">Stockholm · Asplund · 1928</div>
-      <h3 class="sc-title">Stockholm Public Library Rotunda</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons. Gunnar Asplund's cylindrical rotunda — Nordic Classicism · Swedish Grace · 5,944 × 4,300.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Stockholms_stadsbibliotek_March_2025_01.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · disclaimer.html</div>
-      <div class="sc-issue">South Tyrol · Augustinian foundation</div>
-      <h3 class="sc-title">Novacella / Neustift Abbey Library</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Kloster_Neustift_Bibliothek.JPG" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · legal.html</div>
-      <div class="sc-issue">Paris · Labrouste · 1851</div>
-      <h3 class="sc-title">Bibliothèque Sainte-Geneviève</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons. Henri Labrouste's iron-arched reading room — first monumental cast-iron interior, model for modern library design.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Biblioth%C3%A8que_Sainte-Genevi%C3%A8ve_-_Int%C3%A9rieur_001.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · privacy.html</div>
-      <div class="sc-issue">Washington · Dome view</div>
-      <h3 class="sc-title">Library of Congress Reading Room Dome</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>Public Domain</strong>. Sourced from Wikimedia Commons.</p>
-      <div class="sc-meta">
-        <span class="sc-date">Public Domain</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Dome_Main_Reading_Room_Library_of_Congress.JPG" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-    <article class="specimen-card">
-      <div class="sc-channel">Page · 404.html</div>
-      <div class="sc-issue">Yale · Interior · Amber Book Tower</div>
-      <h3 class="sc-title">Beinecke Library Interior (III)</h3>
-      <p class="sc-abstract">Photograph by <strong>Wikimedia Commons contributor</strong>. Licensed under <strong>CC BY-SA</strong>. Sourced from Wikimedia Commons. Interior view, 7,360 × 4,912.</p>
-      <div class="sc-meta">
-        <span class="sc-date">CC BY-SA</span>
-        <a class="sc-link" href="https://commons.wikimedia.org/wiki/File:Beinecke_library_III.jpg" target="_blank" rel="noopener">Source →</a>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- ============ Free Reading Shelf ============ -->
-<section class="free-shelf" data-reveal data-reveal-delay="3">
-  <div class="section-marker">License Notice · Self-Hosting Commitment</div>
-
-  <div class="fs-card">
-    <h3 class="fs-title">CC BY-SA · Share-Alike Notice</h3>
-    <p class="fs-subtitle">Applies to derivative compositions of hero images</p>
-    <p class="fs-desc">
-      Where this site reproduces a CC BY-SA image as part of a hero composition with attribution and license link, the Bureau preserves all terms required by the license at the point of use. The Bureau site as a whole, including its text, framework definitions (Buffer Half-Life™, Three Clocks™, BBB- Cliff™), proprietary commentary, and visual identity, remains the intellectual property of the Bureau unless otherwise noted at the specific element.<br><br>
-      <strong>Self-hosting commitment:</strong> Production deployment hosts all photographs locally in the site repository to ensure long-term availability and license fidelity. Attribution remains attached to every page using a given image.
-    </p>
-    <a class="fs-cta" href="legal.html">
-      Bureau Legal Notice →
-    </a>
-  </div>
-</section>
-
-<section class="free-shelf" data-reveal data-reveal-delay="4" style="margin-top:0; padding-top:0;">
-  <div class="section-marker">Typography Credits</div>
-
-  <div class="fs-card">
-    <h3 class="fs-title">Type System</h3>
-    <p class="fs-subtitle">Open-source typefaces used across the Bureau</p>
-    <p class="fs-desc">
-      <strong>Fraunces</strong> — display + variable axis (opsz / SOFT / WONK). Open Font License.<br>
-      <strong>Newsreader</strong> — body text, optical size variable. Open Font License.<br>
-      <strong>Cormorant Garamond</strong> — italic display accent. Open Font License.<br>
-      <strong>Inter</strong> — UI labels and meta-text. Open Font License.<br>
-      <strong>JetBrains Mono</strong> — monospaced labels, catalog numbers, dates. Open Font License.<br><br>
-      Served via Google Fonts.
-    </p>
-    <a class="fs-cta" href="https://fonts.google.com/" target="_blank" rel="noopener">
-      Google Fonts →
-    </a>
-  </div>
-</section>
-
-<!-- ============ Annex footer ============ -->
-<footer class="annex-footer" data-reveal data-reveal-delay="4">
-  <div class="af-attribution">Auxiliary · License Credits · Last revised XXV · V · MMXXVI</div>
-
-  <nav class="af-annexes" aria-label="Bureau Annexes">
-    <a href="periodicals.html">The Periodicals Room</a>
-    <span class="af-divider">·</span>
-    <a href="cabinet.html">The Cabinet</a>
-    <span class="af-divider">·</span>
-    <a href="vault.html">The Vault</a>
-    <span class="af-divider">·</span>
-    <a href="chambers.html">Reading Chambers</a>
-  </nav>
-
-  <div class="af-back">
-    <a href="index.html">Return to the Front Desk →</a>
+  <div class="section-intro">
+    <div class="si-label">— Photographic Credits · Sixteen Rooms —</div>
+    <h2 class="si-title">The libraries, <em>by Roman order.</em></h2>
+    <p class="si-desc">All photography is sourced from Wikimedia Commons. Each library photograph is licensed under CC BY-SA or compatible; click the link for the original file and full attribution.</p>
   </div>
 
-  <div class="af-closer">Surface premium. Structure proprietary.</div>
-  <div class="af-signoff">Published by the Bureau · MMXXVI · J. M. Goo, Editor</div>
+  <div class="credits-table" role="region" aria-label="Photo credits for sixteen rooms">
+
+    <div class="credit-row">
+      <div class="cr-roman">I.</div>
+      <div class="cr-page"><strong>Bureau Index</strong><span class="cr-page-tag">The Front Desk</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Long_Room_Interior,_Trinity_College_Dublin,_Ireland_-_Diliff.jpg" target="_blank" rel="noopener">Long Room · Trinity College Dublin</a><span class="cr-lib-arch">Photo: David Iliff · 1732 · Anglican</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA 3.0</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">II.</div>
+      <div class="cr-page"><strong>Midnight</strong><span class="cr-page-tag">After Hours</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Interior_do_Real_Gabinete_Portugu%C3%AAs_de_Leitura_(5580114063).jpg" target="_blank" rel="noopener">Real Gabinete Português de Leitura · Rio de Janeiro</a><span class="cr-lib-arch">neo-Manueline · 1887</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">III.</div>
+      <div class="cr-page"><strong>Archive</strong><span class="cr-page-tag">Filed Dispatches</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:George_Peabody_Library_Interior.jpg" target="_blank" rel="noopener">George Peabody Library · Johns Hopkins · Baltimore</a><span class="cr-lib-arch">Edmund G. Lind · 1878</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">IV.</div>
+      <div class="cr-page"><strong>Charter</strong><span class="cr-page-tag">Founding Doctrine</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:The_Library_of_Parliament_(14579981339).jpg" target="_blank" rel="noopener">Library of Parliament · Ottawa</a><span class="cr-lib-arch">Gothic Revival · 1876</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">V.</div>
+      <div class="cr-page"><strong>Concordance</strong><span class="cr-page-tag">Index of Terms</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Bibliotheek_van_het_Rijksmuseum.jpg" target="_blank" rel="noopener">Cuypers Library · Rijksmuseum Amsterdam</a><span class="cr-lib-arch">P.J.H. Cuypers · 1885</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">VI.</div>
+      <div class="cr-page"><strong>Errata</strong><span class="cr-page-tag">Corrections</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Kloster_Wiblingen_Bibliothekssaal_01.jpg" target="_blank" rel="noopener">Wiblingen Monastery Library · Germany</a><span class="cr-lib-arch">Rococo · 1744</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA 4.0</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">VII.</div>
+      <div class="cr-page"><strong>Periodicals</strong><span class="cr-page-tag">Annex I · Open Shelf</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Duke_Humfrey%27s_Library_Interior_1,_Bodleian_Library,_Oxford,_UK_-_Diliff.jpg" target="_blank" rel="noopener">Duke Humfrey's Library · Bodleian Oxford</a><span class="cr-lib-arch">Photo: David Iliff · Anglican</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA 3.0</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">VIII.</div>
+      <div class="cr-page"><strong>Cabinet</strong><span class="cr-page-tag">Annex II · Curated</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Cmglee_Cambridge_Wren_Library_University_Library.jpg" target="_blank" rel="noopener">Wren Library · Trinity College Cambridge</a><span class="cr-lib-arch">Sir Christopher Wren · 1676 · Anglican</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">IX.</div>
+      <div class="cr-page"><strong>Vault</strong><span class="cr-page-tag">Annex III · Restricted</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Beinecke_Rare_Book_and_Manuscript_Library_(2).jpg" target="_blank" rel="noopener">Beinecke Rare Book Library · Yale</a><span class="cr-lib-arch">Gordon Bunshaft · 1963</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">X.</div>
+      <div class="cr-page"><strong>Chambers</strong><span class="cr-page-tag">Literary Annex</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Bates_Hall_-_Boston_Public_Library.jpg" target="_blank" rel="noopener">Bates Hall · Boston Public Library</a><span class="cr-lib-arch">McKim, Mead &amp; White · 1895</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">XI.</div>
+      <div class="cr-page"><strong>About</strong><span class="cr-page-tag">Editorial Office</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Tama_Art_University_Library.JPG" target="_blank" rel="noopener">Tama Art University Library · Hachioji</a><span class="cr-lib-arch">Toyo Ito · 2007</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">XII.</div>
+      <div class="cr-page"><strong>Contents</strong><span class="cr-page-tag">Site Directory</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Stadsbiblioteket_Stockholm_2009b.jpg" target="_blank" rel="noopener">Stockholm Public Library · Stadsbiblioteket</a><span class="cr-lib-arch">Gunnar Asplund · 1928</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">XIII.</div>
+      <div class="cr-page"><strong>Disclaimer</strong><span class="cr-page-tag">Editorial Notice</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Wright_Library,_Princeton_Theological_Seminary.jpg" target="_blank" rel="noopener">Wright Library · Princeton Theological Seminary</a><span class="cr-lib-arch">Presbyterian / Reformed</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">XIV.</div>
+      <div class="cr-page"><strong>Legal</strong><span class="cr-page-tag">Terms · Jurisdiction</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Biblioth%C3%A8que_Sainte-Genevi%C3%A8ve_-_Int%C3%A9rieur_001.jpg" target="_blank" rel="noopener">Bibliothèque Sainte-Geneviève · Paris</a><span class="cr-lib-arch">Henri Labrouste · 1851</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">XV.</div>
+      <div class="cr-page"><strong>Privacy</strong><span class="cr-page-tag">Reader Notice</span></div>
+      <div class="cr-lib"><a href="https://commons.wikimedia.org/wiki/File:Dome_Main_Reading_Room_Library_of_Congress.JPG" target="_blank" rel="noopener">Library of Congress · Main Reading Room · Washington</a><span class="cr-lib-arch">Smithmeyer · Pelz · Casey · 1897</span></div>
+      <div class="cr-license"><span class="lc-tag">CC BY-SA</span></div>
+    </div>
+
+    <div class="credit-row">
+      <div class="cr-roman">XVI.</div>
+      <div class="cr-page"><strong>Credits</strong><span class="cr-page-tag">This room · Colophon</span></div>
+      <div class="cr-lib">— No photograph. SVG frontispiece designed in-house.<span class="cr-lib-arch">19c book engraving style</span></div>
+      <div class="cr-license"><span class="lc-tag">In-house</span></div>
+    </div>
+
+  </div>
+
+  <!-- Typography credits -->
+  <div class="type-block">
+    <div class="tb-label">— Typography · Five Typefaces —</div>
+    <ul class="type-list">
+      <li><div class="tl-name frau">Fraunces</div><div class="tl-desc">Display type, page titles. <em>Stephen Nixon · Undercase Type · 2018.</em></div></li>
+      <li><div class="tl-name news">Newsreader</div><div class="tl-desc">Body text, long-form reading. <em>Production Type · 2020.</em></div></li>
+      <li><div class="tl-name cor">Cormorant Garamond</div><div class="tl-desc">Italic emphasis, pullouts. <em>Christian Thalmann · Catharsis Fonts.</em></div></li>
+      <li><div class="tl-name inter">Inter</div><div class="tl-desc">UI text. <em>Rasmus Andersson · 2016.</em></div></li>
+      <li><div class="tl-name mono">JetBrains Mono</div><div class="tl-desc">Labels, metadata, code. <em>JetBrains · 2020.</em></div></li>
+    </ul>
+  </div>
+
+  <!-- Bureau attribution -->
+  <div class="attribution-block">
+    <div class="ab-mark">— Imprimatur —</div>
+    <div class="ab-seal">Dividend Forensics Bureau</div>
+    <div class="ab-line">Founded MMXXIV · Operated independently from Seoul.</div>
+    <div class="ab-line">Editor &amp; sole proprietor: <em>Jeong-Mo Goo.</em></div>
+    <div class="ab-line">Author of Buffer Half-Life&trade; · Three Clocks&trade; · BBB- Cliff&trade;.</div>
+    <div class="ab-rule"></div>
+    <div class="ab-imprint">All site text © Jeong-Mo Goo · MMXXIV — MMXXVI. All rights reserved.<br>Photography credited above to Wikimedia Commons contributors.</div>
+  </div>
+
+  <!-- License -->
+  <div class="license-block">
+    <div class="lc-title">— License · Terms —</div>
+    <div class="lc-body">
+      <p><strong style="color:var(--ink);">Site content.</strong> All editorial writing, framework descriptions, and analysis are © Jeong-Mo Goo. Reproduction in whole is not permitted; short quotations are welcome with attribution and a link.</p>
+      <p><strong style="color:var(--ink);">Photographs.</strong> All library photography is sourced from <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>. Most are licensed under CC BY-SA 3.0, CC BY-SA 4.0, or compatible. Click each link in the table above for the original file page, attribution, and full license terms.</p>
+      <p><strong style="color:var(--ink);">Frameworks.</strong> The terms <em>Buffer Half-Life&trade;</em>, <em>Three Clocks&trade;</em>, and <em>BBB- Cliff&trade;</em> are unregistered trademarks of the Bureau. They may be referenced with attribution; commercial reuse requires permission.</p>
+      <p><strong style="color:var(--ink);">Typography.</strong> All typefaces above are licensed via <a href="https://fonts.google.com/" target="_blank" rel="noopener">Google Fonts</a> under the SIL Open Font License.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <div class="pf-marker">— XVI · Colophon · Imprimatur —</div>
+  <div class="pf-attr">Sixteen libraries, five typefaces. Printed for the record.</div>
+  <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="charter.html">Charter</a> · <a href="legal.html">Legal</a> · <a href="privacy.html">Privacy</a></div>
 </footer>
-
-</div><!-- /page-frame -->
 </body>
 </html>
