@@ -4,112 +4,106 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Vault · Structural Income Desk™ · Dividend Forensics Bureau</title>
-<meta name="description" content="The Bureau Vault — Structural Income Desk™ membership. Three tiers · founding wing. Working notes, watchlist, editor commentary not filed elsewhere.">
+<meta name="description" content="The Bureau Vault — Structural Income Desk™ membership. Three tiers · founding wing.">
 <link rel="canonical" href="https://dividendforensics.com/vault.html">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="The Vault · Structural Income Desk™">
-<meta property="og:description" content="Founding membership — three tiers. Working notes and the watchlist.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dividendforensics.com/vault.html">
+<meta name="theme-color" content="#9FA5A8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; }
+
+/* === VAULT · COOL SLATE MARBLE LIGHT MODE · Beinecke Yale Bunshaft 1963 === */
+:root {
+  --paper: #9FA5A8;
+  --paper-soft: #ACB0B3;
+  --paper-warm: #92989B;
+  --paper-deep: #6F7578;
+  --ink: #14191C;
+  --ink-soft: #1F2528;
+  --ink-dim: #3F4548;
+  --marble: #DCDED8;
+  --marble-veined: #C5C8C2;
+  --bronze: #8B6F4F;
+  --bronze-deep: #5C4530;
+  --bronze-light: #B58A48;
+  --parchment: #DEC893;
+  --parchment-deep: #B58A48;
+  --parchment-warm: #ECCB78;
+  --steel: #2E3438;
+  --steel-deep: #1A1F22;
+}
+body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; background: var(--paper); color: var(--ink); background-image:
+  radial-gradient(ellipse at top, rgba(46,52,56,0.10), transparent 55%),
+  radial-gradient(ellipse at center, rgba(222,200,147,0.18), transparent 60%),
+  radial-gradient(ellipse at bottom, rgba(139,111,79,0.10), transparent 55%);
+}
 
 .photo-hero { position: relative; width: 100%; height: 100vh; min-height: 720px; overflow: hidden; }
 .ph-photo { position: absolute; inset: 0; background-size: cover; background-position: center; animation: kenburns 42s cubic-bezier(0.65,0,0.35,1) infinite alternate; }
 @keyframes kenburns { 0%{transform:scale(1.00) translate(0,0);} 100%{transform:scale(1.10) translate(-1%,-2%);} }
-.ph-vignette { position: absolute; inset: 0; pointer-events: none; }
+.ph-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 30%, transparent 0%, rgba(20,25,28,0.55) 70%, rgba(20,25,28,0.90) 100%), linear-gradient(to bottom, rgba(20,25,28,0.50) 0%, rgba(20,25,28,0.05) 30%, rgba(222,200,147,0.10) 55%, var(--paper) 100%); }
 .ph-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; backdrop-filter: blur(6px) saturate(120%); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.5); animation: fade-in 1.8s 0.4s both; }
-.bp-corner-tl,.bp-corner-tr,.bp-corner-bl,.bp-corner-br { position: absolute; width: 10px; height: 10px; border: 0; border-style: solid; }
-.bp-corner-tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
-.bp-corner-tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; }
-.bp-corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; }
-.bp-corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
-.bp-issue { font-weight: 600; font-size: 13px; letter-spacing: 0.18em; display: block; margin: 4px 0; }
-.bp-divider { display: block; height: 1px; margin: 8px 0 7px; opacity: 0.55; }
+.brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; background: rgba(20,25,28,0.80); border: 1px solid var(--parchment); color: var(--marble); backdrop-filter: blur(6px); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.5); animation: fade-in 1.8s 0.4s both; }
+.bp-corner-tl,.bp-corner-tr,.bp-corner-bl,.bp-corner-br { position: absolute; width: 10px; height: 10px; border-style: solid; border-color: var(--parchment); border-width: 0; }
+.bp-corner-tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+.bp-corner-tr { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
+.bp-corner-bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
+.bp-corner-br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+.bp-mark { color: var(--parchment); font-weight: 600; }
+.bp-issue { color: var(--parchment-warm); font-weight: 600; font-size: 13px; letter-spacing: 0.18em; display: block; margin: 4px 0; }
+.bp-divider { display: block; height: 1px; margin: 8px 0 7px; background: var(--steel); opacity: 0.7; }
 .bp-line { display: block; font-size: 10.5px; opacity: 0.85; }
 .ph-text { position: absolute; left: clamp(28px,6vw,96px); bottom: clamp(140px,20vh,200px); max-width: min(680px,70vw); z-index: 3; }
-.ph-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 24px; padding-left: 28px; position: relative; animation: reveal 1.4s 0.6s both; }
-.ph-eyebrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; }
-.ph-title { font-family: "Fraunces", serif; font-size: clamp(48px,7vw,96px); line-height: 0.96; letter-spacing: -0.02em; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin: 0 0 28px; animation: reveal 1.6s 0.9s both; text-shadow: 0 2px 32px rgba(0,0,0,0.55); }
-.ph-title em { font-style: italic; font-weight: 300; display: block; padding-top: 14px; margin-top: 10px; max-width: 540px; border-top-width: 1px; border-top-style: solid; }
-.ph-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 540px; animation: reveal 1.8s 1.2s both; text-shadow: 0 1px 12px rgba(0,0,0,0.4); }
-.scroll-prompt { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.7; z-index: 3; animation: fade-in 2s 2.2s both; }
-.scroll-line { width: 1px; height: 36px; animation: bounce 2.4s ease-in-out infinite; }
+.ph-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 24px; padding-left: 28px; position: relative; color: var(--parchment-warm); animation: reveal 1.4s 0.6s both; }
+.ph-eyebrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; background: var(--parchment); }
+.ph-title { font-family: "Fraunces", serif; font-size: clamp(48px,7vw,96px); line-height: 0.96; letter-spacing: -0.02em; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin: 0 0 28px; color: var(--marble); text-shadow: 0 2px 32px rgba(0,0,0,0.65); animation: reveal 1.6s 0.9s both; }
+.ph-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; display: block; padding-top: 14px; margin-top: 10px; max-width: 540px; border-top: 1px solid var(--parchment); color: var(--parchment-warm); }
+.ph-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 540px; color: var(--marble); text-shadow: 0 1px 12px rgba(0,0,0,0.5); animation: reveal 1.8s 1.2s both; }
+.scroll-prompt { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.7; z-index: 3; color: var(--parchment-warm); animation: fade-in 2s 2.2s both; }
+.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--parchment)); animation: bounce 2.4s ease-in-out infinite; }
 .scroll-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; }
 @keyframes bounce { 0%,100%{transform:scaleY(1) translateY(0);opacity:0.5;} 50%{transform:scaleY(0.6) translateY(8px);opacity:1;} }
-.photo-attr { position: absolute; right: 16px; bottom: 8px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.18em; z-index: 3; text-transform: uppercase; }
+.photo-attr { position: absolute; right: 16px; bottom: 8px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.18em; z-index: 3; text-transform: uppercase; color: rgba(220,222,216,0.6); }
 .photo-attr a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
 @keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 @keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
 
-.main-body { max-width: 1180px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
-.section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
-.si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; }
-.si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; }
-.si-label::before { left: 0; } .si-label::after { right: 0; }
-.si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 1; margin-bottom: 24px; letter-spacing: -0.015em; }
-.si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; }
-.si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; }
-
-.page-footer { padding: 56px 24px; text-align: center; border-top: 4px double currentColor; margin-top: clamp(60px,8vw,96px); }
-.pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; }
-.pf-attr { font-family: "Newsreader", serif; font-style: italic; font-size: 13px; margin-bottom: 8px; opacity: 0.85; }
-.pf-links { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
-.pf-links a { text-decoration: none; border-bottom: 1px dotted currentColor; margin: 0 8px; }
-
-@media (max-width: 720px) {
-  .photo-hero { min-height: 580px; }
-  .brass-plate { top: 16px; right: 16px; padding: 12px 16px; font-size: 10px; min-width: 200px; }
-  .ph-text { bottom: 100px; left: 20px; max-width: 86vw; }
-  .ph-title { font-size: clamp(38px,11vw,60px); }
-}
-
-/* ============================================
-   BEINECKE RARE BOOK LIBRARY palette · Yale · Bunshaft 1963
-   cool marble cream + warm parchment glow + bronze + steel · modernist
-   ============================================ */
-:root {
-  --paper: #E8E5DC; --paper-soft: #EFEDE3; --paper-warm: #D5D1C5; --paper-deep: #B5B0A0;
-  --ink: #1A1A1C; --ink-soft: #2A2A2D; --ink-dim: #48484C;
-  --marble: #E8E5DC; --marble-veined: #D8D4C7;
-  --bronze: #8B6F4F; --bronze-deep: #5C4530; --bronze-light: #C9A876;
-  --parchment: #DEC893; --parchment-deep: #B58A48; --parchment-warm: #ECCB78;
-  --steel: #3F3F44; --steel-deep: #28282C; --steel-light: #5F5F65;
-  --brass: #8B6F48; --brass-deep: #5C4530;
-}
-body { background: var(--paper); color: var(--ink); background-image:
-  radial-gradient(ellipse at top, rgba(63,63,68,0.12), transparent 55%),
-  radial-gradient(ellipse at center, rgba(222,200,147,0.18), transparent 60%),
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.ph-eyebrow::before { background: var(--parchment-deep); }
-
-/* Glass cube band — Beinecke's central tower + marble cube grid */
+/* Glass cube band — Beinecke marble grid + central glowing book tower */
 .cube-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
 .cube-band svg { width: min(1000px, 94vw); height: 180px; }
 
-.room-context { max-width: 880px; margin: 0 auto 64px; padding: clamp(24px,3vw,32px) clamp(28px,3.5vw,40px); background: linear-gradient(135deg, var(--paper-soft) 0%, rgba(222,200,147,0.20) 100%); border-left: 4px solid var(--bronze); border-right: 4px solid var(--steel); position: relative; }
+.main-body { max-width: 1180px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
+
+.room-context { max-width: 880px; margin: 0 auto 64px; padding: clamp(28px,3vw,36px) clamp(28px,3.5vw,40px); background: rgba(220,222,216,0.55); border-left: 4px solid var(--steel); border-right: 4px solid var(--bronze); position: relative; box-shadow: 0 4px 18px rgba(46,52,56,0.18); backdrop-filter: blur(4px); }
 .rc-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--steel); text-transform: uppercase; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dotted var(--bronze); display: inline-block; padding-right: 18px; }
 .rc-body { font-family: "Newsreader", serif; font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
 .rc-body strong { font-weight: 600; color: var(--ink); }
 .rc-body em { font-style: italic; color: var(--bronze); }
 
-/* 3-tier membership · vault grid */
+.section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
+.si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; color: var(--steel); }
+.si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; background: var(--steel); }
+.si-label::before { left: 0; } .si-label::after { right: 0; }
+.si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; margin-bottom: 24px; letter-spacing: -0.015em; color: var(--ink); }
+.si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; color: var(--bronze); }
+.si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; color: var(--ink-soft); }
+
+/* 3-tier membership · marble cube grid */
 .tier-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; max-width: 1180px; margin: 0 auto; }
 @media (max-width: 940px) { .tier-grid { grid-template-columns: 1fr; gap: 18px; } }
 
-.tier-card { position: relative; padding: clamp(32px,4vw,44px); background: linear-gradient(180deg, var(--paper-soft) 0%, var(--paper) 100%); border: 1px solid var(--paper-deep); transition: 0.3s; display: flex; flex-direction: column; }
+.tier-card { position: relative; padding: clamp(32px,4vw,44px); background: rgba(220,222,216,0.85); border: 1px solid var(--paper-deep); transition: 0.3s; display: flex; flex-direction: column; backdrop-filter: blur(4px); box-shadow: 0 4px 16px rgba(46,52,56,0.15); }
 .tier-card.core { border-top: 5px solid var(--steel); }
-.tier-card.pro { border-top: 5px solid var(--bronze); background: linear-gradient(180deg, var(--paper-soft) 0%, rgba(222,200,147,0.16) 100%); transform: scale(1.02); box-shadow: 0 12px 36px rgba(63,63,68,0.14); z-index: 2; }
-.tier-card.pro::before { content: "★ Recommended"; position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--bronze); color: var(--paper-soft); font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.28em; padding: 5px 16px; text-transform: uppercase; border: 1px solid var(--bronze-deep); }
-.tier-card.founding { border-top: 5px solid var(--parchment-deep); background: linear-gradient(180deg, var(--paper-soft) 0%, rgba(181,138,72,0.20) 100%); }
-.tier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(63,63,68,0.18); }
+.tier-card.pro { border-top: 5px solid var(--bronze); background: rgba(220,222,216,0.92); transform: scale(1.02); box-shadow: 0 12px 36px rgba(46,52,56,0.28); z-index: 2; }
+.tier-card.pro::before { content: "★ Recommended"; position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--bronze); color: var(--marble); font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.28em; padding: 5px 16px; text-transform: uppercase; border: 1px solid var(--bronze-deep); }
+.tier-card.founding { border-top: 5px solid var(--parchment-deep); background: linear-gradient(180deg, rgba(220,222,216,0.85) 0%, rgba(222,200,147,0.40) 100%); }
+.tier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(46,52,56,0.25); }
 .tier-card.pro:hover { transform: scale(1.02) translateY(-4px); }
 
 .tc-roman { font-family: "Fraunces", serif; font-style: italic; font-size: clamp(48px,5.5vw,64px); line-height: 1; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin-bottom: 14px; }
@@ -134,76 +128,80 @@ body { background: var(--paper); color: var(--ink); background-image:
 .tier-card.pro .tc-list li::before { color: var(--bronze); }
 .tier-card.founding .tc-list li::before { color: var(--parchment-deep); }
 .tc-cta { display: block; padding: 14px 24px; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; text-decoration: none; transition: 0.25s; border-width: 2px; border-style: solid; }
-.tier-card.core .tc-cta { background: var(--steel); color: var(--paper-soft); border-color: var(--steel-deep); }
-.tier-card.core .tc-cta:hover { background: var(--steel-deep); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(63,63,68,0.30); }
-.tier-card.pro .tc-cta { background: var(--bronze); color: var(--paper-soft); border-color: var(--bronze-deep); }
-.tier-card.pro .tc-cta:hover { background: var(--bronze-deep); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(92,69,48,0.30); }
-.tier-card.founding .tc-cta { background: var(--parchment-deep); color: var(--paper-soft); border-color: var(--bronze-deep); }
-.tier-card.founding .tc-cta:hover { background: var(--bronze-deep); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(181,138,72,0.30); }
+.tier-card.core .tc-cta { background: var(--steel); color: var(--marble); border-color: var(--steel-deep); }
+.tier-card.core .tc-cta:hover { background: var(--steel-deep); transform: translateY(-2px); }
+.tier-card.pro .tc-cta { background: var(--bronze); color: var(--marble); border-color: var(--bronze-deep); }
+.tier-card.pro .tc-cta:hover { background: var(--bronze-deep); transform: translateY(-2px); }
+.tier-card.founding .tc-cta { background: var(--parchment-deep); color: var(--marble); border-color: var(--bronze-deep); }
+.tier-card.founding .tc-cta:hover { background: var(--bronze-deep); transform: translateY(-2px); }
 
-/* Companion note */
-.companion-note { padding: clamp(32px,4vw,44px); background: linear-gradient(135deg, rgba(63,63,68,0.08) 0%, rgba(222,200,147,0.18) 100%); border-top: 3px solid var(--steel); border-bottom: 3px solid var(--parchment-deep); text-align: center; margin: clamp(56px,7vw,80px) auto 0; max-width: 1020px; }
+.companion-note { padding: clamp(32px,4vw,44px); background: linear-gradient(135deg, rgba(46,52,56,0.10) 0%, rgba(222,200,147,0.30) 100%); border-top: 3px solid var(--steel); border-bottom: 3px solid var(--parchment-deep); text-align: center; margin: clamp(56px,7vw,80px) auto 0; max-width: 1020px; backdrop-filter: blur(4px); }
 .cn-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.28em; color: var(--steel); text-transform: uppercase; margin-bottom: 14px; }
 .cn-text { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(18px,2.2vw,22px); line-height: 1.55; color: var(--ink); max-width: 640px; margin: 0 auto; }
 .cn-text a { color: var(--bronze); border-bottom: 1px solid var(--bronze); text-decoration: none; }
 
-/* Bottom · Beinecke marble grid pattern */
+/* Marble grid pattern bottom */
 .marble-grid { margin-top: 80px; height: 70px; background:
-  repeating-linear-gradient(0deg, var(--bronze) 0px, var(--bronze) 1.5px, transparent 1.5px, transparent 35px),
-  repeating-linear-gradient(90deg, var(--steel) 0px, var(--steel) 1.5px, transparent 1.5px, transparent 35px),
-  linear-gradient(180deg, rgba(63,63,68,0.10) 0%, rgba(222,200,147,0.14) 100%);
-  border-top: 2px solid var(--steel);
-  border-bottom: 2px solid var(--parchment-deep);
-  opacity: 0.45;
+  repeating-linear-gradient(0deg, var(--steel) 0px, var(--steel) 1.2px, transparent 1.2px, transparent 35px),
+  repeating-linear-gradient(90deg, var(--bronze) 0px, var(--bronze) 1.2px, transparent 1.2px, transparent 35px),
+  linear-gradient(180deg, rgba(46,52,56,0.08) 0%, rgba(222,200,147,0.12) 100%);
+  border-top: 1px solid var(--steel); border-bottom: 1px solid var(--parchment-deep); opacity: 0.55;
 }
+
+.page-footer { padding: 56px 24px; text-align: center; border-top: 4px double var(--steel); margin-top: clamp(60px,8vw,96px); background: rgba(46,52,56,0.92); color: var(--marble); }
+.pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; color: var(--parchment); }
+.pf-attr { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 14px; margin-bottom: 8px; color: var(--marble-veined); }
+.pf-links { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
+.pf-links a { color: var(--parchment-warm); text-decoration: none; border-bottom: 1px dotted var(--parchment); margin: 0 8px; }
+
+@media (max-width: 720px) {
+  .photo-hero { min-height: 580px; }
+  .brass-plate { top: 16px; right: 16px; padding: 12px 16px; font-size: 10px; min-width: 200px; }
+  .ph-text { bottom: 100px; left: 20px; max-width: 86vw; }
+  .ph-title { font-size: clamp(38px,11vw,60px); }
+}
+
+/* Universal nav (cool slate light mode) */
+.dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: 0.4s; border-bottom: 1px solid transparent; }
+.dfb-topnav.scrolled { background: rgba(159,165,168,0.92); backdrop-filter: blur(12px); border-bottom-color: rgba(46,52,56,0.25); }
+.dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; color: var(--marble); text-decoration: none; text-shadow: 0 1px 8px rgba(20,25,28,0.5); transition: color 0.2s; }
+.dfb-topnav.scrolled .dfb-brand { color: var(--steel-deep); text-shadow: none; }
+.dfb-brand:hover { color: var(--bronze); }
+.dfb-brand span { color: var(--parchment); font-style: normal; padding: 0 6px; }
+.dfb-topnav.scrolled .dfb-brand span { color: var(--bronze); }
+.dfb-menu-toggle { display: flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(220,222,216,0.55); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--marble); transition: 0.2s; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+.dfb-topnav.scrolled .dfb-menu-toggle { color: var(--steel-deep); border-color: var(--steel); text-shadow: none; }
+.dfb-menu-toggle:hover { background: rgba(139,111,79,0.20); color: var(--bronze); }
+.dfb-menu-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(20,25,28,0.96); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: clamp(20px, 4vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.4s; overflow-y: auto; }
+.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
+.dfb-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid rgba(222,200,147,0.25); margin-bottom: clamp(32px, 5vw, 56px); }
+.dfb-menu-title { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: clamp(24px, 3vw, 32px); color: var(--marble); }
+.dfb-menu-close { background: transparent; border: 1px solid rgba(222,200,147,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--marble); }
+.dfb-menu-close:hover { background: rgba(222,200,147,0.15); color: var(--parchment); }
+.dfb-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); max-width: 1240px; margin: 0 auto; width: 100%; }
+@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
+.dfb-menu-col-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--parchment); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(222,200,147,0.2); }
+.dfb-menu-link { display: block; padding: 10px 14px; margin-bottom: 6px; background: rgba(46,52,56,0.55); border-left: 2px solid rgba(222,200,147,0.4); color: var(--marble); text-decoration: none; transition: 0.2s; }
+.dfb-menu-link:hover { background: rgba(222,200,147,0.12); border-left-color: var(--parchment); transform: translateX(4px); }
+.dfb-menu-link .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--parchment); display: block; margin-bottom: 2px; }
+.dfb-menu-link .dfb-name { font-family: "Fraunces", serif; font-weight: 460; font-size: 16px; color: var(--marble); }
+.dfb-menu-link.current { background: rgba(222,200,147,0.18); border-left-color: var(--parchment-warm); }
+.dfb-menu-link.current .dfb-name { color: var(--parchment-warm); }
+.dfb-menu-footer { margin-top: auto; padding-top: 32px; text-align: center; opacity: 0.7; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--parchment); }
+body.dfb-menu-open { overflow: hidden; }
 </style>
 </head>
 <body>
 
-<!-- ============ UNIVERSAL STICKY TOP NAV ============ -->
-<style>
-.dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom-color 0.4s ease; border-bottom: 1px solid transparent; }
-.dfb-topnav.scrolled { background: rgba(14, 8, 5, 0.86); backdrop-filter: blur(12px) saturate(140%); -webkit-backdrop-filter: blur(12px) saturate(140%); border-bottom-color: rgba(212, 168, 86, 0.25); }
-.dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; letter-spacing: 0.02em; color: #F0E2C5; text-decoration: none; text-shadow: 0 1px 8px rgba(0,0,0,0.5); transition: color 0.2s; font-variation-settings: 'opsz' 48, 'SOFT' 80, 'WONK' 1; }
-.dfb-brand:hover { color: #D4A856; }
-.dfb-brand span { color: #B58A48; font-style: normal; padding: 0 6px; }
-.dfb-menu-toggle { display: flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(181, 138, 72, 0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: #F0E2C5; transition: 0.2s; border-radius: 0; text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
-.dfb-menu-toggle:hover { background: rgba(181, 138, 72, 0.15); border-color: #D4A856; color: #D4A856; }
-.dfb-menu-toggle .dfb-bars { font-size: 14px; line-height: 1; }
-.dfb-topnav.scrolled .dfb-brand, .dfb-topnav.scrolled .dfb-menu-toggle { text-shadow: none; }
-.dfb-menu-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(14, 8, 5, 0.96); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); display: flex; flex-direction: column; padding: clamp(20px, 4vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.4s ease; overflow-y: auto; }
-.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
-.dfb-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid rgba(181, 138, 72, 0.25); margin-bottom: clamp(32px, 5vw, 56px); }
-.dfb-menu-title { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: clamp(24px, 3vw, 32px); color: #F0E2C5; font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1; }
-.dfb-menu-close { background: transparent; border: 1px solid rgba(181, 138, 72, 0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: #F0E2C5; transition: 0.2s; }
-.dfb-menu-close:hover { background: rgba(181, 138, 72, 0.15); color: #D4A856; }
-.dfb-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); max-width: 1240px; margin: 0 auto; width: 100%; }
-@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
-.dfb-menu-col-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #B58A48; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(181, 138, 72, 0.2); }
-.dfb-menu-link { display: block; padding: 10px 14px; margin-bottom: 6px; background: rgba(31, 20, 10, 0.5); border-left: 2px solid rgba(181, 138, 72, 0.4); color: #F0E2C5; text-decoration: none; transition: 0.2s; }
-.dfb-menu-link:hover { background: rgba(181, 138, 72, 0.12); border-left-color: #D4A856; transform: translateX(4px); }
-.dfb-menu-link .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: #B58A48; display: block; margin-bottom: 2px; }
-.dfb-menu-link .dfb-name { font-family: "Fraunces", serif; font-weight: 460; font-size: 16px; color: #F0E2C5; }
-.dfb-menu-link.current { background: rgba(212, 168, 86, 0.18); border-left-color: #D4A856; }
-.dfb-menu-link.current .dfb-name { color: #ECC078; }
-.dfb-menu-footer { margin-top: auto; padding-top: 32px; text-align: center; opacity: 0.7; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #B58A48; }
-body.dfb-menu-open { overflow: hidden; }
-</style>
-
 <header class="dfb-topnav" id="dfbTopNav">
   <a class="dfb-brand" href="index.html">DFB<span>·</span>Bureau</a>
-  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu"><span class="dfb-bars">☰</span> Menu</button>
+  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu"><span style="font-size:14px;line-height:1;">☰</span> Menu</button>
 </header>
-
 <nav class="dfb-menu-overlay" id="dfbMenu" aria-hidden="true">
-  <div class="dfb-menu-head">
-    <div class="dfb-menu-title">The Sixteen Rooms</div>
-    <button class="dfb-menu-close" onclick="dfbToggleMenu()" aria-label="Close menu">✕ Close</button>
-  </div>
+  <div class="dfb-menu-head"><div class="dfb-menu-title">The Sixteen Rooms</div><button class="dfb-menu-close" onclick="dfbToggleMenu()">✕ Close</button></div>
   <div class="dfb-menu-grid">
-    <div>
-      <div class="dfb-menu-col-title">— Imperial Lock —</div>
+    <div><div class="dfb-menu-col-title">— Imperial Lock —</div>
       <a href="index.html" class="dfb-menu-link" data-page="index.html"><span class="dfb-roman">I · Front Desk</span><span class="dfb-name">Bureau Index</span></a>
       <a href="midnight.html" class="dfb-menu-link" data-page="midnight.html"><span class="dfb-roman">II · After Hours</span><span class="dfb-name">Midnight</span></a>
       <a href="archive.html" class="dfb-menu-link" data-page="archive.html"><span class="dfb-roman">III · Filed Dispatches</span><span class="dfb-name">Archive</span></a>
@@ -211,149 +209,103 @@ body.dfb-menu-open { overflow: hidden; }
       <a href="concordance.html" class="dfb-menu-link" data-page="concordance.html"><span class="dfb-roman">V · Index of Terms</span><span class="dfb-name">Concordance</span></a>
       <a href="errata.html" class="dfb-menu-link" data-page="errata.html"><span class="dfb-roman">VI · Corrections</span><span class="dfb-name">Errata</span></a>
     </div>
-    <div>
-      <div class="dfb-menu-col-title">— Doctrinal Wing —</div>
-      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I · Open Shelf</span><span class="dfb-name">Periodicals</span></a>
-      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II · Curated</span><span class="dfb-name">Cabinet</span></a>
-      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III · Restricted</span><span class="dfb-name">Vault</span></a>
+    <div><div class="dfb-menu-col-title">— Doctrinal Wing —</div>
+      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I</span><span class="dfb-name">Periodicals</span></a>
+      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II</span><span class="dfb-name">Cabinet</span></a>
+      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III</span><span class="dfb-name">Vault</span></a>
       <a href="chambers.html" class="dfb-menu-link" data-page="chambers.html"><span class="dfb-roman">X · Literary Annex</span><span class="dfb-name">Chambers</span></a>
       <a href="about.html" class="dfb-menu-link" data-page="about.html"><span class="dfb-roman">XI · Editorial Office</span><span class="dfb-name">About</span></a>
     </div>
-    <div>
-      <div class="dfb-menu-col-title">— Front-Matter —</div>
-      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Site Directory</span><span class="dfb-name">Contents</span></a>
-      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Editorial Notice</span><span class="dfb-name">Disclaimer</span></a>
-      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms · Jurisdiction</span><span class="dfb-name">Legal</span></a>
+    <div><div class="dfb-menu-col-title">— Front-Matter —</div>
+      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Directory</span><span class="dfb-name">Contents</span></a>
+      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Notice</span><span class="dfb-name">Disclaimer</span></a>
+      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms</span><span class="dfb-name">Legal</span></a>
       <a href="privacy.html" class="dfb-menu-link" data-page="privacy.html"><span class="dfb-roman">XV · Reader Notice</span><span class="dfb-name">Privacy</span></a>
-      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Photo · Type</span><span class="dfb-name">Credits</span></a>
+      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Credits</span><span class="dfb-name">Credits</span></a>
     </div>
   </div>
   <div class="dfb-menu-footer">Same yield. Different durability. · Anno MMXXVI</div>
 </nav>
-
 <script>
-(function() {
-  var nav = document.getElementById('dfbTopNav');
-  var menu = document.getElementById('dfbMenu');
-  var body = document.body;
-  function onScroll() { if (window.scrollY > 60) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); } }
-  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  window.dfbToggleMenu = function() { var isOpen = menu.classList.toggle('open'); body.classList.toggle('dfb-menu-open', isOpen); menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true'); };
-  var current = location.pathname.split('/').pop() || 'index.html';
-  if (current === '') current = 'index.html';
-  var currentLink = menu.querySelector('[data-page="' + current + '"]');
-  if (currentLink) currentLink.classList.add('current');
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && menu.classList.contains('open')) { dfbToggleMenu(); } });
-})();
+(function(){var n=document.getElementById('dfbTopNav'),m=document.getElementById('dfbMenu'),b=document.body;function s(){if(window.scrollY>60)n.classList.add('scrolled');else n.classList.remove('scrolled');}window.addEventListener('scroll',s,{passive:true});s();window.dfbToggleMenu=function(){var o=m.classList.toggle('open');b.classList.toggle('dfb-menu-open',o);m.setAttribute('aria-hidden',o?'false':'true');};var c=location.pathname.split('/').pop()||'index.html';if(c==='')c='index.html';var l=m.querySelector('[data-page="'+c+'"]');if(l)l.classList.add('current');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))dfbToggleMenu();});})();
 </script>
-<!-- ============ END UNIVERSAL NAV ============ -->
 
-<!-- HERO · Beinecke Rare Book and Manuscript Library · Yale · 1963 -->
-<section class="photo-hero" aria-label="Beinecke Rare Book Library · Yale (Bunshaft · 1963)">
-  <div class="ph-photo" role="img" aria-label="Beinecke Rare Book Library · Yale (Bunshaft · 1963)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Beinecke_Rare_Book_and_Manuscript_Library_(2).jpg?width=2560');"></div>
-  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#14111066 70%,#141110CC 100%),linear-gradient(to bottom,rgba(20,17,16,0.42) 0%,rgba(20,17,16,0.05) 30%,rgba(222,200,147,0.10) 60%,#141110D0 100%);"></div>
+<section class="photo-hero" aria-label="Beinecke Rare Book Library · Yale · Bunshaft 1963">
+  <div class="ph-photo" role="img" aria-label="Beinecke Rare Book Library · Yale (Bunshaft 1963)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Beinecke_Library_interior.JPG?width=2560');"></div>
+  <div class="ph-vignette"></div>
   <div class="ph-grain"></div>
-  <aside class="brass-plate" style="background:rgba(28, 28, 30, 0.78);border:1px solid #B58A48;color:#EFEDE3;">
-    <span class="bp-corner-tl" style="border-color:#B58A48;"></span>
-    <span class="bp-corner-tr" style="border-color:#B58A48;"></span>
-    <span class="bp-corner-bl" style="border-color:#B58A48;"></span>
-    <span class="bp-corner-br" style="border-color:#B58A48;"></span>
-    <span style="color:#B58A48;font-weight:600;">The Vault</span>
-    <span class="bp-issue" style="color:#DEC893;">Structural Income Desk™</span>
-    <span class="bp-divider" style="background:#3F3F44;"></span>
+  <aside class="brass-plate">
+    <span class="bp-corner-tl"></span><span class="bp-corner-tr"></span><span class="bp-corner-bl"></span><span class="bp-corner-br"></span>
+    <span class="bp-mark">The Vault</span>
+    <span class="bp-issue">Structural Income Desk&trade;</span>
+    <span class="bp-divider"></span>
     <span class="bp-line">Founding Membership</span>
-    <span class="bp-line" style="color:#EFEDE3;">Three Tiers · Restricted</span>
+    <span class="bp-line" style="color:var(--marble);">Three Tiers &middot; Restricted</span>
     <span class="bp-line" style="opacity:0.7;">Anno MMXXVI</span>
   </aside>
-  <div class="ph-text" style="color:#EFEDE3;">
-    <div class="ph-eyebrow" style="color:#DEC893;">Annex III · Restricted · Founding Membership</div>
-    <h1 class="ph-title">Structural Income Desk<br><em style="color:#DEC893;border-top-color:#B58A48;">™ — three tiers.</em></h1>
-    <p class="ph-subtitle" style="color:#EFEDE3DD;">The Bureau's working desk — watchlist, working notes, refinancing calendar, and editor commentary not filed elsewhere. Founding membership in three tiers. Restricted access; quarterly cadence; reader-funded.</p>
+  <div class="ph-text">
+    <div class="ph-eyebrow">Annex III &middot; Restricted &middot; Founding Membership</div>
+    <h1 class="ph-title">Structural Income Desk<br><em>&trade; — three tiers.</em></h1>
+    <p class="ph-subtitle">The Bureau's working desk — watchlist, working notes, refinancing calendar, and editor commentary not filed elsewhere. Founding membership in three tiers. Restricted access; quarterly cadence; reader-funded.</p>
   </div>
-  <div class="scroll-prompt" style="color:#E8E5DC;">
-    <span class="scroll-label">Open the Vault</span>
-    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#B58A48);"></span>
-  </div>
-  <div class="photo-attr" style="color:#EFEDE388;">
-    <a href="https://commons.wikimedia.org/wiki/File:Beinecke_Rare_Book_and_Manuscript_Library_(2).jpg" target="_blank" rel="noopener">Beinecke Rare Book Library · Yale · Gordon Bunshaft · 1963 · CC BY-SA</a>
-  </div>
+  <div class="scroll-prompt"><span class="scroll-label">Open the Vault</span><span class="scroll-line"></span></div>
+  <div class="photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Beinecke_Library_interior.JPG" target="_blank" rel="noopener">Beinecke Rare Book Library &middot; Yale &middot; Gordon Bunshaft &middot; 1963 &middot; CC BY-SA</a></div>
 </section>
 
-<!-- Glass cube band · Beinecke's marble exterior + central book tower silhouette -->
+<!-- Glass cube band · Beinecke marble grid + central glowing book tower -->
 <div class="cube-band">
   <svg viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <linearGradient id="marbleGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#E8E5DC" stop-opacity="0.95"/>
-        <stop offset="100%" stop-color="#D8D4C7" stop-opacity="0.6"/>
-      </linearGradient>
-      <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#B58A48" stop-opacity="0.95"/>
-        <stop offset="50%" stop-color="#DEC893" stop-opacity="0.8"/>
-        <stop offset="100%" stop-color="#5C4530" stop-opacity="0.4"/>
-      </linearGradient>
-      <radialGradient id="parchmentGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#ECCB78" stop-opacity="0.9"/>
-        <stop offset="100%" stop-color="#B58A48" stop-opacity="0"/>
-      </radialGradient>
+      <linearGradient id="marbleGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#DCDED8" stop-opacity="0.95"/><stop offset="100%" stop-color="#C5C8C2" stop-opacity="0.6"/></linearGradient>
+      <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B58A48" stop-opacity="0.95"/><stop offset="50%" stop-color="#DEC893" stop-opacity="0.85"/><stop offset="100%" stop-color="#5C4530" stop-opacity="0.4"/></linearGradient>
+      <radialGradient id="parchmentGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ECCB78" stop-opacity="0.9"/><stop offset="100%" stop-color="#B58A48" stop-opacity="0"/></radialGradient>
     </defs>
     <!-- 5x3 marble grid (Beinecke's translucent marble panels) -->
-    <g stroke="#3F3F44" stroke-width="1.4" fill="url(#marbleGrad)" opacity="0.75">
-      <!-- Row 1 (top) -->
+    <g stroke="#2E3438" stroke-width="1.2" fill="url(#marbleGrad)" opacity="0.85">
       <rect x="40" y="20" width="180" height="50"/>
       <rect x="220" y="20" width="180" height="50"/>
       <rect x="400" y="20" width="200" height="50"/>
       <rect x="600" y="20" width="180" height="50"/>
       <rect x="780" y="20" width="180" height="50"/>
-      <!-- Row 2 (middle) -->
       <rect x="40" y="70" width="180" height="50"/>
       <rect x="220" y="70" width="180" height="50"/>
       <rect x="400" y="70" width="200" height="50"/>
       <rect x="600" y="70" width="180" height="50"/>
       <rect x="780" y="70" width="180" height="50"/>
-      <!-- Row 3 (bottom) -->
       <rect x="40" y="120" width="180" height="50"/>
       <rect x="220" y="120" width="180" height="50"/>
       <rect x="400" y="120" width="200" height="50"/>
       <rect x="600" y="120" width="180" height="50"/>
       <rect x="780" y="120" width="180" height="50"/>
     </g>
-    <!-- Steel I-beam frame (Bunshaft's exposed structural grid) -->
-    <g stroke="#28282C" stroke-width="2.2" fill="none">
-      <line x1="40" y1="20" x2="960" y2="20"/>
-      <line x1="40" y1="170" x2="960" y2="170"/>
-      <line x1="40" y1="20" x2="40" y2="170"/>
-      <line x1="960" y1="20" x2="960" y2="170"/>
-      <line x1="220" y1="20" x2="220" y2="170"/>
-      <line x1="400" y1="20" x2="400" y2="170"/>
-      <line x1="600" y1="20" x2="600" y2="170"/>
-      <line x1="780" y1="20" x2="780" y2="170"/>
+    <!-- Steel I-beam frame -->
+    <g stroke="#1A1F22" stroke-width="2" fill="none">
+      <line x1="40" y1="20" x2="960" y2="20"/><line x1="40" y1="170" x2="960" y2="170"/>
+      <line x1="40" y1="20" x2="40" y2="170"/><line x1="960" y1="20" x2="960" y2="170"/>
+      <line x1="220" y1="20" x2="220" y2="170"/><line x1="400" y1="20" x2="400" y2="170"/>
+      <line x1="600" y1="20" x2="600" y2="170"/><line x1="780" y1="20" x2="780" y2="170"/>
     </g>
-    <!-- Central glass-encased book tower (Beinecke's signature 6-story stack) -->
-    <g stroke="#5C4530" stroke-width="1.5" fill="url(#towerGrad)" opacity="0.9">
+    <!-- Central glass-encased book tower -->
+    <g stroke="#5C4530" stroke-width="1.4" fill="url(#towerGrad)" opacity="0.95">
       <rect x="430" y="32" width="140" height="130"/>
     </g>
-    <!-- Book shelves inside tower (6 horizontal lines = 6 stories) -->
+    <!-- Book shelf lines (6 stories) -->
     <g stroke="#3F2D1F" stroke-width="0.8" opacity="0.85">
-      <line x1="432" y1="50" x2="568" y2="50"/>
-      <line x1="432" y1="70" x2="568" y2="70"/>
-      <line x1="432" y1="90" x2="568" y2="90"/>
-      <line x1="432" y1="110" x2="568" y2="110"/>
-      <line x1="432" y1="130" x2="568" y2="130"/>
-      <line x1="432" y1="150" x2="568" y2="150"/>
+      <line x1="432" y1="50" x2="568" y2="50"/><line x1="432" y1="70" x2="568" y2="70"/>
+      <line x1="432" y1="90" x2="568" y2="90"/><line x1="432" y1="110" x2="568" y2="110"/>
+      <line x1="432" y1="130" x2="568" y2="130"/><line x1="432" y1="150" x2="568" y2="150"/>
     </g>
-    <!-- Parchment glow around the tower (warm light through marble) -->
-    <ellipse cx="500" cy="100" rx="120" ry="60" fill="url(#parchmentGlow)" opacity="0.5"/>
-    <!-- Beinecke's signature: light filtering through translucent marble -->
-    <g fill="#ECCB78" opacity="0.45">
+    <!-- Parchment glow halo (Beinecke's signature warm light through marble) -->
+    <ellipse cx="500" cy="100" rx="160" ry="75" fill="url(#parchmentGlow)" opacity="0.55"/>
+    <!-- Warm light spots through translucent marble -->
+    <g fill="#ECCB78" opacity="0.55">
       <ellipse cx="130" cy="45" rx="60" ry="14"/>
       <ellipse cx="310" cy="95" rx="50" ry="12"/>
       <ellipse cx="690" cy="45" rx="60" ry="14"/>
       <ellipse cx="870" cy="95" rx="50" ry="12"/>
     </g>
-    <!-- Central medallion -->
-    <ellipse cx="500" cy="160" rx="64" ry="12" fill="#EFEDE3" stroke="#28282C" stroke-width="1.3" opacity="0.95"/>
-    <text x="500" y="164" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#1A1A1C" text-anchor="middle">The Rare Wing</text>
+    <ellipse cx="500" cy="160" rx="68" ry="12" fill="#DCDED8" stroke="#1A1F22" stroke-width="1.3"/>
+    <text x="500" y="164" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#14191C" text-anchor="middle">The Rare Wing</text>
   </svg>
 </div>
 
@@ -361,29 +313,22 @@ body.dfb-menu-open { overflow: hidden; }
 
   <aside class="room-context" aria-label="About this room">
     <div class="rc-label">— About this room —</div>
-    <div class="rc-body">
-      The <strong>Vault</strong> is the Bureau's <strong>restricted wing</strong> — the working desk, not the published shelf. Inside: the live watchlist, the editor's working notes on positions still being formed, the refinancing-calendar tracker, and commentary that is too provisional or too specific for the Periodicals or Cabinet. Membership is the <strong>Structural Income Desk™</strong>, in three tiers. Reader-funded. (From Latin <em>volvere</em> — "to roll, vault, arch over".)
-    </div>
+    <div class="rc-body">The <strong>Vault</strong> is the Bureau's <strong>restricted wing</strong> — the working desk, not the published shelf. Inside: the live watchlist, the editor's working notes on positions still being formed, the refinancing-calendar tracker, and commentary that is too provisional or too specific for the Periodicals or Cabinet. Membership is the <strong>Structural Income Desk&trade;</strong>, in three tiers. Reader-funded. (From Latin <em>volvere</em> — "to roll, vault, arch over".)</div>
   </aside>
 
   <div class="section-intro">
-    <div class="si-label" style="color:var(--steel);">— Structural Income Desk<sup style="font-size:9px;letter-spacing:0.18em;">™</sup> · Three Tiers —</div>
-    <h2 class="si-title" style="color:var(--ink);">Founding membership, <em style="color:var(--bronze);">opening MMXXVI.</em></h2>
-    <p class="si-desc" style="color:var(--ink-soft);">Three tiers, by depth of access. The watchlist, the working notes, and the founder seats. Pre-launch list is open; founding seats limited.</p>
+    <div class="si-label">— Structural Income Desk<sup style="font-size:9px;letter-spacing:0.18em;">&trade;</sup> &middot; Three Tiers —</div>
+    <h2 class="si-title">Founding membership, <em>opening MMXXVI.</em></h2>
+    <p class="si-desc">Three tiers, by depth of access. The watchlist, the working notes, and the founder seats. Pre-launch list is open; founding seats limited.</p>
   </div>
 
-  <!-- 3-tier membership grid -->
   <div class="tier-grid">
 
-    <!-- Tier I · Core -->
     <article class="tier-card core">
       <div class="tc-roman">I.</div>
-      <div class="tc-tag">Core · Monthly</div>
+      <div class="tc-tag">Core &middot; Monthly</div>
       <h3 class="tc-name">Core <em>Reader.</em></h3>
-      <div class="tc-price">
-        <span class="tc-price-amount">$29</span>
-        <span class="tc-price-cycle">/ month</span>
-      </div>
+      <div class="tc-price"><span class="tc-price-amount">$29</span><span class="tc-price-cycle">/ month</span></div>
       <p class="tc-tagline">The watchlist, with monthly updates.</p>
       <ul class="tc-list">
         <li>The Bureau watchlist — all covered names, refreshed monthly.</li>
@@ -391,18 +336,14 @@ body.dfb-menu-open { overflow: hidden; }
         <li>Refinancing calendar — the next twelve months of maturities.</li>
         <li>Access to the working concordance, with quarterly term additions.</li>
       </ul>
-      <a class="tc-cta" href="https://jungmoku.substack.com/" target="_blank" rel="noopener">Join Core →</a>
+      <a class="tc-cta" href="https://jungmoku.substack.com/" target="_blank" rel="noopener">Join Core &rarr;</a>
     </article>
 
-    <!-- Tier II · Pro (Recommended) -->
     <article class="tier-card pro">
       <div class="tc-roman">II.</div>
-      <div class="tc-tag">Pro · Monthly</div>
+      <div class="tc-tag">Pro &middot; Monthly</div>
       <h3 class="tc-name">Working <em>Desk.</em></h3>
-      <div class="tc-price">
-        <span class="tc-price-amount">$79</span>
-        <span class="tc-price-cycle">/ month</span>
-      </div>
+      <div class="tc-price"><span class="tc-price-amount">$79</span><span class="tc-price-cycle">/ month</span></div>
       <p class="tc-tagline">Everything in Core, plus the working notes.</p>
       <ul class="tc-list">
         <li>All Core benefits.</li>
@@ -411,18 +352,14 @@ body.dfb-menu-open { overflow: hidden; }
         <li>Quarterly Desk Call — written Q&amp;A with the editor on selected names.</li>
         <li>Early access to all Cabinet deep dives, before public release.</li>
       </ul>
-      <a class="tc-cta" href="https://jungmoku.substack.com/" target="_blank" rel="noopener">Join Working Desk →</a>
+      <a class="tc-cta" href="https://jungmoku.substack.com/" target="_blank" rel="noopener">Join Working Desk &rarr;</a>
     </article>
 
-    <!-- Tier III · Founding Circle -->
     <article class="tier-card founding">
       <div class="tc-roman">III.</div>
-      <div class="tc-tag">Founding · Monthly</div>
+      <div class="tc-tag">Founding &middot; Monthly</div>
       <h3 class="tc-name">Founding <em>Circle.</em></h3>
-      <div class="tc-price">
-        <span class="tc-price-amount">$199</span>
-        <span class="tc-price-cycle">/ month</span>
-      </div>
+      <div class="tc-price"><span class="tc-price-amount">$199</span><span class="tc-price-cycle">/ month</span></div>
       <p class="tc-tagline">All access — and a seat in the founding ledger.</p>
       <ul class="tc-list">
         <li>All Working Desk benefits.</li>
@@ -430,30 +367,29 @@ body.dfb-menu-open { overflow: hidden; }
         <li>Founding ledger seat — name inscribed in the Bureau Founding Roll.</li>
         <li>Permanent rate lock — the founding price holds for the lifetime of membership.</li>
       </ul>
-      <a class="tc-cta" href="https://jungmoku.substack.com/" target="_blank" rel="noopener">Join Founding Circle →</a>
+      <a class="tc-cta" href="https://jungmoku.substack.com/" target="_blank" rel="noopener">Join Founding Circle &rarr;</a>
     </article>
 
   </div>
 
-  <!-- Companion note -->
   <div class="companion-note">
-    <div class="cn-label">— The Vault · Restricted Wing —</div>
+    <div class="cn-label">— The Vault &middot; Restricted Wing —</div>
     <p class="cn-text">The <strong>Vault</strong> is not the published shelf — it is the working desk.<br>For the public reading shelf, see <a href="periodicals.html">Periodicals</a>.<br>For curated deep dives, see <a href="cabinet.html">Cabinet</a>.</p>
   </div>
 
   <div class="marble-grid" aria-hidden="true"></div>
 
   <div class="section-intro" style="margin-top:clamp(56px,7vw,80px);">
-    <div class="si-label" style="color:var(--steel);">— The Vault · Restricted Wing · Reader-Funded —</div>
-    <h2 class="si-title" style="color:var(--ink);font-size:clamp(28px,3.5vw,38px);">Open MMXXVI. <em style="color:var(--bronze);">Founding seats limited.</em></h2>
-    <p class="si-desc" style="color:var(--ink-soft);font-size:16px;">No issuer pays. No platform pays. Reader-funded by design — the position is independent because the money is. This is not a prediction — structural assessment.</p>
+    <div class="si-label">— The Vault &middot; Restricted Wing &middot; Reader-Funded —</div>
+    <h2 class="si-title" style="font-size:clamp(28px,3.5vw,38px);">Open MMXXVI. <em>Founding seats limited.</em></h2>
+    <p class="si-desc" style="font-size:16px;">No issuer pays. No platform pays. Reader-funded by design — the position is independent because the money is. This is not a prediction — structural assessment.</p>
   </div>
 </main>
 
-<footer class="page-footer" style="background:#D5D1C5;color:#2A2A2D;border-top-color:#3F3F44;">
-  <div class="pf-marker" style="color:#3F3F44;">— Annex III · The Vault · Structural Income Desk™ —</div>
-  <div class="pf-attr">Founding membership · Three tiers · Restricted wing. Reader-funded.</div>
-  <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="archive.html">Archive</a> · <a href="periodicals.html">Periodicals</a> · <a href="cabinet.html">Cabinet</a> · <a href="credits.html">Credits</a></div>
+<footer class="page-footer">
+  <div class="pf-marker">— Annex III &middot; The Vault &middot; Structural Income Desk&trade; —</div>
+  <div class="pf-attr">Founding membership &middot; Three tiers &middot; Restricted wing. Reader-funded.</div>
+  <div class="pf-links"><a href="index.html">Front Desk</a> &middot; <a href="contents.html">Contents</a> &middot; <a href="archive.html">Archive</a> &middot; <a href="periodicals.html">Periodicals</a> &middot; <a href="cabinet.html">Cabinet</a> &middot; <a href="credits.html">Credits</a></div>
 </footer>
 </body>
 </html>
