@@ -4959,6 +4959,176 @@ h1, h2, h3, .standfirst, .pull-quote, .hero-title, .section-title { text-wrap: b
   }
 }
 
+
+
+/* === DFB Sixteen Rooms Overlay Menu · Restored === */
+.qm-menu-trigger {
+  appearance: none;
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--gold, #A27B47) 48%, transparent);
+  color: var(--gold-deep, #7B5C36);
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 7px 11px;
+  cursor: pointer;
+  line-height: 1;
+  transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+.qm-menu-trigger:hover,
+.qm-menu-trigger:focus-visible {
+  background: color-mix(in srgb, var(--gold, #A27B47) 10%, transparent);
+  color: var(--burgundy, #4E1E28);
+  border-color: var(--gold, #A27B47);
+}
+.dfb-rooms-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(162, 123, 71, 0.12), transparent 42%),
+    rgba(14, 8, 5, 0.965);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  color: #F0E2C5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+  overflow-y: auto;
+  padding: clamp(22px, 4vw, 48px);
+}
+.dfb-rooms-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.dfb-rooms-head {
+  max-width: 1240px;
+  margin: 0 auto clamp(28px, 4vw, 48px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(181, 138, 72, 0.28);
+}
+.dfb-rooms-kicker {
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #B58A48;
+  margin-bottom: 10px;
+}
+.dfb-rooms-title {
+  font-family: var(--font-display, 'Fraunces', serif);
+  font-style: italic;
+  font-size: clamp(32px, 5vw, 62px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: #F0E2C5;
+  font-variation-settings: 'opsz' 120, 'wght' 430, 'SOFT' 80, 'WONK' 1;
+}
+.dfb-rooms-subtitle {
+  margin-top: 14px;
+  max-width: 680px;
+  font-family: var(--font-body, 'Newsreader', Georgia, serif);
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.55;
+  color: rgba(240, 226, 197, 0.72);
+}
+.dfb-rooms-close {
+  appearance: none;
+  background: transparent;
+  border: 1px solid rgba(181, 138, 72, 0.55);
+  color: #F0E2C5;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.dfb-rooms-close:hover { background: rgba(181, 138, 72, 0.14); color: #D4A856; }
+.dfb-rooms-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 46px);
+}
+.dfb-rooms-col-title {
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #B58A48;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(181, 138, 72, 0.24);
+}
+.dfb-room-link {
+  display: block;
+  padding: 11px 14px;
+  margin-bottom: 7px;
+  background: rgba(31, 20, 10, 0.52);
+  border-left: 2px solid rgba(181, 138, 72, 0.46);
+  color: #F0E2C5;
+  text-decoration: none;
+  transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+.dfb-room-link:hover,
+.dfb-room-link:focus-visible {
+  background: rgba(181, 138, 72, 0.13);
+  border-left-color: #D4A856;
+  transform: translateX(4px);
+}
+.dfb-room-link.current {
+  background: rgba(212, 168, 86, 0.18);
+  border-left-color: #D4A856;
+}
+.dfb-room-roman {
+  display: block;
+  margin-bottom: 3px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 9px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: #B58A48;
+}
+.dfb-room-name {
+  display: block;
+  font-family: var(--font-display, 'Fraunces', serif);
+  font-size: 17px;
+  font-weight: 460;
+  line-height: 1.16;
+  color: #F0E2C5;
+}
+.dfb-room-link.current .dfb-room-name { color: #ECC078; }
+.dfb-rooms-footer {
+  max-width: 1240px;
+  margin: clamp(30px, 5vw, 56px) auto 0;
+  padding-top: 26px;
+  border-top: 1px solid rgba(181, 138, 72, 0.20);
+  text-align: center;
+  font-family: var(--font-ui, 'Inter', sans-serif);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(181, 138, 72, 0.78);
+}
+body.dfb-rooms-open { overflow: hidden; }
+@media (max-width: 860px) {
+  .dfb-rooms-grid { grid-template-columns: 1fr 1fr; }
+  .dfb-rooms-head { flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .dfb-rooms-grid { grid-template-columns: 1fr; }
+  .dfb-rooms-overlay { padding: 22px 16px 34px; }
+}
+/* === End DFB Sixteen Rooms Overlay Menu === */
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,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">
 <link rel="icon" type="image/png" sizes="192x192" href="/img/dfb_seal_favicon_192.png">
@@ -5046,6 +5216,7 @@ h1, h2, h3, .standfirst, .pull-quote, .hero-title, .section-title { text-wrap: b
       <a href="#living-archive">Chronicle</a>
       <a href="#membership">Membership</a>
       <a href="#about">About</a>
+      <button type="button" class="qm-menu-trigger" id="dfbRoomsOpen" aria-haspopup="dialog" aria-controls="dfbRoomsMenu" aria-expanded="false">Rooms</button>
     </nav>
   </div>
   <!-- Edition Spine (Recto · Verso bound volume) -->
@@ -5069,6 +5240,87 @@ h1, h2, h3, .standfirst, .pull-quote, .hero-title, .section-title { text-wrap: b
     </div>
   </div>
 </header>
+
+<nav class="dfb-rooms-overlay" id="dfbRoomsMenu" aria-hidden="true" aria-label="The Sixteen Rooms direct access">
+  <div class="dfb-rooms-head">
+    <div>
+      <div class="dfb-rooms-kicker">The Sixteen Rooms · Direct Access</div>
+      <div class="dfb-rooms-title">Every room, one tap away.</div>
+      <div class="dfb-rooms-subtitle">Sixteen pages, sixteen architectures. Direct navigation from the Front Desk to any room in the Bureau.</div>
+    </div>
+    <button type="button" class="dfb-rooms-close" id="dfbRoomsClose" aria-label="Close rooms menu">✕ Close</button>
+  </div>
+
+  <div class="dfb-rooms-grid">
+    <div>
+      <div class="dfb-rooms-col-title">— Imperial Lock —</div>
+      <a href="index.html" class="dfb-room-link current" data-page="index.html"><span class="dfb-room-roman">I · Front Desk</span><span class="dfb-room-name">Bureau Index</span></a>
+      <a href="midnight.html" class="dfb-room-link" data-page="midnight.html"><span class="dfb-room-roman">II · After Hours</span><span class="dfb-room-name">Midnight</span></a>
+      <a href="archive.html" class="dfb-room-link" data-page="archive.html"><span class="dfb-room-roman">III · Filed Dispatches</span><span class="dfb-room-name">Archive</span></a>
+      <a href="charter.html" class="dfb-room-link" data-page="charter.html"><span class="dfb-room-roman">IV · Founding Doctrine</span><span class="dfb-room-name">Charter</span></a>
+      <a href="concordance.html" class="dfb-room-link" data-page="concordance.html"><span class="dfb-room-roman">V · Index of Terms</span><span class="dfb-room-name">Concordance</span></a>
+      <a href="errata.html" class="dfb-room-link" data-page="errata.html"><span class="dfb-room-roman">VI · Corrections</span><span class="dfb-room-name">Errata</span></a>
+    </div>
+
+    <div>
+      <div class="dfb-rooms-col-title">— Doctrinal Wing —</div>
+      <a href="periodicals.html" class="dfb-room-link" data-page="periodicals.html"><span class="dfb-room-roman">VII · Annex I · Open Shelf</span><span class="dfb-room-name">Periodicals</span></a>
+      <a href="cabinet.html" class="dfb-room-link" data-page="cabinet.html"><span class="dfb-room-roman">VIII · Annex II · Curated</span><span class="dfb-room-name">Cabinet</span></a>
+      <a href="vault.html" class="dfb-room-link" data-page="vault.html"><span class="dfb-room-roman">IX · Annex III · Restricted</span><span class="dfb-room-name">Vault</span></a>
+      <a href="chambers.html" class="dfb-room-link" data-page="chambers.html"><span class="dfb-room-roman">X · Literary Annex</span><span class="dfb-room-name">Chambers</span></a>
+      <a href="about.html" class="dfb-room-link" data-page="about.html"><span class="dfb-room-roman">XI · Editorial Office</span><span class="dfb-room-name">About</span></a>
+    </div>
+
+    <div>
+      <div class="dfb-rooms-col-title">— Front-Matter —</div>
+      <a href="contents.html" class="dfb-room-link" data-page="contents.html"><span class="dfb-room-roman">XII · Site Directory</span><span class="dfb-room-name">Contents</span></a>
+      <a href="disclaimer.html" class="dfb-room-link" data-page="disclaimer.html"><span class="dfb-room-roman">XIII · Editorial Notice</span><span class="dfb-room-name">Disclaimer</span></a>
+      <a href="legal.html" class="dfb-room-link" data-page="legal.html"><span class="dfb-room-roman">XIV · Terms · Jurisdiction</span><span class="dfb-room-name">Legal</span></a>
+      <a href="privacy.html" class="dfb-room-link" data-page="privacy.html"><span class="dfb-room-roman">XV · Reader Notice</span><span class="dfb-room-name">Privacy</span></a>
+      <a href="credits.html" class="dfb-room-link" data-page="credits.html"><span class="dfb-room-roman">XVI · Photo · Type</span><span class="dfb-room-name">Credits</span></a>
+    </div>
+  </div>
+
+  <div class="dfb-rooms-footer">Sixteen rooms · Anno MMXXVI · From the Front Desk</div>
+</nav>
+
+<script>
+(function() {
+  var openButton = document.getElementById('dfbRoomsOpen');
+  var closeButton = document.getElementById('dfbRoomsClose');
+  var menu = document.getElementById('dfbRoomsMenu');
+  if (!openButton || !closeButton || !menu) return;
+
+  function setRoomsOpen(isOpen) {
+    menu.classList.toggle('open', isOpen);
+    document.body.classList.toggle('dfb-rooms-open', isOpen);
+    menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    openButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (isOpen) {
+      closeButton.focus({ preventScroll: true });
+    } else {
+      openButton.focus({ preventScroll: true });
+    }
+  }
+
+  openButton.addEventListener('click', function() { setRoomsOpen(true); });
+  closeButton.addEventListener('click', function() { setRoomsOpen(false); });
+
+  menu.addEventListener('click', function(event) {
+    if (event.target === menu) setRoomsOpen(false);
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && menu.classList.contains('open')) setRoomsOpen(false);
+  });
+
+  var current = location.pathname.split('/').pop() || 'index.html';
+  if (current === '') current = 'index.html';
+  menu.querySelectorAll('.dfb-room-link').forEach(function(link) {
+    link.classList.toggle('current', link.getAttribute('data-page') === current);
+  });
+})();
+</script>
 
 <!-- ============ HERO ============ -->
 <style>
