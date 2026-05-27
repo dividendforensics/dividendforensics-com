@@ -97,7 +97,7 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 .notices-list { max-width: 920px; margin: 0 auto; }
 .notice-row { position: relative; padding: 28px 36px 28px 96px; background: rgba(74,73,52,0.72); border-left: 3px solid var(--austere-gold); border-top: 1px solid rgba(181,153,94,0.18); border-right: 1px solid rgba(181,153,94,0.16); border-bottom: 1px solid rgba(181,153,94,0.18); margin-bottom: 14px; transition: 0.25s; box-shadow: 0 2px 10px rgba(0,0,0,0.22); }
 .notice-row:nth-child(even) { border-left-color: var(--olive); background: rgba(86,85,66,0.72); }
-.notice-row:hover { transform: translateX(2px); box-shadow: 0 4px 16px rgba(0,0,0,0.30); }
+.notice-row:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.30); border-left-width: 4px; }
 @media (max-width: 720px) { .notice-row { padding: 22px 22px 22px 22px; } }
 
 .nr-roman { position: absolute; left: 28px; top: 28px; font-family: "Fraunces", serif; font-style: italic; font-size: 38px; line-height: 1; font-weight: 350; color: var(--austere-gold); font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1; }
@@ -117,9 +117,9 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 .nr-body em { font-style: italic; }
 
 /* Acknowledgment block — like a signed receipt */
-.acknowledgment-block { max-width: 720px; margin: clamp(56px,7vw,80px) auto 0; padding: clamp(32px,3.5vw,42px); background: linear-gradient(180deg, rgba(86,85,66,0.78) 0%, rgba(74,73,52,0.82) 100%); border-top: 3px double var(--austere-gold); border-bottom: 3px double var(--austere-gold); text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.30); }
+.acknowledgment-block { max-width: 720px; margin: clamp(56px,7vw,80px) auto 0; padding: clamp(32px,3.5vw,42px); background: rgba(42,42,28,0.85); border-top: 2px solid var(--austere-gold); border-bottom: 2px solid var(--austere-gold); text-align: center; box-shadow: 0 3px 12px rgba(0,0,0,0.20); }
 .ab-mark { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.40em; color: var(--austere-gold); text-transform: uppercase; margin-bottom: 16px; }
-.ab-text { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(17px,2vw,21px); line-height: 1.6; color: var(--ink); max-width: 600px; margin: 0 auto; }
+.ab-text { font-family: "Newsreader", serif; font-size: clamp(15px,1.6vw,17px); line-height: 1.7; color: var(--ink); max-width: 600px; margin: 0 auto; }
 .ab-text strong { font-weight: 600; }
 .ab-rule { width: 60px; height: 1px; background: var(--austere-gold); margin: 18px auto; opacity: 0.7; }
 .ab-attr { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--austere-gold); text-transform: uppercase; }
@@ -227,8 +227,8 @@ body.dfb-menu-open { overflow: hidden; }
   </aside>
   <div class="ph-text">
     <div class="ph-eyebrow">Editorial Notice · Reader Boundary · Mid Wing</div>
-    <h1 class="ph-title">Notices,<br><em>at the threshold.</em></h1>
-    <p class="ph-subtitle">Six notices filed at the entry. Read before the dispatch.</p>
+    <h1 class="ph-title">Notices.<br><em>Boundary held.</em></h1>
+    <p class="ph-subtitle">Six notices filed at the threshold. Read before any dispatch.</p>
   </div>
   <div class="scroll-prompt"><span class="scroll-label">Read the Notices</span><span class="scroll-line"></span></div>
   <div class="photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Wright_Library,_Princeton_Theological_Seminary.jpg" target="_blank" rel="noopener">Wright Library · Princeton Theological Seminary · Presbyterian / Reformed · CC BY-SA</a></div>
@@ -315,8 +315,8 @@ body.dfb-menu-open { overflow: hidden; }
 
   <div class="section-intro">
     <div class="si-label">— Six Notices · At the Threshold —</div>
-    <h2 class="si-title">Read once. <em>Stand throughout.</em></h2>
-    <p class="si-desc">Each notice marks a boundary the Bureau holds — what is filed; what is not; what the reader retains.</p>
+    <h2 class="si-title">Filed at the threshold. <em>Standing thereafter.</em></h2>
+    <p class="si-desc">Each notice marks a boundary the Bureau holds &mdash; what is filed; what is not; what the reader retains.</p>
   </div>
 
   <div class="notices-list">
