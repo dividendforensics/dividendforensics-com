@@ -43,9 +43,8 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 }
 
 .photo-hero { position: relative; width: 100%; height: 100vh; min-height: 720px; overflow: hidden; }
-.ph-photo { position: absolute; inset: 0; background-size: cover; background-position: center; animation: kenburns 42s cubic-bezier(0.65,0,0.35,1) infinite alternate; }
-@keyframes kenburns { 0%{transform:scale(1.00) translate(0,0);} 100%{transform:scale(1.10) translate(-1%,-2%);} }
-.ph-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 30%, transparent 0%, rgba(62,61,40,0.62) 70%, rgba(62,61,40,0.95) 100%), linear-gradient(to bottom, rgba(42,42,28,0.55) 0%, rgba(42,42,28,0.05) 30%, rgba(149,148,106,0.10) 55%, var(--paper) 100%); }
+.ph-photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.ph-vignette { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(42,42,28,0.50) 0%, rgba(42,42,28,0.35) 40%, rgba(62,61,40,0.55) 70%, var(--paper) 100%); }
 .ph-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
 .brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; background: rgba(42,42,28,0.88); border: 1px solid var(--austere-gold); color: var(--ink); backdrop-filter: blur(6px); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.55); animation: fade-in 1.8s 0.4s both; }
 .bp-corner-tl,.bp-corner-tr,.bp-corner-bl,.bp-corner-br { position: absolute; width: 10px; height: 10px; border-style: solid; border-color: var(--austere-gold); border-width: 0; }
@@ -60,8 +59,7 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 .ph-text { position: absolute; left: clamp(28px,6vw,96px); bottom: clamp(140px,20vh,200px); max-width: min(680px,70vw); z-index: 3; }
 .ph-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 24px; padding-left: 28px; position: relative; color: var(--austere-gold-light); animation: reveal 1.4s 0.6s both; }
 .ph-eyebrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; background: var(--austere-gold); }
-.ph-title { font-family: "Fraunces", serif; font-size: clamp(48px,7vw,96px); line-height: 0.96; letter-spacing: -0.02em; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin: 0 0 28px; color: var(--ink); text-shadow: 0 2px 32px rgba(0,0,0,0.7); animation: reveal 1.6s 0.9s both; }
-.ph-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; display: block; padding-top: 14px; margin-top: 10px; max-width: 540px; border-top: 1px solid var(--austere-gold); color: var(--austere-gold-light); }
+.ph-title { font-family: "Fraunces", serif; font-size: clamp(44px,6vw,72px); line-height: 1.05; letter-spacing: -0.01em; font-weight: 400; margin: 0 0 22px; color: var(--ink); text-shadow: 0 2px 24px rgba(0,0,0,0.5); animation: reveal 1.6s 0.9s both; }
 .ph-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 540px; color: var(--ink-soft); text-shadow: 0 1px 12px rgba(0,0,0,0.5); animation: reveal 1.8s 1.2s both; }
 .scroll-prompt { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.7; z-index: 3; color: var(--austere-gold-light); animation: fade-in 2s 2.2s both; }
 .scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--austere-gold)); animation: bounce 2.4s ease-in-out infinite; }
@@ -95,12 +93,13 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 
 /* 6 Notices · reformed plain rows (austere, text-centered) */
 .notices-list { max-width: 920px; margin: 0 auto; }
-.notice-row { position: relative; padding: 28px 36px 28px 96px; background: rgba(74,73,52,0.72); border-left: 3px solid var(--austere-gold); border-top: 1px solid rgba(181,153,94,0.18); border-right: 1px solid rgba(181,153,94,0.16); border-bottom: 1px solid rgba(181,153,94,0.18); margin-bottom: 14px; transition: 0.25s; box-shadow: 0 2px 10px rgba(0,0,0,0.22); }
-.notice-row:nth-child(even) { border-left-color: var(--olive); background: rgba(86,85,66,0.72); }
-.notice-row:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.30); border-left-width: 4px; }
+.notice-row { position: relative; padding: 22px 32px 22px 88px; background: rgba(74,73,52,0.62); border-left: 3px solid var(--austere-gold); border-top: 1px solid rgba(181,153,94,0.14); border-right: 1px solid rgba(181,153,94,0.12); border-bottom: 1px solid rgba(181,153,94,0.14); margin-bottom: 10px; transition: 0.2s; }
+.notice-row:nth-child(even) { border-left-color: var(--olive); background: rgba(86,85,66,0.60); }
+.notice-row:hover { background: rgba(86,85,66,0.78); }
+.notice-row:nth-child(even):hover { background: rgba(98,97,76,0.78); }
 @media (max-width: 720px) { .notice-row { padding: 22px 22px 22px 22px; } }
 
-.nr-roman { position: absolute; left: 28px; top: 28px; font-family: "Fraunces", serif; font-style: italic; font-size: 38px; line-height: 1; font-weight: 350; color: var(--austere-gold); font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1; }
+.nr-roman { position: absolute; left: 28px; top: 24px; font-family: "Fraunces", serif; font-style: italic; font-size: 28px; line-height: 1; font-weight: 380; color: var(--austere-gold); }
 .notice-row:nth-child(even) .nr-roman { color: var(--olive-light); }
 @media (max-width: 720px) { .nr-roman { position: static; margin-bottom: 8px; font-size: 32px; } }
 
@@ -227,8 +226,8 @@ body.dfb-menu-open { overflow: hidden; }
   </aside>
   <div class="ph-text">
     <div class="ph-eyebrow">Editorial Notice · Reader Boundary · Mid Wing</div>
-    <h1 class="ph-title">Notices.<br><em>Boundary held.</em></h1>
-    <p class="ph-subtitle">Six notices filed at the threshold. Read before any dispatch.</p>
+    <h1 class="ph-title">Editorial Notices.</h1>
+    <p class="ph-subtitle">Six notices. Filed at the threshold. Standing thereafter.</p>
   </div>
   <div class="scroll-prompt"><span class="scroll-label">Read the Notices</span><span class="scroll-line"></span></div>
   <div class="photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Wright_Library,_Princeton_Theological_Seminary.jpg" target="_blank" rel="noopener">Wright Library · Princeton Theological Seminary · Presbyterian / Reformed · CC BY-SA</a></div>
@@ -315,7 +314,7 @@ body.dfb-menu-open { overflow: hidden; }
 
   <div class="section-intro">
     <div class="si-label">— Six Notices · At the Threshold —</div>
-    <h2 class="si-title">Filed at the threshold. <em>Standing thereafter.</em></h2>
+    <h2 class="si-title">Six notices. Filed at the threshold.</h2>
     <p class="si-desc">Each notice marks a boundary the Bureau holds &mdash; what is filed; what is not; what the reader retains.</p>
   </div>
 
@@ -401,7 +400,7 @@ body.dfb-menu-open { overflow: hidden; }
 
   <div class="section-intro" style="margin-top:clamp(56px,7vw,80px);">
     <div class="si-label">— Disclaimer · Mid Wing · Threshold Notice —</div>
-    <h2 class="si-title" style="font-size:clamp(28px,3.5vw,38px);">A reading filed. <em>A boundary held.</em></h2>
+    <h2 class="si-title" style="font-size:clamp(26px,3vw,32px);">Notice given. Boundary drawn.</h2>
     <p class="si-desc" style="font-size:16px;">For terms of use, see the <a href="legal.html" style="color:var(--austere-gold-light);border-bottom:1px dotted var(--austere-gold);text-decoration:none;">Legal</a> room. For reader-data policy, see the <a href="privacy.html" style="color:var(--austere-gold-light);border-bottom:1px dotted var(--austere-gold);text-decoration:none;">Privacy</a> notice. This is not a prediction — structural assessment.</p>
   </div>
 </main>
