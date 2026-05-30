@@ -73,7 +73,6 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 @keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 @keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
 
-/* Book tower band — Beinecke의 내부 6층 glass-encased mahogany book tower (dark version) */
 .tower-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
 .tower-band svg { width: min(1000px, 94vw); height: 180px; }
 
@@ -93,14 +92,13 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 .si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; color: var(--parchment-warm); }
 .si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; color: var(--ink-soft); }
 
-/* 3-tier membership · dark mode walnut cards */
 .tier-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; max-width: 1180px; margin: 0 auto; }
 @media (max-width: 940px) { .tier-grid { grid-template-columns: 1fr; gap: 18px; } }
 
 .tier-card { position: relative; padding: clamp(32px,4vw,44px); background: rgba(42,30,24,0.82); border: 1px solid rgba(181,138,72,0.30); transition: 0.3s; display: flex; flex-direction: column; box-shadow: 0 4px 18px rgba(0,0,0,0.35); }
 .tier-card.core { border-top: 5px solid var(--steel); }
 .tier-card.pro { border-top: 5px solid var(--bronze); background: rgba(58,46,34,0.85); transform: scale(1.02); box-shadow: 0 12px 36px rgba(0,0,0,0.55); z-index: 2; }
-.tier-card.pro::before { content: "★ Recommended"; position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--bronze); color: var(--paper); font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.28em; padding: 5px 16px; text-transform: uppercase; border: 1px solid var(--bronze-deep); }
+.tier-card.pro::before { content: "— Bureau Selection —"; position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--bronze); color: var(--paper); font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.28em; padding: 5px 16px; text-transform: uppercase; border: 1px solid var(--bronze-deep); }
 .tier-card.founding { border-top: 5px solid var(--parchment); background: linear-gradient(180deg, rgba(42,30,24,0.85) 0%, rgba(181,138,72,0.20) 100%); }
 .tier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.6); }
 .tier-card.pro:hover { transform: scale(1.02) translateY(-4px); }
@@ -133,6 +131,7 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 .tier-card.pro .tc-cta:hover { background: var(--bronze-light); transform: translateY(-2px); }
 .tier-card.founding .tc-cta { background: var(--parchment); color: var(--paper); border-color: var(--bronze-deep); }
 .tier-card.founding .tc-cta:hover { background: var(--parchment-warm); transform: translateY(-2px); }
+.tc-cta-note { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-dim); text-align: center; margin-top: 10px; opacity: 0.8; }
 
 .companion-note { padding: clamp(32px,4vw,44px); background: linear-gradient(135deg, rgba(74,79,88,0.12) 0%, rgba(222,200,147,0.18) 100%); border-top: 3px solid var(--steel); border-bottom: 3px solid var(--parchment); text-align: center; margin: clamp(56px,7vw,80px) auto 0; max-width: 1020px; }
 .cn-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.28em; color: var(--parchment-warm); text-transform: uppercase; margin-bottom: 14px; }
@@ -140,7 +139,6 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
 .cn-text strong { font-weight: 600; }
 .cn-text a { color: var(--bronze-light); border-bottom: 1px solid var(--bronze); text-decoration: none; }
 
-/* Bookshelf pattern bottom */
 .shelf-pattern { margin-top: 80px; height: 70px; background:
   repeating-linear-gradient(0deg, var(--bronze) 0px, var(--bronze) 1.2px, transparent 1.2px, transparent 35px),
   repeating-linear-gradient(90deg, var(--steel) 0px, var(--steel) 1.2px, transparent 1.2px, transparent 35px),
@@ -161,7 +159,6 @@ body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; ove
   .ph-title { font-size: clamp(38px,11vw,60px); }
 }
 
-/* Universal nav (dark walnut) */
 .dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: 0.4s; border-bottom: 1px solid transparent; }
 .dfb-topnav.scrolled { background: rgba(15,8,5,0.92); backdrop-filter: blur(12px); border-bottom-color: rgba(181,138,72,0.30); }
 .dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; color: var(--ink); text-decoration: none; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
@@ -243,13 +240,12 @@ body.dfb-menu-open { overflow: hidden; }
   <div class="ph-text">
     <div class="ph-eyebrow">Annex III · Restricted · Founding Membership</div>
     <h1 class="ph-title">Structural Income Desk<br><em>&trade; — three tiers.</em></h1>
-    <p class="ph-subtitle">The Bureau's restricted working desk — watchlist, working notes, refinancing calendar, and editor commentary not filed elsewhere. Founding membership in three tiers. Sealed access; quarterly cadence; reader-funded.</p>
+    <p class="ph-subtitle">The Bureau's restricted working desk — watchlist, working notes, refinancing calendar, and editorial commentary not filed elsewhere. Founding membership in three tiers. Sealed access; reader-funded.</p>
   </div>
   <div class="scroll-prompt"><span class="scroll-label">Open the Vault</span><span class="scroll-line"></span></div>
   <div class="photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Beinecke_Library_interior.JPG" target="_blank" rel="noopener">Beinecke Rare Book Library · Yale · Gordon Bunshaft · 1963 · CC BY-SA</a></div>
 </section>
 
-<!-- Book tower band · Beinecke 6-story glass-encased mahogany book tower (dark mode) -->
 <div class="tower-band">
   <svg viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
@@ -267,20 +263,16 @@ body.dfb-menu-open { overflow: hidden; }
         <stop offset="100%" stop-color="#0F0805" stop-opacity="0.85"/>
       </linearGradient>
     </defs>
-    <!-- Outer dark frame (vault wall) -->
     <rect x="40" y="20" width="920" height="150" fill="url(#glassDark)" stroke="#4A4F58" stroke-width="2"/>
-    <!-- Steel I-beam structural grid -->
     <g stroke="#2A2E36" stroke-width="1.4" fill="none" opacity="0.85">
       <line x1="220" y1="20" x2="220" y2="170"/>
       <line x1="400" y1="20" x2="400" y2="170"/>
       <line x1="600" y1="20" x2="600" y2="170"/>
       <line x1="780" y1="20" x2="780" y2="170"/>
     </g>
-    <!-- Central glowing 6-story book tower (vault centerpiece) -->
     <g stroke="#8B6432" stroke-width="1.6" fill="url(#towerGradDark)">
       <rect x="420" y="30" width="160" height="135"/>
     </g>
-    <!-- Book shelf lines (6 stories) -->
     <g stroke="#3F2D1F" stroke-width="0.9" opacity="0.95">
       <line x1="422" y1="48" x2="578" y2="48"/>
       <line x1="422" y1="68" x2="578" y2="68"/>
@@ -289,22 +281,18 @@ body.dfb-menu-open { overflow: hidden; }
       <line x1="422" y1="128" x2="578" y2="128"/>
       <line x1="422" y1="148" x2="578" y2="148"/>
     </g>
-    <!-- Book spines within tower (vertical) -->
     <g stroke="#5C4530" stroke-width="0.6" opacity="0.7">
       <line x1="435" y1="34" x2="435" y2="46"/><line x1="450" y1="34" x2="450" y2="46"/><line x1="465" y1="34" x2="465" y2="46"/><line x1="480" y1="34" x2="480" y2="46"/><line x1="495" y1="34" x2="495" y2="46"/><line x1="510" y1="34" x2="510" y2="46"/><line x1="525" y1="34" x2="525" y2="46"/><line x1="540" y1="34" x2="540" y2="46"/><line x1="555" y1="34" x2="555" y2="46"/><line x1="570" y1="34" x2="570" y2="46"/>
       <line x1="435" y1="50" x2="435" y2="66"/><line x1="450" y1="50" x2="450" y2="66"/><line x1="465" y1="50" x2="465" y2="66"/><line x1="480" y1="50" x2="480" y2="66"/><line x1="495" y1="50" x2="495" y2="66"/><line x1="510" y1="50" x2="510" y2="66"/><line x1="525" y1="50" x2="525" y2="66"/><line x1="540" y1="50" x2="540" y2="66"/><line x1="555" y1="50" x2="555" y2="66"/><line x1="570" y1="50" x2="570" y2="66"/>
       <line x1="435" y1="70" x2="435" y2="86"/><line x1="450" y1="70" x2="450" y2="86"/><line x1="465" y1="70" x2="465" y2="86"/><line x1="480" y1="70" x2="480" y2="86"/><line x1="495" y1="70" x2="495" y2="86"/><line x1="510" y1="70" x2="510" y2="86"/><line x1="525" y1="70" x2="525" y2="86"/><line x1="540" y1="70" x2="540" y2="86"/><line x1="555" y1="70" x2="555" y2="86"/><line x1="570" y1="70" x2="570" y2="86"/>
     </g>
-    <!-- Parchment glow halo (warm light through tower) -->
     <ellipse cx="500" cy="95" rx="200" ry="90" fill="url(#parchmentGlow)" opacity="0.65"/>
-    <!-- Small light pools in the dark vault corners -->
     <g fill="#ECCB78" opacity="0.50">
       <ellipse cx="130" cy="80" rx="40" ry="14"/>
       <ellipse cx="300" cy="120" rx="35" ry="12"/>
       <ellipse cx="700" cy="80" rx="35" ry="12"/>
       <ellipse cx="870" cy="120" rx="40" ry="14"/>
     </g>
-    <!-- Floor line -->
     <line x1="40" y1="170" x2="960" y2="170" stroke="#8B6432" stroke-width="1.5"/>
     <ellipse cx="500" cy="172" rx="74" ry="6" fill="#2A1E18" stroke="#B58A48" stroke-width="1.3"/>
     <text x="500" y="175" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#DEC893" text-anchor="middle">The Restricted Tower · Sealed</text>
@@ -321,7 +309,7 @@ body.dfb-menu-open { overflow: hidden; }
   <div class="section-intro">
     <div class="si-label">— Structural Income Desk<sup style="font-size:9px;letter-spacing:0.18em;">&trade;</sup> · Three Tiers —</div>
     <h2 class="si-title">Founding membership, <em>opening MMXXVI.</em></h2>
-    <p class="si-desc">Three tiers, by depth of access. The watchlist, the working notes, and the founder seats. Pre-launch list is open; founding seats limited.</p>
+    <p class="si-desc">Three tiers, by depth of access. The watchlist, the deep dives, and the founder seats. Pre-launch list is open; founding seats limited.</p>
   </div>
 
   <div class="tier-grid">
@@ -331,14 +319,15 @@ body.dfb-menu-open { overflow: hidden; }
       <div class="tc-tag">Core · Monthly</div>
       <h3 class="tc-name">Core <em>Reader.</em></h3>
       <div class="tc-price"><span class="tc-price-amount">$29</span><span class="tc-price-cycle">/ month</span></div>
-      <p class="tc-tagline">The watchlist, with monthly updates.</p>
+      <p class="tc-tagline">The desk stays live.</p>
       <ul class="tc-list">
+        <li>Weekly Desk Note — a short structural observation from the desk.</li>
         <li>The Bureau watchlist — all covered names, refreshed monthly.</li>
-        <li>Monthly Structural Brief — one short reading on the most pressured names.</li>
         <li>Refinancing calendar — the next twelve months of maturities.</li>
         <li>Access to the working concordance, with quarterly term additions.</li>
       </ul>
-      <a class="tc-cta" href="https://jungmoku.substack.com/" target="_blank" rel="noopener">Join Core &rarr;</a>
+      <a class="tc-cta" href="#prelaunch">Join the pre-launch list &rarr;</a>
+      <div class="tc-cta-note">Opening MMXXVI</div>
     </article>
 
     <article class="tier-card pro">
@@ -346,15 +335,16 @@ body.dfb-menu-open { overflow: hidden; }
       <div class="tc-tag">Pro · Monthly</div>
       <h3 class="tc-name">Working <em>Desk.</em></h3>
       <div class="tc-price"><span class="tc-price-amount">$79</span><span class="tc-price-cycle">/ month</span></div>
-      <p class="tc-tagline">Everything in Core, plus the working notes.</p>
+      <p class="tc-tagline">Depth, not signal frequency.</p>
       <ul class="tc-list">
         <li>All Core benefits.</li>
+        <li>Two full Structural Deep Dives each month — single-name and sector readings.</li>
         <li>Editor's working notes — positions still being formed, with reasoning.</li>
-        <li>Weekly Working Brief — the short reading the editor sends from the desk.</li>
-        <li>Quarterly Desk Call — written Q&amp;A with the editor on selected names.</li>
-        <li>Early access to all Cabinet deep dives, before public release.</li>
+        <li>Selected coverage commentary, in editorial format.</li>
+        <li>Early access to all Cabinet deep dives, before public release, plus full archive.</li>
       </ul>
-      <a class="tc-cta" href="https://jungmoku.substack.com/" target="_blank" rel="noopener">Join Working Desk &rarr;</a>
+      <a class="tc-cta" href="#prelaunch">Join the pre-launch list &rarr;</a>
+      <div class="tc-cta-note">Opening MMXXVI</div>
     </article>
 
     <article class="tier-card founding">
@@ -365,18 +355,20 @@ body.dfb-menu-open { overflow: hidden; }
       <p class="tc-tagline">All access — and a seat in the founding ledger.</p>
       <ul class="tc-list">
         <li>All Working Desk benefits.</li>
-        <li>Direct correspondence with the editor on any covered name.</li>
+        <li>First access — every deep dive and dispatch reaches founding members before all other tiers.</li>
+        <li>Founding pricing protection — founding members retain founding pricing after general rate revisions.</li>
+        <li>Quarterly Founding Dispatch — editorial commentary reserved for founding members.</li>
         <li>Founding ledger seat — name inscribed in the Bureau Founding Roll.</li>
-        <li>Permanent rate lock — the founding price holds for the lifetime of membership.</li>
       </ul>
-      <a class="tc-cta" href="https://jungmoku.substack.com/" target="_blank" rel="noopener">Join Founding Circle &rarr;</a>
+      <a class="tc-cta" href="#prelaunch">Reserve a founding seat &rarr;</a>
+      <div class="tc-cta-note">Limited founding seats · Opening MMXXVI</div>
     </article>
 
   </div>
 
-  <div class="companion-note">
-    <div class="cn-label">— The Vault · Restricted Wing —</div>
-    <p class="cn-text">The <strong>Vault</strong> is not the published shelf — it is the working desk.<br>For the public reading shelf, see <a href="periodicals.html">Periodicals</a>.<br>For curated deep dives, see <a href="cabinet.html">Cabinet</a>.</p>
+  <div class="companion-note" id="prelaunch">
+    <div class="cn-label">— The Founding Ledger · Opening MMXXVI —</div>
+    <p class="cn-text">The Desk opens to founding members in <strong>MMXXVI</strong>.<br>Enter the Founding Ledger. Notification upon opening. Founding seats limited.<br><a href="https://jungmoku.substack.com/">Enter the Founding Ledger &rarr;</a></p>
   </div>
 
   <div class="shelf-pattern" aria-hidden="true"></div>
@@ -384,7 +376,7 @@ body.dfb-menu-open { overflow: hidden; }
   <div class="section-intro" style="margin-top:clamp(56px,7vw,80px);">
     <div class="si-label">— The Vault · Restricted Wing · Reader-Funded —</div>
     <h2 class="si-title" style="font-size:clamp(28px,3.5vw,38px);">Open MMXXVI. <em>Founding seats limited.</em></h2>
-    <p class="si-desc" style="font-size:16px;">No issuer pays. No platform pays. Reader-funded by design — the position is independent because the money is. This is not a prediction — structural assessment.</p>
+    <p class="si-desc" style="font-size:16px;">No issuer pays. No platform pays. Reader-funded by design — the position is independent because the money is. Editorial research and structural diagnostics only — not investment advice, and no buy/sell recommendations. This is not a prediction — structural assessment.</p>
   </div>
 </main>
 
