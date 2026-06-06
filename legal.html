@@ -2,428 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Legal · Terms of Use · Dividend Forensics Bureau</title>
-<meta name="description" content="The Bureau's terms of use — use license, intellectual property, frameworks, membership, liability, jurisdiction.">
-<link rel="canonical" href="https://dividendforensics.com/legal.html">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="Legal · Terms of Use · Dividend Forensics Bureau">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://dividendforensics.com/legal.html">
-<meta name="theme-color" content="#2E3A38">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Legal — Dividend Forensics Bureau &amp; See What Others Miss</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-/* === LEGAL · MID WING · COOL INDUSTRIAL IRON-GREY · Sainte-Geneviève Labrouste · 1851 cast-iron === */
-:root {
-  --paper: #2E3A38;
-  --paper-soft: #3A4644;
-  --paper-warm: #455250;
-  --paper-deep: #1E2A28;
-  --ink: #E8E0D0;
-  --ink-soft: #D0C8B5;
-  --ink-dim: #8C8E88;
-  --iron: #4A5856;
-  --iron-light: #6B7976;
-  --iron-deep: #2A3634;
-  --rust: #8B5A3C;
-  --rust-light: #A87858;
-  --gilt-cool: #B5A06A;
-  --gilt-cool-light: #C8B580;
-  --bolt: #5A6664;
-  --steel-glow: #95A19E;
-}
-body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; background: var(--paper); color: var(--ink); background-image:
-  radial-gradient(ellipse at top, rgba(232,224,208,0.08), transparent 55%),
-  radial-gradient(ellipse 60% 30% at center, rgba(107,121,118,0.08), transparent 65%),
-  radial-gradient(ellipse at bottom, rgba(139,90,60,0.06), transparent 55%);
-}
-
-/* THRESHOLD NOTICE TYPOLOGY — static photo, flat hierarchy */
-.photo-hero { position: relative; width: 100%; height: 100vh; min-height: 720px; overflow: hidden; }
-.ph-photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
-.ph-vignette { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(30,42,40,0.50) 0%, rgba(30,42,40,0.35) 40%, rgba(46,58,56,0.55) 70%, var(--paper) 100%); }
-.ph-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; background: rgba(30,42,40,0.88); border: 1px solid var(--gilt-cool); color: var(--ink); backdrop-filter: blur(6px); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 16px rgba(0,0,0,0.45); animation: fade-in 1.8s 0.4s both; }
-.bp-corner-tl,.bp-corner-tr,.bp-corner-bl,.bp-corner-br { position: absolute; width: 10px; height: 10px; border-style: solid; border-color: var(--gilt-cool); border-width: 0; }
-.bp-corner-tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
-.bp-corner-tr { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
-.bp-corner-bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
-.bp-corner-br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
-.bp-mark { color: var(--gilt-cool); font-weight: 600; }
-.bp-issue { color: var(--gilt-cool-light); font-weight: 600; font-size: 13px; letter-spacing: 0.18em; display: block; margin: 4px 0; }
-.bp-divider { display: block; height: 1px; margin: 8px 0 7px; background: var(--iron); opacity: 0.7; }
-.bp-line { display: block; font-size: 10.5px; opacity: 0.85; }
-.ph-text { position: absolute; left: clamp(28px,6vw,96px); bottom: clamp(140px,20vh,200px); max-width: min(680px,70vw); z-index: 3; }
-.ph-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 22px; padding-left: 28px; position: relative; color: var(--gilt-cool-light); animation: reveal 1.4s 0.6s both; }
-.ph-eyebrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; background: var(--gilt-cool); }
-
-/* Threshold notice title — single line, no italic em */
-.ph-title { font-family: "Fraunces", serif; font-size: clamp(44px,6vw,72px); line-height: 1.05; letter-spacing: -0.01em; font-weight: 400; margin: 0 0 22px; color: var(--ink); text-shadow: 0 2px 24px rgba(0,0,0,0.5); animation: reveal 1.6s 0.9s both; }
-.ph-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 540px; color: var(--ink-soft); text-shadow: 0 1px 12px rgba(0,0,0,0.5); animation: reveal 1.8s 1.2s both; }
-.scroll-prompt { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.7; z-index: 3; color: var(--gilt-cool-light); animation: fade-in 2s 2.2s both; }
-.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--gilt-cool)); animation: bounce 2.4s ease-in-out infinite; }
-.scroll-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; }
-@keyframes bounce { 0%,100%{transform:scaleY(1) translateY(0);opacity:0.5;} 50%{transform:scaleY(0.6) translateY(8px);opacity:1;} }
-.photo-attr { position: absolute; right: 16px; bottom: 8px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.18em; z-index: 3; text-transform: uppercase; color: rgba(208,200,181,0.6); }
-.photo-attr a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
-@keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
-@keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
-
-/* Cast-iron band — Labrouste columns + riveted I-beams */
-.iron-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
-.iron-band svg { width: min(1000px, 94vw); height: 180px; }
-
-.main-body { max-width: 1080px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
-
-.room-context { max-width: 880px; margin: 0 auto 56px; padding: clamp(28px,3vw,36px) clamp(28px,3.5vw,40px); background: rgba(58,70,68,0.78); border-left: 4px solid var(--gilt-cool); border-right: 4px solid var(--iron); position: relative; box-shadow: 0 3px 12px rgba(0,0,0,0.25); }
-.room-context::before { content: "FILED · XIV"; position: absolute; top: 12px; right: 16px; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: 0.32em; color: var(--gilt-cool-light); opacity: 0.55; text-transform: uppercase; }
-.rc-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--gilt-cool-light); text-transform: uppercase; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dotted var(--gilt-cool); display: inline-block; padding-right: 18px; }
-.rc-body { font-family: "Newsreader", serif; font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
-.rc-body strong { font-weight: 600; color: var(--ink); }
-.rc-body em { font-style: italic; color: var(--gilt-cool-light); }
-
-.section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
-.si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; color: var(--gilt-cool); }
-.si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; background: var(--gilt-cool); }
-.si-label::before { left: 0; } .si-label::after { right: 0; }
-.si-title { font-family: "Fraunces", serif; font-size: clamp(34px,4.5vw,48px); line-height: 1.05; font-weight: 400; margin-bottom: 22px; letter-spacing: -0.01em; color: var(--ink); }
-.si-desc { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.7; max-width: 600px; margin: 0 auto; color: var(--ink-soft); }
-
-/* 6 Terms — threshold notice typology (parallel to disclaimer) */
-.terms-list { max-width: 920px; margin: 0 auto; }
-.term-row { position: relative; padding: 22px 32px 22px 88px; background: rgba(58,70,68,0.62); border-left: 3px solid var(--gilt-cool); border-top: 1px solid rgba(181,160,106,0.14); border-right: 1px solid rgba(181,160,106,0.12); border-bottom: 1px solid rgba(181,160,106,0.14); margin-bottom: 10px; transition: 0.2s; }
-.term-row:nth-child(even) { border-left-color: var(--iron); background: rgba(69,82,80,0.60); }
-.term-row:hover { background: rgba(74,88,86,0.78); }
-.term-row:nth-child(even):hover { background: rgba(86,102,99,0.78); }
-@media (max-width: 720px) { .term-row { padding: 22px 22px 22px 22px; } }
-
-.tr-roman { position: absolute; left: 28px; top: 24px; font-family: "Fraunces", serif; font-style: italic; font-size: 28px; line-height: 1; font-weight: 380; color: var(--gilt-cool); }
-.term-row:nth-child(even) .tr-roman { color: var(--iron-light); }
-@media (max-width: 720px) { .tr-roman { position: static; margin-bottom: 8px; font-size: 24px; } }
-
-.tr-tag { position: absolute; top: 12px; right: 16px; font-family: "JetBrains Mono", monospace; font-size: 8.5px; letter-spacing: 0.22em; color: var(--ink-dim); text-transform: uppercase; opacity: 0.75; }
-.tr-head { font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: 0.28em; color: var(--gilt-cool-light); text-transform: uppercase; margin-bottom: 8px; }
-.term-row:nth-child(even) .tr-head { color: var(--iron-light); }
-.tr-title { font-family: "Fraunces", serif; font-size: 19px; font-weight: 470; color: var(--ink); margin-bottom: 12px; line-height: 1.3; letter-spacing: -0.005em; }
-.tr-body { font-family: "Newsreader", serif; font-size: 14.5px; line-height: 1.7; color: var(--ink-soft); }
-.tr-body p { margin-bottom: 8px; }
-.tr-body p:last-child { margin-bottom: 0; }
-.tr-body strong { font-weight: 600; color: var(--ink); }
-.tr-body em { font-style: italic; }
-.tr-body a { color: var(--gilt-cool-light); text-decoration: none; border-bottom: 1px dotted var(--gilt-cool); }
-.tr-body a:hover { color: var(--ink); }
-
-/* Closing seal — single tone, no gradient (austere) */
-.seal-block { max-width: 720px; margin: clamp(56px,7vw,80px) auto 0; padding: clamp(32px,3.5vw,42px); background: rgba(30,42,40,0.85); border-top: 2px solid var(--gilt-cool); border-bottom: 2px solid var(--gilt-cool); text-align: center; box-shadow: 0 3px 12px rgba(0,0,0,0.20); }
-.sb-mark { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.40em; color: var(--gilt-cool); text-transform: uppercase; margin-bottom: 16px; }
-.sb-text { font-family: "Newsreader", serif; font-size: clamp(15px,1.6vw,17px); line-height: 1.7; color: var(--ink); max-width: 600px; margin: 0 auto; }
-.sb-text strong { font-weight: 600; }
-.sb-rule { width: 60px; height: 1px; background: var(--gilt-cool); margin: 18px auto; opacity: 0.7; }
-.sb-attr { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--gilt-cool); text-transform: uppercase; }
-
-/* Riveted-plate pattern bottom */
-.rivet-pattern { margin-top: 80px; height: 60px; background:
-  repeating-linear-gradient(90deg, var(--gilt-cool) 0px, var(--gilt-cool) 1.5px, transparent 1.5px, transparent 36px),
-  repeating-linear-gradient(0deg, var(--iron) 0px, var(--iron) 1px, transparent 1px, transparent 18px),
-  linear-gradient(180deg, rgba(181,160,106,0.10) 0%, rgba(74,88,86,0.12) 100%);
-  border-top: 1px solid var(--gilt-cool); border-bottom: 1px solid var(--iron); opacity: 0.55;
-}
-
-.page-footer { padding: 56px 24px; text-align: center; border-top: 4px double var(--gilt-cool); margin-top: clamp(60px,8vw,96px); background: var(--paper-deep); color: var(--ink-soft); position: relative; }
-.page-footer::before { content: "DFB · MMXXVI · Cat. № SC-XIV"; position: absolute; bottom: 8px; right: 14px; font-family: "JetBrains Mono", monospace; font-size: 8px; letter-spacing: 0.28em; color: var(--gilt-cool); opacity: 0.55; text-transform: uppercase; }
-.pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; color: var(--gilt-cool); }
-.pf-attr { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 14px; margin-bottom: 8px; color: var(--gilt-cool-light); }
-.pf-links { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
-.pf-links a { color: var(--gilt-cool-light); text-decoration: none; border-bottom: 1px dotted var(--gilt-cool); margin: 0 8px; }
-
-@media (max-width: 720px) {
-  .photo-hero { min-height: 580px; }
-  .brass-plate { top: 16px; right: 16px; padding: 12px 16px; font-size: 10px; min-width: 200px; }
-  .ph-text { bottom: 100px; left: 20px; max-width: 86vw; }
-  .ph-title { font-size: clamp(36px,9vw,52px); }
-}
-
-/* Universal nav */
-.dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: 0.4s; border-bottom: 1px solid transparent; }
-.dfb-topnav.scrolled { background: rgba(30,42,40,0.92); backdrop-filter: blur(12px); border-bottom-color: rgba(181,160,106,0.30); }
-.dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; color: var(--ink); text-decoration: none; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
-.dfb-brand:hover { color: var(--gilt-cool-light); }
-.dfb-brand span { color: var(--gilt-cool); font-style: normal; padding: 0 6px; }
-.dfb-menu-toggle { display: flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(181,160,106,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); transition: 0.2s; }
-.dfb-menu-toggle:hover { background: rgba(181,160,106,0.15); color: var(--gilt-cool-light); }
-.dfb-menu-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(30,42,40,0.97); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: clamp(20px, 4vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.4s; overflow-y: auto; }
-.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
-.dfb-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid rgba(181,160,106,0.25); margin-bottom: clamp(32px, 5vw, 56px); }
-.dfb-menu-title { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: clamp(24px, 3vw, 32px); color: var(--ink); }
-.dfb-menu-close { background: transparent; border: 1px solid rgba(181,160,106,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); }
-.dfb-menu-close:hover { background: rgba(181,160,106,0.15); color: var(--gilt-cool-light); }
-.dfb-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); max-width: 1240px; margin: 0 auto; width: 100%; }
-@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
-.dfb-menu-col-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gilt-cool); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(181,160,106,0.2); }
-.dfb-menu-link { display: block; padding: 10px 14px; margin-bottom: 6px; background: rgba(58,70,68,0.55); border-left: 2px solid rgba(181,160,106,0.4); color: var(--ink); text-decoration: none; transition: 0.2s; }
-.dfb-menu-link:hover { background: rgba(181,160,106,0.12); border-left-color: var(--gilt-cool-light); transform: translateX(4px); }
-.dfb-menu-link .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--gilt-cool); display: block; margin-bottom: 2px; }
-.dfb-menu-link .dfb-name { font-family: "Fraunces", serif; font-weight: 460; font-size: 16px; color: var(--ink); }
-.dfb-menu-link.current { background: rgba(200,181,128,0.18); border-left-color: var(--gilt-cool-light); }
-.dfb-menu-link.current .dfb-name { color: var(--gilt-cool-light); }
-.dfb-menu-footer { margin-top: auto; padding-top: 32px; text-align: center; opacity: 0.7; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gilt-cool); }
-body.dfb-menu-open { overflow: hidden; }
+  :root{--ink:#1c1c1c;--ink2:#555;--line:#e2ddd2;--accent:#6f2a36;--paper:#fbf9f4;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,"EB Garamond",serif;line-height:1.65;}
+  .wrap{max-width:780px;margin:0 auto;padding:40px 22px 80px;}
+  header{border-bottom:2px solid var(--accent);padding-bottom:14px;margin-bottom:8px;}
+  h1{font-size:24px;margin:0 0 2px;letter-spacing:.01em;}
+  .brand{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  nav{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 30px;font-size:14px;}
+  nav a{color:var(--accent);text-decoration:none;font-weight:600;}
+  nav a:hover{text-decoration:underline;}
+  section{padding:26px 0;border-top:1px solid var(--line);}
+  h2{font-size:20px;margin:0 0 4px;}
+  h3{font-size:15px;margin:18px 0 4px;}
+  p,li{font-size:15px;color:#2a2a2a;}
+  .meta{font-size:13px;color:var(--ink2);margin:0 0 14px;}
+  ul{padding-left:20px;}
+  .note{background:#f2ede2;border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:13.5px;color:var(--ink2);}
+  footer{margin-top:40px;font-size:12.5px;color:var(--ink2);text-align:center;border-top:1px solid var(--line);padding-top:18px;}
+  a{color:var(--accent);}
 </style>
 </head>
 <body>
+<div class="wrap">
+  <header>
+    <div class="brand">Operated by 구정모 (Jeong-Mo Goo)</div>
+    <h1>Terms, Privacy &amp; Refund Policy</h1>
+  </header>
+  <p class="meta">Operator: <b>구정모 (Jeong-Mo Goo)</b>, sole proprietor &middot; Republic of Korea<br>
+     Brands: <b>Dividend Forensics Bureau</b> &middot; <b>See What Others Miss</b><br>
+     Contact: <b>kjong0626@gmail.com</b> &middot; Website: <b>https://DividendForensics.com</b><br>
+     Effective date: <b>June 6, 2026</b></p>
+  <p class="note">This website and business are operated by a single individual, 구정모 (Jeong-Mo Goo), and publish educational digital products under two brands — <b>Dividend Forensics Bureau</b> and <b>See What Others Miss</b>. Payments are processed by <b>Lemon Squeezy</b>, which acts as the Merchant of Record for all purchases (order, billing, tax, and receipts).</p>
 
-<header class="dfb-topnav" id="dfbTopNav">
-  <a class="dfb-brand" href="index.html">DFB<span>·</span>Bureau</a>
-  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu"><span style="font-size:14px;line-height:1;">☰</span> Menu</button>
-</header>
-<nav class="dfb-menu-overlay" id="dfbMenu" aria-hidden="true">
-  <div class="dfb-menu-head"><div class="dfb-menu-title">The Sixteen Rooms</div><button class="dfb-menu-close" onclick="dfbToggleMenu()">✕ Close</button></div>
-  <div class="dfb-menu-grid">
-    <div><div class="dfb-menu-col-title">— Imperial Lock —</div>
-      <a href="index.html" class="dfb-menu-link" data-page="index.html"><span class="dfb-roman">I · Front Desk</span><span class="dfb-name">Bureau Index</span></a>
-      <a href="midnight.html" class="dfb-menu-link" data-page="midnight.html"><span class="dfb-roman">II · After Hours</span><span class="dfb-name">Midnight</span></a>
-      <a href="archive.html" class="dfb-menu-link" data-page="archive.html"><span class="dfb-roman">III · Filed Dispatches</span><span class="dfb-name">Archive</span></a>
-      <a href="charter.html" class="dfb-menu-link" data-page="charter.html"><span class="dfb-roman">IV · Founding Doctrine</span><span class="dfb-name">Charter</span></a>
-      <a href="concordance.html" class="dfb-menu-link" data-page="concordance.html"><span class="dfb-roman">V · Index of Terms</span><span class="dfb-name">Concordance</span></a>
-      <a href="errata.html" class="dfb-menu-link" data-page="errata.html"><span class="dfb-roman">VI · Corrections</span><span class="dfb-name">Errata</span></a>
-    </div>
-    <div><div class="dfb-menu-col-title">— Doctrinal Wing —</div>
-      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I</span><span class="dfb-name">Periodicals</span></a>
-      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II</span><span class="dfb-name">Cabinet</span></a>
-      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III</span><span class="dfb-name">Vault</span></a>
-      <a href="chambers.html" class="dfb-menu-link" data-page="chambers.html"><span class="dfb-roman">X · Literary Annex</span><span class="dfb-name">Chambers</span></a>
-      <a href="about.html" class="dfb-menu-link" data-page="about.html"><span class="dfb-roman">XI · Editorial Office</span><span class="dfb-name">About</span></a>
-    </div>
-    <div><div class="dfb-menu-col-title">— Front-Matter —</div>
-      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Directory</span><span class="dfb-name">Contents</span></a>
-      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Notice</span><span class="dfb-name">Disclaimer</span></a>
-      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms</span><span class="dfb-name">Legal</span></a>
-      <a href="privacy.html" class="dfb-menu-link" data-page="privacy.html"><span class="dfb-roman">XV · Reader Notice</span><span class="dfb-name">Privacy</span></a>
-      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Credits</span><span class="dfb-name">Credits</span></a>
-    </div>
-  </div>
-  <div class="dfb-menu-footer">Same yield. Different durability. · Anno MMXXVI</div>
-</nav>
-<script>
-(function(){var n=document.getElementById('dfbTopNav'),m=document.getElementById('dfbMenu'),b=document.body;function s(){if(window.scrollY>60)n.classList.add('scrolled');else n.classList.remove('scrolled');}window.addEventListener('scroll',s,{passive:true});s();window.dfbToggleMenu=function(){var o=m.classList.toggle('open');b.classList.toggle('dfb-menu-open',o);m.setAttribute('aria-hidden',o?'false':'true');};var c=location.pathname.split('/').pop()||'index.html';if(c==='')c='index.html';var l=m.querySelector('[data-page="'+c+'"]');if(l)l.classList.add('current');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))dfbToggleMenu();});})();
-</script>
+  <nav>
+    <a href="#terms">Terms of Service</a>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#refund">Refund Policy</a>
+  </nav>
 
-<section class="photo-hero" aria-label="Bibliothèque Sainte-Geneviève · Henri Labrouste · 1851">
-  <div class="ph-photo" role="img" aria-label="Bibliothèque Sainte-Geneviève · Paris · Labrouste 1851" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Biblioth%C3%A8que_Sainte-Genevi%C3%A8ve_-_Int%C3%A9rieur_001.jpg?width=2560');"></div>
-  <div class="ph-vignette"></div>
-  <div class="ph-grain"></div>
-  <aside class="brass-plate">
-    <span class="bp-corner-tl"></span><span class="bp-corner-tr"></span><span class="bp-corner-bl"></span><span class="bp-corner-br"></span>
-    <span class="bp-mark">Legal</span>
-    <span class="bp-issue">Terms of Use</span>
-    <span class="bp-divider"></span>
-    <span class="bp-line">Six terms</span>
-    <span class="bp-line" style="color:var(--gilt-cool-light);">Filed · Mid Wing</span>
-    <span class="bp-line" style="opacity:0.7;">Cat. № SC-XIV</span>
-  </aside>
-  <div class="ph-text">
-    <div class="ph-eyebrow">Terms of Use · Reader Contract · Mid Wing</div>
-    <h1 class="ph-title">Terms of Use.</h1>
-    <p class="ph-subtitle">Six terms. Filed at the entrance. Binding upon use.</p>
-  </div>
-  <div class="scroll-prompt"><span class="scroll-label">Read the Terms</span><span class="scroll-line"></span></div>
-  <div class="photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Biblioth%C3%A8que_Sainte-Genevi%C3%A8ve_-_Int%C3%A9rieur_001.jpg" target="_blank" rel="noopener">Bibliothèque Sainte-Geneviève · Henri Labrouste · 1851 · CC BY-SA</a></div>
-</section>
+  <section id="terms">
+    <h2>Terms of Service</h2>
+    <p class="meta">Last updated: June 6, 2026</p>
 
-<!-- Cast-iron band · Labrouste columns + riveted I-beams + industrial precision -->
-<div class="iron-band">
-  <svg viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <radialGradient id="ironGlow" cx="50%" cy="50%" r="55%">
-        <stop offset="0%" stop-color="#C8B580" stop-opacity="0.45"/>
-        <stop offset="60%" stop-color="#B5A06A" stop-opacity="0.15"/>
-        <stop offset="100%" stop-color="#2E3A38" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <!-- Riveted I-beam top -->
-    <g fill="#4A5856" stroke="#2A3634" stroke-width="0.8">
-      <rect x="40" y="20" width="920" height="14"/>
-      <rect x="40" y="34" width="920" height="3" fill="#5A6664"/>
-    </g>
-    <!-- Rivets across the I-beam -->
-    <g fill="#B5A06A" opacity="0.85">
-      <circle cx="80" cy="27" r="2"/><circle cx="140" cy="27" r="2"/><circle cx="200" cy="27" r="2"/>
-      <circle cx="260" cy="27" r="2"/><circle cx="320" cy="27" r="2"/><circle cx="380" cy="27" r="2"/>
-      <circle cx="440" cy="27" r="2"/><circle cx="500" cy="27" r="2"/><circle cx="560" cy="27" r="2"/>
-      <circle cx="620" cy="27" r="2"/><circle cx="680" cy="27" r="2"/><circle cx="740" cy="27" r="2"/>
-      <circle cx="800" cy="27" r="2"/><circle cx="860" cy="27" r="2"/><circle cx="920" cy="27" r="2"/>
-    </g>
-    <!-- 5 Cast-iron Corinthian columns (Labrouste signature thin slender) -->
-    <g fill="#4A5856" stroke="#2A3634" stroke-width="1.2">
-      <!-- Column 1 -->
-      <rect x="138" y="40" width="14" height="120"/>
-      <rect x="132" y="40" width="26" height="6"/>
-      <rect x="128" y="160" width="34" height="8"/>
-      <!-- Column 2 -->
-      <rect x="318" y="40" width="14" height="120"/>
-      <rect x="312" y="40" width="26" height="6"/>
-      <rect x="308" y="160" width="34" height="8"/>
-      <!-- Column 3 (center) -->
-      <rect x="493" y="40" width="14" height="120"/>
-      <rect x="487" y="40" width="26" height="6"/>
-      <rect x="483" y="160" width="34" height="8"/>
-      <!-- Column 4 -->
-      <rect x="668" y="40" width="14" height="120"/>
-      <rect x="662" y="40" width="26" height="6"/>
-      <rect x="658" y="160" width="34" height="8"/>
-      <!-- Column 5 -->
-      <rect x="848" y="40" width="14" height="120"/>
-      <rect x="842" y="40" width="26" height="6"/>
-      <rect x="838" y="160" width="34" height="8"/>
-    </g>
-    <!-- Column capital fluting detail -->
-    <g stroke="#6B7976" stroke-width="0.5" opacity="0.7">
-      <line x1="142" y1="46" x2="142" y2="158"/><line x1="148" y1="46" x2="148" y2="158"/>
-      <line x1="322" y1="46" x2="322" y2="158"/><line x1="328" y1="46" x2="328" y2="158"/>
-      <line x1="497" y1="46" x2="497" y2="158"/><line x1="503" y1="46" x2="503" y2="158"/>
-      <line x1="672" y1="46" x2="672" y2="158"/><line x1="678" y1="46" x2="678" y2="158"/>
-      <line x1="852" y1="46" x2="852" y2="158"/><line x1="858" y1="46" x2="858" y2="158"/>
-    </g>
-    <!-- Arched openings between columns (4 arches) -->
-    <g fill="none" stroke="#6B7976" stroke-width="0.9" opacity="0.85">
-      <path d="M 168 80 Q 245 50 308 80"/>
-      <path d="M 342 80 Q 420 50 483 80"/>
-      <path d="M 517 80 Q 595 50 658 80"/>
-      <path d="M 692 80 Q 770 50 838 80"/>
-    </g>
-    <!-- Pendant gas lamps between columns -->
-    <g stroke="#6B7976" stroke-width="1" fill="#B5A06A">
-      <line x1="245" y1="34" x2="245" y2="98"/><ellipse cx="245" cy="105" rx="5" ry="4"/>
-      <line x1="420" y1="34" x2="420" y2="92"/><ellipse cx="420" cy="100" rx="6" ry="5"/>
-      <line x1="595" y1="34" x2="595" y2="92"/><ellipse cx="595" cy="100" rx="6" ry="5"/>
-      <line x1="770" y1="34" x2="770" y2="98"/><ellipse cx="770" cy="105" rx="5" ry="4"/>
-    </g>
-    <ellipse cx="500" cy="120" rx="180" ry="40" fill="url(#ironGlow)" opacity="0.6"/>
-    <!-- Subtle rust streaks (oxidation - 19c industrial age) -->
-    <g stroke="#8B5A3C" stroke-width="0.4" opacity="0.30">
-      <line x1="145" y1="60" x2="145" y2="155"/>
-      <line x1="325" y1="80" x2="325" y2="150"/>
-      <line x1="500" y1="70" x2="500" y2="155"/>
-      <line x1="675" y1="80" x2="675" y2="150"/>
-      <line x1="855" y1="60" x2="855" y2="155"/>
-    </g>
-    <!-- Floor plate (cast-iron stamped) -->
-    <line x1="40" y1="170" x2="960" y2="170" stroke="#6B7976" stroke-width="1.5"/>
-    <ellipse cx="500" cy="172" rx="80" ry="6" fill="#3A4644" stroke="#B5A06A" stroke-width="1.2"/>
-    <text x="500" y="175" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#C8B580" text-anchor="middle">The Iron Hall · Riveted &amp; Standing</text>
-  </svg>
+    <h3>1. Who we are &amp; what we provide</h3>
+    <p>This business (“we”, “us”) is operated by 구정모 (Jeong-Mo Goo) as a sole proprietor in the Republic of Korea, and publishes original, self-authored educational digital products under two brands:</p>
+    <ul>
+      <li><b>Dividend Forensics Bureau</b> — financial-research reports, articles, and tools for retail dividend and income investors, built on our own proprietary analytical frameworks (Buffer Half-Life™, Three Clocks™, BBB− Cliff™) and prepared from publicly available company filings and data.</li>
+      <li><b>See What Others Miss</b> — interactive educational products, tests, and guides on decision-making, incentives, behavioral patterns, and critical thinking for a general audience.</li>
+    </ul>
+
+    <h3>2. Educational content only — not financial advice</h3>
+    <p>All content from both brands is general information, research, and commentary for educational purposes. It is <b>not</b> personalized investment, tax, legal, or financial advice, is <b>not</b> a recommendation or solicitation to buy or sell any security, and does <b>not</b> constitute brokerage, advisory, or asset-management services. We are not a registered investment adviser or broker-dealer, and we make no guarantee of any outcome or return. You are solely responsible for your own decisions and should consult a licensed professional before acting. Past performance does not indicate future results.</p>
+
+    <h3>3. Eligibility &amp; accounts</h3>
+    <p>You must be at least 18 years old to purchase. You agree to provide accurate information and to keep your account credentials secure. You are responsible for activity under your account.</p>
+
+    <h3>4. Purchases, subscriptions &amp; billing</h3>
+    <p>We offer one-time digital products and recurring memberships. Prices are shown at checkout. Recurring memberships renew automatically at the then-current price until cancelled; you may cancel at any time and retain access until the end of your current billing period. Payments, taxes, and invoicing are handled by Lemon Squeezy as Merchant of Record.</p>
+
+    <h3>5. Intellectual property &amp; license</h3>
+    <p>All content and brand names are owned by the operator and protected by copyright and trademark. On purchase you receive a personal, non-transferable, non-exclusive licence for your own non-commercial use. You may not copy, resell, redistribute, publish, or share access to paid content, in whole or in part, without written permission.</p>
+
+    <h3>6. Acceptable use</h3>
+    <p>You agree not to misuse the service, share login access, scrape or republish content, or use it unlawfully.</p>
+
+    <h3>7. Disclaimers &amp; limitation of liability</h3>
+    <p>The service is provided “as is” without warranties of any kind. To the maximum extent permitted by law, the operator shall not be liable for any indirect, incidental, or consequential damages, or for any investment losses, arising from use of the content. Total liability for any claim is limited to the amount you paid in the prior twelve (12) months.</p>
+
+    <h3>8. Termination &amp; changes</h3>
+    <p>We may suspend or terminate access for breach of these terms. We may update these terms; material changes will be posted here with a new “last updated” date. Continued use after changes constitutes acceptance.</p>
+
+    <h3>9. Governing law</h3>
+    <p>These terms are governed by the laws of the Republic of Korea, without regard to conflict-of-law rules. Questions: <b>kjong0626@gmail.com</b>.</p>
+  </section>
+
+  <section id="privacy">
+    <h2>Privacy Policy</h2>
+    <p class="meta">Last updated: June 6, 2026</p>
+
+    <h3>1. What we collect</h3>
+    <ul>
+      <li><b>Account &amp; contact data</b> you provide: name and email address.</li>
+      <li><b>Order data</b> we receive from Lemon Squeezy: product purchased, order ID, country, and the masked payment summary needed for support. We do <b>not</b> collect or store full payment-card numbers.</li>
+      <li><b>Usage data</b>: basic analytics such as pages viewed and email opens, where applicable.</li>
+    </ul>
+
+    <h3>2. Payments</h3>
+    <p>Payments are processed by <b>Lemon Squeezy</b> as Merchant of Record. Card and billing details are collected and processed directly by Lemon Squeezy under its own privacy policy (lemonsqueezy.com/privacy). We receive only the limited order information above.</p>
+
+    <h3>3. How we use data</h3>
+    <p>To deliver your purchase and provide access; to send service and account emails; to provide support; to comply with legal and tax obligations; and, only with your consent, to send marketing emails (you can unsubscribe at any time).</p>
+
+    <h3>4. Who we share with</h3>
+    <p>We share data only with service providers that help us operate — for example Lemon Squeezy (payments), our email/newsletter provider Substack (jungmoku.substack.com), and analytics where used. We do <b>not</b> sell your personal data.</p>
+
+    <h3>5. Your rights</h3>
+    <p>Depending on your location (including under GDPR and CCPA), you may request access to, correction of, or deletion of your personal data, and may object to certain processing. To exercise these rights, email <b>kjong0626@gmail.com</b>. Data may be processed in the Republic of Korea and other countries where our providers operate.</p>
+
+    <h3>6. Retention &amp; security</h3>
+    <p>We keep data only as long as needed to provide the service and meet legal obligations, then delete or anonymize it. We use reasonable technical and organizational measures to protect your data.</p>
+
+    <h3>7. Contact</h3>
+    <p>Privacy questions: <b>kjong0626@gmail.com</b>.</p>
+  </section>
+
+  <section id="refund">
+    <h2>Refund Policy</h2>
+    <p class="meta">Last updated: June 6, 2026</p>
+
+    <h3>1. Digital products</h3>
+    <p>Our products are digital. If you are not satisfied, you may request a refund within <b>14 days</b> of purchase by emailing <b>kjong0626@gmail.com</b> with your order ID. We grant refunds for unused or substantially unaccessed purchases within this window.</p>
+
+    <h3>2. Memberships</h3>
+    <p>You can cancel a recurring membership at any time and will keep access until the end of the current billing period. We do not provide partial refunds for a period already started, except where required by law. Renewal charges are not refunded after the new period has begun, unless requested within the 14-day window above.</p>
+
+    <h3>3. Statutory rights</h3>
+    <p>Consumers in the EU/UK and other regions may have a statutory right of withdrawal for digital purchases. Where you expressly consent to immediate delivery and acknowledge loss of the withdrawal right, that statutory right may not apply once access begins. Nothing here limits rights you have under applicable law.</p>
+
+    <h3>4. How to request</h3>
+    <p>Email <b>kjong0626@gmail.com</b> with your order ID and reason. Approved refunds are issued through Lemon Squeezy to your original payment method, typically within 5–10 business days.</p>
+  </section>
+
+  <footer>
+    © 2026 구정모 (Jeong-Mo Goo) · Brands: Dividend Forensics Bureau · See What Others Miss · Payments by Lemon Squeezy (Merchant of Record)
+  </footer>
 </div>
-
-<main class="main-body">
-
-  <aside class="room-context" aria-label="About this room">
-    <div class="rc-label">— Climate · Mid Wing —</div>
-    <div class="rc-body"><strong>Terms bind by mechanism.</strong> Transitional ecology. Six terms — riveted at the entry; standing while the site stands. (From Latin <em>terminus</em> — "boundary, fixed limit"; the mechanical edge of the reader's contract.)</div>
-  </aside>
-
-  <div class="section-intro">
-    <div class="si-label">— Six Terms · Riveted at the Entry —</div>
-    <h2 class="si-title">Terms of Use. Binding upon use.</h2>
-    <p class="si-desc">By accessing this site, the reader accepts the terms below. Read once; standing thereafter.</p>
-  </div>
-
-  <div class="terms-list">
-
-    <article class="term-row">
-      <span class="tr-tag">Art. № L-01</span>
-      <div class="tr-roman">I.</div>
-      <div class="tr-head">— Article I · Use &amp; License —</div>
-      <h3 class="tr-title">Personal reading; commercial reproduction excluded.</h3>
-      <div class="tr-body">
-        <p>The Bureau grants a non-exclusive, non-transferable license to read site content for <strong>personal, non-commercial use</strong>. Short quotations are permitted with attribution to "Jeong-Mo Goo · Dividend Forensics Bureau" and a link to the source page.</p>
-        <p>Reproduction in whole, redistribution, or commercial reuse without written permission is not granted.</p>
-      </div>
-    </article>
-
-    <article class="term-row">
-      <span class="tr-tag">Art. № L-02</span>
-      <div class="tr-roman">II.</div>
-      <div class="tr-head">— Article II · Intellectual Property —</div>
-      <h3 class="tr-title">All site text © Jeong-Mo Goo.</h3>
-      <div class="tr-body">
-        <p>All editorial text, analysis, and structural language on this site are the intellectual property of Jeong-Mo Goo, copyright MMXXIV — MMXXVI. Photography sourced from Wikimedia Commons under CC BY-SA or compatible licenses, with full attribution filed at the <a href="credits.html">Credits</a> room.</p>
-        <p>Typography licensed via Google Fonts under SIL Open Font License.</p>
-      </div>
-    </article>
-
-    <article class="term-row">
-      <span class="tr-tag">Art. № L-03</span>
-      <div class="tr-roman">III.</div>
-      <div class="tr-head">— Article III · Frameworks &amp; Trademarks —</div>
-      <h3 class="tr-title">BHL&trade; · Three Clocks&trade; · BBB- Cliff&trade; — Bureau marks.</h3>
-      <div class="tr-body">
-        <p><strong>Buffer Half-Life&trade;</strong>, <strong>Three Clocks&trade;</strong>, and <strong>BBB- Cliff&trade;</strong> are unregistered trademarks of the Dividend Forensics Bureau. Reference with attribution is welcome.</p>
-        <p>Commercial reuse — including incorporation into proprietary research products, advisory services, or training data — requires written permission from the Bureau.</p>
-      </div>
-    </article>
-
-    <article class="term-row">
-      <span class="tr-tag">Art. № L-04</span>
-      <div class="tr-roman">IV.</div>
-      <div class="tr-head">— Article IV · Membership Terms —</div>
-      <h3 class="tr-title">Structural Income Desk&trade; — reader-funded subscription.</h3>
-      <div class="tr-body">
-        <p>The <a href="vault.html">Vault</a>'s Structural Income Desk&trade; is processed through a third-party merchant-of-record payment provider. Subscription terms, cancellation, and refunds follow the provider's published policy. Cancellation remains the reader's right at any cycle.</p>
-        <p>Membership content is for the member's personal use only and may not be redistributed.</p>
-      </div>
-    </article>
-
-    <article class="term-row">
-      <span class="tr-tag">Art. № L-05</span>
-      <div class="tr-roman">V.</div>
-      <div class="tr-head">— Article V · Limitation of Liability —</div>
-      <h3 class="tr-title">No warranty. No liability for reader actions.</h3>
-      <div class="tr-body">
-        <p>Site content is provided <strong>"as is"</strong> on a best-efforts basis. The Bureau makes no warranty as to accuracy, completeness, timeliness, or fitness for any particular purpose.</p>
-        <p>The Bureau accepts no liability for any loss, direct, indirect, incidental, or consequential, arising from any action taken on the basis of its filings. See the <a href="disclaimer.html">Disclaimer</a> for the editorial-notice version of this boundary.</p>
-      </div>
-    </article>
-
-    <article class="term-row">
-      <span class="tr-tag">Art. № L-06</span>
-      <div class="tr-roman">VI.</div>
-      <div class="tr-head">— Article VI · Jurisdiction &amp; Governing Law —</div>
-      <h3 class="tr-title">Korea law; publisher exception preserved.</h3>
-      <div class="tr-body">
-        <p>These terms are governed by the laws of the Republic of Korea. Any dispute arising from site use shall be brought in the courts of the Republic of Korea, with venue in Seoul.</p>
-        <p>The Bureau publishes under the <em>bona fide publisher exception</em> applicable in its readers' jurisdictions, including the U.S. Investment Advisers Act of 1940 (see <a href="disclaimer.html">Disclaimer · Notice IV</a>).</p>
-      </div>
-    </article>
-
-  </div>
-
-  <!-- Acknowledgment seal -->
-  <div class="seal-block">
-    <div class="sb-mark">— Acknowledgment —</div>
-    <div class="sb-text">By accessing this site, the reader accepts these <strong>six terms</strong>, alongside the <a href="disclaimer.html">Disclaimer</a> notices and the <a href="privacy.html">Privacy</a> notice. The terms stand while the site stands.</div>
-    <div class="sb-rule"></div>
-    <div class="sb-attr">Terms riveted · Reader bound</div>
-  </div>
-
-  <div class="rivet-pattern" aria-hidden="true"></div>
-
-  <div class="section-intro" style="margin-top:clamp(56px,7vw,80px);">
-    <div class="si-label">— Legal · Mid Wing · Terms Filed —</div>
-    <h2 class="si-title" style="font-size:clamp(26px,3vw,32px);">Riveted at the entry. Standing throughout.</h2>
-    <p class="si-desc" style="font-size:16px;">For editorial boundaries, see the <a href="disclaimer.html" style="color:var(--gilt-cool-light);border-bottom:1px dotted var(--gilt-cool);text-decoration:none;">Disclaimer</a>. For reader-data policy, see the <a href="privacy.html" style="color:var(--gilt-cool-light);border-bottom:1px dotted var(--gilt-cool);text-decoration:none;">Privacy</a> notice. This is not a prediction &mdash; structural assessment.</p>
-  </div>
-</main>
-
-<footer class="page-footer">
-  <div class="pf-marker">— XIV · Legal · Mid Wing —</div>
-  <div class="pf-attr">Six terms · riveted at the entry · standing.</div>
-  <div class="pf-links"><a href="index.html">Front Desk</a> &middot; <a href="contents.html">Contents</a> &middot; <a href="charter.html">Charter</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="credits.html">Credits</a></div>
-</footer>
 </body>
 </html>
