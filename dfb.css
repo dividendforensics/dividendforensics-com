@@ -124,3 +124,11 @@ a.card:hover{background:var(--ink-3)}
 @media(max-width:400px){
   .brand span{display:none}
 }
+
+/* research: sector groups */
+.grp{margin-top:44px}
+.grp:first-of-type{margin-top:0}
+.grp-h{font-size:10px;letter-spacing:3.4px;text-transform:uppercase;color:var(--gold);font-weight:600;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.row.soon{border-left-color:transparent;cursor:default;opacity:.62}
+.row.soon:hover{background:none;border-left-color:transparent;padding-left:0}
+.row.soon .rmeta{color:var(--cream-mute)}
