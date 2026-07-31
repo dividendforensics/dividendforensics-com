@@ -1,399 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About · Editorial Office · Dividend Forensics Bureau</title>
-<meta name="description" content="About the Dividend Forensics Bureau — Jeong-Mo Goo, editor. Independent structural research on dividend durability and refinancing risk.">
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About &middot; Dividend Forensics Bureau</title>
+<meta name="description" content="An independent research desk examining what is left after a dividend is paid. Filing-anchored, peer-relative, no positions and no recommendations.">
+<meta name="author" content="Dividend Forensics Bureau">
 <link rel="canonical" href="https://dividendforensics.com/about.html">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="About · Editorial Office · Dividend Forensics Bureau">
-<meta property="og:type" content="website">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Dividend Forensics Bureau">
+<meta property="og:title" content="About &middot; Dividend Forensics Bureau"><meta property="og:description" content="An independent research desk examining what is left after a dividend is paid. Filing-anchored, peer-relative, no positions and no recommendations.">
 <meta property="og:url" content="https://dividendforensics.com/about.html">
-<meta name="theme-color" content="#1A2638">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dfb.css">
+</head><body>
+<nav class="nav"><div class="nav-in">
+  <a class="brand" href="index.html"><b>Dividend Forensics Bureau</b><span>Structural Income Desk&trade;</span></a>
+  <ul id="m">
+    <li><a href="index.html" >Home</a></li>
+    <li><a href="learn.html" >Learn</a></li>
+    <li><a href="research.html" >Research</a></li>
+    <li><a href="tools.html" >Tools</a></li>
+    <li><a href="about.html" aria-current="page">About</a></li>
+  </ul>
+  <a class="nav-cta" href="https://dividendforensics.lemonsqueezy.com/checkout/buy/0417e6b9-d489-438e-9b2c-913437003238" target="_blank" rel="noopener">Free Checklist</a>
+  <button class="burger" onclick="document.getElementById('m').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+</div></nav>
 
-/* === ABOUT · DARK WING · EDITORIAL SLATE NAVY · Tama Art (Toyo Ito 2007) modernist editor's chamber === */
-:root {
-  --paper: #1A2638;
-  --paper-soft: #243144;
-  --paper-warm: #2E3A50;
-  --paper-deep: #0E1622;
-  --ink: #EDDDB8;
-  --ink-soft: #D8C597;
-  --ink-dim: #8C9AB0;
-  --steel: #6F7D95;
-  --steel-light: #A8B5C8;
-  --steel-deep: #3E4C62;
-  --wood: #B58A48;
-  --wood-deep: #8B6432;
-  --wood-light: #DEC893;
-  --copper: #C9684A;
-  --copper-deep: #9A4A2E;
-  --glass-glow: #F2E5C2;
-}
-body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; background: var(--paper); color: var(--ink); background-image:
-  radial-gradient(ellipse at top, rgba(222,200,147,0.10), transparent 55%),
-  radial-gradient(ellipse at center, rgba(168,181,200,0.10), transparent 60%),
-  radial-gradient(ellipse at bottom, rgba(181,138,72,0.08), transparent 55%);
-}
 
-.photo-hero { position: relative; width: 100%; height: 100vh; min-height: 720px; overflow: hidden; }
-.ph-photo { position: absolute; inset: 0; background-size: cover; background-position: center; animation: kenburns 42s cubic-bezier(0.65,0,0.35,1) infinite alternate; }
-@keyframes kenburns { 0%{transform:scale(1.00) translate(0,0);} 100%{transform:scale(1.10) translate(-1%,-2%);} }
-.ph-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 30%, transparent 0%, rgba(26,38,56,0.62) 70%, rgba(26,38,56,0.93) 100%), linear-gradient(to bottom, rgba(14,22,34,0.55) 0%, rgba(14,22,34,0.05) 30%, rgba(168,181,200,0.10) 55%, var(--paper) 100%); }
-.ph-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; background: rgba(14,22,34,0.88); border: 1px solid var(--wood); color: var(--ink); backdrop-filter: blur(6px); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.7); animation: fade-in 1.8s 0.4s both; }
-.bp-corner-tl,.bp-corner-tr,.bp-corner-bl,.bp-corner-br { position: absolute; width: 10px; height: 10px; border-style: solid; border-color: var(--wood); border-width: 0; }
-.bp-corner-tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
-.bp-corner-tr { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
-.bp-corner-bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
-.bp-corner-br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
-.bp-mark { color: var(--wood); font-weight: 600; }
-.bp-issue { color: var(--wood-light); font-weight: 600; font-size: 13px; letter-spacing: 0.18em; display: block; margin: 4px 0; }
-.bp-divider { display: block; height: 1px; margin: 8px 0 7px; background: var(--steel-deep); opacity: 0.7; }
-.bp-line { display: block; font-size: 10.5px; opacity: 0.85; }
-.ph-text { position: absolute; left: clamp(28px,6vw,96px); bottom: clamp(140px,20vh,200px); max-width: min(680px,70vw); z-index: 3; }
-.ph-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 24px; padding-left: 28px; position: relative; color: var(--wood-light); animation: reveal 1.4s 0.6s both; }
-.ph-eyebrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; background: var(--wood); }
-.ph-title { font-family: "Fraunces", serif; font-size: clamp(48px,7vw,96px); line-height: 0.96; letter-spacing: -0.02em; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin: 0 0 28px; color: var(--ink); text-shadow: 0 2px 32px rgba(0,0,0,0.7); animation: reveal 1.6s 0.9s both; }
-.ph-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; display: block; padding-top: 14px; margin-top: 10px; max-width: 540px; border-top: 1px solid var(--wood); color: var(--wood-light); }
-.ph-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 540px; color: var(--ink-soft); text-shadow: 0 1px 12px rgba(0,0,0,0.5); animation: reveal 1.8s 1.2s both; }
-.scroll-prompt { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.7; z-index: 3; color: var(--wood-light); animation: fade-in 2s 2.2s both; }
-.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--wood)); animation: bounce 2.4s ease-in-out infinite; }
-.scroll-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; }
-@keyframes bounce { 0%,100%{transform:scaleY(1) translateY(0);opacity:0.5;} 50%{transform:scaleY(0.6) translateY(8px);opacity:1;} }
-.photo-attr { position: absolute; right: 16px; bottom: 8px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.18em; z-index: 3; text-transform: uppercase; color: rgba(216,197,151,0.6); }
-.photo-attr a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
-@keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
-@keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
-
-/* Concrete arch band · Toyo Ito's signature thin concrete arches (dark mode · warm glow within) */
-.arch-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
-.arch-band svg { width: min(1000px, 94vw); height: 180px; }
-
-.main-body { max-width: 1100px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
-
-.room-context { max-width: 880px; margin: 0 auto 64px; padding: clamp(28px,3vw,36px) clamp(28px,3.5vw,40px); background: rgba(36,49,68,0.85); border-left: 4px solid var(--wood); border-right: 4px solid var(--copper); position: relative; box-shadow: 0 4px 24px rgba(0,0,0,0.45); }
-.rc-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--wood-light); text-transform: uppercase; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dotted var(--wood); display: inline-block; padding-right: 18px; }
-.rc-body { font-family: "Newsreader", serif; font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
-.rc-body strong { font-weight: 600; color: var(--ink); }
-.rc-body em { font-style: italic; color: var(--wood-light); }
-
-.section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
-.si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; color: var(--wood); }
-.si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; background: var(--wood); }
-.si-label::before { left: 0; } .si-label::after { right: 0; }
-.si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; margin-bottom: 24px; letter-spacing: -0.015em; color: var(--ink); }
-.si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; color: var(--wood-light); }
-.si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; color: var(--ink-soft); }
-
-/* Editor portrait block · dark editorial chamber */
-.editor-block { max-width: 1020px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 36px; padding: clamp(36px,4vw,48px); background: rgba(36,49,68,0.85); border-top: 4px solid var(--wood); border-left: 1px solid rgba(181,138,72,0.25); border-right: 1px solid rgba(181,138,72,0.22); border-bottom: 1px solid rgba(181,138,72,0.22); align-items: start; box-shadow: 0 4px 24px rgba(0,0,0,0.45); }
-@media (max-width: 760px) { .editor-block { grid-template-columns: 1fr; gap: 24px; } }
-
-.editor-seal { position: relative; aspect-ratio: 1; background: linear-gradient(135deg, var(--paper-warm) 0%, var(--steel-deep) 100%); border: 2px solid var(--wood); display: flex; align-items: center; justify-content: center; padding: 20px; }
-.editor-seal::before { content: ""; position: absolute; inset: 8px; border: 1px solid var(--wood-light); opacity: 0.5; }
-.editor-seal-inner { text-align: center; position: relative; z-index: 1; }
-.es-mono { font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: 0.32em; color: var(--wood-light); text-transform: uppercase; margin-bottom: 14px; }
-.es-name { font-family: "Fraunces", serif; font-style: italic; font-size: 28px; line-height: 1.05; color: var(--ink); margin-bottom: 8px; font-weight: 380; font-variation-settings: 'opsz' 96, 'SOFT' 80, 'WONK' 1; }
-.es-role { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 13.5px; color: var(--steel-light); margin-bottom: 14px; }
-.es-rule { width: 40px; height: 1px; background: var(--wood); margin: 10px auto; }
-.es-locus { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.28em; color: var(--wood-light); text-transform: uppercase; }
-
-.editor-bio h2 { font-family: "Fraunces", serif; font-size: clamp(28px,3vw,36px); font-weight: 470; color: var(--ink); margin-bottom: 18px; letter-spacing: -0.015em; }
-.editor-bio h2 em { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--wood-light); }
-.editor-bio p { font-family: "Newsreader", serif; font-size: 16px; line-height: 1.75; color: var(--ink-soft); margin-bottom: 12px; }
-.editor-bio p:last-child { margin-bottom: 0; }
-.editor-bio strong { font-weight: 600; color: var(--ink); }
-.editor-bio em { font-style: italic; color: var(--wood-light); }
-.editor-bio a { color: var(--copper); border-bottom: 1px dotted var(--copper); text-decoration: none; }
-.editor-bio a:hover { color: var(--wood-light); border-bottom-color: var(--wood); }
-
-/* Three pillars · Position / Method / Universe — dark chamber cards */
-.pillar-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; max-width: 1100px; margin: 56px auto 0; }
-@media (max-width: 920px) { .pillar-grid { grid-template-columns: 1fr; gap: 18px; } }
-
-.pillar { padding: clamp(28px,3vw,36px); background: rgba(36,49,68,0.80); border-top: 3px solid var(--steel-light); border-left: 1px solid rgba(168,181,200,0.18); border-right: 1px solid rgba(168,181,200,0.18); border-bottom: 1px solid rgba(168,181,200,0.18); transition: 0.25s; box-shadow: 0 3px 16px rgba(0,0,0,0.30); }
-.pillar.wood { border-top-color: var(--wood); background: rgba(46,58,80,0.82); }
-.pillar.copper { border-top-color: var(--copper); }
-.pillar:hover { transform: translateY(-3px); box-shadow: 0 8px 26px rgba(0,0,0,0.45); }
-.pl-roman { font-family: "Fraunces", serif; font-style: italic; font-size: 44px; line-height: 1; font-weight: 350; color: var(--steel-light); margin-bottom: 12px; }
-.pillar.wood .pl-roman { color: var(--wood-light); }
-.pillar.copper .pl-roman { color: var(--copper); }
-.pl-title { font-family: "Fraunces", serif; font-size: 20px; font-weight: 470; color: var(--ink); margin-bottom: 14px; line-height: 1.3; }
-.pl-title em { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--steel-light); }
-.pillar.wood .pl-title em { color: var(--wood-light); }
-.pillar.copper .pl-title em { color: var(--copper); }
-.pl-body { font-family: "Newsreader", serif; font-size: 14.5px; line-height: 1.7; color: var(--ink-soft); }
-.pl-body p { margin-bottom: 10px; }
-.pl-body p:last-child { margin-bottom: 0; }
-.pl-body strong { font-weight: 600; color: var(--ink); }
-.pl-body em { font-style: italic; }
-.pl-body ul { padding-left: 18px; margin: 6px 0; }
-.pl-body li { margin-bottom: 4px; }
-.pl-body li::marker { color: var(--wood); }
-
-/* Concrete pillar pattern bottom */
-.concrete-grid { margin-top: 80px; height: 70px; background:
-  repeating-linear-gradient(90deg, var(--steel-light) 0px, var(--steel-light) 1.5px, transparent 1.5px, transparent 28px),
-  repeating-linear-gradient(0deg, var(--wood) 0px, var(--wood) 1px, transparent 1px, transparent 24px),
-  linear-gradient(180deg, rgba(168,181,200,0.10) 0%, rgba(181,138,72,0.10) 100%);
-  border-top: 1px solid var(--steel-light); border-bottom: 1px solid var(--wood); opacity: 0.55;
-}
-
-.page-footer { padding: 56px 24px; text-align: center; border-top: 4px double var(--wood); margin-top: clamp(60px,8vw,96px); background: var(--paper-deep); color: var(--ink-soft); }
-.pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; color: var(--wood); }
-.pf-attr { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 14px; margin-bottom: 8px; color: var(--wood-light); }
-.pf-links { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
-.pf-links a { color: var(--wood-light); text-decoration: none; border-bottom: 1px dotted var(--wood); margin: 0 8px; }
-
-@media (max-width: 720px) {
-  .photo-hero { min-height: 580px; }
-  .brass-plate { top: 16px; right: 16px; padding: 12px 16px; font-size: 10px; min-width: 200px; }
-  .ph-text { bottom: 100px; left: 20px; max-width: 86vw; }
-  .ph-title { font-size: clamp(38px,11vw,60px); }
-}
-
-/* Universal nav (dark slate navy) */
-.dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: 0.4s; border-bottom: 1px solid transparent; }
-.dfb-topnav.scrolled { background: rgba(14,22,34,0.92); backdrop-filter: blur(12px); border-bottom-color: rgba(181,138,72,0.30); }
-.dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; color: var(--ink); text-decoration: none; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
-.dfb-brand:hover { color: var(--wood-light); }
-.dfb-brand span { color: var(--wood); font-style: normal; padding: 0 6px; }
-.dfb-menu-toggle { display: flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(181,138,72,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); transition: 0.2s; }
-.dfb-menu-toggle:hover { background: rgba(181,138,72,0.15); color: var(--wood-light); }
-.dfb-menu-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(14,22,34,0.97); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: clamp(20px, 4vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.4s; overflow-y: auto; }
-.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
-.dfb-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid rgba(181,138,72,0.25); margin-bottom: clamp(32px, 5vw, 56px); }
-.dfb-menu-title { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: clamp(24px, 3vw, 32px); color: var(--ink); }
-.dfb-menu-close { background: transparent; border: 1px solid rgba(181,138,72,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); }
-.dfb-menu-close:hover { background: rgba(181,138,72,0.15); color: var(--wood-light); }
-.dfb-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); max-width: 1240px; margin: 0 auto; width: 100%; }
-@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
-.dfb-menu-col-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--wood); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(181,138,72,0.2); }
-.dfb-menu-link { display: block; padding: 10px 14px; margin-bottom: 6px; background: rgba(36,49,68,0.55); border-left: 2px solid rgba(181,138,72,0.4); color: var(--ink); text-decoration: none; transition: 0.2s; }
-.dfb-menu-link:hover { background: rgba(181,138,72,0.12); border-left-color: var(--wood-light); transform: translateX(4px); }
-.dfb-menu-link .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--wood); display: block; margin-bottom: 2px; }
-.dfb-menu-link .dfb-name { font-family: "Fraunces", serif; font-weight: 460; font-size: 16px; color: var(--ink); }
-.dfb-menu-link.current { background: rgba(222,200,147,0.18); border-left-color: var(--wood-light); }
-.dfb-menu-link.current .dfb-name { color: var(--wood-light); }
-.dfb-menu-footer { margin-top: auto; padding-top: 32px; text-align: center; opacity: 0.7; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--wood); }
-body.dfb-menu-open { overflow: hidden; }
-</style>
-</head>
-<body>
-
-<header class="dfb-topnav" id="dfbTopNav">
-  <a class="dfb-brand" href="index.html">DFB<span>·</span>Bureau</a>
-  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu"><span style="font-size:14px;line-height:1;">☰</span> Menu</button>
+<header class="wrap" style="padding-top:74px;padding-bottom:46px">
+  <div class="kicker">About</div>
+  <h1 style="margin-top:16px;max-width:16ch">An independent desk with a narrow question.</h1>
+  <p class="lede" style="margin-top:22px">The Dividend Forensics Bureau examines one thing across income assets: what is actually left after the dividend is paid, and how long that can hold.</p>
 </header>
-<nav class="dfb-menu-overlay" id="dfbMenu" aria-hidden="true">
-  <div class="dfb-menu-head"><div class="dfb-menu-title">The Sixteen Rooms</div><button class="dfb-menu-close" onclick="dfbToggleMenu()">✕ Close</button></div>
-  <div class="dfb-menu-grid">
-    <div><div class="dfb-menu-col-title">— Imperial Lock —</div>
-      <a href="index.html" class="dfb-menu-link" data-page="index.html"><span class="dfb-roman">I · Front Desk</span><span class="dfb-name">Bureau Index</span></a>
-      <a href="midnight.html" class="dfb-menu-link" data-page="midnight.html"><span class="dfb-roman">II · After Hours</span><span class="dfb-name">Midnight</span></a>
-      <a href="archive.html" class="dfb-menu-link" data-page="archive.html"><span class="dfb-roman">III · Filed Dispatches</span><span class="dfb-name">Archive</span></a>
-      <a href="charter.html" class="dfb-menu-link" data-page="charter.html"><span class="dfb-roman">IV · Founding Doctrine</span><span class="dfb-name">Charter</span></a>
-      <a href="concordance.html" class="dfb-menu-link" data-page="concordance.html"><span class="dfb-roman">V · Index of Terms</span><span class="dfb-name">Concordance</span></a>
-      <a href="errata.html" class="dfb-menu-link" data-page="errata.html"><span class="dfb-roman">VI · Corrections</span><span class="dfb-name">Errata</span></a>
+
+<section class="sec"><div class="wrap" style="max-width:760px">
+  <h2>The method</h2>
+  <p style="font-size:17px;color:var(--cream-dim);line-height:1.78;margin-bottom:18px">Every piece is built the same way. Figures come from earnings releases, annual reports and other filings, and are named at the foot of the work. A measure is read beside a comparable issuer rather than in isolation, and where two companies define a non-GAAP figure differently, that difference is stated instead of averaged away.</p>
+  <p style="font-size:17px;color:var(--cream-dim);line-height:1.78">The Bureau publishes when filings, earnings, or material changes warrant structural review. Frequency follows the evidence, not a fixed calendar.</p>
+  <div class="method"><div class="mt">The Order</div><p>Start with the property.<br>Trace the rent.<br>Check the debt.<br>Then judge the payout.</p></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><div class="kicker">Frameworks</div><h2 style="margin-top:12px">Structural Income Desk&trade;</h2></div>
+  <div class="grid g3">
+    <div class="card"><span class="kicker">Three Clocks&trade;</span><h3>Coverage, maturity, access</h3><p>Three independent clocks every income asset runs on. The one that breaks first defines the risk.</p></div>
+    <div class="card"><span class="kicker">Buffer Half-Life&trade;</span><h3>Structural durability</h3><p>Coverage measures the surface. Half-life measures how quickly the structure beneath it compresses.</p></div>
+    <div class="card"><span class="kicker">BBB&minus; Cliff&trade;</span><h3>The investment-grade edge</h3><p>What changes for an issuer standing at the lowest investment-grade tier, and what a downgrade would cost it.</p></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap" style="max-width:760px">
+  <h2>Who writes it</h2>
+  <p style="font-size:17px;color:var(--cream-dim);line-height:1.78;margin-bottom:18px">The Bureau is operated from Seoul by a single editor, Jeong-Mo Goo, publishing structural diagnostics on U.S.-listed dividend-paying issuers. Work appears on <a href="https://www.benzinga.com/author/jeong-mo-goo" target="_blank" rel="noopener" style="color:var(--gold)">Benzinga</a> and in syndication, with a publication record listed on <a href="https://muckrack.com/jeong-mo-goo" target="_blank" rel="noopener" style="color:var(--gold)">Muck Rack</a>.</p>
+  <h2 style="margin-top:40px">What it does not cover</h2>
+  <p style="font-size:17px;color:var(--cream-dim);line-height:1.78">Individual stock recommendations, buy or sell ratings, price targets, portfolio advice, and short-term trading strategies are outside the declared scope. The Bureau does not use action verbs and does not address individual circumstances.</p>
+  <div class="btns"><a class="btn btn-s" href="legal.html">Legal</a><a class="btn btn-s" href="privacy.html">Privacy</a><a class="btn btn-s" href="disclaimer.html">Disclaimer</a></div>
+</div></section>
+<footer class="ft"><div class="wrap">
+  <div class="ft-grid">
+    <div>
+      <div class="kicker">Dividend Forensics Bureau</div>
+      <p class="ft-note" style="margin-top:12px">Independent structural research on dividend durability across REITs, BDCs and other income assets. Filing-anchored, peer-relative, no positions, no recommendations.</p>
     </div>
-    <div><div class="dfb-menu-col-title">— Doctrinal Wing —</div>
-      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I</span><span class="dfb-name">Periodicals</span></a>
-      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II</span><span class="dfb-name">Cabinet</span></a>
-      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III</span><span class="dfb-name">Vault</span></a>
-      <a href="chambers.html" class="dfb-menu-link" data-page="chambers.html"><span class="dfb-roman">X · Literary Annex</span><span class="dfb-name">Chambers</span></a>
-      <a href="about.html" class="dfb-menu-link" data-page="about.html"><span class="dfb-roman">XI · Editorial Office</span><span class="dfb-name">About</span></a>
-    </div>
-    <div><div class="dfb-menu-col-title">— Front-Matter —</div>
-      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Directory</span><span class="dfb-name">Contents</span></a>
-      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Notice</span><span class="dfb-name">Disclaimer</span></a>
-      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms</span><span class="dfb-name">Legal</span></a>
-      <a href="privacy.html" class="dfb-menu-link" data-page="privacy.html"><span class="dfb-roman">XV · Reader Notice</span><span class="dfb-name">Privacy</span></a>
-      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Credits</span><span class="dfb-name">Credits</span></a>
-    </div>
+    <div><h4>Read</h4><ul>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="tools.html">Tools</a></li>
+    </ul></div>
+    <div><h4>Elsewhere</h4><ul>
+      <li><a href="https://www.benzinga.com/author/jeong-mo-goo" target="_blank" rel="noopener">Benzinga</a></li>
+      <li><a href="https://x.com/DFBureau" target="_blank" rel="noopener">X</a></li>
+      <li><a href="https://bsky.app/profile/dividendforensics.bsky.social" target="_blank" rel="noopener">Bluesky</a></li>
+      <li><a href="https://dividendforensics.lemonsqueezy.com/checkout/buy/0417e6b9-d489-438e-9b2c-913437003238" target="_blank" rel="noopener">Free Checklist</a></li>
+    </ul></div>
+    <div><h4>Legal</h4><ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="legal.html">Legal</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul></div>
   </div>
-  <div class="dfb-menu-footer">Same yield. Different durability. · Anno MMXXVI</div>
-</nav>
-<script>
-(function(){var n=document.getElementById('dfbTopNav'),m=document.getElementById('dfbMenu'),b=document.body;function s(){if(window.scrollY>60)n.classList.add('scrolled');else n.classList.remove('scrolled');}window.addEventListener('scroll',s,{passive:true});s();window.dfbToggleMenu=function(){var o=m.classList.toggle('open');b.classList.toggle('dfb-menu-open',o);m.setAttribute('aria-hidden',o?'false':'true');};var c=location.pathname.split('/').pop()||'index.html';if(c==='')c='index.html';var l=m.querySelector('[data-page="'+c+'"]');if(l)l.classList.add('current');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))dfbToggleMenu();});})();
-</script>
-
-<section class="photo-hero" aria-label="Tama Art University Library · Hachioji · Toyo Ito · 2007">
-  <div class="ph-photo" role="img" aria-label="Tama Art University Library · Hachioji (Toyo Ito 2007)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Tama_Art_University_Library.JPG?width=2560');"></div>
-  <div class="ph-vignette"></div>
-  <div class="ph-grain"></div>
-  <aside class="brass-plate">
-    <span class="bp-corner-tl"></span><span class="bp-corner-tr"></span><span class="bp-corner-bl"></span><span class="bp-corner-br"></span>
-    <span class="bp-mark">About</span>
-    <span class="bp-issue">Editorial Office</span>
-    <span class="bp-divider"></span>
-    <span class="bp-line">The Editor</span>
-    <span class="bp-line" style="color:var(--ink);">Jeong-Mo Goo · Seoul</span>
-    <span class="bp-line" style="opacity:0.7;">Independent · MMXXVI</span>
-  </aside>
-  <div class="ph-text">
-    <div class="ph-eyebrow">Editorial Office · The Editor · The Position</div>
-    <h1 class="ph-title">The editor.<br><em>The position.</em></h1>
-    <p class="ph-subtitle">Independent. Reader-funded. Single-editor. The Bureau's operating chamber.</p>
+  <div class="ft-bot">
+    The author holds no position in any security mentioned. Structural research, not personalized investment advice. Nothing here is a recommendation to transact in any security.<br>
+    &copy; 2026 Dividend Forensics Bureau &middot; dividendforensics.com
   </div>
-  <div class="scroll-prompt"><span class="scroll-label">Enter the Office</span><span class="scroll-line"></span></div>
-  <div class="photo-attr"><a href="https://commons.wikimedia.org/wiki/File:Tama_Art_University_Library.JPG" target="_blank" rel="noopener">Tama Art University Library · Hachioji · Toyo Ito · 2007 · CC BY-SA</a></div>
-</section>
+</div></footer>
 
-<!-- Concrete arch band · Toyo Ito's signature thin concrete arches · DARK mode with warm glow within -->
-<div class="arch-band">
-  <svg viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <linearGradient id="glassGradDark" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#2E3A50" stop-opacity="0.85"/>
-        <stop offset="100%" stop-color="#0E1622" stop-opacity="0.95"/>
-      </linearGradient>
-      <radialGradient id="warmLamp" cx="50%" cy="100%" r="60%">
-        <stop offset="0%" stop-color="#F2E5C2" stop-opacity="0.85"/>
-        <stop offset="50%" stop-color="#DEC893" stop-opacity="0.40"/>
-        <stop offset="100%" stop-color="#1A2638" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <!-- Ceiling line -->
-    <line x1="40" y1="20" x2="960" y2="20" stroke="#A8B5C8" stroke-width="2"/>
-    <!-- Glass fill within arches (dark glass · interior warm) -->
-    <g fill="url(#glassGradDark)" stroke="#3E4C62" stroke-width="0.8">
-      <path d="M 84 170 Q 84 64 180 64 Q 236 64 236 170 Z"/>
-      <path d="M 244 170 Q 244 44 380 44 Q 476 44 476 170 Z"/>
-      <path d="M 484 170 Q 484 34 600 34 Q 716 34 716 170 Z"/>
-      <path d="M 724 170 Q 724 74 820 74 Q 916 74 916 170 Z"/>
-    </g>
-    <!-- Concrete arches (Toyo Ito's signature thin arches) -->
-    <g fill="none" stroke="#A8B5C8" stroke-width="1.8">
-      <path d="M 80 170 Q 80 60 180 60 Q 240 60 240 170"/>
-      <path d="M 240 170 Q 240 40 380 40 Q 480 40 480 170"/>
-      <path d="M 480 170 Q 480 30 600 30 Q 720 30 720 170"/>
-      <path d="M 720 170 Q 720 70 820 70 Q 920 70 920 170"/>
-    </g>
-    <!-- Warm lamp pools (editor's desk lights inside each arch) -->
-    <g>
-      <ellipse cx="160" cy="155" rx="60" ry="20" fill="url(#warmLamp)" opacity="0.75"/>
-      <ellipse cx="360" cy="155" rx="80" ry="25" fill="url(#warmLamp)" opacity="0.85"/>
-      <ellipse cx="600" cy="155" rx="80" ry="25" fill="url(#warmLamp)" opacity="0.85"/>
-      <ellipse cx="800" cy="155" rx="60" ry="20" fill="url(#warmLamp)" opacity="0.75"/>
-    </g>
-    <!-- Wood reading tables (warm spot inside each arch) -->
-    <g fill="#B58A48" stroke="#8B6432" stroke-width="0.8">
-      <rect x="120" y="138" width="80" height="6"/>
-      <rect x="300" y="138" width="120" height="6"/>
-      <rect x="540" y="138" width="120" height="6"/>
-      <rect x="760" y="138" width="80" height="6"/>
-    </g>
-    <!-- Single editor figure (reading) -->
-    <g fill="#8B6432" opacity="0.85">
-      <ellipse cx="160" cy="128" rx="5" ry="3"/><line x1="160" y1="128" x2="160" y2="138" stroke="#5C4530" stroke-width="1.5"/>
-      <ellipse cx="360" cy="128" rx="5" ry="3"/><line x1="360" y1="128" x2="360" y2="138" stroke="#5C4530" stroke-width="1.5"/>
-      <ellipse cx="600" cy="128" rx="5" ry="3"/><line x1="600" y1="128" x2="600" y2="138" stroke="#5C4530" stroke-width="1.5"/>
-      <ellipse cx="800" cy="128" rx="5" ry="3"/><line x1="800" y1="128" x2="800" y2="138" stroke="#5C4530" stroke-width="1.5"/>
-    </g>
-    <!-- Floor line -->
-    <line x1="40" y1="170" x2="960" y2="170" stroke="#A8B5C8" stroke-width="1.5"/>
-    <ellipse cx="500" cy="172" rx="72" ry="6" fill="#243144" stroke="#B58A48" stroke-width="1.2"/>
-    <text x="500" y="175" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#DEC893" text-anchor="middle">Editorial Office · Hachioji</text>
-  </svg>
-</div>
-
-<main class="main-body">
-
-  <aside class="room-context" aria-label="About this room">
-    <div class="rc-label">— About this room · South Wing · Editorial Chamber —</div>
-    <div class="rc-body"><strong>Not a reading room. An operating chamber.</strong> Modernist by intent · 19c by discipline. The watchlist, the position, the dispatch — set here. (From Latin <em>edere</em> — "to give out".)</div>
-  </aside>
-
-  <div class="section-intro">
-    <div class="si-label">— Editorial Chamber —</div>
-    <h2 class="si-title">One editor. <em>One position.</em></h2>
-    <p class="si-desc">Analyst, writer, publisher, proprietor — under one roof. The position is independent because it has to be.</p>
-  </div>
-
-  <!-- Editor block: seal + bio -->
-  <div class="editor-block">
-    <div class="editor-seal">
-      <div class="editor-seal-inner">
-        <div class="es-mono">— Editor —</div>
-        <div class="es-name">Jeong-Mo<br>Goo</div>
-        <div class="es-rule"></div>
-        <div class="es-role">Independent Researcher<br>Bureau Founder</div>
-        <div class="es-rule"></div>
-        <div class="es-locus">Seoul · MMXXVI</div>
-      </div>
-    </div>
-    <div class="editor-bio">
-      <h2>Editor's chamber. <em>Seoul.</em></h2>
-      <p>Jeong-Mo Goo. <strong>Independent researcher.</strong> Dividend durability and refinancing risk, across REITs and income-oriented equities. The Bureau operates as a one-editor research desk — a deliberate scale, chosen to keep the position independent.</p>
-      <p>Author of the Bureau's three signal frameworks: <strong>Buffer Half-Life&trade;</strong>, <strong>Three Clocks&trade;</strong>, <strong>BBB- Cliff&trade;</strong>. Documented in the <a href="concordance.html">Concordance</a>. Applied across the <a href="archive.html">Archive</a>.</p>
-      <p style="font-size:14.5px;color:var(--ink-dim);font-style:italic;margin-top:18px;padding-top:14px;border-top:1px dotted rgba(181,138,72,0.30);">Operational: Mon / Wed / Fri dispatches. Saturday letter. Locked universe. Membership opens MMXXVI, sealed under the <a href="vault.html" style="color:var(--wood-light);">Vault</a>.</p>
-    </div>
-  </div>
-
-  <!-- Three pillars: Position / Method / Universe -->
-  <div class="pillar-grid">
-    <article class="pillar">
-      <div class="pl-roman">I.</div>
-      <h3 class="pl-title">The <em>Position.</em></h3>
-      <div class="pl-body">
-        <p><strong>Independent · reader-funded · sell-side detached.</strong></p>
-        <p>The Bureau accepts no payment from issuers, platforms, or asset managers. No sponsored content, no affiliate revenue on the covered names, no compensation tied to ratings.</p>
-        <p>The position is independent because the money is.</p>
-      </div>
-    </article>
-
-    <article class="pillar wood">
-      <div class="pl-roman">II.</div>
-      <h3 class="pl-title">The <em>Method.</em></h3>
-      <div class="pl-body">
-        <p>Diagnostic, not advisory. The Bureau reads engines, not yields:</p>
-        <ul>
-          <li><strong>Buffer Half-Life&trade;</strong> — the time-axis of the cushion.</li>
-          <li><strong>Three Clocks&trade;</strong> — coverage / maturity / market access.</li>
-          <li><strong>BBB- Cliff&trade;</strong> — the migration threshold.</li>
-        </ul>
-        <p>Diagnostic language only — never buy/sell/hold.</p>
-      </div>
-    </article>
-
-    <article class="pillar copper">
-      <div class="pl-roman">III.</div>
-      <h3 class="pl-title">The <em>Universe.</em></h3>
-      <div class="pl-body">
-        <p>Locked coverage, May MMXXVI:</p>
-        <ul>
-          <li><strong>Core Coverage</strong> (40%) — large-cap IG REITs, BDCs.</li>
-          <li><strong>Satellite Income</strong> (25%) — cov-call ETFs, MLPs.</li>
-          <li><strong>Structured Yield</strong> (25%) — CLO CEFs, preferreds.</li>
-          <li><strong>Adjacent Territory</strong> (10%) — utilities, global infra.</li>
-        </ul>
-        <p><em>Excluded Territory:</em> small-cap, mREITs, distressed.</p>
-      </div>
-    </article>
-  </div>
-
-  <div class="concrete-grid" aria-hidden="true"></div>
-
-  <div class="section-intro" style="margin-top:clamp(56px,7vw,80px);">
-    <div class="si-label">— The Bureau —</div>
-    <h2 class="si-title" style="font-size:clamp(28px,3.5vw,38px);">Same yield. <em>Different durability.</em></h2>
-    <p class="si-desc" style="font-size:16px;">The Bureau labels the engine behind the yield. One editor. One method. Sixteen rooms. This is not a prediction — structural assessment.</p>
-  </div>
-</main>
-
-<footer class="page-footer">
-  <div class="pf-marker">— XI · Editorial Office · South Wing —</div>
-  <div class="pf-attr">Jeong-Mo Goo · Independent · Seoul · MMXXVI</div>
-  <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="charter.html">Charter</a> · <a href="archive.html">Archive</a> · <a href="vault.html">Vault</a> · <a href="credits.html">Credits</a></div>
-</footer>
-</body>
-</html>
+</body></html>

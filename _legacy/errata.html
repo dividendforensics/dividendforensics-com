@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Errata · Dividend Forensics Bureau</title>
+<meta name="description" content="Corrections, retractions, and clarifications to filed Bureau dispatches. Originals preserved.">
+<link rel="canonical" href="https://dividendforensics.com/errata.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65;
+  overflow-x: hidden;
+}
+.photo-hero { position: relative; width: 100%; height: 100vh; min-height: 720px; overflow: hidden; }
+.ph-photo { position: absolute; inset: 0; background-size: cover; background-position: center; animation: kenburns 42s cubic-bezier(0.65,0,0.35,1) infinite alternate; }
+@keyframes kenburns { 0%{transform:scale(1.00) translate(0,0);} 100%{transform:scale(1.10) translate(-1%,-2%);} }
+.ph-vignette { position: absolute; inset: 0; pointer-events: none; }
+.ph-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; backdrop-filter: blur(6px) saturate(120%); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.5); animation: fade-in 1.8s 0.4s both; }
+.bp-corner-tl, .bp-corner-tr, .bp-corner-bl, .bp-corner-br { position: absolute; width: 10px; height: 10px; border: 0; border-style: solid; }
+.bp-corner-tl { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+.bp-corner-tr { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; }
+.bp-corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; }
+.bp-corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+.bp-issue { font-weight: 600; font-size: 13px; letter-spacing: 0.18em; display: block; margin: 4px 0; }
+.bp-divider { display: block; height: 1px; margin: 8px 0 7px; opacity: 0.55; }
+.bp-line { display: block; font-size: 10.5px; opacity: 0.85; }
+.ph-text { position: absolute; left: clamp(28px,6vw,96px); bottom: clamp(140px,20vh,200px); max-width: min(680px,70vw); z-index: 3; }
+.ph-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 24px; padding-left: 28px; position: relative; animation: reveal 1.4s 0.6s both; }
+.ph-eyebrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; }
+.ph-title { font-family: "Fraunces", serif; font-size: clamp(48px,7vw,96px); line-height: 0.96; letter-spacing: -0.02em; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin: 0 0 28px; animation: reveal 1.6s 0.9s both; text-shadow: 0 2px 32px rgba(0,0,0,0.55); }
+.ph-title em { font-style: italic; font-weight: 300; display: block; padding-top: 14px; margin-top: 10px; max-width: 540px; border-top-width: 1px; border-top-style: solid; }
+.ph-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 540px; animation: reveal 1.8s 1.2s both; text-shadow: 0 1px 12px rgba(0,0,0,0.4); }
+.scroll-prompt { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.7; z-index: 3; animation: fade-in 2s 2.2s both; }
+.scroll-line { width: 1px; height: 36px; animation: bounce 2.4s ease-in-out infinite; }
+.scroll-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; }
+@keyframes bounce { 0%,100%{transform:scaleY(1) translateY(0);opacity:0.5;} 50%{transform:scaleY(0.6) translateY(8px);opacity:1;} }
+.photo-attr { position: absolute; right: 16px; bottom: 8px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.18em; z-index: 3; text-transform: uppercase; }
+.photo-attr a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
+@keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+@keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
+.main-body { max-width: 1240px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
+.section-intro { text-align: center; margin-bottom: clamp(48px,6vw,80px); max-width: 760px; margin-left: auto; margin-right: auto; }
+.si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; }
+.si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; }
+.si-label::before { left: 0; }
+.si-label::after { right: 0; }
+.si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 1; margin-bottom: 24px; letter-spacing: -0.015em; }
+.si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; }
+.si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+.page-footer { padding: 56px 24px; text-align: center; border-top: 4px double currentColor; margin-top: clamp(60px,8vw,96px); }
+.pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; }
+.pf-attr { font-family: "Newsreader", serif; font-style: italic; font-size: 13px; margin-bottom: 8px; opacity: 0.85; }
+.pf-links { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
+.pf-links a { text-decoration: none; border-bottom: 1px dotted currentColor; margin: 0 8px; }
+@media (max-width: 720px) {
+  .photo-hero { min-height: 580px; }
+  .brass-plate { top: 16px; right: 16px; padding: 12px 16px; font-size: 10px; min-width: 200px; }
+  .ph-text { bottom: 100px; left: 20px; max-width: 86vw; }
+  .ph-title { font-size: clamp(38px,11vw,60px); }
+}
+
+:root { 
+          --paper: #F0E5DC; --paper-soft: #F4EBE3; --paper-warm: #EBDED2; --paper-deep: #E0D2C3;
+          --ink: #2A1E1F; --ink-soft: #3E2E30; --ink-dim: #5C3F4A;
+          --brass: #A87E5C; --brass-deep: #856640; --glow: #D49EA8;
+          --rose: #D49EA8; --rose-deep: #B0768A; --teal: #8AB5B0; --teal-deep: #5E8B86;
+         }
+body { background: var(--paper); color: var(--ink); background-image:
+  radial-gradient(ellipse at top, rgba(212, 158, 168, 0.15), transparent 50%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.ph-eyebrow::before { background: var(--brass); }
+
+.rococo-arch-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
+.rococo-arch-band svg { width: min(900px, 92vw); height: 180px; }
+.errata-content { display: grid; grid-template-columns: 60px 1fr 60px; max-width: 1100px; margin: 0 auto; }
+.errata-column-rose, .errata-column-teal { background-size: 60px 200px; background-repeat: repeat-y; }
+.errata-column-rose { background-image: linear-gradient(180deg, transparent 0%, transparent 20%, #D49EA8 20%, #D49EA8 22%, transparent 22%, transparent 40%, #D49EA8 40%, #D49EA8 42%, transparent 42%, transparent 60%, #D49EA8 60%, #D49EA8 62%, transparent 62%); opacity: 0.5; }
+.errata-column-teal { background-image: linear-gradient(180deg, transparent 0%, transparent 20%, #8AB5B0 20%, #8AB5B0 22%, transparent 22%, transparent 40%, #8AB5B0 40%, #8AB5B0 42%, transparent 42%, transparent 60%, #8AB5B0 60%, #8AB5B0 62%, transparent 62%); opacity: 0.5; }
+.errata-list { background: var(--paper-soft); border-top: 2px solid var(--rose); border-bottom: 2px solid var(--teal); padding: 0; position: relative; }
+.errata-entry { padding: 28px 32px; border-bottom: 1px solid var(--paper-deep); position: relative; }
+.errata-entry:last-child { border-bottom: none; }
+.errata-entry::before { content: ""; position: absolute; left: 0; top: 50%; width: 4px; height: 60%; background: var(--rose); transform: translateY(-50%); }
+.errata-entry:nth-child(even)::before { background: var(--teal); }
+.ee-status { display: inline-block; padding: 3px 10px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--paper-soft); margin-bottom: 12px; }
+.ee-correction { background: var(--rose-deep); }
+.ee-clarification { background: var(--teal-deep); }
+.ee-retraction { background: var(--brass-deep); }
+.ee-disp { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--brass); margin-bottom: 6px; text-transform: uppercase; }
+.ee-title { font-family: "Fraunces", serif; font-size: 19px; font-weight: 470; color: var(--ink); margin-bottom: 12px; line-height: 1.3; }
+.ee-original, .ee-corrected { font-family: "Newsreader", serif; font-size: 15px; line-height: 1.55; margin-bottom: 8px; padding: 10px 14px; border-radius: 2px; }
+.ee-original { color: #8B5A65; background: #F4DDE2; text-decoration: line-through; opacity: 0.8; }
+.ee-corrected { color: var(--ink-soft); background: #DDE9E7; border-left: 3px solid var(--teal-deep); }
+.ee-corrected strong { color: var(--teal-deep); }
+.ee-date { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--brass-deep); margin-top: 10px; text-align: right; text-transform: uppercase; opacity: 0.8; }
+.checkered-marble { margin-top: 80px; height: 60px; background:
+  conic-gradient(from 0deg at 50% 50%, var(--paper-deep) 0deg 90deg, var(--paper-soft) 90deg 180deg, var(--paper-deep) 180deg 270deg, var(--paper-soft) 270deg 360deg);
+  background-size: 50px 50px; background-repeat: repeat;
+  border-top: 2px solid var(--brass); border-bottom: 2px solid var(--brass);
+  opacity: 0.55;
+}
+
+</style>
+</head>
+<body>
+<!-- ============ UNIVERSAL STICKY TOP NAV ============ -->
+<style>
+.dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: 0.4s; border-bottom: 1px solid transparent; }
+.dfb-topnav.scrolled { background: rgba(240,229,220,0.92); backdrop-filter: blur(12px); border-bottom-color: rgba(168,126,92,0.30); }
+.dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; color: #F4EBE3; text-decoration: none; text-shadow: 0 1px 8px rgba(31,22,18,0.6); transition: color 0.2s; }
+.dfb-topnav.scrolled .dfb-brand { color: #2A1E1F; text-shadow: none; }
+.dfb-brand:hover { color: #A87E5C; }
+.dfb-brand span { color: #A87E5C; font-style: normal; padding: 0 6px; }
+.dfb-menu-toggle { display: flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(212,158,168,0.55); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: #F4EBE3; transition: 0.2s; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+.dfb-topnav.scrolled .dfb-menu-toggle { color: #2A1E1F; border-color: #A87E5C; text-shadow: none; }
+.dfb-menu-toggle:hover { background: rgba(168,126,92,0.18); color: #A87E5C; }
+.dfb-menu-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(58,37,48,0.97); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: clamp(20px, 4vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.4s; overflow-y: auto; }
+.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
+.dfb-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid rgba(212,158,168,0.25); margin-bottom: clamp(32px, 5vw, 56px); }
+.dfb-menu-title { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: clamp(24px, 3vw, 32px); color: #F4EBE3; }
+.dfb-menu-close { background: transparent; border: 1px solid rgba(212,158,168,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: #F4EBE3; }
+.dfb-menu-close:hover { background: rgba(212,158,168,0.15); color: #D49EA8; }
+.dfb-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); max-width: 1240px; margin: 0 auto; width: 100%; }
+@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
+.dfb-menu-col-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #D49EA8; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(212,158,168,0.2); }
+.dfb-menu-link { display: block; padding: 10px 14px; margin-bottom: 6px; background: rgba(74,46,58,0.55); border-left: 2px solid rgba(212,158,168,0.4); color: #F4EBE3; text-decoration: none; transition: 0.2s; }
+.dfb-menu-link:hover { background: rgba(212,158,168,0.12); border-left-color: #D49EA8; transform: translateX(4px); }
+.dfb-menu-link .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: #A87E5C; display: block; margin-bottom: 2px; }
+.dfb-menu-link .dfb-name { font-family: "Fraunces", serif; font-weight: 460; font-size: 16px; color: #F4EBE3; }
+.dfb-menu-link.current { background: rgba(212,158,168,0.22); border-left-color: #D49EA8; }
+.dfb-menu-link.current .dfb-name { color: #D49EA8; }
+.dfb-menu-footer { margin-top: auto; padding-top: 32px; text-align: center; opacity: 0.7; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #A87E5C; }
+body.dfb-menu-open { overflow: hidden; }
+</style>
+
+<header class="dfb-topnav" id="dfbTopNav">
+  <a class="dfb-brand" href="index.html">DFB<span>·</span>Bureau</a>
+  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu"><span style="font-size:14px;line-height:1;">☰</span> Menu</button>
+</header>
+<nav class="dfb-menu-overlay" id="dfbMenu" aria-hidden="true">
+  <div class="dfb-menu-head"><div class="dfb-menu-title">The Sixteen Rooms</div><button class="dfb-menu-close" onclick="dfbToggleMenu()">✕ Close</button></div>
+  <div class="dfb-menu-grid">
+    <div><div class="dfb-menu-col-title">— Imperial Lock —</div>
+      <a href="index.html" class="dfb-menu-link" data-page="index.html"><span class="dfb-roman">I · Front Desk</span><span class="dfb-name">Bureau Index</span></a>
+      <a href="midnight.html" class="dfb-menu-link" data-page="midnight.html"><span class="dfb-roman">II · After Hours</span><span class="dfb-name">Midnight</span></a>
+      <a href="archive.html" class="dfb-menu-link" data-page="archive.html"><span class="dfb-roman">III · Filed Dispatches</span><span class="dfb-name">Archive</span></a>
+      <a href="charter.html" class="dfb-menu-link" data-page="charter.html"><span class="dfb-roman">IV · Founding Doctrine</span><span class="dfb-name">Charter</span></a>
+      <a href="concordance.html" class="dfb-menu-link" data-page="concordance.html"><span class="dfb-roman">V · Index of Terms</span><span class="dfb-name">Concordance</span></a>
+      <a href="errata.html" class="dfb-menu-link" data-page="errata.html"><span class="dfb-roman">VI · Corrections</span><span class="dfb-name">Errata</span></a>
+    </div>
+    <div><div class="dfb-menu-col-title">— Doctrinal Wing —</div>
+      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I</span><span class="dfb-name">Periodicals</span></a>
+      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II</span><span class="dfb-name">Cabinet</span></a>
+      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III</span><span class="dfb-name">Vault</span></a>
+      <a href="chambers.html" class="dfb-menu-link" data-page="chambers.html"><span class="dfb-roman">X · Literary Annex</span><span class="dfb-name">Chambers</span></a>
+      <a href="about.html" class="dfb-menu-link" data-page="about.html"><span class="dfb-roman">XI · Editorial Office</span><span class="dfb-name">About</span></a>
+    </div>
+    <div><div class="dfb-menu-col-title">— Front-Matter —</div>
+      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Directory</span><span class="dfb-name">Contents</span></a>
+      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Notice</span><span class="dfb-name">Disclaimer</span></a>
+      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms</span><span class="dfb-name">Legal</span></a>
+      <a href="privacy.html" class="dfb-menu-link" data-page="privacy.html"><span class="dfb-roman">XV · Reader Notice</span><span class="dfb-name">Privacy</span></a>
+      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Credits</span><span class="dfb-name">Credits</span></a>
+    </div>
+  </div>
+  <div class="dfb-menu-footer">Same yield. Different durability. · Anno MMXXVI</div>
+</nav>
+<script>
+(function(){var n=document.getElementById('dfbTopNav'),m=document.getElementById('dfbMenu'),b=document.body;function s(){if(window.scrollY>60)n.classList.add('scrolled');else n.classList.remove('scrolled');}window.addEventListener('scroll',s,{passive:true});s();window.dfbToggleMenu=function(){var o=m.classList.toggle('open');b.classList.toggle('dfb-menu-open',o);m.setAttribute('aria-hidden',o?'false':'true');};var c=location.pathname.split('/').pop()||'index.html';if(c==='')c='index.html';var l=m.querySelector('[data-page="'+c+'"]');if(l)l.classList.add('current');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))dfbToggleMenu();});})();
+</script>
+<!-- ============ END UNIVERSAL NAV ============ -->
+
+<section class="photo-hero" aria-label="Wiblingen Monastery · Germany">
+  <div class="ph-photo" role="img" aria-label="Wiblingen Monastery · Germany" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Kloster_Wiblingen_Bibliothekssaal_01.jpg?width=2560');"></div>
+  <div class="ph-vignette" style="background:radial-gradient(ellipse at 50% 30%,transparent 0%,#1A111066 70%,#1A1110C0 100%),linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.1) 60%,#1A1110C8 100%);"></div>
+  <div class="ph-grain"></div>
+  <aside class="brass-plate" style="background:rgba(58, 37, 48, 0.62);border:1px solid #A87E5C;color:#F4EBE3;">
+    <span class="bp-corner-tl" style="border-color:#A87E5C;"></span>
+    <span class="bp-corner-tr" style="border-color:#A87E5C;"></span>
+    <span class="bp-corner-bl" style="border-color:#A87E5C;"></span>
+    <span class="bp-corner-br" style="border-color:#A87E5C;"></span>
+    <span style="color:#A87E5C;font-weight:600;">The Errata Desk</span>
+    <span class="bp-issue" style="color:#D49EA8;">Maintained</span>
+    <span class="bp-divider" style="background:#856640;"></span>
+    <span class="bp-line">Corrections · Clarifications</span>
+    <span class="bp-line" style="color:#F4EBE3;">Originals preserved</span>
+    <span class="bp-line" style="opacity:0.65;">Cat. № SC-VI · North Wing</span>
+  </aside>
+  <div class="ph-text" style="color:#F4EBE3;">
+    <div class="ph-eyebrow" style="color:#D49EA8;">Corrections · Retractions · Clarifications</div>
+    <h1 class="ph-title">Honest readings<br><em style="color:#D49EA8;border-top-color:#A87E5C;">admit corrections.</em></h1>
+    <p class="ph-subtitle" style="color:#F4EBE3DD;">Where a Bureau dispatch contains an error of fact, structure, or interpretation, the correction is filed here. Originals are preserved with strikethrough; corrections are visible alongside.</p>
+  </div>
+  <div class="scroll-prompt" style="color:#EBDED2;">
+    <span class="scroll-label">See the corrections</span>
+    <span class="scroll-line" style="background:linear-gradient(to bottom,transparent,#D49EA8);"></span>
+  </div>
+  <div class="photo-attr" style="color:#F4EBE388;">
+    <a href="https://commons.wikimedia.org/wiki/File:Kloster_Wiblingen_Bibliothekssaal_01.jpg" target="_blank" rel="noopener">Wiblingen Monastery · Germany · Spatzameez · CC BY-SA 4.0</a>
+  </div>
+</section>
+<div class="rococo-arch-band">
+  <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="roseMarble" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#D49EA8" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#F4DDE2" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="tealMarble" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#8AB5B0" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#DDE9E7" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- Three rococo arches (matches Wiblingen ceiling) -->
+    <path d="M 60 180 Q 60 60 150 60 L 250 60 Q 340 60 340 180 Z" fill="url(#roseMarble)" stroke="#A87E5C" stroke-width="1.2"/>
+    <path d="M 340 180 Q 340 30 450 30 Q 560 30 560 180 Z" fill="url(#tealMarble)" stroke="#A87E5C" stroke-width="1.2"/>
+    <path d="M 560 180 Q 560 60 650 60 L 750 60 Q 840 60 840 180 Z" fill="url(#roseMarble)" stroke="#A87E5C" stroke-width="1.2"/>
+    <!-- Rococo cartouches and sculpture silhouettes -->
+    <g fill="#A87E5C" opacity="0.6">
+      <circle cx="200" cy="100" r="8"/>
+      <path d="M 192 108 Q 200 130 208 108 Z"/>
+      <circle cx="700" cy="100" r="8"/>
+      <path d="M 692 108 Q 700 130 708 108 Z"/>
+    </g>
+    <!-- Central oval medallion fresco -->
+    <ellipse cx="450" cy="80" rx="50" ry="30" fill="#F4EBE3" stroke="#A87E5C" stroke-width="1" opacity="0.85"/>
+    <text x="450" y="86" font-family="Fraunces, serif" font-style="italic" font-size="18" fill="#856640" text-anchor="middle">Errata</text>
+    <!-- Decorative scrollwork -->
+    <g stroke="#A87E5C" stroke-width="0.7" fill="none" opacity="0.5">
+      <path d="M 120 100 Q 140 80 160 100"/>
+      <path d="M 740 100 Q 760 80 780 100"/>
+      <path d="M 420 130 Q 450 145 480 130"/>
+    </g>
+  </svg>
+</div>
+<main class="main-body">
+  <aside class="room-context" aria-label="About this room" style="max-width:880px; margin:0 auto 44px; padding:22px 28px; background:var(--paper-soft); border-left:3px solid var(--rose); border-right:3px solid var(--teal); position:relative;">
+    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.30em; color:var(--brass-deep); text-transform:uppercase; margin-bottom:10px; padding-bottom:8px; border-bottom:1px dotted var(--brass); display:inline-block; padding-right:16px;">— Climate · North Wing —</div>
+    <div style="font-family:'Newsreader', serif; font-size:15.5px; line-height:1.7; color:var(--ink-soft);"><strong style="color:var(--ink);">A correction is a kept promise.</strong> Daylight ecology. (From Latin <em style="font-style:italic; color:var(--rose-deep);">erratum</em> &mdash; a thing strayed.)</div>
+  </aside>
+  <div class="section-intro">
+    <div class="si-label" style="color:var(--brass);">— Editorial · Corrections · Clarifications —</div>
+    <h2 class="si-title" style="color:var(--ink);">The original stands. <em style="color:var(--rose-deep);">The correction is filed beside it.</em></h2>
+    <p class="si-desc" style="color:var(--ink-soft);">A correction is a kept promise. Where a Bureau dispatch contained an error of fact, of structure, or of interpretation — both versions remain, marked. The reader sees what we believed then, and what we believe now.</p>
+  </div>
+  <div class="errata-list" role="region" aria-label="Errata entries">
+    <article class="errata-entry">
+      <span class="ee-status ee-correction">Correction · Filed</span>
+      <div class="ee-disp">Re: Dispatch No. 062 · "Realty Income — Coverage Today"</div>
+      <h3 class="ee-title">AFFO payout ratio · clerical error</h3>
+      <div class="ee-original">As published: "AFFO payout ratio of 73.4% as of Q1 MMXXVI."</div>
+      <div class="ee-corrected">As corrected: <strong>AFFO payout ratio of 71.7%</strong> as of Q1 MMXXVI. Transcription error from the Q1 supplement. Argument and conclusion unchanged; figure restated.</div>
+      <div class="ee-date">Filed IX · V · MMXXVI</div>
+    </article>
+    <article class="errata-entry">
+      <span class="ee-status ee-clarification">Clarification · Filed</span>
+      <div class="ee-disp">Re: Dispatch No. 049 · "ARCC — Non-Accrual Drift"</div>
+      <h3 class="ee-title">Non-accrual basis · fair value vs. cost</h3>
+      <div class="ee-original">As published: "Non-accruals 1.8 → 2.1%."</div>
+      <div class="ee-corrected">Clarified: the figures cited are on <strong>fair-value basis</strong>, not cost basis. On a cost basis the comparable move is 1.5 → 1.8%. Direction and structural reading unchanged.</div>
+      <div class="ee-date">Filed XXIV · IV · MMXXVI</div>
+    </article>
+    <article class="errata-entry">
+      <span class="ee-status ee-correction">Correction · Filed</span>
+      <div class="ee-disp">Re: Dispatch No. 045 · "JEPI Mechanics"</div>
+      <h3 class="ee-title">Trailing distribution composition</h3>
+      <div class="ee-original">As published: "8.45% trailing distribution = 1.43% dividend + 7.18% option premium."</div>
+      <div class="ee-corrected">As corrected: <strong>1.43% dividend + 6.94% option premium + 0.08% short-term gains</strong>. Total trailing unchanged at 8.45%. The third component was omitted in the original breakdown.</div>
+      <div class="ee-date">Filed XV · IV · MMXXVI</div>
+    </article>
+    <article class="errata-entry">
+      <span class="ee-status ee-clarification">Clarification · Filed</span>
+      <div class="ee-disp">Re: Dispatch No. 028 · "Three Clocks™ — Introduced"</div>
+      <h3 class="ee-title">The third clock · scope</h3>
+      <div class="ee-original">As published: "Market Access when tomorrow arrives" — applied to all income vehicles.</div>
+      <div class="ee-corrected">Clarified: the Market Access clock applies most directly to <strong>fixed-debt issuers</strong> (REITs, BDCs, MLPs). For pure cov-call ETFs the third clock is structurally different (counterparty / volatility regime). The framework still applies; the mechanism differs.</div>
+      <div class="ee-date">Filed II · IV · MMXXVI</div>
+    </article>
+    <article class="errata-entry">
+      <span class="ee-status ee-retraction">Retraction · Filed</span>
+      <div class="ee-disp">Re: Dispatch No. 022 · Buffer Half-Life™ Method · Worked Example</div>
+      <h3 class="ee-title">EPR Properties · worked example withdrawn</h3>
+      <div class="ee-original">A worked example using EPR Properties' Q4 MMXXIV figures was included as an illustration.</div>
+      <div class="ee-corrected">Retracted: the example was based on a one-time charge that was not separately identified in the source filing. The method stands; <strong>the worked example has been withdrawn</strong> and replaced with a hypothetical case in the corrected version. Original dispatch retained, with strikethrough applied.</div>
+      <div class="ee-date">Filed VI · III · MMXXVI</div>
+    </article>
+  </div>
+  <div class="checkered-marble" aria-hidden="true"></div>
+</main>
+<footer class="page-footer" style="background:#EBDED2;color:#3E2E30;border-top-color:#A87E5C;">
+  <div class="pf-marker" style="color:#A87E5C;">— Errata desk · Open ledger —</div>
+  <div class="pf-attr">Every correction is a kept promise. The original is not deleted.</div>
+  <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="archive.html">Archive</a> · <a href="charter.html">Charter</a> · <a href="credits.html">Credits</a></div>
+</footer>
+</body>
+</html>

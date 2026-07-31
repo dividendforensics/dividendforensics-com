@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Archive · Dividend Forensics Bureau</title>
+<meta name="description" content="The Bureau Archive — filed dispatches catalog. Five tiers · sector, framework, and quarter filters.">
+<link rel="canonical" href="https://dividendforensics.com/archive.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="The Archive · Dividend Forensics Bureau">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dividendforensics.com/archive.html">
+<meta name="theme-color" content="#EAD9B8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Newsreader:opsz,wght@6..72,300..600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* === ARCHIVE · LIGHT WING · TERRACOTTA HONEY CREAM · Peabody Baltimore 1878 === */
+:root {
+  --paper: #EAD9B8;
+  --paper-soft: #F0E2C4;
+  --paper-warm: #D9C5A0;
+  --paper-deep: #B59E78;
+  --ink: #1F1612;
+  --ink-soft: #2E2218;
+  --ink-dim: #5C4530;
+  --iron: #2A1A10;
+  --iron-soft: #4A2E1E;
+  --iron-light: #5C4530;
+  --gold: #B58A48;
+  --gold-deep: #8B6432;
+  --gold-light: #DEC893;
+  --terracotta: #8B3A2C;
+  --terracotta-deep: #5C2418;
+  --honey: #DEC893;
+  --honey-warm: #ECCB78;
+}
+body { font-family: "Newsreader", serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; background: var(--paper); color: var(--ink); background-image:
+  radial-gradient(ellipse at top, rgba(139,58,44,0.10), transparent 55%),
+  radial-gradient(ellipse at center, rgba(222,200,147,0.25), transparent 60%),
+  radial-gradient(ellipse at bottom, rgba(181,138,72,0.15), transparent 55%);
+}
+
+.photo-hero { position: relative; width: 100%; height: 100vh; min-height: 720px; overflow: hidden; }
+.ph-photo { position: absolute; inset: 0; background-size: cover; background-position: center; animation: kenburns 42s cubic-bezier(0.65,0,0.35,1) infinite alternate; }
+@keyframes kenburns { 0%{transform:scale(1.00) translate(0,0);} 100%{transform:scale(1.10) translate(-1%,-2%);} }
+.ph-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 30%, transparent 0%, rgba(42,26,16,0.50) 70%, rgba(42,26,16,0.85) 100%), linear-gradient(to bottom, rgba(20,9,10,0.45) 0%, rgba(20,9,10,0.05) 30%, rgba(181,138,72,0.10) 55%, var(--paper) 100%); }
+.ph-grain { position: absolute; inset: 0; opacity: 0.10; mix-blend-mode: overlay; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.brass-plate { position: absolute; top: clamp(28px,4vw,56px); right: clamp(28px,4vw,56px); padding: 18px 22px 16px; background: rgba(20,9,10,0.82); border: 1px solid var(--gold); color: var(--honey); backdrop-filter: blur(6px); font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; line-height: 1.85; text-transform: uppercase; z-index: 4; min-width: 240px; box-shadow: 0 4px 24px rgba(0,0,0,0.5); animation: fade-in 1.8s 0.4s both; }
+.bp-corner-tl,.bp-corner-tr,.bp-corner-bl,.bp-corner-br { position: absolute; width: 10px; height: 10px; border-style: solid; border-color: var(--gold); border-width: 0; }
+.bp-corner-tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+.bp-corner-tr { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
+.bp-corner-bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
+.bp-corner-br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+.bp-mark { color: var(--gold); font-weight: 600; }
+.bp-issue { color: var(--gold-light); font-weight: 600; font-size: 13px; letter-spacing: 0.18em; display: block; margin: 4px 0; }
+.bp-divider { display: block; height: 1px; margin: 8px 0 7px; background: var(--iron-soft); opacity: 0.7; }
+.bp-line { display: block; font-size: 10.5px; opacity: 0.85; }
+.ph-text { position: absolute; left: clamp(28px,6vw,96px); bottom: clamp(140px,20vh,200px); max-width: min(680px,70vw); z-index: 3; }
+.ph-eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 24px; padding-left: 28px; position: relative; color: var(--gold-light); animation: reveal 1.4s 0.6s both; }
+.ph-eyebrow::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 1px; background: var(--gold); }
+.ph-title { font-family: "Fraunces", serif; font-size: clamp(48px,7vw,96px); line-height: 0.96; letter-spacing: -0.02em; font-weight: 350; font-variation-settings: 'opsz' 144, 'SOFT' 80, 'WONK' 1; margin: 0 0 28px; color: var(--honey); text-shadow: 0 2px 32px rgba(0,0,0,0.65); animation: reveal 1.6s 0.9s both; }
+.ph-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; display: block; padding-top: 14px; margin-top: 10px; max-width: 540px; border-top: 1px solid var(--gold); color: var(--gold-light); }
+.ph-subtitle { font-family: "Newsreader", serif; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; max-width: 540px; color: var(--honey); text-shadow: 0 1px 12px rgba(0,0,0,0.5); animation: reveal 1.8s 1.2s both; }
+.scroll-prompt { position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(28px,4vw,44px); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0.7; z-index: 3; color: var(--gold-light); animation: fade-in 2s 2.2s both; }
+.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--gold)); animation: bounce 2.4s ease-in-out infinite; }
+.scroll-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; }
+@keyframes bounce { 0%,100%{transform:scaleY(1) translateY(0);opacity:0.5;} 50%{transform:scaleY(0.6) translateY(8px);opacity:1;} }
+.photo-attr { position: absolute; right: 16px; bottom: 8px; font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.18em; z-index: 3; text-transform: uppercase; color: rgba(222,200,147,0.6); }
+.photo-attr a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
+@keyframes fade-in { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+@keyframes reveal { from{opacity:0;transform:translateY(20px);filter:blur(4px);} to{opacity:1;transform:translateY(0);filter:blur(0);} }
+
+/* 5-tier cast-iron atrium · dark iron lines on cream paper */
+.atrium-band { position: relative; height: 200px; margin-top: -200px; z-index: 5; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; }
+.atrium-band svg { width: min(1000px, 94vw); height: 180px; }
+
+.main-body { max-width: 1140px; margin: 0 auto; padding: clamp(60px,8vw,120px) clamp(24px,4vw,48px) 80px; position: relative; }
+
+.room-context { max-width: 880px; margin: 0 auto 48px; padding: clamp(24px,3vw,32px) clamp(28px,3.5vw,40px); background: linear-gradient(135deg, var(--paper-soft) 0%, rgba(139,58,44,0.10) 100%); border-left: 4px solid var(--iron); border-right: 4px solid var(--terracotta); position: relative; }
+.rc-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--iron); text-transform: uppercase; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dotted var(--gold-deep); display: inline-block; padding-right: 18px; }
+.rc-body { font-family: "Newsreader", serif; font-size: 16px; line-height: 1.7; color: var(--ink-soft); }
+.rc-body strong { font-weight: 600; color: var(--ink); }
+.rc-body em { font-style: italic; color: var(--terracotta); }
+
+.section-intro { text-align: center; margin-bottom: clamp(40px,5vw,64px); max-width: 760px; margin-left: auto; margin-right: auto; }
+.si-label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.34em; text-transform: uppercase; margin-bottom: 28px; display: inline-block; padding: 0 32px; position: relative; color: var(--iron); }
+.si-label::before, .si-label::after { content: ""; position: absolute; top: 50%; width: 22px; height: 1px; background: var(--iron); }
+.si-label::before { left: 0; } .si-label::after { right: 0; }
+.si-title { font-family: "Fraunces", serif; font-size: clamp(38px,5vw,56px); line-height: 1.05; font-weight: 380; margin-bottom: 24px; letter-spacing: -0.015em; color: var(--ink); }
+.si-title em { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; color: var(--terracotta); }
+.si-desc { font-family: "Newsreader", serif; font-size: 18px; line-height: 1.7; max-width: 600px; margin: 0 auto; color: var(--ink-soft); }
+
+/* Filter bar · light cream version */
+.filter-bar { max-width: 1100px; margin: 0 auto 32px; padding: 22px 24px; background: linear-gradient(180deg, var(--paper-soft) 0%, rgba(181,138,72,0.10) 100%); border-top: 3px solid var(--iron); border-bottom: 3px solid var(--terracotta); }
+.fb-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px; }
+.fb-row:last-child { margin-bottom: 0; }
+.fb-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.26em; color: var(--iron); min-width: 90px; font-weight: 500; text-transform: uppercase; }
+.fb-chip { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.18em; padding: 7px 14px; background: var(--paper-warm); color: var(--ink); text-decoration: none; border: 1px solid var(--gold-deep); cursor: pointer; text-transform: uppercase; transition: 0.22s; user-select: none; }
+.fb-chip:hover { background: var(--honey); border-color: var(--terracotta); }
+.fb-chip.active { background: var(--iron); color: var(--paper-soft); border-color: var(--iron-soft); }
+.fb-chip[data-filter="all"].active { background: var(--terracotta); color: var(--paper-soft); }
+.fb-summary { font-family: "Newsreader", serif; font-style: italic; font-size: 13.5px; color: var(--ink-dim); margin-left: auto; padding: 8px 16px; background: var(--paper-soft); border: 1px solid var(--paper-deep); }
+
+.fb-search { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 240px; }
+.fb-search input { flex: 1; padding: 8px 14px; background: var(--paper-soft); border: 1px solid var(--gold-deep); font-family: "Newsreader", serif; font-size: 14px; color: var(--ink); outline: none; transition: 0.22s; }
+.fb-search input:focus { border-color: var(--iron); background: var(--paper-warm); }
+.fb-search input::placeholder { color: var(--ink-dim); font-style: italic; }
+
+/* Dispatch rows · light cream version */
+.dispatch-list { max-width: 1100px; margin: 0 auto; }
+.dispatch-row { display: grid; grid-template-columns: 90px 1fr 200px; gap: 20px; padding: 22px 24px; background: var(--paper-soft); border-left: 4px solid var(--iron); border-bottom: 1px solid var(--paper-deep); transition: 0.25s; align-items: start; }
+.dispatch-row:nth-child(even) { border-left-color: var(--terracotta); background: linear-gradient(90deg, var(--paper-soft) 0%, rgba(139,58,44,0.08) 100%); }
+.dispatch-row:hover { background: var(--paper-warm); transform: translateX(3px); }
+.dispatch-row:nth-child(even):hover { background: linear-gradient(90deg, var(--paper-warm) 0%, rgba(139,58,44,0.16) 100%); }
+.dispatch-row.hidden { display: none; }
+@media (max-width: 760px) { .dispatch-row { grid-template-columns: 70px 1fr; gap: 14px; } .dispatch-row .dr-meta { grid-column: 1 / -1; padding-top: 8px; border-top: 1px dotted var(--paper-deep); } }
+
+.dr-code { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.18em; color: var(--iron); text-transform: uppercase; padding-top: 4px; font-weight: 500; }
+.dispatch-row:nth-child(even) .dr-code { color: var(--terracotta); }
+.dr-body .dr-title { font-family: "Fraunces", serif; font-size: 19px; font-weight: 460; color: var(--ink); margin-bottom: 6px; line-height: 1.3; letter-spacing: -0.01em; }
+.dr-body .dr-title em { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--iron); }
+.dispatch-row:nth-child(even) .dr-body .dr-title em { color: var(--terracotta); }
+.dr-body .dr-tagline { font-family: "Newsreader", serif; font-style: italic; font-size: 14px; color: var(--ink-dim); }
+.dr-meta { text-align: right; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.18em; color: var(--ink-dim); text-transform: uppercase; line-height: 1.8; padding-top: 4px; }
+@media (max-width: 760px) { .dr-meta { text-align: left; } }
+.dr-meta .dm-tag { display: inline-block; padding: 3px 9px; border: 1px solid var(--gold-deep); background: var(--paper-warm); margin-right: 4px; margin-bottom: 4px; color: var(--ink-soft); }
+.dispatch-row:nth-child(even) .dr-meta .dm-tag { border-color: var(--terracotta); }
+
+.empty-state { display: none; padding: 60px 30px; text-align: center; background: var(--paper-soft); border: 2px dashed var(--paper-deep); max-width: 1100px; margin: 32px auto 0; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 18px; color: var(--ink-dim); }
+.empty-state.visible { display: block; }
+
+.iron-grille { margin-top: 80px; height: 70px; background:
+  repeating-linear-gradient(0deg, var(--iron) 0px, var(--iron) 1.5px, transparent 1.5px, transparent 18px),
+  repeating-linear-gradient(90deg, var(--terracotta) 0px, var(--terracotta) 1.5px, transparent 1.5px, transparent 18px),
+  linear-gradient(180deg, rgba(42,26,16,0.10) 0%, rgba(139,58,44,0.10) 100%);
+  border-top: 2px solid var(--iron); border-bottom: 2px solid var(--terracotta); opacity: 0.55;
+}
+
+.page-footer { padding: 56px 24px; text-align: center; border-top: 4px double var(--iron); margin-top: clamp(60px,8vw,96px); background: var(--paper-warm); color: var(--ink-soft); }
+.pf-marker { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 18px; color: var(--iron); }
+.pf-attr { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 14px; margin-bottom: 8px; color: var(--ink-soft); }
+.pf-links { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; }
+.pf-links a { color: var(--iron); text-decoration: none; border-bottom: 1px dotted var(--terracotta); margin: 0 8px; }
+
+@media (max-width: 720px) {
+  .photo-hero { min-height: 580px; }
+  .brass-plate { top: 16px; right: 16px; padding: 12px 16px; font-size: 10px; min-width: 200px; }
+  .ph-text { bottom: 100px; left: 20px; max-width: 86vw; }
+  .ph-title { font-size: clamp(38px,11vw,60px); }
+}
+
+/* Universal nav (light cream wing) */
+.dfb-topnav { position: fixed; top: 0; left: 0; right: 0; z-index: 9999; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 4vw, 40px); background: transparent; transition: 0.4s; border-bottom: 1px solid transparent; }
+.dfb-topnav.scrolled { background: rgba(234,217,184,0.92); backdrop-filter: blur(12px); border-bottom-color: rgba(42,26,16,0.30); }
+.dfb-brand { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: 18px; color: var(--honey); text-decoration: none; text-shadow: 0 1px 8px rgba(20,9,10,0.6); transition: color 0.2s; }
+.dfb-topnav.scrolled .dfb-brand { color: var(--iron); text-shadow: none; }
+.dfb-brand:hover { color: var(--gold); }
+.dfb-brand span { color: var(--gold); font-style: normal; padding: 0 6px; }
+.dfb-menu-toggle { display: flex; align-items: center; gap: 10px; background: transparent; border: 1px solid rgba(222,200,147,0.55); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--honey); transition: 0.2s; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+.dfb-topnav.scrolled .dfb-menu-toggle { color: var(--iron); border-color: var(--iron); text-shadow: none; }
+.dfb-menu-toggle:hover { background: rgba(181,138,72,0.20); color: var(--gold); }
+.dfb-menu-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(20,9,10,0.97); backdrop-filter: blur(20px); display: flex; flex-direction: column; padding: clamp(20px, 4vw, 40px); opacity: 0; pointer-events: none; transition: opacity 0.4s; overflow-y: auto; }
+.dfb-menu-overlay.open { opacity: 1; pointer-events: auto; }
+.dfb-menu-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid rgba(181,138,72,0.25); margin-bottom: clamp(32px, 5vw, 56px); }
+.dfb-menu-title { font-family: "Fraunces", serif; font-style: italic; font-weight: 380; font-size: clamp(24px, 3vw, 32px); color: var(--honey); }
+.dfb-menu-close { background: transparent; border: 1px solid rgba(181,138,72,0.5); padding: 8px 16px; cursor: pointer; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--honey); }
+.dfb-menu-close:hover { background: rgba(181,138,72,0.15); color: var(--gold); }
+.dfb-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); max-width: 1240px; margin: 0 auto; width: 100%; }
+@media (max-width: 860px) { .dfb-menu-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .dfb-menu-grid { grid-template-columns: 1fr; } }
+.dfb-menu-col-title { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(181,138,72,0.2); }
+.dfb-menu-link { display: block; padding: 10px 14px; margin-bottom: 6px; background: rgba(42,26,16,0.55); border-left: 2px solid rgba(181,138,72,0.4); color: var(--honey); text-decoration: none; transition: 0.2s; }
+.dfb-menu-link:hover { background: rgba(181,138,72,0.12); border-left-color: var(--gold); transform: translateX(4px); }
+.dfb-menu-link .dfb-roman { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: 0.22em; color: var(--gold); display: block; margin-bottom: 2px; }
+.dfb-menu-link .dfb-name { font-family: "Fraunces", serif; font-weight: 460; font-size: 16px; color: var(--honey); }
+.dfb-menu-link.current { background: rgba(222,200,147,0.18); border-left-color: var(--gold-light); }
+.dfb-menu-link.current .dfb-name { color: var(--gold-light); }
+.dfb-menu-footer { margin-top: auto; padding-top: 32px; text-align: center; opacity: 0.7; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+body.dfb-menu-open { overflow: hidden; }
+</style>
+</head>
+<body>
+
+<header class="dfb-topnav" id="dfbTopNav">
+  <a class="dfb-brand" href="index.html">DFB<span>·</span>Bureau</a>
+  <button class="dfb-menu-toggle" onclick="dfbToggleMenu()" aria-label="Open menu"><span style="font-size:14px;line-height:1;">☰</span> Menu</button>
+</header>
+<nav class="dfb-menu-overlay" id="dfbMenu" aria-hidden="true">
+  <div class="dfb-menu-head"><div class="dfb-menu-title">The Sixteen Rooms</div><button class="dfb-menu-close" onclick="dfbToggleMenu()">✕ Close</button></div>
+  <div class="dfb-menu-grid">
+    <div><div class="dfb-menu-col-title">— Imperial Lock —</div>
+      <a href="index.html" class="dfb-menu-link" data-page="index.html"><span class="dfb-roman">I · Front Desk</span><span class="dfb-name">Bureau Index</span></a>
+      <a href="midnight.html" class="dfb-menu-link" data-page="midnight.html"><span class="dfb-roman">II · After Hours</span><span class="dfb-name">Midnight</span></a>
+      <a href="archive.html" class="dfb-menu-link" data-page="archive.html"><span class="dfb-roman">III · Filed Dispatches</span><span class="dfb-name">Archive</span></a>
+      <a href="charter.html" class="dfb-menu-link" data-page="charter.html"><span class="dfb-roman">IV · Founding Doctrine</span><span class="dfb-name">Charter</span></a>
+      <a href="concordance.html" class="dfb-menu-link" data-page="concordance.html"><span class="dfb-roman">V · Index of Terms</span><span class="dfb-name">Concordance</span></a>
+      <a href="errata.html" class="dfb-menu-link" data-page="errata.html"><span class="dfb-roman">VI · Corrections</span><span class="dfb-name">Errata</span></a>
+    </div>
+    <div><div class="dfb-menu-col-title">— Doctrinal Wing —</div>
+      <a href="periodicals.html" class="dfb-menu-link" data-page="periodicals.html"><span class="dfb-roman">VII · Annex I</span><span class="dfb-name">Periodicals</span></a>
+      <a href="cabinet.html" class="dfb-menu-link" data-page="cabinet.html"><span class="dfb-roman">VIII · Annex II</span><span class="dfb-name">Cabinet</span></a>
+      <a href="vault.html" class="dfb-menu-link" data-page="vault.html"><span class="dfb-roman">IX · Annex III</span><span class="dfb-name">Vault</span></a>
+      <a href="chambers.html" class="dfb-menu-link" data-page="chambers.html"><span class="dfb-roman">X · Literary Annex</span><span class="dfb-name">Chambers</span></a>
+      <a href="about.html" class="dfb-menu-link" data-page="about.html"><span class="dfb-roman">XI · Editorial Office</span><span class="dfb-name">About</span></a>
+    </div>
+    <div><div class="dfb-menu-col-title">— Front-Matter —</div>
+      <a href="contents.html" class="dfb-menu-link" data-page="contents.html"><span class="dfb-roman">XII · Directory</span><span class="dfb-name">Contents</span></a>
+      <a href="disclaimer.html" class="dfb-menu-link" data-page="disclaimer.html"><span class="dfb-roman">XIII · Notice</span><span class="dfb-name">Disclaimer</span></a>
+      <a href="legal.html" class="dfb-menu-link" data-page="legal.html"><span class="dfb-roman">XIV · Terms</span><span class="dfb-name">Legal</span></a>
+      <a href="privacy.html" class="dfb-menu-link" data-page="privacy.html"><span class="dfb-roman">XV · Reader Notice</span><span class="dfb-name">Privacy</span></a>
+      <a href="credits.html" class="dfb-menu-link" data-page="credits.html"><span class="dfb-roman">XVI · Credits</span><span class="dfb-name">Credits</span></a>
+    </div>
+  </div>
+  <div class="dfb-menu-footer">Same yield. Different durability. · Anno MMXXVI</div>
+</nav>
+<script>
+(function(){var n=document.getElementById('dfbTopNav'),m=document.getElementById('dfbMenu'),b=document.body;function s(){if(window.scrollY>60)n.classList.add('scrolled');else n.classList.remove('scrolled');}window.addEventListener('scroll',s,{passive:true});s();window.dfbToggleMenu=function(){var o=m.classList.toggle('open');b.classList.toggle('dfb-menu-open',o);m.setAttribute('aria-hidden',o?'false':'true');};var c=location.pathname.split('/').pop()||'index.html';if(c==='')c='index.html';var l=m.querySelector('[data-page="'+c+'"]');if(l)l.classList.add('current');document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))dfbToggleMenu();});})();
+</script>
+
+<section class="photo-hero" aria-label="George Peabody Library · Baltimore · 1878">
+  <div class="ph-photo" role="img" aria-label="George Peabody Library · Johns Hopkins · Baltimore (1878)" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/George_Peabody_Library_Interior.jpg?width=2560');"></div>
+  <div class="ph-vignette"></div>
+  <div class="ph-grain"></div>
+  <aside class="brass-plate">
+    <span class="bp-corner-tl"></span><span class="bp-corner-tr"></span><span class="bp-corner-bl"></span><span class="bp-corner-br"></span>
+    <span class="bp-mark">The Archive</span>
+    <span class="bp-issue">Five Tiers</span>
+    <span class="bp-divider"></span>
+    <span class="bp-line">Filed Dispatches</span>
+    <span class="bp-line" style="color:var(--honey-warm);">Open · Searchable</span>
+    <span class="bp-line" style="opacity:0.7;">Anno MMXXIV — MMXXVI</span>
+  </aside>
+  <div class="ph-text">
+    <div class="ph-eyebrow">Filed Dispatches · Sector · Framework · Quarter</div>
+    <h1 class="ph-title">The filed record,<br><em>five tiers high.</em></h1>
+    <p class="ph-subtitle">Every Bureau dispatch is filed here. Five tiers of cast-iron shelving — the deepest pieces at the bottom, the most recent on the top tier. Filter by sector, by framework, or by quarter.</p>
+  </div>
+  <div class="scroll-prompt"><span class="scroll-label">Browse the Stacks</span><span class="scroll-line"></span></div>
+  <div class="photo-attr"><a href="https://commons.wikimedia.org/wiki/File:George_Peabody_Library_Interior.jpg" target="_blank" rel="noopener">George Peabody Library · Johns Hopkins · Baltimore · 1878 · CC BY-SA</a></div>
+</section>
+
+<!-- 5-tier cast-iron stack atrium · dark iron on cream paper -->
+<div class="atrium-band">
+  <svg viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="atriumGlow" cx="50%" cy="0%" r="60%">
+        <stop offset="0%" stop-color="#ECCB78" stop-opacity="0.70"/>
+        <stop offset="100%" stop-color="#B58A48" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="500" cy="20" rx="320" ry="34" fill="url(#atriumGlow)"/>
+    <g stroke="#2A1A10" stroke-width="1.8" fill="none">
+      <line x1="200" y1="40" x2="800" y2="40"/><line x1="200" y1="48" x2="800" y2="48" stroke-width="1"/>
+      <line x1="160" y1="68" x2="840" y2="68"/><line x1="160" y1="76" x2="840" y2="76" stroke-width="1"/>
+      <line x1="120" y1="100" x2="880" y2="100"/><line x1="120" y1="108" x2="880" y2="108" stroke-width="1"/>
+      <line x1="80" y1="132" x2="920" y2="132"/><line x1="80" y1="140" x2="920" y2="140" stroke-width="1"/>
+      <line x1="40" y1="166" x2="960" y2="166"/><line x1="40" y1="174" x2="960" y2="174" stroke-width="1"/>
+    </g>
+    <g stroke="#4A2E1E" stroke-width="1" opacity="0.75">
+      <line x1="220" y1="48" x2="180" y2="68"/><line x1="780" y1="48" x2="820" y2="68"/>
+      <line x1="180" y1="76" x2="140" y2="100"/><line x1="820" y1="76" x2="860" y2="100"/>
+      <line x1="140" y1="108" x2="100" y2="132"/><line x1="860" y1="108" x2="900" y2="132"/>
+      <line x1="100" y1="140" x2="60" y2="166"/><line x1="900" y1="140" x2="940" y2="166"/>
+    </g>
+    <g fill="#B58A48" opacity="0.85">
+      <circle cx="350" cy="42" r="3"/><circle cx="500" cy="42" r="3"/><circle cx="650" cy="42" r="3"/>
+      <circle cx="320" cy="72" r="3"/><circle cx="500" cy="72" r="3"/><circle cx="680" cy="72" r="3"/>
+      <circle cx="290" cy="104" r="3"/><circle cx="500" cy="104" r="3"/><circle cx="710" cy="104" r="3"/>
+      <circle cx="260" cy="136" r="3"/><circle cx="500" cy="136" r="3"/><circle cx="740" cy="136" r="3"/>
+    </g>
+    <g font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#8B3A2C" text-anchor="middle">
+      <text x="80" y="45">V</text><text x="80" y="73">IV</text><text x="80" y="105">III</text><text x="60" y="137">II</text><text x="40" y="171">I</text>
+    </g>
+    <ellipse cx="500" cy="158" rx="64" ry="13" fill="#F0E2C4" stroke="#2A1A10" stroke-width="1.3"/>
+    <text x="500" y="163" font-family="Fraunces, serif" font-style="italic" font-size="12" fill="#1F1612" text-anchor="middle">The Stack Room</text>
+  </svg>
+</div>
+
+<main class="main-body">
+
+  <aside class="room-context" aria-label="About this room">
+    <div class="rc-label">— About this room · North Wing · Reading Room —</div>
+    <div class="rc-body">The <strong>Archive</strong> is the Bureau's <strong>filed catalog</strong> — the sunlit stack room where every dispatch is retrievable. Five tiers of cast-iron shelving, indexed by sector, framework, and quarter. Use the filter chips below to narrow the catalog. (From Greek <em>archeion</em> — "public record house".)</div>
+  </aside>
+
+  <div class="section-intro">
+    <div class="si-label">— Five Tiers · Filter Below —</div>
+    <h2 class="si-title">Filed dispatches, <em>searchable.</em></h2>
+    <p class="si-desc">Click a sector or framework to filter; type a ticker, name, or term to search across titles and taglines.</p>
+  </div>
+
+  <div class="filter-bar" role="region" aria-label="Archive filters">
+    <div class="fb-row">
+      <span class="fb-label">Sector</span>
+      <button class="fb-chip active" data-filter-type="sector" data-filter="all">All</button>
+      <button class="fb-chip" data-filter-type="sector" data-filter="reit">REIT</button>
+      <button class="fb-chip" data-filter-type="sector" data-filter="bdc">BDC</button>
+      <button class="fb-chip" data-filter-type="sector" data-filter="mlp">MLP</button>
+      <button class="fb-chip" data-filter-type="sector" data-filter="cef">CLO · CEF</button>
+      <button class="fb-chip" data-filter-type="sector" data-filter="covcall">Cov-Call</button>
+      <button class="fb-chip" data-filter-type="sector" data-filter="infra">Infra · Util</button>
+      <button class="fb-chip" data-filter-type="sector" data-filter="meta">Meta · Bureau</button>
+    </div>
+    <div class="fb-row">
+      <span class="fb-label">Framework</span>
+      <button class="fb-chip active" data-filter-type="framework" data-filter="all">All</button>
+      <button class="fb-chip" data-filter-type="framework" data-filter="bhl">Buffer Half-Life™</button>
+      <button class="fb-chip" data-filter-type="framework" data-filter="3clocks">Three Clocks™</button>
+      <button class="fb-chip" data-filter-type="framework" data-filter="bbb">BBB- Cliff™</button>
+    </div>
+    <div class="fb-row">
+      <span class="fb-label">Quarter</span>
+      <button class="fb-chip active" data-filter-type="quarter" data-filter="all">All</button>
+      <button class="fb-chip" data-filter-type="quarter" data-filter="q2-26">Q2 MMXXVI</button>
+      <button class="fb-chip" data-filter-type="quarter" data-filter="q1-26">Q1 MMXXVI</button>
+      <button class="fb-chip" data-filter-type="quarter" data-filter="q4-25">Q4 MMXXV</button>
+      <button class="fb-chip" data-filter-type="quarter" data-filter="q3-25">Q3 MMXXV</button>
+      <button class="fb-chip" data-filter-type="quarter" data-filter="earlier">Earlier</button>
+    </div>
+    <div class="fb-row">
+      <span class="fb-label">Search</span>
+      <div class="fb-search"><input type="search" id="dfbArchiveSearch" placeholder="Ticker, term, or title (e.g. O, JEPI, Half-Life, refinancing)" aria-label="Search archive"></div>
+      <span class="fb-summary" id="dfbArchiveSummary">— specimens shown —</span>
+    </div>
+  </div>
+
+  <div class="dispatch-list" id="dfbArchiveList">
+    <article class="dispatch-row" data-sector="meta" data-framework="bhl,3clocks" data-quarter="q2-26" data-tags="JEPI O ARCC half-life durability">
+      <div class="dr-code">Disp. 068</div>
+      <div class="dr-body"><div class="dr-title">Same Yield. <em>Different Half-Life.</em></div><div class="dr-tagline">Why three monthly distributions are not paid from the same clock.</div></div>
+      <div class="dr-meta">XXIII · V · MMXXVI<br><span class="dm-tag">Meta</span><span class="dm-tag">BHL™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="reit" data-framework="3clocks" data-quarter="q2-26" data-tags="net lease refinancing calendar industry">
+      <div class="dr-code">Disp. 067</div>
+      <div class="dr-body"><div class="dr-title">Three Calendars · <em>One Industry.</em></div><div class="dr-tagline">Same industry, three very different refinancing calendars.</div></div>
+      <div class="dr-meta">XXII · V · MMXXVI<br><span class="dm-tag">REIT</span><span class="dm-tag">3 Clocks™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="meta" data-framework="bbb" data-quarter="q2-26" data-tags="BBB cliff credit lens">
+      <div class="dr-code">Disp. 066</div>
+      <div class="dr-body"><div class="dr-title">The BBB- Cliff™ Lens, <em>Applied.</em></div><div class="dr-tagline">What changes structurally at the credit cliff — and what does not.</div></div>
+      <div class="dr-meta">XV · V · MMXXVI<br><span class="dm-tag">Meta</span><span class="dm-tag">BBB- Cliff™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="reit" data-framework="bhl,3clocks" data-quarter="q2-26" data-tags="O Realty Income net lease coverage">
+      <div class="dr-code">Disp. 062</div>
+      <div class="dr-body"><div class="dr-title">Realty Income — <em>Coverage Today.</em></div><div class="dr-tagline">AFFO coverage, the BBB+ buffer, and the refinancing wall mapped.</div></div>
+      <div class="dr-meta">VIII · IV · MMXXVI<br><span class="dm-tag">REIT · Net Lease</span><span class="dm-tag">BHL™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="bdc" data-framework="bhl" data-quarter="q2-26" data-tags="ARCC Ares Capital non-accrual NII">
+      <div class="dr-code">Disp. 049</div>
+      <div class="dr-body"><div class="dr-title">ARCC — <em>Non-Accrual Drift.</em></div><div class="dr-tagline">Why a 0.3 pp move on fair value matters more than the headline.</div></div>
+      <div class="dr-meta">XII · IV · MMXXVI<br><span class="dm-tag">BDC</span><span class="dm-tag">BHL™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="covcall" data-framework="bhl" data-quarter="q2-26" data-tags="JEPI cov-call option premium distribution">
+      <div class="dr-code">Disp. 045</div>
+      <div class="dr-body"><div class="dr-title">JEPI Mechanics · <em>Four Sources.</em></div><div class="dr-tagline">The four sources of the trailing distribution, separated and labeled.</div></div>
+      <div class="dr-meta">IX · IV · MMXXVI<br><span class="dm-tag">Cov-Call</span><span class="dm-tag">BHL™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="meta" data-framework="3clocks" data-quarter="q1-26" data-tags="three clocks framework coverage maturity">
+      <div class="dr-code">Disp. 028</div>
+      <div class="dr-body"><div class="dr-title">Three Clocks™ — <em>Introduced.</em></div><div class="dr-tagline">Coverage today · Maturity tomorrow · Market access when tomorrow arrives.</div></div>
+      <div class="dr-meta">XXVIII · II · MMXXVI<br><span class="dm-tag">Meta</span><span class="dm-tag">3 Clocks™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="reit" data-framework="bhl" data-quarter="q1-26" data-tags="PSA Public Storage self-storage">
+      <div class="dr-code">Disp. 026</div>
+      <div class="dr-body"><div class="dr-title">Public Storage — <em>What A-rated Buys.</em></div><div class="dr-tagline">An A-rated balance sheet, the cost of carrying it, and what it earns the issuer.</div></div>
+      <div class="dr-meta">XVIII · II · MMXXVI<br><span class="dm-tag">REIT · Storage</span><span class="dm-tag">BHL™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="meta" data-framework="bhl" data-quarter="q1-26" data-tags="buffer half-life worked example method">
+      <div class="dr-code">Disp. 022</div>
+      <div class="dr-body"><div class="dr-title">Buffer Half-Life™ · <em>Worked Method.</em></div><div class="dr-tagline">The foundational Bureau method, with a worked hypothetical case.</div></div>
+      <div class="dr-meta">VI · II · MMXXVI<br><span class="dm-tag">Meta</span><span class="dm-tag">BHL™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="meta" data-framework="bhl,3clocks" data-quarter="q1-26" data-tags="refinancing curve maturity wall structural">
+      <div class="dr-code">Disp. 019</div>
+      <div class="dr-body"><div class="dr-title">The Refinancing Curve · <em>Mapped.</em></div><div class="dr-tagline">A picture of where the maturity wall sits versus the credit spread.</div></div>
+      <div class="dr-meta">II · II · MMXXVI<br><span class="dm-tag">Meta</span><span class="dm-tag">3 Clocks™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="mlp" data-framework="bhl" data-quarter="q4-25" data-tags="EPD Enterprise midstream pipeline">
+      <div class="dr-code">Disp. 015</div>
+      <div class="dr-body"><div class="dr-title">Enterprise — <em>Distribution Coverage.</em></div><div class="dr-tagline">Long-dated debt, contracted cash flow, and the distribution stability question.</div></div>
+      <div class="dr-meta">XX · XII · MMXXV<br><span class="dm-tag">MLP</span><span class="dm-tag">BHL™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="cef" data-framework="bhl" data-quarter="q4-25" data-tags="ECC OXLC CLO equity CEF">
+      <div class="dr-code">Disp. 011</div>
+      <div class="dr-body"><div class="dr-title">CLO CEFs — <em>Structural Reading.</em></div><div class="dr-tagline">Why the same headline yield is paid from very different engines.</div></div>
+      <div class="dr-meta">VIII · XII · MMXXV<br><span class="dm-tag">CLO · CEF</span><span class="dm-tag">BHL™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="meta" data-framework="bhl" data-quarter="q3-25" data-tags="income half-life yield durability opening">
+      <div class="dr-code">Disp. 004</div>
+      <div class="dr-body"><div class="dr-title">Why Income Has a <em>Half-Life.</em></div><div class="dr-tagline">The opening case for distinguishing yield from durability.</div></div>
+      <div class="dr-meta">XII · IX · MMXXIV<br><span class="dm-tag">Meta</span><span class="dm-tag">BHL™</span></div>
+    </article>
+    <article class="dispatch-row" data-sector="meta" data-framework="all" data-quarter="earlier" data-tags="bureau position editorial independent">
+      <div class="dr-code">Disp. 002</div>
+      <div class="dr-body"><div class="dr-title">The Bureau Position.</div><div class="dr-tagline">Independent structural diagnostician. Diagnostics, not advice.</div></div>
+      <div class="dr-meta">VI · IX · MMXXIV<br><span class="dm-tag">Meta</span></div>
+    </article>
+  </div>
+
+  <div class="empty-state" id="dfbArchiveEmpty">No dispatches match the current filter. <br>Try clearing one of the chips, or broaden the search.</div>
+
+  <div class="iron-grille" aria-hidden="true"></div>
+
+  <div class="section-intro" style="margin-top:clamp(56px,7vw,80px);">
+    <div class="si-label">— The Archive · Living Record —</div>
+    <h2 class="si-title" style="font-size:clamp(28px,3.5vw,38px);">The shelves <em>keep growing.</em></h2>
+    <p class="si-desc" style="font-size:16px;">New dispatches are filed Mon/Wed/Fri to the top tier; older pieces retire downward. Corrections are filed at the <a href="errata.html" style="color:var(--iron);border-bottom:1px dotted var(--iron);text-decoration:none;">Errata Desk</a>. This is not a prediction — structural assessment.</p>
+  </div>
+</main>
+
+<footer class="page-footer">
+  <div class="pf-marker">— The Archive · Five Tiers · Cast-Iron Stack —</div>
+  <div class="pf-attr">Filed dispatches catalog. Sector · Framework · Quarter filters. Living record.</div>
+  <div class="pf-links"><a href="index.html">Front Desk</a> · <a href="contents.html">Contents</a> · <a href="charter.html">Charter</a> · <a href="concordance.html">Concordance</a> · <a href="errata.html">Errata</a> · <a href="credits.html">Credits</a></div>
+</footer>
+
+<script>
+(function() {
+  var rows = document.querySelectorAll('#dfbArchiveList .dispatch-row');
+  var chips = document.querySelectorAll('.fb-chip');
+  var searchInput = document.getElementById('dfbArchiveSearch');
+  var summary = document.getElementById('dfbArchiveSummary');
+  var emptyState = document.getElementById('dfbArchiveEmpty');
+  var state = { sector: 'all', framework: 'all', quarter: 'all', search: '' };
+  function applyFilters() {
+    var visible = 0;
+    rows.forEach(function(row) {
+      var s = row.getAttribute('data-sector') || '';
+      var f = row.getAttribute('data-framework') || '';
+      var q = row.getAttribute('data-quarter') || '';
+      var t = (row.getAttribute('data-tags') || '').toLowerCase() + ' ' + row.textContent.toLowerCase();
+      var sectorOK = state.sector === 'all' || s === state.sector || s.split(',').indexOf(state.sector) !== -1;
+      var frameworkOK = state.framework === 'all' || f === 'all' || f === state.framework || f.split(',').indexOf(state.framework) !== -1;
+      var quarterOK = state.quarter === 'all' || q === state.quarter;
+      var searchOK = !state.search || t.indexOf(state.search) !== -1;
+      var show = sectorOK && frameworkOK && quarterOK && searchOK;
+      row.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    summary.textContent = visible + ' specimen' + (visible === 1 ? '' : 's') + ' shown';
+    emptyState.classList.toggle('visible', visible === 0);
+  }
+  chips.forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      var type = chip.getAttribute('data-filter-type');
+      var val = chip.getAttribute('data-filter');
+      document.querySelectorAll('.fb-chip[data-filter-type="' + type + '"]').forEach(function(c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      state[type] = val;
+      applyFilters();
+    });
+  });
+  if (searchInput) {
+    var to = null;
+    searchInput.addEventListener('input', function() {
+      clearTimeout(to);
+      to = setTimeout(function() { state.search = searchInput.value.trim().toLowerCase(); applyFilters(); }, 150);
+    });
+  }
+  applyFilters();
+})();
+</script>
+</body>
+</html>
