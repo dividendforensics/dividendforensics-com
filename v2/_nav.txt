@@ -1,0 +1,12 @@
+<nav class="nav"><div class="nav-in">
+  <a class="brand" href="index.html"><b>Dividend Forensics Bureau</b><span>Structural Income Desk&trade;</span></a>
+  <ul id="m">
+    <li><a href="index.html" __H__>Home</a></li>
+    <li><a href="learn.html" __L__>Learn</a></li>
+    <li><a href="research.html" __R__>Research</a></li>
+    <li><a href="tools.html" __T__>Tools</a></li>
+    <li><a href="about.html" __A__>About</a></li>
+  </ul>
+  <a class="nav-cta" href="__CK__" target="_blank" rel="noopener">Free Checklist</a>
+  <button class="burger" onclick="document.getElementById('m').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+</div></nav>
