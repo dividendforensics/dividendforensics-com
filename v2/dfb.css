@@ -64,7 +64,8 @@ a.card:hover{background:var(--ink-3)}
 /* list rows */
 .rows{border-top:1px solid var(--line-2)}
 .row{display:block;padding:26px 0;border-bottom:1px solid var(--line-2);text-decoration:none;transition:.18s}
-.row:hover{background:rgba(244,240,230,.03)}
+.row{border-left:2px solid transparent;padding-left:0}
+.row:hover,.row:focus-visible{background:rgba(244,240,230,.035);border-left-color:var(--gold);padding-left:18px;outline:none}
 .row .rmeta{display:block;font-family:var(--mono);font-size:12.5px;color:var(--gold-deep);letter-spacing:.6px;margin-top:12px;text-transform:uppercase}
 .row .rt{display:block;font-family:var(--serif);font-size:22px;line-height:1.32;color:var(--cream)}
 .row .rd{display:block;font-size:15.5px;color:var(--cream-dim);margin-top:8px;line-height:1.6;max-width:72ch}
@@ -97,9 +98,29 @@ a.card:hover{background:var(--ink-3)}
 .art .disc{margin-top:52px;padding-top:22px;border-top:1px solid var(--line-2);font-size:14px;color:var(--cream-mute);line-height:1.7}
 .art .nextup{margin-top:44px;padding:26px 28px;background:var(--ink-2);border-left:2px solid var(--gold)}
 .art .nextup .kicker{display:block;margin-bottom:10px}
-.art .nextup a{font-family:var(--serif);font-size:20px;color:var(--cream);text-decoration:none;border-bottom:1px solid var(--line)}
+.art .nextup a{display:inline-flex;align-items:baseline;gap:.55rem;font-family:var(--serif);font-size:20px;line-height:1.4;color:var(--cream);text-decoration:none;border-bottom:1px solid var(--line);transition:.18s}
+.art .nextup a:hover{border-bottom-color:var(--gold);color:var(--gold-soft)}
+.art .nextup a .arw{flex:0 0 auto}
 .tool{display:grid;grid-template-columns:1.15fr 1fr;gap:0;background:var(--line-2);border:1px solid var(--line-2)}
 @media(max-width:860px){.tool{grid-template-columns:1fr}}
 .tool>div{background:var(--ink);padding:38px 34px}
 .tool ol{margin:18px 0 0 20px;font-size:15.5px;color:var(--cream-dim);line-height:1.9}
 .badge{display:inline-block;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);padding:5px 11px;margin-bottom:16px}
+
+/* small phones: keep the masthead on one line */
+@media(max-width:560px){
+  .nav-in{padding:12px 18px;gap:12px}
+  .brand{flex-direction:column;gap:2px}
+  .brand b{font-size:15.5px;line-height:1.15}
+  .brand span{font-size:8px;letter-spacing:1.8px}
+  .nav-cta{padding:8px 11px;font-size:11px;letter-spacing:.4px}
+  .wrap{padding:0 18px}
+  .card{padding:26px 22px}
+  .method{padding:24px 22px}
+  .method p{font-size:18px}
+  .art-wrap{padding:0 18px}
+  .art p{font-size:17px}
+}
+@media(max-width:400px){
+  .brand span{display:none}
+}
