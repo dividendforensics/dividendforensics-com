@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /_legacy/
 
 Sitemap: https://dividendforensics.com/sitemap.xml
