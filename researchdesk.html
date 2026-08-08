@@ -1,0 +1,508 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research Desk &middot; Structural Income Research For Professional Investors</title>
+<meta name="description" content="Filing-level research on dividend coverage, capital structure, maturity schedules and financing access. No positions, no ratings, no price targets. For institutions, family offices, allocators and professional investors.">
+<meta name="author" content="Dividend Forensics Bureau">
+<link rel="canonical" href="https://dividendforensics.com/research-desk.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Dividend Forensics Bureau">
+<meta property="og:title" content="Research Desk &middot; Structural Income Research For Professional Investors">
+<meta property="og:description" content="Filing-level research on dividend coverage, capital structure, maturity schedules and financing access. Every reconstructed schedule is tied back to the issuer's stated total before publication.">
+<meta property="og:url" content="https://dividendforensics.com/research-desk.html">
+<meta property="og:image" content="https://dividendforensics.com/img/report001-cover.png">
+<meta property="og:image:width" content="1600"><meta property="og:image:height" content="1200">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07111B">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="dfb.css">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   RESEARCH DESK — Sovereign Ink + Forensic Ledger
+   Brass = authority.  Oxidized teal = verification, never a button.
+   Mono = filing trace.  Three tracks + evidence rail = DFB structure.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --ink:#07111B; --ink-2:#0D1824; --ink-3:#111F2E; --archive:#050B12;
+  --cream:#F2EEE5; --cream-dim:#AAB4C2; --cream-mute:#8F9BA8;
+  --gold:#C5A15B; --gold-deep:#8D713F; --gold-soft:#D7B97C;
+  --teal:#5F817B; --teal-dim:#47635D;
+  --rule:#243142; --rule-2:#3A4859;
+  --line:rgba(197,161,91,.22); --line-2:#1B2634;
+}
+body{background:var(--ink)}
+.nav{background:rgba(7,17,27,.9);border-bottom:1px solid var(--rule)}
+.ft{border-top:1px solid var(--rule)}
+.ft-bot{border-top:1px solid var(--line-2)}
+
+/* ── evidence rail ─────────────────────────────────────────────
+   Fixed left coordinate strip. Marks position in the document,
+   not a rating. Desktop only. */
+.rd-rail{position:fixed;left:30px;top:50%;transform:translateY(-50%);z-index:40;display:none}
+@media(min-width:1460px){.rd-rail{display:block}}
+.rd-rail::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:1px;background:var(--rule)}
+.rd-rail a{display:flex;align-items:center;gap:13px;text-decoration:none;padding:8px 0}
+.rd-rail i{width:11px;height:11px;flex:none;position:relative}
+.rd-rail i::after{content:"";position:absolute;left:3.5px;top:3.5px;width:4px;height:4px;
+  background:var(--rule-2);border-radius:50%;transition:.3s}
+.rd-rail a.on i::after{background:var(--gold);width:6px;height:6px;left:2.5px;top:2.5px}
+.rd-rail b{font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:1.9px;
+  text-transform:uppercase;color:var(--rule-2);white-space:nowrap;transition:.3s}
+.rd-rail a.on b{color:var(--cream-mute)}
+.rd-rail a:hover b{color:var(--cream-dim)}
+
+/* ── hero ──────────────────────────────────────────────────────── */
+.rd-hero{padding:112px 0 0;position:relative;overflow:hidden}
+.rd-hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(112% 74% at 20% 0%, #0E1E2E 0%, transparent 62%)}
+.rd-hero>*{position:relative}
+.rd-eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:4.4px;text-transform:uppercase;
+  color:var(--gold);font-weight:500}
+.rd-h1{font-family:var(--display);font-weight:300;font-size:clamp(42px,6.6vw,84px);
+  line-height:.99;letter-spacing:-.024em;margin-top:30px;max-width:15ch;color:#F9F6EF}
+.rd-lede{font-family:var(--serif);font-size:clamp(20px,2.35vw,28px);line-height:1.48;
+  color:var(--cream-dim);margin-top:34px;max-width:60ch}
+.rd-for{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11.5px;letter-spacing:2.4px;text-transform:uppercase;
+  color:var(--cream-mute);max-width:72ch;line-height:2.1}
+
+/* stat bar — the tie rule under each figure is the accountant's total mark */
+.rd-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-2);
+  margin-top:74px;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.rd-stat{background:var(--ink);padding:38px 32px 34px}
+.rd-stat b{display:block;font-family:var(--mono);font-size:clamp(38px,5vw,64px);
+  font-weight:500;color:var(--gold);line-height:.95;font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em}
+.rd-stat.v b{color:var(--teal)}
+.rd-stat b::after{content:"";display:block;width:46px;height:3px;margin-top:16px;
+  border-top:1px solid var(--gold-deep);border-bottom:1px solid var(--gold-deep)}
+.rd-stat.v b::after{border-color:var(--teal-dim)}
+.rd-stat span{display:block;margin-top:17px;font-size:12.5px;line-height:1.6;color:var(--cream-mute)}
+
+/* ── section frame — three brightness steps, evidence darkest ──── */
+.rd-sec{padding:100px 0;border-top:1px solid var(--line-2)}
+.rd-sec.lift{background:var(--ink-2)}
+.rd-sec.archive{background:var(--archive);border-top-color:var(--rule)}
+.rd-lab{font-family:var(--mono);font-size:10.5px;letter-spacing:3.8px;text-transform:uppercase;
+  color:var(--gold);font-weight:500}
+.rd-h2{font-family:var(--display);font-weight:300;font-size:clamp(30px,3.9vw,50px);
+  line-height:1.08;letter-spacing:-.018em;margin-top:20px;color:#F9F6EF;max-width:19ch}
+.rd-sub{font-size:16.5px;line-height:1.74;color:var(--cream-dim);margin-top:22px;max-width:64ch}
+
+/* ── numbered ledger list ──────────────────────────────────────── */
+.rd-list{margin-top:48px;border-top:1px solid var(--line-2)}
+.rd-row{display:grid;grid-template-columns:66px 1fr;gap:28px;padding:28px 0;
+  border-bottom:1px solid var(--line-2);align-items:start}
+.rd-row i{font-family:var(--mono);font-style:normal;font-size:11.5px;color:var(--gold-deep);
+  letter-spacing:1.6px;padding-top:7px}
+.rd-row h4{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--cream);line-height:1.28}
+.rd-row p{margin-top:10px;font-size:15px;line-height:1.7;color:var(--cream-mute);max-width:62ch}
+
+/* ── three clocks — a timeline schematic, not a measurement ────── */
+.rd-clocks{margin-top:46px;padding:28px 0 24px;border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);position:relative}
+.rd-clocks>u{position:absolute;right:0;top:-1px;font-family:var(--mono);font-size:10px;
+  letter-spacing:2.6px;color:var(--gold-deep);text-decoration:none;
+  background:var(--ink-2);padding:0 0 0 14px;transform:translateY(-50%)}
+.rd-ck{display:grid;grid-template-columns:158px 1fr 200px;gap:26px;align-items:center;min-height:50px}
+.rd-ck>i{font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:2.2px;
+  text-transform:uppercase;color:var(--cream-dim)}
+.rd-tk{position:relative;height:1px;background:var(--rule)}
+.rd-tk.pending{background:none;border-top:1px dashed var(--rule-2)}
+.rd-tk s{position:absolute;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;
+  border-radius:50%;text-decoration:none}
+.rd-tk s.now{background:var(--gold);left:2%}
+.rd-tk s.date{background:var(--gold);left:72%}
+.rd-tk s.test{border:1px solid var(--teal);background:var(--ink-2);left:72%}
+.rd-ck>em{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--cream-mute)}
+
+/* ── method cards ──────────────────────────────────────────────── */
+.rd-method{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-2);
+  margin-top:1px;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.rd-mc{background:var(--ink-2);padding:36px 32px}
+.rd-mc b{font-family:var(--serif);display:block;font-size:25px;font-weight:500;color:var(--gold-soft)}
+.rd-mc p{margin-top:15px;font-size:14.5px;line-height:1.68;color:var(--cream-mute)}
+
+.rd-principle{margin-top:52px;padding:40px 46px;border-left:2px solid var(--gold);background:var(--ink)}
+.rd-principle p{font-family:var(--serif);font-size:clamp(22px,2.7vw,32px);line-height:1.4;
+  color:#F9F6EF;max-width:44ch}
+.rd-principle span{display:block;margin-top:20px;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:3.2px;text-transform:uppercase;color:var(--gold-deep)}
+
+/* ── evidence ──────────────────────────────────────────────────── */
+.rd-ev{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:52px}
+.rd-fig figure{margin:0}
+.rd-fig img{display:block;width:100%;
+  box-shadow:0 0 0 1px rgba(242,238,229,.14), 0 26px 64px rgba(0,0,0,.6)}
+
+/* the evidence record strip — DFB's own document furniture */
+.rd-rec{border:1px solid var(--rule);padding:15px 17px 14px;margin-bottom:22px;
+  font-family:var(--mono);font-size:11.5px;line-height:1.5;background:rgba(13,24,36,.6)}
+.rd-rec .hd{display:flex;justify-content:space-between;gap:14px;color:var(--gold);
+  letter-spacing:1.9px;padding-bottom:9px;border-bottom:1px solid var(--rule);margin-bottom:10px}
+.rd-rec .r{display:flex;justify-content:space-between;gap:14px;padding:3px 0}
+.rd-rec .r>span:first-child{color:var(--cream-mute);letter-spacing:1.5px}
+.rd-rec .r>span:last-child{color:var(--cream);font-variant-numeric:tabular-nums;text-align:right}
+.rd-rec .r.tie>span:last-child{color:var(--teal);letter-spacing:1.5px}
+
+.rd-cap{margin-top:20px}
+.rd-cap b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:2.4px;
+  text-transform:uppercase;color:var(--gold);font-weight:500}
+.rd-cap p{margin-top:11px;font-size:14.5px;line-height:1.68;color:var(--cream-mute)}
+.rd-cap cite{display:block;margin-top:13px;padding-top:11px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:1.1px;font-style:normal;
+  color:#5A6B80;line-height:1.9}
+.rd-cap cite s{text-decoration:none;white-space:nowrap}
+
+/* observed / not yet observed — the doctrine made visible */
+.rd-obs{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:66px;
+  padding-top:40px;border-top:1px solid var(--rule)}
+.rd-ob{padding-left:22px;border-left:2px solid var(--teal)}
+.rd-ob.no{border-left-color:var(--gold-deep)}
+.rd-ob>b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:3px;
+  text-transform:uppercase;font-weight:500;color:var(--teal);padding-bottom:15px;
+  border-bottom:1px solid var(--rule)}
+.rd-ob.no>b{color:var(--gold-deep)}
+.rd-ob li{list-style:none;padding:15px 0;border-bottom:1px solid var(--line-2);
+  font-size:14.5px;line-height:1.62;color:var(--cream-dim)}
+.rd-ob li:last-child{border-bottom:none}
+.rd-obs-note{margin-top:26px;font-family:var(--mono);font-size:10.5px;letter-spacing:1.8px;
+  text-transform:uppercase;color:#5A6B80}
+
+/* ── what this desk does not do ────────────────────────────────── */
+.rd-not{margin-top:46px;border:1px solid var(--rule);padding:8px 42px 30px}
+.rd-not li{list-style:none;padding:23px 0 23px 42px;border-bottom:1px solid var(--line-2);
+  position:relative;font-size:17px;line-height:1.6;color:var(--cream)}
+.rd-not li:last-child{border-bottom:none}
+.rd-not li::before{content:"";position:absolute;left:0;top:32px;width:20px;height:1px;background:var(--gold-deep)}
+.rd-note{margin-top:28px;font-size:14.5px;line-height:1.72;color:var(--cream-mute);max-width:66ch}
+
+/* ── coverage table ────────────────────────────────────────────── */
+.rd-cov{width:100%;border-collapse:collapse;margin-top:44px}
+.rd-cov th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:2.8px;
+  text-transform:uppercase;color:var(--gold);font-weight:500;padding:0 0 17px;
+  border-bottom:1px solid var(--rule)}
+.rd-cov td{padding:21px 0;border-bottom:1px solid var(--line-2);vertical-align:top;
+  font-size:15.5px;line-height:1.62;color:var(--cream-dim)}
+.rd-cov td:first-child{font-family:var(--serif);font-size:19px;color:var(--cream);width:30%;padding-right:32px}
+
+/* ── inquiry ───────────────────────────────────────────────────── */
+.rd-cta{border:1px solid var(--rule);padding:58px;margin-top:10px;background:var(--ink-2)}
+.rd-form{margin-top:38px;display:grid;gap:20px;max-width:640px}
+.rd-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.rd-form label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--cream-mute);margin-bottom:10px}
+.rd-form input,.rd-form select,.rd-form textarea{width:100%;background:var(--archive);
+  border:1px solid var(--rule);color:var(--cream);padding:14px 16px;font-family:var(--sans);
+  font-size:15px;border-radius:0;transition:border-color .18s}
+.rd-form input:focus,.rd-form select:focus,.rd-form textarea:focus{outline:none;border-color:var(--gold-deep)}
+.rd-form textarea{min-height:132px;resize:vertical;line-height:1.6}
+.rd-form select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold-deep) 50%),linear-gradient(135deg,var(--gold-deep) 50%,transparent 50%);
+  background-position:calc(100% - 19px) 21px, calc(100% - 14px) 21px;background-size:5px 5px;background-repeat:no-repeat}
+.rd-form option{background:var(--ink-3);color:var(--cream)}
+.rd-submit{justify-self:start;background:var(--gold);color:var(--archive);border:none;padding:16px 42px;
+  font-family:var(--sans);font-size:14.5px;font-weight:600;letter-spacing:.4px;cursor:pointer;
+  border-radius:0;transition:background .18s}
+.rd-submit:hover{background:var(--gold-soft)}
+.rd-alt{margin-top:32px;padding-top:28px;border-top:1px solid var(--line-2);
+  font-size:14.5px;color:var(--cream-mute);line-height:1.75}
+.rd-alt a{color:var(--gold-soft)}
+
+@media(max-width:920px){
+  .rd-stats,.rd-method{grid-template-columns:1fr}
+  .rd-ev,.rd-obs{grid-template-columns:1fr;gap:48px}
+  .rd-2{grid-template-columns:1fr}
+  .rd-cta{padding:34px 24px}
+  .rd-principle{padding:28px 24px}
+  .rd-not{padding:6px 24px 22px}
+  .rd-row{grid-template-columns:1fr;gap:10px}
+  .rd-ck{grid-template-columns:1fr;gap:9px;min-height:0;padding:15px 0}
+  .rd-ck>em{grid-row:3}
+  .rd-clocks>u{position:static;display:block;transform:none;background:none;padding:0 0 16px}
+  .rd-cov td:first-child{width:auto;display:block;padding-bottom:6px}
+  .rd-cov td{display:block;border-bottom:none;padding:14px 0 0}
+  .rd-cov tr{display:block;border-bottom:1px solid var(--line-2);padding-bottom:18px}
+  .rd-hero{padding-top:76px}
+  .rd-sec{padding:70px 0}
+}
+@media(prefers-reduced-motion:reduce){.rd-rail *{transition:none}}
+</style>
+</head><body>
+
+<nav class="nav"><div class="nav-in">
+  <a class="brand" href="index.html"><b>Dividend Forensics Bureau</b><span>Structural Income Desk&trade;</span></a>
+  <ul id="m">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="learn.html">Learn</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="research-desk.html" aria-current="page">Research Desk</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a class="nav-cta" href="#inquiries">Research Inquiries</a>
+  <button class="burger" onclick="document.getElementById('m').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+</div></nav>
+
+<!-- ═══ EVIDENCE RAIL ═══ -->
+<nav class="rd-rail" aria-label="Section index">
+  <a href="#s1"><i></i><b>&sect;01 Desk</b></a>
+  <a href="#s2"><i></i><b>&sect;02 Sequence</b></a>
+  <a href="#s3"><i></i><b>&sect;03 Method</b></a>
+  <a href="#s4"><i></i><b>&sect;04 Evidence</b></a>
+  <a href="#s5"><i></i><b>&sect;05 Scope</b></a>
+  <a href="#s6"><i></i><b>&sect;06 Coverage</b></a>
+  <a href="#s7"><i></i><b>&sect;07 Inquiry</b></a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="rd-hero" id="s1"><div class="wrap">
+  <div class="rd-eyebrow">Dividend Forensics Bureau &nbsp;&middot;&nbsp; Structural Income Desk&trade;</div>
+  <h1 class="rd-h1">Structural income research for professional investors</h1>
+  <p class="rd-lede">Filing-level work on dividend coverage, capital structure, maturity schedules and financing access. Every reported figure or calculation traces to issuer disclosures and stated arithmetic. Every reconstructed schedule is tied back to the issuer&rsquo;s stated total before publication.</p>
+  <div class="rd-for">For institutions, family offices, allocators, media and professional investors</div>
+
+  <div class="rd-stats">
+    <div class="rd-stat"><b>82</b><span>Published pieces across REITs, BDCs, mortgage REITs, CLO and closed-end structures, midstream, utilities, telecom and dividend-paying operating companies</span></div>
+    <div class="rd-stat v"><b>8 / 8</b><span>Reconstructed debt schedules in Report No. 001 that tie exactly to issuer-reported totals. The audit trail is published, not asserted</span></div>
+    <div class="rd-stat"><b>0</b><span>Positions held. No ratings, no price targets, no recommendations, no transaction mandates</span></div>
+  </div>
+</div></header>
+
+<!-- ═══ WHAT ═══ -->
+<section class="rd-sec" id="s2"><div class="wrap">
+  <div class="rd-lab">What the desk does</div>
+  <h2 class="rd-h2">Five things, read in the order the cash moves</h2>
+  <p class="rd-sub">A dividend is the last event in a sequence. The work reconstructs that sequence from primary filings rather than inferring it from a payout ratio.</p>
+
+  <div class="rd-list">
+    <div class="rd-row"><i>01</i><div>
+      <h4>Payout structure</h4>
+      <p>Coverage measured against each issuer&rsquo;s own adjusted measure, on the period the issuer reported and on the period it guided. Where the two disagree, both are shown and the denominators are named.</p>
+    </div></div>
+    <div class="rd-row"><i>02</i><div>
+      <h4>Debt maturity reconstruction</h4>
+      <p>Year-by-year schedules rebuilt by debt type from supplemental packages, then summed and tied to the issuer&rsquo;s stated total before any reading is drawn from them.</p>
+    </div></div>
+    <div class="rd-row"><i>03</i><div>
+      <h4>Financing events</h4>
+      <p>Issuance, retirement, term-loan draws, swap terms, forward equity and settlement obligations, taken from 8-K filings and supplementals rather than from summaries.</p>
+    </div></div>
+    <div class="rd-row"><i>04</i><div>
+      <h4>Covenant and threshold distance</h4>
+      <p>Reported distance to contractual thresholds, carried with the issuer&rsquo;s own caveat on how those ratios should be read. Distance is not translated into borrowing capacity.</p>
+    </div></div>
+    <div class="rd-row"><i>05</i><div>
+      <h4>Issuer-defined reconciliation</h4>
+      <p>Where two companies use the same word for different arithmetic &mdash; cap rate, annualized base rent, adjusted EBITDA &mdash; the definitions are set side by side and the comparison is withheld.</p>
+    </div></div>
+  </div>
+</div></section>
+
+<!-- ═══ METHOD ═══ -->
+<section class="rd-sec lift" id="s3"><div class="wrap">
+  <div class="rd-lab">Method</div>
+  <h2 class="rd-h2">Three frameworks and one rule</h2>
+
+  <div class="rd-clocks">
+    <u>Schematic</u>
+    <div class="rd-ck"><i>Coverage</i><div class="rd-tk"><s class="now"></s></div><em>Measured now</em></div>
+    <div class="rd-ck"><i>Maturity</i><div class="rd-tk"><s class="date"></s></div><em>A scheduled date</em></div>
+    <div class="rd-ck"><i>Market access</i><div class="rd-tk pending"><s class="test"></s></div><em>Tested on that date</em></div>
+  </div>
+
+  <div class="rd-method">
+    <div class="rd-mc"><b>Three Clocks&trade;</b>
+      <p>Coverage today, maturity tomorrow, market access when tomorrow arrives. The three do not run at the same speed, and a single quarter shows their position rather than settling which one matters most.</p></div>
+    <div class="rd-mc"><b>Buffer Half-Life&trade;</b>
+      <p>Coverage measures the surface. Half-life asks how many periods a stated rate of compression would take to halve or exhaust the cushion an issuer currently reports.</p></div>
+    <div class="rd-mc"><b>BBB&minus; Cliff&trade;</b>
+      <p>The distance between the lowest investment-grade rung and the first speculative one is not one notch of risk. Crossing below investment grade can change the eligible buyer base under mandates that restrict speculative-grade holdings.</p></div>
+  </div>
+
+  <div class="rd-principle">
+    <p>Every schedule must tie back to the issuer total before a gap is called &ldquo;not disclosed.&rdquo;</p>
+    <span>Operating rule</span>
+  </div>
+</div></section>
+
+<!-- ═══ EVIDENCE ═══ -->
+<section class="rd-sec archive" id="s4"><div class="wrap">
+  <div class="rd-lab">Evidence &nbsp;&middot;&nbsp; Report No. 001</div>
+  <h2 class="rd-h2">The working papers are published</h2>
+  <p class="rd-sub">Most research asks to be believed. These two pages are reproduced from the Technical Appendix so the method can be inspected before anything is read.</p>
+
+  <div class="rd-ev">
+    <div class="rd-fig"><figure>
+      <div class="rd-rec">
+        <div class="hd"><span>DFB / Evidence record</span><span>001 &middot; A</span></div>
+        <div class="r"><span>Schedules reconstructed</span><span>8</span></div>
+        <div class="r"><span>Tied to issuer total</span><span>8</span></div>
+        <div class="r tie"><span>Status</span><span>Tied &middot; 8 / 8</span></div>
+      </div>
+      <img src="img/report001-recon.png" alt="Reconciliation check from Report No. 001: eight reconstructed schedules tied exactly to issuer-reported totals" loading="lazy">
+      <div class="rd-cap"><b>Reconciliation check &middot; Technical Appendix p.10</b>
+        <p>Eight reconstructed schedules. Eight exact ties to issuer-reported totals. Where a balance was identified by residual rather than stated by the issuer, the derivation is labeled and the two methods are shown to agree.</p>
+        <cite>Sources &mdash; <s>MAA Form 8-K, 29 July 2026, Ex-99.2,</s> accession <s>0001193125-26-323756</s> &nbsp;/&nbsp; <s>W. P. Carey Form 8-K, 28 July 2026, Ex-99.2,</s> accession <s>0001025378-26-000114</s></cite></div>
+    </figure></div>
+
+    <div class="rd-fig"><figure>
+      <div class="rd-rec">
+        <div class="hd"><span>DFB / Evidence record</span><span>001 &middot; B</span></div>
+        <div class="r"><span>Issuer stated total</span><span>$5,691,901K</span></div>
+        <div class="r"><span>Schedule total</span><span>$5,691,901K</span></div>
+        <div class="r tie"><span>Status</span><span>Tied &middot; Exact</span></div>
+      </div>
+      <img src="img/report001-ladder.png" alt="Debt maturity schedule rebuilt by year and debt type from the issuer's second-quarter supplemental" loading="lazy">
+      <div class="rd-cap"><b>Maturity reconstruction &middot; Technical Appendix p.2</b>
+        <p>An issuer reported a 6.0-year weighted average. This is the schedule beneath it, rebuilt by year and by debt type, with commercial paper separated from term maturities and the total tied to $5,691,901 thousand as reported.</p>
+        <cite>Source &mdash; <s>MAA Form 8-K, 29 July 2026, Ex-99.2,</s> accession <s>0001193125-26-323756</s></cite></div>
+    </figure></div>
+  </div>
+
+  <div class="rd-obs">
+    <div class="rd-ob"><b>Observed</b>
+      <ul>
+        <li>$664.0 million of commercial paper outstanding at quarter end, with the $1.5 billion revolver undrawn</li>
+        <li>Four W. P. Carey term-loan and revolver borrowings identified by residual, then confirmed line by line against the debt overview</li>
+        <li>Both issuers publish covenant distances in the quarterly supplemental rather than deferring them to the 10-Q</li>
+      </ul>
+    </div>
+    <div class="rd-ob no"><b>Not yet observed</b>
+      <ul>
+        <li>Currency hedging on the euro-denominated notes</li>
+        <li>Treatment after the December 2027 swap expiries</li>
+        <li>Whether the drawn balance is hedged</li>
+      </ul>
+    </div>
+  </div>
+  <p class="rd-obs-note">Carried forward to the next disclosure. Not estimated, not inferred.</p>
+</div></section>
+
+<!-- ═══ NOT ═══ -->
+<section class="rd-sec" id="s5"><div class="wrap">
+  <div class="rd-lab">Scope</div>
+  <h2 class="rd-h2">What this desk does not do</h2>
+  <p class="rd-sub">Stated plainly, because for a professional reader the constraints are as material as the coverage.</p>
+
+  <ul class="rd-not">
+    <li>No positions in securities covered</li>
+    <li>No ratings or target prices</li>
+    <li>No buy, sell or hold recommendations</li>
+    <li>No transaction mandates</li>
+    <li>Research conclusions are tied to issuer disclosures and stated calculation bases</li>
+  </ul>
+
+  <p class="rd-note">Where a filing does not itemize a cause, no cause is assigned. Where two issuers define a measure differently, the comparison is declined rather than estimated. Unresolved items are listed as unresolved and carried to the next disclosure.</p>
+</div></section>
+
+<!-- ═══ COVERAGE ═══ -->
+<section class="rd-sec lift" id="s6"><div class="wrap">
+  <div class="rd-lab">Coverage</div>
+  <h2 class="rd-h2">Structure, not sector</h2>
+  <p class="rd-sub">The common thread is not an asset class. It is the sequence from distribution to cash generation to capital requirement to maturity to financing access &mdash; which is legible in any issuer that pays one.</p>
+
+  <table class="rd-cov">
+    <tr><th>Segment</th><th>Representative work</th></tr>
+    <tr><td>Net lease REITs</td><td>Realty Income, W. P. Carey, Agree Realty, NNN REIT, Essential Properties, Four Corners, Broadstone, Getty</td></tr>
+    <tr><td>Gaming, data center, towers</td><td>VICI, Gaming &amp; Leisure, Digital Realty, Equinix, American Tower, Crown Castle</td></tr>
+    <tr><td>Residential, industrial, storage, healthcare</td><td>Mid-America, Prologis, STAG, Rexford, Americold, Public Storage, Extra Space, CubeSmart, Healthpeak, Omega, Welltower, Ventas</td></tr>
+    <tr><td>Business development companies</td><td>Ares Capital, Main Street, Blackstone Secured Lending, Goldman Sachs BDC, Blue Owl, non-traded BDC structures, PIK income</td></tr>
+    <tr><td>Mortgage REITs and credit</td><td>AGNC, Annaly, Blackstone Mortgage, Starwood Property</td></tr>
+    <tr><td>CLO and closed-end structures</td><td>Eagle Point, Oxford Lane, XAI Octagon, Cohen &amp; Steers</td></tr>
+    <tr><td>Midstream, utilities, operating companies</td><td>Enterprise Products, Kinder Morgan, Duke, Southern, NextEra, UPS, FedEx, AT&amp;T, Verizon, Brookfield Infrastructure</td></tr>
+  </table>
+</div></section>
+
+<!-- ═══ INQUIRIES ═══ -->
+<section class="rd-sec" id="s7"><div class="wrap">
+  <div class="rd-cta" id="inquiries">
+    <div class="rd-lab">Research inquiries</div>
+    <h2 class="rd-h2" style="max-width:24ch">For readers who use this work professionally</h2>
+    <p class="rd-sub">Coverage requests, methodology questions, data verification, media and speaking. Replies come from the author.</p>
+
+    <!-- FormSubmit hashed endpoint. Resolves to the desk mailbox; no address appears in source. -->
+    <form class="rd-form" action="https://formsubmit.co/ba46f1f257eba5688fcf0b5122a8b335" method="POST">
+      <input type="hidden" name="_subject" value="DFB Research Desk inquiry">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <div class="rd-2">
+        <div><label for="rd-n">Name</label><input id="rd-n" name="Name" type="text" required></div>
+        <div><label for="rd-o">Organization</label><input id="rd-o" name="Organization" type="text" required></div>
+      </div>
+      <div class="rd-2">
+        <div><label for="rd-e">Work email</label><input id="rd-e" name="Email" type="email" required></div>
+        <div><label for="rd-t">Inquiry type</label>
+          <select id="rd-t" name="Inquiry type" required>
+            <option value="">Select</option>
+            <option>Coverage request</option>
+            <option>Methodology question</option>
+            <option>Data verification</option>
+            <option>Media</option>
+            <option>Speaking</option>
+            <option>Other</option>
+          </select></div>
+      </div>
+      <div><label for="rd-m">Message</label><textarea id="rd-m" name="Message" required></textarea></div>
+      <button class="rd-submit" type="submit">Send inquiry</button>
+    </form>
+
+    <div class="rd-alt">
+      Published work is open and requires no inquiry. <a href="research.html">View open research &rarr;</a><br>
+      Report No. 001, a 25-page structural read in two volumes, is available at no charge on the <a href="index.html">home page</a>.
+    </div>
+  </div>
+</div></section>
+
+<footer class="ft"><div class="wrap">
+  <div class="ft-grid">
+    <div>
+      <div class="kicker">Dividend Forensics Bureau</div>
+      <p class="ft-note" style="margin-top:12px">Independent structural research on dividend durability across public markets. Filing-anchored, peer-relative, no positions, no recommendations.</p>
+    </div>
+    <div><h4>Read</h4><ul>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="research-desk.html">Research Desk</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul></div>
+    <div><h4>Elsewhere</h4><ul>
+      <li><a href="https://www.benzinga.com/author/jeong-mo-goo" target="_blank" rel="noopener">Benzinga</a></li>
+      <li><a href="https://x.com/DFBureau" target="_blank" rel="noopener">X</a></li>
+      <li><a href="https://bsky.app/profile/dividendforensics.bsky.social" target="_blank" rel="noopener">Bluesky</a></li>
+      <li><a href="#inquiries">Research inquiries</a></li>
+    </ul></div>
+    <div><h4>Legal</h4><ul>
+      <li><a href="legal.html">Legal</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    The author holds no position in any security mentioned. Structural research, not personalized investment advice. Nothing here is a recommendation to transact in any security.<br>
+    &copy; 2026 Dividend Forensics Bureau &middot; dividendforensics.com
+  </div>
+</div></footer>
+
+<script>
+(function(){
+  var rail = document.querySelector('.rd-rail');
+  if(!rail || !('IntersectionObserver' in window)) return;
+  var links = [].slice.call(rail.querySelectorAll('a'));
+  var map = {};
+  links.forEach(function(a){
+    var el = document.querySelector(a.getAttribute('href'));
+    if(el) map[el.id] = a;
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('on'); });
+        if(map[e.target.id]) map[e.target.id].classList.add('on');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
+})();
+</script>
+</body></html>
