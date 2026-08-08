@@ -1,0 +1,81 @@
+{
+  "_readme": [
+    "이 파일 하나만 고치면 사이트 기사 목록이 전부 갱신됩니다.",
+    "GitHub에서 이 파일을 저장하면 Actions가 index.html / research.html / research-desk.html 을 자동으로 다시 만듭니다.",
+    "HTML은 직접 고치지 마세요. 고쳐도 다음 빌드 때 덮어써집니다.",
+    "",
+    "새 기사 추가 = articles 배열 맨 위에 항목 하나 추가.",
+    "목록 순서 = 배열 순서 그대로. 정렬 안 합니다.",
+    "research.html 그룹 순서 = 각 group 이 배열에서 처음 나온 순서.",
+    "",
+    "따옴표·앰퍼샌드는 그냥 평문으로 쓰세요. &amp; 같은 건 빌더가 알아서 바꿉니다.",
+    "",
+    "필드:",
+    "  url        (필수) 벤징가 기사 주소",
+    "  title      (필수) 사이트에 표시할 제목. BZ 원제와 달라도 됩니다",
+    "  blurb      (필수) 한 줄 요약",
+    "  date       (필수) 표시용 문자열. '2026-08-07' 또는 '2026-06'",
+    "  group      (필수) research.html 의 섹터 그룹 헤더. 예: REIT, BDC, Telecom, Industrials",
+    "  label      (필수) research.html 에 표시할 세부 분류. 예: Net lease, Private credit",
+    "  home       (선택) false 면 첫 페이지에 안 나옵니다. 기본값 true",
+    "  home_title (선택) 첫 페이지에서만 다른 제목을 쓸 때",
+    "  home_label (선택) 첫 페이지에서만 다른 분류를 쓸 때"
+  ],
+
+  "published_count": 83,
+  "_published_count_note": "research-desk.html 히어로의 첫 숫자. 벤징가 CMS 총 발행 건수이며 아래 목록 길이와 다릅니다. 기사 발행될 때 여기 숫자도 같이 올리세요.",
+
+  "articles": [
+    {
+      "url": "https://www.benzinga.com/Opinion/26/08/61036147/agree-realty-vs-nnn-reit-two-70-payouts-4x-unsettled-equity",
+      "title": "Agree Realty vs NNN REIT: Two 70% Payouts, 4x Unsettled Equity",
+      "blurb": "Two payout ratios half a percentage point apart, and two entirely different capital timetables underneath them.",
+      "date": "2026-08-07",
+      "group": "REIT",
+      "label": "Net lease"
+    },
+    {
+      "url": "https://www.benzinga.com/Opinion/26/08/60966066/maa-vs-wp-carey-why-one-reit-dividend-claimed-86-percent-of-core-affo",
+      "title": "Mid-America vs W. P. Carey: Why One Dividend Claimed 86% of Core AFFO",
+      "blurb": "Two REIT dividends and two different amounts of room, read from the same quarter’s supplementals.",
+      "date": "2026-08-05",
+      "group": "REIT",
+      "label": "Residential and net lease"
+    },
+    {
+      "url": "https://www.benzinga.com/Opinion/26/07/60797889/ups-vs-fedex-why-one-dividend-claimed-99-percent-of-free-cash-flow",
+      "title": "UPS vs FedEx: Why One Dividend Claimed 99% of Free Cash Flow",
+      "blurb": "Two familiar dividend names. Two very different amounts of cash left after the payout.",
+      "date": "2026-07-30",
+      "group": "Industrials",
+      "label": "Logistics",
+      "home_label": "Industrials"
+    },
+    {
+      "url": "https://www.benzinga.com/Opinion/26/06/53119480/att-and-verizon-the-higher-yield-has-the-thinner-cushion",
+      "title": "AT&T and Verizon: The Higher Yield Has the Thinner Cushion",
+      "blurb": "The larger yield does not automatically leave more room. Coverage reveals what the percentage hides.",
+      "date": "2026-06",
+      "group": "Telecom",
+      "label": "Telecom"
+    },
+    {
+      "url": "https://www.benzinga.com/Opinion/26/06/53087584/agree-realty-and-global-net-lease-one-yields-4-one-yields-8-the-balance-sheet-sets-the-spread",
+      "title": "Agree Realty and Global Net Lease: One Yields 4%, One Yields 8%. The Balance Sheet Sets the Spread.",
+      "home_title": "Agree Realty and Global Net Lease: One Yields 4%, One Yields 8%",
+      "blurb": "A similar tax structure can hide very different financing costs. The yield gap begins with the balance sheet.",
+      "date": "2026-06",
+      "group": "REIT",
+      "label": "Net lease"
+    },
+    {
+      "url": "https://www.benzinga.com/Opinion/26/06/53065817/covered-not-collected-pik-income-and-the-q1-2026-bdc-distribution-stack",
+      "title": "Covered, Not Collected: PIK Income and the Q1 2026 BDC Distribution Stack",
+      "blurb": "Reported income can support a dividend before the cash is collected. PIK changes what “covered” means.",
+      "date": "2026-06",
+      "group": "BDC",
+      "label": "Private credit",
+      "home": false
+    }
+  ]
+}
