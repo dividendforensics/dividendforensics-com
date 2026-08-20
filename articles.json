@@ -1,7 +1,7 @@
 {
   "_readme": [
     "이 파일 하나만 고치면 사이트 기사 목록이 전부 갱신됩니다.",
-    "GitHub에서 이 파일을 저장하면 Actions가 index.html / research.html / research-desk.html 을 자동으로 다시 만듭니다.",
+    "GitHub에서 이 파일을 저장하면 Actions가 index.html / research.html 을 자동으로 다시 만듭니다.",
     "HTML은 직접 고치지 마세요. 고쳐도 다음 빌드 때 덮어써집니다.",
     "",
     "새 기사 추가 = articles 배열 맨 위에 항목 하나 추가.",
@@ -19,11 +19,14 @@
     "  label      (필수) research.html 에 표시할 세부 분류. 예: Net lease, Private credit",
     "  home       (선택) false 면 첫 페이지에 안 나옵니다. 기본값 true",
     "  home_title (선택) 첫 페이지에서만 다른 제목을 쓸 때",
-    "  home_label (선택) 첫 페이지에서만 다른 분류를 쓸 때"
+    "  home_label (선택) 첫 페이지에서만 다른 분류를 쓸 때",
+    "  case_key   (필수) 사실 확인용 사건 식별자. 연속번호가 아니라 발행사/주제 키. 예: ADC / NNN",
+    "  related_report (선택) 별도 워킹페이퍼가 있을 때만 표시. 예: Report No. 001",
+    "  revision   (선택) 공개된 수정 이력. 없으면 No revisions recorded"
   ],
 
   "published_count": 83,
-  "_published_count_note": "research-desk.html 히어로의 첫 숫자. 벤징가 CMS 총 발행 건수이며 아래 목록 길이와 다릅니다. 기사 발행될 때 여기 숫자도 같이 올리세요.",
+  "_published_count_note": "index.html 데이터 바의 발행 건수. 벤징가 CMS 총 발행 건수이며 아래 목록 길이와 다릅니다. 기사 발행될 때 여기 숫자도 같이 올리세요.",
 
   "articles": [
     {
@@ -32,7 +35,8 @@
       "blurb": "Two payout ratios half a percentage point apart, and two entirely different capital timetables underneath them.",
       "date": "2026-08-07",
       "group": "REIT",
-      "label": "Net lease"
+      "label": "Net lease",
+      "case_key": "ADC / NNN"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/08/60966066/maa-vs-wp-carey-why-one-reit-dividend-claimed-86-percent-of-core-affo",
@@ -40,7 +44,9 @@
       "blurb": "Two REIT dividends and two different amounts of room, read from the same quarter’s supplementals.",
       "date": "2026-08-05",
       "group": "REIT",
-      "label": "Residential and net lease"
+      "label": "Residential and net lease",
+      "case_key": "MAA / WPC",
+      "related_report": "Report No. 001"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/07/60797889/ups-vs-fedex-why-one-dividend-claimed-99-percent-of-free-cash-flow",
@@ -49,7 +55,8 @@
       "date": "2026-07-30",
       "group": "Industrials",
       "label": "Logistics",
-      "home_label": "Industrials"
+      "home_label": "Industrials",
+      "case_key": "UPS / FDX"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/06/53119480/att-and-verizon-the-higher-yield-has-the-thinner-cushion",
@@ -57,7 +64,8 @@
       "blurb": "The larger yield does not automatically leave more room. Coverage reveals what the percentage hides.",
       "date": "2026-06",
       "group": "Telecom",
-      "label": "Telecom"
+      "label": "Telecom",
+      "case_key": "T / VZ"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/06/53087584/agree-realty-and-global-net-lease-one-yields-4-one-yields-8-the-balance-sheet-sets-the-spread",
@@ -66,7 +74,8 @@
       "blurb": "A similar tax structure can hide very different financing costs. The yield gap begins with the balance sheet.",
       "date": "2026-06",
       "group": "REIT",
-      "label": "Net lease"
+      "label": "Net lease",
+      "case_key": "ADC / GNL"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/06/53065817/covered-not-collected-pik-income-and-the-q1-2026-bdc-distribution-stack",
@@ -75,6 +84,7 @@
       "date": "2026-06",
       "group": "BDC",
       "label": "Private credit",
+      "case_key": "BDC / PIK",
       "home": false
     }
   ]

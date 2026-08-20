@@ -6,8 +6,7 @@ articles.json 하나를 읽어서 아래 세 파일의 생성 구간만 다시 �
 
   index.html         ARTICLES:START ~ ARTICLES:END  (대표 1건 + 목록, home:false 제외)
   research.html      ARTICLES:START ~ ARTICLES:END  (group 별 묶음)
-  index.html / research-desk.html
-                     <b data-dfb="count">NN</b>      (발행 건수)
+  index.html         <b data-dfb="count">NN</b>      (발행 건수)
 
 설계 원칙
   - 마커 밖은 절대 건드리지 않는다.
@@ -49,7 +48,7 @@ def esc(s: str) -> str:
 
 # ---------------------------------------------------------------- 검증
 
-REQUIRED = ("url", "title", "blurb", "date", "group", "label")
+REQUIRED = ("url", "title", "blurb", "date", "group", "label", "case_key")
 
 
 def load():
@@ -97,12 +96,35 @@ def row(a, *, home):
     meta = f'{esc(a["date"])} &middot; {esc(label)}'
     if not home:
         meta += " &middot; Read on Benzinga &rarr;"
+    if home:
+        return (
+            f'    <a class="row" href="{a["url"]}" target="_blank" rel="noopener">\n'
+            f'      <span class="rt">{esc(title)}</span>\n'
+            f'      <span class="rd">{esc(a["blurb"])}</span>\n'
+            f'      <span class="rmeta">{meta} &middot; Jeong-Mo Goo &middot; No position</span>\n'
+            f'    </a>\n'
+        )
+
+    related = ""
+    if a.get("related_report"):
+        related = f'        <span>Related working paper &middot; {esc(a["related_report"])}</span>\n'
+    revision = esc(a.get("revision", "None recorded"))
     return (
-        f'    <a class="row" href="{a["url"]}" target="_blank" rel="noopener">\n'
-        f'      <span class="rt">{esc(title)}</span>\n'
-        f'      <span class="rd">{esc(a["blurb"])}</span>\n'
-        f'      <span class="rmeta">{meta}</span>\n'
-        f'    </a>\n'
+        '    <article class="case-ledger">\n'
+        f'      <header class="case-ledger-head"><span>DFB case file</span><b>{esc(a["case_key"])}</b><em>Article &middot; Benzinga</em></header>\n'
+        f'      <a class="case-ledger-main" href="{a["url"]}" target="_blank" rel="noopener">\n'
+        f'        <span class="rt">{esc(title)}</span>\n'
+        f'        <span class="rd">{esc(a["blurb"])}</span>\n'
+        '      </a>\n'
+        '      <footer class="case-ledger-foot">\n'
+        '        <span>Analysis &middot; Jeong-Mo Goo</span>\n'
+        f'        <span>Published &middot; {esc(a["date"])}</span>\n'
+        f'        <span>Site revision &middot; {revision}</span>\n'
+        '        <span>Position &middot; None</span>\n'
+        f'{related}'
+        '        <a href="' + a["url"] + '" target="_blank" rel="noopener">Open article &rarr;</a>\n'
+        '      </footer>\n'
+        '    </article>\n'
     )
 
 
@@ -119,7 +141,7 @@ def build_index(arts):
         f'    <span class="home-case-index">Featured case file</span>\n'
         f'    <span class="home-case-title">{esc(lead_title)}</span>\n'
         f'    <span class="home-case-blurb">{esc(lead["blurb"])}</span>\n'
-        f'    <span class="home-case-meta">{esc(lead["date"])} &middot; {esc(lead_label)} &middot; Read on Benzinga &rarr;</span>\n'
+        f'    <span class="home-case-meta">{esc(lead["date"])} &middot; {esc(lead_label)} &middot; Jeong-Mo Goo &middot; No position &middot; Read on Benzinga &rarr;</span>\n'
         f'  </a>\n'
     )
     rows = "".join(row(a, home=True) for a in rest)
@@ -156,16 +178,6 @@ def splice(path: Path, inner: str) -> str:
     return text[: i + len(START)] + inner + text[j:]
 
 
-def stamp_count(path: Path, n: int) -> str:
-    text = path.read_text(encoding="utf-8")
-    if not COUNT_RE.search(text):
-        raise BuildError(
-            f'{path.name} 에 <b data-dfb="count"> 표식이 없습니다. '
-            "히어로 발행 건수 <b> 태그에 data-dfb=\"count\" 를 남겨두세요."
-        )
-    return COUNT_RE.sub(lambda m: m.group(1) + str(n) + m.group(3), text)
-
-
 # ---------------------------------------------------------------- 진입점
 
 def main():
@@ -182,7 +194,6 @@ def main():
         planned = {
             ROOT / "index.html":         index,
             ROOT / "research.html":      splice(ROOT / "research.html", build_research(arts)),
-            ROOT / "research-desk.html": stamp_count(ROOT / "research-desk.html", cnt),
         }
     except BuildError as e:
         print(f"빌드 중단: {e}", file=sys.stderr)
