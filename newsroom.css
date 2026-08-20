@@ -283,9 +283,61 @@ body:not(.home-page) .art .nextup a:hover{color:var(--desk-orange);border-color:
 /* Evidence records: verifiable authorship and work history, not decorative case-file theatre. */
 body:not(.home-page) .record-note{max-width:760px;margin-top:24px;padding:11px 0;border-top:1px solid #000;border-bottom:1px solid #000;font-family:var(--mono);font-size:10px;line-height:1.55;letter-spacing:.2px;color:#555}
 body:not(.home-page) .record-note b{color:var(--desk-orange);text-transform:uppercase}
+body:not(.home-page) .record-note a{color:#000;font-weight:800;text-decoration-color:var(--desk-orange);text-decoration-thickness:2px}
+
+/* Field guides: orientation first, then the filing-level work. */
+body:not(.home-page) .guide-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:3px solid #000;border-left:1px solid #000}
+body:not(.home-page) .guide-index-card{display:grid;grid-template-columns:42px 1fr 20px;gap:13px;padding:20px 18px;background:#fff;border-right:1px solid #000;border-bottom:1px solid #000;color:#000;text-decoration:none;transition:background .15s}
+body:not(.home-page) .guide-index-card:hover{background:#f0f0eb}
+body:not(.home-page) .guide-index-card>span{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--desk-orange)}
+body:not(.home-page) .guide-index-card b{display:block;font-family:Arial Black,Arial,Helvetica,sans-serif;font-size:22px;line-height:1;letter-spacing:-.8px}
+body:not(.home-page) .guide-index-card p{margin-top:8px;font-size:13px;line-height:1.45;color:#333}
+body:not(.home-page) .guide-index-card small{display:block;margin-top:12px;font-family:var(--mono);font-size:9px;line-height:1.35;letter-spacing:.25px;color:#666}
+body:not(.home-page) .guide-index-card i{font-style:normal;font-size:18px;font-weight:800;color:var(--desk-orange)}
+body:not(.home-page) .guide-banner{margin-top:22px;padding:13px 15px;border-top:2px solid #000;border-bottom:1px solid #000;font-family:var(--mono);font-size:10px;font-weight:700;line-height:1.55;color:#333}
+body:not(.home-page) .guide-banner b{color:var(--desk-orange);text-transform:uppercase}
+body:not(.home-page) .guide-key{display:grid;grid-template-columns:repeat(4,1fr);margin-top:26px;border-top:3px solid #000;border-left:1px solid #000}
+body:not(.home-page) .guide-key>div{padding:14px 15px;background:#fff;border-right:1px solid #000;border-bottom:1px solid #000}
+body:not(.home-page) .guide-key span{display:block;font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--desk-orange)}
+body:not(.home-page) .guide-key b{display:block;margin-top:6px;font-size:13px;line-height:1.25;color:#111}
+body:not(.home-page) .field-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:3px solid #000;border-left:1px solid #000}
+body:not(.home-page) .field-card{padding:23px 22px;background:#fff;border-right:1px solid #000;border-bottom:1px solid #000}
+body:not(.home-page) .field-card h3{margin-top:7px;font-size:23px}
+body:not(.home-page) .field-card>p{margin-top:10px;font-size:14px;line-height:1.52;color:#333}
+body:not(.home-page) .field-card dl{margin-top:18px;border-top:1px solid #aaa}
+body:not(.home-page) .field-card dl>div{display:grid;grid-template-columns:118px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid #bbb}
+body:not(.home-page) .field-card dt{font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.65px;text-transform:uppercase;color:#666}
+body:not(.home-page) .field-card dd{font-size:12px;font-weight:600;line-height:1.42;color:#111}
+body:not(.home-page) .guide-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+body:not(.home-page) .guide-links a{padding:7px 9px;border:1px solid #000;font-family:var(--mono);font-size:9px;font-weight:700;line-height:1.2;color:#000;text-decoration:none}
+body:not(.home-page) .guide-links a:hover{background:var(--desk-orange)}
+body:not(.home-page) .framework-stack{display:grid;gap:28px}
+body:not(.home-page) .framework-panel{padding:24px;background:#fff;border-top:4px solid #000;border-left:1px solid #000;border-right:1px solid #000;border-bottom:1px solid #000}
+body:not(.home-page) .framework-panel-head{display:grid;grid-template-columns:190px 1fr;gap:24px;padding-bottom:18px;border-bottom:1px solid #000}
+body:not(.home-page) .framework-panel h2{margin:6px 0 0;font-size:29px}
+body:not(.home-page) .framework-panel-head p{font-size:14px;line-height:1.52;color:#333}
+body:not(.home-page) .clock-schematic{display:grid;gap:10px;margin-top:22px}
+body:not(.home-page) .clock-line{display:grid;grid-template-columns:144px minmax(0,1fr);gap:14px;align-items:center}
+body:not(.home-page) .clock-line>span{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.55px;text-transform:uppercase;color:#333}
+body:not(.home-page) .clock-track{height:30px;display:flex;border:1px solid #000;background:repeating-linear-gradient(90deg,#fff 0,#fff 19%,#ddd 19.3%,#fff 19.7%,#fff 20%)}
+body:not(.home-page) .clock-mark{display:flex;align-items:center;height:100%;padding:0 9px;background:#000;color:#fff;font-family:var(--mono);font-size:9px;font-weight:700;white-space:nowrap}
+body:not(.home-page) .clock-mark.coverage{width:43%}body:not(.home-page) .clock-mark.maturity{width:68%;margin-left:15%}body:not(.home-page) .clock-mark.access{width:29%;margin-left:58%}
+body:not(.home-page) .framework-caption{margin-top:12px;font-family:var(--mono);font-size:9px;line-height:1.5;letter-spacing:.25px;color:#666}
+body:not(.home-page) .half-life-visual{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+body:not(.home-page) .half-life-track{padding:18px;border:1px solid #000}
+body:not(.home-page) .half-life-track span{display:block;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.65px;text-transform:uppercase;color:#555}
+body:not(.home-page) .buffer-bar{height:34px;margin-top:12px;background:linear-gradient(90deg,var(--desk-orange) 0 100%);border:1px solid #000}
+body:not(.home-page) .buffer-bar.half{width:50%}
+body:not(.home-page) .buffer-bar.low{width:25%}
+body:not(.home-page) .cliff-scale{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:22px;border-top:3px solid #000;border-left:1px solid #000}
+body:not(.home-page) .cliff-scale div{min-height:76px;padding:12px 10px;border-right:1px solid #000;border-bottom:1px solid #000}
+body:not(.home-page) .cliff-scale span{display:block;font-family:var(--mono);font-size:10px;font-weight:700;color:#111}
+body:not(.home-page) .cliff-scale small{display:block;margin-top:9px;font-size:10px;line-height:1.35;color:#555}
+body:not(.home-page) .cliff-scale .edge{background:var(--desk-orange)}
+body:not(.home-page) .cliff-scale .spec{background:#000;color:#fff}.cliff-scale .spec span,.cliff-scale .spec small{color:#fff}
 
 body:not(.home-page) .case-ledger{background:#fff;border-bottom:1px solid #000}
-body:not(.home-page) .case-ledger-head{display:grid;grid-template-columns:140px 1fr auto;gap:18px;align-items:center;padding:10px 0;border-bottom:1px solid #bdbdb7;font-family:var(--mono);font-size:9px;line-height:1.3;text-transform:uppercase;letter-spacing:.7px}
+body:not(.home-page) .case-ledger-head{display:grid;grid-template-columns:140px 1fr auto;gap:18px;align-items:center;padding:10px 0;border-bottom:1px solid #bdbdb7;font-family:var(--mono);font-size:10px;line-height:1.45;text-transform:uppercase;letter-spacing:.55px}
 body:not(.home-page) .case-ledger-head span{color:var(--desk-orange);font-weight:800}
 body:not(.home-page) .case-ledger-head b{font-size:12px;color:#000;letter-spacing:.2px}
 body:not(.home-page) .case-ledger-head em{font-style:normal;color:#666}
@@ -293,7 +345,7 @@ body:not(.home-page) .case-ledger-main{display:block;padding:20px 0 18px;text-de
 body:not(.home-page) .case-ledger-main .rt{display:block;max-width:38ch;font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:800;line-height:1.08;letter-spacing:-.55px;color:#080808;text-wrap:pretty;overflow-wrap:anywhere}
 body:not(.home-page) .case-ledger-main .rd{display:block;max-width:76ch;margin-top:8px;font-size:13px;line-height:1.48;color:#3d3d39}
 body:not(.home-page) .case-ledger-main:hover .rt{color:#1261ff}
-body:not(.home-page) .case-ledger-foot{display:flex;flex-wrap:wrap;gap:0;padding:0 0 12px;font-family:var(--mono);font-size:9px;line-height:1.45;color:#555}
+body:not(.home-page) .case-ledger-foot{display:flex;flex-wrap:wrap;gap:0;padding:0 0 12px;font-family:var(--mono);font-size:10px;line-height:1.5;color:#454545}
 body:not(.home-page) .case-ledger-foot span,
 body:not(.home-page) .case-ledger-foot a{padding:4px 11px;border-left:1px solid #aaa;text-decoration:none}
 body:not(.home-page) .case-ledger-foot span:first-child{padding-left:0;border-left:0}
@@ -496,6 +548,10 @@ body:not(.home-page) .rd-sec.archive .rd-rec .r>span:last-child{color:#ddd}
 
 @media(max-width:860px){
   body:not(.home-page) .nav ul{background:#000;border-color:#333}
+  body:not(.home-page) .guide-index,
+  body:not(.home-page) .field-guide-grid{grid-template-columns:1fr}
+  body:not(.home-page) .guide-key{grid-template-columns:repeat(2,1fr)}
+  body:not(.home-page) .framework-panel-head{grid-template-columns:1fr;gap:8px}
   body:not(.home-page) .tool>div+div{border-left:0;border-top:1px solid #000}
   body:not(.home-page) .rd-stat,
   body:not(.home-page) .rd-mc{border-right:0;border-bottom:1px solid #000}
@@ -514,6 +570,14 @@ body:not(.home-page) .rd-sec.archive .rd-rec .r>span:last-child{color:#ddd}
   body:not(.home-page) .rd-h2{font-size:29px}
   body:not(.home-page) .row .rt{font-size:18px}
   body:not(.home-page) .card{padding:22px 18px}
+  body:not(.home-page) .guide-index-card{grid-template-columns:32px 1fr 16px;padding:18px 15px}
+  body:not(.home-page) .guide-index-card b{font-size:20px}
+  body:not(.home-page) .guide-key{grid-template-columns:1fr}
+  body:not(.home-page) .field-card{padding:20px 16px}
+  body:not(.home-page) .field-card dl>div{grid-template-columns:1fr;gap:3px}
+  body:not(.home-page) .clock-line{grid-template-columns:1fr;gap:5px}body:not(.home-page) .clock-track{margin-bottom:8px}
+  body:not(.home-page) .half-life-visual{grid-template-columns:1fr}
+  body:not(.home-page) .cliff-scale{grid-template-columns:repeat(2,1fr)}
   body:not(.home-page) .case-ledger-head{grid-template-columns:1fr auto;gap:5px 12px}
   body:not(.home-page) .case-ledger-head em{grid-column:1/-1}
   body:not(.home-page) .case-ledger-main .rt{font-size:19px}
