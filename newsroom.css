@@ -372,12 +372,12 @@ body:not(.home-page) .report-ledger-grid span,
 body:not(.home-page) .report-ledger-copy span{display:block;font-family:var(--mono);font-size:8px;font-weight:700;line-height:1.4;letter-spacing:.7px;text-transform:uppercase;color:#666}
 body:not(.home-page) .report-ledger-grid b{display:block;margin-top:6px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.2;color:#000}
 body:not(.home-page) .report-ledger-grid b.verified{color:var(--desk-green)}
-body:not(.home-page) .report-ledger-copy{display:grid;grid-template-columns:.7fr 1.3fr;gap:0;border-bottom:1px solid #000}
+body:not(.home-page) .report-ledger-copy{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid #000}
 body:not(.home-page) .report-ledger-copy>div,
 body:not(.home-page) .report-ledger-copy>p{box-sizing:border-box;min-height:104px;margin:0;padding:18px}
 body:not(.home-page) .report-ledger-copy>div{display:flex;flex-direction:column;justify-content:center;border-right:1px solid #000}
 body:not(.home-page) .report-ledger-copy>div>p{margin:6px 0 0;font-size:13px;line-height:1.48;color:#333}
-body:not(.home-page) .report-ledger-copy>p{display:flex;align-items:center;font-size:13px;line-height:1.48;color:#333}
+body:not(.home-page) .report-ledger-copy>p{display:flex;grid-column:span 2;align-items:center;font-size:13px;line-height:1.48;color:#333}
 
 .membership-page .sec{display:none}
 .membership-no-payment{margin:18px 0 0;font-family:var(--mono);font-size:11px;line-height:1.5;color:#555}
