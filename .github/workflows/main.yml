@@ -4,9 +4,9 @@ on:
   push:
     branches: [main]
     paths:
-      - 'data/articles.json'
-      - 'tools/build_site.py'
-      - '.github/workflows/build-site.yml'
+      - 'articles.json'
+      - 'build_site.py'
+      - '.github/workflows/main.yml'
   workflow_dispatch:
 
 permissions:
@@ -26,8 +26,8 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Rebuild from data/articles.json
-        run: python tools/build_site.py
+      - name: Rebuild from articles.json
+        run: python build_site.py
 
       - name: Commit if changed
         run: |
@@ -39,5 +39,5 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html research.html research-desk.html
-          git commit -m "Rebuild article listings from data/articles.json"
+          git commit -m "Rebuild article listings from articles.json"
           git push

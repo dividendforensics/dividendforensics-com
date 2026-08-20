@@ -2,11 +2,12 @@
 """
 DFB 사이트 빌더.
 
-data/articles.json 하나를 읽어서 아래 세 파일의 생성 구간만 다시 씁니다.
+articles.json 하나를 읽어서 아래 세 파일의 생성 구간만 다시 씁니다.
 
-  index.html         ARTICLES:START ~ ARTICLES:END  (평면 목록, home:false 제외)
+  index.html         ARTICLES:START ~ ARTICLES:END  (대표 1건 + 목록, home:false 제외)
   research.html      ARTICLES:START ~ ARTICLES:END  (group 별 묶음)
-  research-desk.html <b data-dfb="count">NN</b>      (히어로 발행 건수)
+  index.html / research-desk.html
+                     <b data-dfb="count">NN</b>      (발행 건수)
 
 설계 원칙
   - 마커 밖은 절대 건드리지 않는다.
@@ -14,7 +15,7 @@ data/articles.json 하나를 읽어서 아래 세 파일의 생성 구간만 다
   - 검증에 실패하면 아무것도 쓰지 않고 0이 아닌 코드로 죽는다.
     (잘못된 JSON 한 번으로 목록이 통째로 날아가는 것을 막기 위함)
 
-사용:  python tools/build_site.py [--check]
+사용:  python build_site.py [--check]
        --check 를 주면 쓰지 않고 변경 필요 여부만 알려준다 (CI 용).
 """
 
@@ -23,8 +24,8 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data" / "articles.json"
+ROOT = Path(__file__).resolve().parent
+DATA = ROOT / "articles.json"
 
 START = "<!-- ARTICLES:START -->"
 END = "<!-- ARTICLES:END -->"
@@ -58,6 +59,9 @@ def load():
         cfg = json.loads(DATA.read_text(encoding="utf-8"))
     except json.JSONDecodeError as e:
         raise BuildError(f"articles.json 문법 오류 — {e.lineno}행 {e.colno}칸: {e.msg}")
+
+    if not isinstance(cfg, dict):
+        raise BuildError("articles.json 최상위 값은 객체여야 합니다. articles 배열과 published_count 를 확인하세요.")
 
     arts = cfg.get("articles")
     if not isinstance(arts, list) or not arts:
@@ -103,8 +107,24 @@ def row(a, *, home):
 
 
 def build_index(arts):
-    rows = "".join(row(a, home=True) for a in arts if a.get("home", True) is not False)
-    return f'\n  <div class="rows">\n{rows}  </div>\n  '
+    home_arts = [a for a in arts if a.get("home", True) is not False]
+    if not home_arts:
+        raise BuildError("첫 페이지에 표시할 기사가 없습니다. 모든 항목이 home:false 입니다.")
+
+    lead, rest = home_arts[0], home_arts[1:]
+    lead_title = lead.get("home_title") or lead["title"]
+    lead_label = lead.get("home_label") or lead["label"]
+    lead_html = (
+        f'  <a class="home-case-lead" href="{lead["url"]}" target="_blank" rel="noopener">\n'
+        f'    <span class="home-case-index">Featured case file</span>\n'
+        f'    <span class="home-case-title">{esc(lead_title)}</span>\n'
+        f'    <span class="home-case-blurb">{esc(lead["blurb"])}</span>\n'
+        f'    <span class="home-case-meta">{esc(lead["date"])} &middot; {esc(lead_label)} &middot; Read on Benzinga &rarr;</span>\n'
+        f'  </a>\n'
+    )
+    rows = "".join(row(a, home=True) for a in rest)
+    rows_html = f'  <div class="rows home-case-list">\n{rows}  </div>\n' if rows else ""
+    return f'\n<div class="home-cases">\n{lead_html}{rows_html}</div>\n  '
 
 
 def build_research(arts):
@@ -143,7 +163,7 @@ def stamp_count(path: Path, n: int) -> str:
             f'{path.name} 에 <b data-dfb="count"> 표식이 없습니다. '
             "히어로 발행 건수 <b> 태그에 data-dfb=\"count\" 를 남겨두세요."
         )
-    return COUNT_RE.sub(lambda m: m.group(1) + str(n) + m.group(3), text, count=1)
+    return COUNT_RE.sub(lambda m: m.group(1) + str(n) + m.group(3), text)
 
 
 # ---------------------------------------------------------------- 진입점
@@ -152,8 +172,15 @@ def main():
     check = "--check" in sys.argv
     try:
         cfg, arts, cnt = load()
+        index = splice(ROOT / "index.html", build_index(arts))
+        if not COUNT_RE.search(index):
+            raise BuildError(
+                'index.html 에 <b data-dfb="count"> 표식이 없습니다. '
+                '발행 건수 표식을 남겨두세요.'
+            )
+        index = COUNT_RE.sub(lambda m: m.group(1) + str(cnt) + m.group(3), index)
         planned = {
-            ROOT / "index.html":         splice(ROOT / "index.html", build_index(arts)),
+            ROOT / "index.html":         index,
             ROOT / "research.html":      splice(ROOT / "research.html", build_research(arts)),
             ROOT / "research-desk.html": stamp_count(ROOT / "research-desk.html", cnt),
         }

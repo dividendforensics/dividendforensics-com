@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">Dividend Forensics Bureau structural mark</title>
+  <desc id="desc">Three offset evidence rings crossed by a vertical ledger rule and an exact-tie bar.</desc>
+  <defs>
+    <linearGradient id="brass" x1="52" y1="40" x2="266" y2="278" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E4C88F"/>
+      <stop offset=".46" stop-color="#C49A5C"/>
+      <stop offset="1" stop-color="#76572F"/>
+    </linearGradient>
+    <radialGradient id="face" cx="0" cy="0" r="1" gradientTransform="translate(116 92) rotate(45) scale(230)">
+      <stop stop-color="#172638"/>
+      <stop offset=".62" stop-color="#0B1420"/>
+      <stop offset="1" stop-color="#050A10"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#000" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <circle cx="160" cy="160" r="125" fill="url(#face)" stroke="#2B3949" stroke-width="1"/>
+    <circle cx="160" cy="160" r="104" fill="none" stroke="url(#brass)" stroke-width="2" stroke-dasharray="164 18 36 28 132 20"/>
+    <circle cx="160" cy="160" r="77" fill="none" stroke="#617D78" stroke-width="1.5" stroke-dasharray="88 14 128 26" transform="rotate(-22 160 160)"/>
+    <circle cx="160" cy="160" r="51" fill="none" stroke="#C49A5C" stroke-opacity=".45" stroke-width="1"/>
+    <path d="M160 54v212" stroke="url(#brass)" stroke-width="2"/>
+    <path d="M92 160h136" stroke="#F4F0E6" stroke-opacity=".72" stroke-width="1"/>
+    <path d="M119 165h82" stroke="#617D78" stroke-width="4"/>
+    <circle cx="160" cy="160" r="7" fill="#C49A5C"/>
+    <path d="M160 35v12M160 273v12M35 160h12M273 160h12" stroke="#C49A5C" stroke-width="1.5"/>
+  </g>
+</svg>
