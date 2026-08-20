@@ -58,7 +58,8 @@
       "group": "REIT",
       "label": "Gaming net lease",
       "case_key": "VICI / GLPI",
-      "case_slug": "vici-glpi"
+      "case_slug": "vici-glpi",
+      "home_class": "row-vici"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/08/61036147/agree-realty-vs-nnn-reit-two-70-payouts-4x-unsettled-equity",

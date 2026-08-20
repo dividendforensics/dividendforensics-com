@@ -98,8 +98,11 @@ def row(a, *, home):
     if not home:
         meta += " &middot; Read on Benzinga &rarr;"
     if home:
+        row_class = "row"
+        if a.get("home_class"):
+            row_class += " " + a["home_class"]
         return (
-            f'    <a class="row" href="{case_url}">\n'
+            f'    <a class="{row_class}" href="{case_url}">\n'
             f'      <span class="rt">{esc(title)}</span>\n'
             f'      <span class="rd">{esc(a["blurb"])}</span>\n'
             f'      <span class="rmeta">{meta} &middot; Jeong-Mo Goo &middot; No position</span>\n'
