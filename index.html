@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="dfb.css">
+<link rel="stylesheet" href="newsroom.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Dividend Forensics Bureau","alternateName":"Structural Income Desk","url":"https://dividendforensics.com/","logo":"https://dividendforensics.com/img/og.png","description":"Independent structural research on dividend durability across REITs, BDCs and other income assets.","sameAs":["https://www.benzinga.com/author/jeong-mo-goo","https://muckrack.com/jeong-mo-goo","https://x.com/DFBureau","https://bsky.app/profile/dividendforensics.bsky.social","https://dividendforensics.lemonsqueezy.com"]}</script>
 </head><body class="home-page">
 <nav class="nav"><div class="nav-in">
@@ -29,11 +30,19 @@
   <button class="burger" onclick="document.getElementById('m').classList.toggle('open')" aria-label="Menu">&#9776;</button>
 </div></nav>
 
+<section class="home-marketbar" aria-label="Dividend Forensics desk data"><div class="home-marketbar-in">
+  <span class="home-marketbar-brand">DFB DATA</span>
+  <div><span>Published</span><b data-dfb="count">83</b><small>Total</small></div>
+  <div><span>Reconciled</span><b>8 / 8</b><small>Exact</small></div>
+  <div><span>Positions</span><b>0</b><small>Independent</small></div>
+  <div><span>Coverage</span><b>REIT · BDC</b><small>Income assets</small></div>
+  <time datetime="2026-08-07">Updated 07 AUG 2026</time>
+</div></section>
 
 <header class="home-hero">
   <div class="wrap home-hero-grid">
     <div class="home-hero-copy">
-      <div class="kicker">Dividend Forensics Bureau &nbsp;/&nbsp; Filed research</div>
+      <div class="kicker">Top story &nbsp;/&nbsp; Structural income</div>
       <h1>A dividend is the last line of the investigation.</h1>
       <p class="lede">We reconstruct the cash structure above it &mdash; property, rent, debt and market access &mdash; before judging durability.</p>
       <div class="home-hero-note"><span>Primary filings</span><span>Issuer arithmetic</span><span>Peer-relative</span></div>
@@ -43,11 +52,11 @@
       </div>
     </div>
 
-    <aside class="home-dossier" aria-label="Report No. 001 evidence sheet">
-      <div class="home-dossier-head"><span>Research file / 001</span><b>Public record</b></div>
+    <aside class="home-dossier" aria-label="Report No. 001 reconciliation evidence">
+      <div class="home-dossier-head"><span>Evidence board / 001</span><b>Exact tie</b></div>
       <figure class="home-dossier-document">
-        <img src="img/report001-cover.png" alt="Report No. 001, MAA versus W. P. Carey" width="1600" height="1200" fetchpriority="high">
-        <figcaption>Core report and technical appendix &middot; issued 01 August 2026</figcaption>
+        <img src="img/report001-recon.png" alt="Eight reconstructed schedules reconciled to issuer-reported totals" width="1242" height="1437" fetchpriority="high">
+        <figcaption>Technical appendix &middot; reconciliation control &middot; 8 schedules</figcaption>
       </figure>
       <dl class="home-dossier-ledger">
         <div><dt>Source basis</dt><dd>Q2 filings and supplements</dd></div>
@@ -57,36 +66,6 @@
     </aside>
   </div>
 </header>
-
-<section class="home-proof" aria-label="Publication evidence"><div class="wrap home-proof-grid">
-  <div class="home-proof-label"><span>Evidence ledger</span><b>Public record</b></div>
-  <div class="home-proof-item"><b data-dfb="count">83</b><span>Published pieces</span></div>
-  <div class="home-proof-item verified"><b>8 / 8</b><span>Reconstructed schedules tied</span></div>
-  <div class="home-proof-item"><b>0</b><span>Positions, ratings or recommendations</span></div>
-</div></section>
-
-<section class="home-directory"><div class="wrap">
-  <div class="home-directory-head"><span class="kicker">The desk</span><p>Three entrances, one evidence standard.</p></div>
-  <div class="home-directory-grid">
-    <a href="learn.html"><span>01</span><div><h3>Learn</h3><p>Understand the machinery before judging the payout.</p></div><i>&rarr;</i></a>
-    <a href="research.html"><span>02</span><div><h3>Research</h3><p>Read filing-anchored company and sector diagnostics.</p></div><i>&rarr;</i></a>
-    <a href="tools.html"><span>03</span><div><h3>Tools</h3><p>Use the same sequence to inspect an income asset.</p></div><i>&rarr;</i></a>
-  </div>
-</div></section>
-
-<section class="home-method"><div class="wrap home-method-grid">
-  <div>
-    <div class="kicker">Operating sequence</div>
-    <h2>A yield is an output. The investigation begins upstream.</h2>
-    <p class="lede">Every piece follows the cash in the same order, names the denominator, and separates what was observed from what remains untested.</p>
-  </div>
-  <ol class="home-sequence">
-    <li><b>01</b><span>Property</span><small>What produces the economics?</small></li>
-    <li><b>02</b><span>Rent / cash</span><small>What reaches the issuer?</small></li>
-    <li><b>03</b><span>Debt</span><small>What claims the cash first?</small></li>
-    <li><b>04</b><span>Payout</span><small>What remains distributable?</small></li>
-  </ol>
-</div></section>
 
 <section class="home-latest"><div class="wrap">
   <div class="home-section-head"><div><span class="kicker">Published case files</span><h2>Latest structural findings</h2></div><a href="research.html">View all research &rarr;</a></div>
@@ -122,6 +101,29 @@
   </div>
 </div>
   <!-- ARTICLES:END -->
+</div></section>
+
+<section class="home-directory"><div class="wrap">
+  <div class="home-directory-head"><span class="kicker">The desk</span><p>Three entrances, one evidence standard.</p></div>
+  <div class="home-directory-grid">
+    <a href="learn.html"><span>01</span><div><h3>Learn</h3><p>Understand the machinery before judging the payout.</p></div><i>&rarr;</i></a>
+    <a href="research.html"><span>02</span><div><h3>Research</h3><p>Read filing-anchored company and sector diagnostics.</p></div><i>&rarr;</i></a>
+    <a href="tools.html"><span>03</span><div><h3>Tools</h3><p>Use the same sequence to inspect an income asset.</p></div><i>&rarr;</i></a>
+  </div>
+</div></section>
+
+<section class="home-method"><div class="wrap home-method-grid">
+  <div>
+    <div class="kicker">Operating sequence</div>
+    <h2>A yield is an output. The investigation begins upstream.</h2>
+    <p class="lede">Every piece follows the cash in the same order, names the denominator, and separates what was observed from what remains untested.</p>
+  </div>
+  <ol class="home-sequence">
+    <li><b>01</b><span>Property</span><small>What produces the economics?</small></li>
+    <li><b>02</b><span>Rent / cash</span><small>What reaches the issuer?</small></li>
+    <li><b>03</b><span>Debt</span><small>What claims the cash first?</small></li>
+    <li><b>04</b><span>Payout</span><small>What remains distributable?</small></li>
+  </ol>
 </div></section>
 
 <section class="home-report"><div class="wrap home-report-grid">
