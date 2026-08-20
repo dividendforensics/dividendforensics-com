@@ -21,14 +21,45 @@
     "  home_title (선택) 첫 페이지에서만 다른 제목을 쓸 때",
     "  home_label (선택) 첫 페이지에서만 다른 분류를 쓸 때",
     "  case_key   (필수) 사실 확인용 사건 식별자. 연속번호가 아니라 발행사/주제 키. 예: ADC / NNN",
+    "  case_slug  (필수) 자사 Case File URL 끝부분. 예: adc-nnn",
     "  related_report (선택) 별도 워킹페이퍼가 있을 때만 표시. 예: Report No. 001",
     "  revision   (선택) 공개된 수정 이력. 없으면 No revisions recorded"
   ],
 
-  "published_count": 83,
-  "_published_count_note": "index.html 데이터 바의 발행 건수. 벤징가 CMS 총 발행 건수이며 아래 목록 길이와 다릅니다. 기사 발행될 때 여기 숫자도 같이 올리세요.",
+  "published_count": 86,
+  "_published_count_note": "index.html 데이터 바의 고유 원문 발행 건수입니다. 신디케이션 복제본은 포함하지 않습니다. 새 원문 기사 발행 때만 올리세요.",
 
   "articles": [
+    {
+      "url": "https://www.benzinga.com/Opinion/26/08/61205729/equinix-vs-digital-realty-why-dividend-payout-ratios-arent-created-equal",
+      "title": "Equinix vs. Digital Realty: Why Dividend Payout Ratios Aren’t Created Equal",
+      "blurb": "Two full-year payout ratios, with issuer-defined denominators that carry different quarter-specific items underneath them.",
+      "date": "2026-08-14",
+      "group": "REIT",
+      "label": "Data centers",
+      "case_key": "EQIX / DLR",
+      "case_slug": "eqix-dlr"
+    },
+    {
+      "url": "https://www.benzinga.com/Opinion/26/08/61180695/sba-vs-crown-castle-what-their-debt-tables-actually-say",
+      "title": "SBA vs. Crown Castle: What Their Debt Tables Actually Say",
+      "blurb": "The same anticipated-repayment-date convention governs very different shares of two disclosed debt bases.",
+      "date": "2026-08-13",
+      "group": "REIT",
+      "label": "Towers",
+      "case_key": "SBAC / CCI",
+      "case_slug": "sbac-cci"
+    },
+    {
+      "url": "https://www.benzinga.com/Opinion/26/08/61082756/vici-vs-glpi-73-and-80-payouts-one-refinancing-already-priced",
+      "title": "VICI vs. GLPI: 73% And 80% Payouts, One Refinancing Already Priced",
+      "blurb": "Similar payout claims sit above different maturity calendars; one replacement financing was already priced in the record.",
+      "date": "2026-08-10",
+      "group": "REIT",
+      "label": "Gaming net lease",
+      "case_key": "VICI / GLPI",
+      "case_slug": "vici-glpi"
+    },
     {
       "url": "https://www.benzinga.com/Opinion/26/08/61036147/agree-realty-vs-nnn-reit-two-70-payouts-4x-unsettled-equity",
       "title": "Agree Realty vs NNN REIT: Two 70% Payouts, 4x Unsettled Equity",
@@ -36,7 +67,8 @@
       "date": "2026-08-07",
       "group": "REIT",
       "label": "Net lease",
-      "case_key": "ADC / NNN"
+      "case_key": "ADC / NNN",
+      "case_slug": "adc-nnn"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/08/60966066/maa-vs-wp-carey-why-one-reit-dividend-claimed-86-percent-of-core-affo",
@@ -46,7 +78,8 @@
       "group": "REIT",
       "label": "Residential and net lease",
       "case_key": "MAA / WPC",
-      "related_report": "Report No. 001"
+      "related_report": "Report No. 001",
+      "case_slug": "maa-wpc"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/07/60797889/ups-vs-fedex-why-one-dividend-claimed-99-percent-of-free-cash-flow",
@@ -56,7 +89,8 @@
       "group": "Industrials",
       "label": "Logistics",
       "home_label": "Industrials",
-      "case_key": "UPS / FDX"
+      "case_key": "UPS / FDX",
+      "case_slug": "ups-fdx"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/06/53119480/att-and-verizon-the-higher-yield-has-the-thinner-cushion",
@@ -65,7 +99,8 @@
       "date": "2026-06",
       "group": "Telecom",
       "label": "Telecom",
-      "case_key": "T / VZ"
+      "case_key": "T / VZ",
+      "case_slug": "t-vz"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/06/53087584/agree-realty-and-global-net-lease-one-yields-4-one-yields-8-the-balance-sheet-sets-the-spread",
@@ -75,7 +110,8 @@
       "date": "2026-06",
       "group": "REIT",
       "label": "Net lease",
-      "case_key": "ADC / GNL"
+      "case_key": "ADC / GNL",
+      "case_slug": "adc-gnl"
     },
     {
       "url": "https://www.benzinga.com/Opinion/26/06/53065817/covered-not-collected-pik-income-and-the-q1-2026-bdc-distribution-stack",
@@ -85,6 +121,7 @@
       "group": "BDC",
       "label": "Private credit",
       "case_key": "BDC / PIK",
+      "case_slug": "bdc-pik",
       "home": false
     }
   ]

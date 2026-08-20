@@ -48,7 +48,7 @@ def esc(s: str) -> str:
 
 # ---------------------------------------------------------------- 검증
 
-REQUIRED = ("url", "title", "blurb", "date", "group", "label", "case_key")
+REQUIRED = ("url", "title", "blurb", "date", "group", "label", "case_key", "case_slug")
 
 
 def load():
@@ -93,12 +93,13 @@ def load():
 def row(a, *, home):
     title = a.get("home_title") if home and a.get("home_title") else a["title"]
     label = a.get("home_label") if home and a.get("home_label") else a["label"]
+    case_url = f'case-{a["case_slug"]}.html'
     meta = f'{esc(a["date"])} &middot; {esc(label)}'
     if not home:
         meta += " &middot; Read on Benzinga &rarr;"
     if home:
         return (
-            f'    <a class="row" href="{a["url"]}" target="_blank" rel="noopener">\n'
+            f'    <a class="row" href="{case_url}">\n'
             f'      <span class="rt">{esc(title)}</span>\n'
             f'      <span class="rd">{esc(a["blurb"])}</span>\n'
             f'      <span class="rmeta">{meta} &middot; Jeong-Mo Goo &middot; No position</span>\n'
@@ -112,7 +113,7 @@ def row(a, *, home):
     return (
         '    <article class="case-ledger">\n'
         f'      <header class="case-ledger-head"><span>DFB case file</span><b>{esc(a["case_key"])}</b><em>Article &middot; Benzinga</em></header>\n'
-        f'      <a class="case-ledger-main" href="{a["url"]}" target="_blank" rel="noopener">\n'
+        f'      <a class="case-ledger-main" href="{case_url}">\n'
         f'        <span class="rt">{esc(title)}</span>\n'
         f'        <span class="rd">{esc(a["blurb"])}</span>\n'
         '      </a>\n'
@@ -136,12 +137,13 @@ def build_index(arts):
     lead, rest = home_arts[0], home_arts[1:]
     lead_title = lead.get("home_title") or lead["title"]
     lead_label = lead.get("home_label") or lead["label"]
+    lead_case_url = f'case-{lead["case_slug"]}.html'
     lead_html = (
-        f'  <a class="home-case-lead" href="{lead["url"]}" target="_blank" rel="noopener">\n'
+        f'  <a class="home-case-lead" href="{lead_case_url}">\n'
         f'    <span class="home-case-index">Featured case file</span>\n'
         f'    <span class="home-case-title">{esc(lead_title)}</span>\n'
         f'    <span class="home-case-blurb">{esc(lead["blurb"])}</span>\n'
-        f'    <span class="home-case-meta">{esc(lead["date"])} &middot; {esc(lead_label)} &middot; Jeong-Mo Goo &middot; No position &middot; Read on Benzinga &rarr;</span>\n'
+        f'    <span class="home-case-meta">{esc(lead["date"])} &middot; {esc(lead_label)} &middot; Jeong-Mo Goo &middot; No position &middot; Open case file &rarr;</span>\n'
         f'  </a>\n'
     )
     rows = "".join(row(a, home=True) for a in rest)
