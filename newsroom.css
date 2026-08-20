@@ -167,3 +167,284 @@
   .home-report-stats{grid-template-columns:repeat(2,1fr)}
   .home-evidence-grid{grid-template-columns:1fr}
 }
+
+/* ─────────────────────────────────────────────────────────────
+   SITEWIDE NEWSROOM SHELL
+   The home page established the desk. These rules carry the same
+   information hierarchy through indexes, articles and notices.
+   ───────────────────────────────────────────────────────────── */
+body:not(.home-page){
+  --ink:#f6f6f1;
+  --ink-2:#fff;
+  --ink-3:#ededE7;
+  --archive:#f0f0eb;
+  --cream:#080808;
+  --cream-dim:#353532;
+  --cream-mute:#676762;
+  --gold:#ff5b22;
+  --gold-deep:#c8440c;
+  --gold-soft:#ff7845;
+  --teal:#087c51;
+  --teal-dim:#075f40;
+  --rule:#111;
+  --rule-2:#b9b9b3;
+  --line:rgba(0,0,0,.48);
+  --line-2:#c9c9c3;
+  --wrap:1180px;
+  background:var(--desk-paper);
+  color:var(--desk-black);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:16px;
+  line-height:1.55;
+}
+body:not(.home-page) .wrap{max-width:1180px;padding-left:24px;padding-right:24px}
+body:not(.home-page) .nav{position:sticky;background:#000;color:#fff;border:0;backdrop-filter:none}
+body:not(.home-page) .nav-in{max-width:1180px;padding:12px 24px;gap:22px}
+body:not(.home-page) .brand b{font-family:Arial Black,Arial,Helvetica,sans-serif;font-size:18px;line-height:1;letter-spacing:-.7px;color:#fff;text-transform:uppercase}
+body:not(.home-page) .brand span{font-family:var(--mono);font-size:9px;letter-spacing:1.3px;color:var(--desk-orange)}
+body:not(.home-page) .nav ul{gap:19px}
+body:not(.home-page) .nav ul a{font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:0;color:#fff;border:0;padding:4px 0}
+body:not(.home-page) .nav ul a:hover,
+body:not(.home-page) .nav ul a[aria-current]{color:var(--desk-orange);border:0}
+body:not(.home-page) .nav-cta{background:var(--desk-orange);color:#000;border:0;padding:9px 14px;font-size:10px;font-weight:900;letter-spacing:.2px;text-transform:uppercase}
+body:not(.home-page) .nav-cta:hover{background:#fff}
+body:not(.home-page) .burger{color:#fff}
+
+body:not(.home-page)>header.wrap{max-width:1180px!important;padding-top:48px!important;padding-bottom:34px!important;border-bottom:4px solid #000}
+body:not(.home-page)>header.wrap h1{max-width:18ch;margin-top:12px}
+body:not(.home-page) .kicker{font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:900;letter-spacing:.7px;color:var(--desk-orange)}
+body:not(.home-page) h1,
+body:not(.home-page) h2,
+body:not(.home-page) h3{font-family:Arial,Helvetica,sans-serif;color:#080808;text-wrap:pretty;overflow-wrap:anywhere}
+body:not(.home-page) h1{font-size:clamp(38px,5vw,62px);font-weight:800;line-height:.98;letter-spacing:-2px}
+body:not(.home-page) h2{font-size:clamp(26px,3vw,39px);font-weight:800;line-height:1.03;letter-spacing:-1.1px}
+body:not(.home-page) h3{font-size:20px;font-weight:800;line-height:1.12;letter-spacing:-.35px}
+body:not(.home-page) .lede{font-family:Arial,Helvetica,sans-serif;font-size:17px;line-height:1.45;color:#343431;max-width:66ch}
+body:not(.home-page) .sec{padding:44px 0;border-top:1px solid #000}
+body:not(.home-page) .sec-head{margin-bottom:24px;padding-bottom:12px;border-bottom:3px solid #000}
+
+body:not(.home-page) .grid,
+body:not(.home-page) .tier-grid{gap:0;background:transparent;border-top:2px solid #000;border-left:1px solid #000}
+body:not(.home-page) .card,
+body:not(.home-page) .tier{background:#fff;border-right:1px solid #000;border-bottom:1px solid #000;padding:25px 24px}
+body:not(.home-page) a.card:hover{background:var(--desk-orange)}
+body:not(.home-page) .card p,
+body:not(.home-page) .tier-note,
+body:not(.home-page) .recv li{color:#3f3f3b}
+body:not(.home-page) .card .more{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;color:#000;border-bottom:2px solid var(--desk-orange)}
+body:not(.home-page) a.card:hover .kicker,
+body:not(.home-page) a.card:hover .more{color:#000;border-color:#000}
+
+body:not(.home-page) .rows{border-top:3px solid #000}
+body:not(.home-page) .row{padding:20px 0;border-bottom:1px solid #000;border-left:0}
+body:not(.home-page) .row:hover,
+body:not(.home-page) .row:focus-visible{padding-left:10px;background:var(--desk-orange);border-left:0}
+body:not(.home-page) .row .rt{font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:800;line-height:1.12;color:#080808}
+body:not(.home-page) .row .rd{font-size:13px;line-height:1.45;color:#343431}
+body:not(.home-page) .row .rmeta{font-size:9px;font-weight:700;letter-spacing:.8px;color:#555}
+body:not(.home-page) .grp-h{font-size:10px;font-weight:900;letter-spacing:.8px;color:var(--desk-orange);border-bottom:2px solid #000}
+body:not(.home-page) .row.soon{opacity:.48}
+body:not(.home-page) .row.soon:hover{padding-left:0;background:transparent}
+
+body:not(.home-page) .method,
+body:not(.home-page) .art .nextup{background:#000;color:#fff;border:0;border-left:8px solid var(--desk-orange);padding:26px 28px}
+body:not(.home-page) .method .mt,
+body:not(.home-page) .art .nextup .kicker{color:var(--desk-orange)}
+body:not(.home-page) .method p{font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:1.48;color:#fff}
+body:not(.home-page) .btn{border:2px solid #000;padding:12px 17px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:900;letter-spacing:.1px;text-transform:uppercase}
+body:not(.home-page) .btn-p{background:var(--desk-orange);color:#000}
+body:not(.home-page) .btn-p:hover{background:#000;color:#fff}
+body:not(.home-page) .btn-s{background:transparent;color:#000;border-color:#000}
+body:not(.home-page) .btn-s:hover{background:#000;color:#fff}
+
+body:not(.home-page) .tool{background:transparent;border:2px solid #000}
+body:not(.home-page) .tool>div{background:#fff;padding:30px}
+body:not(.home-page) .tool>div+div{border-left:1px solid #000}
+body:not(.home-page) .tool ol{color:#393936}
+body:not(.home-page) .badge,
+body:not(.home-page) .status{border:0;background:#000;color:#fff;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.8px;padding:6px 9px}
+body:not(.home-page) .tier.mid{background:#ededE7}
+body:not(.home-page) .tier-name{font-size:9px;font-weight:800;letter-spacing:.9px;color:var(--desk-orange)}
+body:not(.home-page) .tier-price{font-family:Arial Black,Arial,sans-serif;color:#000}
+body:not(.home-page) .tier-cta{border:2px solid #000;color:#000;font-weight:900;letter-spacing:.4px}
+body:not(.home-page) .tier.mid .tier-cta{background:var(--desk-orange);color:#000;border-color:#000}
+body:not(.home-page) .recv li::before{height:3px;background:var(--desk-orange)}
+
+body:not(.home-page) .art-wrap{max-width:760px}
+body:not(.home-page) .art h1{font-size:clamp(35px,4.5vw,52px);line-height:1.01;margin-top:13px}
+body:not(.home-page) .art .meta{font-size:10px;font-weight:700;color:#555;border-top:3px solid #000}
+body:not(.home-page) .art p{font-size:17px;line-height:1.68;color:#202020}
+body:not(.home-page) .art p.first{font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.48;font-weight:600;color:#292927}
+body:not(.home-page) .art h2{font-size:28px;margin:40px 0 13px;padding-top:10px;border-top:3px solid #000}
+body:not(.home-page) .art .disc{border-top:1px solid #000;color:#555}
+body:not(.home-page) .art .nextup a{font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:800;color:#fff;border-color:#777}
+body:not(.home-page) .art .nextup a:hover{color:var(--desk-orange);border-color:var(--desk-orange)}
+
+body:not(.home-page) .ft{margin-top:0;padding:42px 0 30px;background:#000;border:0;color:#fff}
+body:not(.home-page) .ft h4{font-size:9px;font-weight:800;letter-spacing:.9px;color:var(--desk-orange)}
+body:not(.home-page) .ft a,
+body:not(.home-page) .ft-note{color:#bbb}
+body:not(.home-page) .ft a:hover{color:#fff}
+body:not(.home-page) .ft-bot{border-top:1px solid #444;color:#888}
+
+/* Research Desk: retain its evidence-led composition, change its visual grammar. */
+body:not(.home-page) .rd-hero{padding-top:58px;background:var(--desk-paper);border-bottom:4px solid #000}
+body:not(.home-page) .rd-hero::before{display:none}
+body:not(.home-page) .rd-eyebrow,
+body:not(.home-page) .rd-lab{font-size:10px;font-weight:900;letter-spacing:.7px;color:var(--desk-orange)}
+body:not(.home-page) .rd-h1{font-family:Arial,Helvetica,sans-serif;font-size:clamp(40px,5.6vw,70px);font-weight:800;line-height:.98;letter-spacing:-2.2px;color:#000;max-width:16ch}
+body:not(.home-page) .rd-lede{font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:1.45;color:#333}
+body:not(.home-page) .rd-for{font-size:10px;font-weight:700;letter-spacing:.7px;color:#555;border-color:#000}
+body:not(.home-page) .rd-stats{gap:0;background:#000;border-color:#000;margin-top:48px}
+body:not(.home-page) .rd-stat{background:#fff;border-right:1px solid #000;padding:28px 24px}
+body:not(.home-page) .rd-stat:last-child{border-right:0}
+body:not(.home-page) .rd-stat b{font-family:Arial Black,Arial,sans-serif;font-size:clamp(34px,4.2vw,54px);color:#000}
+body:not(.home-page) .rd-stat.v b{color:var(--desk-green)}
+body:not(.home-page) .rd-stat span{color:#444}
+body:not(.home-page) .rd-sec{padding:66px 0;border-top:1px solid #000;background:var(--desk-paper)}
+body:not(.home-page) .rd-sec.lift{background:#fff}
+body:not(.home-page) .rd-sec.archive{background:#000;color:#fff}
+body:not(.home-page) .rd-h2{font-family:Arial,Helvetica,sans-serif;font-size:clamp(29px,3.4vw,45px);font-weight:800;line-height:1.02;letter-spacing:-1.2px;color:#000}
+body:not(.home-page) .rd-sub,
+body:not(.home-page) .rd-row p,
+body:not(.home-page) .rd-mc p,
+body:not(.home-page) .rd-cap p,
+body:not(.home-page) .rd-ob li,
+body:not(.home-page) .rd-note{color:#444}
+body:not(.home-page) .rd-row,
+body:not(.home-page) .rd-list,
+body:not(.home-page) .rd-clocks,
+body:not(.home-page) .rd-cov th,
+body:not(.home-page) .rd-cov td{border-color:#000}
+body:not(.home-page) .rd-row h4,
+body:not(.home-page) .rd-cov td:first-child{font-family:Arial,Helvetica,sans-serif;font-weight:800;color:#000}
+body:not(.home-page) .rd-method{gap:0;background:#000;border-color:#000}
+body:not(.home-page) .rd-mc{background:#fff;border-right:1px solid #000}
+body:not(.home-page) .rd-mc:last-child{border-right:0}
+body:not(.home-page) .rd-mc b{font-family:Arial,Helvetica,sans-serif;font-weight:800;color:#000}
+body:not(.home-page) .rd-principle{background:#000;border-left:8px solid var(--desk-orange)}
+body:not(.home-page) .rd-principle p{font-family:Arial,Helvetica,sans-serif;font-weight:700;color:#fff}
+body:not(.home-page) .rd-rec{background:#fff;border:2px solid #000;color:#000}
+body:not(.home-page) .rd-rec .hd,
+body:not(.home-page) .rd-cap b,
+body:not(.home-page) .rd-cov th{color:var(--desk-orange);border-color:#000}
+body:not(.home-page) .rd-rec .r>span:first-child,
+body:not(.home-page) .rd-rec .r>span:last-child{color:#222}
+body:not(.home-page) .rd-rec .r.tie>span:last-child{color:var(--desk-green)}
+body:not(.home-page) .rd-fig img{box-shadow:none;border:1px solid #000}
+body:not(.home-page) .rd-not,
+body:not(.home-page) .rd-cta{background:#fff;border:2px solid #000}
+body:not(.home-page) .rd-not li{color:#111;border-color:#bbb}
+body:not(.home-page) .rd-form input,
+body:not(.home-page) .rd-form select,
+body:not(.home-page) .rd-form textarea{background:#fff;color:#000;border:1px solid #000}
+body:not(.home-page) .rd-submit{background:var(--desk-orange);color:#000;border:2px solid #000;font-weight:900}
+body:not(.home-page) .rd-sec.archive .rd-h2,
+body:not(.home-page) .rd-sec.archive .rd-sub,
+body:not(.home-page) .rd-sec.archive .rd-cap p,
+body:not(.home-page) .rd-sec.archive .rd-cap cite,
+body:not(.home-page) .rd-sec.archive .rd-ob li,
+body:not(.home-page) .rd-sec.archive .rd-obs-note{color:#ddd}
+body:not(.home-page) .rd-sec.archive .rd-ob>b{border-color:#555}
+body:not(.home-page) .rd-sec.archive .rd-obs{border-color:#555}
+body:not(.home-page) .rd-sec.archive .rd-rec{background:#111;color:#fff;border-color:#777}
+body:not(.home-page) .rd-sec.archive .rd-rec .r>span:first-child,
+body:not(.home-page) .rd-sec.archive .rd-rec .r>span:last-child{color:#ddd}
+
+/* Policy pages: remove the disconnected museum themes and use one filing sheet. */
+.policy-page{background:var(--desk-paper)!important;color:#111!important;font-family:Arial,Helvetica,sans-serif!important}
+.policy-page:not(.policy-editorial)>.wrap{max-width:800px!important;padding:44px 24px 70px!important}
+.policy-page.legal-page header{padding:0 0 16px!important;border-bottom:4px solid #000!important}
+.policy-page.legal-page .brand{font-family:var(--mono);font-size:9px!important;letter-spacing:.8px!important;color:var(--desk-orange)!important}
+.policy-page.legal-page h1,
+.policy-page.refund-page h1{font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(34px,5vw,52px)!important;font-weight:800!important;line-height:1!important;letter-spacing:-1.6px!important;color:#000!important}
+.policy-page.legal-page nav{padding:10px 0;border-bottom:1px solid #000}
+.policy-page.legal-page nav a{font-size:11px;color:#000!important;text-transform:uppercase;text-decoration:none;border-bottom:2px solid var(--desk-orange)}
+.policy-page.legal-page section{border-color:#000!important}
+.policy-page.legal-page h2,
+.policy-page.refund-page h2{font-family:Arial,Helvetica,sans-serif!important;font-weight:800!important;color:#000!important}
+.policy-page.legal-page h3{font-family:Arial,Helvetica,sans-serif!important;font-weight:800!important;color:#000!important}
+.policy-page.legal-page p,
+.policy-page.legal-page li,
+.policy-page.refund-page p{color:#292929!important}
+.policy-page.legal-page .note,
+.policy-page.refund-page .note{background:#fff!important;border:2px solid #000!important;border-radius:0!important;color:#333!important}
+.policy-page.legal-page a,
+.policy-page.refund-page a{color:#111!important;text-decoration-color:var(--desk-orange)!important}
+.policy-page.legal-page footer,
+.policy-page.refund-page footer{border-color:#000!important;color:#555!important}
+.policy-page.refund-page>.bar{background:#000!important;border:0!important;border-bottom:4px solid var(--desk-orange)!important;padding:13px 22px!important}
+.policy-page.refund-page .bar .b{font-family:Arial Black,Arial,sans-serif!important;font-style:normal!important;color:#fff!important;text-transform:uppercase}
+.policy-page.refund-page .bar .b b{color:var(--desk-orange)!important}
+.policy-page.refund-page .bar .menu{color:#fff!important;border:1px solid #777!important;border-radius:0!important}
+.policy-page.refund-page .kicker,
+.policy-page.refund-page .sec{color:var(--desk-orange)!important;font-family:var(--mono)!important;font-size:9px!important;font-weight:700!important;letter-spacing:.8px!important;text-align:left!important}
+.policy-page.refund-page .lead{font-family:Arial,Helvetica,sans-serif!important;font-style:normal!important;font-size:18px!important;font-weight:600!important;color:#333!important}
+.policy-page.refund-page .rule{height:4px!important;background:#000!important}
+
+.policy-page.policy-editorial .dfb-topnav{background:#000!important;border-bottom:4px solid var(--desk-orange)!important;color:#fff!important}
+.policy-page.policy-editorial .dfb-brand{font-family:Arial Black,Arial,sans-serif!important;color:#fff!important;text-transform:uppercase}
+.policy-page.policy-editorial .dfb-brand span{color:var(--desk-orange)!important}
+.policy-page.policy-editorial .dfb-menu-toggle{color:#fff!important;border-color:#777!important}
+.policy-page.policy-editorial .dfb-menu-overlay{background:#000!important;color:#fff!important}
+.policy-page.policy-editorial .dfb-menu-link{border-color:#333!important;background:transparent!important}
+.policy-page.policy-editorial .dfb-menu-link .dfb-name{font-family:Arial,Helvetica,sans-serif!important;color:#fff!important}
+.policy-page.policy-editorial .dfb-menu-link .dfb-roman,
+.policy-page.policy-editorial .dfb-menu-col-title{color:var(--desk-orange)!important}
+.policy-page.policy-editorial .photo-hero{min-height:0!important;height:auto!important;padding:54px 24px 48px!important;background:#000!important;border-bottom:4px solid #000!important}
+.policy-page.policy-editorial .ph-photo,
+.policy-page.policy-editorial .ph-vignette,
+.policy-page.policy-editorial .ph-grain,
+.policy-page.policy-editorial .brass-plate,
+.policy-page.policy-editorial .scroll-prompt,
+.policy-page.policy-editorial .photo-attr{display:none!important}
+.policy-page.policy-editorial .ph-text{position:relative!important;inset:auto!important;transform:none!important;max-width:1120px!important;margin:0 auto!important;padding:0!important;color:#fff!important}
+.policy-page.policy-editorial .ph-eyebrow{font-family:var(--mono)!important;font-size:9px!important;font-weight:700!important;letter-spacing:.8px!important;color:var(--desk-orange)!important}
+.policy-page.policy-editorial .ph-title{font-family:Arial,Helvetica,sans-serif!important;font-size:clamp(38px,6vw,66px)!important;font-weight:800!important;line-height:.98!important;letter-spacing:-2px!important;color:#fff!important}
+.policy-page.policy-editorial .ph-title em{color:var(--desk-orange)!important;font-style:normal!important}
+.policy-page.policy-editorial .ph-subtitle{font-family:Arial,Helvetica,sans-serif!important;font-size:16px!important;line-height:1.45!important;color:#bbb!important;max-width:66ch!important}
+.policy-page.policy-editorial .dome-band,
+.policy-page.policy-editorial .lectern-band,
+.policy-page.policy-editorial .greek-key,
+.policy-page.policy-editorial .pew-pattern{display:none!important}
+.policy-page.policy-editorial .main-body{max-width:1120px!important;margin:0 auto!important;padding:44px 24px 70px!important;background:var(--desk-paper)!important;color:#111!important}
+.policy-page.policy-editorial .section-intro{border-top:4px solid #000!important;border-bottom:1px solid #000!important}
+.policy-page.policy-editorial .si-label,
+.policy-page.policy-editorial .nr-roman,
+.policy-page.policy-editorial .nc-roman,
+.policy-page.policy-editorial .nr-tag{color:var(--desk-orange)!important}
+.policy-page.policy-editorial .si-title,
+.policy-page.policy-editorial .nr-title,
+.policy-page.policy-editorial .nc-title{font-family:Arial,Helvetica,sans-serif!important;font-weight:800!important;color:#000!important}
+.policy-page.policy-editorial .si-desc,
+.policy-page.policy-editorial .nr-body,
+.policy-page.policy-editorial .nc-body,
+.policy-page.policy-editorial .rc-body{font-family:Arial,Helvetica,sans-serif!important;color:#333!important}
+.policy-page.policy-editorial .notice-card,
+.policy-page.policy-editorial .notice-card.navy,
+.policy-page.policy-editorial .notice-row,
+.policy-page.policy-editorial .acknowledgment-block,
+.policy-page.policy-editorial .room-context{background:#fff!important;color:#111!important;border-color:#000!important;border-radius:0!important;box-shadow:none!important}
+.policy-page.policy-editorial .page-footer{background:#000!important;color:#aaa!important;border-top:4px solid var(--desk-orange)!important}
+.policy-page.policy-editorial .page-footer a{color:#fff!important}
+
+@media(max-width:860px){
+  body:not(.home-page) .nav ul{background:#000;border-color:#333}
+  body:not(.home-page) .tool>div+div{border-left:0;border-top:1px solid #000}
+  body:not(.home-page) .rd-stat,
+  body:not(.home-page) .rd-mc{border-right:0;border-bottom:1px solid #000}
+}
+@media(max-width:560px){
+  body:not(.home-page) .wrap{padding-left:16px;padding-right:16px}
+  body:not(.home-page) .brand b{font-size:15px;letter-spacing:-.45px}
+  body:not(.home-page)>header.wrap{padding-top:34px!important;padding-bottom:28px!important}
+  body:not(.home-page) h1{font-size:clamp(34px,11vw,46px);line-height:1;letter-spacing:-1.3px}
+  body:not(.home-page) h2{font-size:27px;letter-spacing:-.7px}
+  body:not(.home-page) .rd-h1{font-size:clamp(36px,11.5vw,50px);line-height:1;letter-spacing:-1.4px}
+  body:not(.home-page) .rd-h2{font-size:29px}
+  body:not(.home-page) .row .rt{font-size:18px}
+  body:not(.home-page) .card{padding:22px 18px}
+  .policy-page.policy-editorial .photo-hero{padding:38px 16px 36px!important}
+  .policy-page.policy-editorial .ph-title{font-size:clamp(36px,11vw,48px)!important;letter-spacing:-1.3px!important}
+  .policy-page.policy-editorial .main-body{padding:34px 16px 54px!important}
+}
