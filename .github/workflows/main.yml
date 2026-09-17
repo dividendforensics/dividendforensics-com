@@ -1,43 +1,56 @@
-name: Build article listings
-
+name: Build and publish research site
 on:
   push:
     branches: [main]
     paths:
+      - '*.html'
+      - '*.css'
+      - '*.js'
+      - 'img/**'
+      - 'templates/**'
       - 'articles.json'
       - 'build_site.py'
+      - 'tests/**'
+      - 'tools/check_site.py'
       - '.github/workflows/main.yml'
   workflow_dispatch:
-
 permissions:
   contents: write
-
+  pages: write
 concurrency:
-  group: build-site
+  group: build-site-main
   cancel-in-progress: false
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Rebuild from articles.json
-        run: python build_site.py
-
-      - name: Commit if changed
+      - name: Build and validate before writing a release
+        run: |
+          python build_site.py
+          python -m unittest discover -s tests -v
+          python tools/check_site.py
+          python build_site.py --check
+      - name: Commit generated HTML only when needed
         run: |
           set -euo pipefail
-          if [ -z "$(git status --porcelain -- index.html research.html research-desk.html)" ]; then
-            echo "변경 없음. 커밋하지 않습니다."
-            exit 0
+          if [ -z "$(git status --porcelain -- '*.html')" ]; then
+            echo 'Generated pages are already current.'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add -- '*.html'
+            git commit -m 'build: synchronize research records and shared site chrome'
+            git push origin HEAD:main
           fi
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html research.html research-desk.html
-          git commit -m "Rebuild article listings from articles.json"
-          git push
+      - name: Request branch-based Pages build explicitly
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"
