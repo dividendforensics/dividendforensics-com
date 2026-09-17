@@ -1,228 +1,218 @@
 #!/usr/bin/env python3
+"""Build DFB article listings and shared chrome from local, verified records.
+
+`articles.json` is the canonical source. Never retrieve articles at build time.
+Only published records are rendered. Missing local case files fall back to the
+verified external article URL. Dates follow the newest dated public record,
+not the first array entry, the build date, or a draft submission date.
 """
-DFB 사이트 빌더.
-
-articles.json 하나를 읽어서 아래 세 파일의 생성 구간만 다시 씁니다.
-
-  index.html         ARTICLES:START ~ ARTICLES:END  (대표 1건 + 목록, home:false 제외)
-  research.html      ARTICLES:START ~ ARTICLES:END  (group 별 묶음)
-  index.html         <b data-dfb="count">NN</b>      (발행 건수)
-
-설계 원칙
-  - 마커 밖은 절대 건드리지 않는다.
-  - 배열 순서가 곧 표시 순서다. 정렬하지 않는다.
-  - 검증에 실패하면 아무것도 쓰지 않고 0이 아닌 코드로 죽는다.
-    (잘못된 JSON 한 번으로 목록이 통째로 날아가는 것을 막기 위함)
-
-사용:  python build_site.py [--check]
-       --check 를 주면 쓰지 않고 변경 필요 여부만 알려준다 (CI 용).
-"""
-
+from __future__ import annotations
+import argparse
+import html
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent
-DATA = ROOT / "articles.json"
+START, END = '<!-- ARTICLES:START -->', '<!-- ARTICLES:END -->'
+HEADER_START, HEADER_END = '<!-- SITE:HEADER -->', '<!-- /SITE:HEADER -->'
+FOOTER_START, FOOTER_END = '<!-- SITE:FOOTER -->', '<!-- /SITE:FOOTER -->'
+REPORT_URL = ('https://dividendforensics.lemonsqueezy.com/checkout/buy/'
+              '0417e6b9-d489-438e-9b2c-913437003238'
+              '?utm_source=website&utm_medium=lead_magnet&utm_campaign=report001')
+REQUIRED = ('url', 'title', 'blurb', 'date', 'group', 'label', 'case_key')
+MONTHS = ('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')
 
-START = "<!-- ARTICLES:START -->"
-END = "<!-- ARTICLES:END -->"
-COUNT_RE = re.compile(r'(<b\s+data-dfb="count">)(\d+)(</b>)')
-
-
-class BuildError(Exception):
+class BuildError(ValueError):
     pass
 
+def esc(value: object) -> str:
+    return html.escape(str(value), quote=True)
 
-# ---------------------------------------------------------------- 이스케이프
-
-def esc(s: str) -> str:
-    """평문을 사이트 표기에 맞는 HTML 엔티티로. & 를 가장 먼저 처리해야 한다."""
-    s = s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    return (s.replace("’", "&rsquo;").replace("‘", "&lsquo;")
-             .replace("“", "&ldquo;").replace("”", "&rdquo;")
-             .replace("—", "&mdash;").replace("–", "&ndash;")
-             .replace("−", "&minus;"))
-
-
-# ---------------------------------------------------------------- 검증
-
-REQUIRED = ("url", "title", "blurb", "date", "group", "label", "case_key", "case_slug")
-
-
-def load():
-    if not DATA.exists():
-        raise BuildError(f"{DATA} 가 없습니다.")
+def date_key(value: str) -> date:
     try:
-        cfg = json.loads(DATA.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as e:
-        raise BuildError(f"articles.json 문법 오류 — {e.lineno}행 {e.colno}칸: {e.msg}")
+        if re.fullmatch(r'\d{4}-\d{2}', value):
+            return date.fromisoformat(value + '-01')
+        if re.fullmatch(r'\d{4}-\d{2}-\d{2}', value):
+            return date.fromisoformat(value)
+    except ValueError:
+        pass
+    raise BuildError(f'Invalid publication date: {value!r}')
 
-    if not isinstance(cfg, dict):
-        raise BuildError("articles.json 최상위 값은 객체여야 합니다. articles 배열과 published_count 를 확인하세요.")
+def display_date(value: str) -> str:
+    d = date_key(value)
+    return f'{d.day:02d} {MONTHS[d.month-1]} {d.year}' if len(value) == 10 else f'{MONTHS[d.month-1]} {d.year}'
 
-    arts = cfg.get("articles")
-    if not isinstance(arts, list) or not arts:
-        raise BuildError("articles 가 비어 있거나 배열이 아닙니다. 목록을 통째로 지울 수는 없습니다.")
-
-    seen = set()
-    for i, a in enumerate(arts, 1):
+def load(root: Path = ROOT):
+    try:
+        cfg = json.loads((root / 'articles.json').read_text(encoding='utf-8'))
+    except (OSError, json.JSONDecodeError) as e:
+        raise BuildError(f'Cannot read articles.json: {e}') from e
+    if not isinstance(cfg, dict) or not isinstance(cfg.get('articles'), list) or not cfg['articles']:
+        raise BuildError('articles must be a non-empty array.')
+    seen_urls, seen_slugs, public = set(), set(), []
+    for i, a in enumerate(cfg['articles'], 1):
         if not isinstance(a, dict):
-            raise BuildError(f"{i}번째 항목이 객체가 아닙니다.")
-        for f in REQUIRED:
-            if not str(a.get(f, "")).strip():
-                raise BuildError(f"{i}번째 항목에 '{f}' 가 없거나 비어 있습니다. (url={a.get('url','?')})")
-        if not str(a["url"]).startswith("https://"):
-            raise BuildError(f"{i}번째 항목의 url 이 https:// 로 시작하지 않습니다: {a['url']}")
-        if a["url"] in seen:
-            raise BuildError(f"url 이 중복입니다: {a['url']}")
-        seen.add(a["url"])
+            raise BuildError(f'Article {i} must be an object.')
+        for field in REQUIRED:
+            if not isinstance(a.get(field), str) or not a[field].strip():
+                raise BuildError(f'Article {i}: missing or invalid {field}.')
+        url = urlsplit(a['url'])
+        if url.scheme != 'https' or not url.hostname or url.username or url.password or any(c.isspace() for c in a['url']):
+            raise BuildError(f'Article {i}: a public HTTPS URL is required.')
+        if url.hostname == 'contributor.benzinga.com':
+            raise BuildError('Contributor previews are not public article URLs.')
+        if a['url'] in seen_urls:
+            raise BuildError(f'Duplicate article URL: {a["url"]}')
+        seen_urls.add(a['url'])
+        date_key(a['date'])
+        if a.get('case_slug'):
+            slug = a['case_slug']
+            if not isinstance(slug, str) or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug):
+                raise BuildError(f'Article {i}: invalid case_slug.')
+            if slug in seen_slugs:
+                raise BuildError(f'Duplicate case_slug: {slug}')
+            seen_slugs.add(slug)
+        if 'home' in a and not isinstance(a['home'], bool):
+            raise BuildError(f'Article {i}: home must be true or false.')
+        status = a.get('status', 'published')
+        if status not in ('published', 'draft', 'internal_review'):
+            raise BuildError(f'Article {i}: invalid status.')
+        if status == 'published':
+            if date_key(a['date']) > date.today():
+                raise BuildError(f'Future publication date: {a["date"]}')
+            public.append(a)
+    if not public:
+        raise BuildError('At least one published article is required.')
+    if not any(a.get('home', True) for a in public):
+        raise BuildError('At least one published article must be shown on the home page.')
+    return cfg, public
 
-    cnt = cfg.get("published_count")
-    if not isinstance(cnt, int) or cnt < 1:
-        raise BuildError("published_count 는 1 이상의 정수여야 합니다.")
-    if cnt < len(arts):
-        raise BuildError(f"published_count({cnt}) 가 목록 길이({len(arts)})보다 작습니다.")
+def destination(article: dict, root: Path = ROOT):
+    slug = article.get('case_slug')
+    if slug and (root / f'case-{slug}.html').is_file():
+        return f'/case-{slug}.html', False
+    return article['url'], True
 
-    return cfg, arts, cnt
+def link_attrs(article: dict, root: Path = ROOT) -> tuple[str, bool]:
+    url, external = destination(article, root)
+    return f'href="{esc(url)}"' + (' target="_blank" rel="noopener"' if external else ''), external
 
+def meta(article: dict) -> str:
+    return (f'<div class="entry-meta"><span class="entry-key">{esc(article["case_key"])}</span>'
+            f'<span>{esc(article["label"])}</span><time datetime="{esc(article["date"])}">{display_date(article["date"])}</time></div>')
 
-# ---------------------------------------------------------------- 생성
+def build_index(articles: list[dict], root: Path = ROOT) -> str:
+    displayed = [a for a in articles if a.get('home', True)][:5]
+    first, rest = displayed[0], displayed[1:]
+    attrs, external = link_attrs(first, root)
+    title = first.get('home_title') or first['title']
+    arrow = '&nearr;' if external else '&rarr;'
+    cta = 'Read on Benzinga' if external else 'Open research record'
+    lead = (f'<article class="featured-research">{meta(first)}<h3><a {attrs}>{esc(title)}</a></h3>'
+            f'<p>{esc(first["blurb"])}</p><a class="text-link" {attrs}>{cta} <span aria-hidden="true">{arrow}</span></a></article>')
+    rows = []
+    for a in rest:
+        at, _ = link_attrs(a, root)
+        rows.append(f'<article class="latest-item">{meta(a)}<h3><a {at}>{esc(a.get("home_title") or a["title"])}</a></h3></article>')
+    return '\n<div class="home-research-grid">' + lead + '<div class="latest-list">' + ''.join(rows) + '</div></div>\n'
 
-def row(a, *, home):
-    title = a.get("home_title") if home and a.get("home_title") else a["title"]
-    label = a.get("home_label") if home and a.get("home_label") else a["label"]
-    case_url = f'case-{a["case_slug"]}.html'
-    meta = f'{esc(a["date"])} &middot; {esc(label)}'
-    if not home:
-        meta += " &middot; Read on Benzinga &rarr;"
-    if home:
-        row_class = "row"
-        if a.get("home_class"):
-            row_class += " " + a["home_class"]
-        return (
-            f'    <a class="{row_class}" href="{case_url}">\n'
-            f'      <span class="rt">{esc(title)}</span>\n'
-            f'      <span class="rd">{esc(a["blurb"])}</span>\n'
-            f'      <span class="rmeta">{meta} &middot; Jeong-Mo Goo &middot; No position</span>\n'
-            f'    </a>\n'
+def build_research(articles: list[dict], root: Path = ROOT) -> str:
+    out = []
+    for a in articles:
+        attrs, external = link_attrs(a, root)
+        search = ' '.join(a[k] for k in ('title','blurb','group','label','case_key')).lower()
+        source = 'Benzinga' if external else 'DFB record / Benzinga original'
+        out.append(
+            f'<article class="archive-entry" data-group="{esc(a["group"])}" data-search="{esc(search)}">'
+            f'<time datetime="{esc(a["date"])}">{display_date(a["date"])}</time>'
+            f'<span class="entry-category">{esc(a["group"])}</span><div class="entry-copy">'
+            f'<h2><a {attrs}>{esc(a["title"])}</a></h2><p>{esc(a["blurb"])}</p>'
+            f'<small>{esc(a["case_key"])} &nbsp; / &nbsp; {esc(a["label"])} &nbsp; / &nbsp; {source}</small></div>'
+            f'<a class="entry-arrow" {attrs} aria-label="Read {esc(a["title"])}">{("&nearr;" if external else "&rarr;")}</a></article>'
         )
+    return '\n' + '\n'.join(out) + '\n'
 
-    related = ""
-    if a.get("related_report"):
-        related = f'        <span>Related working paper &middot; {esc(a["related_report"])}</span>\n'
-    revision = esc(a.get("revision", "None recorded"))
-    return (
-        '    <article class="case-ledger">\n'
-        f'      <header class="case-ledger-head"><span>DFB case file</span><b>{esc(a["case_key"])}</b><em>Article &middot; Benzinga</em></header>\n'
-        f'      <a class="case-ledger-main" href="{case_url}">\n'
-        f'        <span class="rt">{esc(title)}</span>\n'
-        f'        <span class="rd">{esc(a["blurb"])}</span>\n'
-        '      </a>\n'
-        '      <footer class="case-ledger-foot">\n'
-        '        <span>Analysis &middot; Jeong-Mo Goo</span>\n'
-        f'        <span>Published &middot; {esc(a["date"])}</span>\n'
-        f'        <span>Site revision &middot; {revision}</span>\n'
-        '        <span>Position &middot; None</span>\n'
-        f'{related}'
-        '        <a href="' + a["url"] + '" target="_blank" rel="noopener">Open article &rarr;</a>\n'
-        '      </footer>\n'
-        '    </article>\n'
-    )
+def header(page_name: str, root: Path = ROOT) -> str:
+    nav = [('research.html','Research'),('learn.html','Field guides'),('tools.html','Tools'),('about.html','About'),('research-desk.html','Research Desk')]
+    active = page_name
+    if page_name.startswith('case-'): active = 'research.html'
+    if page_name.endswith('-guide.html') or page_name.startswith('reit-'): active = 'learn.html'
+    items = []
+    for path, label in nav:
+        current = ' aria-current="page"' if path == active else ''
+        klass = ' class="desk-link"' if path == 'research-desk.html' else ''
+        items.append(f'<li><a href="/{path}"{klass}{current}>{label}</a></li>')
+    return (root / 'templates/header.html').read_text().replace('{{navigation}}','\n        '.join(items)).strip()
 
+def footer(root: Path = ROOT) -> str:
+    return (root / 'templates/footer.html').read_text().replace('{{report_url}}', esc(REPORT_URL)).strip()
 
-def build_index(arts):
-    home_arts = [a for a in arts if a.get("home", True) is not False]
-    if not home_arts:
-        raise BuildError("첫 페이지에 표시할 기사가 없습니다. 모든 항목이 home:false 입니다.")
+def splice(text: str, inner: str, start: str = START, end: str = END) -> str:
+    if text.count(start) != 1 or text.count(end) != 1 or text.index(start) > text.index(end):
+        raise BuildError(f'Missing, duplicate or reversed build markers: {start}')
+    i, j = text.index(start) + len(start), text.index(end)
+    return text[:i] + '\n' + inner.strip() + '\n' + text[j:]
 
-    lead, rest = home_arts[0], home_arts[1:]
-    lead_title = lead.get("home_title") or lead["title"]
-    lead_label = lead.get("home_label") or lead["label"]
-    lead_case_url = f'case-{lead["case_slug"]}.html'
-    lead_html = (
-        f'  <a class="home-case-lead" href="{lead_case_url}">\n'
-        f'    <span class="home-case-index">Featured case file</span>\n'
-        f'    <span class="home-case-title">{esc(lead_title)}</span>\n'
-        f'    <span class="home-case-blurb">{esc(lead["blurb"])}</span>\n'
-        f'    <span class="home-case-meta">{esc(lead["date"])} &middot; {esc(lead_label)} &middot; Jeong-Mo Goo &middot; No position &middot; Open case file &rarr;</span>\n'
-        f'  </a>\n'
-    )
-    rows = "".join(row(a, home=True) for a in rest)
-    rows_html = f'  <div class="rows home-case-list">\n{rows}  </div>\n' if rows else ""
-    return f'\n<div class="home-cases">\n{lead_html}{rows_html}</div>\n  '
+def planned_outputs(root: Path = ROOT):
+    _, articles = load(root)
+    latest = max(articles, key=lambda a: date_key(a['date']))['date']
+    planned = {}
+    for path in root.glob('*.html'):
+        text = path.read_text(encoding='utf-8')
+        if HEADER_START not in text:
+            continue  # verification files and retired redirects are intentionally unchanged
+        text = splice(text, header(path.name, root), HEADER_START, HEADER_END)
+        text = splice(text, footer(root), FOOTER_START, FOOTER_END)
+        if path.name in ('index.html','research.html'):
+            template = 'home.html' if path.name == 'index.html' else 'research.html'
+            body = (root / 'templates' / template).read_text(encoding='utf-8').replace('{{report_url}}', esc(REPORT_URL))
+            opening = '<main id="main" tabindex="-1">'
+            text = splice(text, body, opening, '</main>')
+            text = splice(text, build_index(articles, root) if path.name == 'index.html' else build_research(articles, root))
+        text = re.sub(r'<time\b[^>]*data-dfb="updated"[^>]*>.*?</time>',
+                      f'<time data-dfb="updated" datetime="{latest}">{display_date(latest)}</time>', text, flags=re.S)
+        text = re.sub(r'(<(?:b|span)\b[^>]*data-dfb="selected-count"[^>]*>).*?(</(?:b|span)>)',
+                      lambda m:m.group(1)+str(len(articles))+m.group(2), text, flags=re.S)
+        planned[path] = text
+    for required in ('index.html','research.html'):
+        if root / required not in planned:
+            raise BuildError(f'{required} does not contain the shared build markers.')
+    return planned
 
-
-def build_research(arts):
-    order, groups = [], {}
-    for a in arts:                      # 그룹 순서 = 배열에서 처음 나온 순서
-        g = a["group"]
-        if g not in groups:
-            order.append(g)
-            groups[g] = []
-        groups[g].append(a)
-
-    blocks = []
-    for g in order:
-        rows = "".join(row(a, home=False) for a in groups[g])
-        blocks.append(
-            f'  <div class="grp"><div class="grp-h">{esc(g)}</div>\n'
-            f'  <div class="rows">\n{rows}  </div></div>\n'
-        )
-    return "\n" + "\n".join(blocks) + "\n\n  "
-
-
-def splice(path: Path, inner: str) -> str:
-    text = path.read_text(encoding="utf-8")
-    i, j = text.find(START), text.find(END)
-    if i == -1 or j == -1:
-        raise BuildError(f"{path.name} 에 ARTICLES 마커가 없습니다. 마커를 지우지 마세요.")
-    if j < i:
-        raise BuildError(f"{path.name} 의 마커 순서가 뒤바뀌었습니다.")
-    return text[: i + len(START)] + inner + text[j:]
-
-
-# ---------------------------------------------------------------- 진입점
-
-def main():
-    check = "--check" in sys.argv
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true', help='Fail if generated markup needs updating; write nothing.')
+    args = parser.parse_args(argv)
     try:
-        cfg, arts, cnt = load()
-        index = splice(ROOT / "index.html", build_index(arts))
-        if not COUNT_RE.search(index):
-            raise BuildError(
-                'index.html 에 <b data-dfb="count"> 표식이 없습니다. '
-                '발행 건수 표식을 남겨두세요.'
-            )
-        index = COUNT_RE.sub(lambda m: m.group(1) + str(cnt) + m.group(3), index)
-        planned = {
-            ROOT / "index.html":         index,
-            ROOT / "research.html":      splice(ROOT / "research.html", build_research(arts)),
-        }
-    except BuildError as e:
-        print(f"빌드 중단: {e}", file=sys.stderr)
-        print("아무 파일도 수정하지 않았습니다.", file=sys.stderr)
+        planned = planned_outputs()
+        changed = {p:t for p,t in planned.items() if p.read_text(encoding='utf-8') != t}
+        if args.check:
+            if changed:
+                print('Needs rebuild: ' + ', '.join(p.name for p in changed))
+                return 1
+        else:
+            # Validate every output first, then stage writes. Restore originals on OS failure.
+            originals = {p:p.read_bytes() for p in changed}
+            try:
+                for p,t in changed.items():
+                    p.with_suffix(p.suffix+'.tmp').write_text(t, encoding='utf-8')
+                for p in changed:
+                    p.with_suffix(p.suffix+'.tmp').replace(p)
+            except OSError:
+                for p,data in originals.items(): p.write_bytes(data)
+                raise
+            finally:
+                for p in changed:
+                    p.with_suffix(p.suffix+'.tmp').unlink(missing_ok=True)
+        print(f'Validated {len(planned)} pages; ' + (f'updated {len(changed)}.' if changed else 'no changes.'))
+        return 0
+    except (BuildError, OSError) as e:
+        print(f'Build stopped: {e}', file=sys.stderr)
         return 1
 
-    changed = []
-    for path, new in planned.items():
-        if path.read_text(encoding="utf-8") != new:
-            changed.append(path.name)
-            if not check:
-                path.write_text(new, encoding="utf-8")
-
-    home = sum(1 for a in arts if a.get("home", True) is not False)
-    print(f"기사 {len(arts)}건 (첫 페이지 {home}건) · 발행 건수 {cnt}")
-    if not changed:
-        print("변경 없음.")
-    elif check:
-        print("갱신 필요:", ", ".join(changed))
-        return 1
-    else:
-        print("갱신함:", ", ".join(changed))
-    return 0
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     sys.exit(main())
