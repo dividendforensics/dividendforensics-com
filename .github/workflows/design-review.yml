@@ -24,8 +24,6 @@ jobs:
           import base64, hashlib, json, lzma
           chunks = sorted(Path('.').glob('.design-patch.*.b64'))
           assert len(chunks) == 4, 'Expected four transfer chunks'
-          for p in chunks:
-              print(p.name, len(p.read_text().strip()), hashlib.sha256(p.read_bytes()).hexdigest())
           packed = base64.b64decode(''.join(p.read_text().strip() for p in chunks), validate=True)
           digest = hashlib.sha256(packed).hexdigest()
           print('Packed SHA256:', digest)
@@ -59,14 +57,17 @@ jobs:
       - name: Commit only after all checks pass
         run: |
           set -euo pipefail
+          cp .github/workflows/main.yml /tmp/dfb-preview/proposed-main-workflow.yml
+          cp .github/workflows/design-review.yml /tmp/dfb-preview/proposed-review-workflow.yml
+          git restore --source=HEAD --worktree -- .github/workflows/main.yml .github/workflows/design-review.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           git commit -m 'feat: bespoke editorial publication, complete responsive theme and verified publishing pipeline'
-          git push origin HEAD:design/editorial-20260917
           git archive --format=zip HEAD -o /tmp/dfb-preview/dfb-editorial-source.zip
           git rev-parse HEAD > /tmp/dfb-preview/release-commit.txt
           cp img/og.png /tmp/dfb-preview/social-preview.png
+          git push origin HEAD:design/editorial-20260917
       - uses: actions/upload-artifact@v4
         if: always()
         with:
