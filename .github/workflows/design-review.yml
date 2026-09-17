@@ -1,0 +1,19 @@
+name: Design review
+on:
+  push:
+    branches: [design/editorial-20260917]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture current site source and assets
+        run: git archive --format=zip HEAD -o /tmp/dfb-source.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dfb-source
+          path: /tmp/dfb-source.zip
+          retention-days: 7
