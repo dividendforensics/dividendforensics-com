@@ -1,0 +1,69 @@
+name: Inspect public author archive
+on:
+  push:
+    branches: ['content/ticker-library-20260917']
+    paths: ['.github/workflows/archive-inspect.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python -m pip install playwright beautifulsoup4
+          python -m playwright install --with-deps chromium
+      - name: Read publicly visible author entries
+        run: |
+          mkdir -p /tmp/author-inspect
+          git archive --format=zip HEAD -o /tmp/author-inspect/site-source.zip
+          python - <<'PY'
+          import json, re, time
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          out=Path('/tmp/author-inspect')
+          links={}
+          network=[]
+          with sync_playwright() as p:
+              b=p.chromium.launch()
+              page=b.new_page(viewport={'width':1440,'height':1000})
+              page.on('response',lambda r:network.append({'url':r.url,'status':r.status,'type':r.request.resource_type}) if r.request.resource_type in ('xhr','fetch') else None)
+              try:
+                  response=page.goto('https://www.benzinga.com/author/jeong-mo-goo',wait_until='domcontentloaded',timeout=60000)
+                  out.joinpath('http-status.txt').write_text(str(response.status if response else None))
+                  if response and response.status in (401,403,429):
+                      out.joinpath('blocked.txt').write_text('Access denied. No bypass attempted.')
+                  else:
+                      page.wait_for_timeout(4000)
+                      stagnant=0
+                      for n in range(12):
+                          before=len(links)
+                          for a in page.locator('a[href]').evaluate_all('(as)=>as.map(a=>({url:a.href,text:a.innerText}))'):
+                              if re.search(r'benzinga\.com/.+/\d{7,}/',a['url']): links[a['url']]=a['text']
+                          out.joinpath(f'page-{n}.txt').write_text(page.locator('body').inner_text())
+                          if len(links)==before: stagnant+=1
+                          else: stagnant=0
+                          nexts=page.get_by_role('button',name=re.compile(r'^(load more|show more|next|next page)$',re.I))
+                          if nexts.count() and nexts.first.is_visible(): nexts.first.click()
+                          else: page.evaluate('window.scrollTo(0,document.body.scrollHeight)')
+                          page.wait_for_timeout(1800)
+                          if stagnant>=3: break
+                      out.joinpath('author.html').write_text(page.content())
+                      page.screenshot(path=str(out/'author.png'),full_page=True)
+                  out.joinpath('links.json').write_text(json.dumps(links,ensure_ascii=False,indent=2))
+              except Exception as e:
+                  out.joinpath('error.txt').write_text(type(e).__name__+': '+str(e))
+              out.joinpath('requests.json').write_text(json.dumps(network,indent=2))
+              b.close()
+          print('Captured public article links:',len(links))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: author-archive-inspection
+          path: /tmp/author-inspect
+          retention-days: 7
