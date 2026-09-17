@@ -1,13 +1,15 @@
 name: Design review
 on:
   push:
-    branches: [design/editorial-20260917]
+    branches: ['design/**']
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 concurrency:
-  group: editorial-release-20260917
-  cancel-in-progress: false
+  group: design-review-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   review:
     runs-on: ubuntu-latest
@@ -17,60 +19,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Verify and unpack the reviewed text sources
-        run: |
-          python - <<'PY'
-          from pathlib import Path, PurePosixPath
-          import base64, hashlib, json, lzma
-          chunks = sorted(Path('.').glob('.design-patch.*.b64'))
-          assert len(chunks) == 4, 'Expected four transfer chunks'
-          packed = base64.b64decode(''.join(p.read_text().strip() for p in chunks), validate=True)
-          digest = hashlib.sha256(packed).hexdigest()
-          print('Packed SHA256:', digest)
-          assert digest == '8062ca414a450bedca2374019ae6f6034a90e945aad4b155e37bad1051a29291', 'Source transfer mismatch'
-          payload = json.loads(lzma.decompress(packed))
-          for name, text in payload['files'].items():
-              rel = PurePosixPath(name)
-              assert not rel.is_absolute() and '..' not in rel.parts and '.git' not in rel.parts
-              p = Path(name)
-              assert not p.is_symlink()
-              p.parent.mkdir(parents=True, exist_ok=True)
-              p.write_text(text, encoding='utf-8')
-          for p in chunks:
-              p.unlink()
-          print('Restored', len(payload['files']), 'reviewed text source files')
-          PY
-      - name: Install browser tools
+      - name: Install browser QA tools
         run: |
           python -m pip install 'beautifulsoup4>=4.12,<5' 'playwright>=1.50,<2'
           python -m playwright install --with-deps chromium
-      - name: Apply the migration and generate social previews
+      - name: Validate and render the complete site
         run: |
-          python tools/redesign_site.py
-          python tools/render_social.py
           python build_site.py --check
           python -m unittest discover -s tests -v
           python tools/check_site.py
-          test -z "$(git diff --name-only -- CNAME google5e69369cc3191f61.html img/report001-cover.png img/report001-recon.png img/report001-ladder.png)"
-      - name: Browser verification and screenshots
-        run: python tools/browser_check.py --output /tmp/dfb-preview
-      - name: Commit only after all checks pass
-        run: |
-          set -euo pipefail
-          cp .github/workflows/main.yml /tmp/dfb-preview/proposed-main-workflow.yml
-          cp .github/workflows/design-review.yml /tmp/dfb-preview/proposed-review-workflow.yml
-          git restore --source=HEAD --worktree -- .github/workflows/main.yml .github/workflows/design-review.yml
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
-          git commit -m 'feat: bespoke editorial publication, complete responsive theme and verified publishing pipeline'
-          git archive --format=zip HEAD -o /tmp/dfb-preview/dfb-editorial-source.zip
-          git rev-parse HEAD > /tmp/dfb-preview/release-commit.txt
-          cp img/og.png /tmp/dfb-preview/social-preview.png
-          git push origin HEAD:design/editorial-20260917
+          python tools/browser_check.py --output /tmp/dfb-preview
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: dfb-editorial-preview
+          name: dfb-design-preview
           path: /tmp/dfb-preview
           retention-days: 14
