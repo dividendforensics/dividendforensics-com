@@ -1,0 +1,50 @@
+name: Audit site refresh
+on:
+  push:
+    branches: ['audit/site-refresh-20260920']
+    paths: ['.github/workflows/audit-site-refresh.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: audit-site-refresh
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build generated pages
+        run: python build_site.py
+      - name: Static and unit checks
+        run: |
+          python -m unittest discover -s tests -v
+          python tools/check_site.py
+          python build_site.py --check
+      - name: Browser QA
+        run: |
+          python -m pip install 'beautifulsoup4>=4.12,<5' 'playwright>=1.50,<2'
+          python -m playwright install --with-deps chromium
+          python tools/browser_check.py --output /tmp/dfb-audit-preview
+      - name: Commit generated HTML
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain -- '*.html')" ]; then
+            echo "Generated HTML already current."
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add -- '*.html'
+            git commit -m 'build: synchronize audited site refresh'
+            git push origin HEAD:audit/site-refresh-20260920
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: site-refresh-audit
+          path: /tmp/dfb-audit-preview
+          retention-days: 7
