@@ -9,9 +9,21 @@
     "Required fields: url, title, blurb, date (YYYY-MM or YYYY-MM-DD), group, label, case_key.",
     "Optional: home (boolean), home_title, case_slug, status (published/draft/internal_review)."
   ],
-  "published_count": 93,
+  "published_count": 94,
   "_published_count_note": "Legacy running total plus verified additions. Not displayed as an independently audited count; the website displays the number of selected public records.",
   "articles": [
+    {
+      "url": "https://www.benzinga.com/Opinion/26/09/61852306/piedmont-reworks-debt-stack-but-what-happens-to-core-ffo-per-share",
+      "title": "Piedmont Reworks Debt Stack, But What Happens To Core FFO Per Share?",
+      "blurb": "A lower exchangeable-note coupon sits inside a wider financing mix of equity settlements, revolver borrowings and a concurrent share repurchase. The next check is post-transaction Core FFO per share.",
+      "date": "2026-09-17",
+      "group": "REIT",
+      "label": "Office / refinancing",
+      "case_key": "PDM",
+      "case_slug": "pdm-refinancing",
+      "status": "published",
+      "publication_verified": "2026-09-20"
+    },
     {
       "url": "https://www.benzinga.com/Opinion/26/09/61662923/800m-financing-run-puts-blue-owl-technology-dividend-coverage-in-focus",
       "title": "Blue Owl Technology's $800M Financing Run Puts Dividend Coverage In Focus",
