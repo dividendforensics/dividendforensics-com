@@ -1,7 +1,7 @@
 # Dividend Forensics Bureau
 
-Independent, filing-anchored research on dividend durability, capital structure
-and financing access. Production site: https://dividendforensics.com
+Independent, filing-anchored research on capital structure, debt, dilution,
+financing, refinancing, credit and payout mechanics. Production site: https://dividendforensics.com
 
 ## The editorial edition
 
@@ -9,6 +9,27 @@ Warm paper, oxblood and serif-led typesetting for the publication; a separate
 forest-ink Research Desk for professional inquiries. The visual evidence is
 from the original reports, not generated artwork. A premium presentation does
 not imply a paid subscription is available. Membership remains **not open**.
+
+## Public copy state — 2026-09-24
+
+DFB remains Dividend Forensics Bureau, with analysis by Jeong-Mo Goo. Public
+positioning is method-led rather than limited to dividend-paying companies.
+Existing REIT/BDC research, field guides and the published MAA/WPC working
+paper are preserved; historical article findings are not rewritten for branding.
+The three named income frameworks remain reference material on Methodology,
+not the front-door description of the publication.
+
+Membership is removed from shared navigation and launch-notice promotion.
+`membership.html` remains a status-only URL: in preparation, not open for
+enrollment or payment, no public price or launch date. Do not upload review-only
+Weekly or MRP sample files, enable checkout, or publish internal pricing through
+a copy change. The existing free Report No. 001 checkout is a separate, already
+published MAA/WPC working paper; preserve its variant ID.
+
+Active social destinations are Benzinga, Stocktwits, Muck Rack, X and Bluesky.
+Substack is no longer promoted. The Research Desk form is preserved as an
+inquiry route, not represented as a live paid custom-research or data product.
+
 
 ## Publishing one article
 
