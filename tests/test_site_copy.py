@@ -1,5 +1,8 @@
 """Guard approved public positioning and the paused membership state."""
 import unittest
+import re
+import xml.etree.ElementTree as ET
+from urllib.parse import urlsplit
 from pathlib import Path
 import sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -63,6 +66,35 @@ class PublicCopyTests(unittest.TestCase):
             text=(ROOT/name).read_text()
             self.assertNotIn('Structural Research on Dividend Durability',text)
             self.assertNotIn('content="An independent research desk examining what is left after a dividend is paid.',text)
+
+    def test_sitemap_excludes_paused_membership_and_keeps_methodology(self):
+        ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
+        tree=ET.parse(ROOT/'sitemap.xml')
+        self.assertEqual(tree.getroot().tag,'{'+ns['s']+'}urlset')
+        urls=[node.text for node in tree.findall('s:url/s:loc',ns)]
+        self.assertTrue(urls)
+        self.assertEqual(len(urls),len(set(urls)))
+        self.assertIn('https://dividendforensics.com/methodology.html',urls)
+        self.assertNotIn('https://dividendforensics.com/membership.html',urls)
+
+    def test_sitemap_targets_are_canonical_indexable_site_pages(self):
+        ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
+        for node in ET.parse(ROOT/'sitemap.xml').findall('s:url/s:loc',ns):
+            with self.subTest(url=node.text):
+                url=urlsplit(node.text)
+                self.assertEqual(url.scheme,'https')
+                self.assertEqual(url.netloc,'dividendforensics.com')
+                self.assertFalse(url.query or url.fragment)
+                relative=url.path.lstrip('/') or 'index.html'
+                self.assertNotIn('..',Path(relative).parts)
+                target=ROOT/relative
+                self.assertTrue(target.is_file())
+                text=target.read_text(encoding='utf-8')
+                canonical=re.search(r'<link\s+rel="canonical"\s+href="([^"]+)"',text)
+                self.assertIsNotNone(canonical)
+                self.assertEqual(canonical.group(1),node.text)
+                self.assertNotRegex(text,r'(?i)<meta[^>]*name="robots"[^>]*content="[^"]*noindex')
+                self.assertNotRegex(text,r'(?i)<meta[^>]*http-equiv="refresh"')
 
 if __name__=='__main__':
     unittest.main()
