@@ -1,4 +1,4 @@
-name: Site copy alignment live verification
+name: Sitemap follow-up live verification
 on:
   push:
     branches: ['audit/site-copy-alignment-20260924']
@@ -8,50 +8,71 @@ permissions:
 jobs:
   verify-live:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: d102c58400371116199279f5f2d453c9b318089c
+          ref: 326384bcfa54682fc0bccee9374c9d2b135ab335
           persist-credentials: false
-      - name: Read live site and compare with approved commit
+      - name: Verify deployed sitemap and preserved status pages
         run: |
           python - <<'PY'
           from pathlib import Path
           from urllib.request import Request,urlopen
-          import hashlib,json,time,sys
-          release='d102c58400371116199279f5f2d453c9b318089c'
-          out=Path('/tmp/dfb-live-check');out.mkdir(parents=True,exist_ok=True)
-          digest=lambda data:hashlib.sha256(data).hexdigest()
-          def fetch(name,attempt=0):
-              route='' if name=='index.html' else name
-              url='https://dividendforensics.com/'+route+'?dfb_copy='+release+'&attempt='+str(attempt)
-              req=Request(url,headers={'User-Agent':'DFB-Publication-Verification/1.0','Cache-Control':'no-cache'})
-              with urlopen(req,timeout=30) as response:
-                  body=response.read(); status=response.status; final=response.geturl()
-              p=out/'public'/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(body)
-              return {'path':name,'url':url,'response_url':final,'http_status':status,'expected_sha256':digest(Path(name).read_bytes()),'actual_sha256':digest(body),'matches':body==Path(name).read_bytes()}
-          names=sorted(p.name for p in Path('.').glob('*.html') if 'name="dfb-design"' in p.read_text())
-          names+=['articles.json','img/og.png','img/og-learn.png','img/og-research.png','img/og-tools.png']
-          readiness=[]
-          for attempt in range(10):
-              try:
-                  row=fetch('index.html',attempt);readiness.append(row)
-                  if row['matches']:break
-              except Exception as e:readiness.append({'attempt':attempt,'error':str(e)})
-              time.sleep(15)
-          results=[]
-          for name in names:
-              try:results.append(fetch(name))
-              except Exception as e:results.append({'path':name,'matches':False,'error':str(e)})
-          ok=all(x['matches'] for x in results)
-          report={'commit':release,'result':'PASS' if ok else 'FAIL','live_get_requests_only':True,'forms_submitted':False,'payment_actions':False,'files_checked':len(results),'results':results,'readiness_attempts':readiness}
-          (out/'LIVE_SITE_CHECK.json').write_text(json.dumps(report,indent=2))
-          print(json.dumps(report,indent=2));sys.exit(0 if ok else 1)
+          from html.parser import HTMLParser
+          import hashlib,json,time,sys,xml.etree.ElementTree as ET
+          release='326384bcfa54682fc0bccee9374c9d2b135ab335'
+          out=Path('/tmp/dfb-sitemap-check');out.mkdir(parents=True,exist_ok=True)
+          digest=lambda b:hashlib.sha256(b).hexdigest()
+          def fetch(url):
+              req=Request(url,headers={'User-Agent':'Mozilla/5.0 (DFB Publication Review)','Cache-Control':'no-cache'})
+              with urlopen(req,timeout=20) as response:
+                  return response.status,response.geturl(),response.read()
+          rows=[]
+          for name in ['sitemap.xml','membership.html','methodology.html','robots.txt']:
+              row={'path':name,'matches':False}
+              for attempt in range(4):
+                  url='https://dividendforensics.com/'+name+'?dfb_verify='+release+'&attempt='+str(attempt)
+                  try:
+                      code,final,body=fetch(url)
+                      (out/name).write_bytes(body)
+                      row={'path':name,'url':url,'response_url':final,'http_status':code,'expected_sha256':digest(Path(name).read_bytes()),'actual_sha256':digest(body),'matches':body==Path(name).read_bytes()}
+                      if row['matches']:break
+                  except Exception as e:row={'path':name,'url':url,'matches':False,'error':str(e)}
+                  time.sleep(5)
+              rows.append(row)
+          ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          if (out/'sitemap.xml').exists():
+              tree=ET.parse(out/'sitemap.xml')
+              urls=[x.text for x in tree.findall('s:url/s:loc',ns)]
+              sitemap={'url_count':len(urls),'membership_present':'https://dividendforensics.com/membership.html' in urls,'methodology_present':'https://dividendforensics.com/methodology.html' in urls,'lastmod_count':len(tree.findall('s:url/s:lastmod',ns))}
+          else:sitemap={}
+          ok=all(x['matches'] for x in rows) and sitemap.get('url_count')==26 and not sitemap.get('membership_present',True) and sitemap.get('methodology_present',False)
+          # Public byline read only. Failure is a separate observation, not site failure.
+          bz={'url':'https://www.benzinga.com/author/jeong-mo-goo','not_modified':True}
+          try:
+              code,final,body=fetch(bz['url']+'?dfb_review=20260924')
+              (out/'benzinga-author.html').write_bytes(body)
+              class Text(HTMLParser):
+                  def __init__(self):super().__init__();self.parts=[];self.hidden=0
+                  def handle_starttag(self,tag,attrs):
+                      if tag in ('script','style'):self.hidden+=1
+                  def handle_endtag(self,tag):
+                      if tag in ('script','style') and self.hidden:self.hidden-=1
+                  def handle_data(self,s):
+                      if not self.hidden and s.strip():self.parts.append(s.strip())
+              text=Text();text.feed(body.decode('utf-8','replace'));plain='\n'.join(text.parts)
+              (out/'benzinga-author-visible.txt').write_text(plain)
+              pos=plain.find('About Jeong-Mo Goo')
+              bz.update({'http_status':code,'response_url':final,'sha256':digest(body),'old_bio_visible':'Dividend risk analyst specializing' in plain,'old_framework_visible':'Creator of the Buffer Half-Life' in plain,'new_filing_bio_visible':'filing-anchored' in plain,'about_excerpt':plain[pos:pos+700] if pos>=0 else 'NOT_LOCATED'})
+          except Exception as e:bz['error']=str(e)
+          result={'result':'PASS' if ok else 'FAIL','commit':release,'read_only_gets':True,'forms_submitted':False,'payment_actions':False,'site_files_checked':len(rows),'site_files':rows,'sitemap':sitemap,'benzinga_author_read':bz}
+          (out/'LIVE_RESULT.json').write_text(json.dumps(result,indent=2))
+          print(json.dumps(result,indent=2));sys.exit(0 if ok else 1)
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: dfb-live-site-verification
-          path: /tmp/dfb-live-check
+          name: dfb-sitemap-followup-live
+          path: /tmp/dfb-sitemap-check
           retention-days: 7
