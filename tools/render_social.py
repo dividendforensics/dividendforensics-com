@@ -6,9 +6,9 @@ import argparse, os
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
 SPECS={
- 'og.png':('The publication','A dividend is the last<br>line of the <em>investigation.</em>','Filing-anchored research on dividends, REITs &amp; BDCs.'),
+ 'og.png':('Filing-anchored structural research','Follow the filing.<br><em>Trace the capital.</em>','Capital structure. Debt. Dilution. Financing. Credit. Payout mechanics.'),
  'og-research.png':('Research archive','The findings.<br><em>The figures behind them.</em>','Company filings. Verified arithmetic. Visible limitations.'),
- 'og-learn.png':('The reading room','Before the ratio,<br><em>understand the business.</em>','Field guides to real estate, private credit and cash flow.'),
+ 'og-learn.png':('The reading room','Understand the business.<br><em>Then read the numbers.</em>','Field guides to business models, cash flow and financing.'),
  'og-tools.png':('Working papers & tools','The work behind<br><em>the conclusion.</em>','Original reports, reconciliations and research checklists.'),
 }
 def main():

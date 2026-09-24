@@ -137,7 +137,7 @@ def build_research(articles: list[dict], root: Path = ROOT) -> str:
     return '\n' + '\n'.join(out) + '\n'
 
 def header(page_name: str, root: Path = ROOT) -> str:
-    nav = [('research.html','Research'),('learn.html','Field guides'),('membership.html','Membership'),('about.html','About'),('research-desk.html','Research Desk')]
+    nav = [('research.html','Research'),('learn.html','Field guides'),('about.html','About'),('research-desk.html','Research Desk')]
     active = page_name
     if page_name.startswith('case-'): active = 'research.html'
     if page_name.endswith('-guide.html') or page_name.startswith('reit-'): active = 'learn.html'
