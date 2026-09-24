@@ -1,71 +1,57 @@
-name: Site copy alignment audit
+name: Site copy alignment live verification
 on:
   push:
     branches: ['audit/site-copy-alignment-20260924']
     paths: ['.github/workflows/audit-site-copy-20260924.yml']
 permissions:
-  contents: write
-concurrency:
-  group: site-copy-alignment-20260924
-  cancel-in-progress: false
+  contents: read
 jobs:
-  review:
+  verify-live:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Apply audited copy changes and build
+          ref: d102c58400371116199279f5f2d453c9b318089c
+          persist-credentials: false
+      - name: Read live site and compare with approved commit
         run: |
-          python tools/_apply_site_copy_20260924.py
-          python build_site.py
-          python build_site.py --check
-          python -m unittest discover -s tests -v
-          python tools/check_site.py
-      - name: Install browser review tools
-        run: |
-          python -m pip install 'beautifulsoup4>=4.12,<5' 'playwright>=1.50,<2'
-          python -m playwright install --with-deps chromium
-      - name: Render updated social previews and review the site
-        run: |
-          python tools/render_social.py
-          python tools/browser_check.py --output /tmp/dfb-copy-preview
-      - name: Preserve research archive, source evidence, styles and endpoints
-        run: |
-          set -euo pipefail
-          git diff --exit-code b7753fc3d4faab4d90469c59e0543299baf5e785 -- articles.json data/articles.json CNAME google5e69369cc3191f61.html dfb.css newsroom.css research-desk.css site.js img/report001-cover.png img/report001-recon.png img/report001-ladder.png
           python - <<'PY'
           from pathlib import Path
-          import subprocess,re
-          keep=list(Path('.').glob('case-*.html'))+[Path(n) for n in ['reit-guide.html','bdc-guide.html','industrials-guide.html','telecom-guide.html','reit-what-is-a-reit.html','reit-ffo-vs-eps.html','legal.html','privacy.html','disclaimer.html','Refund.html']]
-          for p in keep:
-              old=subprocess.check_output(['git','show','b7753fc3d4faab4d90469c59e0543299baf5e785:'+str(p)],text=True)
-              new=p.read_text()
-              extract=lambda text: re.search(r'<main\b[^>]*>(.*?)</main>',text,re.S).group(1)
-              assert extract(old)==extract(new),str(p)+' research/policy body changed'
-          print('PASS: all case/sector/policy bodies preserved.')
+          from urllib.request import Request,urlopen
+          import hashlib,json,time,sys
+          release='d102c58400371116199279f5f2d453c9b318089c'
+          out=Path('/tmp/dfb-live-check');out.mkdir(parents=True,exist_ok=True)
+          digest=lambda data:hashlib.sha256(data).hexdigest()
+          def fetch(name,attempt=0):
+              route='' if name=='index.html' else name
+              url='https://dividendforensics.com/'+route+'?dfb_copy='+release+'&attempt='+str(attempt)
+              req=Request(url,headers={'User-Agent':'DFB-Publication-Verification/1.0','Cache-Control':'no-cache'})
+              with urlopen(req,timeout=30) as response:
+                  body=response.read(); status=response.status; final=response.geturl()
+              p=out/'public'/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(body)
+              return {'path':name,'url':url,'response_url':final,'http_status':status,'expected_sha256':digest(Path(name).read_bytes()),'actual_sha256':digest(body),'matches':body==Path(name).read_bytes()}
+          names=sorted(p.name for p in Path('.').glob('*.html') if 'name="dfb-design"' in p.read_text())
+          names+=['articles.json','img/og.png','img/og-learn.png','img/og-research.png','img/og-tools.png']
+          readiness=[]
+          for attempt in range(10):
+              try:
+                  row=fetch('index.html',attempt);readiness.append(row)
+                  if row['matches']:break
+              except Exception as e:readiness.append({'attempt':attempt,'error':str(e)})
+              time.sleep(15)
+          results=[]
+          for name in names:
+              try:results.append(fetch(name))
+              except Exception as e:results.append({'path':name,'matches':False,'error':str(e)})
+          ok=all(x['matches'] for x in results)
+          report={'commit':release,'result':'PASS' if ok else 'FAIL','live_get_requests_only':True,'forms_submitted':False,'payment_actions':False,'files_checked':len(results),'results':results,'readiness_attempts':readiness}
+          (out/'LIVE_SITE_CHECK.json').write_text(json.dumps(report,indent=2))
+          print(json.dumps(report,indent=2));sys.exit(0 if ok else 1)
           PY
-      - name: Commit reviewed content on the audit branch only
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- '*.html' templates build_site.py README.md tools/render_social.py tests/test_site_copy.py 'img/og*.png'
-          git diff --cached --stat
-          git commit -m 'site: align filing-led copy and pause membership promotion'
-          git push origin HEAD:audit/site-copy-alignment-20260924
-          git archive --format=tar HEAD > /tmp/dfb-reviewed-site.tar
-          git diff b7753fc3d4faab4d90469c59e0543299baf5e785 HEAD > /tmp/dfb-reviewed-site.diff
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: dfb-reviewed-site
-          path: |
-            /tmp/dfb-copy-preview
-            /tmp/dfb-reviewed-site.tar
-            /tmp/dfb-reviewed-site.diff
+          name: dfb-live-site-verification
+          path: /tmp/dfb-live-check
           retention-days: 7
