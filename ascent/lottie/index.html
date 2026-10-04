@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ascent Lottie</title>
+<meta name="description" content="The Lottie edition of Ascent: a bubble pops, becomes the sun, and becomes the ㅇ of 오름.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap">
+<style>
+  /* Layout: one square stage, a single row of controls under it. */
+  :root {
+    --night: #0b0b1e; --ink: #f6ead7; --sun: #f6c06b; --muted: #9c95b4; --line: rgba(246, 234, 215, 0.16);
+    --ui: "Jost", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  body { margin: 0; min-height: 100vh; background: var(--night); color: var(--ink); font-family: var(--ui); display: grid; place-content: center; gap: 1rem; padding: 16px; box-sizing: border-box; }
+  #stage { width: min(92vw, 78vh, 720px); aspect-ratio: 1; max-width: 100%; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55); }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; }
+  button, select { font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 0.45rem 1rem; cursor: pointer; }
+  button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--sun); outline-offset: 3px; }
+  input[type=range] { flex: 1; min-width: 140px; accent-color: var(--sun); }
+</style>
+</head>
+<body>
+  <div id="stage" aria-label="Ascent Lottie animation"></div>
+  <div class="row">
+    <button id="play" type="button">Pause</button>
+    <input id="scrub" type="range" min="0" max="359" value="0" aria-label="Frame">
+    <span id="fr">000 / 360</span>
+    <select id="renderer" aria-label="Renderer"><option value="svg">SVG</option><option value="canvas">Canvas</option></select>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/lottie-web@5.13.0/build/player/lottie.min.js"></script>
+<script>
+  let anim, data;
+  const $ = (id) => document.getElementById(id);
+  const mount = (renderer) => {
+    const playing = anim ? !anim.isPaused : true;
+    const frame = anim ? anim.currentFrame : 0;
+    if (anim) anim.destroy();
+    anim = lottie.loadAnimation({ container: $('stage'), renderer, loop: true, autoplay: false, animationData: structuredClone(data) });
+    anim.addEventListener('enterFrame', () => { $('scrub').value = Math.floor(anim.currentFrame); $('fr').textContent = `${String(Math.floor(anim.currentFrame)).padStart(3, '0')} / 360`; });
+    if (playing) anim.goToAndPlay(frame, true); else anim.goToAndStop(frame, true);
+  };
+  fetch('ascent.json').then((r) => r.json()).then((d) => { data = d; mount('svg'); });
+  $('play').addEventListener('click', () => { if (anim.isPaused) { anim.play(); $('play').textContent = 'Pause'; } else { anim.pause(); $('play').textContent = 'Play'; } });
+  $('scrub').addEventListener('input', (e) => { anim.goToAndStop(+e.target.value, true); $('play').textContent = 'Play'; });
+  $('renderer').addEventListener('change', (e) => mount(e.target.value));
+</script>
+</body>
+</html>

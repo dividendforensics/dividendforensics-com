@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pip, Below</title>
+<meta name="description" content="PIP, BELOW Ep.1 The Bubble: a 60-second real-time film and three vertical shorts, made with Three.js.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  /* Layout: a screening room. The picture keeps its own aspect (16:9 film or 9:16 short), centred; the edit picker sits above it. */
+  :root {
+    --abyss: #02080c;
+    --foam: #eef6f3;
+    --pip: #ffc23a;           /* Pip's yellow: the one accent */
+    --tide: #86b9b5;
+    --hairline: rgba(238, 246, 243, 0.16);
+    --display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --ui: "Jost", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --bar: 0%;
+    color-scheme: dark;
+  }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--abyss); color: var(--foam); font-family: var(--ui); overflow: hidden; -webkit-font-smoothing: antialiased; }
+  #room { position: fixed; inset: 0; display: grid; grid-template-rows: auto 1fr auto; }
+  header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.2rem; padding: 0.8rem 16px 0.6rem; }
+  .brand { font-family: var(--display); font-size: 1.25rem; letter-spacing: 0.32em; text-transform: uppercase; }
+  .brand b { color: var(--pip); font-weight: 400; }
+  nav { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  nav button {
+    font: inherit; font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--foam);
+    background: transparent; border: 1px solid var(--hairline); border-radius: 999px; padding: 0.45rem 0.9rem; cursor: pointer;
+  }
+  nav button[aria-pressed="true"] { border-color: var(--pip); color: var(--pip); }
+  nav button:focus-visible, .ctl:focus-visible, #scrub:focus-visible, .go:focus-visible { outline: 2px solid var(--pip); outline-offset: 3px; }
+  #stagewrap { position: relative; min-height: 0; display: grid; place-items: center; padding-inline: 16px; }
+  #frame { position: relative; overflow: hidden; background: #000; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
+  #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #captions { position: absolute; inset: 0; pointer-events: none; container-type: size; }
+
+  /* captions, sized against the picture so they scale with it */
+  .c-cap, .c-hook, .c-card, .c-title-open, .c-title-end { position: absolute; left: 6%; right: 6%; text-align: center; }
+  .c-cap .c-main { font-family: var(--display); font-style: italic; font-size: 5cqh; line-height: 1.2; text-wrap: balance; text-shadow: 0 0 18px rgba(0, 10, 14, 0.9), 0 1px 3px rgba(0, 10, 14, 0.8); }
+  [data-kind="main"] .c-cap { bottom: calc(var(--bar) + 7%); }
+  [data-kind="short"] .c-cap { top: 15%; }
+  [data-kind="short"] .c-cap .c-main { font-size: 3.1cqh; }
+  .c-hook { top: 14%; }
+  .c-hook .c-main { font-family: var(--ui); font-weight: 600; font-size: 3.4cqh; line-height: 1.15; text-wrap: balance; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 0 2px rgba(0, 0, 0, 0.6); }
+  .c-card { top: 30%; display: grid; gap: 1.2cqh; }
+  .c-card .c-main { font-family: var(--display); font-size: 4.2cqh; letter-spacing: 0.28em; margin-right: -0.28em; text-transform: uppercase; text-shadow: 0 0 22px rgba(0, 0, 0, 0.7); }
+  .c-card .c-sub { font-family: var(--ui); font-weight: 500; font-size: 1.6cqh; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pip); text-shadow: 0 0 12px rgba(0, 0, 0, 0.8); }
+  .c-title-open, .c-title-end { top: 0; bottom: 0; display: grid; place-content: center; gap: 2.2cqh; }
+  .c-title-end { bottom: auto; top: calc(var(--bar) + 9%); }
+  .c-title-open .c-main, .c-title-end .c-main { font-family: var(--display); font-weight: 300; font-size: 11cqh; letter-spacing: 0.36em; margin-right: -0.36em; text-transform: uppercase; line-height: 1; text-shadow: 0 0 34px rgba(0, 10, 14, 0.7); }
+  .c-title-open .c-sub, .c-title-end .c-sub { font-family: var(--ui); font-weight: 400; font-size: 2.1cqh; letter-spacing: 0.34em; margin-right: -0.34em; text-transform: uppercase; color: var(--pip); }
+
+  /* transport */
+  #controls { display: grid; grid-template-columns: auto auto 1fr auto auto; align-items: center; gap: 0.9rem; padding: 0.6rem 16px calc(0.8rem + env(safe-area-inset-bottom, 0px)); font-variant-numeric: tabular-nums; }
+  .ctl { background: none; border: 0; padding: 0.35rem; border-radius: 6px; display: grid; place-items: center; color: var(--foam); cursor: pointer; }
+  .ctl svg { width: 20px; height: 20px; fill: currentColor; }
+  #time { font-size: 0.78rem; letter-spacing: 0.06em; color: var(--tide); min-width: 7rem; }
+  #scrub { width: 100%; min-width: 0; accent-color: var(--pip); }
+  #shot { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tide); white-space: nowrap; }
+  #gate { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 1rem; text-align: center; padding-inline: 16px; background: rgba(2, 8, 12, 0.55); }
+  #gate p { margin: 0; color: var(--tide); max-width: 30rem; line-height: 1.55; font-weight: 300; }
+  .go { font: inherit; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pip); background: transparent; border: 1px solid var(--pip); border-radius: 999px; padding: 0.8rem 1.6rem; cursor: pointer; }
+  @media (max-width: 560px) { #controls { grid-template-columns: auto 1fr auto; } #time, #shot { display: none; } }
+  body.render { overflow: hidden; }
+  body.render header, body.render #controls, body.render #gate { display: none; }
+  body.render #room { display: block; }
+  body.render #stagewrap { position: fixed; inset: 0; padding: 0; display: block; }
+  body.render #frame { position: fixed; inset: 0; box-shadow: none; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="room">
+  <header>
+    <div class="brand">Pip, <b>Below</b></div>
+    <nav aria-label="Edit">
+      <button type="button" data-edit="main" aria-pressed="true">Ep.1 · Film 16:9</button>
+      <button type="button" data-edit="shortA" aria-pressed="false">Short A 9:16</button>
+      <button type="button" data-edit="shortB" aria-pressed="false">Short B 9:16</button>
+      <button type="button" data-edit="shortC" aria-pressed="false">Short C 9:16</button>
+    </nav>
+  </header>
+  <div id="stagewrap">
+    <div id="frame">
+      <canvas id="scene" aria-label="PIP, BELOW Episode 1, a short film about a reef fish and a bubble"></canvas>
+      <div id="captions"></div>
+      <div id="gate">
+        <p>A reef fish called Pip meets a bubble, loses it, finds it again, and lets it go. Rendered live in your browser.</p>
+        <button class="go" id="go" type="button">Play with sound</button>
+      </div>
+    </div>
+  </div>
+  <div id="controls">
+    <button class="ctl" id="toggle" type="button" aria-label="Play">
+      <svg viewBox="0 0 24 24" id="i-pause" hidden><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      <svg viewBox="0 0 24 24" id="i-play"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <span id="time">00:00.0 / 01:00</span>
+    <input id="scrub" type="range" min="0" max="60" step="0.01" value="0" aria-label="Seek">
+    <span id="shot">M1</span>
+    <button class="ctl" id="sound" type="button" aria-label="Mute">
+      <svg viewBox="0 0 24 24" id="i-sound"><path d="M4 9v6h4l5 4V5L8 9zm11.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM13 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+      <svg viewBox="0 0 24 24" id="i-muted" hidden><path d="M4 9v6h4l5 4V5L8 9zm12.6 3 2.7-2.7-1.1-1.1-2.7 2.7-2.7-2.7-1.1 1.1 2.7 2.7-2.7 2.7 1.1 1.1 2.7-2.7 2.7 2.7 1.1-1.1z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script type="module">
+  const RENDER = new URLSearchParams(location.search).has('render');
+  if (RENDER) document.body.classList.add('render');
+  const eng = await import('./engine.js');
+  const { ready, frame, setEdit, resize, currentEdit } = eng;
+
+  if (!RENDER) {
+    const $ = (id) => document.getElementById(id);
+    const AUDIO = { main: 'audio/ep01-main.m4a', shortA: 'audio/ep01-short-a.m4a', shortB: 'audio/ep01-short-b.m4a', shortC: 'audio/ep01-short-c.m4a' };
+    const audio = new Audio();
+    let name = 'main', t = 0, playing = false, sound = true, last = performance.now();
+    const fit = () => {
+      const E = currentEdit(), wrap = $('stagewrap').getBoundingClientRect();
+      const availW = wrap.width - 32, availH = wrap.height;
+      let w = availW, h = w * E.h / E.w;
+      if (h > availH) { h = availH; w = h * E.w / E.h; }
+      $('frame').style.width = `${Math.floor(w)}px`; $('frame').style.height = `${Math.floor(h)}px`;
+      resize(Math.floor(w), Math.floor(h), Math.min(devicePixelRatio || 1, 1.5));
+    };
+    const fmt = (s) => { const m = Math.floor(s / 60), r = s - m * 60; return `${String(m).padStart(2, '0')}:${r.toFixed(1).padStart(4, '0')}`; };
+    const icons = () => {
+      $('i-pause').hidden = !playing; $('i-play').hidden = playing; $('toggle').setAttribute('aria-label', playing ? 'Pause' : 'Play');
+      $('i-sound').hidden = !sound; $('i-muted').hidden = sound; $('sound').setAttribute('aria-label', sound ? 'Mute' : 'Turn sound on');
+    };
+    const syncAudio = () => {
+      if (sound && playing) { audio.currentTime = t; audio.play().catch(() => { sound = false; icons(); }); } else audio.pause();
+    };
+    const choose = (n) => {
+      name = n; t = 0;
+      document.querySelectorAll('nav button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.edit === n)));
+      setEdit(n); fit();
+      audio.src = AUDIO[n];
+      $('scrub').max = currentEdit().duration;
+      syncAudio();
+    };
+    document.querySelectorAll('nav button').forEach((b) => b.addEventListener('click', () => choose(b.dataset.edit)));
+    $('go').addEventListener('click', () => { $('gate').hidden = true; playing = true; if (t >= currentEdit().duration - 0.05) t = 0; syncAudio(); icons(); });
+    $('toggle').addEventListener('click', () => { $('gate').hidden = true; if (!playing && t >= currentEdit().duration - 0.05) t = 0; playing = !playing; syncAudio(); icons(); });
+    $('sound').addEventListener('click', () => { sound = !sound; syncAudio(); icons(); });
+    $('scrub').addEventListener('input', (e) => { t = parseFloat(e.target.value); syncAudio(); });
+    window.addEventListener('keydown', (e) => { if (e.code === 'Space') { e.preventDefault(); $('toggle').click(); } });
+    window.addEventListener('resize', fit);
+    document.addEventListener('pip:clip', (e) => { $('shot').textContent = e.detail.clip.cam; });
+    await ready;
+    choose('main');
+    const tick = (now) => {
+      const dt = Math.min((now - last) / 1000, 0.1); last = now;
+      const D = currentEdit().duration;
+      if (playing) {
+        if (sound && !audio.paused && Math.abs(audio.currentTime - t) < 0.5) t = audio.currentTime; else t += dt;
+        if (t >= D) { t = D; playing = false; audio.pause(); icons(); }
+      }
+      frame(playing || t > 0 ? t : 3.0);
+      $('scrub').value = t;
+      $('time').textContent = `${fmt(t)} / ${fmt(D).slice(0, 5)}`;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+</script>
+</body>
+</html>

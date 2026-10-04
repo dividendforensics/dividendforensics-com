@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ascent</title>
+<meta name="description" content="A 30-second real-time film made with Three.js: one air bubble rises from the seafloor to the light.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap">
+<style>
+  /* Layout: one full-bleed cinema screen; captions live inside the 2.39:1 picture, controls float in the bottom bar. */
+  :root {
+    --abyss: #02080c;          /* letterbox and page ground */
+    --foam: #e9f3f1;           /* caption and title ink */
+    --kelp-gold: #e2b768;      /* the single warm accent, the sun at the end */
+    --tide: #7fb7b4;           /* secondary text */
+    --glass: rgba(6, 22, 28, 0.62);
+    --hairline: rgba(233, 243, 241, 0.18);
+    --display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --ui: "Jost", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --bar: 12.8%;
+    color-scheme: dark;
+  }
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: var(--abyss); color: var(--foam);
+    font-family: var(--ui); overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  #stage { position: fixed; inset: 0; }
+  #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  .cap {
+    position: absolute; left: 50%; bottom: calc(var(--bar) + 8%);
+    width: min(90%, 44rem); margin-left: max(-45%, -22rem);
+    text-align: center; opacity: 0; pointer-events: none;
+    font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: clamp(1.3rem, 3vw, 2.7rem); letter-spacing: 0.01em; line-height: 1.25;
+    text-wrap: balance; text-shadow: 0 0 18px rgba(0, 10, 14, 0.9), 0 1px 3px rgba(0, 10, 14, 0.8);
+  }
+  #title {
+    position: absolute; inset: 0; display: grid; place-content: center; gap: 0.9rem;
+    text-align: center; opacity: 0; pointer-events: none;
+  }
+  #title::before {
+    content: ""; position: absolute; left: 50%; top: 50%; width: min(80vw, 60rem); height: 22vw; z-index: -1;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(closest-side, rgba(20, 8, 2, 0.42), rgba(20, 8, 2, 0));
+  }
+  #title .word {
+    font-family: var(--display); font-weight: 300; text-transform: uppercase;
+    font-size: clamp(2.6rem, 9vw, 7.5rem); letter-spacing: 0.42em; margin-right: -0.42em;
+    line-height: 1; text-shadow: 0 0 30px rgba(40, 14, 0, 0.6), 0 0 2px rgba(40, 14, 0, 0.4);
+  }
+  #title .line {
+    font-family: var(--ui); font-weight: 300; text-transform: uppercase;
+    font-size: clamp(0.66rem, 1.15vw, 1.02rem); letter-spacing: 0.38em; margin-right: -0.38em; color: var(--foam);
+    text-shadow: 0 0 14px rgba(40, 14, 0, 0.8);
+  }
+
+  /* intro card */
+  #intro {
+    position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 1.6rem;
+    padding-inline: 16px; text-align: center;
+    background: radial-gradient(ellipse at 50% 60%, rgba(3, 20, 26, 0.25), rgba(2, 8, 12, 0.85) 70%);
+    transition: opacity 0.9s ease;
+  }
+  #intro.gone { opacity: 0; pointer-events: none; }
+  #intro h1 {
+    margin: 0; font-family: var(--display); font-weight: 300; text-transform: uppercase;
+    font-size: clamp(2.4rem, 8vw, 6rem); letter-spacing: 0.42em; margin-right: -0.42em; line-height: 1;
+  }
+  #intro p { margin: 0; max-width: 34rem; color: var(--tide); font-weight: 300; font-size: clamp(0.9rem, 1.6vw, 1.05rem); line-height: 1.6; text-wrap: balance; }
+  .facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.4rem; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--tide); font-variant-numeric: tabular-nums; }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  .btn {
+    border: 1px solid var(--hairline); background: transparent; border-radius: 999px;
+    padding: 0.8rem 1.6rem; font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .btn.primary { border-color: var(--kelp-gold); color: var(--kelp-gold); }
+  .btn:hover { background: rgba(233, 243, 241, 0.08); }
+  .btn:focus-visible, .ctl:focus-visible, #scrub:focus-visible { outline: 2px solid var(--kelp-gold); outline-offset: 3px; }
+
+  /* transport */
+  #controls {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 0.7rem 16px calc(0.9rem + env(safe-area-inset-bottom, 0px));
+    display: grid; grid-template-columns: auto auto 1fr auto auto auto; align-items: center; gap: 0.9rem;
+    background: linear-gradient(to top, rgba(2, 8, 12, 0.85), rgba(2, 8, 12, 0));
+    transition: opacity 0.5s ease; font-variant-numeric: tabular-nums;
+  }
+  #controls.idle { opacity: 0; }
+  .ctl { background: none; border: 0; padding: 0.35rem; border-radius: 6px; display: grid; place-items: center; color: var(--foam); }
+  .ctl svg { width: 20px; height: 20px; fill: currentColor; }
+  #time { font-size: 0.78rem; letter-spacing: 0.08em; color: var(--tide); min-width: 6.5rem; }
+  #chapter { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--tide); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 14rem; }
+  #scrub { width: 100%; min-width: 0; accent-color: var(--kelp-gold); }
+  @media (max-width: 560px) {
+    #controls { grid-template-columns: auto 1fr auto auto; }
+    #chapter, #time { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { #intro, #controls { transition: none; } }
+  body.render #intro, body.render #controls { display: none; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<main id="stage">
+  <canvas id="scene" aria-label="Ascent, a short film of an air bubble rising from the seafloor to the surface"></canvas>
+
+  <div class="cap" id="cap-1">In the blue silence of the deep,</div>
+  <div class="cap" id="cap-2">a single breath is born.</div>
+  <div class="cap" id="cap-3">Drawn, always, toward the light.</div>
+  <div id="title" aria-hidden="true"><div class="word">Ascent</div><div class="line">Every breath finds the surface</div></div>
+
+  <section id="intro">
+    <h1>Ascent</h1>
+    <p>One bubble leaves a crack in the reef and climbs four metres of water to meet the evening sun. Rendered live in your browser.</p>
+    <div class="facts"><span>30 s</span><span>8 shots</span><span>Depth 4.0 m</span><span>Three.js r186</span></div>
+    <div class="actions">
+      <button class="btn primary" id="play-sound" type="button">Play with sound</button>
+      <button class="btn" id="play-muted" type="button">Play muted</button>
+    </div>
+  </section>
+
+  <div id="controls" class="idle" hidden>
+    <button class="ctl" id="toggle" type="button" aria-label="Pause">
+      <svg viewBox="0 0 24 24" id="icon-pause"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      <svg viewBox="0 0 24 24" id="icon-play" hidden><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <span id="time">00:00.0 / 00:30</span>
+    <input id="scrub" type="range" min="0" max="30" step="0.01" value="0" aria-label="Seek">
+    <span id="chapter">The reef</span>
+    <button class="ctl" id="sound" type="button" aria-label="Mute">
+      <svg viewBox="0 0 24 24" id="icon-sound"><path d="M4 9v6h4l5 4V5L8 9zm11.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM13 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+      <svg viewBox="0 0 24 24" id="icon-muted" hidden><path d="M4 9v6h4l5 4V5L8 9zm12.6 3 2.7-2.7-1.1-1.1-2.7 2.7-2.7-2.7-1.1 1.1 2.7 2.7-2.7 2.7 1.1 1.1 2.7-2.7 2.7 2.7 1.1-1.1z"/></svg>
+    </button>
+    <button class="ctl" id="fullscreen" type="button" aria-label="Full screen">
+      <svg viewBox="0 0 24 24"><path d="M5 5h5v2H7v3H5zm9 0h5v5h-2V7h-3zM5 14h2v3h3v2H5zm12 0h2v5h-5v-2h3z"/></svg>
+    </button>
+  </div>
+</main>
+
+<script type="module">
+  import { ready, frame, DURATION, SHOTS } from './ascent.js';
+
+  const RENDER = new URLSearchParams(location.search).has('render');
+  if (RENDER) document.body.classList.add('render');
+
+  if (!RENDER) {
+    const $ = (id) => document.getElementById(id);
+    const audio = new Audio('audio/ascent-score.m4a');
+    audio.preload = 'auto';
+    let t = 0, playing = false, withSound = false, last = performance.now(), idleTimer = 0;
+
+    const fmt = (s) => {
+      const m = Math.floor(s / 60), r = s - m * 60;
+      return `${String(m).padStart(2, '0')}:${r.toFixed(1).padStart(4, '0')}`;
+    };
+    const setIcons = () => {
+      $('icon-pause').hidden = !playing; $('icon-play').hidden = playing;
+      $('toggle').setAttribute('aria-label', playing ? 'Pause' : 'Play');
+      $('icon-sound').hidden = !withSound; $('icon-muted').hidden = withSound;
+      $('sound').setAttribute('aria-label', withSound ? 'Mute' : 'Turn sound on');
+    };
+    const syncAudio = () => {
+      if (withSound && playing && t < DURATION) {
+        audio.currentTime = t;
+        audio.play().catch(() => { withSound = false; setIcons(); });
+      } else audio.pause();
+    };
+    const start = (sound) => {
+      withSound = sound; playing = true; if (t >= DURATION - 0.05) t = 0;
+      $('intro').classList.add('gone'); $('controls').hidden = false;
+      syncAudio(); setIcons(); poke();
+    };
+    const poke = () => {
+      $('controls').classList.remove('idle');
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => { if (playing) $('controls').classList.add('idle'); }, 2600);
+    };
+
+    $('play-sound').addEventListener('click', () => start(true));
+    $('play-muted').addEventListener('click', () => start(false));
+    $('toggle').addEventListener('click', () => {
+      if (!playing && t >= DURATION - 0.05) t = 0;
+      playing = !playing; syncAudio(); setIcons(); poke();
+    });
+    $('sound').addEventListener('click', () => { withSound = !withSound; syncAudio(); setIcons(); poke(); });
+    $('fullscreen').addEventListener('click', () => {
+      const el = document.documentElement;
+      if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {});
+      else el.requestFullscreen?.().catch(() => {});
+    });
+    $('scrub').addEventListener('input', (e) => { t = parseFloat(e.target.value); syncAudio(); poke(); });
+    window.addEventListener('pointermove', poke);
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' && $('intro').classList.contains('gone')) { e.preventDefault(); $('toggle').click(); }
+    });
+    document.addEventListener('ascent:shot', (e) => { $('chapter').textContent = SHOTS[e.detail].name; });
+    window.addEventListener('resize', () => import('./ascent.js').then((m) => m.resize(innerWidth, innerHeight, Math.min(devicePixelRatio || 1, 1.5))));
+
+    await ready;
+    // the intro card sits over a living frame of the reef
+    const tick = (now) => {
+      const dt = Math.min((now - last) / 1000, 0.1); last = now;
+      if (playing) {
+        if (withSound && !audio.paused && Math.abs(audio.currentTime - t) < 0.5) t = audio.currentTime;
+        else t += dt;
+        if (t >= DURATION) { t = DURATION; playing = false; audio.pause(); setIcons(); $('controls').classList.remove('idle'); }
+      }
+      frame(playing || t > 0 ? t : 3.4);
+      $('scrub').value = t;
+      $('time').textContent = `${fmt(t)} / 00:30`;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+</script>
+</body>
+</html>
