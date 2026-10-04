@@ -1,0 +1,472 @@
+{
+ "main": {
+  "label": "Ep.1 \u00b7 My Day Off",
+  "kind": "main",
+  "w": 1920,
+  "h": 1080,
+  "fps": 24,
+  "fadeIn": 1.2,
+  "fadeOut": 1.4,
+  "title": [
+   9.8,
+   15.0
+  ],
+  "endCard": 8.0,
+  "clips": [
+   {
+    "from": 0,
+    "to": 5,
+    "cam": "WIDE"
+   },
+   {
+    "from": 5,
+    "to": 9.5,
+    "cam": "CU"
+   },
+   {
+    "from": 9.5,
+    "to": 15,
+    "cam": "WIDE"
+   },
+   {
+    "from": 15,
+    "to": 21,
+    "cam": "MED"
+   },
+   {
+    "from": 21,
+    "to": 24.5,
+    "cam": "RIGHT"
+   },
+   {
+    "from": 24.5,
+    "to": 28.5,
+    "cam": "WIDE"
+   },
+   {
+    "from": 28.5,
+    "to": 32.5,
+    "cam": "MEDL"
+   },
+   {
+    "from": 32.5,
+    "to": 36.5,
+    "cam": "PLAN"
+   },
+   {
+    "from": 36.5,
+    "to": 41,
+    "cam": "SHELF"
+   },
+   {
+    "from": 41,
+    "to": 45,
+    "cam": "LEFT"
+   },
+   {
+    "from": 45,
+    "to": 50,
+    "cam": "MED"
+   },
+   {
+    "from": 50,
+    "to": 54,
+    "cam": "CU"
+   },
+   {
+    "from": 54,
+    "to": 57.5,
+    "cam": "MED"
+   },
+   {
+    "from": 57.5,
+    "to": 62,
+    "cam": "STRETCH"
+   },
+   {
+    "from": 62,
+    "to": 65.5,
+    "cam": "TV"
+   },
+   {
+    "from": 65.5,
+    "to": 68.5,
+    "cam": "TVCU"
+   },
+   {
+    "from": 68.5,
+    "to": 72,
+    "cam": "CU"
+   },
+   {
+    "from": 72,
+    "to": 76.5,
+    "cam": "WIDE"
+   },
+   {
+    "from": 76.5,
+    "to": 80,
+    "cam": "FRAME"
+   },
+   {
+    "from": 80,
+    "to": 84,
+    "cam": "MEDL"
+   },
+   {
+    "from": 84,
+    "to": 89,
+    "cam": "WIDE"
+   },
+   {
+    "from": 89,
+    "to": 95,
+    "cam": "SHELF"
+   },
+   {
+    "from": 95,
+    "to": 101.5,
+    "cam": "RIGHT"
+   },
+   {
+    "from": 101.5,
+    "to": 108.5,
+    "cam": "SHELF"
+   },
+   {
+    "from": 108.5,
+    "to": 112,
+    "cam": "CU"
+   },
+   {
+    "from": 112,
+    "to": 118,
+    "cam": "PLANTS"
+   },
+   {
+    "from": 118,
+    "to": 122.5,
+    "cam": "LEFT"
+   },
+   {
+    "from": 122.5,
+    "to": 125,
+    "cam": "MED"
+   },
+   {
+    "from": 125,
+    "to": 131,
+    "cam": "CLOCK"
+   },
+   {
+    "from": 131,
+    "to": 135,
+    "cam": "WIDE"
+   },
+   {
+    "from": 135,
+    "to": 138,
+    "cam": "MED"
+   },
+   {
+    "from": 138,
+    "to": 141.5,
+    "cam": "PHONE"
+   },
+   {
+    "from": 141.5,
+    "to": 145,
+    "cam": "CU"
+   },
+   {
+    "from": 145,
+    "to": 148,
+    "cam": "MED"
+   },
+   {
+    "from": 148,
+    "to": 150.5,
+    "cam": "CU"
+   },
+   {
+    "from": 150.5,
+    "to": 157.5,
+    "cam": "WIDE"
+   },
+   {
+    "from": 157.5,
+    "to": 160.5,
+    "cam": "MED"
+   },
+   {
+    "from": 160.5,
+    "to": 163,
+    "cam": "DOOR"
+   },
+   {
+    "from": 163,
+    "to": 166.5,
+    "cam": "LEFT"
+   },
+   {
+    "from": 166.5,
+    "to": 171.5,
+    "cam": "SUNNYWALK"
+   },
+   {
+    "from": 171.5,
+    "to": 176,
+    "cam": "TWO"
+   },
+   {
+    "from": 176,
+    "to": 181.5,
+    "cam": "TWOCU"
+   },
+   {
+    "from": 181.5,
+    "to": 186,
+    "cam": "SUNNYCU"
+   },
+   {
+    "from": 186,
+    "to": 189.5,
+    "cam": "CU"
+   },
+   {
+    "from": 189.5,
+    "to": 190.8,
+    "cam": "SUNNYCU"
+   },
+   {
+    "from": 190.8,
+    "to": 192.5,
+    "cam": "CU"
+   },
+   {
+    "from": 192.5,
+    "to": 196,
+    "cam": "TWO"
+   },
+   {
+    "from": 196,
+    "to": 199,
+    "cam": "TV"
+   },
+   {
+    "from": 199,
+    "to": 206,
+    "cam": "TWOCU"
+   },
+   {
+    "from": 206,
+    "to": 212,
+    "cam": "TWO"
+   },
+   {
+    "from": 212,
+    "to": 216,
+    "cam": "TWOCU"
+   },
+   {
+    "from": 216,
+    "to": 219,
+    "cam": "TV"
+   },
+   {
+    "from": 219,
+    "to": 224,
+    "cam": "TWOCU"
+   },
+   {
+    "from": 224,
+    "to": 232,
+    "cam": "END"
+   }
+  ]
+ },
+ "shortA": {
+  "label": "Short A \u00b7 Rest Mode: ON",
+  "kind": "short",
+  "w": 1080,
+  "h": 1920,
+  "fps": 24,
+  "fadeIn": 0,
+  "fadeOut": 0.4,
+  "endCard": 2.2,
+  "clips": [
+   {
+    "from": 15,
+    "to": 21,
+    "cam": "V_MED"
+   },
+   {
+    "from": 21,
+    "to": 33,
+    "cam": "V_MED",
+    "speed": 1.6
+   },
+   {
+    "from": 33,
+    "to": 41,
+    "cam": "V_PLAN",
+    "speed": 1.6
+   },
+   {
+    "from": 41,
+    "to": 50,
+    "cam": "V_MED",
+    "speed": 1.6
+   },
+   {
+    "from": 50,
+    "to": 54,
+    "cam": "V_CU"
+   },
+   {
+    "from": 54,
+    "to": 57.5,
+    "cam": "V_MED"
+   },
+   {
+    "from": 57.5,
+    "to": 62,
+    "cam": "V_STRETCH"
+   },
+   {
+    "from": 62,
+    "to": 68.5,
+    "cam": "V_TV"
+   },
+   {
+    "from": 68.5,
+    "to": 72,
+    "cam": "V_CU"
+   }
+  ]
+ },
+ "shortB": {
+  "label": "Short B \u00b7 Just One Thing",
+  "kind": "short",
+  "w": 1080,
+  "h": 1920,
+  "fps": 24,
+  "fadeIn": 0,
+  "fadeOut": 0.4,
+  "endCard": 2.2,
+  "clips": [
+   {
+    "from": 76.5,
+    "to": 80,
+    "cam": "V_FRAME"
+   },
+   {
+    "from": 80,
+    "to": 84,
+    "cam": "V_MED"
+   },
+   {
+    "from": 84,
+    "to": 101,
+    "cam": "V_MED",
+    "speed": 2.0
+   },
+   {
+    "from": 101,
+    "to": 108.6,
+    "cam": "V_SHELF",
+    "speed": 1.5
+   },
+   {
+    "from": 108.6,
+    "to": 112,
+    "cam": "V_CU"
+   },
+   {
+    "from": 112,
+    "to": 123,
+    "cam": "V_PLANTS",
+    "speed": 1.4
+   },
+   {
+    "from": 125,
+    "to": 135,
+    "cam": "V_CLOCK",
+    "speed": 2.0
+   },
+   {
+    "from": 135,
+    "to": 138,
+    "cam": "V_MED"
+   },
+   {
+    "from": 138,
+    "to": 141.5,
+    "cam": "V_PHONE"
+   },
+   {
+    "from": 141.5,
+    "to": 145,
+    "cam": "V_CU"
+   },
+   {
+    "from": 145,
+    "to": 150.5,
+    "cam": "V_MED"
+   }
+  ]
+ },
+ "shortC": {
+  "label": "Short C \u00b7 Finally Resting",
+  "kind": "short",
+  "w": 1080,
+  "h": 1920,
+  "fps": 24,
+  "fadeIn": 0,
+  "fadeOut": 0.6,
+  "endCard": 2.6,
+  "clips": [
+   {
+    "from": 150.5,
+    "to": 157.5,
+    "cam": "V_MED",
+    "speed": 1.5
+   },
+   {
+    "from": 160.5,
+    "to": 166.5,
+    "cam": "V_DOOR"
+   },
+   {
+    "from": 166.5,
+    "to": 171.5,
+    "cam": "V_TWO"
+   },
+   {
+    "from": 171.5,
+    "to": 181.5,
+    "cam": "V_TWO"
+   },
+   {
+    "from": 181.5,
+    "to": 192.5,
+    "cam": "V_TWOCU"
+   },
+   {
+    "from": 192.5,
+    "to": 196,
+    "cam": "V_TWO"
+   },
+   {
+    "from": 199,
+    "to": 212,
+    "cam": "V_TWOCU"
+   },
+   {
+    "from": 212,
+    "to": 224,
+    "cam": "V_END"
+   }
+  ]
+ }
+}

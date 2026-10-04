@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nori, Trying</title>
+<meta name="description" content="NORI, TRYING. Ep.1 My Day Off: an octopus plans the perfect rest. A Three.js episode with three vertical shorts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Jost:wght@400;500;600&display=swap">
+<style>
+  /* Layout: a living-room screening. The picture keeps its own aspect (16:9 episode or 9:16 short); the episode picker sits above it. */
+  :root {
+    --room: #1c1512;          /* warm dark ground */
+    --cream: #fbf1e1;
+    --nori: #ff7a1c;          /* the one accent */
+    --muted: #c9b39a;
+    --line: rgba(251, 241, 225, 0.16);
+    --title: "Fredoka", "Avenir Next Rounded", "Nunito", "Segoe UI", system-ui, sans-serif;
+    --ui: "Jost", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--room); color: var(--cream); font-family: var(--ui); overflow: hidden; -webkit-font-smoothing: antialiased; }
+  #room { position: fixed; inset: 0; display: grid; grid-template-rows: auto 1fr auto; }
+  header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.2rem; padding: 0.8rem 16px 0.6rem; }
+  .brand { font-family: var(--title); font-weight: 600; font-size: 1.3rem; letter-spacing: 0.04em; }
+  .brand b { color: var(--nori); font-weight: 600; }
+  nav { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  nav button { font: inherit; font-size: 0.78rem; letter-spacing: 0.06em; color: var(--cream); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 0.45rem 0.9rem; cursor: pointer; }
+  nav button[aria-pressed="true"] { border-color: var(--nori); color: var(--nori); }
+  nav button:focus-visible, .ctl:focus-visible, #scrub:focus-visible, .go:focus-visible { outline: 2px solid var(--nori); outline-offset: 3px; }
+  #stagewrap { position: relative; min-height: 0; display: grid; place-items: center; padding-inline: 16px; }
+  #frame { position: relative; overflow: hidden; background: #000; border-radius: 6px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55); container-type: size; }
+  #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #sub { position: absolute; left: 50%; transform: translateX(-50%); bottom: 7%; max-width: 86%; text-align: center; padding: 0.25em 0.6em; border-radius: 0.4em;
+    font-family: var(--ui); font-weight: 500; font-size: 4.6cqh; line-height: 1.25; color: #fff; background: rgba(20, 12, 8, 0.55); text-wrap: balance; transition: opacity 0.12s; pointer-events: none; }
+  [data-kind="short"] #sub { bottom: auto; top: 62%; font-size: 2.6cqh; font-weight: 600; background: rgba(20, 12, 8, 0.6); }
+  #titlecard, #endcard { position: absolute; inset: 0; display: grid; place-content: center; gap: 1.5cqh; text-align: center; opacity: 0; pointer-events: none;
+    background: radial-gradient(closest-side, rgba(28, 16, 10, 0.55), rgba(28, 16, 10, 0)); }
+  #titlecard .t, #endcard .t { font-family: var(--title); font-weight: 600; font-size: 12cqh; line-height: 1; color: var(--cream); text-shadow: 0 4px 24px rgba(60, 25, 5, 0.6); }
+  #titlecard .t b, #endcard .t b { color: var(--nori); font-weight: 600; }
+  #titlecard .s, #endcard .s { font-family: var(--ui); font-weight: 500; font-size: 3.4cqh; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream); text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6); }
+  [data-kind="short"] #titlecard .t, [data-kind="short"] #endcard .t { font-size: 6.4cqh; }
+  [data-kind="short"] #titlecard .s, [data-kind="short"] #endcard .s { font-size: 1.8cqh; }
+  #controls { display: grid; grid-template-columns: auto auto 1fr auto auto; align-items: center; gap: 0.9rem; padding: 0.6rem 16px calc(0.8rem + env(safe-area-inset-bottom, 0px)); font-variant-numeric: tabular-nums; }
+  .ctl { background: none; border: 0; padding: 0.35rem; border-radius: 6px; display: grid; place-items: center; color: var(--cream); cursor: pointer; }
+  .ctl svg { width: 20px; height: 20px; fill: currentColor; }
+  #time { font-size: 0.8rem; color: var(--muted); min-width: 7rem; }
+  #scrub { width: 100%; min-width: 0; accent-color: var(--nori); }
+  #shot { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  #gate { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 1rem; text-align: center; padding-inline: 16px; background: rgba(28, 18, 12, 0.5); }
+  #gate p { margin: 0; max-width: 30rem; line-height: 1.5; font-weight: 500; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6); }
+  .go { font: inherit; font-weight: 600; font-size: 0.9rem; color: #1c1512; background: var(--nori); border: 0; border-radius: 999px; padding: 0.8rem 1.6rem; cursor: pointer; }
+  @media (max-width: 560px) { #controls { grid-template-columns: auto 1fr auto; } #time, #shot { display: none; } }
+  body.render { overflow: hidden; }
+  body.render header, body.render #controls, body.render #gate { display: none; }
+  body.render #room { display: block; }
+  body.render #stagewrap { position: fixed; inset: 0; padding: 0; display: block; }
+  body.render #frame { position: fixed; inset: 0; box-shadow: none; border-radius: 0; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="room">
+  <header>
+    <div class="brand"><b>Nori,</b> Trying.</div>
+    <nav aria-label="Edit">
+      <button type="button" data-edit="main" aria-pressed="true">Ep.1 · My Day Off</button>
+      <button type="button" data-edit="shortA" aria-pressed="false">Short A 9:16</button>
+      <button type="button" data-edit="shortB" aria-pressed="false">Short B 9:16</button>
+      <button type="button" data-edit="shortC" aria-pressed="false">Short C 9:16</button>
+    </nav>
+  </header>
+  <div id="stagewrap">
+    <div id="frame">
+      <canvas id="scene" aria-label="NORI, TRYING. Episode 1, an octopus on her day off"></canvas>
+      <div id="titlecard"><div class="t"><b>Nori,</b> Trying.</div><div class="s">Episode 1 · My Day Off</div></div>
+      <div id="endcard"><div class="t"><b>Nori,</b> Trying.</div><div class="s">Ep.1 · My Day Off</div></div>
+      <div id="sub" style="opacity:0"></div>
+      <div id="gate">
+        <p>Nori has a day off and a plan to rest perfectly. Rendered live in your browser, with sound.</p>
+        <button class="go" id="go" type="button">Play with sound</button>
+      </div>
+    </div>
+  </div>
+  <div id="controls">
+    <button class="ctl" id="toggle" type="button" aria-label="Play">
+      <svg viewBox="0 0 24 24" id="i-pause" hidden><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+      <svg viewBox="0 0 24 24" id="i-play"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <span id="time">00:00.0 / 03:52</span>
+    <input id="scrub" type="range" min="0" max="232" step="0.01" value="0" aria-label="Seek">
+    <span id="shot">WIDE</span>
+    <button class="ctl" id="sound" type="button" aria-label="Mute">
+      <svg viewBox="0 0 24 24" id="i-sound"><path d="M4 9v6h4l5 4V5L8 9zm11.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM13 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>
+      <svg viewBox="0 0 24 24" id="i-muted" hidden><path d="M4 9v6h4l5 4V5L8 9zm12.6 3 2.7-2.7-1.1-1.1-2.7 2.7-2.7-2.7-1.1 1.1 2.7 2.7-2.7 2.7 1.1 1.1 2.7-2.7 2.7 2.7 1.1-1.1z"/></svg>
+    </button>
+  </div>
+</div>
+<script type="module">
+  const RENDER = new URLSearchParams(location.search).has('render');
+  if (RENDER) document.body.classList.add('render');
+  const { ready, frame, setEdit, resize, currentEdit } = await import('./engine.js');
+  if (!RENDER) {
+    const $ = (id) => document.getElementById(id);
+    const AUDIO = { main: 'audio/ep01-main.mp3', shortA: 'audio/ep01-short-a.mp3', shortB: 'audio/ep01-short-b.mp3', shortC: 'audio/ep01-short-c.mp3' };
+    const POSTER = { main: 52, shortA: 4.4, shortB: 22, shortC: 30 };
+    const audio = new Audio();
+    let name = 'main', t = 0, playing = false, sound = true, last = performance.now();
+    const icons = () => {
+      $('i-pause').hidden = !playing; $('i-play').hidden = playing; $('toggle').setAttribute('aria-label', playing ? 'Pause' : 'Play');
+      $('i-sound').hidden = !sound; $('i-muted').hidden = sound; $('sound').setAttribute('aria-label', sound ? 'Mute' : 'Turn sound on');
+    };
+    audio.addEventListener('error', () => { if (audio.src) { sound = false; icons(); } });
+    const fit = () => {
+      const E = currentEdit(), wrap = $('stagewrap').getBoundingClientRect();
+      let w = wrap.width - 32, h = w * E.h / E.w;
+      if (h > wrap.height) { h = wrap.height; w = h * E.w / E.h; }
+      $('frame').style.width = `${Math.floor(w)}px`; $('frame').style.height = `${Math.floor(h)}px`;
+      resize(Math.floor(w), Math.floor(h), Math.min(devicePixelRatio || 1, 1.5));
+    };
+    const fmt = (s) => { const m = Math.floor(s / 60), r = s - m * 60; return `${String(m).padStart(2, '0')}:${r.toFixed(1).padStart(4, '0')}`; };
+    const syncAudio = () => { if (sound && playing) { audio.currentTime = t; audio.play().catch(() => { sound = false; icons(); }); } else audio.pause(); };
+    const choose = (n) => {
+      name = n; t = 0;
+      document.querySelectorAll('nav button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.edit === n)));
+      setEdit(n); fit(); audio.src = AUDIO[n]; $('scrub').max = currentEdit().duration; syncAudio(); icons();
+    };
+    document.querySelectorAll('nav button').forEach((b) => b.addEventListener('click', () => choose(b.dataset.edit)));
+    $('go').addEventListener('click', () => { $('gate').hidden = true; playing = true; if (t >= currentEdit().duration - 0.05) t = 0; syncAudio(); icons(); });
+    $('toggle').addEventListener('click', () => { $('gate').hidden = true; if (!playing && t >= currentEdit().duration - 0.05) t = 0; playing = !playing; syncAudio(); icons(); });
+    $('sound').addEventListener('click', () => { sound = !sound; syncAudio(); icons(); });
+    $('scrub').addEventListener('input', (e) => { t = parseFloat(e.target.value); syncAudio(); });
+    window.addEventListener('keydown', (e) => { if (e.code === 'Space') { e.preventDefault(); $('toggle').click(); } });
+    window.addEventListener('resize', fit);
+    document.addEventListener('nori:clip', (e) => { $('shot').textContent = e.detail.clip.cam; });
+    await ready;
+    choose('main');
+    const tick = (now) => {
+      const dt = Math.min((now - last) / 1000, 0.1); last = now;
+      const D = currentEdit().duration;
+      if (playing) {
+        if (sound && !audio.paused && audio.readyState >= 3 && Math.abs(audio.currentTime - t) < 0.5) t = audio.currentTime; else t += dt;
+        if (t >= D) { t = D; playing = false; audio.pause(); icons(); }
+      }
+      frame(playing || t > 0 ? t : POSTER[name]);
+      $('scrub').value = t; $('time').textContent = `${fmt(t)} / ${fmt(D).slice(0, 5)}`;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+</script>
+</body>
+</html>
