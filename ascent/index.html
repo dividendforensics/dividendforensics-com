@@ -22,6 +22,7 @@
     --bar: 12.8%;
     color-scheme: dark;
   }
+  [hidden] { display: none !important; }
   html, body { height: 100%; }
   body {
     margin: 0; background: var(--abyss); color: var(--foam);
@@ -213,7 +214,7 @@
     const tick = (now) => {
       const dt = Math.min((now - last) / 1000, 0.1); last = now;
       if (playing) {
-        if (withSound && !audio.paused && Math.abs(audio.currentTime - t) < 0.5) t = audio.currentTime;
+        if (withSound && !audio.paused && audio.readyState >= 3 && Math.abs(audio.currentTime - t) < 0.5) t = audio.currentTime;
         else t += dt;
         if (t >= DURATION) { t = DURATION; playing = false; audio.pause(); setIcons(); $('controls').classList.remove('idle'); }
       }

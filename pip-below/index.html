@@ -21,6 +21,7 @@
     --bar: 0%;
     color-scheme: dark;
   }
+  [hidden] { display: none !important; }
   html, body { height: 100%; }
   body { margin: 0; background: var(--abyss); color: var(--foam); font-family: var(--ui); overflow: hidden; -webkit-font-smoothing: antialiased; }
   #room { position: fixed; inset: 0; display: grid; grid-template-rows: auto 1fr auto; }
@@ -123,8 +124,10 @@
 
   if (!RENDER) {
     const $ = (id) => document.getElementById(id);
-    const AUDIO = { main: 'audio/ep01-main.m4a', shortA: 'audio/ep01-short-a.m4a', shortB: 'audio/ep01-short-b.m4a', shortC: 'audio/ep01-short-c.m4a' };
+    const POSTER = { main: 12.4, shortA: 4.6, shortB: 4.2, shortC: 7.8 };   // a still that shows Pip before playing
+    const AUDIO = { main: 'audio/ep01-main.mp3', shortA: 'audio/ep01-short-a.mp3', shortB: 'audio/ep01-short-b.mp3', shortC: 'audio/ep01-short-c.mp3' };
     const audio = new Audio();
+    audio.addEventListener('error', () => { if (audio.src) { sound = false; icons(); } });
     let name = 'main', t = 0, playing = false, sound = true, last = performance.now();
     const fit = () => {
       const E = currentEdit(), wrap = $('stagewrap').getBoundingClientRect();
@@ -148,7 +151,7 @@
       setEdit(n); fit();
       audio.src = AUDIO[n];
       $('scrub').max = currentEdit().duration;
-      syncAudio();
+      syncAudio(); icons();
     };
     document.querySelectorAll('nav button').forEach((b) => b.addEventListener('click', () => choose(b.dataset.edit)));
     $('go').addEventListener('click', () => { $('gate').hidden = true; playing = true; if (t >= currentEdit().duration - 0.05) t = 0; syncAudio(); icons(); });
@@ -164,10 +167,10 @@
       const dt = Math.min((now - last) / 1000, 0.1); last = now;
       const D = currentEdit().duration;
       if (playing) {
-        if (sound && !audio.paused && Math.abs(audio.currentTime - t) < 0.5) t = audio.currentTime; else t += dt;
+        if (sound && !audio.paused && audio.readyState >= 3 && Math.abs(audio.currentTime - t) < 0.5) t = audio.currentTime; else t += dt;
         if (t >= D) { t = D; playing = false; audio.pause(); icons(); }
       }
-      frame(playing || t > 0 ? t : 3.0);
+      frame(playing || t > 0 ? t : POSTER[name]);
       $('scrub').value = t;
       $('time').textContent = `${fmt(t)} / ${fmt(D).slice(0, 5)}`;
       requestAnimationFrame(tick);
