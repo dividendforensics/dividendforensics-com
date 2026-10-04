@@ -1,0 +1,345 @@
+{
+ "stats": {
+  "static": 235,
+  "dynamic": 180,
+  "hidden": 0,
+  "scale_morphs": 92,
+  "material_morphs": 1
+ },
+ "models": {
+  "nori": {
+   "vertices": 37513,
+   "faces": 70384,
+   "materials": 8,
+   "bones": 152,
+   "morphs": 6,
+   "textures": 3,
+   "bytes": 2386642
+  },
+  "sunny": {
+   "vertices": 4676,
+   "faces": 7744,
+   "materials": 4,
+   "bones": 22,
+   "morphs": 3,
+   "textures": 2,
+   "bytes": 273142
+  },
+  "room": {
+   "vertices": 143746,
+   "faces": 64104,
+   "materials": 164,
+   "bones": 145,
+   "morphs": 84,
+   "textures": 31,
+   "bytes": 7331306
+  }
+ },
+ "motions": {
+  "nori": {
+   "bone_keys": 151763,
+   "morph_keys": 3471,
+   "bytes": 16925596
+  },
+  "sunny": {
+   "bone_keys": 40557,
+   "morph_keys": 176,
+   "bytes": 4505945
+  },
+  "room": {
+   "bone_keys": 19450,
+   "morph_keys": 12205,
+   "bytes": 2439735
+  }
+ },
+ "arm_fit_error_m": {
+  "median": 0.0003455520170235731,
+  "p99": 0.008439409951363134,
+  "max": 0.024314958293364032
+ },
+ "camera": {
+  "keys": 439,
+  "light_keys": 25,
+  "rebuild_error": {
+   "eye_m": 2.6645352591003757e-15,
+   "angle_deg": 4.9972426251668614e-05
+  },
+  "fov_range": [
+   30,
+   50
+  ],
+  "bytes": 27549
+ },
+ "cuts": [
+  {
+   "frame": 0,
+   "cam": "WIDE",
+   "seconds": 5.0
+  },
+  {
+   "frame": 150,
+   "cam": "CU",
+   "seconds": 4.5
+  },
+  {
+   "frame": 285,
+   "cam": "WIDE",
+   "seconds": 5.5
+  },
+  {
+   "frame": 450,
+   "cam": "MED",
+   "seconds": 6.0
+  },
+  {
+   "frame": 630,
+   "cam": "RIGHT",
+   "seconds": 3.5
+  },
+  {
+   "frame": 735,
+   "cam": "WIDE",
+   "seconds": 4.0
+  },
+  {
+   "frame": 855,
+   "cam": "MEDL",
+   "seconds": 4.0
+  },
+  {
+   "frame": 975,
+   "cam": "PLAN",
+   "seconds": 4.0
+  },
+  {
+   "frame": 1095,
+   "cam": "SHELF",
+   "seconds": 4.5
+  },
+  {
+   "frame": 1230,
+   "cam": "LEFT",
+   "seconds": 4.0
+  },
+  {
+   "frame": 1350,
+   "cam": "MED",
+   "seconds": 5.0
+  },
+  {
+   "frame": 1500,
+   "cam": "CU",
+   "seconds": 4.0
+  },
+  {
+   "frame": 1620,
+   "cam": "MED",
+   "seconds": 3.5
+  },
+  {
+   "frame": 1725,
+   "cam": "STRETCH",
+   "seconds": 4.5
+  },
+  {
+   "frame": 1860,
+   "cam": "TV",
+   "seconds": 3.5
+  },
+  {
+   "frame": 1965,
+   "cam": "TVCU",
+   "seconds": 3.0
+  },
+  {
+   "frame": 2055,
+   "cam": "CU",
+   "seconds": 3.5
+  },
+  {
+   "frame": 2160,
+   "cam": "WIDE",
+   "seconds": 4.5
+  },
+  {
+   "frame": 2295,
+   "cam": "FRAME",
+   "seconds": 3.5
+  },
+  {
+   "frame": 2400,
+   "cam": "MEDL",
+   "seconds": 4.0
+  },
+  {
+   "frame": 2520,
+   "cam": "WIDE",
+   "seconds": 5.0
+  },
+  {
+   "frame": 2670,
+   "cam": "SHELF",
+   "seconds": 6.0
+  },
+  {
+   "frame": 2850,
+   "cam": "SHELFW",
+   "seconds": 6.5
+  },
+  {
+   "frame": 3045,
+   "cam": "SHELF",
+   "seconds": 7.0
+  },
+  {
+   "frame": 3255,
+   "cam": "CU",
+   "seconds": 3.5
+  },
+  {
+   "frame": 3360,
+   "cam": "PLANTS",
+   "seconds": 6.0
+  },
+  {
+   "frame": 3540,
+   "cam": "WIDE",
+   "seconds": 4.5
+  },
+  {
+   "frame": 3675,
+   "cam": "MED",
+   "seconds": 2.5
+  },
+  {
+   "frame": 3750,
+   "cam": "CLOCK",
+   "seconds": 6.0
+  },
+  {
+   "frame": 3930,
+   "cam": "WIDE",
+   "seconds": 4.0
+  },
+  {
+   "frame": 4050,
+   "cam": "MED",
+   "seconds": 3.0
+  },
+  {
+   "frame": 4140,
+   "cam": "PHONE",
+   "seconds": 3.5
+  },
+  {
+   "frame": 4245,
+   "cam": "CU",
+   "seconds": 3.5
+  },
+  {
+   "frame": 4350,
+   "cam": "MED",
+   "seconds": 3.0
+  },
+  {
+   "frame": 4440,
+   "cam": "CU",
+   "seconds": 2.5
+  },
+  {
+   "frame": 4515,
+   "cam": "WIDE",
+   "seconds": 7.0
+  },
+  {
+   "frame": 4725,
+   "cam": "MED",
+   "seconds": 3.0
+  },
+  {
+   "frame": 4815,
+   "cam": "DOOR",
+   "seconds": 2.5
+  },
+  {
+   "frame": 4890,
+   "cam": "LEFT",
+   "seconds": 3.5
+  },
+  {
+   "frame": 4995,
+   "cam": "SUNNYWALK",
+   "seconds": 5.0
+  },
+  {
+   "frame": 5145,
+   "cam": "TWO",
+   "seconds": 4.5
+  },
+  {
+   "frame": 5280,
+   "cam": "TWOCU",
+   "seconds": 5.5
+  },
+  {
+   "frame": 5445,
+   "cam": "SUNNYCU",
+   "seconds": 4.5
+  },
+  {
+   "frame": 5580,
+   "cam": "CU",
+   "seconds": 3.5
+  },
+  {
+   "frame": 5685,
+   "cam": "SUNNYCU",
+   "seconds": 1.3
+  },
+  {
+   "frame": 5724,
+   "cam": "CU",
+   "seconds": 1.7
+  },
+  {
+   "frame": 5775,
+   "cam": "TWO",
+   "seconds": 3.5
+  },
+  {
+   "frame": 5880,
+   "cam": "TV",
+   "seconds": 3.0
+  },
+  {
+   "frame": 5970,
+   "cam": "TWOCU",
+   "seconds": 7.0
+  },
+  {
+   "frame": 6180,
+   "cam": "TWO",
+   "seconds": 6.0
+  },
+  {
+   "frame": 6360,
+   "cam": "TWOCU",
+   "seconds": 4.0
+  },
+  {
+   "frame": 6480,
+   "cam": "TV",
+   "seconds": 3.0
+  },
+  {
+   "frame": 6570,
+   "cam": "TWOCU",
+   "seconds": 5.0
+  },
+  {
+   "frame": 6720,
+   "cam": "END",
+   "seconds": 8.0
+  }
+ ]
+}
