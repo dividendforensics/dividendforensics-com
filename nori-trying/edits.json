@@ -126,7 +126,7 @@
    {
     "from": 95,
     "to": 101.5,
-    "cam": "RIGHT"
+    "cam": "SHELFW"
    },
    {
     "from": 101.5,
@@ -146,7 +146,7 @@
    {
     "from": 118,
     "to": 122.5,
-    "cam": "LEFT"
+    "cam": "WIDE"
    },
    {
     "from": 122.5,
@@ -367,8 +367,14 @@
    },
    {
     "from": 84,
-    "to": 101,
+    "to": 87,
     "cam": "V_MED",
+    "speed": 1.5
+   },
+   {
+    "from": 87,
+    "to": 101,
+    "cam": "V_SHELF",
     "speed": 2.0
    },
    {

@@ -169,7 +169,7 @@ def score(name):
         ed.at(s0 + 0.12, sweep(3800, 2900, 0.08) * 0.05, 0.6, 1.0)
     for k, s0 in enumerate([24.3, 28.3, 32.3, 36.3, 40.3, 44.3]):                        # checklist dings
         ed.at(s0, bell(note('E6') * 2 ** (k / 12), 0.6, 1.5), -0.2, 0.22)
-    ed.at(23.6, noise_burst(1.0, 300, 3000, 0.1, 0.4) * 0.3, 0.3, 0.6)                   # pouring tea
+    ed.at(23.6, noise_burst(1.0, 300, 3000, 0.1, 0.4) * 0.3, -0.3, 0.6)                  # pouring tea
     ed.at(35.0, noise_burst(0.15, 1500, 6000, 0.002, 0.05), 0.1, 0.4)                    # candle
     ed.at(44.2, noise_burst(0.03, 2000, 7000, 0.001, 0.01), -0.5, 0.8)                   # lamp click
     ed.at(55.6, sweep(420, 1700, 3.6, vib=0.02) * 0.18, 0.4, 1.0)                        # slide whistle stretch
@@ -181,9 +181,12 @@ def score(name):
     for s0 in np.arange(72.0, 84.0, 1.0):                                                # the clock ticks
         ed.at(s0, noise_burst(0.02, 2500, 6000, 0.0005, 0.006), 0, 0.5)
     ed.at(82.2, noise_burst(0.1, 300, 2000, 0.005, 0.05), -0.4, 0.5)                     # frame nudged
-    for s0 in np.arange(85.0, 100.0, 0.42):                                              # dusting swishes
+    for s0 in np.arange(87.2, 100.0, 0.42):                                              # dusting swishes
         ed.at(s0, noise_burst(0.3, 1500, 7000, 0.05, 0.08) * 0.35, 0.5 * np.sin(s0), 0.6)
-    for s0 in (87.8, 88.1, 88.4, 88.8):                                                  # cushions hit the floor
+    ed.at(84.3, sweep(180, 420, 0.3) * 0.25, 0.2, 1.0)                                 # hop off the sofa
+    for s0 in list(np.arange(84.95, 87.0, 0.11)) + list(np.arange(123.0, 124.5, 0.11)):  # squishy little steps
+        ed.at(s0, filt(noise_burst(0.05, 150, 1200, 0.003, 0.02), 'lowpass', 900) * 0.6, 0.4, 0.7)
+    for s0 in (85.0, 85.1, 85.2, 85.3):                                                  # cushions hit the floor
         ed.at(s0, filt(noise_burst(0.2, 60, 600, 0.002, 0.06), 'lowpass', 500), -0.2, 1.4)
     for k in range(12):                                                                  # books shuffle
         ed.at(101.8 + k * 0.55, noise_burst(0.06, 800, 4000, 0.001, 0.02), 0.5, 0.7)

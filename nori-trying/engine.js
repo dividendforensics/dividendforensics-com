@@ -10,6 +10,7 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { BokehPass } from 'three/addons/postprocessing/BokehPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 
 const qs = new URLSearchParams(location.search);
 const RENDER = qs.has('render');
@@ -21,6 +22,7 @@ const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const bump = (t, a, b, f = 0.15) => smooth(a, a + f, t) * (1 - smooth(b - f, b, t));
 let seed = 11;
 const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+const rr = (a, b) => a + (b - a) * rnd();
 
 export const STORY = 232;
 const [LINES, VOICES, EDITS] = await Promise.all(['lines.json', 'voices.json', 'edits.json'].map((f) => fetch(new URL(`./${f}`, import.meta.url)).then((r) => r.json())));
@@ -62,7 +64,8 @@ const skinTex = tex(1024, 512, (g, w, h) => {
 });
 const armTex = tex(1024, 128, (g, w, h) => {
   g.fillStyle = '#ff7a1c'; g.fillRect(0, 0, w, h);
-  g.fillStyle = '#f9cfa0'; g.fillRect(0, h * 0.58, w, h * 0.32);
+  g.fillStyle = '#f9cfa0'; g.fillRect(0, h * 0.56, w, h * 0.36);
+  for (let x = 7; x < w; x += 14.2) for (const y of [0.6, 0.88]) { g.fillStyle = '#fde7cc'; g.beginPath(); g.arc(x, h * y, 5.5, 0, 7); g.fill(); g.fillStyle = '#e5ad7c'; g.beginPath(); g.arc(x, h * y, 2.4, 0, 7); g.fill(); }
   for (let x = 14; x < w; x += 30) for (const y of [0.66, 0.82]) {
     g.fillStyle = '#e9b383'; g.beginPath(); g.arc(x + (y > 0.7 ? 15 : 0), h * y, 9, 0, 7); g.fill();
     g.fillStyle = '#fbe2c4'; g.beginPath(); g.arc(x + (y > 0.7 ? 15 : 0), h * y, 5, 0, 7); g.fill();
@@ -153,7 +156,8 @@ const M = {
   crabEye: phys({ map: eyeTex('#4a2a1a', '#7a4a2a'), roughness: 0.08, clearcoat: 1 }),
   mouth: std({ color: '#5b1d12', roughness: 0.5 }),
   tongue: std({ color: '#e0605a', roughness: 0.6 }),
-  brow: std({ color: '#d4561a', roughness: 0.6 }),
+  brow: std({ color: '#c94a14', roughness: 0.6 }),
+  lid: phys({ color: '#f9782a', roughness: 0.4, clearcoat: 0.3, emissive: new THREE.Color('#ff5a10'), emissiveIntensity: 0.05 }),
   blush: std({ color: '#ff6a5a', roughness: 0.8, transparent: true, opacity: 0.0, depthWrite: false }),
   sofa: std({ map: fabric('#9aa98f', '#3f4a3a'), roughness: 0.95 }),
   knit: std({ map: knitTex, roughness: 1 }), plaid: std({ map: plaidTex, roughness: 0.95 }), pillow: std({ map: pillowTex, roughness: 0.95 }),
@@ -187,7 +191,6 @@ mesh(new THREE.PlaneGeometry(12, 5), M.wall, [0, 2.5, -1.25], [0, 0, 0], scene, 
 mesh(new THREE.PlaneGeometry(8, 5), M.wallSide, [-2.6, 2.5, 1.5], [0, Math.PI / 2, 0], scene, false);
 mesh(new THREE.PlaneGeometry(8, 5), M.wallSide, [2.6, 2.5, 1.5], [0, -Math.PI / 2, 0], scene, false);
 mesh(new THREE.PlaneGeometry(12, 5), M.wallSide, [0, 2.5, 3.4], [0, Math.PI, 0], scene, false);
-mesh(new THREE.CircleGeometry(1.15, 64), std({ color: '#c79a62', roughness: 1 }), [0.1, 0.004, 0.9], [-Math.PI / 2, 0, 0], scene, false);
 const windowPane = mesh(new THREE.PlaneGeometry(0.9, 1.3), M.window, [1.45, 1.75, -1.24], [0, 0, 0], scene, false);
 for (const x of [0.92, 1.98]) mesh(new THREE.PlaneGeometry(0.32, 1.6), std({ color: '#fbf5ea', roughness: 1, side: THREE.DoubleSide }), [x, 1.7, -1.2]);
 // pictures; the right one hangs crooked until Pip… until Nori fixes it
@@ -247,7 +250,7 @@ for (const x of [-1.2, 1.2]) mesh(RB(0.26, 0.62, 0.95, 0.11), M.sofa, [x, 0.48, 
 // coffee table & side table
 mesh(RB(1.7, 0.06, 0.75, 0.02), M.wood, [0, 0.42, 0.85]);
 for (const [x, z] of [[-0.75, 0.55], [0.75, 0.55], [-0.75, 1.15], [0.75, 1.15]]) mesh(new THREE.CylinderGeometry(0.025, 0.02, 0.4, 10), M.woodDark, [x, 0.2, z]);
-mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.04, 40), M.wood, [1.55, 0.56, 0.25]); mesh(new THREE.CylinderGeometry(0.03, 0.04, 0.54, 12), M.woodDark, [1.55, 0.27, 0.25]);
+mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.04, 40), M.wood, [-1.55, 0.56, 0.3]); mesh(new THREE.CylinderGeometry(0.03, 0.04, 0.54, 12), M.woodDark, [-1.55, 0.27, 0.3]);
 // TV across the room, the door on the left wall
 mesh(RB(1.4, 0.45, 0.4, 0.03), M.woodDark, [0, 0.23, 3.1]);
 mesh(RB(1.1, 0.64, 0.05, 0.02), M.black, [0, 0.82, 3.12]);
@@ -257,6 +260,102 @@ const doorPivot = new THREE.Group(); doorPivot.position.set(-2.58, 0, 0.15); sce
 mesh(RB(0.06, 2.0, 0.9, 0.01), std({ color: '#c08a5a', roughness: 0.6 }), [0, 1.0, 0.45], [0, 0, 0], doorPivot);
 mesh(new THREE.SphereGeometry(0.03, 16, 12), M.metal, [0.05, 0.95, 0.82], [0, 0, 0], doorPivot);
 const doorway = mesh(new THREE.PlaneGeometry(0.9, 2.0), std({ color: '#ffe9c4', emissive: new THREE.Color('#ffd9a0'), emissiveIntensity: 1.2 }), [-2.62, 1.0, 0.6], [0, Math.PI / 2, 0], scene, false);
+
+
+// ───────────────────────────────────────────── set dressing (the cosy clutter of a lived-in room)
+const leafTex = tex(256, 256, (g, w, h) => {
+  g.clearRect(0, 0, w, h);
+  g.fillStyle = '#3f7a3a'; g.beginPath(); g.ellipse(w / 2, h / 2, w * 0.42, h * 0.46, 0, 0, 7); g.fill();
+  g.globalCompositeOperation = 'destination-out';
+  for (let k = 0; k < 6; k++) { const y = h * (0.22 + k * 0.11); for (const s of [-1, 1]) { g.beginPath(); g.ellipse(w / 2 + s * w * 0.3, y, w * 0.1, h * 0.025, s * 0.4, 0, 7); g.fill(); } }
+  g.globalCompositeOperation = 'source-over';
+  g.strokeStyle = '#2e5a2a'; g.lineWidth = 4; g.beginPath(); g.moveTo(w / 2, h * 0.06); g.lineTo(w / 2, h * 0.94); g.stroke();
+});
+const leafMat = std({ map: leafTex, alphaTest: 0.5, side: THREE.DoubleSide, roughness: 0.6 });
+const smallLeafTex = tex(64, 64, (g, w, h) => { g.clearRect(0, 0, w, h); g.fillStyle = '#5e9a4a'; g.beginPath(); g.moveTo(w / 2, 2); g.quadraticCurveTo(w - 4, h / 2, w / 2, h - 2); g.quadraticCurveTo(4, h / 2, w / 2, 2); g.fill(); });
+const smallLeafMat = std({ map: smallLeafTex, alphaTest: 0.5, side: THREE.DoubleSide, roughness: 0.6 });
+const rugTex = tex(512, 512, (g, w, h) => {
+  for (let r = 256; r > 0; r -= 6) { g.fillStyle = r % 36 < 6 ? '#b88a55' : r % 18 < 6 ? '#d8b98a' : '#cda673'; g.beginPath(); g.arc(256, 256, r, 0, 7); g.fill(); }
+  g.globalAlpha = 0.15; speckle(g, w, h, 3000, '#5a3a1a', 0.5, 1.2);
+});
+const wickerTex = tex(256, 256, (g, w, h) => { g.fillStyle = '#c99a5e'; g.fillRect(0, 0, w, h); g.strokeStyle = '#8a6234'; g.lineWidth = 3; for (let y = 0; y < h; y += 10) for (let x = (y / 10) % 2 * 10; x < w; x += 20) { g.beginPath(); g.ellipse(x, y, 9, 4, 0, 0, 7); g.stroke(); } }, [3, 2]);
+const sketchTex = tex(512, 256, (g, w, h) => {
+  g.fillStyle = '#fbf7ec'; g.fillRect(0, 0, w, h); g.fillStyle = '#e6dcc8'; g.fillRect(w / 2 - 2, 0, 4, h);
+  g.strokeStyle = '#5a6a8a'; g.lineWidth = 3;
+  g.beginPath(); g.arc(120, 110, 40, Math.PI, 0); g.stroke();                                // a little octopus doodle
+  for (let k = 0; k < 6; k++) { g.beginPath(); g.moveTo(85 + k * 14, 110); g.quadraticCurveTo(80 + k * 14, 160, 95 + k * 14, 175); g.stroke(); }
+  g.fillStyle = '#5a6a8a'; g.beginPath(); g.arc(106, 100, 4, 0, 7); g.arc(134, 100, 4, 0, 7); g.fill();
+  g.font = `500 22px ${FONT}`; g.fillText('rest = ?', 300, 70);
+  for (let k = 0; k < 5; k++) { g.beginPath(); g.moveTo(300, 110 + k * 24); g.lineTo(460 - k * 20, 110 + k * 24); g.stroke(); }
+});
+const octoMugTex = tex(256, 128, (g, w, h) => {
+  g.fillStyle = '#f6efe2'; g.fillRect(0, 0, w, h); g.fillStyle = '#ff7a1c';
+  g.beginPath(); g.arc(64, 52, 22, Math.PI, 0); g.fill(); g.fillRect(42, 52, 44, 8);
+  for (let k = 0; k < 5; k++) { g.beginPath(); g.ellipse(46 + k * 9, 72, 4, 14, 0, 0, 7); g.fill(); }
+  g.fillStyle = '#222'; g.beginPath(); g.arc(57, 46, 3, 0, 7); g.arc(71, 46, 3, 0, 7); g.fill();
+});
+const outsideTex = tex(256, 256, (g, w, h) => {
+  const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, '#cfe6f5'); gr.addColorStop(0.6, '#eef3e2'); gr.addColorStop(1, '#a9c48a');
+  g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  for (let k = 0; k < 14; k++) { g.fillStyle = `rgba(${80 + rnd() * 40}, ${130 + rnd() * 50}, ${70 + rnd() * 30}, 0.85)`; g.beginPath(); g.arc(rnd() * w, h * (0.55 + rnd() * 0.3), 20 + rnd() * 40, 0, 7); g.fill(); }
+});
+const blobTex = tex(128, 128, (g, w, h) => { const gr = g.createRadialGradient(64, 64, 4, 64, 64, 64); gr.addColorStop(0, 'rgba(40,22,10,0.55)'); gr.addColorStop(1, 'rgba(40,22,10,0)'); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
+const blobMat = new THREE.MeshBasicMaterial({ map: blobTex, transparent: true, depthWrite: false });
+const contact = (x, z, sx, sz, y = 0.006) => { const m = mesh(new THREE.PlaneGeometry(1, 1), blobMat, [x, y, z], [-Math.PI / 2, 0, 0], scene, false); m.scale.set(sx, sz, 1); m.renderOrder = 1; return m; };
+const spineTex = (hue) => tex(64, 256, (g, w, h) => {
+  const c = new THREE.Color().setHSL(hue, 0.45, 0.5); g.fillStyle = `#${c.getHexString()}`; g.fillRect(0, 0, w, h);
+  g.fillStyle = 'rgba(255,240,210,0.75)'; g.fillRect(0, h * 0.12, w, 6); g.fillRect(0, h * 0.82, w, 6);
+  g.fillRect(w * 0.3, h * 0.35, w * 0.4, h * 0.3);
+});
+const starShape = (() => { const s = new THREE.Shape(); for (let i = 0; i < 10; i++) { const a = i * Math.PI / 5 + Math.PI / 2, r = i % 2 ? 0.4 : 1; const x = Math.cos(a) * r, y = Math.sin(a) * r; if (i) s.lineTo(x, y); else s.moveTo(x, y); } s.closePath(); return s; })();
+const starGeo = new THREE.ExtrudeGeometry(starShape, { depth: 0.3, bevelEnabled: true, bevelSize: 0.08, bevelThickness: 0.08, bevelSegments: 2 }); starGeo.scale(0.035, 0.035, 0.035);
+function succulent(g, x, y, z, s, kind) {
+  mesh(new THREE.CylinderGeometry(0.06 * s, 0.045 * s, 0.09 * s, 20), kind % 2 ? M.terracotta : std({ color: '#e8dccb', roughness: 0.5 }), [x, y + 0.045 * s, z], [0, 0, 0], g);
+  if (kind === 0) { for (let i = 0; i < 12; i++) { const a = i * 2.4, r = 0.02 + i * 0.003; mesh(new THREE.SphereGeometry(0.018 * s, 10, 8), std({ color: '#7fa86a', roughness: 0.6 }), [x + Math.cos(a) * r * s, y + 0.1 * s + i * 0.002, z + Math.sin(a) * r * s], [0.6, a, 0], g).scale.set(1, 0.6, 1.8); } }
+  else if (kind === 1) { mesh(new THREE.CapsuleGeometry(0.03 * s, 0.1 * s, 6, 12), std({ color: '#5b8f4a', roughness: 0.7 }), [x, y + 0.15 * s, z], [0, 0, 0], g); mesh(new THREE.CapsuleGeometry(0.018 * s, 0.05 * s, 6, 10), std({ color: '#5b8f4a', roughness: 0.7 }), [x + 0.035 * s, y + 0.16 * s, z], [0, 0, -0.9], g); }
+  else { for (let i = 0; i < 7; i++) mesh(new THREE.ConeGeometry(0.012 * s, 0.13 * s, 6), std({ color: '#6f9a55', roughness: 0.7 }), [x + (rnd() - 0.5) * 0.04 * s, y + 0.13 * s, z + (rnd() - 0.5) * 0.04 * s], [(rnd() - 0.5) * 0.7, 0, (rnd() - 0.5) * 0.7], g); }
+}
+{
+  const g = new THREE.Group(); scene.add(g);
+  // a proper window: frame, mullions, sill, the garden beyond
+  M.window.map = outsideTex; M.window.emissiveMap = outsideTex; M.window.needsUpdate = true;
+  for (const [x, y, w, h] of [[1.45, 2.42, 1.0, 0.06], [1.45, 1.08, 1.0, 0.06], [0.97, 1.75, 0.06, 1.4], [1.93, 1.75, 0.06, 1.4], [1.45, 1.75, 0.03, 1.3], [1.45, 1.78, 0.9, 0.03]]) mesh(RB(w, h, 0.06, 0.01), std({ color: '#f3ead9', roughness: 0.6 }), [x, y, -1.21], [0, 0, 0], g);
+  mesh(RB(1.1, 0.04, 0.2, 0.01), std({ color: '#f3ead9', roughness: 0.6 }), [1.45, 1.07, -1.15], [0, 0, 0], g);
+  succulent(g, 1.12, 1.09, -1.13, 1.0, 0); succulent(g, 1.3, 1.09, -1.12, 1.2, 1); succulent(g, 1.62, 1.09, -1.13, 0.9, 2); succulent(g, 1.8, 1.09, -1.12, 1.1, 0);
+  // more frames and a floating shelf above the sofa's left arm
+  for (const [x, y, w, h, k] of [[-1.95, 1.55, 0.26, 0.32, 'star'], [-0.3, 1.95, 0.22, 0.22, 'wave']]) { mesh(RB(w + 0.04, h + 0.04, 0.03, 0.01), M.woodDark, [x, y, -1.225], [0, 0, 0], g); mesh(new THREE.PlaneGeometry(w, h), std({ map: pictureTex(k), roughness: 0.9 }), [x, y, -1.205], [0, 0, 0], g, false); }
+  mesh(RB(0.6, 0.03, 0.16, 0.01), M.woodDark, [-1.55, 1.4, -1.16], [0, 0, 0], g);
+  succulent(g, -1.75, 1.415, -1.14, 0.9, 1); succulent(g, -1.38, 1.415, -1.14, 0.8, 2);
+  for (let k = 0; k < 4; k++) mesh(RB(0.035, 0.18 + k * 0.01, 0.12, 0.004, 1), std({ map: spineTex(rnd()), roughness: 0.8 }), [-1.6 + k * 0.04, 1.51 + k * 0.005, -1.15], [0, 0, 0], g);
+  // the bookshelf: spines with titles, stars, jars, baskets, a trailing pothos
+  for (const [x, y] of [[1.25, 1.4], [1.85, 1.4], [1.6, 0.6]]) mesh(starGeo, M.gold, [x, y + 0.04, -0.94], [0, 0.3, 0], g);
+  for (const [x, y] of [[1.92, 0.6], [1.22, 0.6]]) { mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.11, 20), phys({ color: '#dff0f0', roughness: 0.05, transparent: true, opacity: 0.5 }), [x, y + 0.055, -1.0], [0, 0, 0], g); mesh(new THREE.CylinderGeometry(0.042, 0.042, 0.02, 20), M.woodDark, [x, y + 0.12, -1.0], [0, 0, 0], g); }
+  for (const x of [1.3, 1.8]) mesh(RB(0.36, 0.22, 0.26, 0.04), std({ map: wickerTex, roughness: 0.9 }), [x, 0.13, -1.0], [0, 0, 0], g);
+  for (let k = 0; k < 16; k++) { const u = k / 15; const lf = mesh(new THREE.PlaneGeometry(0.06, 0.06), smallLeafMat, [1.95 + Math.sin(u * 5) * 0.03, 1.45 - u * 0.55, -0.92 + Math.cos(u * 4) * 0.03], [0.3, rnd() * 3, rnd() * 3], g, false); lf.castShadow = true; }
+  // big monstera in the left corner
+  mesh(new THREE.CylinderGeometry(0.17, 0.13, 0.32, 28), std({ color: '#d9cbb3', roughness: 0.7 }), [-2.15, 0.16, -0.75], [0, 0, 0], g);
+  for (let k = 0; k < 9; k++) {
+    const a = k * 0.7 + 0.3, len = 0.5 + rnd() * 0.5;
+    const stem = new THREE.Group(); stem.position.set(-2.15, 0.3, -0.75); stem.rotation.set(Math.cos(a) * 0.5, a, Math.sin(a) * 0.5); g.add(stem);
+    mesh(new THREE.CylinderGeometry(0.007, 0.009, len, 6), M.leaf, [0, len / 2, 0], [0, 0, 0], stem);
+    const lf = mesh(new THREE.PlaneGeometry(0.42, 0.42), leafMat, [0, len + 0.12, 0.05], [-0.7, 0, 0], stem, false); lf.castShadow = true;
+  }
+  // rug, floor clutter, the knitting basket
+  mesh(new THREE.CircleGeometry(1.25, 64), std({ map: rugTex, roughness: 1 }), [0.1, 0.005, 0.95], [-Math.PI / 2, 0, 0], g, false);
+  for (let k = 0; k < 9; k++) {
+    const x = rr(-1.8, 1.9), z = rr(1.4, 2.6);
+    const sh = mesh(new THREE.ConeGeometry(0.025, 0.05, 12), std({ color: ['#f2d6c4', '#e9c2a8', '#f7e9da'][k % 3], roughness: 0.5 }), [x, 0.018, z], [Math.PI / 2, rnd() * 6, 0], g); sh.scale.set(1, 1, 0.7);
+  }
+  mesh(new THREE.SphereGeometry(0.07, 20, 14), std({ color: '#d9765a', roughness: 1 }), [1.05, 0.07, 1.5], [0, 0, 0], g);
+  for (const s of [-1, 1]) mesh(new THREE.CylinderGeometry(0.004, 0.004, 0.3, 6), M.woodDark, [1.05 + s * 0.03, 0.12, 1.5], [0.4 * s, 0, 0.9], g);
+  mesh(RB(0.42, 0.26, 0.32, 0.05), std({ map: wickerTex, roughness: 0.9 }), [-2.2, 0.13, 0.75], [0, 0.6, 0], g);
+  for (let k = 0; k < 2; k++) mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.36, 20), M.blanket, [-2.2 + k * 0.1, 0.3, 0.75], [Math.PI / 2, 0.6, 0], g);
+  // sketchbook, stacked books on the table
+  mesh(RB(0.36, 0.01, 0.24, 0.004, 1), std({ map: sketchTex, roughness: 0.9 }), [0.02, 0.456, 0.95], [0, -0.12, 0], g);
+  for (let k = 0; k < 3; k++) mesh(RB(0.22 - k * 0.02, 0.035, 0.16, 0.006, 1), std({ map: spineTex(0.05 + k * 0.3), roughness: 0.8 }), [-0.68, 0.468 + k * 0.036, 0.62], [0, 0.2 * k, 0], g);
+  // soft contact shadows where things meet the floor
+  contact(0, -0.3, 2.6, 1.3); contact(0, 0.85, 2.0, 1.0); contact(-1.55, 0.3, 0.7, 0.7); contact(1.55, -1.0, 1.2, 0.5); contact(-2.15, -0.75, 0.6, 0.6); contact(-1.55, -0.55, 0.5, 0.5); contact(0, 3.05, 1.7, 0.6); contact(-2.2, 0.75, 0.7, 0.55);
+}
 
 // ───────────────────────────────────────────── props (move on keyframes)
 const PROPS = {};
@@ -288,14 +387,14 @@ prop('kettle', group((g) => {
   mesh(new THREE.SphereGeometry(0.09, 32, 20, 0, Math.PI * 2, 0, Math.PI * 0.62), M.teal, [0, 0.07, 0], [0, 0, 0], g);
   mesh(new THREE.CylinderGeometry(0.012, 0.02, 0.12, 12), M.teal, [0.1, 0.1, 0], [0, 0, -0.9], g);
   mesh(new THREE.TorusGeometry(0.06, 0.01, 8, 24, Math.PI), M.black, [0, 0.16, 0], [0, 0, 0], g);
-}), [[0, [1.5, 0.58, 0.15]], [21.5, [1.5, 0.58, 0.15]], [23.0, [0.55, 0.85, 0.75], [0, 0, 0], 0.25], [24.6, [0.55, 0.85, 0.75], [0, 0, 0.9]], [25.6, [1.5, 0.58, 0.15], [0, 0, 0], 0.25],
-  [151.0, [1.5, 0.58, 0.15]], [151.8, [0.55, 0.85, 0.75], [0, 0, 0.9], 0.2], [152.6, [1.5, 0.58, 0.15], [0, 0, 0], 0.2]]);
-prop('teacup', mugG(true), [[0, [1.62, 0.58, 0.3]], [22.0, [1.62, 0.58, 0.3]], [23.2, [0.5, 0.455, 0.75], [0, 0, 0], 0.25]]);
+}), [[0, [-1.5, 0.58, 0.22]], [21.5, [-1.5, 0.58, 0.22]], [23.0, [-0.62, 0.85, 0.75], [0, Math.PI, 0], 0.25], [24.6, [-0.62, 0.85, 0.75], [0, Math.PI, 0.9]], [25.6, [-1.5, 0.58, 0.22], [0, 0, 0], 0.25],
+  [151.0, [-1.5, 0.58, 0.22]], [151.8, [-0.62, 0.85, 0.75], [0, Math.PI, 0.9], 0.2], [152.6, [-1.5, 0.58, 0.22], [0, 0, 0], 0.2]]);
+prop('teacup', mugG(true, std({ map: octoMugTex, roughness: 0.3 })), [[0, [-1.62, 0.58, 0.38]], [22.0, [-1.62, 0.58, 0.38]], [23.2, [-0.5, 0.455, 0.75], [0, 0, 0], 0.25]]);
 prop('snacks', group((g) => { mesh(new THREE.CylinderGeometry(0.1, 0.07, 0.06, 32), M.ceramic, [0, 0.03, 0], [0, 0, 0], g); for (let i = 0; i < 7; i++) mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.012, 16), std({ color: '#c58a4a' }), [(rnd() - 0.5) * 0.1, 0.06 + i * 0.004, (rnd() - 0.5) * 0.1], [0.3, 0, 0.2], g); }),
-  [[0, [1.42, 0.58, 0.38]], [26.0, [1.42, 0.58, 0.38]], [27.6, [-0.55, 0.45, 0.95], [0, 0, 0], 0.35]]);
+  [[0, [-1.45, 0.58, 0.42]], [26.0, [-1.45, 0.58, 0.42]], [27.6, [-0.55, 0.45, 0.95], [0, 0, 0], 0.35]]);
 prop('blanket', group((g) => { mesh(RB(0.5, 0.12, 0.35, 0.06, 5), M.blanket, [0, 0.06, 0], [0, 0, 0], g); }),
   [[0, [0.55, 0.45, 0.86], [0, 0.3, 0]], [30.0, [0.55, 0.45, 0.86], [0, 0.3, 0]], [31.8, [0.02, 0.62, 0.02], [0.05, 0, 0], 0.3],
-  [88.0, [0.02, 0.62, 0.02], [0.05, 0, 0]], [88.8, [0.4, 0.0, 0.45], [0.2, 0.8, 0.3], 0.15],
+  [84.3, [0.02, 0.62, 0.02], [0.05, 0, 0]], [85.1, [0.4, 0.0, 0.45], [0.2, 0.8, 0.3], 0.15],
   [154.0, [0.4, 0.0, 0.45], [0.2, 0.8, 0.3]], [155.0, [1.2, 0.82, -0.3], [0, 0.2, 0], 0.4],
   [209.0, [1.2, 0.82, -0.3], [0, 0.2, 0]], [212.5, [0.0, 0.66, 0.0], [0.15, 0, 0.0], 0.3]]);
 prop('candle', group((g) => { mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.09, 24), std({ color: '#f5ede0', roughness: 0.7 }), [0, 0.045, 0], [0, 0, 0], g); }), [[0, [0.25, 0.45, 1.0]]]);
@@ -314,14 +413,14 @@ prop('duster', group((g) => { mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.3,
 prop('can', group((g) => { mesh(new THREE.CylinderGeometry(0.07, 0.08, 0.14, 24), std({ color: '#5aa16e', roughness: 0.5, metalness: 0.3 }), [0, 0.07, 0], [0, 0, 0], g); mesh(new THREE.CylinderGeometry(0.008, 0.014, 0.18, 10), std({ color: '#5aa16e', metalness: 0.3 }), [0.1, 0.12, 0], [0, 0, -0.9], g); }),
   [[0, [-1.3, 0.0, 0.3]], [113.0, [-1.3, 0.0, 0.3]], [114.4, [-1.55, 0.95, -0.82], [0, 0, -0.7], 0.3], [121.0, [-1.55, 0.95, -0.82], [0, 0, -0.7]], [122.2, [-1.3, 0.0, 0.3], [0, 0, 0], 0.3]]);
 prop('glass', group((g) => { mesh(new THREE.CylinderGeometry(0.035, 0.03, 0.1, 20, 1, true), phys({ color: '#dff3ff', roughness: 0.05, transparent: true, opacity: 0.45 }), [0, 0.05, 0], [0, 0, 0], g); }),
-  [[0, [1.48, 0.58, 0.12]], [113.6, [1.48, 0.58, 0.12]], [115.0, [1.22, 1.78, -0.95], [0, 0, -1.1], 0.3], [121.0, [1.22, 1.78, -0.95], [0, 0, -1.1]], [122.4, [1.48, 0.58, 0.12], [0, 0, 0], 0.3]]);
+  [[0, [0.62, 0.455, 0.6]], [113.6, [0.62, 0.455, 0.6]], [115.0, [1.22, 1.78, -0.95], [0, 0, -1.1], 0.3], [121.0, [1.22, 1.78, -0.95], [0, 0, -1.1]], [122.4, [0.62, 0.455, 0.6], [0, 0, 0], 0.3]]);
 prop('mugB', mugG(false, std({ color: '#e0573a', roughness: 0.4 })), [[0, [-0.62, 0.455, 0.98]], [114.0, [-0.62, 0.455, 0.98]], [115.4, [1.72, 1.85, -0.92], [0, 0, -1.1], 0.3], [121.0, [1.72, 1.85, -0.92], [0, 0, -1.1]], [122.6, [-0.62, 0.455, 0.98], [0, 0, 0], 0.3]]);
 // cushions get knocked off by the dusting and thrown back during the panic
 const cushion = (mat, w = 0.5) => group((g) => mesh(RB(w, w * 0.9, 0.16, 0.07, 5), mat, [0, 0, 0], [0, 0, 0], g));
-prop('cushKnit', cushion(M.knit), [[0, [-0.82, 0.78, -0.42], [-0.25, 0.25, 0.12]], [87.0, [-0.82, 0.78, -0.42], [-0.25, 0.25, 0.12]], [87.8, [-0.9, 0.08, 0.55], [-1.5, 0.6, 0.3], 0.3], [152.4, [-0.9, 0.08, 0.55], [-1.5, 0.6, 0.3]], [153.2, [-0.82, 0.78, -0.42], [-0.25, 0.25, 0.12], 0.5]]);
-prop('cushPlaid', cushion(M.plaid, 0.42), [[0, [-1.02, 0.72, -0.18], [-0.2, 0.6, 0.2]], [87.3, [-1.02, 0.72, -0.18], [-0.2, 0.6, 0.2]], [88.1, [-1.5, 0.07, 0.35], [-1.55, 1.2, 0], 0.3], [152.8, [-1.5, 0.07, 0.35], [-1.55, 1.2, 0]], [153.6, [-1.02, 0.72, -0.18], [-0.2, 0.6, 0.2], 0.5]]);
+prop('cushKnit', cushion(M.knit), [[0, [-0.82, 0.78, -0.42], [-0.25, 0.25, 0.12]], [84.4, [-0.82, 0.78, -0.42], [-0.25, 0.25, 0.12]], [85.2, [-0.9, 0.08, 0.55], [-1.5, 0.6, 0.3], 0.3], [152.4, [-0.9, 0.08, 0.55], [-1.5, 0.6, 0.3]], [153.2, [-0.82, 0.78, -0.42], [-0.25, 0.25, 0.12], 0.5]]);
+prop('cushPlaid', cushion(M.plaid, 0.42), [[0, [-1.02, 0.72, -0.18], [-0.2, 0.6, 0.2]], [84.5, [-1.02, 0.72, -0.18], [-0.2, 0.6, 0.2]], [85.3, [-1.5, 0.07, 0.35], [-1.55, 1.2, 0], 0.3], [152.8, [-1.5, 0.07, 0.35], [-1.55, 1.2, 0]], [153.6, [-1.02, 0.72, -0.18], [-0.2, 0.6, 0.2], 0.5]]);
 prop('cushPlaid2', cushion(M.plaid, 0.4), [[0, [0.75, 0.86, -0.55], [-0.2, -0.1, -0.08]]]);
-prop('cushNori', cushion(M.pillow), [[0, [0.66, 0.73, -0.2], [-0.22, -0.22, -0.12]], [87.6, [0.66, 0.73, -0.2], [-0.22, -0.22, -0.12]], [88.4, [1.0, 0.08, 0.5], [-1.5, -0.4, 0], 0.3], [153.0, [1.0, 0.08, 0.5], [-1.5, -0.4, 0]], [153.8, [0.66, 0.73, -0.2], [-0.22, -0.22, -0.12], 0.5]]);
+prop('cushNori', cushion(M.pillow), [[0, [0.66, 0.73, -0.2], [-0.22, -0.22, -0.12]], [84.3, [0.66, 0.73, -0.2], [-0.22, -0.22, -0.12]], [85.0, [0.35, 0.08, 0.95], [-1.5, -0.4, 0], 0.3], [153.0, [1.0, 0.08, 0.5], [-1.5, -0.4, 0]], [153.8, [0.66, 0.73, -0.2], [-0.22, -0.22, -0.12], 0.5]]);
 // cocoa that Sunny brings
 prop('cocoaS', mugG(true, std({ color: '#f2c94c', roughness: 0.35 })), [[0, [-3.4, 0.2, 0.6]]]);
 prop('cocoaN', mugG(true, std({ color: '#7fb6d9', roughness: 0.35 })), [[0, [-3.4, 0.2, 0.6]]]);
@@ -334,16 +433,27 @@ const zzz = [];
 // ───────────────────────────────────────────── Nori
 const HEAD0 = V(0, 1.02, -0.18), HR = 0.34;
 const nori = new THREE.Group(); scene.add(nori);
+const SHELF_SPOT = V(1.95, 0.6, -0.42);
+const HEADPATH = [[0, HEAD0, 0], [84.25, HEAD0, 0], [84.95, V(0.7, 0.64, 0.4), 0.35], [85.6, V(1.25, 0.6, 0.8), 0.05], [86.3, V(2.12, 0.6, 0.3), 0.05], [87.0, SHELF_SPOT, 0.05],
+  [123.0, SHELF_SPOT, 0], [123.5, V(2.12, 0.6, 0.3), 0.05], [124.0, V(1.25, 0.6, 0.8), 0.05], [124.4, V(0.7, 0.64, 0.4), 0.05], [124.95, HEAD0, 0.35]];
+function headPath(t) {
+  let i = 0; while (i < HEADPATH.length - 2 && t > HEADPATH[i + 1][0]) i++;
+  const [ta, a] = HEADPATH[i], [tb, b, lift] = HEADPATH[i + 1], u = ease(clamp((t - ta) / (tb - ta), 0, 1));
+  const p = a.clone().lerp(b, u); p.y += Math.sin(Math.PI * u) * lift;
+  p.moving = t > ta && t < tb && a.distanceTo(b) > 0.01 ? 1 : 0;
+  return p;
+}
 const headPivot = new THREE.Group(); headPivot.position.copy(HEAD0); nori.add(headPivot);
 const head = mesh(new THREE.SphereGeometry(HR, 96, 64), M.skin, [0, 0, 0], [0, 0, 0], headPivot);
+const web = mesh(new THREE.SphereGeometry(0.27, 48, 24), M.skin, [0, -0.25, 0.01], [0, 0, 0], headPivot); web.scale.set(1.05, 0.42, 0.85);
 const face = new THREE.Group(); headPivot.add(face);
 const eyes = [], lids = [], lowLids = [], brows = [], blushes = [];
 for (const s of [-1, 1]) {
   const n = V(s * 0.36, -0.06, 0.93).normalize();
-  const e = mesh(new THREE.SphereGeometry(0.082, 48, 32), M.eye, n.clone().multiplyScalar(HR * 0.82).toArray(), [0, 0, 0], face);
-  const lid = mesh(new THREE.SphereGeometry(0.088, 48, 24, 0, Math.PI * 2, 0, Math.PI * 0.5), M.skin, e.position.toArray(), [0, 0, 0], face);
-  const low = mesh(new THREE.SphereGeometry(0.086, 48, 24, 0, Math.PI * 2, Math.PI * 0.5, Math.PI * 0.5), M.skin, e.position.toArray(), [0, 0, 0], face);
-  const brow = mesh(new THREE.CapsuleGeometry(0.012, 0.07, 6, 12), M.brow, V(s * 0.33, 0.24, 0.9).normalize().multiplyScalar(HR).toArray(), [0, 0, 0], face);
+  const e = mesh(new THREE.SphereGeometry(0.092, 48, 32), M.eye, n.clone().multiplyScalar(HR * 0.8).toArray(), [0, 0, 0], face);
+  const lid = mesh(new THREE.SphereGeometry(0.099, 48, 24, 0, Math.PI * 2, 0, Math.PI * 0.5), M.lid, e.position.toArray(), [0, 0, 0], face);
+  const low = mesh(new THREE.SphereGeometry(0.096, 48, 24, 0, Math.PI * 2, Math.PI * 0.5, Math.PI * 0.5), M.lid, e.position.toArray(), [0, 0, 0], face);
+  const brow = mesh(new THREE.CapsuleGeometry(0.017, 0.085, 6, 12), M.brow, V(s * 0.34, 0.27, 0.9).normalize().multiplyScalar(HR * 1.01).toArray(), [0, 0, 0], face);
   const bl = mesh(new THREE.CircleGeometry(0.04, 24), M.blush, V(s * 0.55, -0.32, 0.77).normalize().multiplyScalar(HR * 1.005).toArray(), [0, 0, 0], face, false);
   bl.lookAt(bl.position.clone().multiplyScalar(2)); bl.scale.set(1.3, 0.8, 1);
   eyes.push(e); lids.push(lid); lowLids.push(low); brows.push({ m: brow, s, base: brow.position.clone() }); blushes.push(bl);
@@ -361,7 +471,29 @@ function surfaceY(x, z) {
   if (Math.abs(x) >= 1.07 && Math.abs(x) < 1.33 && z > -0.8 && z < 0.15) return 0.79;
   return 0.0;
 }
+function legPoints(i, t, head, moving) {
+  const a = (i / 8) * Math.PI * 2 + 0.4;
+  const base = head.clone().add(V(Math.cos(a) * 0.2, -0.27, Math.sin(a) * 0.17));
+  const phase = t * 9 + (i % 2) * Math.PI;
+  const step = moving ? Math.max(0, Math.sin(phase)) * 0.09 : 0;
+  const foot = V(head.x + Math.cos(a) * (0.46 + 0.04 * Math.sin(t * 1.1 + i)), 0.035 + step, head.z + Math.sin(a) * 0.42);
+  const pts = [];
+  for (let k = 0; k <= 10; k++) {
+    const s = k / 10;
+    const p = base.clone().lerp(foot, Math.min(1, s * 1.35));
+    p.y = lerp(base.y, foot.y, smooth(0, 0.75, s)) + Math.sin(Math.PI * Math.min(1, s * 1.35)) * 0.06;
+    if (s > 0.74) { const c = (s - 0.74) / 0.26; p.add(V(Math.cos(a) * 0.14 * c, 0.05 * c * c, Math.sin(a) * 0.14 * c)); }
+    pts.push(p);
+  }
+  return pts;
+}
 function restPoints(i, t, head) {
+  const standing = smooth(0.8, 0.68, head.y);
+  if (standing > 0.99) return legPoints(i, t, head, head.moving);
+  if (standing > 0.01) { const a = restSofa(i, t, head), b = legPoints(i, t, head, head.moving); return a.map((p, k) => p.lerp(b[k], standing)); }
+  return restSofa(i, t, head);
+}
+function restSofa(i, t, head) {
   const a = ARM_ANG[i];
   const dir = V(Math.cos(a) * 1.2, 0, Math.sin(a) * 0.34);
   const base = head.clone().add(V(Math.cos(a) * 0.2, -0.27, Math.sin(a) * 0.16));
@@ -402,10 +534,14 @@ function taperTube(pts, segs = 64, radial = 16, r0 = 0.095, r1 = 0.016, thin = 1
     let N = V().crossVectors(T, up); if (N.lengthSq() < 1e-4) N.set(1, 0, 0); N.normalize();
     const B = V().crossVectors(N, T).normalize();
     const r = lerp(r0, r1, Math.pow(u, 0.85)) * thin * (u > 0.97 ? Math.sqrt(Math.max(0, 1 - (u - 0.97) / 0.03)) * 0.9 + 0.1 : 1);
+    const cups = Math.pow(Math.max(0, Math.sin(u * 72 * Math.PI)), 3) * (u > 0.06 && u < 0.95 ? 1 : 0);
     for (let j = 0; j <= radial; j++) {
       const v = (j / radial) * Math.PI * 2;
       const n = N.clone().multiplyScalar(Math.cos(v)).addScaledVector(B, Math.sin(v));
-      pos.push(P.x + n.x * r, P.y + n.y * r, P.z + n.z * r); nor.push(n.x, n.y, n.z); uv.push(u * 4, 1.01 - j / radial);
+      const under = Math.max(0, -Math.sin(v) - 0.55) / 0.45;              // only the cups on the underside
+      const side = Math.exp(-Math.pow((Math.abs(Math.cos(v)) - 0.62) / 0.18, 2));
+      const rr2 = r * (1 + 0.16 * cups * (under * 0.6 + side * Math.max(0, -Math.sin(v) + 0.2)));
+      pos.push(P.x + n.x * rr2, P.y + n.y * rr2, P.z + n.z * rr2); nor.push(n.x, n.y, n.z); uv.push(u * 4, 1.01 - j / radial);
     }
   }
   for (let i = 0; i < segs; i++) for (let j = 0; j < radial; j++) { const a = i * (radial + 1) + j, b = a + radial + 1; idx.push(a, b, a + 1, b, b + 1, a + 1); }
@@ -474,12 +610,13 @@ const P = (name) => (t) => pp(name, t).add(V(0, 0.06, 0));
 const at = (x, y, z) => () => V(x, y, z);
 const wob = (base, f = 9, a = 0.06) => (t) => base(t).add(V(Math.sin(t * f) * a, Math.abs(Math.sin(t * f * 0.7)) * a * 0.6, Math.cos(t * f * 1.3) * a * 0.5));
 const ACTIONS = [
-  // cold open: slap the alarm off
+  // cold open: slap the alarm off, then a big stretch
   [7, 1.6, 3.4, at(-0.95, 0.66, 0.05), 0.35, 0.5],
+  [1, 5.0, 7.0, (t) => V(0.55, 1.75 + 0.05 * Math.sin(t * 6), -0.05), 0.5, 0.6], [6, 5.1, 7.0, (t) => V(-0.55, 1.75 + 0.05 * Math.sin(t * 6 + 1), -0.05), 0.5, 0.6],
   // the plan, then six jobs at once
   [4, 19.4, 49.8, P('plan'), 0.5, 0.6],
-  [0, 21.0, 25.9, P('kettle'), 0.5, 0.4], [1, 21.6, 23.6, P('teacup'), 0.4, 0.4],
-  [1, 25.6, 28.0, P('snacks'), 0.5, 0.4],
+  [7, 21.0, 25.9, P('kettle'), 0.5, 0.4], [6, 21.6, 23.6, P('teacup'), 0.4, 0.4],
+  [5, 25.6, 28.0, P('snacks'), 0.5, 0.4],
   [5, 29.6, 32.2, P('blanket'), 0.5, 0.4], [6, 30.0, 32.2, (t) => pp('blanket', t).add(V(-0.2, 0.06, 0)), 0.5, 0.4],
   [2, 33.6, 35.6, wob(at(0.25, 0.6, 1.0), 6, 0.02), 0.5, 0.5],
   [3, 37.0, 40.0, P('book'), 0.6, 0.4],
@@ -489,13 +626,13 @@ const ACTIONS = [
   // incident two: frame, duster, books, plants
   [6, 80.6, 84.0, (t) => V(-1.05 + Math.sin(t * 3) * 0.02 * smooth(81.8, 82.6, t), 1.85, -1.18), 1.0, 0.6],
   [0, 84.2, 101.0, (t) => (t < 85 ? pp('duster', t) : pp('duster', t).add(V(Math.sin(t * 7) * 0.25, Math.sin(t * 5) * 0.12, 0.05))), 0.5, 0.5],
-  [2, 86.0, 92.0, wob(at(-0.6, 0.85, -0.4), 11, 0.18), 0.4, 0.4], [3, 86.4, 92.0, wob(at(0.7, 0.85, -0.4), 10, 0.18), 0.4, 0.4],
+  [2, 86.8, 97.0, wob(at(1.35, 1.12, -0.9), 11, 0.16), 0.4, 0.4], [3, 87.2, 97.0, wob(at(1.75, 0.75, -0.9), 10, 0.16), 0.4, 0.4],
   [1, 101.5, 108.6, (t) => booksTarget(t, 0), 0.4, 0.4], [2, 101.7, 108.6, (t) => booksTarget(t, 1), 0.4, 0.4], [3, 101.9, 108.6, (t) => booksTarget(t, 2), 0.4, 0.4],
   [5, 113.0, 122.2, P('can'), 0.5, 0.4], [2, 113.6, 122.4, P('glass'), 0.5, 0.4], [3, 114.0, 122.6, P('mugB'), 0.5, 0.4],
   [3, 138.8, 149.0, P('phone'), 0.5, 0.4],
   // panic: everything back in place
   [7, 152.2, 153.4, P('cushKnit'), 0.25, 0.25], [6, 152.6, 153.8, P('cushPlaid'), 0.25, 0.25], [1, 152.8, 154.0, P('cushNori'), 0.25, 0.25],
-  [0, 150.6, 152.8, P('kettle'), 0.3, 0.3], [5, 153.8, 155.2, P('blanket'), 0.25, 0.3], [2, 155.0, 156.4, wob(at(0.25, 0.6, 1.0), 9, 0.02), 0.3, 0.3],
+  [4, 150.6, 152.8, P('kettle'), 0.3, 0.3], [5, 153.8, 155.2, P('blanket'), 0.25, 0.3], [2, 155.0, 156.4, wob(at(0.25, 0.6, 1.0), 9, 0.02), 0.3, 0.3],
   // the door
   [7, 163.0, 166.0, (t) => doorHandle(t), 0.7, 0.6],
   // taking the cocoa, holding it
@@ -520,6 +657,9 @@ const doorHandle = (t) => V(-2.58 + Math.sin(-doorAngle(t)) * 0.82, 0.95, 0.15 +
 const FACE = [
   [0, { lid: 0.0, brow: 0, smile: 0.2, look: null, tilt: 0.15, lift: -0.1, squash: 0.1 }],
   [4, { lid: 0.35, brow: -0.2, smile: 0.4, tilt: 0.1, lift: -0.06, squash: 0.06 }],
+  [5.2, { lid: 0.05, brow: 0.6, smile: 0, open: 1.0, tilt: -0.15, lift: 0.04, squash: -0.08 }],
+  [6.6, { lid: 0.1, brow: 0.5, smile: 0.1, open: 0.9, tilt: -0.15, lift: 0.04, squash: -0.08 }],
+  [7.4, { lid: 0.4, brow: -0.1, smile: 0.5, open: 0, tilt: 0.05, lift: -0.02, squash: 0.03 }],
   [9, { lid: 0.55, brow: 0, smile: 0.6, tilt: 0.0, lift: 0, squash: 0 }],
   [15.5, { lid: 0.85, brow: 0.6, smile: 0.7, look: [0, 1.0, 2.5] }],
   [20, { lid: 0.9, brow: 0.5, smile: 0.8, look: [-0.36, 1.05, 0.38] }],
@@ -533,9 +673,10 @@ const FACE = [
   [73, { lid: 0.5, brow: -0.5, smile: 0, look: [0, 1, 2.5] }],
   [76, { lid: 0.8, brow: 0.3, smile: 0.1, look: [-1.05, 1.95, -1.22], turn: 0.9, tilt: -0.2 }],
   [80.5, { lid: 0.85, brow: 0.6, smile: 0.5, look: [-1.05, 1.95, -1.22], turn: 0.9 }],
-  [85, { lid: 0.9, brow: 0.6, smile: 0.8, look: [1.55, 1.2, -0.75], turn: -0.7, tilt: 0 }],
-  [101, { lid: 0.9, brow: 0.7, smile: 0.9, look: [1.5, 1.1, -1.02], turn: -0.75 }],
-  [109, { lid: 1.0, brow: 1.0, smile: 1.0, open: 0.4, look: [1.5, 1.1, -1.02], turn: -0.75 }],
+  [84.3, { lid: 1.0, brow: 0.9, smile: 0.9, look: [1.3, 0.8, -0.4], turn: -0.5, tilt: 0 }],
+  [87, { lid: 0.9, brow: 0.6, smile: 0.8, look: [1.55, 1.2, -1.0], turn: -0.1, tilt: -0.15 }],
+  [101, { lid: 0.9, brow: 0.7, smile: 0.9, look: [1.5, 1.1, -1.02], turn: -0.1, tilt: -0.1 }],
+  [109, { lid: 1.0, brow: 1.0, smile: 1.0, open: 0.4, look: [1.5, 1.1, -1.02], turn: -0.1, tilt: -0.1 }],
   [111, { lid: 0.9, brow: 0.6, smile: 0.9, open: 0, look: [0, 1.2, 0.5], turn: 0 }],
   [114, { lid: 0.85, brow: 0.5, smile: 0.9, look: [0.2, 1.3, -0.9], turn: 0 }],
   [124, { lid: 0.8, brow: 0.4, smile: 0.8, look: [0, 1, 2.5], turn: 0 }],
@@ -646,6 +787,24 @@ composer.addPass(bokeh);
 const bloom = new UnrealBloomPass(new THREE.Vector2(512, 512), 0.3, 0.45, 1.15);
 composer.addPass(bloom);
 composer.addPass(new OutputPass());
+// a warm, soft grade: lifted shadows, gentle vignette, a little film grain
+const grade = new ShaderPass({
+  uniforms: { tDiffuse: { value: null }, uTime: { value: 0 }, uAspect: { value: 16 / 9 } },
+  vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+  fragmentShader: `uniform sampler2D tDiffuse; uniform float uTime; uniform float uAspect; varying vec2 vUv;
+    float h(vec2 p){ vec3 q = fract(vec3(p.xyx) * 0.1031); q += dot(q, q.yzx + 33.33); return fract((q.x + q.y) * q.z); }
+    void main(){
+      vec3 c = texture2D(tDiffuse, vUv).rgb;
+      float l = dot(c, vec3(0.299, 0.587, 0.114));
+      c = mix(c, c * vec3(1.04, 1.0, 0.93) + vec3(0.025, 0.012, 0.0), 0.8);
+      c = mix(vec3(l), c, 1.06);
+      vec2 d = (vUv - 0.5) * vec2(uAspect, 1.0);
+      c *= mix(0.78, 1.0, smoothstep(1.05, 0.35, length(d)));
+      c += (h(vUv * 1000.0 + uTime) - 0.5) * 0.018;
+      gl_FragColor = vec4(c, 1.0);
+    }`,
+});
+composer.addPass(grade);
 
 // ───────────────────────────────────────────── world at story time t
 let lastTV = '', lastPhone = -1, lastPlan = -1;
@@ -709,7 +868,8 @@ function world(t) {
   const breathe = 1 + 0.015 * Math.sin(t * 2.0) * (t > 205 ? 1.6 : 1);
   const laugh = bump(t, 192.6, 195.0, 0.2) * Math.abs(Math.sin(t * 16)) * 0.03;
   const panic = bump(t, 150.4, 157.2, 0.3);
-  headPivot.position.copy(HEAD0).add(V(Math.sin(t * 31) * 0.01 * panic, f.lift + laugh, 0));
+  const hpath = headPath(t);
+  headPivot.position.copy(hpath).add(V(Math.sin(t * 31) * 0.01 * panic, f.lift + laugh + (hpath.moving ? Math.abs(Math.sin(t * 9)) * 0.03 : 0), 0));
   headPivot.rotation.set(f.tilt * 0.5, f.turn * 0.35, f.tilt * 0.3 + Math.sin(t * 25) * 0.04 * panic);
   head.scale.set(breathe * (1 + f.squash * 0.5), (0.98 / breathe) * (1 - f.squash), 0.92 * breathe);
   const blink = blinkAt(t), open = clamp(f.lid * blink, 0, 1);
@@ -729,7 +889,7 @@ function world(t) {
   smileLine.rotation.z = f.smile >= 0 ? Math.PI + Math.PI * 0.075 : Math.PI * 0.075;
   smileLine.visible = mo < 0.6;
   // arms
-  const hp = headPivot.position.clone();
+  const hp = headPivot.position.clone(); hp.moving = hpath.moving;
   for (let i = 0; i < 8; i++) {
     let pts = restPoints(i, t, hp), w = 0, tgt = null;
     for (const [arm, t0, t1, fn, inD, outD] of ACTIONS) {
@@ -743,7 +903,7 @@ function world(t) {
     if (t > 150.4 && t < 157.2) pts = pts.map((p, k) => p.add(V(Math.sin(t * 20 + i + k) * 0.015 * panic, 0, 0)));
     let len = 0; for (let k = 1; k < pts.length; k++) len += pts[k].distanceTo(pts[k - 1]);
     const thin = clamp(Math.sqrt(0.75 / len), 0.42, 1);
-    arms[i].geometry.dispose(); arms[i].geometry = taperTube(pts, 64, 16, 0.095, 0.016, thin);
+    arms[i].geometry.dispose(); arms[i].geometry = taperTube(pts, 110, 22, 0.1, 0.016, thin);
     tips[i] = pts[pts.length - 1];
   }
   sunnyAnim(t);
@@ -752,6 +912,7 @@ function world(t) {
 
 // ───────────────────────────────────────────── cameras
 const HEADP = () => headPivot.position.clone();
+const STAND = () => smooth(0.8, 0.68, headPivot.position.y);
 const C = (pos, tgt, fov, o = {}) => ({ pos, tgt, fov, focus: o.focus ?? pos.distanceTo(tgt), aperture: o.aperture ?? 0.0018, shake: o.shake ?? 0.004 });
 const drift = (t, a = 0.03) => V(Math.sin(t * 0.21) * a, Math.sin(t * 0.17 + 1) * a * 0.5, Math.cos(t * 0.13) * a);
 const CAMS = {
@@ -759,7 +920,7 @@ const CAMS = {
   WIDE: (t) => C(V(0.1, 1.35, 3.35).add(drift(t, 0.05)), V(0.05, 0.95, -0.4), 46, { aperture: 0.001 }),
   MED: (t) => C(V(0.05, 1.15, 2.45).add(drift(t)), V(0, 0.86, -0.2), 34),
   MEDL: (t) => C(V(-0.55, 1.1, 2.3).add(drift(t)), V(0.15, 0.85, -0.2), 34),
-  CU: (t) => C(V(0.05, 1.1, 1.62).add(drift(t, 0.015)), HEADP().add(V(0, -0.06, 0)), 30, { aperture: 0.0025 }),
+  CU: (t) => C(HEADP().add(V(0.05, 0.08, 1.8).lerp(V(0.3, 0.12, 1.25), STAND())).add(drift(t, 0.015)), HEADP().add(V(0, -0.06, 0)), 30 + 6 * STAND(), { aperture: 0.0025 }),
   CUSLOW: (t, u) => C(V(0.05, 1.1, 1.8 - 0.3 * u), HEADP().add(V(0, -0.06, 0)), 30, { aperture: 0.0025 }),
   PLAN: (t) => C(V(-0.15, 1.15, 1.05), V(-0.36, 1.03, 0.38), 32, { aperture: 0.003 }),
   RIGHT: (t) => C(V(2.25, 1.25, 1.35).add(drift(t)), V(0.2, 0.85, -0.45), 42),
@@ -768,7 +929,8 @@ const CAMS = {
   TV: (t) => C(V(0.55, 1.4, -0.95), V(0, 0.82, 3.1), 40, { focus: 3.0 }),
   TVCU: (t) => C(V(0.1, 0.9, 2.2), V(0, 0.82, 3.1), 44, { focus: 0.9 }),
   FRAME: (t) => C(V(-0.75, 1.75, 0.35), V(-1.05, 1.9, -1.22), 38, { focus: 1.6 }),
-  SHELF: (t) => C(V(1.0, 1.25, 0.55).add(drift(t, 0.02)), V(1.55, 1.08, -1.0), 40, { focus: 1.7 }),
+  SHELF: (t) => C(V(0.85, 1.2, 1.2).add(drift(t, 0.02)), V(1.85, 0.82, -0.7), 40, { focus: 2.0 }),
+  SHELFW: (t) => C(V(0.35, 1.45, 1.75).add(drift(t, 0.02)), V(1.7, 0.9, -0.65), 44, { focus: 2.4, aperture: 0.0012 }),
   PLANTS: (t) => C(V(0.1, 1.35, 2.2).add(drift(t)), V(0.05, 1.05, -0.6), 50, { aperture: 0.001 }),
   CLOCK: (t) => C(V(0.05, 1.75, 0.6), V(0.05, 2.08, -1.22), 34, { focus: 1.9 }),
   PHONE: (t) => C(V(0.35, 1.1, 0.75), pp('phone', t), 34, { focus: 0.45, aperture: 0.004 }),
@@ -780,13 +942,13 @@ const CAMS = {
   END: (t, u) => C(V(0.25, 1.15 + 0.15 * u, 2.1 + 0.6 * u), V(0.25, 0.85, -0.2), 34),
   // ── 9:16
   V_MED: (t) => C(V(0.05, 1.25, 2.6).add(drift(t)), V(0, 0.95, -0.2), 52),
-  V_CU: (t) => C(V(0.05, 1.1, 1.75).add(drift(t, 0.015)), HEADP().add(V(0, -0.12, 0)), 44, { aperture: 0.0025 }),
+  V_CU: (t) => C(HEADP().add(V(0.05, 0.08, 1.93).lerp(V(0.3, 0.12, 1.3), STAND())).add(drift(t, 0.015)), HEADP().add(V(0, -0.12, 0)), 44 + 6 * STAND(), { aperture: 0.0025 }),
   V_PLAN: (t) => C(V(-0.1, 1.15, 1.25), V(-0.25, 0.98, 0.2), 50),
   V_STRETCH: (t, u) => C(V(2.2, 1.45, 1.6), V(0.9 + 0.3 * u, 0.95, -0.45), 66, { aperture: 0.001 }),
   V_TV: (t) => C(V(0.55, 1.35, -0.85), V(0, 0.82, 3.1), 58, { focus: 3.0 }),
   V_FRAME: (t) => C(V(-0.6, 1.5, 0.6), V(-0.8, 1.55, -1.0), 56, { focus: 1.6 }),
-  V_SHELF: (t) => C(V(0.95, 1.2, 0.85), V(1.45, 1.05, -1.0), 58, { focus: 1.9 }),
-  V_PLANTS: (t) => C(V(0.0, 1.4, 2.7), V(0.0, 1.05, -0.6), 66, { aperture: 0.001 }),
+  V_SHELF: (t) => C(V(1.25, 1.15, 1.3), V(1.85, 0.85, -0.7), 58, { focus: 2.0 }),
+  V_PLANTS: (t) => C(V(0.7, 1.45, 2.75), V(0.55, 1.0, -0.6), 70, { aperture: 0.001 }),
   V_CLOCK: (t) => C(V(0.25, 1.95, 0.35), V(0.05, 2.0, -1.22), 52, { focus: 1.6 }),
   V_PHONE: (t) => C(V(0.32, 1.12, 0.85), pp('phone', t).add(V(0, -0.02, 0)), 44, { focus: 0.55, aperture: 0.004 }),
   V_DOOR: (t) => C(V(-0.75, 1.1, 2.1), V(-2.5, 0.8, 0.55), 60),
@@ -837,6 +999,7 @@ export function frame(outT) {
   camera.position.copy(c.pos);
   camera.lookAt(c.tgt.clone().add(V(Math.sin(t * 0.9) * c.shake, Math.sin(t * 1.3) * c.shake, 0)));
   bokeh.uniforms.focus.value = c.focus; bokeh.uniforms.aperture.value = c.aperture;
+  grade.uniforms.uTime.value = outT % 10; grade.uniforms.uAspect.value = camera.aspect;
   const fi = edit.fadeIn > 0 ? 1 - smooth(0, edit.fadeIn, outT) : 0, fo = smooth(edit.duration - edit.fadeOut, edit.duration, outT);
   renderer.toneMappingExposure *= 1 - Math.max(fi, fo) * 0.98;
   captions(outT, loc);
