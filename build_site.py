@@ -148,8 +148,14 @@ def header(page_name: str, root: Path = ROOT) -> str:
         items.append(f'<li><a href="/{path}"{klass}{current}>{label}</a></li>')
     return (root / 'templates/header.html').read_text().replace('{{navigation}}','\n        '.join(items)).strip()
 
-def footer(root: Path = ROOT) -> str:
-    return (root / 'templates/footer.html').read_text().replace('{{report_url}}', esc(REPORT_URL)).strip()
+# Pages that are not financial research carry their own footer, without the
+# research links and the securities disclaimer. BreakBefore is a developer-tool
+# project from DFB; there is no security on its page to disclaim.
+PAGE_FOOTERS = {'breakbefore.html': 'templates/footer-breakbefore.html'}
+
+def footer(root: Path = ROOT, page_name: str = '') -> str:
+    template = PAGE_FOOTERS.get(page_name, 'templates/footer.html')
+    return (root / template).read_text().replace('{{report_url}}', esc(REPORT_URL)).strip()
 
 def splice(text: str, inner: str, start: str = START, end: str = END) -> str:
     if text.count(start) != 1 or text.count(end) != 1 or text.index(start) > text.index(end):
@@ -166,7 +172,7 @@ def planned_outputs(root: Path = ROOT):
         if HEADER_START not in text:
             continue  # verification files and retired redirects are intentionally unchanged
         text = splice(text, header(path.name, root), HEADER_START, HEADER_END)
-        text = splice(text, footer(root), FOOTER_START, FOOTER_END)
+        text = splice(text, footer(root, path.name), FOOTER_START, FOOTER_END)
         if path.name in ('index.html','research.html'):
             template = 'home.html' if path.name == 'index.html' else 'research.html'
             body = (root / 'templates' / template).read_text(encoding='utf-8').replace('{{report_url}}', esc(REPORT_URL))
