@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>온라인 셀러 마진 계산기</title>
+<meta name="description" content="판매가, 원가, 수수료율, 광고비율을 넣으면 순이익, 마진율, 손익분기 판매가, 목표 마진 판매가를 계산합니다.">
+<style>
+:root{--bg:#fafaf7;--fg:#1c1c1a;--mut:#6b6b66;--card:#fff;--line:#e2e2dc;--ac:#1d6b4f;--bad:#b3261e}
+@media(prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ececE6;--mut:#9a9a92;--card:#1f1f1c;--line:#34342f;--ac:#5cc79b;--bad:#ff8a80}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:1.5rem;margin:0 0 4px}p.sub{color:var(--mut);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--mut)}input{width:100%;padding:10px;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:12px}.out div{border-top:1px solid var(--line);padding-top:8px}
+.out b{display:block;font-size:1.25rem}.bad{color:var(--bad)}.ok{color:var(--ac)}
+small{color:var(--mut)}
+</style>
+</head>
+<body>
+<main>
+<h1>온라인 셀러 마진 계산기</h1>
+<p class="sub">수수료율은 마켓과 등급마다 다릅니다. 아래 기본값은 예시이며, 본인 정산 내역의 값으로 바꿔 입력하세요.</p>
+<section class="card"><div class="grid">
+<div><label for="price">판매가 (원)</label><input id="price" type="number" min="0" value="20000"></div>
+<div><label for="cost">매입/제조 원가 (원)</label><input id="cost" type="number" min="0" value="8000"></div>
+<div><label for="ship">셀러 부담 배송비 (원)</label><input id="ship" type="number" min="0" value="3000"></div>
+<div><label for="other">포장·기타 비용 (원)</label><input id="other" type="number" min="0" value="500"></div>
+<div><label for="fee">마켓 판매수수료 (%) · 예시값</label><input id="fee" type="number" min="0" step="0.01" value="5"></div>
+<div><label for="pay">결제수수료 (%) · 예시값</label><input id="pay" type="number" min="0" step="0.01" value="3"></div>
+<div><label for="ad">광고비 비율 (판매가 대비 %)</label><input id="ad" type="number" min="0" step="0.01" value="5"></div>
+<div><label for="target">목표 마진율 (%)</label><input id="target" type="number" min="0" step="0.1" value="20"></div>
+</div></section>
+<section class="card" aria-live="polite"><div class="out">
+<div><small>개당 순이익</small><b id="profit">-</b></div>
+<div><small>마진율 (판매가 대비)</small><b id="margin">-</b></div>
+<div><small>손익분기 판매가</small><b id="be">-</b></div>
+<div><small>목표 마진 달성 판매가</small><b id="tp">-</b></div>
+</div></section>
+<small>부가세, 소득세, 반품·교환 손실은 포함하지 않습니다. 참고용 계산이며 세무·회계 자문이 아닙니다.</small>
+</main>
+<script>
+function calc(i){
+  var rate=(i.fee+i.pay+i.ad)/100, fixed=i.cost+i.ship+i.other, m=i.target/100;
+  var profit=i.price-fixed-i.price*rate;
+  return {
+    profit:profit,
+    margin:i.price>0?profit/i.price:0,
+    breakEven:rate<1?fixed/(1-rate):null,
+    targetPrice:(rate+m)<1?fixed/(1-rate-m):null
+  };
+}
+if(typeof module!=="undefined")module.exports={calc:calc};
+if(typeof document!=="undefined"){
+  var ids=["price","cost","ship","other","fee","pay","ad","target"];
+  var won=function(n){return n==null||!isFinite(n)?"계산 불가":Math.round(n).toLocaleString("ko-KR")+"원"};
+  var run=function(){
+    var v={};ids.forEach(function(k){v[k]=parseFloat(document.getElementById(k).value)||0});
+    var r=calc(v),p=document.getElementById("profit");
+    p.textContent=won(r.profit);p.className=r.profit<0?"bad":"ok";
+    document.getElementById("margin").textContent=(r.margin*100).toFixed(1)+"%";
+    document.getElementById("be").textContent=won(r.breakEven);
+    document.getElementById("tp").textContent=won(r.targetPrice);
+    try{localStorage.setItem("sm",JSON.stringify(v))}catch(e){}
+  };
+  try{var s=JSON.parse(localStorage.getItem("sm")||"null");if(s)ids.forEach(function(k){if(s[k]!=null)document.getElementById(k).value=s[k]})}catch(e){}
+  ids.forEach(function(k){document.getElementById(k).addEventListener("input",run)});run();
+}
+</script>
+</body>
+</html>
