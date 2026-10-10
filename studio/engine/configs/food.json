@@ -23,7 +23,7 @@
       "name": "떡볶이",
       "color": "#ff006e",
       "quip": "매워서 울었다",
-      "icon": "🍢"
+      "icon": "@tteokbokki"
     },
     {
       "name": "라면",
@@ -35,7 +35,7 @@
       "name": "김밥",
       "color": "#2ec4b6",
       "quip": "옆구리 터졌다",
-      "icon": "🍙"
+      "icon": "@gimbap"
     },
     {
       "name": "삼겹살",
@@ -59,19 +59,19 @@
       "name": "짜장면",
       "color": "#3a0ca3",
       "quip": "비볐는데 탈락",
-      "icon": "🍝"
+      "icon": "@jjajang"
     },
     {
       "name": "마라탕",
       "color": "#9d0208",
       "quip": "얼얼해서 못 버텨",
-      "icon": "🌶️"
+      "icon": "@malatang"
     },
     {
       "name": "족발",
       "color": "#c77dff",
       "quip": "발이 미끄러졌다",
-      "icon": "🍖"
+      "icon": "@jokbal"
     },
     {
       "name": "김치찌개",
