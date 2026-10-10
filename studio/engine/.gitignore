@@ -5,3 +5,4 @@ batch-*.log
 batch.log
 render2.log
 render3.log
+render*.log
