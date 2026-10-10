@@ -6,6 +6,7 @@ const argv=process.argv.slice(2), opt=k=>{const i=argv.indexOf(k);return i>=0?ar
 const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&!['--seeds','--shots'].includes(argv[i-1]));
 const seedsArg=opt('--seeds'), keep=argv.includes('--keep'), maxSec=+(opt('--max')||70);
 // --shots 45,200,600: quick look — simulate every frame but only render/save these, no audio/video
+const simOnly=argv.includes('--sim'); // simulate only: print the winner per seed, write nothing
 const shots=opt('--shots')?new Set(opt('--shots').split(',').map(Number)):null;
 function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
   const f=path.join(ROOT,decodeURIComponent(q.url.split('?')[0]));
@@ -21,12 +22,13 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
     const seeds=seedsArg?seedsArg.split(',').map(Number):[cfg.seed||1];
     for(const seed of seeds){
       const name=path.basename(cfgPath,'.json')+'-s'+seed, out=path.join(ROOT,'out',name), fdir=path.join(out,'frames');
-      fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(fdir,{recursive:true});
+      if(!simOnly){fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(fdir,{recursive:true});}
       const page=await browser.newPage({viewport:{width:1080,height:1920}});
       page.on('pageerror',e=>console.error('[page]',e.message));
       page.on('console',m=>{if(m.type()==='error')console.error('[console]',m.text());});
       await page.goto(`http://127.0.0.1:${port}/scene.html?cfg=${encodeURIComponent(cfgPath)}&seed=${seed}`);
       await page.waitForFunction('window.ready===true',null,{timeout:120000});
+      if(simOnly){let q;do{q=await page.evaluate(()=>window.frame(false));}while(!q.done&&q.t<maxSec);const L=await page.evaluate(()=>window.getLog());await page.close();console.log(`sim ${name} winner ${L.winner}`);continue;}
       const t0=Date.now();let i=0,r;
       do{const want=!shots||shots.has(i);
         const res=await page.evaluate(w=>{const r=window.frame(w);return{r,d:w?document.getElementById('out').toDataURL('image/jpeg',0.92).split(',')[1]:null};},want);
