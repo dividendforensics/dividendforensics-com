@@ -1,0 +1,29 @@
+{
+  "title": ["MBTI 16유형 서바이벌", "끝까지 살아남는 유형은?"],
+  "pick": "3초 안에 너의 MBTI를 골라!",
+  "cta": "너의 유형은 몇 위? 댓글로 👇",
+  "seed": 7,
+  "entries": [
+    {"name": "INTJ", "color": "#9b5de5", "quip": "계획에 없던 변수…"},
+    {"name": "INTP", "color": "#7b2cbf", "quip": "왜 죽었는지 분석 중"},
+    {"name": "ENTJ", "color": "#c77dff", "quip": "이건 인정 못 해"},
+    {"name": "ENTP", "color": "#b388ff", "quip": "재밌었으니 됐어ㅋ"},
+    {"name": "INFJ", "color": "#2ec4b6", "quip": "이럴 줄 알았어"},
+    {"name": "INFP", "color": "#52b788", "quip": "상처받았어…"},
+    {"name": "ENFJ", "color": "#06d6a0", "quip": "다들 힘내…!"},
+    {"name": "ENFP", "color": "#80ed99", "quip": "아 재밌었다ㅋㅋ"},
+    {"name": "ISTJ", "color": "#4361ee", "quip": "이거 규칙 위반 아님?"},
+    {"name": "ISFJ", "color": "#4cc9f0", "quip": "괜찮아, 너희는 살아"},
+    {"name": "ESTJ", "color": "#3a86ff", "quip": "가시 관리 누가 했어"},
+    {"name": "ESFJ", "color": "#90e0ef", "quip": "단톡방에 알릴게…"},
+    {"name": "ISTP", "color": "#ffd60a", "quip": "…ㅇㅋ"},
+    {"name": "ISFP", "color": "#ffb703", "quip": "그냥 누워있을래"},
+    {"name": "ESTP", "color": "#fb8500", "quip": "한 판 더!"},
+    {"name": "ESFP", "color": "#f4a261", "quip": "주목받았으니 됐어"}
+  ],
+  "upload": {
+    "title": "MBTI 16유형 서바이벌🔥 끝까지 살아남는 유형은? #shorts",
+    "description": "가시 3번 맞으면 탈락. 시작 전에 너의 MBTI를 골라. 결과는 물리 시뮬레이션이 정한다.",
+    "hashtags": ["#MBTI", "#shorts", "#시뮬레이션", "#서바이벌", "#MBTI밈"]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "title": ["12띠 서바이벌", "너의 띠는 살아남을까?"],
+  "pick": "3초 안에 너의 띠를 골라!",
+  "cta": "너의 띠는 몇 위? 댓글로 👇",
+  "seed": 3,
+  "entries": [
+    {"name": "쥐", "color": "#adb5bd", "quip": "작아서 피할 줄 알았는데"},
+    {"name": "소", "color": "#a0522d", "quip": "묵묵히 갑니다…"},
+    {"name": "호랑이", "color": "#ff9f1c", "quip": "어흥… 아니 아야"},
+    {"name": "토끼", "color": "#ffc8dd", "quip": "너무 빨랐나"},
+    {"name": "용", "color": "#06d6a0", "quip": "전설은 여기까지"},
+    {"name": "뱀", "color": "#8ac926", "quip": "스르륵 퇴장"},
+    {"name": "말", "color": "#e76f51", "quip": "달리다 박았다"},
+    {"name": "양", "color": "#f1faee", "quip": "음메…"},
+    {"name": "원숭이", "color": "#d4a373", "quip": "재주 넘다 실수"},
+    {"name": "닭", "color": "#ff4d6d", "quip": "꼬끼오…"},
+    {"name": "개", "color": "#ffd166", "quip": "멍! 주인 어디?"},
+    {"name": "돼지", "color": "#ff8fab", "quip": "배불러서 그래"}
+  ],
+  "upload": {
+    "title": "12띠 서바이벌🔥 끝까지 살아남는 띠는? #shorts",
+    "description": "가시 3번 맞으면 탈락. 시작 전에 너의 띠를 골라.",
+    "hashtags": ["#띠", "#shorts", "#시뮬레이션", "#서바이벌"]
+  }
+}

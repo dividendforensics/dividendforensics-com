@@ -1,0 +1,17 @@
+{
+  "title": ["12개국 서바이벌", "최후의 1국은?"],
+  "pick": "3초 안에 응원할 나라를 골라!",
+  "cta": "너의 나라는 몇 위? 댓글로 👇",
+  "seed": 5,
+  "entries": [
+    {"name": "한국", "color": "#4361ee"}, {"name": "일본", "color": "#ff4d6d"}, {"name": "미국", "color": "#3a86ff"},
+    {"name": "중국", "color": "#e63946"}, {"name": "영국", "color": "#90e0ef"}, {"name": "프랑스", "color": "#c77dff"},
+    {"name": "독일", "color": "#ffd60a"}, {"name": "브라질", "color": "#8ac926"}, {"name": "인도", "color": "#ff9f1c"},
+    {"name": "호주", "color": "#06d6a0"}, {"name": "캐나다", "color": "#ff8fab"}, {"name": "멕시코", "color": "#52b788"}
+  ],
+  "upload": {
+    "title": "12개국 서바이벌🔥 최후의 1국은? #shorts",
+    "description": "가시 3번 맞으면 탈락. 시작 전에 응원할 나라를 골라.",
+    "hashtags": ["#나라", "#shorts", "#시뮬레이션", "#서바이벌"]
+  }
+}

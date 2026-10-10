@@ -1,0 +1,17 @@
+{
+  "title": ["생일 달 서바이벌", "너의 달은 몇 위?"],
+  "pick": "3초 안에 너의 생일 달을 골라!",
+  "cta": "너의 생일 달은 몇 위? 댓글로 👇",
+  "seed": 11,
+  "entries": [
+    {"name": "1월", "color": "#ff4d6d"}, {"name": "2월", "color": "#ff9f1c"}, {"name": "3월", "color": "#ffe066"},
+    {"name": "4월", "color": "#8ac926"}, {"name": "5월", "color": "#2ec4b6"}, {"name": "6월", "color": "#4cc9f0"},
+    {"name": "7월", "color": "#4361ee"}, {"name": "8월", "color": "#9b5de5"}, {"name": "9월", "color": "#f72585"},
+    {"name": "10월", "color": "#b5e48c"}, {"name": "11월", "color": "#ff7b00"}, {"name": "12월", "color": "#e0aaff"}
+  ],
+  "upload": {
+    "title": "생일 달 서바이벌🔥 끝까지 살아남는 달은? #shorts",
+    "description": "가시 3번 맞으면 탈락. 시작 전에 너의 생일 달을 골라.",
+    "hashtags": ["#생일", "#shorts", "#시뮬레이션", "#서바이벌"]
+  }
+}
