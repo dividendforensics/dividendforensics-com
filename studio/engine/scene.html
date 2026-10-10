@@ -38,7 +38,7 @@ let s2=(SEED*7919+13)>>>0; const crnd=()=>{s2=(s2*1103515245+12345)>>>0;return s
 const glc=document.createElement('canvas');glc.width=RW;glc.height=RH;
 const renderer=new THREE.WebGLRenderer({canvas:glc,antialias:true,preserveDrawingBuffer:true});
 renderer.setPixelRatio(1);renderer.setSize(RW,RH,false);
-renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+renderer.toneMapping=THREE.NeutralToneMapping;renderer.toneMappingExposure=1.0;
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x05030d);scene.fog=new THREE.FogExp2(0x05030d,0.028);
 const pmrem=new THREE.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
 const camera=new THREE.PerspectiveCamera(60,RW/RH,0.1,300);
@@ -240,7 +240,7 @@ window.frame=function(){
     const p=new THREE.Vector3(b.x,b.y,0).project(camera),q=new THREE.Vector3(b.x+b.r,b.y,0).project(camera);
     const sx=(p.x+1)/2*OW,sy=(1-p.y)/2*OH,rp=Math.hypot((q.x-p.x)/2*OW,(q.y-p.y)/2*OH)*(1+b.flash*0.28);
     let fs=rp*(b.name.length>=4?0.95:b.name.length===3?1.05:1.25);o.font=F(DISPLAY,fs|0);
-    while(o.measureText(b.name).width>rp*1.75&&fs>8){fs-=1;o.font=F(DISPLAY,fs|0);}
+    while(o.measureText(b.name).width>rp*(b.name.length>=4?1.95:1.75)&&fs>8){fs-=1;o.font=F(DISPLAY,fs|0);}
     txt(b.name,sx,sy+fs*0.05,fs|0,'#ffffff',DISPLAY,'center',Math.max(6,fs*0.2));
     for(let h=0;h<3;h++){if(duel&&h>1)continue;o.beginPath();o.arc(sx+(h-(duel?0.5:1))*rp*0.42,sy-rp-rp*0.28,Math.max(4,rp*0.13),0,7);
       o.fillStyle=h<b.hp?(b.hp===1?'#ff2d55':'#ffffff'):'rgba(255,255,255,.2)';o.fill();o.lineWidth=3;o.strokeStyle='rgba(0,0,0,.8)';o.stroke();}}
