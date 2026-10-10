@@ -40,7 +40,16 @@ const renderer=new THREE.WebGLRenderer({canvas:glc,antialias:true,preserveDrawin
 renderer.setPixelRatio(1);renderer.setSize(RW,RH,false);
 renderer.toneMapping=THREE.NeutralToneMapping;renderer.toneMappingExposure=1.0;
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x05030d);scene.fog=new THREE.FogExp2(0x05030d,0.028);
-const pmrem=new THREE.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
+const pmrem=new THREE.PMREMGenerator(renderer);
+function studioEnv(){const s=new THREE.Scene();s.background=new THREE.Color(0x06030c);const box=new THREE.BoxGeometry(1,1,1);
+  const panel=(c,k,p,sc)=>{const m=new THREE.Mesh(box,new THREE.MeshBasicMaterial({color:new THREE.Color(c).multiplyScalar(k)}));m.position.set(...p);m.scale.set(...sc);s.add(m);};
+  panel('#ffffff',7,[0,7,5],[9,0.5,3]);      // top softbox: main specular highlight
+  panel('#ff3d9a',4.5,[-8,1,3],[0.5,7,7]);   // pink rim from the left
+  panel('#22d3ff',4.5,[8,0,3],[0.5,7,7]);    // cyan rim from the right
+  panel('#7b4dff',2.5,[0,-6,4],[11,0.5,5]);  // violet floor bounce
+  panel('#ffffff',3.5,[3.5,3,8],[2.2,2.2,0.3]); // small key: catchlight dot
+  return pmrem.fromScene(s,0.02).texture;}
+scene.environment=studioEnv();
 const camera=new THREE.PerspectiveCamera(60,RW/RH,0.1,300);
 scene.add(new THREE.AmbientLight(0xffffff,0.25));
 const key=new THREE.PointLight(0xb388ff,60,40);key.position.set(0,2,6);scene.add(key);
@@ -48,16 +57,18 @@ const key=new THREE.PointLight(0xb388ff,60,40);key.position.set(0,2,6);scene.add
 // ---------- arena ----------
 const N=cfg.entries.length, NS=cfg.spikes||10;
 const BR=N>12?0.4:0.48, R0=4.6, RMIN=N>12?1.75:1.7, G=13, SHRINK=cfg.shrink||26, SD=30;
-const ringMat=new THREE.MeshPhysicalMaterial({color:0x1a1438,emissive:0x6a3cff,emissiveIntensity:0.9,metalness:.9,roughness:.15,clearcoat:1,clearcoatRoughness:.05});
-const ringMesh=new THREE.Mesh(new THREE.TorusGeometry(1,0.05,32,256),ringMat);scene.add(ringMesh);
+const ringMat=new THREE.MeshPhysicalMaterial({color:0xe8e4ff,emissive:0x6a3cff,emissiveIntensity:0.12,metalness:1,roughness:.12,clearcoat:1,clearcoatRoughness:.03});
+const ringMesh=new THREE.Mesh(new THREE.TorusGeometry(1,0.06,40,256),ringMat);scene.add(ringMesh);
+const neonMat=new THREE.MeshBasicMaterial({color:0x8a5cff,toneMapped:false});
+const neon=new THREE.Mesh(new THREE.TorusGeometry(0.938,0.011,12,256),neonMat);neon.position.z=0.02;scene.add(neon);
 const halo=new THREE.Mesh(new THREE.TorusGeometry(1,0.09,16,200),new THREE.MeshBasicMaterial({color:0x5a2dff,transparent:true,opacity:.08,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(halo);
 const disc=new THREE.Mesh(new THREE.CircleGeometry(1,128),new THREE.MeshPhysicalMaterial({color:0x0a0618,metalness:.85,roughness:.28,clearcoat:1,clearcoatRoughness:.1,transparent:true,opacity:.92}));
 disc.position.z=-0.6;scene.add(disc);
 const spikeGroup=new THREE.Group();scene.add(spikeGroup);
-const spikeMat=new THREE.MeshPhysicalMaterial({color:0xff1744,emissive:0xff1744,emissiveIntensity:1.2,metalness:.7,roughness:.18,clearcoat:1,clearcoatRoughness:.05});
+const spikeMat=new THREE.MeshPhysicalMaterial({color:0xff2a4a,emissive:0xff1744,emissiveIntensity:0.5,metalness:.85,roughness:.16,clearcoat:1,clearcoatRoughness:.03,flatShading:true});
 for(let i=0;i<NS;i++){const a=(i+0.5)/NS*Math.PI*2;
-  const m=new THREE.Mesh(new THREE.ConeGeometry(0.075,0.26,24),spikeMat);
-  m.position.set(Math.cos(a)*0.915,Math.sin(a)*0.915,0);m.rotation.z=a+Math.PI/2;spikeGroup.add(m);}
+  const m=new THREE.Mesh(new THREE.ConeGeometry(0.072,0.28,6),spikeMat);
+  m.position.set(Math.cos(a)*0.905,Math.sin(a)*0.905,0);m.rotation.z=a+Math.PI/2;spikeGroup.add(m);}
 const grid=new THREE.GridHelper(160,80,0x6a3cff,0x24124f);grid.position.y=-7.5;scene.add(grid);
 // warp stars
 const SN=1400, starPos=new Float32Array(SN*3);
@@ -76,25 +87,29 @@ function labelDraw(b){const x=b.lctx;x.clearRect(0,0,256,256);
   while(x.measureText(b.name).width>228)x.font=F(DISPLAY,--fs);
   x.textAlign='center';x.textBaseline='middle';x.lineJoin='round';x.lineWidth=12;x.strokeStyle='rgba(0,0,0,.85)';
   x.strokeText(b.name,128,148);x.fillStyle='#fff';x.fillText(b.name,128,148);b.ltex.needsUpdate=true;}
-const sphereGeo=new THREE.SphereGeometry(1,48,32);
+const sphereGeo=new THREE.SphereGeometry(1,64,40);
+const rimMat=c=>new THREE.ShaderMaterial({uniforms:{c:{value:c.clone()},k:{value:1}},transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.BackSide,
+  vertexShader:'varying vec3 vN;varying vec3 vV;void main(){vec4 mv=modelViewMatrix*vec4(position,1.);vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}',
+  fragmentShader:'uniform vec3 c;uniform float k;varying vec3 vN;varying vec3 vV;void main(){float f=pow(1.-abs(dot(vN,vV)),2.4);gl_FragColor=vec4(c*f*1.5*k,f*k);}'});
 const blobC=document.createElement('canvas');blobC.width=blobC.height=128;{const g=blobC.getContext('2d'),gr=g.createRadialGradient(64,64,0,64,64,64);gr.addColorStop(0,'rgba(0,0,0,.85)');gr.addColorStop(.55,'rgba(0,0,0,.45)');gr.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=gr;g.fillRect(0,0,128,128);}
 const blobTex=new THREE.CanvasTexture(blobC);const blobGeo=new THREE.PlaneGeometry(1,1);
 const balls=cfg.entries.map((e,i)=>{
   const col=new THREE.Color(e.color);
-  const mat=new THREE.MeshPhysicalMaterial({color:col.clone(),emissive:col.clone().multiplyScalar(0.12),emissiveIntensity:1,metalness:.05,roughness:.28,clearcoat:1,clearcoatRoughness:.03,specularIntensity:1});
+  const mat=new THREE.MeshPhysicalMaterial({color:col.clone(),emissive:col.clone(),emissiveIntensity:.1,metalness:0,roughness:.14,clearcoat:1,clearcoatRoughness:.02,envMapIntensity:1.25});
   const mesh=new THREE.Mesh(sphereGeo,mat);mesh.scale.setScalar(BR);scene.add(mesh);
+  const rim=new THREE.Mesh(sphereGeo,rimMat(col));rim.scale.setScalar(BR*1.1);scene.add(rim);
   const blob=new THREE.Mesh(blobGeo,new THREE.MeshBasicMaterial({map:blobTex,transparent:true,depthWrite:false,opacity:.9}));blob.scale.setScalar(BR*2.8);scene.add(blob);
   const lc=document.createElement('canvas');lc.width=lc.height=256;
   const ltex=new THREE.CanvasTexture(lc);ltex.colorSpace=THREE.SRGBColorSpace;
   const label=new THREE.Sprite(new THREE.SpriteMaterial({map:ltex,depthTest:false,transparent:true}));
   label.visible=false;
   const a=i/N*Math.PI*2, r=R0*0.55, sa=rnd()*Math.PI*2, sp=7+rnd()*3;
-  const b={i,name:e.name,quip:e.quip||'',color:e.color,col,mesh,blob,mat,label,lctx:lc.getContext('2d'),ltex,
+  const b={i,name:e.name,quip:e.quip||'',color:e.color,col,mesh,blob,rim,mat,label,lctx:lc.getContext('2d'),ltex,
     x:Math.cos(a)*r,y:Math.sin(a)*r,vx:Math.cos(sa)*sp,vy:Math.sin(sa)*sp,r:BR,hp:3,alive:true,inv:0,flash:0,roll:0,trail:[]};
   labelDraw(b);return b;});
 // trails
 const TR=8, trailMesh=new THREE.InstancedMesh(new THREE.SphereGeometry(1,12,8),
-  new THREE.MeshBasicMaterial({transparent:true,opacity:.07,blending:THREE.AdditiveBlending,depthWrite:false}),N*TR);
+  new THREE.MeshBasicMaterial({transparent:true,opacity:.05,blending:THREE.AdditiveBlending,depthWrite:false}),N*TR);
 for(const b of balls)for(let k=0;k<TR;k++)trailMesh.setColorAt(b.i*TR+k,b.col);
 scene.add(trailMesh);
 // particles
@@ -151,10 +166,10 @@ function slow(dur,scale,x,y){if(tv+dur>slowUntil||scale<slowScale){slowUntil=tv+
 function hit(b,nx,ny){b.hp--;b.inv=0.35;b.flash=1;labelDraw(b);trauma=Math.min(1,trauma+0.45);
   burst(b.x+nx*b.r,b.y+ny*b.r,'#ff2d55',34,7,0.06,0.6);b.vx-=nx*3;b.vy-=ny*3;ev('hit',{i:b.i,x:b.x/R0});
   if(b.hp<=0)die(b);else if(tv>=slowUntil)slow(0.22,0.45,b.x,b.y);}
-function die(b){const rank=alive().length;b.alive=false;b.mesh.visible=false;b.blob.visible=false;b.label.visible=false;
+function die(b){const rank=alive().length;b.alive=false;b.mesh.visible=false;b.blob.visible=false;b.rim.visible=false;b.label.visible=false;
   dead.push({name:b.name,color:b.color,rank,t:simT});
   burst(b.x,b.y,b.color,130,11,0.09,1.4);burst(b.x,b.y,'#ffffff',40,15,0.05,0.8);wave(b.x,b.y,b.color);
-  trauma=1;flash=0.22;slow(0.75,0.16,b.x,b.y);ev('die',{i:b.i,x:b.x/R0,rank});
+  trauma=1;flash=0.07;slow(0.75,0.16,b.x,b.y);ev('die',{i:b.i,x:b.x/R0,rank});
   banner={kind:'die',name:b.name,quip:b.quip,color:b.color,rank,t:tv};
   const left=alive().length;
   if(left===2){finalT=tv;ev('final');banner={kind:'final',t:tv+0.9,pre:banner};duel=true;for(const a of alive()){a.hp=2;a.inv=1.2;}}
@@ -179,7 +194,7 @@ function step(dt){
 }
 
 // ---------- per-frame ----------
-window.frame=function(){
+window.frame=function(draw=true){
   tv=f*FDT;
   // intro countdown
   if(!started){for(const [ct,lab] of [[0.3,'3'],[1.0,'2'],[1.7,'1']])if(Math.abs(tv-ct)<FDT/2)ev('count',{n:lab});
@@ -197,28 +212,28 @@ window.frame=function(){
   else hPulse*=0.85;
   // camera
   const danger=A<=3&&!winner?(A===2?0.35:0.2):0;
-  trauma=Math.max(danger,trauma-FDT*1.5);flash*=0.8;
+  trauma=Math.max(danger,trauma-FDT*1.5);flash*=0.62;
   const inSlow=tv<slowUntil;zMul+=((inSlow?0.72:1)-zMul)*0.12;if(!inSlow)focusT.set(0,0);focus.lerp(focusT,0.12);
-  const zBase=(ring+1.3)/0.3248*zMul*(1-0.012*beatPulse)*(started?1:1.15-0.15*tv/INTRO);
-  const yaw=Math.sin(tv*0.35)*0.22, el=1.4+Math.sin(tv*0.27)*0.9, sh=trauma*trauma;
+  const zBase=(ring+1.0)/0.3248*zMul*(1-0.012*beatPulse)*(started?1:1.15-0.15*tv/INTRO);
+  const yaw=Math.sin(tv*0.35)*0.12, el=1.1+Math.sin(tv*0.27)*0.6, sh=trauma*trauma;
   camera.position.set(focus.x*0.6+Math.sin(yaw)*zBase+sh*0.55*(Math.sin(tv*37)+Math.sin(tv*59.3))/2,
-    focus.y*0.6+el+zBase*0.06+sh*0.55*(Math.sin(tv*43.1)+Math.sin(tv*71.7))/2, Math.cos(yaw)*zBase);
-  camera.lookAt(focus.x,focus.y+zBase*0.06,0);camera.rotateZ(sh*0.07*Math.sin(tv*41));
+    focus.y*0.6+el+zBase*0.05+sh*0.55*(Math.sin(tv*43.1)+Math.sin(tv*71.7))/2, Math.cos(yaw)*zBase);
+  camera.lookAt(focus.x,focus.y+zBase*0.05,0);camera.rotateZ(sh*0.07*Math.sin(tv*41));
   // arena visuals
-  ringMesh.scale.setScalar(ring);halo.scale.setScalar(ring);disc.scale.setScalar(ring);spikeGroup.scale.setScalar(ring);spikeGroup.rotation.z=spin;
-  ringMat.emissiveIntensity=0.9+beatPulse*0.8+hPulse*0.8;halo.material.opacity=.06+beatPulse*.08;
-  ringMat.emissive.setHSL(A<=3&&!winner?0.98:0.72,0.95,0.55);
-  spikeMat.emissiveIntensity=1.2+beatPulse*0.8;
+  ringMesh.scale.setScalar(ring);neon.scale.setScalar(ring);halo.scale.setScalar(ring);disc.scale.setScalar(ring);spikeGroup.scale.setScalar(ring);spikeGroup.rotation.z=spin;
+  const hue=A<=3&&!winner?0.98:0.72;ringMat.emissive.setHSL(hue,0.95,0.55);ringMat.emissiveIntensity=0.12+beatPulse*0.3;
+  neonMat.color.setHSL(hue,1,0.62).multiplyScalar(1.8+beatPulse*2.2+hPulse*1.6);halo.material.opacity=.05+beatPulse*.07;
+  spikeMat.emissiveIntensity=0.5+beatPulse*0.7;
   const sp=stars.geometry.attributes.position;for(let i=0;i<SN;i++){let z=sp.array[i*3+2]+FDT*(6+40*T)*ts;if(z>12)z-=90;sp.array[i*3+2]=z;}sp.needsUpdate=true;
   grid.position.z=(tv*(2+10*T))%2;
   // balls
   for(const b of balls){b.flash*=0.84;if(!b.alive){for(let k=0;k<TR;k++){dummy.scale.setScalar(0);dummy.updateMatrix();trailMesh.setMatrixAt(b.i*TR+k,dummy.matrix);}continue;}
-    b.mesh.position.set(b.x,b.y,0);b.blob.position.set(b.x,b.y,-0.45);b.blob.material.opacity=0.9*(1-Math.min(1,b.y+ring)/(2*ring+1e-3)*0.4);b.mesh.rotation.set(0.3,0,b.roll);b.mesh.scale.setScalar(b.r*(1+b.flash*0.28));
+    b.mesh.position.set(b.x,b.y,0);b.blob.position.set(b.x,b.y,-0.45);b.rim.position.set(b.x,b.y,0);b.rim.scale.setScalar(b.r*(1.1+b.flash*0.3));b.rim.material.uniforms.k.value=0.55+b.flash*1.4;b.blob.material.opacity=0.9*(1-Math.min(1,b.y+ring)/(2*ring+1e-3)*0.4);b.mesh.rotation.set(0.3,0,b.roll);b.mesh.scale.setScalar(b.r*(1+b.flash*0.28));
     const warn=b.hp===1?(0.5+0.5*Math.sin(tv*22)):0;
-    b.mat.emissive.copy(b.col).lerp(tmpC.set('#ff1030'),warn*0.8);b.mat.emissiveIntensity=0.15+b.flash*1.4+warn*0.9;
+    b.mat.emissive.copy(b.col).lerp(tmpC.set('#ff1030'),warn*0.8);b.mat.emissiveIntensity=0.1+b.flash*1.2+warn*0.8;
     b.trail.unshift([b.x,b.y]);if(b.trail.length>TR*2)b.trail.pop();
     for(let k=0;k<TR;k++){const p=b.trail[Math.min(b.trail.length-1,k*2+1)];dummy.position.set(p[0],p[1],-0.05);
-      dummy.scale.setScalar(b.r*(1-(k+1)/(TR+1))*0.95);dummy.updateMatrix();trailMesh.setMatrixAt(b.i*TR+k,dummy.matrix);}}
+      dummy.scale.setScalar(b.r*(1-(k+1)/(TR+1))*0.6);dummy.updateMatrix();trailMesh.setMatrixAt(b.i*TR+k,dummy.matrix);}}
   trailMesh.instanceMatrix.needsUpdate=true;
   // particles & waves (slowed by slow-mo)
   const pdt=FDT*Math.max(ts,0.12);
@@ -230,18 +245,20 @@ window.frame=function(){
   for(const w of waves){if(!w.m.visible)continue;w.t+=pdt*1.6;if(w.t>=1){w.m.visible=false;continue;}
     w.m.scale.setScalar(0.3+w.t*3.2);w.m.material.opacity=(1-w.t)*0.9;}
   // post uniforms
-  fx.uniforms.uAb.value=0.2+sh*2.2+(inSlow?0.8:0);fx.uniforms.uPulse.value=hPulse;fx.uniforms.uRed.value=A<=3&&!winner?1:0;
+  fx.uniforms.uAb.value=0.12+sh*0.9+(inSlow?0.3:0);fx.uniforms.uPulse.value=hPulse;fx.uniforms.uRed.value=A<=3&&!winner?1:0;
   fx.uniforms.uFlash.value=flash;fx.uniforms.uTime.value=tv;fx.uniforms.uZoom.value=(inSlow?0.6:0)+beatPulse*0.15;
-  bloom.strength=0.55+beatPulse*0.2+flash*0.5;
+  bloom.strength=0.5+beatPulse*0.2+flash*1.5;
+  if(!draw){frames.push({t:+tv.toFixed(4),ts:+ts.toFixed(3),alive:A});f++;return {done:!!winner&&tv-winT>4.6,t:tv,alive:A};}
   composer.render(FDT);
   // ---------- HUD ----------
   o.drawImage(glc,0,0,OW,OH);
   for(const b of balls){if(!b.alive||(winner&&tv-winT>0.9))continue;
     const p=new THREE.Vector3(b.x,b.y,0).project(camera),q=new THREE.Vector3(b.x+b.r,b.y,0).project(camera);
     const sx=(p.x+1)/2*OW,sy=(1-p.y)/2*OH,rp=Math.hypot((q.x-p.x)/2*OW,(q.y-p.y)/2*OH)*(1+b.flash*0.28);
-    let fs=rp*(b.name.length>=4?0.95:b.name.length===3?1.05:1.25);o.font=F(DISPLAY,fs|0);
-    while(o.measureText(b.name).width>rp*(b.name.length>=4?1.95:1.75)&&fs>8){fs-=1;o.font=F(DISPLAY,fs|0);}
-    txt(b.name,sx,sy+fs*0.05,fs|0,'#ffffff',DISPLAY,'center',Math.max(6,fs*0.2));
+    o.font=F(DISPLAY,100);const w100=o.measureText(b.name).width||100;
+    const fs=Math.max(10,Math.min(rp*0.84,100*rp*2.05/w100));
+    o.save();o.shadowColor='rgba(0,0,0,.65)';o.shadowBlur=fs*0.25;o.shadowOffsetY=fs*0.06;
+    txt(b.name,sx,sy+fs*0.05,fs|0,'#ffffff',DISPLAY,'center',Math.max(5,fs*0.17));o.restore();
     for(let h=0;h<3;h++){if(duel&&h>1)continue;o.beginPath();o.arc(sx+(h-(duel?0.5:1))*rp*0.42,sy-rp-rp*0.28,Math.max(4,rp*0.13),0,7);
       o.fillStyle=h<b.hp?(b.hp===1?'#ff2d55':'#ffffff'):'rgba(255,255,255,.2)';o.fill();o.lineWidth=3;o.strokeStyle='rgba(0,0,0,.8)';o.stroke();}}
   const titleA=winner?Math.max(0,1-(tv-winT)*2):1;

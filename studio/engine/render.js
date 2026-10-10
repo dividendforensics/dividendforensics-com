@@ -3,8 +3,10 @@ const {chromium}=require('playwright');const http=require('http');const fs=requi
 const {execFileSync}=require('child_process');
 const ROOT=__dirname, MIME={'.html':'text/html','.js':'text/javascript','.json':'application/json','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff'};
 const argv=process.argv.slice(2), opt=k=>{const i=argv.indexOf(k);return i>=0?argv[i+1]:null;};
-const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&argv[i-1]!=='--seeds');
+const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&!['--seeds','--shots'].includes(argv[i-1]));
 const seedsArg=opt('--seeds'), keep=argv.includes('--keep'), maxSec=+(opt('--max')||70);
+// --shots 45,200,600: quick look — simulate every frame but only render/save these, no audio/video
+const shots=opt('--shots')?new Set(opt('--shots').split(',').map(Number)):null;
 function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
   const f=path.join(ROOT,decodeURIComponent(q.url.split('?')[0]));
   if(!f.startsWith(ROOT)||!fs.existsSync(f)||fs.statSync(f).isDirectory()){r.writeHead(404);return r.end();}
@@ -26,10 +28,13 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
       await page.goto(`http://127.0.0.1:${port}/scene.html?cfg=${encodeURIComponent(cfgPath)}&seed=${seed}`);
       await page.waitForFunction('window.ready===true',null,{timeout:120000});
       const t0=Date.now();let i=0,r;
-      do{const res=await page.evaluate(()=>{const r=window.frame();return{r,d:document.getElementById('out').toDataURL('image/jpeg',0.9).split(',')[1]};});
-        r=res.r;fs.writeFileSync(path.join(fdir,String(i).padStart(5,'0')+'.jpg'),Buffer.from(res.d,'base64'));i++;
+      do{const want=!shots||shots.has(i);
+        const res=await page.evaluate(w=>{const r=window.frame(w);return{r,d:w?document.getElementById('out').toDataURL('image/jpeg',0.92).split(',')[1]:null};},want);
+        r=res.r;if(res.d)fs.writeFileSync(path.join(fdir,String(i).padStart(5,'0')+'.jpg'),Buffer.from(res.d,'base64'));i++;
+        if(shots&&i>Math.max(...shots))break;
         if(i%150===0)console.log(`  ${name}: ${i} frames, ${r.alive} alive, ${((Date.now()-t0)/i).toFixed(0)}ms/frame`);
       }while(!r.done&&i<maxSec*30);
+      if(shots){await page.close();console.log(`shots ${name}: ${[...shots].join(',')} -> ${fdir} (${((Date.now()-t0)/1000).toFixed(0)}s)`);continue;}
       const log=await page.evaluate(()=>window.getLog());await page.close();
       fs.writeFileSync(path.join(out,'log.json'),JSON.stringify(log));
       execFileSync('python3',[path.join(ROOT,'audio.py'),out],{stdio:'inherit'});
