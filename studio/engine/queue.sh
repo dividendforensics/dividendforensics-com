@@ -2,7 +2,7 @@
 # Usage: ./queue.sh "configs/food.json:14" "configs/weekday.json:22" ...   (config:seed)
 # Waits for any running render, then renders each in order and writes a preview copy.
 cd "$(dirname "$0")"
-while pgrep -f "node render.js" >/dev/null; do sleep 15; done
+while pgrep -f "^node render\.js" >/dev/null; do sleep 15; done
 for item in "$@"; do
   cfg=${item%%:*}; seed=${item##*:}; name=$(basename "$cfg" .json)-s$seed
   echo "[$(date -u +%H:%M)] rendering $name"
