@@ -47,7 +47,7 @@ const key=new THREE.PointLight(0xb388ff,60,40);key.position.set(0,2,6);scene.add
 
 // ---------- arena ----------
 const N=cfg.entries.length, NS=cfg.spikes||10;
-const BR=N>12?0.36:0.42, R0=4.6, RMIN=N>12?1.75:1.7, G=13, SHRINK=cfg.shrink||26, SD=30;
+const BR=N>12?0.4:0.48, R0=4.6, RMIN=N>12?1.75:1.7, G=13, SHRINK=cfg.shrink||26, SD=30;
 const ringMat=new THREE.MeshPhysicalMaterial({color:0x1a1438,emissive:0x6a3cff,emissiveIntensity:0.9,metalness:.9,roughness:.15,clearcoat:1,clearcoatRoughness:.05});
 const ringMesh=new THREE.Mesh(new THREE.TorusGeometry(1,0.05,32,256),ringMat);scene.add(ringMesh);
 const halo=new THREE.Mesh(new THREE.TorusGeometry(1,0.09,16,200),new THREE.MeshBasicMaterial({color:0x5a2dff,transparent:true,opacity:.08,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(halo);
@@ -81,7 +81,7 @@ const blobC=document.createElement('canvas');blobC.width=blobC.height=128;{const
 const blobTex=new THREE.CanvasTexture(blobC);const blobGeo=new THREE.PlaneGeometry(1,1);
 const balls=cfg.entries.map((e,i)=>{
   const col=new THREE.Color(e.color);
-  const mat=new THREE.MeshPhysicalMaterial({map:ballTexture(e.color),emissive:col.clone(),emissiveIntensity:.15,metalness:.2,roughness:.22,clearcoat:1,clearcoatRoughness:.04});
+  const mat=new THREE.MeshPhysicalMaterial({color:col.clone(),emissive:col.clone().multiplyScalar(0.12),emissiveIntensity:1,metalness:.05,roughness:.28,clearcoat:1,clearcoatRoughness:.03,specularIntensity:1});
   const mesh=new THREE.Mesh(sphereGeo,mat);mesh.scale.setScalar(BR);scene.add(mesh);
   const blob=new THREE.Mesh(blobGeo,new THREE.MeshBasicMaterial({map:blobTex,transparent:true,depthWrite:false,opacity:.9}));blob.scale.setScalar(BR*2.8);scene.add(blob);
   const lc=document.createElement('canvas');lc.width=lc.height=256;
@@ -94,7 +94,7 @@ const balls=cfg.entries.map((e,i)=>{
   labelDraw(b);return b;});
 // trails
 const TR=8, trailMesh=new THREE.InstancedMesh(new THREE.SphereGeometry(1,12,8),
-  new THREE.MeshBasicMaterial({transparent:true,opacity:.16,blending:THREE.AdditiveBlending,depthWrite:false}),N*TR);
+  new THREE.MeshBasicMaterial({transparent:true,opacity:.07,blending:THREE.AdditiveBlending,depthWrite:false}),N*TR);
 for(const b of balls)for(let k=0;k<TR;k++)trailMesh.setColorAt(b.i*TR+k,b.col);
 scene.add(trailMesh);
 // particles
@@ -119,7 +119,7 @@ function wave(x,y,color){const w=waves[wNext];wNext=(wNext+1)%waves.length;w.t=0
 // ---------- post ----------
 const composer=new EffectComposer(renderer);composer.setPixelRatio(1);composer.setSize(RW,RH);
 composer.addPass(new RenderPass(scene,camera));
-const bloom=new UnrealBloomPass(new THREE.Vector2(RW,RH),0.55,0.4,0.85);composer.addPass(bloom);
+const bloom=new UnrealBloomPass(new THREE.Vector2(RW,RH),0.45,0.25,0.96);composer.addPass(bloom);
 const fx=new ShaderPass({uniforms:{tDiffuse:{value:null},uAb:{value:0},uPulse:{value:0},uRed:{value:0},uFlash:{value:0},uTime:{value:0},uZoom:{value:0}},
  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
  fragmentShader:`uniform sampler2D tDiffuse;uniform float uAb,uPulse,uRed,uFlash,uTime,uZoom;varying vec2 vUv;
@@ -239,9 +239,9 @@ window.frame=function(){
   for(const b of balls){if(!b.alive||(winner&&tv-winT>0.9))continue;
     const p=new THREE.Vector3(b.x,b.y,0).project(camera),q=new THREE.Vector3(b.x+b.r,b.y,0).project(camera);
     const sx=(p.x+1)/2*OW,sy=(1-p.y)/2*OH,rp=Math.hypot((q.x-p.x)/2*OW,(q.y-p.y)/2*OH)*(1+b.flash*0.28);
-    let fs=rp*(b.name.length>=4?0.62:b.name.length===3?0.72:0.95);o.font=F(DISPLAY,fs|0);
-    while(o.measureText(b.name).width>rp*1.9&&fs>8){fs-=1;o.font=F(DISPLAY,fs|0);}
-    txt(b.name,sx,sy+fs*0.06,fs|0,'#ffffff',DISPLAY,'center',Math.max(4,fs*0.16));
+    let fs=rp*(b.name.length>=4?0.95:b.name.length===3?1.05:1.25);o.font=F(DISPLAY,fs|0);
+    while(o.measureText(b.name).width>rp*1.75&&fs>8){fs-=1;o.font=F(DISPLAY,fs|0);}
+    txt(b.name,sx,sy+fs*0.05,fs|0,'#ffffff',DISPLAY,'center',Math.max(6,fs*0.2));
     for(let h=0;h<3;h++){if(duel&&h>1)continue;o.beginPath();o.arc(sx+(h-(duel?0.5:1))*rp*0.42,sy-rp-rp*0.28,Math.max(4,rp*0.13),0,7);
       o.fillStyle=h<b.hp?(b.hp===1?'#ff2d55':'#ffffff'):'rgba(255,255,255,.2)';o.fill();o.lineWidth=3;o.strokeStyle='rgba(0,0,0,.8)';o.stroke();}}
   const titleA=winner?Math.max(0,1-(tv-winT)*2):1;
