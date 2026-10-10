@@ -1,0 +1,25 @@
+{
+  "title": ["이모지 서바이벌", "최후의 이모지는?"],
+  "pick": "3초 안에 제일 자주 쓰는 이모지를 골라!",
+  "cta": "너의 이모지는 몇 위? 댓글로 👇",
+  "seed": 41,
+  "entries": [
+    {"name": "🔥", "color": "#ff6b35", "quip": "불타다 꺼졌다"},
+    {"name": "💀", "color": "#e5e5e5", "quip": "ㅋㅋㅋ 죽었다"},
+    {"name": "👻", "color": "#a9a9d9", "quip": "무서워서 숨었다"},
+    {"name": "🤡", "color": "#ff4d6d", "quip": "내가 광대였네"},
+    {"name": "😎", "color": "#ffd60a", "quip": "선글라스 깨짐"},
+    {"name": "🥶", "color": "#90e0ef", "quip": "얼어붙었다"},
+    {"name": "🤖", "color": "#adb5bd", "quip": "오류 발생"},
+    {"name": "👽", "color": "#80ed99", "quip": "지구 떠난다"},
+    {"name": "🍀", "color": "#52b788", "quip": "운이 없었어"},
+    {"name": "⭐", "color": "#ffe066", "quip": "별이 떨어졌다"},
+    {"name": "🌈", "color": "#c77dff", "quip": "무지개는 못 봤어"},
+    {"name": "🍭", "color": "#ff8fab", "quip": "달달하게 끝"}
+  ],
+  "upload": {
+    "title": "이모지 서바이벌🔥 최후의 이모지는? #shorts",
+    "description": "가시 3번 맞으면 탈락. 시작 전에 제일 자주 쓰는 이모지를 골라.",
+    "hashtags": ["#이모지", "#shorts", "#시뮬레이션", "#서바이벌"]
+  }
+}
