@@ -1,3 +1,6 @@
 node_modules/
 out/
 render.log
+batch-*.log
+batch.log
+render2.log
