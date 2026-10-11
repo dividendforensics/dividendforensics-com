@@ -3,9 +3,10 @@ const {chromium}=require('playwright');const http=require('http');const fs=requi
 const {execFileSync}=require('child_process');
 const ROOT=__dirname, MIME={'.html':'text/html','.js':'text/javascript','.json':'application/json','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff'};
 const argv=process.argv.slice(2), opt=k=>{const i=argv.indexOf(k);return i>=0?argv[i+1]:null;};
-const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&!['--seeds','--shots'].includes(argv[i-1]));
+const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&!['--seeds','--shots','--fonts'].includes(argv[i-1]));
 const seedsArg=opt('--seeds'), keep=argv.includes('--keep'), maxSec=+(opt('--max')||70);
 // --shots 45,200,600: quick look — simulate every frame but only render/save these, no audio/video
+const fontsArg=opt('--fonts'); // e.g. --fonts bungee,black-han-sans
 const simOnly=argv.includes('--sim'); // simulate only: print the winner per seed, write nothing
 const shots=opt('--shots')?new Set(opt('--shots').split(',').map(Number)):null;
 function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
@@ -26,7 +27,7 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
       const page=await browser.newPage({viewport:{width:1080,height:1920}});
       page.on('pageerror',e=>console.error('[page]',e.message));
       page.on('console',m=>{if(m.type()==='error')console.error('[console]',m.text());});
-      await page.goto(`http://127.0.0.1:${port}/scene.html?cfg=${encodeURIComponent(cfgPath)}&seed=${seed}`);
+      await page.goto(`http://127.0.0.1:${port}/scene.html?cfg=${encodeURIComponent(cfgPath)}&seed=${seed}${fontsArg?'&fonts='+encodeURIComponent(fontsArg):''}`);
       await page.waitForFunction('window.ready===true',null,{timeout:120000});
       if(simOnly){let q;do{q=await page.evaluate(()=>window.frame(false));}while(!q.done&&q.t<maxSec);const L=await page.evaluate(()=>window.getLog());await page.close();console.log(`sim ${name} winner ${L.winner}`);continue;}
       const t0=Date.now();let i=0,r;
