@@ -8,3 +8,4 @@ render3.log
 render*.log
 *.log
 raw/
+_scratch/

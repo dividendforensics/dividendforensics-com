@@ -23,7 +23,7 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
     const cfg=JSON.parse(fs.readFileSync(path.join(ROOT,cfgPath)));
     const seeds=seedsArg?seedsArg.split(',').map(Number):[cfg.seed||1];
     for(const seed of seeds){
-      const name=path.basename(cfgPath,'.json')+'-s'+seed, out=path.join(ROOT,'out',name), fdir=path.join(out,'frames');
+      const name=path.basename(cfgPath,'.json')+'-s'+seed, out=path.join(ROOT,'out',(shots||simOnly||hudTest)?'_scratch':'',name), fdir=path.join(out,'frames'); // previews never touch real render output
       if(!simOnly){fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(fdir,{recursive:true});}
       const page=await browser.newPage({viewport:{width:1080,height:1920}});
       page.on('pageerror',e=>console.error('[page]',e.message));
