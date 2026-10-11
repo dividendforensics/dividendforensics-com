@@ -11,73 +11,85 @@
       "name": "치킨",
       "color": "#ffb703",
       "quip": "야식은 포기 못 해",
-      "icon": "🍗"
+      "icon": "🍗",
+      "slug": "chicken"
     },
     {
       "name": "피자",
       "color": "#ff4d6d",
       "quip": "치즈가 늘어나…",
-      "icon": "🍕"
+      "icon": "🍕",
+      "slug": "pizza"
     },
     {
       "name": "떡볶이",
       "color": "#ff006e",
       "quip": "매워서 울었다",
-      "icon": "@tteokbokki"
+      "icon": "@tteokbokki",
+      "slug": "tteokbokki"
     },
     {
       "name": "라면",
       "color": "#ffd60a",
       "quip": "면이 불었어",
-      "icon": "🍜"
+      "icon": "🍜",
+      "slug": "ramen"
     },
     {
       "name": "김밥",
       "color": "#2ec4b6",
       "quip": "옆구리 터졌다",
-      "icon": "@gimbap"
+      "icon": "@gimbap",
+      "slug": "gimbap"
     },
     {
       "name": "삼겹살",
       "color": "#e76f51",
       "quip": "불판 위에서 장렬히",
-      "icon": "🥓"
+      "icon": "🥓",
+      "slug": "samgyeopsal"
     },
     {
       "name": "초밥",
       "color": "#4cc9f0",
       "quip": "와사비 과했다",
-      "icon": "🍣"
+      "icon": "🍣",
+      "slug": "sushi"
     },
     {
       "name": "햄버거",
       "color": "#fb8500",
       "quip": "패티가 탈출했어",
-      "icon": "🍔"
+      "icon": "🍔",
+      "slug": "hamburger"
     },
     {
       "name": "짜장면",
       "color": "#3a0ca3",
       "quip": "비볐는데 탈락",
-      "icon": "@jjajang"
+      "icon": "@jjajang",
+      "slug": "jjajangmyeon"
     },
     {
       "name": "마라탕",
       "color": "#9d0208",
       "quip": "얼얼해서 못 버텨",
-      "icon": "@malatang"
+      "icon": "@malatang",
+      "slug": "malatang"
     },
     {
       "name": "족발",
       "color": "#c77dff",
       "quip": "발이 미끄러졌다",
-      "icon": "@jokbal"
+      "icon": "@jokbal",
+      "slug": "jokbal"
     },
     {
       "name": "김치찌개",
       "color": "#e63946",
       "quip": "국물이 식었어",
-      "icon": "🍲"
+      "icon": "🍲",
+      "slug": "kimchijjigae"
     }
   ],
   "upload": {

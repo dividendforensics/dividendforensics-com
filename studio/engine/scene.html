@@ -35,6 +35,10 @@ await Promise.all([document.fonts.load('80px "Black Han Sans"',allText),
 const loadImg=u=>new Promise(res=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=u;});
 const AS={bg:await loadImg('./assets/bg-main.jpg')||await loadImg('./assets/bg-main.png'),floor:await loadImg('./assets/arena-floor.png'),
   panel:await loadImg('./assets/panel.png'),rays:await loadImg('./assets/rays.png')};
+// per-entry icon pictures: assets/icons/<slug>.png overrides the emoji / painted icon when present
+const EXTRA={};
+await Promise.all(cfg.entries.filter(e=>e.slug).map(async e=>{const im=await loadImg(`./assets/icons/${e.slug}.png`);if(im){e.icon='#'+e.slug;EXTRA[e.icon]=im;}}));
+console.log('icon pictures:',Object.keys(EXTRA).length+'/'+cfg.entries.length);
 console.log('assets:',Object.entries(AS).map(([k,v])=>k+(v?'=ok':'=none')).join(' '));
 
 // physics rng (outcome) and cosmetic rng (particles/shake) are separate so visuals never change who wins
@@ -165,7 +169,7 @@ composer.addPass(fx);composer.addPass(new OutputPass());
 
 // ---------- HUD ----------
 const out=document.getElementById('out'), o=out.getContext('2d');
-const ICONS=buildIcons(cfg.entries.map(e=>e.icon||'').filter(i=>i[0]==='@').map(i=>i.slice(1)));
+const ICONS=Object.assign(buildIcons(cfg.entries.map(e=>e.icon||'').filter(i=>i[0]==='@').map(i=>i.slice(1))),EXTRA);
 function txt(s,x,y,size,color,font=DISPLAY,align='center',stroke=10,alpha=1){o.save();o.globalAlpha=alpha;o.font=F(font,size);
   o.textAlign=align;o.textBaseline='middle';o.lineJoin='round';o.lineWidth=stroke;o.strokeStyle='rgba(0,0,0,.9)';
   if(stroke)o.strokeText(s,x,y);o.fillStyle=color;o.fillText(s,x,y);o.restore();}

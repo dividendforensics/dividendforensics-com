@@ -11,43 +11,50 @@
       "name": "월",
       "color": "#4361ee",
       "quip": "월요일은 원래 이래",
-      "icon": "🌙"
+      "icon": "🌙",
+      "slug": "mon"
     },
     {
       "name": "화",
       "color": "#ff4d6d",
       "quip": "화났다 진짜",
-      "icon": "🔥"
+      "icon": "🔥",
+      "slug": "tue"
     },
     {
       "name": "수",
       "color": "#06d6a0",
       "quip": "중간 점검 끝",
-      "icon": "💧"
+      "icon": "💧",
+      "slug": "wed"
     },
     {
       "name": "목",
       "color": "#ffd60a",
       "quip": "목요일이라 더 억울해",
-      "icon": "🌳"
+      "icon": "🌳",
+      "slug": "thu"
     },
     {
       "name": "금",
       "color": "#ff9f1c",
       "quip": "금방 끝나겠지",
-      "icon": "💰"
+      "icon": "💰",
+      "slug": "fri"
     },
     {
       "name": "토",
       "color": "#9b5de5",
       "quip": "토요일 반짝",
-      "icon": "⛰️"
+      "icon": "⛰️",
+      "slug": "sat"
     },
     {
       "name": "일",
       "color": "#4cc9f0",
       "quip": "일 끝나면 또 월요일",
-      "icon": "☀️"
+      "icon": "☀️",
+      "slug": "sun"
     }
   ],
   "upload": {
