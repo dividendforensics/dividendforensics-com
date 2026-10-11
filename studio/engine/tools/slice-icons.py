@@ -15,6 +15,7 @@ from PIL import Image, ImageDraw
 ap = argparse.ArgumentParser()
 ap.add_argument('sheet'); ap.add_argument('cfg')
 ap.add_argument('--rows', type=int, default=3)
+ap.add_argument('--cols', type=int, default=None, help='icons per row; use when the last row is not full')
 ap.add_argument('--start', type=int, default=0); ap.add_argument('--count', type=int, default=None)
 ap.add_argument('--size', type=int, default=384)
 a = ap.parse_args()
@@ -67,9 +68,9 @@ if len(boxes) != len(slugs):
     sys.exit(f'found {len(boxes)} icons but expected {len(slugs)}. See {p}. Ask the image model for clearer gaps between icons.')
 
 # reading order: split into rows by y, then sort each row by x
-boxes.sort(key=lambda b: (b[1] + b[3]) / 2); per = len(boxes) // a.rows; ordered = []
-for r in range(a.rows):
-    row = boxes[r * per:(r + 1) * per] if r < a.rows - 1 else boxes[r * per:]
+boxes.sort(key=lambda b: (b[1] + b[3]) / 2); per = a.cols or len(boxes) // a.rows; nrows = -(-len(boxes) // per) if a.cols else a.rows; ordered = []
+for r in range(nrows):
+    row = boxes[r * per:(r + 1) * per] if r < nrows - 1 else boxes[r * per:]
     ordered += sorted(row, key=lambda b: (b[0] + b[2]) / 2)
 
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'assets', 'icons'); os.makedirs(out, exist_ok=True)
