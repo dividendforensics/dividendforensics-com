@@ -273,7 +273,7 @@ window.frame=function(draw=true){
   // post uniforms
   fx.uniforms.uAb.value=0.12+sh*0.9+(inSlow?0.3:0);fx.uniforms.uPulse.value=hPulse;fx.uniforms.uRed.value=A<=3&&!winner?1:0;
   fx.uniforms.uFlash.value=flash;fx.uniforms.uTime.value=tv;fx.uniforms.uZoom.value=(inSlow?0.6:0)+beatPulse*0.15;
-  if(AS.bg)scene.backgroundIntensity=0.8+beatPulse*0.25+flash*0.6;
+  if(AS.bg)scene.backgroundIntensity=0.72+beatPulse*0.14+flash*0.25;
   bloom.strength=0.5+beatPulse*0.2+flash*1.5;
   if(!draw){frames.push({t:+tv.toFixed(4),ts:+ts.toFixed(3),alive:A});f++;return {done:!!winner&&tv-winT>4.6,t:tv,alive:A};}
   composer.render(FDT);
