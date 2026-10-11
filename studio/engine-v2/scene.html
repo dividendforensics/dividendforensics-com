@@ -58,10 +58,10 @@ const N=cfg.entries.length;
 const REC=simulate({n:N,seed:SEED,spikes:cfg.spikes,shrink:cfg.shrink,...SC.sim});
 const PACE=SC.sim.maxT?1:+(qs.get('pace')||cfg.pace||0.9);   // match plays at 80% speed so eliminations can be read; outcome unaffected
 // every elimination gets reading time in the centre: 1.2 s, 1.9 s with a quip, +2.0 s for the "final two" card after 3rd place
-const FINALG=2.0, SHOWG=d=>(cfg.entries[d.i].quip?1.5:1.0)+(d.rank===3?FINALG:0);
+const FINALG=2.0, SHOWG=d=>(cfg.entries[d.i].quip?0.8:0.6)+(d.rank===3?FINALG:0);   // quip card 0.8 s (7-12 chars), plain card 0.6 s
 // reading gaps for every elimination except the deciding one; the final two get DUEL video seconds, the winner card OUTRO
 const DUEL=4.0, OUTRO=2.3, WIN_IN=0.3;
-const TL=timeline(REC,{noslow:!!qs.get('noslow'),outro:SC.sim.maxT?0:OUTRO,pace:PACE,duel:SC.sim.maxT?null:DUEL,gaps:REC.deaths.filter(d=>d.rank>2).map(d=>({t:d.t,g:SHOWG(d)}))}), RP=replayer(REC);
+const TL=timeline(REC,{noslow:!!qs.get('noslow'),outro:SC.sim.maxT?0:OUTRO,pace:PACE,duel:SC.sim.maxT?null:DUEL,minRate:0.25,gaps:REC.deaths.filter(d=>d.rank>2).map(d=>({t:d.t,g:SHOWG(d)}))}), RP=replayer(REC);
 const BR=REC.BR, R0=REC.R0, NS=REC.NS;
 const crnd=mb32(mixSeed(SEED*7919+13));   // cosmetic only (particles, confetti)
 
