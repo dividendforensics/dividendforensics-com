@@ -102,8 +102,8 @@ def reverb(buf, sec=0.9, decay=5.0):
     return out
 sfx = sfx + tn + 0.35 * reverb(tn)
 mix = mus * 0.8 + sfx
-mix = np.tanh(mix * 1.1) / np.tanh(1.1)
-mix = mix / (np.abs(mix).max() or 1) * 0.89
+mix = np.tanh(mix * 0.8) / np.tanh(0.8)
+mix = mix / (np.abs(mix).max() or 1) * 0.56   # about -5 dBFS sample peak: room for AAC overshoot (checked on the final MP4)
 with wave.open(os.path.join(out, 'audio.wav'), 'wb') as w:
     w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR)
     w.writeframes((mix * 32767).astype('<i2').tobytes())

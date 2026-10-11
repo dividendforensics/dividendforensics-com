@@ -217,18 +217,18 @@ let zMul=1,duel=false,nearCool=0,nearPop=null;
 const alive=()=>balls.filter(b=>b.alive);
 const tension=()=>1-(alive().length-1)/(N-1);
 const ev=(type,o={})=>events.push({t:+(tv+sub*FDT).toFixed(4),type,...o});
-function slow(dur,scale,x,y){if(tv+dur>slowUntil||scale<slowScale){slowUntil=tv+dur;slowScale=scale;}focusT.set(x,y);}
-function hit(b,nx,ny){b.hp--;b.inv=0.35;b.flash=1;labelDraw(b);trauma=Math.min(1,trauma+0.45);
+function slow(dur,scale){if(tv+dur>slowUntil||scale<slowScale){slowUntil=tv+dur;slowScale=scale;}}   // time only; the camera never chases
+function hit(b,nx,ny){b.hp--;b.inv=0.35;b.flash=1;labelDraw(b);trauma=Math.min(0.5,trauma+0.2);
   burst(b.x+nx*b.r,b.y+ny*b.r,'#ff2d55',16,6,0.055,0.5);wave(b.x,b.y,b.color,0.3);b.vx-=nx*3;b.vy-=ny*3;ev('hit',{i:b.i,x:b.x/R0});
-  if(b.hp<=0)die(b);else if(tv>=slowUntil)slow(0.22,0.45,b.x,b.y);}
+  if(b.hp<=0)die(b);}
 function die(b){const rank=alive().length;b.alive=false;b.mesh.visible=false;b.blob.visible=false;b.rim.visible=false;b.label.visible=false;
   dead.push({name:b.name,icon:b.icon,color:b.color,rank,t:simT});
   burst(b.x,b.y,b.color,64,10,0.08,1.1);burst(b.x,b.y,'#ffffff',16,13,0.05,0.6);wave(b.x,b.y,b.color);
-  trauma=0.75;flash=0.04;slow(0.75,0.16,b.x,b.y);ev('die',{i:b.i,x:b.x/R0,rank});
+  trauma=Math.max(trauma,0.3);ev('die',{i:b.i,x:b.x/R0,rank});
   banner={kind:'die',name:b.name,icon:b.icon,quip:b.quip,color:b.color,rank,t:tv};
   const left=alive().length;
   if(left===2){finalT=tv;ev('final');banner={kind:'final',t:tv+0.9,pre:banner};duel=true;for(const a of alive()){a.hp=2;a.inv=1.2;}}
-  if(left===1){winner=alive()[0];winT=tv;ev('win',{i:winner.i});slow(1.6,0.1,winner.x,winner.y);}}
+  if(left===1){winner=alive()[0];winT=tv;ev('win',{i:winner.i});slow(1.6,0.12);}}
 function step(dt){
   simT+=dt;const rT=duel?2.5:Math.max(RMIN,R0-(R0-RMIN)*Math.min(1,simT/SHRINK));ring+=(rT-ring)*Math.min(1,dt*2.5);
   spinV=Math.min(2.4,0.6+0.05*simT);spin+=spinV*dt;
@@ -240,7 +240,7 @@ function step(dt){
         const sp=Math.hypot(b.vx,b.vy),lo=7+3*T,hi=15;if(sp<lo){b.vx*=lo/sp;b.vy*=lo/sp;}else if(sp>hi){b.vx*=hi/sp;b.vy*=hi/sp;}
         const a=Math.atan2(ny,nx)-spin,k=((a/(2*Math.PI)*NS)%1+1)%1,dist=Math.abs(k-0.5);
         if(dist<hitW&&b.inv<=0)hit(b,nx,ny);
-        else{if(dist<0.17&&b.hp===1&&b.inv<=0){ev('near',{i:b.i,x:b.x/R0});if(tv>nearCool){nearCool=tv+3.2;slow(0.5,0.42,b.x,b.y);nearPop={b,t:tv};}}ev('bounce',{i:b.i,v:vn,x:b.x/R0});b.flash=Math.max(b.flash,0.25);}}}}
+        else{if(dist<0.17&&b.hp===1&&b.inv<=0){ev('near',{i:b.i,x:b.x/R0});if(tv>nearCool){nearCool=tv+3.5;slow(0.45,0.45);nearPop={b,t:tv};}}ev('bounce',{i:b.i,v:vn,x:b.x/R0});b.flash=Math.max(b.flash,0.25);}}}}
   const L=alive();
   for(let i=0;i<L.length;i++)for(let j=i+1;j<L.length;j++){const a=L[i],b=L[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1e-6,md=a.r+b.r;
     if(d<md){const nx=dx/d,ny=dy/d,ov=(md-d)/2;a.x-=nx*ov;a.y-=ny*ov;b.x+=nx*ov;b.y+=ny*ov;
@@ -268,12 +268,13 @@ window.frame=function(draw=true){
   // camera
   const danger=A<=3&&!winner?(A===2?0.35:0.2):0;
   trauma=Math.max(danger,trauma-FDT*1.5);flash*=0.62;
-  const inSlow=tv<slowUntil;zMul+=((inSlow?0.72:1)-zMul)*0.12;if(!inSlow)focusT.set(0,0);focus.lerp(focusT,0.12);
-  const zBase=(ring+1.0)/0.3248*zMul*(1-0.004*beatPulse)*(started?1:1.15-0.15*tv/INTRO);
-  const yaw=Math.sin(tv*0.3)*0.07, el=1.1+Math.sin(tv*0.23)*0.4, sh=trauma*trauma;
-  camera.position.set(focus.x*0.6+Math.sin(yaw)*zBase+sh*0.55*(Math.sin(tv*37)+Math.sin(tv*59.3))/2,
-    focus.y*0.6+el+zBase*0.05+sh*0.55*(Math.sin(tv*43.1)+Math.sin(tv*71.7))/2, Math.cos(yaw)*zBase);
-  camera.lookAt(focus.x,focus.y+zBase*0.05,0);camera.rotateZ(sh*0.07*Math.sin(tv*41));
+  const inSlow=tv<slowUntil;
+  // arena box on screen: centre y=ACY, radius ARR px (output scale). z puts the ring at exactly ARR px.
+  const ACY=860,ARR=430,zBase=ring*(OW/2)/(ARR*0.3248)*(started?1:1.12-0.12*Math.min(1,tv/INTRO));
+  const yaw=Math.sin(tv*0.3)*0.045, el=0.9+Math.sin(tv*0.23)*0.25, sh=trauma*trauma;
+  camera.position.set(Math.sin(yaw)*zBase+sh*0.55*(Math.sin(tv*37)+Math.sin(tv*59.3))/2,
+    el+sh*0.55*(Math.sin(tv*43.1)+Math.sin(tv*71.7))/2, Math.cos(yaw)*zBase);
+  camera.setViewOffset(RW,RH,0,(OH/2-ACY)*RH/OH,RW,RH);camera.lookAt(0,0,0);camera.rotateZ(sh*0.07*Math.sin(tv*41));
   const calm3=A<=3&&!winner?0.45:1;   // last three: quiet surroundings, eyes on the beads
   auraMesh.material.opacity=.13*calm3;tailMesh.material.opacity=.17*calm3;stars.material.opacity=(AS.bg?.2:.8)*calm3;
   // arena visuals
@@ -338,17 +339,17 @@ window.frame=function(draw=true){
     for(let h=0;h<3;h++){if(duel&&h>1)continue;o.beginPath();o.arc(sx+(h-(duel?0.5:1))*rp*0.42,sy-rp-rp*0.28,Math.max(4,rp*0.13),0,7);
       o.fillStyle=h<b.hp?(b.hp===1?'#ff2d55':'#ffffff'):'rgba(255,255,255,.2)';o.fill();o.lineWidth=3;o.strokeStyle='rgba(0,0,0,.8)';o.stroke();}}
   if(banner&&banner.kind==='die'&&!winner){const ag=tv-banner.t;
-    if(ag>=0&&ag<1.3){const dk=Math.min(1,ag/0.08)*(ag>0.95?Math.max(0,(1.3-ag)/0.35):1);o.fillStyle=`rgba(4,2,12,${0.5*dk})`;o.fillRect(0,0,OW,OH);}}
+    }
   if(nearPop&&tv-nearPop.t<0.95&&nearPop.b.alive&&!winner){const nb=nearPop.b,age=tv-nearPop.t,pj=new THREE.Vector3(nb.x,nb.y,0).project(camera),qj=new THREE.Vector3(nb.x+nb.r,nb.y,0).project(camera);
     const px=(pj.x+1)/2*OW,py=(1-pj.y)/2*OH,pr=Math.hypot((qj.x-pj.x)/2*OW,(qj.y-pj.y)/2*OH),sc=age<0.12?0.6+age/0.12*0.55:1.15-Math.min(0.15,(age-0.12)*0.3),al=age>0.7?(0.95-age)/0.25:1;
-    o.save();o.translate(Math.max(220,Math.min(OW-220,px)),Math.max(560,py-pr*1.9));o.scale(sc,sc);txt('아슬아슬!',0,0,66,'#ffe14d',DISPLAY,'center',14,al);o.restore();}
+    o.save();o.translate(Math.max(220,Math.min(OW-220,px)),Math.max(420,py-pr*1.9));o.scale(sc,sc);txt('아슬아슬!',0,0,66,'#ffe14d',DISPLAY,'center',14,al);o.restore();}
   const titleA=winner?Math.max(0,1-(tv-winT)*2):1;
   if(titleA>0){o.save();o.globalAlpha=titleA;
-    glass(70,70,OW-140,230,34,A<=3&&!winner?'#ff3355':'#8a5cff');
-    txt(cfg.title[0],OW/2,140,56,'#d9d0ff',DISPLAY,'center',8);
-    txt(cfg.title[1],OW/2,226,80,'#ffe14d',DISPLAY,'center',12);
+    glass(60,34,OW-120,196,30,A<=3&&!winner?'#ff3355':'#8a5cff');
+    txt(cfg.title[0],OW/2,92,50,'#d9d0ff',DISPLAY,'center',8);
+    txt(cfg.title[1],OW/2,172,74,'#ffe14d',DISPLAY,'center',12);
     // roster: every entrant as a chip, dimmed once eliminated
-    const cw=Math.min(74,(OW-160)/N),cy=362;
+    const cw=Math.min(74,(OW-160)/N),cy=272;
     balls.forEach((b,i)=>{const cx=OW/2+(i-(N-1)/2)*cw;o.save();if(!b.alive)o.globalAlpha=0.28;
       o.beginPath();o.arc(cx,cy,cw*0.42,0,7);o.fillStyle=b.alive?b.color:'#3a3450';o.fill();o.lineWidth=3;o.strokeStyle=b.alive?'rgba(255,255,255,.85)':'rgba(255,255,255,.25)';o.stroke();
       if(b.icon)ico(b.icon,cx,cy-1,cw*0.5);else txt(b.name,cx,cy+1,cw*0.34,'#fff',DISPLAY,'center',4);
@@ -357,14 +358,14 @@ window.frame=function(draw=true){
     o.restore();}
   brackets(A<=3&&!winner?'#ff3355':'#8a5cff',0.9*titleA);
   if(started&&!winner){const hot=A<=3, sc=hot?1+hPulse*0.18:1;
-    txt(`생존 ${simT.toFixed(1)}초`,OW/2-170,445,42,'#d9d0ff',B9,'center',8);
-    o.save();o.translate(OW/2+170,445);o.scale(sc,sc);txt(`남은 ${A}/${N}`,0,0,hot?54:44,hot?'#ff3355':'#d9d0ff',DISPLAY,'center',8);o.restore();}
+    txt(`생존 ${simT.toFixed(1)}초`,OW/2-170,338,40,'#d9d0ff',B9,'center',8);
+    o.save();o.translate(OW/2+170,338);o.scale(sc,sc);txt(`남은 ${A}/${N}`,0,0,hot?54:44,hot?'#ff3355':'#d9d0ff',DISPLAY,'center',8);o.restore();}
   if(!started){const left=Math.ceil(INTRO-0.3-tv+0.7);const k=((tv-0.3)%0.7)/0.7;
     txt(cfg.pick,OW/2,1500,58,'#ffffff',DISPLAY,'center',12);
     if(tv>=0.3){o.save();o.translate(OW/2,1640);o.scale(1.6-k*0.6,1.6-k*0.6);txt(String(Math.max(1,Math.min(3,left))),0,0,150,'#ffe14d',DISPLAY,'center',16,1-k*0.5);o.restore();}}
   else if(tv<INTRO+0.6){const k=(tv-INTRO)/0.6;o.save();o.translate(OW/2,OH/2);o.scale(1+k*1.5,1+k*1.5);txt('GO!',0,0,180,'#ffe14d',DISPLAY,'center',18,1-k);o.restore();}
   // kill feed card
-  const feed=(winner&&tv-winT>0.5)?[]:dead.slice(-4),RH2=86,LY=OH-175;
+  const feed=(winner&&tv-winT>0.5)?[]:dead.slice(-3),RH2=86,LY=OH-105;
   if(feed.length&&!winner)glass(30,LY-(feed.length-1)*RH2-62,690,(feed.length-1)*RH2+124,26,'#8a5cff',0.6);
   feed.forEach((d,j,arr)=>{const y=LY-(arr.length-1-j)*RH2,tier=d.rank<=3?['#ffd23f','#dfe6ee','#e8955a'][d.rank-1]:'#cfc8ff';
     txt(`${d.rank}위`,80,y,64,tier,DISPLAY,'left',12,0.98);
@@ -374,9 +375,8 @@ window.frame=function(draw=true){
   if(banner&&!winner){const age=tv-banner.t;
     if(banner.kind==='final'&&age<0&&banner.pre)drawDie(banner.pre,tv-banner.pre.t);
     else if(banner.kind==='die')drawDie(banner,age);
-    else if(banner.kind==='final'&&age<1.8){const a=Math.min(1,age*4)*(age>1.4?(1.8-age)/0.4:1);
-      o.save();o.globalAlpha=a*0.6;o.fillStyle='#000';o.fillRect(0,OH/2-150,OW,300);o.restore();
-      txt('최후의 2개',OW/2,OH/2-45,120,'#ff3355',DISPLAY,'center',16,a);txt('HP 2 · 단판 결투',OW/2,OH/2+80,60,'#ffffff',DISPLAY,'center',10,a);}}
+    else if(banner.kind==='final'&&age<2.2){const a=Math.min(1,age*4)*(age>1.8?(2.2-age)/0.4:1);strip(a);
+      txt('최후의 2개',OW/2,1400,90,'#ff3355',DISPLAY,'center',14,a);txt('HP 2 · 단판 결투',OW/2,1482,44,'#ffffff',DISPLAY,'center',8,a);}}
   // winner card: the winning bead is the hero (grows to centre, crown lands, one gold ripple, one confetti burst)
   if(winner){const wt=tv-winT,k=Math.min(1,Math.max(0,(wt-0.9)/0.5)),x0=Math.min(1,Math.max(0,(wt-0.9)/0.7))-1,e=Math.max(0,1+2.70158*x0*x0*x0+1.70158*x0*x0);
     if(k>0){
@@ -431,21 +431,22 @@ function ico(ch,x,y,size,alpha=1){if(ICONS[ch]){o.save();o.globalAlpha=alpha;o.s
   o.drawImage(ICONS[ch],x-size*0.68,y-size*0.68,size*1.36,size*1.36);o.restore();}else emo(ch,x,y,size,alpha);}
 function emo(ch,x,y,size,alpha=1){o.save();o.globalAlpha=alpha;o.font=`${size|0}px "Noto Color Emoji"`;o.textAlign='center';o.textBaseline='middle';o.fillStyle='#ffffff';
   o.shadowColor='rgba(0,0,0,.55)';o.shadowBlur=size*0.18;o.shadowOffsetY=size*0.06;o.fillText(ch,x,y);o.restore();}
-function drawDie(bn,age){if(age>1.3)return;const pop=age<0.14?1.55-age/0.14*0.55:1, a=age>0.95?(1.3-age)/0.35:1,
-  tier=bn.rank<=3?['#ffd23f','#dfe6ee','#e8955a'][bn.rank-1]:'#ff4d6d',shake=age<0.3?(0.3-age)*26:0;
-  const rt=`${bn.rank}위`,rfs=Math.min(150,150*((OW-2*70)/1.55)/Math.max(1,textW(rt,150)));
-  o.save();o.translate(OW/2+Math.sin(age*90)*shake,600);o.scale(pop,pop);o.shadowColor=tier;o.shadowBlur=40;
-  txt(rt,0,0,rfs,tier,DISPLAY,'center',20,a);o.restore();
-  const bt=`${bn.name} 탈락`,iw=bn.icon?112:0,nfs=Math.min(76,76*(OW-2*50-iw)/Math.max(1,textW(bt,76)));
-  o.save();o.translate(OW/2,722);o.scale(Math.min(1,0.6+age*6),Math.min(1,0.6+age*6));const bw=textW(bt,nfs);
-  txt(bt,iw/2,0,nfs,vis(bn.color),DISPLAY,'center',14,a);if(bn.icon)ico(bn.icon,-bw/2+iw/2-56,0,Math.min(92,nfs*1.2),a);o.restore();
-  if(bn.quip){const qs2=Math.min(46,46*(OW-100)/Math.max(1,textW(`"${bn.quip}"`,46)));txt(`"${bn.quip}"`,OW/2,812,qs2,'#ffffff',B7,'center',9,a*Math.min(1,Math.max(0,(age-0.2)/0.15)));}}
+function strip(a){o.save();o.globalAlpha=a*0.62;o.fillStyle='#05030d';o.beginPath();o.roundRect(40,1345,OW-80,185,28);o.fill();o.restore();}
+function drawDie(bn,age){if(age>1.6)return;const a=age>1.3?(1.6-age)/0.3:1,pop=age<0.12?1.22-age/0.12*0.22:1,
+  tier=bn.rank<=3?['#ffd23f','#dfe6ee','#e8955a'][bn.rank-1]:'#ff4d6d';
+  const rt=`${bn.rank}위`,nt=`${bn.name} 탈락`,gap=22,iw0=bn.icon?78:0;let rs=86,ns=64;
+  const tot0=textW(rt,rs)+gap+(bn.icon?iw0+gap*0.6:0)+textW(nt,ns),k=Math.min(1,(OW-120)/(tot0*1.22));   /* fit at the peak of the pop, not after it */rs*=k;ns*=k;const iw=iw0*k,tot=tot0*k;
+  strip(a);o.save();o.translate(OW/2,1400);o.scale(pop,pop);let x=-tot/2;
+  o.save();o.shadowColor=tier;o.shadowBlur=22;txt(rt,x,0,rs,tier,DISPLAY,'left',12,a);o.restore();x+=textW(rt,rs)+gap*k;
+  if(bn.icon){ico(bn.icon,x+iw/2,0,iw/1.36,a);x+=iw+gap*0.6*k;}
+  txt(nt,x,0,ns,vis(bn.color),DISPLAY,'left',10,a);o.restore();
+  if(bn.quip){const q=`"${bn.quip}"`,qs2=Math.min(40,40*(OW-140)/Math.max(1,textW(q,40)));txt(q,OW/2,1482,qs2,'#ffffff',B7,'center',8,a*Math.min(1,Math.max(0,(age-0.2)/0.15)));}}
 // layout self-test: worst-case horizontal margin of the rank banner over its whole pop+shake animation
-window.__hudTest=cases=>cases.map(c=>{let worst=1e9;for(let age=0;age<=1.2;age+=0.01){
+window.__hudTest=cases=>cases.map(c=>{let worst=1e9;for(let age=0;age<=1.55;age+=0.01){
   o.setTransform(1,0,0,1,0,0);o.fillStyle='#000';o.fillRect(0,0,OW,OH);
   drawDie({rank:c.rank,name:c.name,icon:c.icon||'',color:c.color||'#ff4d6d',quip:c.quip||''},age);
-  const d=o.getImageData(0,380,OW,520).data;let mn=OW,mx=0;
-  for(let y=0;y<520;y+=2)for(let x=0;x<OW;x++){const i=(y*OW+x)*4;if(d[i]+d[i+1]+d[i+2]>45){if(x<mn)mn=x;if(x>mx)mx=x;}}
+  const d=o.getImageData(0,1330,OW,210).data;let mn=OW,mx=0;
+  for(let y=0;y<210;y+=2)for(let x=0;x<OW;x++){const i=(y*OW+x)*4;if(d[i]+d[i+1]+d[i+2]>45){if(x<mn)mn=x;if(x>mx)mx=x;}}
   if(mx>0)worst=Math.min(worst,mn,OW-1-mx);}return{...c,minMargin:worst};});
 window.getLog=()=>({seed:SEED,n:N,fps:FPS,dur:tv,events,frames,
   winner:winner&&winner.name,ranks:[...dead].sort((a,b)=>a.rank-b.rank).map(d=>({rank:d.rank,name:d.name,t:+d.t.toFixed(2)}))});

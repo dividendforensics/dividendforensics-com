@@ -1,6 +1,6 @@
 // Usage: node render.js configs/mbti.json [configs/zodiac.json ...] [--seeds 7,8,9] [--keep] [--max 70]
 const {chromium}=require('playwright');const http=require('http');const fs=require('fs');const path=require('path');
-const {execFileSync}=require('child_process');
+const {execFileSync,spawnSync}=require('child_process');
 const ROOT=__dirname, MIME={'.html':'text/html','.js':'text/javascript','.json':'application/json','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff'};
 const argv=process.argv.slice(2), opt=k=>{const i=argv.indexOf(k);return i>=0?argv[i+1]:null;};
 const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&!['--seeds','--shots','--fonts'].includes(argv[i-1]));
@@ -48,10 +48,17 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
       const mp4=path.join(out,name+'.mp4');
       execFileSync('ffmpeg',['-y','-loglevel','error','-framerate','30','-i',path.join(fdir,'%05d.jpg'),'-i',path.join(out,'audio.wav'),
         '-c:v','libx264','-preset','medium','-crf','22','-maxrate','12M','-bufsize','24M','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-shortest','-movflags','+faststart',mp4]);
+      // loudness/true-peak of the encoded file, not the WAV: AAC can overshoot the source peak
+      const meas=f=>{const e=spawnSync('ffmpeg',['-hide_banner','-nostats','-i',f,'-map','0:a','-af','ebur128=peak=true','-f','null','-'],{encoding:'utf8'}).stderr;
+        const tp=[...e.matchAll(/Peak:\s+(-?[\d.]+|-inf) dBFS/g)].pop(),I=[...e.matchAll(/I:\s+(-?[\d.]+) LUFS/g)].pop();return{tp:tp?parseFloat(tp[1]):NaN,I:I?parseFloat(I[1]):NaN};};
+      let am=meas(mp4);
+      if(!(am.tp<=-1)){const fix=path.join(out,'fix.mp4'),g=(-(am.tp+1.5)).toFixed(2);
+        execFileSync('ffmpeg',['-y','-loglevel','error','-i',mp4,'-c:v','copy','-af',`volume=${g}dB`,'-c:a','aac','-b:a','192k','-movflags','+faststart',fix]);fs.renameSync(fix,mp4);am=meas(mp4);}
+      console.log(`  audio check (final mp4): true peak ${am.tp} dBTP, integrated ${am.I} LUFS ${am.tp<=-1?'OK':'STILL HOT'}`);
       const up=cfg.upload||{};
       fs.writeFileSync(path.join(out,'meta.txt'),[`제목: ${up.title||cfg.title.join(' ')}`,'',
         `설명: ${up.description||''}`,'',`해시태그: ${(up.hashtags||[]).join(' ')}`,'',
-        `결과 (seed ${seed}): 1위 ${log.winner}`,...log.ranks.map(r=>`${r.rank}위 ${r.name} (${r.t}초)`)].join('\n'));
+        `결과 (seed ${seed}): 1위 ${log.winner}`,`오디오(최종 MP4 측정): true peak ${am.tp} dBTP, ${am.I} LUFS`,...log.ranks.map(r=>`${r.rank}위 ${r.name} (${r.t}초)`)].join('\n'));
       if(!keep)fs.rmSync(fdir,{recursive:true,force:true});
       fs.rmSync(path.join(out,'audio.wav'),{force:true});
       console.log(`done ${name}: ${(i/30).toFixed(1)}s video, winner ${log.winner}, ${((Date.now()-t0)/1000).toFixed(0)}s render`);
