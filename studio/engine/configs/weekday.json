@@ -10,49 +10,49 @@
     {
       "name": "월",
       "color": "#4361ee",
-      "quip": "월요일은 원래 이래",
+      "quip": "월요일은 원래 이래요ㅠ",
       "icon": "🌙",
       "slug": "mon"
     },
     {
       "name": "화",
       "color": "#ff4d6d",
-      "quip": "화났다 진짜",
+      "quip": "화났다 진짜루",
       "icon": "🔥",
       "slug": "tue"
     },
     {
       "name": "수",
       "color": "#06d6a0",
-      "quip": "중간 점검 끝",
+      "quip": "수요일 반타작",
       "icon": "💧",
       "slug": "wed"
     },
     {
       "name": "목",
       "color": "#ffd60a",
-      "quip": "목요일이라 더 억울해",
+      "quip": "목요일이라 더 억울행",
       "icon": "🌳",
       "slug": "thu"
     },
     {
       "name": "금",
       "color": "#ff9f1c",
-      "quip": "금방 끝나겠지",
+      "quip": "금방 끝날 줄 알았지?",
       "icon": "💰",
       "slug": "fri"
     },
     {
       "name": "토",
       "color": "#9b5de5",
-      "quip": "토요일 반짝",
+      "quip": "토요일 반짝 야르",
       "icon": "⛰️",
       "slug": "sat"
     },
     {
       "name": "일",
       "color": "#4cc9f0",
-      "quip": "일 끝나면 또 월요일",
+      "quip": "내일 또 월요일 실화?",
       "icon": "☀️",
       "slug": "sun"
     }

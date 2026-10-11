@@ -10,84 +10,84 @@
     {
       "name": "치킨",
       "color": "#ffb703",
-      "quip": "야식은 포기 못 해",
+      "quip": "닭다리 양보 못해써",
       "icon": "🍗",
       "slug": "chicken"
     },
     {
       "name": "피자",
       "color": "#ff4d6d",
-      "quip": "치즈가 늘어나…",
+      "quip": "치즈만 늘어나써…",
       "icon": "🍕",
       "slug": "pizza"
     },
     {
       "name": "떡볶이",
       "color": "#ff006e",
-      "quip": "매워서 울었다",
+      "quip": "매워서 눈물 나쓰",
       "icon": "@tteokbokki",
       "slug": "tteokbokki"
     },
     {
       "name": "라면",
       "color": "#ffd60a",
-      "quip": "면이 불었어",
+      "quip": "면 불어버림 ㅠ",
       "icon": "🍜",
       "slug": "ramen"
     },
     {
       "name": "김밥",
       "color": "#2ec4b6",
-      "quip": "옆구리 터졌다",
+      "quip": "옆구리 터져써",
       "icon": "@gimbap",
       "slug": "gimbap"
     },
     {
       "name": "삼겹살",
       "color": "#e76f51",
-      "quip": "불판 위에서 장렬히",
+      "quip": "불판 위에서 난리자베스",
       "icon": "🥓",
       "slug": "samgyeopsal"
     },
     {
       "name": "초밥",
       "color": "#4cc9f0",
-      "quip": "와사비 과했다",
+      "quip": "와사비 테러 당함",
       "icon": "🍣",
       "slug": "sushi"
     },
     {
       "name": "햄버거",
       "color": "#fb8500",
-      "quip": "패티가 탈출했어",
+      "quip": "패티 가출함;;",
       "icon": "🍔",
       "slug": "hamburger"
     },
     {
       "name": "짜장면",
       "color": "#3a0ca3",
-      "quip": "비볐는데 탈락",
+      "quip": "단무지 어디감?",
       "icon": "@jjajang",
       "slug": "jjajangmyeon"
     },
     {
       "name": "마라탕",
       "color": "#9d0208",
-      "quip": "얼얼해서 못 버텨",
+      "quip": "얼얼해서 기권각",
       "icon": "@malatang",
       "slug": "malatang"
     },
     {
       "name": "족발",
       "color": "#c77dff",
-      "quip": "발이 미끄러졌다",
+      "quip": "발 미끄러져써 ㅋㅋ",
       "icon": "@jokbal",
       "slug": "jokbal"
     },
     {
       "name": "김치찌개",
       "color": "#e63946",
-      "quip": "국물이 식었어",
+      "quip": "국물 식어버림… 밤티",
       "icon": "🍲",
       "slug": "kimchijjigae"
     }
