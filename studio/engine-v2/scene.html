@@ -68,11 +68,18 @@ const scene=new THREE.Scene();
 const W=(x,y,h=0)=>new THREE.Vector3(x,h,-y);   // physics plane (x,y) -> tray floor (x, h, -y); +y in physics = away from camera
 const LDIR=new THREE.Vector3(-0.55,1.0,-0.6).normalize();   // toward the key light: left, up, behind the tray
 
-// background: dark navy-violet, the GPT art only as a faint texture
-{const c=document.createElement('canvas');c.width=RW;c.height=RH;const g=c.getContext('2d');
+// background (?bg=): navy = dark gradient behind the tray | stage = tray stands on a dark floor under a spotlight
+//   cream = tray on a light warm table (product-shot) | bokeh = navy with soft out-of-focus lights
+const BG=qs.get('bg')||cfg.bg||'navy';
+const BGS={navy:{vig:.55},bokeh:{vig:.5},
+  stage:{vig:.45,ground:['#4a3d7a','#251e45','#0d0b1c'],sky:'#0d0b1c'},
+  cream:{vig:.12,ground:['#fff7ea','#efe2cc','#c9b79b'],sky:'#c9b79b'}}, BGC=BGS[BG]||BGS.navy;
+if(BG==='bokeh'||BG==='navy'){const c=document.createElement('canvas');c.width=RW;c.height=RH;const g=c.getContext('2d');
   const lg=g.createLinearGradient(0,0,0,RH);lg.addColorStop(0,'#141030');lg.addColorStop(.45,'#0e0b24');lg.addColorStop(1,'#060510');g.fillStyle=lg;g.fillRect(0,0,RW,RH);
   if(AS.bg){g.globalAlpha=.10;g.filter='blur(6px) saturate(.6)';const k=Math.max(RW/AS.bg.width,RH/AS.bg.height);g.drawImage(AS.bg,(RW-AS.bg.width*k)/2,(RH-AS.bg.height*k)/2,AS.bg.width*k,AS.bg.height*k);g.filter='none';g.globalAlpha=1;}
   const rg=g.createRadialGradient(RW/2,RH*0.43,0,RW/2,RH*0.43,RW*0.75);rg.addColorStop(0,'rgba(80,64,160,.20)');rg.addColorStop(1,'rgba(80,64,160,0)');g.fillStyle=rg;g.fillRect(0,0,RW,RH);
+  if(BG==='bokeh'){const br=mb32(77);g.filter=`blur(${RW*0.012}px)`;for(let k=0;k<34;k++){const x=br()*RW,y=br()<0.5?br()*RH*0.28:RH*(0.72+br()*0.28),r=RW*(0.03+br()*0.07);
+    g.fillStyle=['rgba(255,190,90,','rgba(255,110,160,','rgba(110,210,255,','rgba(190,150,255,'][k%4]+(0.12+br()*0.22)+')';g.beginPath();g.arc(x,y,r,0,7);g.fill();}g.filter='none';}
   const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;scene.background=t;}
 
 // environment for reflections: one large soft key box in the same direction as the key light
@@ -88,6 +95,7 @@ const key=new THREE.DirectionalLight(0xfff2e4,2.3);key.position.copy(LDIR).multi
 scene.add(new THREE.HemisphereLight(0xbdb6ff,0x1a1430,0.6));
 
 // ---------- tray ----------
+function softTex0(){const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d'),rg=g.createRadialGradient(64,64,0,64,64,64);rg.addColorStop(0,'rgba(255,255,255,1)');rg.addColorStop(.7,'rgba(255,255,255,.6)');rg.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=rg;g.fillRect(0,0,128,128);return new THREE.CanvasTexture(c);}
 function canvasTex(size,draw){const c=document.createElement('canvas');c.width=c.height=size;draw(c.getContext('2d'),size);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=4;return t;}
 const floorTex=canvasTex(1024,(g,S)=>{const rg=g.createRadialGradient(S/2,S/2,0,S/2,S/2,S/2);rg.addColorStop(0,'#2e2858');rg.addColorStop(.75,'#221d46');rg.addColorStop(1,'#181433');
   g.fillStyle=rg;g.fillRect(0,0,S,S);g.strokeStyle='rgba(255,255,255,.035)';g.lineWidth=2;for(let r=60;r<S/2;r+=64){g.beginPath();g.arc(S/2,S/2,r,0,7);g.stroke();}
@@ -95,6 +103,11 @@ const floorTex=canvasTex(1024,(g,S)=>{const rg=g.createRadialGradient(S/2,S/2,0,
 const TR=R0+0.85;
 const floor=new THREE.Mesh(new THREE.CircleGeometry(TR,128),new THREE.MeshStandardMaterial({map:floorTex,roughness:.62,metalness:0,envMapIntensity:.35}));
 floor.rotation.x=-Math.PI/2;scene.add(floor);
+if(BGC.ground){const gt=canvasTex(1024,(g,S)=>{const rg=g.createRadialGradient(S/2,S/2,0,S/2,S/2,S/2);rg.addColorStop(0,BGC.ground[0]);rg.addColorStop(.16,BGC.ground[1]);rg.addColorStop(.6,BGC.ground[2]);rg.addColorStop(1,BGC.ground[2]);g.fillStyle=rg;g.fillRect(0,0,S,S);});
+  const ground=new THREE.Mesh(new THREE.CircleGeometry(60,96),new THREE.MeshStandardMaterial({map:gt,roughness:.75,metalness:0,envMapIntensity:.2,color:BG==='cream'?0xb8b0a6:0xffffff}));
+  ground.rotation.x=-Math.PI/2;ground.position.y=-0.5;scene.add(ground);scene.background=new THREE.Color(BGC.sky);
+  const ps=new THREE.Mesh(new THREE.CircleGeometry(1,64),new THREE.MeshBasicMaterial({map:softTex0(),color:0x000000,transparent:true,opacity:BG==='cream'?.32:.6,depthWrite:false}));   // plinth's soft shadow on the ground
+  ps.rotation.x=-Math.PI/2;ps.position.set(0.9,-0.495,0.9);ps.scale.setScalar(R0+2.2);scene.add(ps);}
 const plinth=new THREE.Mesh(new THREE.CylinderGeometry(TR+0.2,TR+0.32,0.5,128),new THREE.MeshPhysicalMaterial({color:0x15112c,roughness:.45,metalness:.3,clearcoat:.4}));
 plinth.position.y=-0.252;scene.add(plinth);
 const lip=new THREE.Mesh(new THREE.TorusGeometry(TR+0.04,0.17,24,200),new THREE.MeshPhysicalMaterial({color:0x3b3374,roughness:.3,metalness:.45,clearcoat:.8,clearcoatRoughness:.15}));
@@ -301,7 +314,7 @@ window.frame=function(draw=true){
     sc=age<0.12?0.6+age/0.12*0.5:1.1-Math.min(0.1,(age-0.12)*0.3),al=age>0.7?(0.95-age)/0.25:1;
     o.save();o.translate(Math.max(200,Math.min(OW-200,px)),Math.max(330,py-pr*1.7));o.scale(sc,sc);txt('아슬아슬!',0,0,58,'#ffe14d',DISPLAY,'center',12,al);o.restore();}
   // calm vignette; a faint red edge only in the last three
-  {const g=o.createRadialGradient(OW/2,ACY,OW*0.45,OW/2,ACY,OH*0.75);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,`rgba(${A<=3&&!winner?'60,0,12':'0,0,0'},${0.55+(A<=3&&!winner?hPulse*0.15:0)})`);o.fillStyle=g;o.fillRect(0,0,OW,OH);}
+  {const g=o.createRadialGradient(OW/2,ACY,OW*0.45,OW/2,ACY,OH*0.75);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,`rgba(${A<=3&&!winner?'60,0,12':'0,0,0'},${BGC.vig+(A<=3&&!winner?hPulse*0.15:0)})`);o.fillStyle=g;o.fillRect(0,0,OW,OH);}
   if(SC.hud!==false)hud(A);
   f++;
   return {done:f>=TL.frames,t:tv,alive:A};

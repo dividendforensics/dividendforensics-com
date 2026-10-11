@@ -5,8 +5,8 @@ const {chromium}=require('playwright');const http=require('http');const fs=requi
 const {execFileSync,spawnSync}=require('child_process');
 const ROOT=__dirname, MIME={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff'};
 const argv=process.argv.slice(2), opt=k=>{const i=argv.indexOf(k);return i>=0?argv[i+1]:null;};
-const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&!['--seeds','--shots','--fonts','--look','--scn'].includes(argv[i-1]));
-const look=opt('--look')||'v3d', scn=opt('--scn')||'game';
+const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&!['--seeds','--shots','--fonts','--look','--scn','--bg'].includes(argv[i-1]));
+const look=opt('--look')||'v3d', scn=opt('--scn')||'game', bg=opt('--bg');
 const seedsArg=opt('--seeds'), keep=argv.includes('--keep'), maxSec=+(opt('--max')||70);
 // --shots 45,200,600: quick look — simulate every frame but only render/save these, no audio/video
 const fontsArg=opt('--fonts'); // e.g. --fonts bungee,black-han-sans
@@ -26,12 +26,12 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
     const cfg=JSON.parse(fs.readFileSync(path.join(ROOT,cfgPath)));
     const seeds=seedsArg?seedsArg.split(',').map(Number):[cfg.seed||1];
     for(const seed of seeds){
-      const name=path.basename(cfgPath,'.json')+'-s'+seed+(scn!=='game'?'-'+scn:'')+'-'+look, out=path.join(ROOT,'out',(shots||simOnly||hudTest)?'_scratch':'',name), fdir=path.join(out,'frames'); // previews never touch real render output
+      const name=path.basename(cfgPath,'.json')+'-s'+seed+(scn!=='game'?'-'+scn:'')+'-'+look+(bg?'-'+bg:''), out=path.join(ROOT,'out',(shots||simOnly||hudTest)?'_scratch':'',name), fdir=path.join(out,'frames'); // previews never touch real render output
       if(!simOnly){fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(fdir,{recursive:true});}
       const page=await browser.newPage({viewport:{width:1080,height:1920}});
       page.on('pageerror',e=>console.error('[page]',e.message));
       page.on('console',m=>{if(m.type()==='error'&&!/404/.test(m.text()))console.error('[console]',m.text());else if(/^(fonts|icon pictures|assets):/.test(m.text()))console.log('  '+m.text());});
-      await page.goto(`http://127.0.0.1:${port}/${look==='legacy'?'legacy':'scene'}.html?look=${look}&scn=${scn}&cfg=${encodeURIComponent(cfgPath)}&seed=${seed}${argv.includes('--noslow')?'&noslow=1':''}${fontsArg?'&fonts='+encodeURIComponent(fontsArg):''}`);
+      await page.goto(`http://127.0.0.1:${port}/${look==='legacy'?'legacy':'scene'}.html?look=${look}&scn=${scn}&cfg=${encodeURIComponent(cfgPath)}&seed=${seed}${bg?'&bg='+bg:''}${argv.includes('--noslow')?'&noslow=1':''}${fontsArg?'&fonts='+encodeURIComponent(fontsArg):''}`);
       await page.waitForFunction('window.ready===true',null,{timeout:120000});
       if(hudTest){const cases=[];for(const rank of [1,12,100])for(const [name,icon] of [['치킨','🍗'],['김치찌개','🍲'],['아주아주아주긴음식이름입니다',''],['ENTP','']])cases.push({rank,name,icon});
         const res=await page.evaluate(c=>window.__hudTest(c),cases);await page.close();
