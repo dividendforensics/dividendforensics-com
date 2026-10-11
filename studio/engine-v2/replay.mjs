@@ -8,15 +8,19 @@ import {FDT,INTRO} from './sim.mjs';
 // pace: base playback speed of the match (0.8 = 80%); presentation only, the record is unchanged
 // gaps: [{t, g}] per elimination (sim time t, video seconds g it needs on screen). If the next elimination
 // would arrive sooner, the stretch between them plays slower so every elimination gets its g seconds.
-export function timeline(rec,{noslow=false,outro=5.8,maxFrames=120*30,pace=1,gaps=null,minRate=0.4}={}){
+// duel: video seconds the final two get (from the 'final' event to the deciding hit). Uneventful movement in
+// between plays faster; the deciding hit keeps one short slow-motion. Same trajectory, same collision order.
+export function timeline(rec,{noslow=false,outro=5.8,maxFrames=120*30,pace=1,gaps=null,minRate=0.4,duel=null}={}){
   const wins=[];
+  const fin=rec.events.find(e=>e.type==='final'), WS=0.15, tf=fin?fin.t:Infinity, tw=rec.endT-WS;
+  const duelRate=duel&&fin?Math.max(pace,Math.min(3,(tw-tf)/Math.max(0.5,duel-0.45))):pace;
   if(gaps)for(let k=0;k+1<gaps.length;k++){const a=gaps[k].t,b=gaps[k+1].t,r=(b-a)/gaps[k].g;if(r<pace)wins.push({a:a-0.06*r/pace,b,s:Math.max(minRate,r*0.92)});}   // never slower than minRate: beads keep moving; cards that still don't fit wait in a queue
-  if(!noslow){let cool=-1e9;for(const e of rec.events)if(e.type==='near'&&e.t>cool){cool=e.t+3.5;wins.push({a:e.t-0.04,b:e.t+0.32,s:0.45,e});}
-    if(rec.winner!=null)wins.push({a:rec.endT-0.4,b:1e9,s:0.25,win:true});}
+  if(!noslow){let cool=-1e9;for(const e of rec.events)if(e.type==='near'&&e.t>cool&&!(duel&&e.t>=tf)){cool=e.t+3.5;wins.push({a:e.t-0.04,b:e.t+0.32,s:0.45,e});}
+    if(rec.winner!=null)wins.push(duel?{a:tw,b:1e9,s:0.35,win:true}:{a:rec.endT-0.4,b:1e9,s:0.25,win:true});}
   const sim=[],ts=[];let s=0,k=pace,endF=null;
   for(let f=0;f<maxFrames;f++){const tv=f*FDT;
-    if(tv>=INTRO){let tgt=pace;for(const w of wins)if(s>=w.a&&s<w.b)tgt=Math.min(tgt,w.s);
-      k+=(tgt-k)*(tgt<k?0.65:0.18);s=Math.min(rec.endT,s+FDT*k);}
+    if(tv>=INTRO){let tgt=(s>=tf&&s<tw)?duelRate:pace;for(const w of wins)if(s>=w.a&&s<w.b)tgt=Math.min(tgt,w.s);
+      k+=(tgt-k)*(tgt<k?0.65:(s>=tf?0.4:0.18));s=Math.min(rec.endT,s+FDT*k);}
     sim.push(s);ts.push(k);
     if(endF===null&&s>=rec.endT-1e-9)endF=f;
     if(endF!==null&&(f-endF)*FDT>=outro)break;}
