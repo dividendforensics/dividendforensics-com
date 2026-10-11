@@ -52,7 +52,7 @@ if fin_t is not None and win_t is not None and win_t > fin_t:
     riser = hp(rng.uniform(-1, 1, len(t))) * ramp * 0.3 + np.sin(2*np.pi*np.cumsum(220 + 900*ramp)/SR) * ramp * 0.12
     place(mus, fin_t, riser)
 # slow-motion: music goes "underwater" (low-pass) while time is slowed
-mask = np.interp(t_all, ft, [1.0 if x['ts'] < 0.6 else 0.0 for x in fr])
+mask = np.interp(t_all, ft, [1.0 if x['ts'] < 0.3 else 0.0 for x in fr])   # only deep slow-mo goes underwater; reading-pace stretches stay clear
 mask = np.convolve(mask, np.ones(int(0.06*SR)) / int(0.06*SR), mode='same')
 lp = np.zeros_like(mus); a = 0.04; yl = yr = 0.0
 for k in range(N):
