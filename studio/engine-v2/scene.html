@@ -58,7 +58,7 @@ const N=cfg.entries.length;
 const REC=simulate({n:N,seed:SEED,spikes:cfg.spikes,shrink:cfg.shrink,...SC.sim});
 const PACE=SC.sim.maxT?1:+(qs.get('pace')||cfg.pace||0.9);   // match plays at 80% speed so eliminations can be read; outcome unaffected
 // every elimination gets reading time in the centre: 1.2 s, 1.9 s with a quip, +2.0 s for the "final two" card after 3rd place
-const FINALG=1.6, SHOWG=d=>(cfg.entries[d.i].quip?1.5:1.0)+(d.rank===3?FINALG:0);
+const FINALG=2.0, SHOWG=d=>(cfg.entries[d.i].quip?1.5:1.0)+(d.rank===3?FINALG:0);
 // reading gaps for every elimination except the deciding one; the final two get DUEL video seconds, the winner card OUTRO
 const DUEL=4.0, OUTRO=2.3, WIN_IN=0.3;
 const TL=timeline(REC,{noslow:!!qs.get('noslow'),outro:SC.sim.maxT?0:OUTRO,pace:PACE,duel:SC.sim.maxT?null:DUEL,gaps:REC.deaths.filter(d=>d.rank>2).map(d=>({t:d.t,g:SHOWG(d)}))}), RP=replayer(REC);
@@ -262,7 +262,7 @@ const H={
     if(e.rank>1){const it={name:b.name,icon:b.icon,quip:b.quip,color:b.color,rank:e.rank,t},cur=shown[shown.length-1],g=SHOWG(REC.deaths.find(d=>d.i===e.i))-(e.rank===3?FINALG:0);
       if(cur&&t<cur.end&&cur.items.length<3){cur.items.unshift(it);cur.end=Math.max(cur.end,t+1.0);cur.pop=t;}
       else shown.push({start:t,end:t+g,pop:t,items:[it]});}},
-  final(e,t){evA(t,'final');const last=shown[shown.length-1];banner={kind:'final',t:last?last.end:t+0.9};duel=true;for(const a of alive())a.hp=2;},
+  final(e,t){evA(t,'final');const last=shown[shown.length-1];banner={kind:'final',t,third:last&&last.items[0]};   /* the moment two remain; 3rd place rides along on this card */duel=true;for(const a of alive())a.hp=2;},
   win(e,t){winner=balls[e.i];winT=t;trauma=0.4;evA(t,'win',{i:e.i});},
   bounce(e,t){const b=balls[e.i];evA(t,'bounce',{i:b.i,v:e.v,x:b.x/R0});},
   near(e,t){const b=balls[e.i];evA(t,'near',{i:b.i,x:b.x/R0});if(TL.near.has(e))nearPop={b,t};},
@@ -394,9 +394,11 @@ function hud(A){
   else if(tv<INTRO+0.6){const k=(tv-INTRO)/0.6;o.save();o.translate(OW/2,STRIP_Y);o.scale(1+k*0.6,1+k*0.6);txt('GO!',0,0,150,'#ffe14d',DISPLAY,'center',16,1-k);o.restore();}
   if(!winner){const age=banner?tv-banner.t:-1;
     if(!(banner&&age>=0&&age<FINALG))drawCenter();
-    else{const a=Math.min(1,age*5)*(age>FINALG-0.25?(FINALG-age)/0.25:1),cy=STRIP_Y;
-      o.save();o.globalAlpha=a*0.62;o.fillStyle='#05030d';o.beginPath();o.roundRect(110,cy-100,OW-220,210,40);o.fill();o.restore();
-      txt('최후의 2개',OW/2,cy-18,96,'#ff4d6d',DISPLAY,'center',14,a);txt('HP 2 · 단판 결투',OW/2,cy+64,44,'#ffffff',DISPLAY,'center',8,a);}}
+    else{const a=Math.min(1,age*5)*(age>FINALG-0.25?(FINALG-age)/0.25:1),cy=STRIP_Y,th=banner.third,q=th&&th.quip;
+      o.save();o.globalAlpha=a*0.62;o.fillStyle='#05030d';o.beginPath();o.roundRect(70,cy-100,OW-140,q?270:215,40);o.fill();o.restore();
+      const pa=age<0.14?1.18-age/0.14*0.18:1;o.save();o.translate(OW/2,cy-28);o.scale(pa,pa);txt('최후의 2개',0,0,92,'#ff4d6d',DISPLAY,'center',14,a);o.restore();
+      if(th)dieLine(th,cy+56,0.62,a*0.9,1);
+      if(q){const qq=`"${q}"`,qs2=Math.min(38,38*(OW-200)/Math.max(1,textW(qq,38)));txt(qq,OW/2,cy+118,qs2,'#ffffff',B7,'center',7,a*Math.min(1,Math.max(0,(age-0.25)/0.15)));}}}
   if(winner){const wt=tv-winT+0.6,k=Math.min(1,Math.max(0,(wt-0.9)/0.35)),x0=Math.min(1,Math.max(0,(wt-0.9)/0.5))-1,e=Math.max(0,1+2.70158*x0*x0*x0+1.70158*x0*x0);
     if(k>0){o.save();o.globalAlpha=k*0.72;o.fillStyle='#05030d';o.fillRect(0,0,OW,OH);o.restore();
       const cx=OW/2,cy=OH/2-170,R=250*e,fa=Math.max(0,1-(wt-0.9)/0.14)*0.18;
