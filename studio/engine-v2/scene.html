@@ -56,9 +56,9 @@ const ICONS=Object.assign(buildIcons(cfg.entries.map(e=>e.icon||'').filter(i=>i[
 // ---------- simulation (done before any frame) ----------
 const N=cfg.entries.length;
 const REC=simulate({n:N,seed:SEED,spikes:cfg.spikes,shrink:cfg.shrink,...SC.sim});
-const PACE=SC.sim.maxT?1:+(qs.get('pace')||cfg.pace||0.8);   // match plays at 80% speed so eliminations can be read; outcome unaffected
+const PACE=SC.sim.maxT?1:+(qs.get('pace')||cfg.pace||0.9);   // match plays at 80% speed so eliminations can be read; outcome unaffected
 // every elimination gets reading time in the centre: 1.2 s, 1.9 s with a quip, +2.0 s for the "final two" card after 3rd place
-const SHOWG=d=>(cfg.entries[d.i].quip?1.9:1.2)+(d.rank===3?2.0:0);
+const FINALG=1.6, SHOWG=d=>(cfg.entries[d.i].quip?1.5:1.0)+(d.rank===3?FINALG:0);
 const TL=timeline(REC,{noslow:!!qs.get('noslow'),outro:SC.sim.maxT?0:5.8,pace:PACE,gaps:REC.deaths.map(d=>({t:d.t,g:SHOWG(d)}))}), RP=replayer(REC);
 const BR=REC.BR, R0=REC.R0, NS=REC.NS;
 const crnd=mb32(mixSeed(SEED*7919+13));   // cosmetic only (particles, confetti)
@@ -124,7 +124,7 @@ lip.rotation.x=-Math.PI/2;lip.position.y=0.05;scene.add(lip);
 // shrinking fence = the physics ring: low smoky band + polished rail, spikes point inward at bead height
 const railMat=new THREE.MeshPhysicalMaterial({color:0xe2ddff,metalness:.9,roughness:.2,clearcoat:1,clearcoatRoughness:.05,emissive:0x5a3cff,emissiveIntensity:.06});
 const bandMat=new THREE.MeshPhysicalMaterial({color:0x8a7fd6,roughness:.25,metalness:.1,transparent:true,opacity:.2,side:THREE.DoubleSide,depthWrite:false});
-const outMat=new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.42,depthWrite:false});
+const outMat=new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.22,depthWrite:false});
 let rail=null,band=null,outside=null,builtR=-1;
 function buildFence(r){if(Math.abs(r-builtR)<0.003)return;builtR=r;
   for(const m of [rail,band,outside])if(m){scene.remove(m);m.geometry.dispose();}
@@ -195,7 +195,7 @@ function floorRing(x,y,color,k=1){const w=rings[rNext];rNext=(rNext+1)%rings.len
 // ---------- camera: fixed high angle; distance follows the fence so the whole arena stays in frame ----------
 const EL=58*Math.PI/180, camera=new THREE.PerspectiveCamera(30,RW/RH,0.1,200);
 const ACY=+(qs.get('acy')||840), ARR=500;
-function placeCamera(ringR,shake){const Rv=ringR+0.4, hf=Math.atan(Math.tan(camera.fov*Math.PI/360)*camera.aspect), D=Rv*(OW/2)/(ARR*Math.tan(hf));
+function placeCamera(ringR,shake){const Rv=Math.max(3.7,ringR+0.4), hf=Math.atan(Math.tan(camera.fov*Math.PI/360)*camera.aspect), D=Rv*(OW/2)/(ARR*Math.tan(hf));
   camera.position.set(shake.x,Math.sin(EL)*D+shake.y,Math.cos(EL)*D);camera.lookAt(shake.x*0.3,0,0);
   camera.setViewOffset(RW,RH,0,(OH/2-ACY)*RH/OH,RW,RH);camera.updateMatrixWorld();}
 
@@ -255,10 +255,12 @@ const H={
     for(const m of [b.contact,b.cast,b.caustic,b.body,b.shell,b.food])if(m)m.visible=false;
     evA(t,'die',{i:b.i,x:b.x/R0,rank:e.rank});
     // the record knows when the next elimination comes: show the quip only if it can stay up long enough to read
-    // centre card queue: a card never cuts the previous one short (two eliminations in the same physics step wait in line)
-    const prev=shown[shown.length-1],g=SHOWG(REC.deaths.find(d=>d.i===e.i)),start=prev?Math.max(t,prev.start+prev.g):t;
-    if(e.rank>1)shown.push({name:b.name,icon:b.icon,quip:b.quip,color:b.color,rank:e.rank,t,start,g:e.rank===3?g-2.0:g});},
-  final(e,t){evA(t,'final');const last=shown[shown.length-1];banner={kind:'final',t:last?last.start+last.g:t+0.9};duel=true;for(const a of alive())a.hp=2;},
+    // elimination card under the arena, shown at once: an elimination that arrives while a card is still up joins it
+    // as another line (max 3), so a card is never late; a quip shows only when the card holds a single elimination
+    if(e.rank>1){const it={name:b.name,icon:b.icon,quip:b.quip,color:b.color,rank:e.rank,t},cur=shown[shown.length-1],g=SHOWG(REC.deaths.find(d=>d.i===e.i))-(e.rank===3?FINALG:0);
+      if(cur&&t<cur.end&&cur.items.length<3){cur.items.unshift(it);cur.end=Math.max(cur.end,t+1.0);cur.pop=t;}
+      else shown.push({start:t,end:t+g,pop:t,items:[it]});}},
+  final(e,t){evA(t,'final');const last=shown[shown.length-1];banner={kind:'final',t:last?last.end:t+0.9};duel=true;for(const a of alive())a.hp=2;},
   win(e,t){winner=balls[e.i];winT=t;trauma=0.4;evA(t,'win',{i:e.i});},
   bounce(e,t){const b=balls[e.i];evA(t,'bounce',{i:b.i,v:e.v,x:b.x/R0});},
   near(e,t){const b=balls[e.i];evA(t,'near',{i:b.i,x:b.x/R0});if(TL.near.has(e))nearPop={b,t};},
@@ -363,11 +365,13 @@ function drawDeaths(){const list=shown.filter(d=>tv>=d.t&&tv-d.t<SHOW);if(!list.
   if(qOn){const q=`"${nw.quip}"`,qs2=Math.min(40,40*(OW-160)/Math.max(1,textW(q,40)));txt(q,OW/2,STRIP_Y+60,qs2,'#ffffff',B7,'center',7,fade(nw)*Math.min(1,Math.max(0,(ag-0.15)/0.15)));}
   old.forEach((d,k)=>dieLine(d,STRIP_Y+68+q0+k*60,0.6,0.8*fade(d),1));}
 // centre card over the arena: one elimination at a time, rank + food + name, quip underneath
-function drawCenter(){let cur=null;for(const d of shown)if(tv>=d.start&&tv<d.start+d.g)cur=d;if(!cur)return;
-  const ag=tv-cur.start,a=Math.min(1,ag/0.08)*(ag>cur.g-0.22?Math.max(0,(cur.g-ag)/0.22):1),pop=ag<0.14?1.22-ag/0.14*0.22:1,cy=ACY-30,hasQ=!!cur.quip;
-  o.save();o.globalAlpha=a*0.62;o.fillStyle='#05030d';o.beginPath();o.roundRect(70,cy-95,OW-140,hasQ?250:180,40);o.fill();o.restore();
-  dieLine(cur,cy-8,1.1,a,pop);
-  if(hasQ){const q=`"${cur.quip}"`,qs2=Math.min(46,46*(OW-200)/Math.max(1,textW(q,46)));txt(q,OW/2,cy+82,qs2,'#ffffff',B7,'center',8,a*Math.min(1,Math.max(0,(ag-0.18)/0.15)));}}
+function drawCenter(){let cur=null;for(const d of shown)if(tv>=d.start&&tv<d.end)cur=d;if(!cur)return;
+  const ag=tv-cur.start,left=cur.end-tv,a=Math.min(1,ag/0.08)*(left<0.2?Math.max(0,left/0.2):1),pa=tv-cur.pop,pop=pa<0.14?1.18-pa/0.14*0.18:1,cy=STRIP_Y,
+    nw=cur.items[0],more=cur.items.slice(1),hasQ=!!nw.quip&&!more.length,h=(hasQ?250:180)+more.length*64;
+  o.save();o.globalAlpha=a*0.62;o.fillStyle='#05030d';o.beginPath();o.roundRect(70,cy-95,OW-140,h,40);o.fill();o.restore();
+  dieLine(nw,cy-8,1.1,a,pop);
+  if(hasQ){const q=`"${nw.quip}"`,qs2=Math.min(46,46*(OW-200)/Math.max(1,textW(q,46)));txt(q,OW/2,cy+82,qs2,'#ffffff',B7,'center',8,a*Math.min(1,Math.max(0,(ag-0.18)/0.15)));}
+  more.forEach((d,k)=>dieLine(d,cy+80+k*64,0.68,a*0.85,1));}
 function drawDie(bn,age){if(age>1.6)return;const a=age>1.3?(1.6-age)/0.3:1,pop=age<0.12?1.18-age/0.12*0.18:1;
   strip(a);dieLine(bn,STRIP_Y-10,1,a,pop);
   if(bn.quip){const q=`"${bn.quip}"`,qs2=Math.min(38,38*(OW-160)/Math.max(1,textW(q,38)));txt(q,OW/2,STRIP_Y+60,qs2,'#ffffff',B7,'center',7,a*Math.min(1,Math.max(0,(age-0.2)/0.15)));}}
@@ -387,8 +391,8 @@ function hud(A){
     if(tv>=0.3){o.save();o.translate(OW/2,STRIP_Y+120);o.scale(1.4-k*0.4,1.4-k*0.4);txt(String(Math.max(1,Math.min(3,left))),0,0,130,'#ffe14d',DISPLAY,'center',14,1-k*0.5);o.restore();}}
   else if(tv<INTRO+0.6){const k=(tv-INTRO)/0.6;o.save();o.translate(OW/2,STRIP_Y);o.scale(1+k*0.6,1+k*0.6);txt('GO!',0,0,150,'#ffe14d',DISPLAY,'center',16,1-k);o.restore();}
   if(!winner){const age=banner?tv-banner.t:-1;
-    if(!(banner&&age>=0&&age<2.0))drawCenter();
-    else{const a=Math.min(1,age*5)*(age>1.75?(2.0-age)/0.25:1),cy=ACY-30;
+    if(!(banner&&age>=0&&age<FINALG))drawCenter();
+    else{const a=Math.min(1,age*5)*(age>FINALG-0.25?(FINALG-age)/0.25:1),cy=STRIP_Y;
       o.save();o.globalAlpha=a*0.62;o.fillStyle='#05030d';o.beginPath();o.roundRect(110,cy-100,OW-220,210,40);o.fill();o.restore();
       txt('최후의 2개',OW/2,cy-18,96,'#ff4d6d',DISPLAY,'center',14,a);txt('HP 2 · 단판 결투',OW/2,cy+64,44,'#ffffff',DISPLAY,'center',8,a);}}
   if(winner){const wt=tv-winT,k=Math.min(1,Math.max(0,(wt-0.9)/0.5)),x0=Math.min(1,Math.max(0,(wt-0.9)/0.7))-1,e=Math.max(0,1+2.70158*x0*x0*x0+1.70158*x0*x0);

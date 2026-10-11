@@ -8,9 +8,9 @@ import {FDT,INTRO} from './sim.mjs';
 // pace: base playback speed of the match (0.8 = 80%); presentation only, the record is unchanged
 // gaps: [{t, g}] per elimination (sim time t, video seconds g it needs on screen). If the next elimination
 // would arrive sooner, the stretch between them plays slower so every elimination gets its g seconds.
-export function timeline(rec,{noslow=false,outro=5.8,maxFrames=120*30,pace=1,gaps=null}={}){
+export function timeline(rec,{noslow=false,outro=5.8,maxFrames=120*30,pace=1,gaps=null,minRate=0.4}={}){
   const wins=[];
-  if(gaps)for(let k=0;k+1<gaps.length;k++){const a=gaps[k].t,b=gaps[k+1].t,r=(b-a)/gaps[k].g;if(r<pace)wins.push({a:a-0.06*r/pace,b,s:Math.max(0.015,r*0.92)});}   // starts a hair early so the ease-down is done by the elimination
+  if(gaps)for(let k=0;k+1<gaps.length;k++){const a=gaps[k].t,b=gaps[k+1].t,r=(b-a)/gaps[k].g;if(r<pace)wins.push({a:a-0.06*r/pace,b,s:Math.max(minRate,r*0.92)});}   // never slower than minRate: beads keep moving; cards that still don't fit wait in a queue
   if(!noslow){let cool=-1e9;for(const e of rec.events)if(e.type==='near'&&e.t>cool){cool=e.t+3.5;wins.push({a:e.t-0.04,b:e.t+0.32,s:0.45,e});}
     if(rec.winner!=null)wins.push({a:rec.endT-0.4,b:1e9,s:0.25,win:true});}
   const sim=[],ts=[];let s=0,k=pace,endF=null;
