@@ -45,7 +45,7 @@ console.log('fonts:',FONT_FAMS.map(f=>f.fam).join(' + '),'| glyph slices not loa
 
 // ---------- art ----------
 const loadImg=u=>new Promise(res=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=u;});
-const AS={bg:await loadImg('./assets/bg-main.jpg'),rays:await loadImg('./assets/rays.png')};
+const AS={bg:await loadImg('./assets/bg-main.jpg'),rays:await loadImg('./assets/rays.png'),floor:await loadImg('./assets/arena-floor.png')};
 const EXTRA={};
 await Promise.all(cfg.entries.filter(e=>e.slug).map(async e=>{const im=await loadImg(`./assets/icons/${e.slug}.png`);if(im){e.icon='#'+e.slug;EXTRA[e.icon]=im;}}));
 console.log('icon pictures:',Object.keys(EXTRA).length+'/'+cfg.entries.length);
@@ -71,12 +71,14 @@ const LDIR=new THREE.Vector3(-0.55,1.0,-0.6).normalize();   // toward the key li
 // background (?bg=): navy = dark gradient behind the tray | stage = tray stands on a dark floor under a spotlight
 //   cream = tray on a light warm table (product-shot) | bokeh = navy with soft out-of-focus lights
 const BG=qs.get('bg')||cfg.bg||'navy';
-const BGS={navy:{vig:.55},bokeh:{vig:.5},
+const BGS={navy:{vig:.55},bokeh:{vig:.5},gpt:{vig:.4},gptfloor:{vig:.4},
   stage:{vig:.45,ground:['#4a3d7a','#251e45','#0d0b1c'],sky:'#0d0b1c'},
   cream:{vig:.12,ground:['#fff7ea','#efe2cc','#c9b79b'],sky:'#c9b79b'}}, BGC=BGS[BG]||BGS.navy;
-if(BG==='bokeh'||BG==='navy'){const c=document.createElement('canvas');c.width=RW;c.height=RH;const g=c.getContext('2d');
+if(BG==='bokeh'||BG==='navy'||BG.startsWith('gpt')){const c=document.createElement('canvas');c.width=RW;c.height=RH;const g=c.getContext('2d');
   const lg=g.createLinearGradient(0,0,0,RH);lg.addColorStop(0,'#141030');lg.addColorStop(.45,'#0e0b24');lg.addColorStop(1,'#060510');g.fillStyle=lg;g.fillRect(0,0,RW,RH);
-  if(AS.bg){g.globalAlpha=.10;g.filter='blur(6px) saturate(.6)';const k=Math.max(RW/AS.bg.width,RH/AS.bg.height);g.drawImage(AS.bg,(RW-AS.bg.width*k)/2,(RH-AS.bg.height*k)/2,AS.bg.width*k,AS.bg.height*k);g.filter='none';g.globalAlpha=1;}
+  if(AS.bg&&BG.startsWith('gpt')){const k=Math.max(RW/AS.bg.width,RH/AS.bg.height);g.drawImage(AS.bg,(RW-AS.bg.width*k)/2,(RH-AS.bg.height*k)/2,AS.bg.width*k,AS.bg.height*k);   /* GPT background art, full strength */
+    g.fillStyle='rgba(6,4,16,.25)';g.fillRect(0,0,RW,RH);}
+  else if(AS.bg){g.globalAlpha=.10;g.filter='blur(6px) saturate(.6)';const k=Math.max(RW/AS.bg.width,RH/AS.bg.height);g.drawImage(AS.bg,(RW-AS.bg.width*k)/2,(RH-AS.bg.height*k)/2,AS.bg.width*k,AS.bg.height*k);g.filter='none';g.globalAlpha=1;}
   const rg=g.createRadialGradient(RW/2,RH*0.43,0,RW/2,RH*0.43,RW*0.75);rg.addColorStop(0,'rgba(80,64,160,.20)');rg.addColorStop(1,'rgba(80,64,160,0)');g.fillStyle=rg;g.fillRect(0,0,RW,RH);
   if(BG==='bokeh'){const br=mb32(77);g.filter=`blur(${RW*0.012}px)`;for(let k=0;k<34;k++){const x=br()*RW,y=br()<0.5?br()*RH*0.28:RH*(0.72+br()*0.28),r=RW*(0.03+br()*0.07);
     g.fillStyle=['rgba(255,190,90,','rgba(255,110,160,','rgba(110,210,255,','rgba(190,150,255,'][k%4]+(0.12+br()*0.22)+')';g.beginPath();g.arc(x,y,r,0,7);g.fill();}g.filter='none';}
@@ -101,6 +103,7 @@ const floorTex=canvasTex(1024,(g,S)=>{const rg=g.createRadialGradient(S/2,S/2,0,
   g.fillStyle=rg;g.fillRect(0,0,S,S);g.strokeStyle='rgba(255,255,255,.035)';g.lineWidth=2;for(let r=60;r<S/2;r+=64){g.beginPath();g.arc(S/2,S/2,r,0,7);g.stroke();}
   for(let i=0;i<9000;i++){g.fillStyle=`rgba(255,255,255,${crnd()*0.03})`;g.fillRect(crnd()*S,crnd()*S,2,2);}});
 const TR=R0+0.85;
+if(BG==='gptfloor'&&AS.floor){floorTex.image=AS.floor;floorTex.needsUpdate=true;}   // GPT arena floor art on the tray
 const floor=new THREE.Mesh(new THREE.CircleGeometry(TR,128),new THREE.MeshStandardMaterial({map:floorTex,roughness:.62,metalness:0,envMapIntensity:.35}));
 floor.rotation.x=-Math.PI/2;scene.add(floor);
 if(BGC.ground){const gt=canvasTex(1024,(g,S)=>{const rg=g.createRadialGradient(S/2,S/2,0,S/2,S/2,S/2);rg.addColorStop(0,BGC.ground[0]);rg.addColorStop(.16,BGC.ground[1]);rg.addColorStop(.6,BGC.ground[2]);rg.addColorStop(1,BGC.ground[2]);g.fillStyle=rg;g.fillRect(0,0,S,S);});
