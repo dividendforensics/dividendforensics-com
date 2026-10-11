@@ -46,7 +46,7 @@ console.log('fonts:',FONT_FAMS.map(f=>f.fam).join(' + '),'| glyph slices not loa
 // ---------- art ----------
 const loadImg=u=>new Promise(res=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=u;});
 const BGQ=qs.get('bg')||cfg.bg||'navy';
-const AS={bg:await loadImg(BGQ==='nebula'?'./assets/bg-nebula.jpg':'./assets/bg-main.jpg'),rays:await loadImg('./assets/rays.png'),floor:await loadImg('./assets/arena-floor.png')};
+const AS={bg:await loadImg(BGQ==='nebula'?'./assets/bg-nebula.jpg':'./assets/bg-main.jpg'),rays:await loadImg('./assets/rays.png'),floor:await loadImg('./assets/arena-floor.png'),floorCalm:await loadImg('./assets/arena-floor-calm.png'),sparkle:await loadImg('./assets/sparkle.png')};
 const EXTRA={};
 await Promise.all(cfg.entries.filter(e=>e.slug).map(async e=>{const im=await loadImg(`./assets/icons/${e.slug}.png`);if(im){e.icon='#'+e.slug;EXTRA[e.icon]=im;}}));
 console.log('icon pictures:',Object.keys(EXTRA).length+'/'+cfg.entries.length);
@@ -106,6 +106,7 @@ const floorTex=canvasTex(1024,(g,S)=>{const rg=g.createRadialGradient(S/2,S/2,0,
   for(let i=0;i<9000;i++){g.fillStyle=`rgba(255,255,255,${crnd()*0.03})`;g.fillRect(crnd()*S,crnd()*S,2,2);}});
 const TR=R0+0.85;
 if(BG==='gptfloor'&&AS.floor){floorTex.image=AS.floor;floorTex.needsUpdate=true;}   // GPT arena floor art on the tray
+else if(qs.get('floor')!=='code'&&AS.floorCalm){floorTex.image=AS.floorCalm;floorTex.needsUpdate=true;}   // user-supplied calm floor (default); ?floor=code = procedural
 const floor=new THREE.Mesh(new THREE.CircleGeometry(TR,128),new THREE.MeshStandardMaterial({map:floorTex,roughness:.62,metalness:0,envMapIntensity:.35}));
 floor.rotation.x=-Math.PI/2;scene.add(floor);
 if(BGC.ground){const gt=canvasTex(1024,(g,S)=>{const rg=g.createRadialGradient(S/2,S/2,0,S/2,S/2,S/2);rg.addColorStop(0,BGC.ground[0]);rg.addColorStop(.16,BGC.ground[1]);rg.addColorStop(.6,BGC.ground[2]);rg.addColorStop(1,BGC.ground[2]);g.fillStyle=rg;g.fillRect(0,0,S,S);});
@@ -254,7 +255,13 @@ const H={
   win(e,t){winner=balls[e.i];winT=t;trauma=0.4;evA(t,'win',{i:e.i});},
   bounce(e,t){const b=balls[e.i];evA(t,'bounce',{i:b.i,v:e.v,x:b.x/R0});},
   near(e,t){const b=balls[e.i];evA(t,'near',{i:b.i,x:b.x/R0});if(TL.near.has(e))nearPop={b,t};},
-  clack(e,t){const a=balls[e.i],b=balls[e.j];evA(t,'clack',{x:(a.x+b.x)/2/R0});}};
+  clack(e,t){const a=balls[e.i],b=balls[e.j];evA(t,'clack',{x:(a.x+b.x)/2/R0});
+    const a2=balls[e.i],b2=balls[e.j],v=RP.imp[e.i]?RP.imp[e.i].v:0,[ax,ay]=sample(REC,e.i,e.t),[bx,by]=sample(REC,e.j,e.t);
+    if(v>15&&t>glintCool){glintCool=t+1.5;glints.push({x:(ax+bx)/2,y:(ay+by)/2,r:a2.r,t});}}};   // only the hardest hits, at most one per 1.5 s, at the real contact point
+let glintCool=-1;   // hard bead-bead hit: one small star glint at the contact point
+const glints=[];
+// star glint (user-supplied sparkle art), additive; size in px
+function glint(x,y,size,alpha,rot=0){if(!AS.sparkle||alpha<=0)return;o.save();o.globalCompositeOperation='lighter';o.globalAlpha=Math.min(1,alpha);o.translate(x,y);o.rotate(rot);o.drawImage(AS.sparkle,-size/2,-size/2,size,size);o.restore();}
 
 window.frame=function(draw=true){
   tv=f*FDT;const fi=Math.min(f,TL.frames-1),s0=simT;ts=TL.ts[fi];simT=TL.sim[fi];
@@ -301,7 +308,7 @@ window.frame=function(draw=true){
       if(p.y<p.s){p.y=p.s;p.vy*=-0.35;p.vx*=0.7;p.vz*=0.7;}p.rx+=pdt*8;p.ry+=pdt*6;}
     dummy.position.set(p.x,p.y,p.z);dummy.rotation.set(p.rx,p.ry,0);dummy.scale.setScalar(p.life>0?p.s*Math.min(1,p.life/p.max*2):0);dummy.updateMatrix();pMesh.setMatrixAt(k,dummy.matrix);}
   pMesh.instanceMatrix.needsUpdate=true;
-  for(const w of rings){if(!w.m.visible)continue;w.t+=pdt*1.5;if(w.t>=1){w.m.visible=false;continue;}w.m.scale.setScalar((0.6+w.t*1.6)*(w.k||1)*BR);w.m.material.opacity=(1-w.t)*0.5;}
+  for(const w of rings){if(!w.m.visible)continue;w.t+=FDT*1.8;if(w.t>=1){w.m.visible=false;continue;}w.m.scale.setScalar((0.6+w.t*1.6)*(w.k||1)*BR);w.m.material.opacity=(1-w.t)*0.5;}
   renderer.render(scene,camera);
 
   // ---- 2D ----
@@ -315,6 +322,8 @@ window.frame=function(draw=true){
     txt(b.name,sx,sy+rp*0.6,fz|0,'#ffffff',DISPLAY,'center',Math.max(5,fz*0.26));
     if(b.hp<(duel?2:3)){const tot=duel?2:3;for(let h=0;h<tot;h++){o.beginPath();o.arc(sx+(h-(tot-1)/2)*rp*0.3,sy-rp*0.72,Math.max(5,rp*0.1),0,7);
       o.fillStyle=h<b.hp?(b.hp===1?'#ff2d55':'#ffffff'):'rgba(20,14,40,.75)';o.fill();o.lineWidth=2.5;o.strokeStyle='rgba(0,0,0,.75)';o.stroke();}}}
+  for(let k=glints.length-1;k>=0;k--){const g=glints[k],age=tv-g.t;if(age>0.32||winner){glints.splice(k,1);continue;}
+    const [gx,gy,gr]=screenOf(g,g.x,g.y,g.r*1.15),k1=Math.sin(Math.PI*Math.min(1,age/0.32));glint(gx,gy,gr*1.7*k1,0.85*k1,age*1.2);}
   if(nearPop&&tv-nearPop.t<0.95&&nearPop.b.alive&&!winner){const nb=nearPop.b,age=tv-nearPop.t,[px,py,pr]=screenOf(nb,nb.x,nb.y,nb.r),
     sc=age<0.12?0.6+age/0.12*0.5:1.1-Math.min(0.1,(age-0.12)*0.3),al=age>0.7?(0.95-age)/0.25:1;
     o.save();o.translate(Math.max(200,Math.min(OW-200,px)),Math.max(330,py-pr*1.7));o.scale(sc,sc);txt('아슬아슬!',0,0,58,'#ffe14d',DISPLAY,'center',12,al);o.restore();}
@@ -367,7 +376,8 @@ function hud(A){
       if(ca>0)for(const p of CF){const y=-80+(wt-0.9)*p.sp*640-p.ph*620;if(y<-60||y>OH+40)continue;
         o.save();o.globalAlpha=ca*0.95;o.translate(p.x*OW+Math.sin(wt*3+p.sw)*40,y);o.rotate(p.rot+wt*p.rs);o.fillStyle=p.c;o.fillRect(-p.sz/2,-p.sz*.28,p.sz,p.sz*.56);o.restore();}
       if(R>1){o.save();o.translate(cx,cy+R*1.08);o.scale(1,.22);const g=o.createRadialGradient(0,0,0,0,0,R*1.1);g.addColorStop(0,rgba(winner.color,.45));g.addColorStop(1,rgba(winner.color,0));o.fillStyle=g;o.beginPath();o.arc(0,0,R*1.1,0,7);o.fill();o.restore();
-        bead25(cx,cy,R,winner.color,winner.icon,null);}
+        bead25(cx,cy,R,winner.color,winner.icon,null);
+        const sw2=wt-1.25;if(sw2>0)glint(cx-R*.45,cy-R*.5,R*1.5*(sw2<0.35?Math.sin(Math.PI/2*sw2/0.35):1)*(0.85+0.15*Math.sin(wt*5)),sw2<0.35?1:0.6+0.25*Math.sin(wt*3),wt*0.3);}   // the winner's highlight catches the light
       const bw=wt-1.3,hop=bw>0&&bw<0.9?Math.abs(Math.sin(bw*3.5))*46*(1-bw/0.9):0;
       emo('👑',cx,cy-R-70-hop,170*Math.min(1,e));
       txt('생존 1위',cx,cy-R-215,72,'#ffffff',DISPLAY,'center',12,k);
