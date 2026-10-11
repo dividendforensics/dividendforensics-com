@@ -28,7 +28,7 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
       const page=await browser.newPage({viewport:{width:1080,height:1920}});
       page.on('pageerror',e=>console.error('[page]',e.message));
       page.on('console',m=>{if(m.type()==='error'&&!/404/.test(m.text()))console.error('[console]',m.text());else if(/^(fonts|icon pictures|assets):/.test(m.text()))console.log('  '+m.text());});
-      await page.goto(`http://127.0.0.1:${port}/scene.html?cfg=${encodeURIComponent(cfgPath)}&seed=${seed}${fontsArg?'&fonts='+encodeURIComponent(fontsArg):''}`);
+      await page.goto(`http://127.0.0.1:${port}/scene.html?cfg=${encodeURIComponent(cfgPath)}&seed=${seed}${argv.includes('--noslow')?'&noslow=1':''}${fontsArg?'&fonts='+encodeURIComponent(fontsArg):''}`);
       await page.waitForFunction('window.ready===true',null,{timeout:120000});
       if(hudTest){const cases=[];for(const rank of [1,12,100])for(const [name,icon] of [['치킨','🍗'],['김치찌개','🍲'],['아주아주아주긴음식이름입니다',''],['ENTP','']])cases.push({rank,name,icon});
         const res=await page.evaluate(c=>window.__hudTest(c),cases);await page.close();
@@ -58,7 +58,7 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
       const up=cfg.upload||{};
       fs.writeFileSync(path.join(out,'meta.txt'),[`제목: ${up.title||cfg.title.join(' ')}`,'',
         `설명: ${up.description||''}`,'',`해시태그: ${(up.hashtags||[]).join(' ')}`,'',
-        `결과 (seed ${seed}): 1위 ${log.winner}`,`오디오(최종 MP4 측정): true peak ${am.tp} dBTP, ${am.I} LUFS`,...log.ranks.map(r=>`${r.rank}위 ${r.name} (${r.t}초)`)].join('\n'));
+        `결과 (seed ${seed}, 물리 ${log.phys}): 1위 ${log.winner}`,`오디오(최종 MP4 측정): true peak ${am.tp} dBTP, ${am.I} LUFS`,...log.ranks.map(r=>`${r.rank}위 ${r.name} (${r.t}초)`)].join('\n'));
       if(!keep)fs.rmSync(fdir,{recursive:true,force:true});
       fs.rmSync(path.join(out,'audio.wav'),{force:true});
       console.log(`done ${name}: ${(i/30).toFixed(1)}s video, winner ${log.winner}, ${((Date.now()-t0)/1000).toFixed(0)}s render`);

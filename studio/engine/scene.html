@@ -130,7 +130,7 @@ const balls=cfg.entries.map((e,i)=>{
     fragmentShader:`uniform vec3 cIn;uniform float uFlash,uWarn;varying vec3 vN;varying vec3 vV;
     void main(){vec3 N=normalize(vN),V=normalize(vV);vec3 c=mix(cIn,cIn/max(max(cIn.r,max(cIn.g,cIn.b)),.01),.5);/* lift dark entrant colours so every bead reads as glass */float nv=clamp(dot(N,V),0.,1.);float rr=sqrt(max(0.,1.-nv*nv));float edge=smoothstep(.5,.97,rr);            /* rim band = outer ~half of the radius*/
       vec3 L=normalize(vec3(-.55,.7,.6));vec3 R=reflect(-L,N);
-      float spec=pow(max(dot(R,V),0.),70.)*1.1+pow(max(dot(R,V),0.),9.)*.22;      /* soft white reflection, upper left*/
+      float spec=pow(max(dot(R,V),0.),70.)*1.5+pow(max(dot(R,V),0.),9.)*.3;      /* soft white reflection, upper left*/
       float bounce=pow(clamp(-N.y*.8+.2,0.,1.),2.2)*(1.-edge*.4);                  /* faint colour reflection low in the bead*/
       vec3 body=mix(c*.42+vec3(.14),c*.95,edge)*(1.-.18*smoothstep(.9,1.,rr));   /* clear centre, deep colour band, slightly darker lip                                    // clear, pale centre; deep colour at the rim*/
       float rimLine=smoothstep(.9,.975,rr)*(1.-smoothstep(.975,1.,rr));                    /* thin bright outline*/
@@ -147,7 +147,7 @@ const balls=cfg.entries.map((e,i)=>{
   const ltex=new THREE.CanvasTexture(lc);ltex.colorSpace=THREE.SRGBColorSpace;
   const label=new THREE.Sprite(new THREE.SpriteMaterial({map:ltex,depthTest:false,transparent:true}));
   label.visible=false;
-  const a=i/N*Math.PI*2, r=R0*0.55, sa=rnd()*Math.PI*2, sp=7+rnd()*3;
+  const a=i/N*Math.PI*2, r=R0*0.62, sa=rnd()*Math.PI*2, sp=7+rnd()*3;
   const b={i,name:e.name,icon:e.icon||'',quip:e.quip||'',color:e.color,col,mesh,blob,rim,mat,label,lctx:lc.getContext('2d'),ltex,
     sq:0,sqa:0,x:Math.cos(a)*r,y:Math.sin(a)*r,vx:Math.cos(sa)*sp,vy:Math.sin(sa)*sp,r:BR,hp:3,alive:true,inv:0,flash:0,roll:0,trail:[]};
   labelDraw(b);return b;});
@@ -210,14 +210,17 @@ function txt(s,x,y,size,color,font=DISPLAY,align='center',stroke=10,alpha=1){o.s
 
 // ---------- simulation state ----------
 const INTRO=2.4;
+// Physics runs on a FIXED step in simulation time. Slow-motion only changes how much simulation time
+// each video frame consumes, so the outcome for a seed never depends on presentation choices.
+const PHYS_VER='p5-fixedstep-120hz-start062', DTF=FDT/4; let simAcc=0;
 let f=0,tv=0,simT=0,ring=R0,spin=0,spinV=0.6,ts=1,slowUntil=-1,slowScale=1,trauma=0,flash=0,started=false;
 let winner=null,winT=0,finalT=-1,banner=null,beatPhase=0,beatIdx=0,beatPulse=0,hPhase=0,hPulse=0,sub=0;
 const focus=new THREE.Vector2(),focusT=new THREE.Vector2(),dead=[],events=[],frames=[];
 let zMul=1,duel=false,nearCool=0,nearPop=null;
 const alive=()=>balls.filter(b=>b.alive);
 const tension=()=>1-(alive().length-1)/(N-1);
-const ev=(type,o={})=>events.push({t:+(tv+sub*FDT).toFixed(4),type,...o});
-function slow(dur,scale){if(tv+dur>slowUntil||scale<slowScale){slowUntil=tv+dur;slowScale=scale;}}   // time only; the camera never chases
+const ev=(type,o={})=>events.push({t:+(tv+sub*FDT).toFixed(4),type,...o});   // sub = fraction (0..1) of the current frame
+function slow(dur,scale){if(qs.get('noslow'))return;if(tv+dur>slowUntil||scale<slowScale){slowUntil=tv+dur;slowScale=scale;}}   // time only; the camera never chases
 function hit(b,nx,ny){b.hp--;b.inv=0.35;b.flash=1;labelDraw(b);trauma=Math.min(0.5,trauma+0.2);
   burst(b.x+nx*b.r,b.y+ny*b.r,'#ff2d55',16,6,0.055,0.5);wave(b.x,b.y,b.color,0.3);b.vx-=nx*3;b.vy-=ny*3;ev('hit',{i:b.i,x:b.x/R0});
   if(b.hp<=0)die(b);}
@@ -256,7 +259,7 @@ window.frame=function(draw=true){
     if(tv>=INTRO){started=true;ev('go');trauma=0.5;}}
   // time scale
   if(tv<slowUntil)ts+=(slowScale-ts)*0.5;else{ts+=(1-ts)*0.18;slowScale=1;}
-  if(started&&!winner){const n=4;for(sub=0;sub<n;sub++){step(FDT*ts/n);if(winner)break;}sub=0;}
+  if(started&&!winner){simAcc+=FDT*ts;const nst=Math.floor(simAcc/DTF+1e-9);for(let k=0;k<nst&&!winner;k++){sub=k/nst;step(DTF);}simAcc-=nst*DTF;sub=0;}
   else if(!started)for(const b of balls)b.y+=Math.sin(tv*4+b.i)*0.004;
   const T=tension(),A=alive().length;
   // music clock (real time, unaffected by slow-mo)
@@ -279,9 +282,9 @@ window.frame=function(draw=true){
   auraMesh.material.opacity=.13*calm3;tailMesh.material.opacity=.17*calm3;stars.material.opacity=(AS.bg?.2:.8)*calm3;
   // arena visuals
   ringMesh.scale.setScalar(ring);neon.scale.setScalar(ring);halo.scale.setScalar(ring);disc.scale.setScalar(ring);spikeGroup.scale.setScalar(ring);spikeGroup.rotation.z=spin;
-  const hue=A<=3&&!winner?0.98:0.72;ringMat.emissive.setHSL(hue,0.95,0.55);ringMat.emissiveIntensity=0.12+beatPulse*0.3;
-  neonMat.color.setHSL(hue,1,0.62).multiplyScalar(1.05+beatPulse*0.3+hPulse*1.2);halo.material.opacity=.025+beatPulse*.015;
-  spikeMat.emissiveIntensity=0.35+beatPulse*0.4;
+  const hue=A<=3&&!winner?0.98:0.72;ringMat.emissive.setHSL(hue,0.95,0.55);ringMat.emissiveIntensity=0.07+beatPulse*0.15;
+  neonMat.color.setHSL(hue,1,0.62).multiplyScalar(0.82+beatPulse*0.2+hPulse*1.1);halo.material.opacity=.025+beatPulse*.015;
+  spikeMat.emissiveIntensity=0.3+beatPulse*0.25;
   const sp=stars.geometry.attributes.position;for(let i=0;i<SN;i++){let z=sp.array[i*3+2]+FDT*(4+20*T)*ts;if(z>12)z-=90;sp.array[i*3+2]=z;}sp.needsUpdate=true;
   grid.position.z=(tv*(2+10*T))%2;
   // balls
@@ -310,8 +313,8 @@ window.frame=function(draw=true){
   // post uniforms
   fx.uniforms.uAb.value=0.08+sh*0.55+(inSlow?0.18:0);fx.uniforms.uPulse.value=hPulse;fx.uniforms.uRed.value=A<=3&&!winner?1:0;
   fx.uniforms.uFlash.value=flash;fx.uniforms.uTime.value=tv;fx.uniforms.uZoom.value=(inSlow?0.6:0)+beatPulse*0.15;
-  if(AS.bg)scene.backgroundIntensity=0.74+beatPulse*0.04+flash*0.2;
-  bloom.strength=0.33+beatPulse*0.03+flash*0.8;
+  if(AS.bg)scene.backgroundIntensity=0.6+beatPulse*0.03+flash*0.15;
+  bloom.strength=0.28+beatPulse*0.02+flash*0.7;
   if(!draw){frames.push({t:+tv.toFixed(4),ts:+ts.toFixed(3),alive:A});f++;return {done:!!winner&&tv-winT>5.8,t:tv,alive:A};}
   composer.render(FDT);
   // ---------- HUD ----------
@@ -331,12 +334,12 @@ window.frame=function(draw=true){
       txt(b.name,sx,sy+fs*0.05,fs|0,'#ffffff',DISPLAY,'center',Math.max(5,fs*0.17));o.restore();}
     { // glass: crescent + dot highlight upper-left, thin inner rim shade, soft colour reflection low
       o.save();o.beginPath();o.arc(sx,sy,rp*0.98,0,7);o.clip();
-      o.lineCap='round';o.strokeStyle='rgba(255,255,255,.62)';o.lineWidth=Math.max(3,rp*0.085);o.beginPath();o.arc(sx,sy,rp*0.8,Math.PI*1.08,Math.PI*1.42);o.stroke();
-      o.fillStyle='rgba(255,255,255,.9)';o.beginPath();o.ellipse(sx-rp*0.5,sy-rp*0.5,rp*0.11,rp*0.07,-0.75,0,7);o.fill();
+      o.lineCap='round';o.strokeStyle='rgba(255,255,255,.8)';o.lineWidth=Math.max(3,rp*0.09);o.beginPath();o.arc(sx,sy,rp*0.8,Math.PI*1.08,Math.PI*1.42);o.stroke();
+      o.fillStyle='rgba(255,255,255,1)';o.beginPath();o.ellipse(sx-rp*0.5,sy-rp*0.5,rp*0.11,rp*0.07,-0.75,0,7);o.fill();
       o.fillStyle='rgba(255,255,255,.5)';o.beginPath();o.ellipse(sx+rp*0.52,sy+rp*0.56,rp*0.15,rp*0.065,0.8,0,7);o.fill();
       const rg=o.createRadialGradient(sx,sy,rp*0.7,sx,sy,rp*1.0);rg.addColorStop(0,'rgba(0,0,0,0)');rg.addColorStop(1,'rgba(0,0,0,.28)');o.fillStyle=rg;o.fillRect(sx-rp,sy-rp,rp*2,rp*2);
       o.strokeStyle=b.color;o.globalAlpha=.4;o.lineWidth=Math.max(2,rp*0.07);o.beginPath();o.arc(sx,sy,rp*0.82,Math.PI*0.2,Math.PI*0.78);o.stroke();o.restore();}
-    for(let h=0;h<3;h++){if(duel&&h>1)continue;o.beginPath();o.arc(sx+(h-(duel?0.5:1))*rp*0.42,sy-rp-rp*0.28,Math.max(4,rp*0.13),0,7);
+    if(b.hp<(duel?2:3))for(let h=0;h<3;h++){if(duel&&h>1)continue;o.beginPath();o.arc(sx+(h-(duel?0.5:1))*rp*0.42,sy-rp-rp*0.28,Math.max(4,rp*0.13),0,7);
       o.fillStyle=h<b.hp?(b.hp===1?'#ff2d55':'#ffffff'):'rgba(255,255,255,.2)';o.fill();o.lineWidth=3;o.strokeStyle='rgba(0,0,0,.8)';o.stroke();}}
   if(banner&&banner.kind==='die'&&!winner){const ag=tv-banner.t;
     }
@@ -448,7 +451,7 @@ window.__hudTest=cases=>cases.map(c=>{let worst=1e9;for(let age=0;age<=1.55;age+
   const d=o.getImageData(0,1330,OW,210).data;let mn=OW,mx=0;
   for(let y=0;y<210;y+=2)for(let x=0;x<OW;x++){const i=(y*OW+x)*4;if(d[i]+d[i+1]+d[i+2]>45){if(x<mn)mn=x;if(x>mx)mx=x;}}
   if(mx>0)worst=Math.min(worst,mn,OW-1-mx);}return{...c,minMargin:worst};});
-window.getLog=()=>({seed:SEED,n:N,fps:FPS,dur:tv,events,frames,
+window.getLog=()=>({phys:PHYS_VER,seed:SEED,n:N,fps:FPS,dur:tv,events,frames,
   winner:winner&&winner.name,ranks:[...dead].sort((a,b)=>a.rank-b.rank).map(d=>({rank:d.rank,name:d.name,t:+d.t.toFixed(2)}))});
 window.ready=true;
 </script>
