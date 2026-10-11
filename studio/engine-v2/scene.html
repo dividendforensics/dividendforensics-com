@@ -56,7 +56,8 @@ const ICONS=Object.assign(buildIcons(cfg.entries.map(e=>e.icon||'').filter(i=>i[
 // ---------- simulation (done before any frame) ----------
 const N=cfg.entries.length;
 const REC=simulate({n:N,seed:SEED,spikes:cfg.spikes,shrink:cfg.shrink,...SC.sim});
-const TL=timeline(REC,{noslow:!!qs.get('noslow'),outro:SC.sim.maxT?0:5.8}), RP=replayer(REC);
+const PACE=SC.sim.maxT?1:+(qs.get('pace')||cfg.pace||0.8);   // match plays at 80% speed so eliminations can be read; outcome unaffected
+const TL=timeline(REC,{noslow:!!qs.get('noslow'),outro:SC.sim.maxT?0:5.8,pace:PACE}), RP=replayer(REC);
 const BR=REC.BR, R0=REC.R0, NS=REC.NS;
 const crnd=mb32(mixSeed(SEED*7919+13));   // cosmetic only (particles, confetti)
 
@@ -242,7 +243,7 @@ function bead25(cx,cy,r,col,icon,sq,warn=0,flash=0){o.save();o.translate(cx,cy);
 // ---------- replay ----------
 let f=0,tv=0,simT=0,ring=R0,spin=0,ts=1,trauma=0,flash=0,started=false;
 let winner=null,winT=0,banner=null,beatPhase=0,beatIdx=0,beatPulse=0,hPhase=0,hPulse=0,duel=false,nearPop=null;
-const dead=[],events=[],frames=[];
+const dead=[],events=[],frames=[],shown=[];
 const alive=()=>balls.filter(b=>b.alive);
 const evA=(t,type,o={})=>events.push({t:+t.toFixed(4),type,...o});
 const H={
@@ -250,8 +251,11 @@ const H={
   die(e,t){const b=balls[e.i];b.alive=false;b.dieT=t;dead.push({name:b.name,icon:b.icon,color:b.color,rank:e.rank,t:e.t});
     burst(W(b.x,b.y,b.r),b.color,34,4.2,0.07,1.1);floorRing(b.x,b.y,b.color,1.6);trauma=Math.max(trauma,0.18);
     for(const m of [b.contact,b.cast,b.caustic,b.body,b.shell,b.food])if(m)m.visible=false;
-    evA(t,'die',{i:b.i,x:b.x/R0,rank:e.rank});banner={kind:'die',name:b.name,icon:b.icon,quip:b.quip,color:b.color,rank:e.rank,t};},
-  final(e,t){evA(t,'final');banner={kind:'final',t:t+0.9,pre:banner};duel=true;for(const a of alive())a.hp=2;},
+    evA(t,'die',{i:b.i,x:b.x/R0,rank:e.rank});
+    // the record knows when the next elimination comes: show the quip only if it can stay up long enough to read
+    const di=REC.deaths.findIndex(d=>d.i===e.i),nx=REC.deaths[di+1],gap=nx?(nx.t-e.t)/PACE:1e9;
+    shown.push({name:b.name,icon:b.icon,quip:b.quip,color:b.color,rank:e.rank,t,quipOK:!!b.quip&&e.rank>2&&gap>=1.3});},
+  final(e,t){evA(t,'final');const last=shown[shown.length-1];banner={kind:'final',t:t+(last&&last.quipOK?1.9:0.9)};duel=true;for(const a of alive())a.hp=2;},
   win(e,t){winner=balls[e.i];winT=t;trauma=0.4;evA(t,'win',{i:e.i});},
   bounce(e,t){const b=balls[e.i];evA(t,'bounce',{i:b.i,v:e.v,x:b.x/R0});},
   near(e,t){const b=balls[e.i];evA(t,'near',{i:b.i,x:b.x/R0});if(TL.near.has(e))nearPop={b,t};},
@@ -336,15 +340,27 @@ window.frame=function(draw=true){
 
 // ---------- HUD: short title + count on top, announcements in a strip under the arena ----------
 const STRIP_Y=+(qs.get('stripy')||1440);
-function strip(a){o.save();o.globalAlpha=a*0.55;o.fillStyle='#05030d';o.beginPath();o.roundRect(60,STRIP_Y-78,OW-120,170,26);o.fill();o.restore();}
-function drawDie(bn,age){if(age>1.6)return;const a=age>1.3?(1.6-age)/0.3:1,pop=age<0.12?1.18-age/0.12*0.18:1,
-  tier=bn.rank<=3?['#ffd23f','#dfe6ee','#e8955a'][bn.rank-1]:'#ff4d6d';
-  const rt=`${bn.rank}위`,nt=`${bn.name} 탈락`,gap=20,iw0=bn.icon?72:0;let rs=80,ns=60;
+function strip(a,h=170){o.save();o.globalAlpha=a*0.55;o.fillStyle='#05030d';o.beginPath();o.roundRect(60,STRIP_Y-78,OW-120,h,26);o.fill();o.restore();}
+// one elimination line: "N위 [icon] name 탈락", fitted to the width at the peak of its pop
+function dieLine(bn,y,size,a,pop){const tier=bn.rank<=3?['#ffd23f','#dfe6ee','#e8955a'][bn.rank-1]:'#ff4d6d';
+  const rt=`${bn.rank}위`,nt=`${bn.name} 탈락`,gap=20*size,iw0=bn.icon?72*size:0;let rs=80*size,ns=60*size;
   const tot0=textW(rt,rs)+gap+(bn.icon?iw0+gap*0.6:0)+textW(nt,ns),k=Math.min(1,(OW-160)/(tot0*1.18));rs*=k;ns*=k;const iw=iw0*k,tot=tot0*k;
-  strip(a);o.save();o.translate(OW/2,STRIP_Y-10);o.scale(pop,pop);let x=-tot/2;
-  txt(rt,x,0,rs,tier,DISPLAY,'left',12,a);x+=textW(rt,rs)+gap*k;
+  o.save();o.translate(OW/2,y);o.scale(pop,pop);let x=-tot/2;
+  txt(rt,x,0,rs,tier,DISPLAY,'left',12*size,a);x+=textW(rt,rs)+gap*k;
   if(bn.icon){ico(bn.icon,x+iw/2,0,iw/1.36,a);x+=iw+gap*0.6*k;}
-  txt(nt,x,0,ns,vis(bn.color),DISPLAY,'left',10,a);o.restore();
+  txt(nt,x,0,ns,vis(bn.color),DISPLAY,'left',10*size,a);o.restore();}
+// elimination stack under the arena: newest on top (with its quip when there is time to read it),
+// up to two earlier ones below it, each line stays SHOW seconds instead of being overwritten
+const SHOW=3.0;
+function drawDeaths(){const list=shown.filter(d=>tv>=d.t&&tv-d.t<SHOW);if(!list.length)return;
+  const fade=d=>{const ag=tv-d.t;return ag>SHOW-0.4?(SHOW-ag)/0.4:1;};
+  const nw=list[list.length-1],old=list.slice(0,-1).reverse().slice(0,2),ag=tv-nw.t,qOn=nw.quipOK,q0=qOn?70:0;
+  strip(Math.max(...list.map(fade)),150+q0+old.length*60);
+  dieLine(nw,STRIP_Y-10,1,fade(nw),ag<0.12?1.18-ag/0.12*0.18:1);
+  if(qOn){const q=`"${nw.quip}"`,qs2=Math.min(40,40*(OW-160)/Math.max(1,textW(q,40)));txt(q,OW/2,STRIP_Y+60,qs2,'#ffffff',B7,'center',7,fade(nw)*Math.min(1,Math.max(0,(ag-0.15)/0.15)));}
+  old.forEach((d,k)=>dieLine(d,STRIP_Y+68+q0+k*60,0.6,0.8*fade(d),1));}
+function drawDie(bn,age){if(age>1.6)return;const a=age>1.3?(1.6-age)/0.3:1,pop=age<0.12?1.18-age/0.12*0.18:1;
+  strip(a);dieLine(bn,STRIP_Y-10,1,a,pop);
   if(bn.quip){const q=`"${bn.quip}"`,qs2=Math.min(38,38*(OW-160)/Math.max(1,textW(q,38)));txt(q,OW/2,STRIP_Y+60,qs2,'#ffffff',B7,'center',7,a*Math.min(1,Math.max(0,(age-0.2)/0.15)));}}
 const CF=Array.from({length:150},()=>({x:crnd(),sp:.55+crnd()*.9,ph:crnd(),sw:crnd()*6,sz:14+crnd()*16,rot:crnd()*6.28,rs:(crnd()-.5)*10,c:['#ffd23f','#ffffff','#ff4d9a','#4cc9f0','#b8ff6a'][(crnd()*5)|0]}));
 function hud(A){
@@ -361,10 +377,9 @@ function hud(A){
     txt(cfg.pick,OW/2,STRIP_Y-20,54,'#ffffff',DISPLAY,'center',11);
     if(tv>=0.3){o.save();o.translate(OW/2,STRIP_Y+120);o.scale(1.4-k*0.4,1.4-k*0.4);txt(String(Math.max(1,Math.min(3,left))),0,0,130,'#ffe14d',DISPLAY,'center',14,1-k*0.5);o.restore();}}
   else if(tv<INTRO+0.6){const k=(tv-INTRO)/0.6;o.save();o.translate(OW/2,STRIP_Y);o.scale(1+k*0.6,1+k*0.6);txt('GO!',0,0,150,'#ffe14d',DISPLAY,'center',16,1-k);o.restore();}
-  if(banner&&!winner){const age=tv-banner.t;
-    if(banner.kind==='final'&&age<0&&banner.pre)drawDie(banner.pre,tv-banner.pre.t);
-    else if(banner.kind==='die')drawDie(banner,age);
-    else if(banner.kind==='final'&&age<2.2){const a=Math.min(1,age*4)*(age>1.8?(2.2-age)/0.4:1);strip(a);
+  if(!winner){const age=banner?tv-banner.t:-1;
+    if(!(banner&&age>=0&&age<2.2))drawDeaths();
+    else{const a=Math.min(1,age*4)*(age>1.8?(2.2-age)/0.4:1);strip(a);
       txt('최후의 2개',OW/2,STRIP_Y-12,84,'#ff4d6d',DISPLAY,'center',13,a);txt('HP 2 · 단판 결투',OW/2,STRIP_Y+60,40,'#ffffff',DISPLAY,'center',7,a);}}
   if(winner){const wt=tv-winT,k=Math.min(1,Math.max(0,(wt-0.9)/0.5)),x0=Math.min(1,Math.max(0,(wt-0.9)/0.7))-1,e=Math.max(0,1+2.70158*x0*x0*x0+1.70158*x0*x0);
     if(k>0){o.save();o.globalAlpha=k*0.72;o.fillStyle='#05030d';o.fillRect(0,0,OW,OH);o.restore();

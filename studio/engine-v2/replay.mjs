@@ -5,13 +5,14 @@ import {FDT,INTRO} from './sim.mjs';
 // video frame -> simulation time. Slow-motion windows are chosen from the record:
 //   near miss (hp 1, close to a spike): 0.45x for ~0.35 sim-s, at most one per 3.5 sim-s
 //   final kill: eases to 0.25x for the last 0.4 sim-s before the deciding hit
-export function timeline(rec,{noslow=false,outro=5.8,maxFrames=120*30}={}){
+// pace: base playback speed of the match (0.8 = 80%); presentation only, the record is unchanged
+export function timeline(rec,{noslow=false,outro=5.8,maxFrames=120*30,pace=1}={}){
   const wins=[];
   if(!noslow){let cool=-1e9;for(const e of rec.events)if(e.type==='near'&&e.t>cool){cool=e.t+3.5;wins.push({a:e.t-0.04,b:e.t+0.32,s:0.45,e});}
     if(rec.winner!=null)wins.push({a:rec.endT-0.4,b:1e9,s:0.25,win:true});}
-  const sim=[],ts=[];let s=0,k=1,endF=null;
+  const sim=[],ts=[];let s=0,k=pace,endF=null;
   for(let f=0;f<maxFrames;f++){const tv=f*FDT;
-    if(tv>=INTRO){let tgt=1;for(const w of wins)if(s>=w.a&&s<w.b)tgt=Math.min(tgt,w.s);
+    if(tv>=INTRO){let tgt=pace;for(const w of wins)if(s>=w.a&&s<w.b)tgt=Math.min(tgt,w.s);
       k+=(tgt-k)*(tgt<k?0.5:0.18);s=Math.min(rec.endT,s+FDT*k);}
     sim.push(s);ts.push(k);
     if(endF===null&&s>=rec.endT-1e-9)endF=f;

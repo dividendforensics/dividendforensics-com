@@ -5,7 +5,7 @@ const {chromium}=require('playwright');const http=require('http');const fs=requi
 const {execFileSync,spawnSync}=require('child_process');
 const ROOT=__dirname, MIME={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.woff2':'font/woff2','.woff':'font/woff'};
 const argv=process.argv.slice(2), opt=k=>{const i=argv.indexOf(k);return i>=0?argv[i+1]:null;};
-const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&!['--seeds','--shots','--fonts','--look','--scn','--bg'].includes(argv[i-1]));
+const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&!['--seeds','--shots','--fonts','--look','--scn','--bg','--from','--to'].includes(argv[i-1]));
 const look=opt('--look')||'v3d', scn=opt('--scn')||'game', bg=opt('--bg');
 const seedsArg=opt('--seeds'), keep=argv.includes('--keep'), maxSec=+(opt('--max')||70);
 // --shots 45,200,600: quick look — simulate every frame but only render/save these, no audio/video
@@ -26,7 +26,7 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
     const cfg=JSON.parse(fs.readFileSync(path.join(ROOT,cfgPath)));
     const seeds=seedsArg?seedsArg.split(',').map(Number):[cfg.seed||1];
     for(const seed of seeds){
-      const name=path.basename(cfgPath,'.json')+'-s'+seed+(scn!=='game'?'-'+scn:'')+'-'+look+(bg?'-'+bg:''), out=path.join(ROOT,'out',(shots||simOnly||hudTest)?'_scratch':'',name), fdir=path.join(out,'frames'); // previews never touch real render output
+      const name=path.basename(cfgPath,'.json')+'-s'+seed+(scn!=='game'?'-'+scn:'')+'-'+look+(bg?'-'+bg:'')+(opt('--from')!=null?'-part':''), out=path.join(ROOT,'out',(shots||simOnly||hudTest)?'_scratch':'',name), fdir=path.join(out,'frames'); // previews never touch real render output
       if(!simOnly){fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(fdir,{recursive:true});}
       const page=await browser.newPage({viewport:{width:1080,height:1920}});
       page.on('pageerror',e=>console.error('[page]',e.message));
@@ -37,7 +37,8 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
         const res=await page.evaluate(c=>window.__hudTest(c),cases);await page.close();
         for(const x of res)console.log(`hudtest ${String(x.rank).padStart(3)}위 | ${x.name.padEnd(14)} | min margin ${Math.round(x.minMargin)}px ${x.minMargin<30?'  <-- TOO TIGHT':''}`);continue;}
       if(simOnly){let q;do{q=await page.evaluate(()=>window.frame(false));}while(!q.done&&q.t<maxSec);const L=await page.evaluate(()=>window.getLog());await page.close();console.log(`sim ${name} winner ${L.winner}`);continue;}
-      const info=await page.evaluate(()=>window.info||{});const fromF=Math.round((info.from||0)*30),toF=info.to!=null?Math.round(info.to*30):1e9;
+      const info=await page.evaluate(()=>window.info||{});const fromS=opt('--from')!=null?+opt('--from'):(info.from||0),toS=opt('--to')!=null?+opt('--to'):info.to;
+      const fromF=Math.round(fromS*30),toF=toS!=null?Math.round(toS*30):1e9;
       const t0=Date.now();let i=0,r,saved=0;
       do{const want=shots?shots.has(i):(i>=fromF&&i<toF);
         const res=await page.evaluate(w=>{const r=window.frame(w);return{r,d:w?document.getElementById('out').toDataURL('image/jpeg',0.92).split(',')[1]:null};},want);
@@ -49,7 +50,7 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
       if(shots){await page.close();console.log(`shots ${name}: ${[...shots].join(',')} -> ${fdir} (${((Date.now()-t0)/1000).toFixed(0)}s)`);continue;}
       const log=await page.evaluate(()=>window.getLog());await page.close();
       fs.writeFileSync(path.join(out,'log.json'),JSON.stringify(log));
-      if(scn!=='game'){const mp4=path.join(out,name+'.mp4');   // comparison clip: picture only
+      if(scn!=='game'||opt('--from')!=null||opt('--to')!=null){const mp4=path.join(out,name+'.mp4');   // comparison clip / excerpt: picture only
         if(saved>1)execFileSync('ffmpeg',['-y','-loglevel','error','-framerate','30','-i',path.join(fdir,'%05d.jpg'),'-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',mp4]);
         else fs.copyFileSync(path.join(fdir,'00000.jpg'),path.join(out,name+'.jpg'));
         console.log(`done ${name}: ${saved} frames, ${((Date.now()-t0)/1000).toFixed(0)}s render (${((Date.now()-t0)/Math.max(1,saved)/1000).toFixed(2)}s/frame incl. skipped)`);continue;}
