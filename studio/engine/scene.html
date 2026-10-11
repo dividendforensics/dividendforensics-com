@@ -36,9 +36,13 @@ for(const slug of FONT_SLUGS){for(const w of ['900','800','700','index']){const 
 const DISPLAY=`%spx ${FONT_FAMS.map(f=>`"${f.fam}"`).join(',')},"Black Han Sans","Pretendard",sans-serif`, B9='900 %spx "Pretendard",sans-serif', B7='700 %spx "Pretendard",sans-serif';
 const F=(font,size)=>font.replace('%s',size);
 const allText=[...cfg.title,cfg.pick,cfg.cta,...cfg.entries.map(e=>e.name+(e.quip||'')),
-  '0123456789위탈락최후의개누가살아남을까생존남은GO!초·/…'].join('');
+  '0123456789위탈락최후의개누가살아남을까생존남은GO!초·/…결투단판HP . : ? % + - K.O 🏆👇🥈🥉'].join('');
 await Promise.all([...FONT_FAMS.map(f=>document.fonts.load(`${f.w} 80px "${f.fam}"`,allText)),document.fonts.load('80px "Black Han Sans"',allText),
   document.fonts.load('900 40px "Pretendard"',allText),document.fonts.load('700 40px "Pretendard"',allText)]);
+await document.fonts.ready;
+// every glyph the HUD can draw must have its font slice loaded BEFORE frame 0, or canvas silently draws a fallback face
+const MISSING=[...new Set(allText)].filter(ch=>ch.trim()&&!/\p{Extended_Pictographic}/u.test(ch)&&!FONT_FAMS.concat([{fam:'Black Han Sans',w:400}]).some(f=>document.fonts.check(`${f.w} 80px "${f.fam}"`,ch)));
+console.log('fonts:',FONT_FAMS.map(f=>f.fam).join(' + '),'| glyph slices not loaded:',MISSING.length?MISSING.join(''):'none');
 
 // ---------- optional art assets ----------
 const loadImg=u=>new Promise(res=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=u;});
@@ -179,9 +183,16 @@ composer.addPass(fx);composer.addPass(new OutputPass());
 // ---------- HUD ----------
 const out=document.getElementById('out'), o=out.getContext('2d');
 const ICONS=Object.assign(buildIcons(cfg.entries.map(e=>e.icon||'').filter(i=>i[0]==='@').map(i=>i.slice(1))),EXTRA);
-function txt(s,x,y,size,color,font=DISPLAY,align='center',stroke=10,alpha=1){o.save();o.globalAlpha=alpha;o.font=F(font,size);
-  o.textAlign=align;o.textBaseline='middle';o.lineJoin='round';o.lineWidth=stroke;o.strokeStyle='rgba(0,0,0,.9)';
-  if(stroke)o.strokeText(s,x,y);o.fillStyle=color;o.fillText(s,x,y);o.restore();}
+const NUMRUN=/[0-9A-Za-z.\/:!?%+\-]+|[^0-9A-Za-z.\/:!?%+\-]+/g, ISNUM=/^[0-9A-Za-z.\/:!?%+\-]/;
+function runFont(seg,size){const num=FONT_FAMS[0],ko=FONT_FAMS[FONT_FAMS.length-1],f=ISNUM.test(seg)?num:ko;return `${f.w} ${size}px "${f.fam}","Black Han Sans","Pretendard",sans-serif`;}
+function runs(s,size){return (String(s).match(NUMRUN)||[]).map(seg=>{o.font=runFont(seg,size);return{seg,font:o.font,w:o.measureText(seg).width};});}
+function textW(s,size){return runs(s,size).reduce((a,r)=>a+r.w,0);}
+function txt(s,x,y,size,color,font=DISPLAY,align='center',stroke=10,alpha=1){o.save();o.globalAlpha=alpha;
+  o.textBaseline='middle';o.lineJoin='round';o.lineWidth=stroke;o.strokeStyle='rgba(0,0,0,.9)';o.fillStyle=color;
+  if(font===DISPLAY&&FONT_FAMS.length>1){const rs=runs(s,size),tot=rs.reduce((a,r)=>a+r.w,0);let px=align==='center'?x-tot/2:align==='right'?x-tot:x;
+    o.textAlign='left';for(const r of rs){o.font=r.font;if(stroke)o.strokeText(r.seg,px,y);o.fillText(r.seg,px,y);px+=r.w;}}
+  else{o.font=F(font,size);o.textAlign=align;if(stroke)o.strokeText(s,x,y);o.fillText(s,x,y);}
+  o.restore();}
 
 // ---------- simulation state ----------
 const INTRO=2.4;
@@ -369,11 +380,20 @@ function emo(ch,x,y,size,alpha=1){o.save();o.globalAlpha=alpha;o.font=`${size|0}
   o.shadowColor='rgba(0,0,0,.55)';o.shadowBlur=size*0.18;o.shadowOffsetY=size*0.06;o.fillText(ch,x,y);o.restore();}
 function drawDie(bn,age){if(age>1.3)return;const pop=age<0.14?1.9-age/0.14*0.9:1, a=age>1.0?(1.3-age)/0.3:1,
   tier=bn.rank<=3?['#ffd23f','#dfe6ee','#e8955a'][bn.rank-1]:'#ff4d6d',shake=age<0.3?(0.3-age)*26:0;
+  const rt=`${bn.rank}위`,rfs=Math.min(150,150*((OW-2*70)/1.9)/Math.max(1,textW(rt,150)));
   o.save();o.translate(OW/2+Math.sin(age*90)*shake,555);o.scale(pop,pop);o.shadowColor=tier;o.shadowBlur=40;
-  txt(`${bn.rank}위`,0,0,150,tier,DISPLAY,'center',20,a);o.restore();
-  o.save();o.translate(OW/2,672);o.scale(Math.min(1,0.6+age*6),Math.min(1,0.6+age*6));const bt=`${bn.name} 탈락`;o.font=F(DISPLAY,76);const bw=o.measureText(bt).width,io=bn.icon?50:0;
-  txt(bt,io,0,76,vis(bn.color),DISPLAY,'center',14,a);if(bn.icon)ico(bn.icon,-bw/2+io-56,0,92,a);o.restore();
-  if(bn.quip)txt(`"${bn.quip}"`,OW/2,758,46,'#ffffff',B7,'center',9,a);}
+  txt(rt,0,0,rfs,tier,DISPLAY,'center',20,a);o.restore();
+  const bt=`${bn.name} 탈락`,iw=bn.icon?112:0,nfs=Math.min(76,76*(OW-2*50-iw)/Math.max(1,textW(bt,76)));
+  o.save();o.translate(OW/2,672);o.scale(Math.min(1,0.6+age*6),Math.min(1,0.6+age*6));const bw=textW(bt,nfs);
+  txt(bt,iw/2,0,nfs,vis(bn.color),DISPLAY,'center',14,a);if(bn.icon)ico(bn.icon,-bw/2+iw/2-56,0,Math.min(92,nfs*1.2),a);o.restore();
+  if(bn.quip){const qs2=Math.min(46,46*(OW-100)/Math.max(1,textW(`"${bn.quip}"`,46)));txt(`"${bn.quip}"`,OW/2,758,qs2,'#ffffff',B7,'center',9,a);}}
+// layout self-test: worst-case horizontal margin of the rank banner over its whole pop+shake animation
+window.__hudTest=cases=>cases.map(c=>{let worst=1e9;for(let age=0;age<=1.2;age+=0.01){
+  o.setTransform(1,0,0,1,0,0);o.fillStyle='#000';o.fillRect(0,0,OW,OH);
+  drawDie({rank:c.rank,name:c.name,icon:c.icon||'',color:c.color||'#ff4d6d',quip:c.quip||''},age);
+  const d=o.getImageData(0,380,OW,520).data;let mn=OW,mx=0;
+  for(let y=0;y<520;y+=2)for(let x=0;x<OW;x++){const i=(y*OW+x)*4;if(d[i]+d[i+1]+d[i+2]>45){if(x<mn)mn=x;if(x>mx)mx=x;}}
+  if(mx>0)worst=Math.min(worst,mn,OW-1-mx);}return{...c,minMargin:worst};});
 window.getLog=()=>({seed:SEED,n:N,fps:FPS,dur:tv,events,frames,
   winner:winner&&winner.name,ranks:[...dead].sort((a,b)=>a.rank-b.rank).map(d=>({rank:d.rank,name:d.name,t:+d.t.toFixed(2)}))});
 window.ready=true;

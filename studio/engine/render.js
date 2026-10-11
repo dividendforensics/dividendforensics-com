@@ -7,6 +7,7 @@ const cfgs=argv.filter((a,i)=>a.endsWith('.json')&&!['--seeds','--shots','--font
 const seedsArg=opt('--seeds'), keep=argv.includes('--keep'), maxSec=+(opt('--max')||70);
 // --shots 45,200,600: quick look — simulate every frame but only render/save these, no audio/video
 const fontsArg=opt('--fonts'); // e.g. --fonts bungee,black-han-sans
+const hudTest=argv.includes('--hudtest'); // layout self-test, prints worst-case margins
 const simOnly=argv.includes('--sim'); // simulate only: print the winner per seed, write nothing
 const shots=opt('--shots')?new Set(opt('--shots').split(',').map(Number)):null;
 function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
@@ -26,9 +27,12 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
       if(!simOnly){fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(fdir,{recursive:true});}
       const page=await browser.newPage({viewport:{width:1080,height:1920}});
       page.on('pageerror',e=>console.error('[page]',e.message));
-      page.on('console',m=>{if(m.type()==='error')console.error('[console]',m.text());});
+      page.on('console',m=>{if(m.type()==='error'&&!/404/.test(m.text()))console.error('[console]',m.text());else if(/^(fonts|icon pictures|assets):/.test(m.text()))console.log('  '+m.text());});
       await page.goto(`http://127.0.0.1:${port}/scene.html?cfg=${encodeURIComponent(cfgPath)}&seed=${seed}${fontsArg?'&fonts='+encodeURIComponent(fontsArg):''}`);
       await page.waitForFunction('window.ready===true',null,{timeout:120000});
+      if(hudTest){const cases=[];for(const rank of [1,12,100])for(const [name,icon] of [['치킨','🍗'],['김치찌개','🍲'],['아주아주아주긴음식이름입니다',''],['ENTP','']])cases.push({rank,name,icon});
+        const res=await page.evaluate(c=>window.__hudTest(c),cases);await page.close();
+        for(const x of res)console.log(`hudtest ${String(x.rank).padStart(3)}위 | ${x.name.padEnd(14)} | min margin ${Math.round(x.minMargin)}px ${x.minMargin<30?'  <-- TOO TIGHT':''}`);continue;}
       if(simOnly){let q;do{q=await page.evaluate(()=>window.frame(false));}while(!q.done&&q.t<maxSec);const L=await page.evaluate(()=>window.getLog());await page.close();console.log(`sim ${name} winner ${L.winner}`);continue;}
       const t0=Date.now();let i=0,r;
       do{const want=!shots||shots.has(i);
