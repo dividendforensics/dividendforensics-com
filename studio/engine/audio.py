@@ -60,6 +60,9 @@ for k in range(N):
 mus = mus * (1 - mask[:, None]) + lp * mask[:, None] * 1.6
 
 # --- sfx ---
+CHORDS = [[220, 261.63, 329.63], [174.61, 220, 261.63], [261.63, 329.63, 392.0], [196, 246.94, 293.66]]  # Am F C G
+ALIVE = [x['alive'] for x in fr]
+tn = np.zeros((N, 2))
 PENT = [220, 261.63, 293.66, 329.63, 392, 440, 523.25, 587.33, 659.25, 784, 880, 1046.5]
 last = {}
 def ok(k, gap, t):
@@ -67,9 +70,11 @@ def ok(k, gap, t):
     last[k] = t; return True
 for e in ev:
     t, k, x = e['t'], e['type'], e.get('x', 0.0)
-    if k == 'bounce' and e.get('v', 0) > 4 and ok('b', 0.035, t):
-        place(sfx, t, tone(PENT[e['i'] % len(PENT)], 0.3, 13), x, min(1, e['v'] / 14) * 0.22)
-    elif k == 'clack' and ok('c', 0.04, t): place(sfx, t, hp(noise(0.03, 120)), x, 0.22)
+    al = int(round(np.interp(t, ft, ALIVE)))
+    if k == 'bounce' and e.get('v', 0) > 4 and al > 2 and ok('b', 0.035 if al > 3 else 0.14, t):
+        ch = CHORDS[int(t / 2.4) % 4]; note = ch[e['i'] % 3] * (1, 2, 4)[(e['i'] // 3) % 3]      # notes follow a slow chord loop, so the rolling reads as a melody
+        place(tn, t, tone(note, 0.45, 8), x, min(1, e['v'] / 14) * (0.2 if al > 3 else 0.1))
+    elif k == 'clack' and al > 3 and ok('c', 0.05, t): place(sfx, t, hp(noise(0.03, 120)), x, 0.16)
     elif k == 'hit':
         place(sfx, t, kick(0.3, 120, 50, 10), x, 0.8); place(sfx, t, hp(noise(0.12, 35)), x, 0.55)
         place(sfx, t, tone(1250, 0.2, 18), x, 0.12)
@@ -90,10 +95,17 @@ for e in ev:
         for f in (220, 277.18, 329.63, 440, 554.37): place(sfx, t + 0.05, saw(f, 3.2, 6, 1.2), 0, 0.09)
         for j, f in enumerate((880, 1108.73, 1318.51, 1760)): place(sfx, t + 0.15 + 0.12 * j, tone(f, 0.6, 5), (j - 1.5) / 3, 0.2)
 
+def reverb(buf, sec=0.9, decay=5.0):
+    ir = rng.uniform(-1, 1, int(sec * SR)) * np.exp(-np.arange(int(sec * SR)) / SR * decay); ir /= np.sqrt((ir ** 2).sum())
+    n = 1 << int(np.ceil(np.log2(N + len(ir)))); F = np.fft.rfft(ir, n); out = np.zeros_like(buf)
+    for c in range(2): out[:, c] = np.fft.irfft(np.fft.rfft(buf[:, c], n) * F, n)[:N]
+    return out
+sfx = sfx + tn + 0.35 * reverb(tn)
 mix = mus * 0.8 + sfx
 mix = np.tanh(mix * 1.1) / np.tanh(1.1)
 mix = mix / (np.abs(mix).max() or 1) * 0.89
 with wave.open(os.path.join(out, 'audio.wav'), 'wb') as w:
     w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR)
     w.writeframes((mix * 32767).astype('<i2').tobytes())
-print(f'audio {N/SR:.1f}s, {len(ev)} events')
+pk2 = np.abs(mix).max(); rms = [float(np.sqrt((mix[i:i+SR] ** 2).mean())) for i in range(0, N - SR, SR)]
+print(f'audio {N/SR:.1f}s, {len(ev)} events, peak {pk2:.2f}, rms/sec min {min(rms):.3f} max {max(rms):.3f}, clipped samples {int((np.abs(mix) >= 0.999).sum())}')
