@@ -45,7 +45,7 @@ console.log('fonts:',FONT_FAMS.map(f=>f.fam).join(' + '),'| glyph slices not loa
 
 // ---------- art ----------
 const loadImg=u=>new Promise(res=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=u;});
-const BGQ=qs.get('bg')||cfg.bg||'navy';
+const BGQ=qs.get('bg')||cfg.bg||'nebula';
 const AS={bg:await loadImg(BGQ==='nebula'?'./assets/bg-nebula.jpg':'./assets/bg-main.jpg'),rays:await loadImg('./assets/rays.png'),floor:await loadImg('./assets/arena-floor.png'),floorCalm:await loadImg('./assets/arena-floor-calm.png'),sparkle:await loadImg('./assets/sparkle.png')};
 const EXTRA={};
 await Promise.all(cfg.entries.filter(e=>e.slug).map(async e=>{const im=await loadImg(`./assets/icons/${e.slug}.png`);if(im){e.icon='#'+e.slug;EXTRA[e.icon]=im;}}));
@@ -76,7 +76,7 @@ const LDIR=new THREE.Vector3(-0.55,1.0,-0.6).normalize();   // toward the key li
 
 // background (?bg=): navy = dark gradient behind the tray | stage = tray stands on a dark floor under a spotlight
 //   cream = tray on a light warm table (product-shot) | bokeh = navy with soft out-of-focus lights
-const BG=qs.get('bg')||cfg.bg||'navy';
+const BG=qs.get('bg')||cfg.bg||'nebula';
 const BGS={navy:{vig:.55},bokeh:{vig:.5},gpt:{vig:.4},gptfloor:{vig:.4},nebula:{vig:.25},
   stage:{vig:.45,ground:['#4a3d7a','#251e45','#0d0b1c'],sky:'#0d0b1c'},
   cream:{vig:.12,ground:['#fff7ea','#efe2cc','#c9b79b'],sky:'#c9b79b'}}, BGC=BGS[BG]||BGS.navy;
