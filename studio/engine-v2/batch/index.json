@@ -104,15 +104,7 @@
   "evidence": "Claims 4, 7, 8 (1-based list order): 7 = 점심값 1만원 시대 lunch-price phrase in 2026 news; 8 = 반줄 김밥 half-roll kimbap reported 2026-09-15; 4 = bibimbap ranked #3 in the 2025 overseas consumer preference survey."
  },
  {
-  "file": "batch/14-B04-friday-quit.json",
-  "id": "B04-friday-quit",
-  "seed": 125,
-  "winner": "옥수수",
-  "len": "16.0",
-  "evidence": "Claim 11 (1-based list order): 커터칼퇴근, a 2026 slang term for leaving work earlier than usual, explained in the 2026-01-14 and 2026-03-25 reports."
- },
- {
-  "file": "batch/15-B05-dessert-trend.json",
+  "file": "batch/14-B05-dessert-trend.json",
   "id": "B05-dessert-trend",
   "seed": 126,
   "winner": "핫허니",
@@ -120,7 +112,7 @@
   "evidence": "Claims 5, 6, 9, 12, 13 (1-based list order): 9 = 두쫀쿠 dessert slang (Jan 2026); 12 = 버터떡 trend (Mar 2026); 13 = ube menus after matcha (Apr 2026); 5 = chia pudding #4 in Google 2025 recipe searches; 6 = hot honey #1 in Google 2025 recipe searches."
  },
  {
-  "file": "batch/16-B06-spring-table.json",
+  "file": "batch/15-B06-spring-table.json",
   "id": "B06-spring-table",
   "seed": 127,
   "winner": "덮밥",
@@ -128,7 +120,7 @@
   "evidence": "Claims 4, 10 (1-based list order): 10 = 봄동비빔밥 dish trend reported 2026-02-27, with spring greens prices rising on demand in a March 2026 report; 4 = bibimbap #3 in the 2025 overseas consumer preference survey."
  },
  {
-  "file": "batch/17-B07-kimchi-lineup.json",
+  "file": "batch/16-B07-kimchi-lineup.json",
   "id": "B07-kimchi-lineup",
   "seed": 128,
   "winner": "파김치",
@@ -136,15 +128,7 @@
   "evidence": "Claims 3, 4 (1-based list order): 3 = kimchi #2 (9.5%) and 4 = bibimbap #3 (8.2%) in the 2025 Overseas Korean Food Consumer Survey."
  },
  {
-  "file": "batch/18-B08-soup-lineup.json",
-  "id": "B08-soup-lineup",
-  "seed": 129,
-  "winner": "된장찌개",
-  "len": "12.5",
-  "evidence": "Claims 1, 2 (1-based list order): 1 = vori-vori (lineup name 보리보리) ranked #1 soup in the TasteAtlas 2026 soup ranking (score 4.7, reported Sept 2026); 2 = same dish #1 of 100 in TasteAtlas 100 Best Dishes 2026."
- },
- {
-  "file": "batch/19-B09-sweet-vs-fruit.json",
+  "file": "batch/17-B09-sweet-vs-fruit.json",
   "id": "B09-sweet-vs-fruit",
   "seed": 130,
   "winner": "초코칩",
@@ -152,7 +136,7 @@
   "evidence": "Claims 16, 17 (1-based list order): 17 = global chocolate demand softened in 2026 after the 2024-25 cocoa price spike; 16 = 2026 fruit exports rising (strawberries, pears, grapes named)."
  },
  {
-  "file": "batch/20-B10-summer-drinks.json",
+  "file": "batch/18-B10-summer-drinks.json",
   "id": "B10-summer-drinks",
   "seed": 131,
   "winner": "밀크티",

@@ -1,8 +1,8 @@
-# 업로드 후보 20개 (근거 강한 항목만, 2026-10-13 기준)
+# 업로드 후보 18개 (근거 강한 항목만, 2026-10-13 기준)
 
-약한 근거 10개(메인 요리 구성)는 폐기했어요. 남은 항목은 모두 검증된 주장이 주제를 뒷받침합니다.
-근거 메모는 해당 주제를 뒷받침하는 검증된 주장의 번호입니다. 번호는 워크플로 결과의 검증된 주장 목록(1부터 시작) 기준입니다.
-예상 승자와 길이는 시뮬레이션으로 계산한 값이고, 드립 카드 시간을 반영한 실제 영상 길이는 렌더 후 확인해야 합니다.
+폐기: 메인 요리 10개(근거 약함), B04 금요일 커터칼퇴근(메뉴가 주장과 연결 안 됨), B08 국물 요리(근거 수프가 메뉴에 없음). 남은 항목은 검증된 주장이 메뉴 항목이나 주제를 직접 뒷받침합니다.
+근거 메모의 번호는 워크플로 결과의 검증된 주장 목록(1부터 시작) 기준입니다.
+예상 승자와 길이는 시뮬레이션 계산값이고, 드립 카드를 반영한 실제 길이는 렌더 후 확인해야 합니다.
 
 ## 01. 두쫀쿠·쫀득 디저트 12강 3초 픽 #shorts
 - 파일: `studio/engine-v2/batch/01-dessert-snack-drink-01.json`
@@ -108,56 +108,40 @@
 - 해시태그: #shorts #월요일 #점심메뉴 #점심값 #음식배틀
 - 근거: Claims 4, 7, 8 (1-based list order): 7 = 점심값 1만원 시대 lunch-price phrase in 2026 news; 8 = 반줄 김밥 half-roll kimbap reported 2026-09-15; 4 = bibimbap ranked #3 in the 2025 overseas consumer preference survey.
 
-## 14. 금요일 커터칼퇴근 간식 고르기 #shorts
-- 파일: `studio/engine-v2/batch/14-B04-friday-quit.json`
-- 시드 125 · 예상 승자 옥수수 · 예상 길이 약 16.0초(드립 카드 반영 전)
-- 메뉴: 호떡, 누룽지, 샐러드, 삼각김밥, 탕후루, 크로플, 군고구마, 옥수수, 호빵, 튀김, 팝콘, 과자
-- 설명: 12개 간식 중 하나만 3초 안에 고르고 댓글에 이름 하나를 남기는 형식입니다. 금요일 퇴근길에 고르는 것을 가정한 메뉴 배틀입니다.
-- 해시태그: #shorts #금요일 #퇴근 #커터칼퇴근 #간식배틀
-- 근거: Claim 11 (1-based list order): 커터칼퇴근, a 2026 slang term for leaving work earlier than usual, explained in the 2026-01-14 and 2026-03-25 reports.
-
-## 15. 2026 디저트 트렌드 12종 최애 고르기 #shorts
-- 파일: `studio/engine-v2/batch/15-B05-dessert-trend.json`
+## 14. 2026 디저트 트렌드 12종 최애 고르기 #shorts
+- 파일: `studio/engine-v2/batch/14-B05-dessert-trend.json`
 - 시드 126 · 예상 승자 핫허니 · 예상 길이 약 14.8초(드립 카드 반영 전)
 - 메뉴: 두쫀쿠, 버터떡, 우베라떼, 치아푸딩, 핫허니, 말차라떼, 찹쌀떡, 마카롱, 와플, 호두파이, 시나몬롤, 크림빵
 - 설명: 12개 디저트 중 하나만 3초 안에 고르고 댓글에 이름 하나를 남기는 형식입니다.
 - 해시태그: #shorts #디저트 #두쫀쿠 #디저트배틀 #디저트트렌드
 - 근거: Claims 5, 6, 9, 12, 13 (1-based list order): 9 = 두쫀쿠 dessert slang (Jan 2026); 12 = 버터떡 trend (Mar 2026); 13 = ube menus after matcha (Apr 2026); 5 = chia pudding #4 in Google 2025 recipe searches; 6 = hot honey #1 in Google 2025 recipe searches.
 
-## 16. 봄 밥상 메뉴 12종 중 최애 고르기 #shorts
-- 파일: `studio/engine-v2/batch/16-B06-spring-table.json`
+## 15. 봄 밥상 메뉴 12종 중 최애 고르기 #shorts
+- 파일: `studio/engine-v2/batch/15-B06-spring-table.json`
 - 시드 127 · 예상 승자 덮밥 · 예상 길이 약 17.1초(드립 카드 반영 전)
 - 메뉴: 봄동비빔밥, 쌈밥, 된장국, 쑥국, 나물밥, 잡곡밥, 달래무침, 냉이국, 오므라이스, 카레라이스, 덮밥, 오곡밥
 - 설명: 12개 밥상 메뉴 중 하나만 3초 안에 고르고 댓글에 이름 하나를 남기는 형식입니다.
 - 해시태그: #shorts #봄동 #비빔밥 #봄밥상 #음식배틀
 - 근거: Claims 4, 10 (1-based list order): 10 = 봄동비빔밥 dish trend reported 2026-02-27, with spring greens prices rising on demand in a March 2026 report; 4 = bibimbap #3 in the 2025 overseas consumer preference survey.
 
-## 17. 김치 종류 12종 3초 안에 고르기 #shorts
-- 파일: `studio/engine-v2/batch/17-B07-kimchi-lineup.json`
+## 16. 김치 종류 12종 3초 안에 고르기 #shorts
+- 파일: `studio/engine-v2/batch/16-B07-kimchi-lineup.json`
 - 시드 128 · 예상 승자 파김치 · 예상 길이 약 11.8초(드립 카드 반영 전)
 - 메뉴: 김치전, 김치볶음밥, 깍두기, 열무김치, 김치만두, 김치부침개, 묵은지, 배추김치, 백김치, 갓김치, 파김치, 오이소박이
 - 설명: 12개 김치 중 하나만 3초 안에 고르고 댓글에 이름 하나를 남기는 형식입니다.
 - 해시태그: #shorts #김치 #반찬 #김치배틀 #음식밈
 - 근거: Claims 3, 4 (1-based list order): 3 = kimchi #2 (9.5%) and 4 = bibimbap #3 (8.2%) in the 2025 Overseas Korean Food Consumer Survey.
 
-## 18. 국물 요리 12종 3초 안에 고르기 #shorts
-- 파일: `studio/engine-v2/batch/18-B08-soup-lineup.json`
-- 시드 129 · 예상 승자 된장찌개 · 예상 길이 약 12.5초(드립 카드 반영 전)
-- 메뉴: 갈비탕, 된장찌개, 미역국, 콩나물국, 떡국, 감자국, 호박죽, 팥죽, 수제비, 떡만둣국, 토마토스프, 콘수프
-- 설명: 12개 국물 요리 중 하나만 3초 안에 고르고 댓글에 이름 하나를 남기는 형식입니다.
-- 해시태그: #shorts #국물 #수프 #국물요리 #음식배틀
-- 근거: Claims 1, 2 (1-based list order): 1 = vori-vori (lineup name 보리보리) ranked #1 soup in the TasteAtlas 2026 soup ranking (score 4.7, reported Sept 2026); 2 = same dish #1 of 100 in TasteAtlas 100 Best Dishes 2026.
-
-## 19. 초콜릿 vs 과일 12종 3초 고르기 #shorts
-- 파일: `studio/engine-v2/batch/19-B09-sweet-vs-fruit.json`
+## 17. 초콜릿 vs 과일 12종 3초 고르기 #shorts
+- 파일: `studio/engine-v2/batch/17-B09-sweet-vs-fruit.json`
 - 시드 130 · 예상 승자 초코칩 · 예상 길이 약 12.4초(드립 카드 반영 전)
 - 메뉴: 초콜릿, 코코아, 카카오닙스, 초코칩, 코코넛, 바나나, 파인애플, 레몬, 오렌지, 사과, 무화과, 석류
 - 설명: 초콜릿과 과일이 섞인 12개 간식 중 하나만 3초 안에 고르고 댓글에 이름 하나를 남기는 형식입니다.
 - 해시태그: #shorts #초콜릿 #과일 #간식배틀 #디저트
 - 근거: Claims 16, 17 (1-based list order): 17 = global chocolate demand softened in 2026 after the 2024-25 cocoa price spike; 16 = 2026 fruit exports rising (strawberries, pears, grapes named).
 
-## 20. 여름 음료 12종 3초 안에 고르기 #shorts
-- 파일: `studio/engine-v2/batch/20-B10-summer-drinks.json`
+## 18. 여름 음료 12종 3초 안에 고르기 #shorts
+- 파일: `studio/engine-v2/batch/18-B10-summer-drinks.json`
 - 시드 131 · 예상 승자 밀크티 · 예상 길이 약 16.6초(드립 카드 반영 전)
 - 메뉴: 수박주스, 카페라떼, 콜드브루, 탄산음료, 스무디, 망고주스, 밀크티, 자몽에이드, 오렌지주스, 복숭아티, 녹차라떼, 보리차
 - 설명: 12개 음료 중 하나만 3초 안에 고르고 댓글에 이름 하나를 남기는 형식입니다.
