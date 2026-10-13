@@ -1,0 +1,212 @@
+[
+ {
+  "file": "batch/01-savory-01.json",
+  "id": "savory-01",
+  "series": "국물요리 토너먼트",
+  "evidence": "idx is the 0-based position in the verified-claims array. Idx 0 (vori-vori #1 soup, TasteAtlas 2026, score 4.7) and idx 1 (vori-vori #1 of 100 dishes) back the soup theme and 보리보리 only. The other 11 entries are not named by any verified claim and are unbacked fillers that need a source before upload.",
+  "seed": 102
+ },
+ {
+  "file": "batch/02-savory-02.json",
+  "id": "savory-02",
+  "series": "점심값 1만원 토너먼트",
+  "evidence": "idx is the 0-based position in the verified-claims array. Idx 6 (점심값 1만원 시대, lunch-price framing) and idx 7 (반줄김밥, half-row gimbap lunch-budget story, 2026-09-15) back the lunch theme and 반줄김밥. Idx 3 (bibimbap #3 in the 2025 consumer survey) backs 비빔밥. The other 10 entries are unbacked fillers.",
+  "seed": 103
+ },
+ {
+  "file": "batch/03-savory-03.json",
+  "id": "savory-03",
+  "series": "김치 비빔 토너먼트",
+  "evidence": "idx is the 0-based position in the verified-claims array. Idx 2 (kimchi #2 in the 2025 consumer survey, 9.5%) backs 김치. Idx 3 (bibimbap #3, 8.2%) backs 비빔밥. Idx 9 (봄동비빔밥 trend, 2026-02-27) backs 봄동비빔밥. The other 9 entries are unbacked kimchi and bibimbap-family fillers.",
+  "seed": 104
+ },
+ {
+  "file": "batch/04-savory-04.json",
+  "id": "savory-04",
+  "series": "길거리 간식 토너먼트",
+  "evidence": "idx is the 0-based position in the verified-claims array. Idx 7 (반줄김밥, street-lunch gimbap, 2026-09-15) backs 반줄김밥. Idx 6 (점심값 1만원 시대) frames the cheap-snack theme. The other 11 entries are unbacked fillers.",
+  "seed": 105
+ },
+ {
+  "file": "batch/05-savory-05.json",
+  "id": "savory-05",
+  "series": "튀김 토너먼트",
+  "evidence": "idx is the 0-based position in the verified-claims array. No verified claim covers fried foods. Idx 6 (점심값 1만원 시대) is used only as a loose cheap-snack framing. No entry is claim-named; all 12 need a source before upload.",
+  "seed": 106
+ },
+ {
+  "file": "batch/06-savory-06.json",
+  "id": "savory-06",
+  "series": "더위 먹는 메뉴",
+  "evidence": "idx is the 0-based position in the verified-claims array. Idx 17 (early-summer heat in May-June 2026 lifted chilled-drink and ice-cream sales) backs the hot-weather framing only. No entry is claim-named; all 12 cold and light dishes are unbacked fillers.",
+  "seed": 107
+ },
+ {
+  "file": "batch/07-savory-07.json",
+  "id": "savory-07",
+  "series": "요즘 뜨는 밥",
+  "evidence": "idx is the 0-based position in the verified-claims array. Idx 8 (두쫀쿠 craze, Jan 2026) and idx 9 (봄동비빔밥 as the follow-on dish trend, 2026-02-27) back the trend theme and 봄동비빔밥. Idx 3 (bibimbap #3) backs 비빔밥. The other 10 entries are unbacked fillers.",
+  "seed": 108
+ },
+ {
+  "file": "batch/08-savory-08.json",
+  "id": "savory-08",
+  "series": "퇴근 후 메뉴",
+  "evidence": "idx is the 0-based position in the verified-claims array. Idx 10 (커터칼퇴근, 2026 term for leaving work early but not fully on time) backs the after-work framing. No entry is claim-named; all 12 are unbacked fillers.",
+  "seed": 109
+ },
+ {
+  "file": "batch/09-savory-09.json",
+  "id": "savory-09",
+  "series": "면 요리 토너먼트",
+  "evidence": "idx is the 0-based position in the verified-claims array. Idx 6 (점심값 1만원 시대) backs the lunch-price framing for noodle lunches. No entry is claim-named; all 12 noodle dishes are unbacked fillers.",
+  "seed": 110
+ },
+ {
+  "file": "batch/10-savory-10.json",
+  "id": "savory-10",
+  "series": "밥 한 그릇 토너먼트",
+  "evidence": "idx is the 0-based position in the verified-claims array. Idx 3 (bibimbap #3, 8.2%) backs 비빔밥. Idx 9 (봄동비빔밥 trend) is context for the rice-bowl theme only. The other 11 entries are unbacked fillers.",
+  "seed": 111
+ },
+ {
+  "file": "batch/11-dessert-snack-drink-01.json",
+  "id": "dessert-snack-drink-01",
+  "series": "쫀득 디저트 배틀",
+  "evidence": "Claim 9 (두쫀쿠, Jan 2026 open-run and sold-out craze) and claim 12 (버터떡, rice-cake trend still covered in an article dated 2026-10-08) back the chewy rice-cake dessert theme; the other entries are variants of that theme. Claim numbers are 1-based.",
+  "seed": 112
+ },
+ {
+  "file": "batch/12-dessert-snack-drink-02.json",
+  "id": "dessert-snack-drink-02",
+  "series": "버터 간식 배틀",
+  "evidence": "Claim 12 (버터떡 dessert trend, reported 2026-03-16 and still covered in an October 2026 rice-cake article) and claim 9 (두쫀쿠, the trend that preceded it) back the butter-dessert theme; the other entries are butter-based snack and dessert variants. Claim numbers are 1-based.",
+  "seed": 113
+ },
+ {
+  "file": "batch/13-dessert-snack-drink-03.json",
+  "id": "dessert-snack-drink-03",
+  "series": "우베 디저트 배틀",
+  "evidence": "Claim 13 (ube desserts and drinks spreading through Korean cafes and convenience stores from April 2026, positioned as the successor to matcha) backs the ube theme; all 12 entries are ube-flavored dessert or drink variants. Claim numbers are 1-based.",
+  "seed": 114
+ },
+ {
+  "file": "batch/14-dessert-snack-drink-04.json",
+  "id": "dessert-snack-drink-04",
+  "series": "여름 빙수 배틀",
+  "evidence": "Claim 15 (single-serve cup bingsu, about 1 million cups in about two weeks after its May 2026 launch) and claim 18 (early-summer heat lifted ice cream and chilled-drink sales in May-June 2026) back the summer cold-dessert theme. Claim numbers are 1-based.",
+  "seed": 115
+ },
+ {
+  "file": "batch/15-dessert-snack-drink-05.json",
+  "id": "dessert-snack-drink-05",
+  "series": "여름 음료 배틀",
+  "evidence": "Claim 18 (early-summer heat lifted convenience-store chilled-drink sales, with peak summer sales starting almost a month early in May 2026) backs the summer cold-drink theme; the 12 entries are cold drinks and teas. Claim numbers are 1-based.",
+  "seed": 116
+ },
+ {
+  "file": "batch/16-dessert-snack-drink-06.json",
+  "id": "dessert-snack-drink-06",
+  "series": "편의점 우유 배틀",
+  "evidence": "Claim 14 (banana milk reported in 2026 as a top must-buy item at Korean convenience stores) backs the convenience-store milk-drink theme; entries are generic drink names, and no brand names are used. Claim numbers are 1-based.",
+  "seed": 117
+ },
+ {
+  "file": "batch/17-dessert-snack-drink-07.json",
+  "id": "dessert-snack-drink-07",
+  "series": "과일 간식 배틀",
+  "evidence": "Claim 16 (Korean fruit exports grew in 2026, with first-half fruit exports up about 19.7% and fruit cited among food-export drivers; strawberries, pears and grapes named in the topic) backs the fruit-snack theme. Claim numbers are 1-based.",
+  "seed": 118
+ },
+ {
+  "file": "batch/18-dessert-snack-drink-08.json",
+  "id": "dessert-snack-drink-08",
+  "series": "초콜릿 배틀",
+  "evidence": "Claim 17 (global chocolate demand softened in 2026 after the 2024-25 cocoa price spike, per reports dated March 2026) backs the chocolate theme; entries are chocolate snack and dessert variants. Claim numbers are 1-based.",
+  "seed": 119
+ },
+ {
+  "file": "batch/19-dessert-snack-drink-09.json",
+  "id": "dessert-snack-drink-09",
+  "series": "분식 점심 배틀",
+  "evidence": "Claim 8 (반줄 김밥, a half roll of kimbap for about 2,500 won, covered by several outlets on 2026-09-15) and claim 7 (점심값 1만원 시대, a 2026 news phrase) back the lunch-and-snack theme. Claim numbers are 1-based.",
+  "seed": 120
+ },
+ {
+  "file": "batch/20-dessert-snack-drink-10.json",
+  "id": "dessert-snack-drink-10",
+  "series": "요즘 간식 배틀",
+  "evidence": "Claim 5 (chia pudding, #4 in Google's 2025 year-end recipe searches) and claim 6 (hot honey, #1 food and recipe search; a condiment rather than a dish, so it is labeled as a sauce in its quip) back the 2025 search-trend snack theme; other entries are snack variants of that theme. Claim numbers are 1-based.",
+  "seed": 121
+ },
+ {
+  "file": "batch/21-B01-fruit-pick.json",
+  "id": "B01-fruit-pick",
+  "series": "fruit-pick",
+  "evidence": "Claims 16, 18 (1-based list order): 16 = 2026 fruit exports with strawberries, pears, grapes named; 18 = early-summer heat lifting chilled-drink and ice-cream demand (May-June 2026).",
+  "seed": 122
+ },
+ {
+  "file": "batch/22-B02-cold-treats.json",
+  "id": "B02-cold-treats",
+  "series": "cold-treats",
+  "evidence": "Claims 15, 18 (1-based list order): 15 = single-serve cup bingsu, about 1 million cups in roughly two weeks (May 2026); 18 = early-summer heat lifting chilled-drink and ice-cream sales (May-June 2026).",
+  "seed": 123
+ },
+ {
+  "file": "batch/23-B03-weekday-lunch.json",
+  "id": "B03-weekday-lunch",
+  "series": "weekday-lunch",
+  "evidence": "Claims 4, 7, 8 (1-based list order): 7 = 점심값 1만원 시대 lunch-price phrase in 2026 news; 8 = 반줄 김밥 half-roll kimbap reported 2026-09-15; 4 = bibimbap ranked #3 in the 2025 overseas consumer preference survey.",
+  "seed": 124
+ },
+ {
+  "file": "batch/24-B04-friday-quit.json",
+  "id": "B04-friday-quit",
+  "series": "meme-quitting",
+  "evidence": "Claim 11 (1-based list order): 커터칼퇴근, a 2026 slang term for leaving work earlier than usual, explained in the 2026-01-14 and 2026-03-25 reports.",
+  "seed": 125
+ },
+ {
+  "file": "batch/25-B05-dessert-trend.json",
+  "id": "B05-dessert-trend",
+  "series": "dessert-trend",
+  "evidence": "Claims 5, 6, 9, 12, 13 (1-based list order): 9 = 두쫀쿠 dessert slang (Jan 2026); 12 = 버터떡 trend (Mar 2026); 13 = ube menus after matcha (Apr 2026); 5 = chia pudding #4 in Google 2025 recipe searches; 6 = hot honey #1 in Google 2025 recipe searches.",
+  "seed": 126
+ },
+ {
+  "file": "batch/26-B06-spring-table.json",
+  "id": "B06-spring-table",
+  "series": "spring-table",
+  "evidence": "Claims 4, 10 (1-based list order): 10 = 봄동비빔밥 dish trend reported 2026-02-27, with spring greens prices rising on demand in a March 2026 report; 4 = bibimbap #3 in the 2025 overseas consumer preference survey.",
+  "seed": 127
+ },
+ {
+  "file": "batch/27-B07-kimchi-lineup.json",
+  "id": "B07-kimchi-lineup",
+  "series": "kimchi-lineup",
+  "evidence": "Claims 3, 4 (1-based list order): 3 = kimchi #2 (9.5%) and 4 = bibimbap #3 (8.2%) in the 2025 Overseas Korean Food Consumer Survey.",
+  "seed": 128
+ },
+ {
+  "file": "batch/28-B08-soup-lineup.json",
+  "id": "B08-soup-lineup",
+  "series": "soup-lineup",
+  "evidence": "Claims 1, 2 (1-based list order): 1 = vori-vori (lineup name 보리보리) ranked #1 soup in the TasteAtlas 2026 soup ranking (score 4.7, reported Sept 2026); 2 = same dish #1 of 100 in TasteAtlas 100 Best Dishes 2026.",
+  "seed": 129
+ },
+ {
+  "file": "batch/29-B09-sweet-vs-fruit.json",
+  "id": "B09-sweet-vs-fruit",
+  "series": "sweet-vs-fruit",
+  "evidence": "Claims 16, 17 (1-based list order): 17 = global chocolate demand softened in 2026 after the 2024-25 cocoa price spike; 16 = 2026 fruit exports rising (strawberries, pears, grapes named).",
+  "seed": 130
+ },
+ {
+  "file": "batch/30-B10-summer-drinks.json",
+  "id": "B10-summer-drinks",
+  "series": "summer-drinks",
+  "evidence": "Claims 15, 18 (1-based list order): 18 = early-summer heat lifted chilled-drink sales in Korea (May-June 2026); 15 = cup bingsu about 1 million cups in roughly two weeks (May 2026), a cold-treat trend.",
+  "seed": 131
+ }
+]
