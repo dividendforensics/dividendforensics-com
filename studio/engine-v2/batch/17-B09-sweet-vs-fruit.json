@@ -34,7 +34,8 @@
    "name": "초코칩",
    "icon": "🍪",
    "color": "#A9E34B",
-   "quip": "쿠키 속 초코칩"
+   "quip": "쿠키 속 초코칩",
+   "slug": "chocochip"
   },
   {
    "name": "코코넛",

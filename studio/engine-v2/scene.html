@@ -346,7 +346,7 @@ window.frame=function(draw=true){
 };
 
 // ---------- HUD: short title + count on top, announcements in a strip under the arena ----------
-const STRIP_Y=+(qs.get('stripy')||1440);
+const STRIP_Y=+(qs.get('stripy')||1300);   // card centre: text stays above 80% of the height (conservative review line), below the arena ring
 function strip(a,h=170){o.save();o.globalAlpha=a*0.55;o.fillStyle='#05030d';o.beginPath();o.roundRect(60,STRIP_Y-78,OW-120,h,26);o.fill();o.restore();}
 // one elimination line: "N위 [icon] name 탈락", fitted to the width at the peak of its pop
 function dieLine(bn,y,size,a,pop){const tier=bn.rank<=3?['#ffd23f','#dfe6ee','#e8955a'][bn.rank-1]:'#ff4d6d';

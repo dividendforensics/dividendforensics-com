@@ -52,7 +52,8 @@
    "name": "자두",
    "icon": "🍎",
    "color": "#3BC9DB",
-   "quip": "새콤달콤 자두"
+   "quip": "새콤달콤 자두",
+   "slug": "jadu"
   },
   {
    "name": "귤",

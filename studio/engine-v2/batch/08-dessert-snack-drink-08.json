@@ -34,7 +34,8 @@
    "name": "초코칩",
    "icon": "🟤",
    "color": "#94D82D",
-   "quip": "칩 찾기 게임 시작"
+   "quip": "칩 찾기 게임 시작",
+   "slug": "chocochip"
   },
   {
    "name": "초코쿠키",

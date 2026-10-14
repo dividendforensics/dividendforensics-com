@@ -28,7 +28,8 @@
    "name": "인절미",
    "icon": "🍘",
    "color": "#FCC419",
-   "quip": "콩가루는 내 편"
+   "quip": "콩가루는 내 편",
+   "slug": "injeolmi"
   },
   {
    "name": "약과",
@@ -46,7 +47,8 @@
    "name": "흑임자떡",
    "icon": "🥮",
    "color": "#20C997",
-   "quip": "검은 건 다 맛있음"
+   "quip": "검은 건 다 맛있음",
+   "slug": "heukimja"
   },
   {
    "name": "모찌",
