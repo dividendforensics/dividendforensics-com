@@ -62,8 +62,8 @@ function serve(){return new Promise(res=>{const srv=http.createServer((q,r)=>{
       const meas=f=>{const e=spawnSync('ffmpeg',['-hide_banner','-nostats','-i',f,'-map','0:a','-af','ebur128=peak=true','-f','null','-'],{encoding:'utf8'}).stderr;
         const tp=[...e.matchAll(/Peak:\s+(-?[\d.]+|-inf) dBFS/g)].pop(),I=[...e.matchAll(/I:\s+(-?[\d.]+) LUFS/g)].pop();return{tp:tp?parseFloat(tp[1]):NaN,I:I?parseFloat(I[1]):NaN};};
       let am=meas(mp4);
-      // re-encoding the AAC can push the peak back up, so keep lowering until the final file itself is under -1 dBTP (2.5 dB margin per step)
-      for(let tries=0;!(am.tp<=-1)&&tries<4;tries++){if(Number.isNaN(am.tp))throw new Error('true peak not measurable');
+      // target: final file under -1.5 dBTP (0.5 dB headroom over the -1 requirement); re-encoding the AAC can push the peak back up, so repeat
+      for(let tries=0;!(am.tp<=-1.5)&&tries<4;tries++){if(Number.isNaN(am.tp))throw new Error('true peak not measurable');
         const fix=path.join(out,'fix.mp4'),g=(-(am.tp+2.5)).toFixed(2);
         execFileSync('ffmpeg',['-y','-loglevel','error','-i',mp4,'-c:v','copy','-af',`volume=${g}dB`,'-c:a','aac','-b:a','192k','-movflags','+faststart',fix]);fs.renameSync(fix,mp4);am=meas(mp4);}
       console.log(`  audio check (final mp4): true peak ${am.tp} dBTP, integrated ${am.I} LUFS ${am.tp<=-1?'OK':'STILL HOT'}`);
