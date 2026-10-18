@@ -95,7 +95,7 @@ test('small nonzero results retain their sign and do not round to zero',()=>{
   assert.equal(format(0),'0.00');
   assert.equal(format(0.001),'0.001');
   assert.equal(format(-0.000001,'precise'),'-0.000001');
-  assert.equal(format(1e-9,'percent'),'1.000e-9%');
+  assert.equal(format(1e-9,'percent'),'0.000000001%');
 });
 
 test('decimal bridge cancellation is exact rather than a visible floating-point residual',()=>{
@@ -104,7 +104,7 @@ test('decimal bridge cancellation is exact rather than a visible floating-point 
     assert.equal(r.metrics[0].value,0);
     assert.equal(r.metrics[1].value,0);
     assert.equal(format(r.metrics[0].value),'0.00');
-    assert.equal(r.formulaVersion,'original-1.1.1');
+    assert.equal(r.formulaVersion,'original-1.1.2');
   }
 });
 
@@ -114,7 +114,7 @@ test('genuine tiny decimal remainders keep both signs and are never epsilon-clam
     const r=calculate('bridge',{...base,affoOther});
     assert.equal(r.metrics[0].value,0);
     assert.equal(r.metrics[1].value,Number(affoOther));
-    assert.match(format(r.metrics[1].value),/1\.000e-18/);
+    assert.equal(format(r.metrics[1].value),affoOther);
     assert.equal(format(r.metrics[1].value).startsWith('-'),affoOther.startsWith('-'));
   }
 });
@@ -122,10 +122,10 @@ test('genuine tiny decimal remainders keep both signs and are never epsilon-clam
 test('raw entered decimal strings survive the Number precision boundary',()=>{
   const r=calculate('bridge',{net:'0.100000000000000000001',depreciation:'0',gains:'0.1',ffoOther:'0',capex:'0',rent:'0',affoOther:'0'});
   assert.equal(r.metrics[0].value,1e-21);
-  assert.equal(format(r.metrics[0].value),'1.000e-21');
+  assert.equal(format(r.metrics[0].value),'0.000000000000000000001');
   const tiny=calculate('bridge',{net:'1e-400',depreciation:0,gains:0,ffoOther:0,capex:0,rent:0,affoOther:0});
   assert.equal(tiny.metrics[0].value,'1e-400');
-  assert.equal(format(tiny.metrics[0].value),'1.000e-400');
+  assert.equal(format(tiny.metrics[0].value),'1e-400');
 });
 
 test('all original tools use decimal operations without changing fees or withholding',()=>{
@@ -167,7 +167,7 @@ test('authoritative exact decimal results round below, at and above the half-cen
   }
   assert.equal(format('-76.84499999999999999999925'),'-76.84');
   assert.equal(format('-76.845'),'-76.85');
-  assert.equal(spanish.version,'es-1.0.1');
+  assert.equal(spanish.version,'es-1.0.2');
 });
 
 test('all seven calculator result paths retain decimal strings for display and serialization',()=>{
@@ -189,8 +189,37 @@ test('all seven calculator result paths retain decimal strings for display and s
   }
   assert.equal(calculate('bridge',cases.bridge).metrics[0].exactValue,'1e-21');
   const spanish=require('../spanish-calculators.js');
-  assert.equal(spanish.format('1e-400'),'1,000e-400');
-  assert.equal(spanish.format('-1e-21'),'-1,000e-21');
+  assert.equal(spanish.format('1e-400'),'1e-400');
+  assert.equal(spanish.format('-1e-21'),'-0,000000000000000000001');
   assert.equal(spanish.format(null),'No definido');
   assert.equal(spanish.format('141176.470588235294117647'),'141.176,47');
+});
+
+test('FFO bridge displayed lines reconcile with displayed subtotals below one cent',()=>{
+  const Decimal=require('../vendor/decimal.js/decimal.js');
+  for(const amount of ['0.004','0.005','0.0099','0.004000000000000000001']){
+    const r=calculate('bridge',Object.fromEntries(['net','depreciation','gains','ffoOther','capex','rent','affoOther'].map(key=>[key,amount])));
+    const displayed=r.exactRows.map(row=>format(row[1],'bridge').replaceAll(',',''));
+    const subtotal=displayed.slice(0,4).reduce((sum,x)=>sum.plus(x),new Decimal(0));
+    assert.equal(subtotal.toString(),new Decimal(displayed[4]).toString());
+    assert.equal(displayed.slice(5,8).reduce((sum,x)=>sum.plus(x),subtotal).toString(),new Decimal(displayed[8]).toString());
+    assert.equal(format(r.metrics[0].exactValue,r.metrics[0].format),displayed[4]);
+    assert.equal(format(r.metrics[1].exactValue,r.metrics[1].format),displayed[8]);
+    assert.match(r.note,/without cent rounding/);
+    assert.match(r.note,/subtotals, not additional adjustments/);
+  }
+  assert.equal(format('0.008','bridge'),'0.008');
+  assert.equal(format('-0.004','bridge'),'-0.004');
+});
+
+test('bridge display bounds extreme precision explicitly while retaining raw CSV values',()=>{
+  const raw='0.'+'1'.repeat(100);
+  const r=calculate('bridge',{net:raw,depreciation:0,gains:0,ffoOther:0,capex:0,rent:0,affoOther:0});
+  assert.equal(r.exactRows[0][1],raw);
+  assert.match(format(r.exactRows[0][1],'bridge'),/^≈ /);
+  assert.ok(format(r.exactRows[0][1],'bridge').length<90);
+  for(const value of ['1e-10000','-1e-10000']){
+    assert.equal(format(value,'bridge'),value);
+    assert.equal(format(value),value);
+  }
 });

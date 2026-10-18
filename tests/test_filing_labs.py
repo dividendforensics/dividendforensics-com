@@ -100,6 +100,16 @@ class FilingLabTests(unittest.TestCase):
         self.assertRatio(result['core_coverage'],Fraction(233,192))
         self.assertEqual(labs.fmt(result['core_coverage'],4),'1.2135')
 
+    def test_all_four_dividend_declarations_reconcile_not_just_q4_times_four(self):
+        amounts=[self.q(self.bdc,f'q{q}_declared') for q in range(1,5)]
+        per_share=[self.q(self.bdc,f'q{q}_dividend_ps') for q in range(1,5)]
+        self.assertEqual(amounts,[291,300,308,320])
+        self.assertEqual(sum(amounts),self.q(self.bdc,'distributions_declared'))
+        self.assertEqual(sum(per_share),Fraction('1.92'))
+        bad=deepcopy(self.bdc);bad['facts']['q1_declared']['value']='292'
+        with self.assertRaisesRegex(ValueError,'Quarterly dividend schedule'):
+            labs.calculate_bdc(bad)
+
     def test_bdc_pik_includes_dividends_and_uses_consistent_aggregate_sensitivity(self):
         f = lambda key: self.q(self.bdc, key)
         interest = f('pik_interest_nonaffiliate')+f('pik_interest_affiliate')+f('pik_interest_controlled')

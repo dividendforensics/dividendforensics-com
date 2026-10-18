@@ -4,7 +4,7 @@
   const Decimal = typeof module === 'object' && module.exports ? require('./vendor/decimal.js/decimal.js') : scope.Decimal;
   if(!Decimal)return;
   const D = Decimal.clone({precision: 40, rounding: Decimal.ROUND_HALF_UP});
-  const VERSION = 'bdc-1.0.1';
+  const VERSION = 'bdc-1.0.2';
   const formulas = {
     nii:'total=regular+supplemental+special; regularCoverage=nii/regular; totalCoverage=nii/total; PIK/TII=pik/tii; PIK/NII=pik/nii only for nii>0; sensitivity(f)=nii-pik*f; sensitivityCoverage=sensitivity/distributions; f=0,0.25,0.50,1',
     pik:'PIK/TII=pik/tii; PIK/NII=pik/nii only for nii>0',
@@ -56,7 +56,7 @@
     const ratio = (n,d) => n == null || d == null || d.isZero() ? null : n.div(d);
     const row = (label, value, unit='amount', reason='Missing input') => rows.push({label,value:text(value),unit,reason:value == null ? reason : null});
     const ratioRow = (label,n,d,unit='multiple') => row(label,ratio(n,d),unit,n == null || d == null ? 'Missing input' : 'Zero denominator');
-    const audit = {formulaVersion:VERSION,formula:formulas[kind],inputIds:Object.keys(records),context:{...context},inputs:Object.fromEntries(Object.entries(records).map(([k,v])=>[k,{...v,decimal:undefined}])),rounding:'40 significant-digit decimal arithmetic; display 4 decimal places, half up; tiny nonzero results use scientific notation.'};
+    const audit = {formulaVersion:VERSION,formula:formulas[kind],inputIds:Object.keys(records),context:{...context},inputs:Object.fromEntries(Object.entries(records).map(([k,v])=>[k,{...v,decimal:undefined}])),rounding:'40 significant-digit decimal arithmetic; display four decimal places, half up. Nonzero values smaller than 0.0001 retain five significant digits. Plain decimals are used through 24 fractional places; longer tiny values use scientific notation. Display rounding does not change the stored results.'};
     if (kind === 'nii' || kind === 'pik') {
       nonnegative(['pik','tii','regular','supplemental','special']);
       const nii=get('nii'), pik=get('pik'), tii=get('tii'), reg=get('regular');
@@ -106,7 +106,8 @@
   function format(row) {
     if (row.value == null) return 'Not defined — '+row.reason;
     const value=new D(row.value).times(row.unit === 'percent' ? 100 : 1);
-    const shown=!value.isZero() && value.abs().lt('0.00005') ? value.toExponential(4) : value.toFixed(4);
+    const display=value.toSignificantDigits(5);
+    const shown=!value.isZero() && value.abs().lt('0.0001') ? (display.decimalPlaces()>24 ? display.toExponential() : display.toFixed()) : value.toFixed(4);
     return shown+(row.unit === 'percent' ? '%' : row.unit === 'multiple' ? '×' : '');
   }
   const api={calculate,validate,format,VERSION};
@@ -128,7 +129,7 @@
         form.querySelectorAll('[data-bdc-input]').forEach(input=>{const id=input.name, value=input.value, selected=fd.get(id+'Availability') || 'scenario';inputs[id]={value,availability:value.trim()==='' && ['scenario','reported'].includes(selected) ? 'not_found':selected,origin:'manual',sourceUrl:fd.get(id+'Source') || null,accession:fd.get(id+'Accession') || null,sourceLocator:fd.get(id+'Locator') || null,reviewedAt:null,reviewedBy:null,note:'User-entered; not independently verified'};});
         const result=calculate(form.dataset.bdcTool,inputs,context);
         error.hidden=true;error.textContent='';
-        target.innerHTML='<p><strong>'+esc(mode==='synthetic'?'Synthetic example — not company results':'User scenario — not verified company results')+'</strong></p><p>'+esc(context.currency+' / '+context.scale+' / '+context.unit+' / '+context.periodStart+' to '+context.periodEnd+'; as of '+context.asOf+'; '+context.incomeBasis+' NII; '+context.distributionBasis+' distributions')+'</p><div class="table-scroll" style="overflow-x:auto;max-height:none"><table><caption>Calculated values — formula '+VERSION+'</caption><thead><tr><th scope="col">Measure</th><th scope="col">Value</th></tr></thead><tbody>'+result.rows.map(r=>'<tr><th scope="row">'+esc(r.label)+'</th><td>'+esc(format(r))+'</td></tr>').join('')+'</tbody></table></div>'+result.warnings.map(w=>'<p>'+esc(w)+'</p>').join('')+'<details><summary>Input sources and calculation record</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere">'+esc(JSON.stringify(result.audit,null,2))+'</pre></details>';
+        target.innerHTML='<p><strong>'+esc(mode==='synthetic'?'Synthetic example — not company results':'User scenario — not verified company results')+'</strong></p><p>'+esc(context.currency+' / '+context.scale+' / '+context.unit+' / '+context.periodStart+' to '+context.periodEnd+'; as of '+context.asOf+'; '+context.incomeBasis+' NII; '+context.distributionBasis+' distributions')+'</p><div class="table-scroll" style="overflow-x:auto;max-height:none"><table><caption>Calculated values — formula '+VERSION+'</caption><thead><tr><th scope="col">Measure</th><th scope="col">Value</th></tr></thead><tbody>'+result.rows.map(r=>'<tr><th scope="row">'+esc(r.label)+'</th><td>'+esc(format(r))+'</td></tr>').join('')+'</tbody></table></div>'+result.warnings.map(w=>'<p>'+esc(w)+'</p>').join('')+'<p class="small-note">'+esc(result.audit.rounding)+'</p><details><summary>Input sources and calculation record</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere">'+esc(JSON.stringify(result.audit,null,2))+'</pre></details>';
       }catch(e){error.textContent=e.message;error.hidden=false;target.innerHTML='<p>No current result. Correct the input error to calculate again.</p>';}
     };
     form.addEventListener('submit',run);

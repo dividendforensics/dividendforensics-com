@@ -104,7 +104,7 @@ def main():
                 assert page.locator('.result-metrics dd').first.inner_text()=='0.00'
                 form.locator('[name=affoOther]').fill('-0.000000000000000000001')
                 form.locator('button[type=submit]').click()
-                assert page.locator('.result-metrics dd').nth(1).inner_text()=='-1.000e-21'
+                assert page.locator('.result-metrics dd').nth(1).inner_text()=='-0.000000000000000000001'
                 with page.expect_download() as download:page.get_by_role('button',name='Download this scenario (CSV)').click()
                 rows=list(csv.reader(io.StringIO(Path(download.value.path()).read_text(encoding='utf-8-sig'))))
                 assert ['Modeled AFFO','-1e-21'] in rows

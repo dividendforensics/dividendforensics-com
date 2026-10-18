@@ -12,7 +12,10 @@
  function format(value,locale,undefinedText){
    if(value===null)return undefinedText;
    const d=new D(value),comma=locale==='de';
-   if(!d.isZero()&&d.abs().lt('0.005'))return d.toSignificantDigits(4).toFixed().replace('.',comma?',':'.');
+   if(!d.isZero()&&d.abs().lt('0.01')){
+     const display=d.toSignificantDigits(4);
+     return (display.decimalPlaces()>24?display.toExponential():display.toFixed()).replace('.',comma?',':'.');
+   }
    const [whole,fraction]=d.toFixed(2).split('.');
    return whole.replace(/\B(?=(\d{3})+(?!\d))/g,comma?'.':',')+(comma?',':'.')+fraction;
  }

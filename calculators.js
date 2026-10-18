@@ -23,7 +23,7 @@
   // Finite 80-significant-digit arithmetic, not unlimited/exact rational arithmetic.
   // Decimal strings remain authoritative through display and CSV serialization.
   const D = Decimal.clone({precision:80,rounding:Decimal.ROUND_HALF_UP});
-  const VERSION='original-1.1.1';
+  const VERSION='original-1.1.2';
   const FIELDS={income:['capital','yield','tax','target'],reinvestment:['capital','contribution','yield','tax','years'],payout:['affo','dividend','decline'],bridge:['net','depreciation','gains','ffoOther','capex','rent','affoOther'],nav:['noi','cap','debt','cash','shares'],refinancing:['principal','old','new','shares'],return:['start','end','dividends','buyFees','sellFees']};
   function decimal(value) {
     if (!['string','number'].includes(typeof value) || String(value).trim()==='' || String(value).length>512) throw Error('Enter a finite number in every field.');
@@ -86,10 +86,10 @@
       }
       case 'bridge': {
         const ffo = v.net.plus(v.depreciation).minus(v.gains).plus(v.ffoOther), affo = ffo.minus(v.capex).minus(v.rent).plus(v.affoOther);
-        metrics = [m('Simplified FFO', ffo), m('Modeled AFFO', affo), m('Net FFO-to-AFFO adjustment', affo.minus(ffo))];
+        metrics = [m('Simplified FFO', ffo, 'bridge'), m('Modeled AFFO', affo, 'bridge'), m('Net FFO-to-AFFO adjustment', affo.minus(ffo), 'bridge')];
         columns = ['Bridge line', 'Amount'];
         rows = [['Common net income', v.net], ['Real-estate D&A add-back', v.depreciation], ['Qualifying sale gains deduction', v.gains.negated()], ['Other FFO adjustments', v.ffoOther], ['Simplified FFO', ffo], ['Recurring capex deduction', v.capex.negated()], ['Straight-line rent deduction', v.rent.negated()], ['Other AFFO adjustments', v.affoOther], ['Modeled AFFO', affo]];
-        note = 'All amounts retain your chosen currency and scale. This teaching bridge does not define any issuer’s AFFO or replace a full Nareit reconciliation.';
+        note = 'All amounts retain your chosen currency and scale. Bridge lines and metrics display up to the model’s 80 significant digits, without cent rounding. An approximation sign marks any longer input shortened for display; CSV retains the stored decimal strings. Bold FFO and AFFO rows are subtotals, not additional adjustments. This teaching bridge does not define any issuer’s AFFO or replace a full Nareit reconciliation.';
         break;
       }
       case 'nav': {
@@ -126,16 +126,23 @@
       // must use exactValue/exactRows instead of converting these approximations back.
       metrics:metrics.map(m=>({...m,value:exported(m.value),exactValue:exact(m.value)})),
       columns,rows:rows.map(row=>row.map(exported)),exactRows:rows.map(row=>row.map(exact)),
-      numericCells:rows.map(row=>row.map(value=>D.isDecimal(value))),note,formulaVersion:VERSION,
+      numericCells:rows.map(row=>row.map(value=>D.isDecimal(value))),
+      note:note+' '+(kind==='bridge' ? 'Scientific notation limits very long decimal displays.' : 'Display rounds half up to two decimal places (four for per-share refinancing changes). Values smaller than the display step retain four significant digits instead of rounding to zero. Plain decimals are used through 24 fractional places; longer tiny values use scientific notation. CSV retains the stored decimal strings.'),formulaVersion:VERSION,
       arithmetic:{precision:80,rounding:'ROUND_HALF_UP',authoritativeFields:['metrics[].exactValue','exactRows']}
     };
   }
   function format(x, type = 'number') {
     if (x === null) return 'Not defined';
     const d=decimal(x), digits = type === 'precise' ? 4 : 2;
-    const small=!d.isZero() && d.abs().lt(new D('0.5').times(new D(10).pow(-digits)));
+    if(type==='bridge') {
+      const display=d.toSignificantDigits(80);
+      const text=display.decimalPlaces()>24 ? display.toExponential() : display.toFixed(Math.max(2,display.decimalPlaces()));
+      const [whole,fraction]=text.split('.');
+      return (display.eq(d)?'':'≈ ')+(text.includes('e')?text:whole.replace(/\B(?=(\d{3})+(?!\d))/g,',')+'.'+fraction);
+    }
+    const small=!d.isZero() && d.abs().lt(new D(10).pow(-digits));
     let shown;
-    if(small) shown=d.abs().lt('0.000001') ? d.toExponential(3) : d.toSignificantDigits(4).toFixed();
+    if(small) {const display=d.toSignificantDigits(4);shown=display.decimalPlaces()>24 ? display.toExponential() : display.toFixed();}
     // Group only the integer part; the decimal fraction must stay untouched.
     if(!small){const [whole,fraction]=d.toFixed(digits).split('.');shown=whole.replace(/\B(?=(\d{3})+(?!\d))/g,',')+'.'+fraction;}
     return shown + (type === 'percent' ? '%' : type === 'multiple' ? '×' : '');
@@ -160,8 +167,19 @@
         if (current.rows.length) {
           const wrap = el('div', undefined, 'table-scroll'), table = el('table'), head = el('thead'), tr = el('tr');
           wrap.tabIndex = 0; wrap.setAttribute('role', 'region'); wrap.setAttribute('aria-label', 'Scrollable scenario details');
-          table.append(el('caption', 'Scenario details')); current.columns.forEach(label => { const th = el('th', label); th.scope = 'col'; tr.append(th); }); head.append(tr); table.append(head);
-          const tbody = el('tbody'); current.exactRows.forEach((row,i) => { const tr = el('tr'); row.forEach((value,j) => tr.append(el('td', current.numericCells[i][j] ? format(value) : value))); tbody.append(tr); }); table.append(tbody); wrap.append(table); output.append(wrap);
+          const bridge=form.dataset.calculator==='bridge';
+          if(bridge)wrap.style.maxHeight='none';
+          table.append(el('caption', bridge ? 'FFO-to-AFFO reconciliation · bold rows are subtotals' : 'Scenario details')); current.columns.forEach(label => { const th = el('th', label); th.scope = 'col'; tr.append(th); }); head.append(tr); table.append(head);
+          const tbody = el('tbody'); current.exactRows.forEach((row,i) => {
+            const tr = el('tr'),subtotal=bridge && (i===4 || i===8);
+            if(subtotal)tr.setAttribute('data-bridge-subtotal','');
+            row.forEach((value,j) => {
+              const text=current.numericCells[i][j] ? format(value,bridge?'bridge':'number') : value;
+              const cell=el(j===0?'th':'td');if(j===0)cell.scope='row';
+              if(subtotal)cell.append(el('strong',text));else cell.textContent=text;
+              tr.append(cell);
+            });tbody.append(tr);
+          }); table.append(tbody); wrap.append(table); output.append(wrap);
         }
         const download = el('button', 'Download this scenario (CSV)', 'btn btn-s'); download.type = 'button';
         download.addEventListener('click', () => {

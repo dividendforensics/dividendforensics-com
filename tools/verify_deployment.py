@@ -27,7 +27,8 @@ def targets(root=ROOT):
               'vendor/decimal.js/decimal.js', 'vendor/decimal.js/LICENCE.md',
               'vendor/decimal.js/package.json', 'vendor/manifest.json',
               'research-desk.css', 'spanish-calculators.js', 'sitemap.xml', 'robots.txt', 'Refund.html', 'ads.txt', 'research-resources.css', 'research-worksheet.js', 'lesson-formats.css']
-    return pages + assets + ['international.css', 'international-calculators.js', 'content/filing-labs.json']
+    return pages + assets + ['international.css', 'international-calculators.js', 'content/filing-labs.json',
+                             'operating-companies.css', 'operating-calculators.js', 'content/operating-company-lab.json']
 
 
 def fetch(url):

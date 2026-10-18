@@ -86,8 +86,20 @@ test('decimal precision is retained through addition and sensitivity',()=>{
  assert.equal(val(r,'Simple sensitivity: 25% PIK deduction'),'0.275');
 });
 test('very small nonzero output does not print zero',()=>{
- assert.match(format({value:'0.000000001',unit:'amount'}),/e-/);
+ assert.equal(format({value:'0.000000001',unit:'amount'}),'0.000000001');
  assert.equal(format({value:'0',unit:'amount'}),'0.0000');
+});
+
+test('BDC display uses plain small decimals and keeps percent and multiple scales',()=>{
+ for(const [raw,shown] of [['0.000049999','0.000049999'],['0.00005','0.00005'],['0.000099999','0.000099999'],['0.0001','0.0001'],['0.00015','0.0002'],['-0.00005','-0.00005'],['-1e-25','-1e-25']]){
+  assert.equal(format({value:raw,unit:'amount'}),shown);
+  assert.equal(format({value:raw,unit:'multiple'}),shown+'×');
+ }
+ assert.equal(format({value:'-0.0000001',unit:'percent'}),'-0.00001%');
+ const r=result('nii',{...fixture,nii:'0.00003',pik:'0.00004'});
+ assert.equal(val(r,'Simple sensitivity: 100% PIK deduction'),'-0.00001');
+ assert.equal(format(row(r,'Simple sensitivity: 100% PIK deduction')),'-0.00001');
+ assert.match(r.audit.rounding,/24 fractional places/);
 });
 test('PIK standalone ratio denominator distinction',()=>{
  const r=result('pik',{nii:'60',pik:'18',tii:'180'});
@@ -122,7 +134,7 @@ test('debt/equity gross and optional cash-adjusted measures remain distinct',()=
 });
 test('formula version and unrounded raw inputs trace every result',()=>{
  const r=result();
- assert.equal(r.audit.formulaVersion,'bdc-1.0.1');
+ assert.equal(r.audit.formulaVersion,'bdc-1.0.2');
  assert.equal(r.audit.inputs.pik.value,'18');
  assert.equal(r.audit.inputs.pik.reviewedAt,null);
  assert.equal(r.audit.inputs.pik.periodStart,'2026-07-01');
