@@ -2,7 +2,7 @@
 
 2026-10-18 기준. 공개 사이트: https://dividendforensics.com/ · 저장소: https://github.com/dividendforensics/dividendforensics-com
 
-최신 집중 검수의 고정 코드·배포 기록은 `docs/PR6-REVIEW-RESOLUTION-2026-10-18.md`를 사용하세요. 이전 PR6 기준은 `2b738e318c6b3e376da397aac1a3f9e5671d5106`입니다. 최종 CI·배포 결과는 `docs/BDC-EDUCATION-RELEASE-2026-10-18.md`의 최종 기록을 사용해 주세요. 과거848e753 검수와 새 확장을 혼동하지 말아 주세요. 아래 구현 설명은 독립 검증의 대상이지 검증 증거를 대신하지 않습니다. 가능하면 고정 코드·원본 HTML·실제 브라우저를 직접 확인하고 한국어로 문제를 피드백해 주세요.
+최신 집중 검수의 고정 코드는 `51c7c7819d055ef695bc0cecd27348518bc4fe9f` (PR #7)입니다. 코드·배포 기록은 `docs/PR6-REVIEW-RESOLUTION-2026-10-18.md`를 사용하세요. 이전 PR6 기준은 `2b738e318c6b3e376da397aac1a3f9e5671d5106`입니다. 최신 CI·배포 결과는 위 PR6-REVIEW-RESOLUTION 문서의 최종 완료 기록을 사용하고, BDC-EDUCATION-RELEASE 문서는 이전 PR6 기록으로 구분해 주세요. 과거848e753 검수와 새 확장을 혼동하지 말아 주세요. 아래 구현 설명은 독립 검증의 대상이지 검증 증거를 대신하지 않습니다. 가능하면 고정 코드·원본 HTML·실제 브라우저를 직접 확인하고 한국어로 문제를 피드백해 주세요.
 
 ## 실제 만든 홈페이지
 

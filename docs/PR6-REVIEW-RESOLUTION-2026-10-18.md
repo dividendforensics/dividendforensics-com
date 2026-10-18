@@ -36,9 +36,23 @@
 
 ## 검증 및 배포
 
-로컬 Python117개·Node70개, 정적116개·사이트맵104개 SEO 검사가 통과했다. 홈2버튼의3너비·기본/hover/키보드 포커스18표본을 추가해 감사 도구의 기존19표본과 합계37표본을 확인했다. 고정밀 Chrome·CSV 경계 검사를 추가했다. 전체 CI와 실제 배포·일반 URL 대조는 성공 후 아래에 기록한다.
+로컬 Python117개·Node70개, 정적116개·사이트맵104개 SEO 검사가 통과했다. 홈2버튼의3너비·기본/hover/키보드 포커스18표본을 추가해 감사 도구의 기존19표본과 합계37표본을 확인했다. 고정밀 Chrome·CSV 경계 검사를 추가했다. 전체 CI와 실제 배포·일반 URL 대조도 아래 기록대로 완료했다.
 
 Google 실제 색인·검색 순위·AdSense·Gmail 수신·실제 SEC 수집·물리 휴대폰/스크린리더는 미확인 상태를 유지한다. 다른 프로젝트·Claude 작업은 변경하지 않는다.
 
 
 정밀도 브라우저 회귀를 다시 실행하는 중 한 차례 Decimal 미로딩으로 계산 버튼이 차단됐다. 그때 숫자를 잘못 출력한 것은 아니며, 원인을 서버 backlog로 확정할 증거는 없다. 테스트 서버의 요청 대기열128과 리소스 응답·엔진 준비 진단을 추가했다. 버튼을 강제로 활성화하거나 검사를 건너뛰지 않는다. 새 실행에서는7회 모두 Decimal·계산API·활성 버튼 확인, vendor응답7회200, 로컬 요청 실패·JS오류0으로 경계·CSV 검사가 통과했다. 실패 시 이전 PASS 보고서를 재사용하지 않고 실패 진단으로 덮어쓴다.
+
+
+## 최종 완료 기록
+
+- PR #7: https://github.com/dividendforensics/dividendforensics-com/pull/7 — squash 병합 완료.
+- 고정 코드: `51c7c7819d055ef695bc0cecd27348518bc4fe9f` (2026-10-18).
+- PR CI: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39105289292 — 성공. Python117개·Node70개, 정적116개·사이트맵104개, Chrome 정밀도/CSV·스페인어·기능 검사와 전체580회 렌더링 통과. 580회는116페이지의 검사 도구에 정의된 뷰포트 조합이며 실물 휴대폰 검사가 아니다.
+- main 빌드: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39105821842 — 성공.
+- 최종 Pages: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39105835397 — 성공. 같은 코드의 먼저 시작된 Pages39105821771은 후속 배포로 대체되어 취소됐다.
+- 공개 응답: `tools/verify_deployment.py`로 일반 URL131개(HTML116+주요 자산15)의 HTTP200 및 LF 정규화 내용 일치를 확인했다. 첫2회에는 이전 응답35개가 남았고3회째 모두 일치했다. 캐시 우회 응답은 진단용이며 일반 URL 결과를 대신하지 않는다. 로컬 원시 기록은 `.qa/pr6fix-live-verification.json`이다.
+- 병합본 `python build_site.py --check`:117개 생성 출력 검증, 변경 없음.
+- 별도 읽기 전용 에이전트가 이전 고정 코드와 수정본의 정밀도 전달 경로를 검토했다. 확인 범위에서 새 P1/P2를 보고하지 않았으며, 그 검토는 추가 브라우저/테스트 실행이나 외부 인간 전문가 인증을 뜻하지 않는다.
+
+위 고정 코드는 공개 코드 변경의 기준이다. 이후 이 완료 기록·검수 요청문만 반영하는 문서 커밋은 별개다. 계정 작업과 미검수 범위는 앞 절대로 남는다.
