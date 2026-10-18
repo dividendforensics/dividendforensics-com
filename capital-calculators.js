@@ -24,7 +24,8 @@ function calculateJv(v){
  const prop=debt!==null&&share!==null?debt.mul(share).div(100):null;if(prop===null){complete=false;warnings.push(j.name+': debt or ownership unknown; total is incomplete.');}else total=total.add(prop);rows.push([j.name,out(debt),out(share),out(prop)]);
  }
  warnings.push('Proportionate exposure is not a legal payment obligation. Guarantees are shown separately and are never added automatically.');
- return result({'Consolidated debt':out(base),'Known proportionate subtotal':out(total),'Complete look-through debt':complete?out(total):null,'Separate guarantee amount (not added)':out(guarantee)},rows,warnings,v);
+ warnings.push('The combined total covers the entered rows, not a verified complete issuer dataset. Consolidated debt remains on its reported accounting perimeter; only unconsolidated JV additions use the entered ownership percentages.');
+ return result({'Consolidated debt':out(base),'Known subtotal (consolidated plus proportionate unconsolidated JV debt)':out(total),'Consolidated debt + proportionate unconsolidated JV debt':complete?out(total):null,'Separate guarantee amount (not added)':out(guarantee)},rows,warnings,v);
 }
 function calculateLiquidity(v){
  const m=context(v.meta);if(m.basis!=='principal')throw Error('Use principal maturities; carrying debt cannot be silently substituted.');if(!['dated','fiscal'].includes(v.maturityBasis))throw Error('Select exact dated maturities or fiscal-year buckets.');const fiscal=v.maturityBasis==='fiscal',end=day(fiscal?v.resourceDate:v.horizonEnd,fiscal?'Resource eligibility date':'Horizon end');if(end<=m.asOf)throw Error((fiscal?'Resource eligibility date':'Horizon end')+' must follow the as-of date.');

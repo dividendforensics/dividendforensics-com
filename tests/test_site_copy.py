@@ -82,6 +82,10 @@ class PublicCopyTests(unittest.TestCase):
         self.assertEqual(len(urls),len(set(urls)))
         self.assertIn('https://dividendforensics.com/methodology.html',urls)
         self.assertNotIn('https://dividendforensics.com/membership.html',urls)
+        self.assertNotIn('https://dividendforensics.com/breakbefore.html',urls)
+        for name in ('membership.html', 'breakbefore.html'):
+            self.assertIn('<meta name="robots" content="noindex,follow">',
+                          build.planned_outputs(ROOT)[ROOT/name], name)
 
     def test_sitemap_targets_are_canonical_indexable_site_pages(self):
         ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}

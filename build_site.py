@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parent
 START, END = '<!-- ARTICLES:START -->', '<!-- ARTICLES:END -->'
 HEADER_START, HEADER_END = '<!-- SITE:HEADER -->', '<!-- /SITE:HEADER -->'
 FOOTER_START, FOOTER_END = '<!-- SITE:FOOTER -->', '<!-- /SITE:FOOTER -->'
+NONINDEX_PUBLIC_PAGES = {'membership.html', 'breakbefore.html'}
 REPORT_URL = ('https://dividendforensics.lemonsqueezy.com/checkout/buy/'
               '0417e6b9-d489-438e-9b2c-913437003238'
               '?utm_source=website&utm_medium=lead_magnet&utm_campaign=report001')
@@ -179,6 +180,12 @@ def planned_outputs(root: Path = ROOT):
             continue  # verification files and retired redirects are intentionally unchanged
         text = splice(text, header(path.name, root), HEADER_START, HEADER_END)
         text = splice(text, footer(root, path.name), FOOTER_START, FOOTER_END)
+        if path.name in NONINDEX_PUBLIC_PAGES:
+            robots = '<meta name="robots" content="noindex,follow">'
+            if re.search(r'<meta\b[^>]*\bname=[\"\']robots[\"\'][^>]*>', text, flags=re.I):
+                text = re.sub(r'<meta\b[^>]*\bname=[\"\']robots[\"\'][^>]*>', robots, text, flags=re.I)
+            else:
+                text = text.replace('</head>', robots + '\n</head>')
         if 'href="/bureau.css"' not in text:
             text = text.replace('</head>', '<link rel="stylesheet" href="/bureau.css">\n</head>')
         if path.name in ('index.html','research.html'):
