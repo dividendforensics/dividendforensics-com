@@ -14,7 +14,8 @@ class EducationTests(unittest.TestCase):
     def test_breadcrumbs_follow_the_page_section_without_duplicate_urls(self):
         output=education.education_outputs(ROOT)
         for path,text in output.items():
-            if path.suffix!='.html' or path.parent==ROOT/'es':continue
+            # Localized hierarchies are verified in the locale suites.
+            if path.suffix!='.html' or path.parent!=ROOT:continue
             data=[json.loads(value) for value in re.findall(r'<script type="application/ld\+json">(.*?)</script>',text,re.S)]
             items=next(s for s in data if s['@type']=='BreadcrumbList')['itemListElement']
             urls=[item['item'] for item in items]

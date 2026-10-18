@@ -1,0 +1,207 @@
+{
+  "ui": {
+    "edition": "Deutsch · US-REITs und BDCs",
+    "home": "Lernen",
+    "skip": "Zum Inhalt",
+    "contents": "Auf dieser Seite",
+    "original": "Englische Ausgangsfassung",
+    "example": "Hypothetisches Rechenbeispiel",
+    "exercise": "Prüfen Sie Ihr Verständnis",
+    "answer": "Antwort und Erklärung anzeigen",
+    "checks": "Was Sie prüfen sollten",
+    "sources": "Quellen und Abgrenzung",
+    "assumptions": "Ihre Annahmen",
+    "calculate": "Berechnen",
+    "reset": "Zurücksetzen",
+    "result": "Szenarioergebnis",
+    "scope": "Diese Einführung behandelt Produkte aus den USA. USD bedeutet US-Dollar. Die Beispiele werden weder in Euro umgerechnet noch an deutsche, österreichische oder schweizerische Steuervorschriften angepasst.",
+    "source_note": "Die verlinkten Primärquellen sind englischsprachig. Sie erläutern Struktur und Rechnungslegung; die Rechenbeispiele sind erfunden und keine Unternehmensdaten. Die Einführung fasst die verlinkte englische Ausgangsfassung zusammen.",
+    "disclaimer": "Bildungsmaterial, keine persönliche Anlageempfehlung. Ausschüttungen und Kapitalerhalt sind nicht garantiert. Prüfen Sie Datum, Definition und Annahmen jeder Zahl.",
+    "policy": "Redaktionsrichtlinien (Englisch)",
+    "privacy": "Datenschutz (Englisch)",
+    "about": "Über DFB (Englisch)"
+  },
+  "home": {
+    "title": "Die Zahlen hinter US-Dividenden verstehen",
+    "description": "Ein Einstieg in US-REITs und BDCs: vier Leitfäden und ein Dividendenrechner. Lernen Sie Geschäftsmodelle, Deckung und Grenzen der Kennzahlen kennen."
+  },
+  "articles": {
+    "reit": {
+      "title": "Was ist ein US-REIT? Immobilien, Erträge und Aktionärsrechte",
+      "description": "Verstehen Sie, wie ein US-REIT Erträge erzielt und warum Mieten, FFO, steuerpflichtiges Einkommen und Dividenden verschiedene Größen sind.",
+      "sections": [
+        [
+          "Eine Struktur, unterschiedliche Geschäftsmodelle",
+          "Ein Real Estate Investment Trust besitzt, betreibt oder finanziert ertragbringende Immobilien. Die steuerliche REIT-Behandlung in den USA setzt unter anderem bestimmte Vermögens-, Einkommens-, Eigentums- und Ausschüttungstests voraus. Die Bezeichnung verrät noch nicht, ob das Unternehmen Wohnungen vermietet, Lagerhallen besitzt oder Hypotheken finanziert. Equity REITs halten typischerweise Immobilien; Mortgage REITs stellen Immobilienfinanzierung bereit. Ihre Ertragsquellen und Finanzierungsrisiken unterscheiden sich. Beginnen Sie deshalb mit dem tatsächlichen Geschäft und nicht mit der angezeigten Dividendenrendite."
+        ],
+        [
+          "Eine Aktie ist kein direkter Anspruch auf eine einzelne Miete",
+          "Mit einer börsennotierten REIT-Aktie erwerben Sie einen Eigenkapitalanspruch am Unternehmen, keine bestimmte Wohnung. Immobilienkosten, Zinsen, Verwaltung, laufende Investitionen und vorrangige Ansprüche stehen vor dem Betrag, der Stammaktionären zur Verfügung steht. Börsenhandel ermöglicht einen Verkauf an andere Marktteilnehmer, garantiert aber keinen Verkauf zum geschätzten Immobilienwert. Handelbarkeit schützt nicht vor Verlusten. Langfristige Mietverträge können heutige Einnahmen stabilisieren und zugleich spätere Mietanpassungen verzögern."
+        ],
+        [
+          "Die 90-Prozent-Regel ist keine Sicherheitsgarantie",
+          "Die bekannte US-Regel bezieht sich grundsätzlich auf mindestens 90 % des steuerpflichtigen REIT-Einkommens ohne Nettokapitalgewinne und unter Beachtung der einschlägigen Regeln. Sie bezieht sich nicht auf vereinnahmte Mieten, Umsatz, GAAP-Nettogewinn, FFO oder AFFO. Abschreibungen und andere Unterschiede können steuerliche und operative Größen auseinanderfallen lassen. Das Unternehmen kann mehr als das Mindestmaß ausschütten; eine historische Dividende kann trotzdem künftig nicht mehr finanzierbar sein. Eine erfolgte Zahlung beweist nur, dass gezahlt wurde."
+        ],
+        [
+          "Ertrag und Bilanz gemeinsam lesen",
+          "Prüfen Sie Geschäftsbericht, Schuldenangaben und Kapitalflussrechnung. Ein einkommensorientierter Leser achtet auf wiederkehrende Mieten, ein bilanzorientierter Leser auf Refinanzierung, Mieterkonzentration und mögliche neue Aktien. Beide Sichtweisen sind relevant. Lesen Sie anschließend die Überleitung des Emittenten zu FFO und AFFO. AFFO ist nicht einheitlich definiert; wiederkehrende Gebäudekosten dürfen nicht einfach verschwinden, nur weil eine Kennzahl sie ausschließt."
+        ]
+      ],
+      "example": "Alle Beträge sind hypothetische USD derselben Periode: Mieten 100 minus Betriebskosten 30 minus Zinsen und Verwaltung 15 ergeben 55 vor Investitionen und weiteren Posten. Wiederkehrende Verbesserungen von 10 lassen vereinfacht 45 übrig. Eine Ausschüttung von 50 benötigt in diesem Beispiel eine weitere Finanzierungsquelle. Dies ist weder eine Steuerberechnung noch eine vollständige FFO-Überleitung.",
+      "question": "Belegt das Beispiel, dass allein die Mieten eine Ausschüttung von 50 USD finanzieren?",
+      "answer": "Nein. Nach den genannten Ausgaben bleiben 45 USD. Die Differenz von 5 USD muss anderweitig finanziert werden; nicht dargestellte Posten können das tatsächliche Ergebnis zusätzlich verändern.",
+      "checks": [
+        "Immobilienbesitz von Hypothekenfinanzierung unterscheiden.",
+        "Mieter, Märkte und laufende Investitionen prüfen.",
+        "Dividenden mit einer nachvollziehbar übergeleiteten Kennzahl vergleichen.",
+        "Fälligkeiten, Zinsen und mögliche Verwässerung berücksichtigen."
+      ],
+      "published": "2026-10-18",
+      "updated": "2026-10-18"
+    },
+    "bdc": {
+      "title": "Was ist eine US-BDC? Kreditnehmer, Gesellschaft und Aktionäre",
+      "description": "Unterscheiden Sie eine Business Development Company von einem direkten Kredit und verfolgen Sie Erträge, Kosten und Verluste bis zum Aktionär.",
+      "sections": [
+        [
+          "Drei Beteiligte mit unterschiedlichen Ansprüchen",
+          "Eine Business Development Company ist eine US-Investmentgesellschaft, die einen besonderen regulatorischen Rahmen gewählt hat. Nicht jeder Private-Credit-Fonds ist eine BDC. Der Kreditnehmer schuldet Zahlungen gemäß seinem Kreditvertrag. Die BDC hält den Kredit oder eine andere Beteiligung, trägt eigene Finanzierungs- und Betriebskosten und kann Ausschüttungen beschließen. Der BDC-Aktionär hat keinen direkten vertraglichen Anspruch gegen einen einzelnen Kreditnehmer. Die regulatorische BDC-Eigenschaft und die steuerliche RIC-Behandlung sind getrennte Fragen."
+        ],
+        [
+          "Geschlossene Struktur bedeutet nicht unveränderliches Portfolio",
+          "Bei einer börsennotierten BDC erfolgt der Ausstieg normalerweise durch Verkauf der Aktie. Es besteht nicht der allgemeine Rückgabeanspruch eines offenen Investmentfonds. Dennoch kann die BDC neue Kredite vergeben, Rückzahlungen erhalten, Schulden ändern und Aktien ausgeben oder zurückkaufen. Bei nicht börsennotierten BDCs müssen Rückkaufprogramme und Beschränkungen gesondert gelesen werden. Ein mögliches Rückkaufangebot ist weder Börsenhandel noch eine Garantie, dass sämtliche Rückgabewünsche erfüllt werden."
+        ],
+        [
+          "Einkommen und Kapitalwert getrennt untersuchen",
+          "Eine Ausschüttung beweist nicht, dass sämtliche Kredite ordnungsgemäß bedient werden. Fragen Sie, welche Anlagen die erfassten Erträge erzeugt haben, welcher Anteil tatsächlich bar eingegangen ist und welche Kosten vor den Stammaktionären abgezogen werden. Eine BDC kann Erträge ausweisen, während der beizulegende Zeitwert einer Anlage fällt. Umgekehrt kann ein ertragsschwaches Quartal auf Gebühren- oder Zahlungstermine zurückgehen. Deckung der Ausschüttung, Liquidität und Erhaltung des Kapitals sind unterschiedliche Prüfungen."
+        ],
+        [
+          "Zuerst eine Übersicht, dann ein Urteil",
+          "Notieren Sie Börsenstatus, Strategie, Managementmodell, Aktienklasse und Berichtsdatum. Unterscheiden Sie Kredite, Eigenkapitalpositionen und andere Instrumente; nicht jede Position ist ein erstrangig besicherter Kredit. Lesen Sie die Anlageaufstellung, Finanzierungsangaben und Ausschüttungsbeschlüsse. Trennen Sie Schulden der BDC von Schulden ihrer Portfoliounternehmen. Weder die BDC-Bezeichnung noch eine SEC-Einreichung bedeuten Versicherung, individuelle Eignung oder behördliche Empfehlung."
+        ]
+      ],
+      "example": "Eine erfundene BDC erfasst in einer Periode Anlageerträge von 12, Finanzierungskosten von 3 und Betriebskosten von 2. Vereinfacht bleiben 7; Ausschüttungen von 6 lassen eine Differenz von 1. Alle Werte verwenden dieselbe USD-Skala. Die Differenz ist keine vollständige Kapitalflussrechnung. Ein zusätzlicher Zeitwertverlust von 4 kann das Nettovermögen verringern, obwohl die vereinfachte Ertragsdeckung positiv ist.",
+      "question": "Beweist die positive Differenz von 1, dass das Nettovermögen gestiegen ist?",
+      "answer": "Nein. Der gesonderte Bewertungsverlust von 4 und weitere Veränderungen gehören in die Nettovermögensüberleitung. Aus Ertragsdeckung allein lässt sich kein Kapitalerhalt ableiten.",
+      "checks": [
+        "Börsenstatus und konkrete Aktienklasse feststellen.",
+        "Instrumente und Rang der Forderungen lesen.",
+        "Finanzierung der BDC vom Kreditrisiko der Schuldner trennen.",
+        "Ausschüttungsbeschluss, Berichtsperiode und noch fehlende Angaben festhalten."
+      ],
+      "published": "2026-10-18",
+      "updated": "2026-10-18"
+    },
+    "coverage": {
+      "title": "BDC-Ausschüttungsdeckung: NII, Nenner und Zeitraum abstimmen",
+      "description": "Berechnen Sie reguläre und gesamte Ausschüttungsdeckung, ohne NII mit Bareinnahmen oder Deckung mit Ausschüttungsquote zu verwechseln.",
+      "sections": [
+        [
+          "NII ist eine Rechnungslegungsgröße",
+          "Net Investment Income (NII) bezeichnet hier das Nettoanlageergebnis nach den in der Darstellung des Emittenten berücksichtigten Anlageaufwendungen. Es ist weder der gesamte Anlageertrag vor diesen Kosten noch die vollständige Nettoveränderung aus der Geschäftstätigkeit einschließlich realisierter und nicht realisierter Anlageergebnisse. Behalten Sie das berichtete NII bei und zeigen Sie Anpassungen separat. Gleiche Bezeichnungen zweier Emittenten garantieren keine gleichen Definitionen oder Gebührenbehandlungen."
+        ],
+        [
+          "Der Nenner entscheidet über die Aussage",
+          "Reguläre, ergänzende und besondere Ausschüttungen können unterschiedlichen Richtlinien folgen. Reguläre Deckung untersucht die laufende Basis; Gesamtdeckung erfasst alle gewählten Komponenten. Nur die reguläre Zahlung zu verwenden und anschließend sämtliche Ausschüttungen als gedeckt zu bezeichnen, überdehnt die Aussage. Beschlossene Ausschüttungen für die Berichtsperiode sind außerdem nicht mit dem während der Periode gezahlten Bargeld identisch: Eine Zahlung kann einen früheren Beschluss erfüllen."
+        ],
+        [
+          "Vergleichbare Gesamt- oder Pro-Aktie-Werte verwenden",
+          "NII geteilt durch Ausschüttungen ist Deckung. Ausschüttungen geteilt durch NII ergeben die Ausschüttungsquote. Gesamtbeträge vermeiden eine unbemerkte Vermischung gewichteter Durchschnittsaktien mit den tatsächlich ausschüttungsberechtigten Aktien. Pro-Aktie-Werte sind möglich, wenn beide Bezugsgrößen kompatibel sind. Payment-in-kind-Zinsen (PIK) können als Ertrag erfasst werden, ohne zu diesem Zeitpunkt bar einzugehen. Ziehen Sie daraus keine frei erfundene PIK-Pro-Aktie-Zahl mit einem beliebigen Aktienbestand."
+        ],
+        [
+          "Fehlend, null und negativ sind verschieden",
+          "Eine Deckung über eins beweist weder Zahlungseingang noch Kapitalerhalt oder die Fortsetzung der Dividende. Unterdeckung allein beweist keinen unmittelbar bevorstehenden Beschluss zur Kürzung. Negatives NII bleibt negativ. Ausschüttungen von null machen die Deckungsdivision undefiniert. Ist eine ergänzende Ausschüttung unbekannt, kann die reguläre Deckung bekannt bleiben, während die Gesamtdeckung unvollständig ist. Eine bestätigte Null ist eine andere Information als ein fehlender Wert."
+        ]
+      ],
+      "example": "Hypothetisches Quartal, alle Beträge in Millionen USD: NII 120; reguläre Ausschüttung 100, ergänzende 10 und besondere 5, insgesamt 115. Reguläre Deckung = 120 / 100 = 1,2000×. Gesamtdeckung = 120 / 115 ≈ 1,0435×. Gesamte Ausschüttungsquote = 115 / 120 ≈ 95,8333 %. Ist der ergänzende Betrag unbekannt, ist auch die Gesamtsumme unbekannt. Eine bestätigte ergänzende Ausschüttung von null ergäbe dagegen 105. Die Zahlen stammen nicht aus dem verlinkten Unternehmensbericht.",
+      "question": "NII bleibt 120, die besondere Ausschüttung steigt von 5 auf 20. Wie ändern sich die Deckungen?",
+      "answer": "Reguläre Deckung bleibt 1,2000×. Die Gesamtausschüttung steigt auf 130; Gesamtdeckung = 120 / 130 ≈ 0,9231×. Das ist eine Rechnungslegungsvergleichsgröße, keine Liquiditätsprognose.",
+      "checks": [
+        "NII-Definition und Überleitung erhalten.",
+        "Periode, USD-Skala und Stammaktienbezug abstimmen.",
+        "Reguläre, ergänzende und besondere Zahlungen getrennt erfassen.",
+        "Beschlüsse und Zahlungen sowie unbekannte Werte und bestätigte Nullen unterscheiden."
+      ],
+      "published": "2026-10-18",
+      "updated": "2026-10-18"
+    },
+    "comparison": {
+      "title": "US-REIT oder BDC: gleiche Rendite, andere Risiken",
+      "description": "Vergleichen Sie Immobilienerträge und Kreditgeschäfte anhand von AFFO, NII, laufenden Kosten und einem Beispiel mit zwei Dividendenrenditen von 8 %.",
+      "sections": [
+        [
+          "Zuerst die Vermögenswerte vergleichen",
+          "Dieser Vergleich betrifft US-Equity-REITs und kreditvergebende BDCs. Mortgage REITs brauchen eine eigene Finanzierungs- und Kreditanalyse. Ein Equity REIT verdient an Immobilien und Mietverträgen; eine BDC an Zinsen, Gebühren und teilweise Beteiligungsausschüttungen. Gewinne und Verluste aus Anlagen kommen hinzu. Börsenstatus ist eine separate Eigenschaft. Weder die Kategorie noch eine handelbare Aktie macht die zugrunde liegenden Gebäude oder privaten Kredite liquide."
+        ],
+        [
+          "AFFO und NII sind kein austauschbares Bankguthaben",
+          "Beim REIT beginnt die Prüfung mit Nettogewinn, Nareit FFO und der emittentenspezifischen AFFO-Überleitung. Wiederkehrende Gebäudekosten, Mieterausbauten und Vermietungskosten können den sichtbaren Puffer beanspruchen. Bei der BDC beginnt sie mit NII, Finanzierung und Gebühren. PIK kann Ertrag ohne aktuellen Zahlungseingang sein. Kreditverluste können zusätzlich das Nettovermögen treffen. Bewahren Sie berichtete Größen und analytische Anpassungen getrennt auf; ziehen Sie einen bereits berücksichtigten Aufwand nicht erneut ab."
+        ],
+        [
+          "NAV und Zinsrisiko folgen unterschiedlichen Wegen",
+          "Ein Immobilien-NAV-Modell kann NOI mit einem Kapitalisierungssatz bewerten und vorrangige Ansprüche abziehen. Bei BDCs stehen berichtete Anlagezeitwerte, andere Nettovermögenswerte und Verbindlichkeiten im Vordergrund. Höhere Zinsen können Kreditrenditen steigern und zugleich Schuldner belasten. Sinkende Zinsen können Aktivzinsen schneller reduzieren als Finanzierungskosten. Beim REIT zählen Neuverzinsungstermine, Absicherungen und Mietanpassungen. Eine allgemeine Zinserzählung ersetzt keine datierte Übersicht über Aktiva, Schulden und Gebühren."
+        ],
+        [
+          "Eine nachvollziehbare Forschungsroute wählen",
+          "Verfolgen Sie beim REIT Mieten bis zu Betriebsergebnis, laufenden Investitionen und Dividenden. Verfolgen Sie bei der BDC Anlageerträge durch Finanzierung und Gebühren; prüfen Sie danach PIK, nicht mehr verzinste Problemkredite und Wertänderungen. Konzentration kann in Mietern und Märkten oder in Kreditnehmern, Branchen und Sponsoren liegen. Ein Abschlag auf NAV ist nicht automatisch günstig: NAV kann fallen und Kosten laufen weiter. Dokumentieren Sie fehlende Belege, statt sie durch optimistische Schätzungen zu ersetzen. Persönliche grenzüberschreitende Besteuerung ist nicht Gegenstand dieses Vergleichs."
+        ]
+      ],
+      "example": "Hypothetische jährliche USD je Stammaktie: Beide Aktien kosten 25 und schütten 2,00 aus; die Rendite beträgt jeweils 8 %. Der REIT berichtet AFFO 2,50, also 80 % Ausschüttungsquote. Nur unter der Annahme, dass laufende Kosten von 0,30 darin noch nicht abgezogen wurden, sinkt die analytische Größe auf 2,20: Quote 90,91 %, Puffer 0,20. Die BDC berichtet NII 2,40: Deckung 1,20×. Ein rein illustrativer Abzug von 0,40 enthaltenem PIK lässt 2,00, Deckung 1,00× und Puffer null. Dies ist weder standardisiertes AFFO noch eine vollständige Kapitalflussprognose; der PIK-Abzug modelliert keine Gebühren- oder Steuerreaktion.",
+      "question": "Beweisen zwei Renditen von 8 %, dass die Ausschüttungen gleich zuverlässig sind?",
+      "answer": "Nein. Die Rendite setzt nur die angenommene Ausschüttung ins Verhältnis zum Preis. Definitionen, laufende Ausgaben, Einbringlichkeit, Finanzierung und Kapitalverluste müssen separat untersucht werden. Nicht alle PIK-Zinsen sind uneinbringlich.",
+      "checks": [
+        "Gleiche jährliche Periode und Pro-Aktie-Basis verwenden.",
+        "Anpassungen nur bei tatsächlich ausgeschlossenen Positionen vornehmen.",
+        "PIK-Einbringlichkeit und Gebührenreaktionen gesondert prüfen.",
+        "Keine allgemeine Rangfolge oder Kaufempfehlung aus einem Einzelverhältnis ableiten."
+      ],
+      "published": "2026-10-18",
+      "updated": "2026-10-18"
+    }
+  },
+  "income": {
+    "title": "Dividendenrechner in USD",
+    "description": "Berechnen Sie hypothetische jährliche Dividendeneinnahmen, angenommene Quellensteuer und das Kapital für ein monatliches Einkommensziel.",
+    "fields": [
+      "Investiertes Kapital (USD)",
+      "Angenommene jährliche Rendite (%)",
+      "Angenommener Steuerabzug (%)",
+      "Monatliches Ziel (USD)"
+    ],
+    "input_note": "Eingaben ohne Tausendertrennzeichen. Dezimalkomma oder Dezimalpunkt sind erlaubt: 1024,5 oder 1024.5. 5 bedeutet 5 %. Kapital: 0–1.000.000.000.000 USD; Rendite und Abzug: 0–100 %; monatliches Ziel: 0–1.000.000.000 USD. Die Angaben bleiben in diesem Browser-Tab.",
+    "nojs": "Die interaktive Berechnung benötigt JavaScript. Formel und Beispiel bleiben unten lesbar.",
+    "messages": {
+      "pending": "Wählen Sie Berechnen, um das Szenario anzuzeigen.",
+      "changed": "Annahmen geändert. Bitte neu berechnen.",
+      "error": "Prüfen Sie Zahlen und Grenzen. Keine Tausendertrennzeichen verwenden.",
+      "unavailable": "Die Rechenbibliothek ist nicht verfügbar. Laden Sie die Seite erneut.",
+      "undefined": "Nicht definiert",
+      "heading": "Szenarioergebnis",
+      "note": "Hypothetisches Szenario, keine Prognose. Der angenommene Abzug ist nicht Ihre endgültige Steuer. Keine Währungsumrechnung.",
+      "labels": [
+        "Jährliche Bruttoausschüttungen (USD)",
+        "Jährliches Einkommen nach angenommenem Abzug (USD)",
+        "Monatlicher Durchschnitt (USD)",
+        "Kapital für das monatliche Ziel (USD)"
+      ]
+    },
+    "sections": [
+      [
+        "Formel und Bezugsgröße",
+        "Jährlicher Bruttobetrag = Kapital × Jahresrendite / 100. Betrag nach angenommenem Abzug = brutto × (1 − Abzug / 100). Netto-Rendite als Dezimalzahl = (Jahresrendite / 100) × (1 − Abzug / 100). Zielkapital = monatliches Ziel × 12 / Netto-Rendite. Alle Größen bleiben in USD; 5 % werden als 0,05 verwendet."
+      ],
+      [
+        "Hypothetisches Beispiel",
+        "10.000 USD bei 5 % ergeben 500 USD brutto jährlich. Ändern Sie für dieses Beispiel den anfänglichen Abzug von 0 % auf 15 %: Es bleiben 425 USD jährlich beziehungsweise durchschnittlich 35,42 USD monatlich. Ein Ziel von 500 USD monatlich erfordert unter diesen konstanten Annahmen etwa 141.176,47 USD."
+      ],
+      [
+        "Was das Ergebnis nicht aussagt",
+        "Ein monatlicher Durchschnitt ist kein Zahlungskalender. Der Steuerabzug ist eine Eingabeannahme und keine Bestimmung Ihrer Steuerpflicht in einem bestimmten Land. Kurs- und Wechselkursänderungen, Gebühren, Wiederanlage und Dividendenkürzungen fehlen. Bei Netto-Rendite null lässt sich ein positives Ziel nicht finanzieren; das erforderliche Kapital ist dann nicht definiert."
+      ],
+      [
+        "Eingaben aus den Unterlagen ableiten",
+        "Halten Sie fest, ob Sie vergangene Zahlungen, die letzte Zahlung annualisiert oder eine Prognose verwenden. Sonderzahlungen sollten nicht unbemerkt zur dauerhaften Basis werden. Prüfen Sie Ausschüttungsbeschlüsse und Emittentenberichte. Der Rechner bewertet weder AFFO noch NII und erklärt eine hohe Dividende nicht für sicher. Lernen Sie die Deckungsprüfung in den Leitfäden dieser Ausgabe, bevor Sie aus einem Einkommensszenario eine Investitionsentscheidung ableiten."
+      ]
+    ]
+  }
+}

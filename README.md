@@ -6,6 +6,11 @@ The site provides 36 REIT guides, 16 BDC guides, 15 calculators, two
 subject glossaries, a primary-source directory and an editorial policy.
 Both subjects have four learning levels. The initial Spanish edition has
 seven pages, including four introductory lessons and two calculators.
+Traditional Chinese, Japanese and German each add six core pages: a language
+home, four introductory guides and a USD income calculator. Their reciprocal
+language links reference only published counterparts; these are US-product
+introductions, not local tax adaptations. Source text lives in
+`content/edition-*.json`, rendered by `international.py`.
 Illustration production records are retained in `img/education/prompts.json`;
 local full-resolution originals are ignored by Git.
 

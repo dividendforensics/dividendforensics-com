@@ -2,8 +2,8 @@
   {
     "english_slug": "learn-reit-basics",
     "slug": "que-es-un-reit",
-    "title": "¿Qué es un REIT? Sigue el activo, el ingreso y el derecho del accionista",
-    "description": "Comprende cómo obtiene ingresos un REIT estadounidense, qué posee su accionista y por qué un dividendo no garantiza la rentabilidad de un inmueble.",
+    "title": "¿Qué es un REIT? Siga el activo, el ingreso y el derecho del accionista",
+    "description": "Comprenda cómo obtiene ingresos un REIT estadounidense, qué posee su accionista y por qué un dividendo no garantiza la rentabilidad de un inmueble.",
     "sections": [
       {
         "heading": "Una estructura, no un único negocio",
@@ -26,12 +26,12 @@
       "heading": "Ejemplo hipotético: el alquiler no es el dividendo",
       "text": "Supongamos que los inmuebles cobran 100 USD de alquiler, soportan 30 USD de gastos operativos y la empresa paga 15 USD de intereses y costes corporativos. Quedan 55 USD antes de inversiones y otras partidas. Si las mejoras recurrentes requieren 10 USD, el importe restante simplificado es de 45 USD. Una distribución de 50 USD necesitaría otra fuente de financiación en este ejemplo. Esta ilustración de efectivo no es un cálculo fiscal ni una conciliación completa del FFO."
     },
-    "pitfall": "Una rentabilidad cotizada del 7% no significa que el alquiler, los beneficios o el valor de tu inversión vayan a crecer un 7%. Las pérdidas de precio y los recortes del dividendo pueden superar los ingresos.",
+    "pitfall": "Una rentabilidad cotizada del 7% no significa que el alquiler, los beneficios o el valor de su inversión vayan a crecer un 7%. Las pérdidas de precio y los recortes del dividendo pueden superar los ingresos.",
     "checklist": [
-      "Identifica si el negocio posee inmuebles o proporciona financiación hipotecaria.",
-      "Revisa la composición de los inmuebles y la exposición a los principales inquilinos.",
+      "Identifique si el negocio posee inmuebles o proporciona financiación hipotecaria.",
+      "Revise la composición de los inmuebles y la exposición a los principales inquilinos.",
       "Compare el dividendo con una medida operativa adecuada y conciliada.",
-      "Examina las necesidades recurrentes de inversión y la deuda que vence en los próximos años."
+      "Examine las necesidades recurrentes de inversión y la deuda que vence en los próximos años."
     ],
     "sources": [
       {
@@ -53,8 +53,8 @@
   {
     "english_slug": "learn-bdc-basics",
     "slug": "que-es-una-bdc",
-    "title": "¿Qué es una BDC? Sigue el vehículo, las empresas prestatarias y el accionista",
-    "description": "Distingue la estructura de una BDC estadounidense, los intereses de sus prestatarios y las distribuciones al accionista. Una acción negociable no es un préstamo reembolsable.",
+    "title": "¿Qué es una BDC? Siga el vehículo, las empresas prestatarias y el accionista",
+    "description": "Distinga la estructura de una BDC estadounidense, los intereses de sus prestatarios y las distribuciones al accionista. Una acción negociable no es un préstamo reembolsable.",
     "sections": [
       {
         "heading": "Tres participantes, tres derechos distintos",
@@ -66,11 +66,11 @@
       },
       {
         "heading": "Lea conjuntamente los ingresos y el valor del capital",
-        "text": "Una distribución es una transferencia del vehículo a sus accionistas, no una prueba de que todos los préstamos se paguen correctamente ni de que el precio de la acción deba mantenerse. Pregunta qué inversiones generaron los ingresos reconocidos, cuánto se cobró en efectivo, qué gastos preceden a los accionistas ordinarios y si las pérdidas de valor razonable reducen los activos netos. Una BDC puede reconocer ingresos mientras se deteriora el valor de una inversión. A la inversa, un trimestre con pocos ingresos puede reflejar diferencias de calendario o comisiones, no necesariamente una pérdida permanente de principal. Conviene separar estas posibilidades en lugar de resumir todo el negocio en su última rentabilidad anualizada."
+        "text": "Una distribución es una transferencia del vehículo a sus accionistas, no una prueba de que todos los préstamos se paguen correctamente ni de que el precio de la acción deba mantenerse. Pregúntese qué inversiones generaron los ingresos reconocidos, cuánto se cobró en efectivo, qué gastos preceden a los accionistas ordinarios y si las pérdidas de valor razonable reducen los activos netos. Una BDC puede reconocer ingresos mientras se deteriora el valor de una inversión. A la inversa, un trimestre con pocos ingresos puede reflejar diferencias de calendario o comisiones, no necesariamente una pérdida permanente de principal. Conviene separar estas posibilidades en lugar de resumir todo el negocio en su última rentabilidad anualizada."
       },
       {
         "heading": "La primera lectura debe construir un mapa, no un veredicto",
-        "text": "Antes de comparar empresas, anota si las acciones cotizan, la estrategia de inversión, el sistema de gestión y la fecha de información. Identifica préstamos, participaciones de capital y otros instrumentos en la cartera, sin suponer que todas las posiciones son préstamos de primer rango. Localiza la nota de financiación y las declaraciones de distribuciones, y señala qué sigue sin conocerse. Los boletines de Investor.gov ayudan a entender la estructura y los riesgos; las inversiones y condiciones reales requieren los documentos del emisor. Ni la etiqueta BDC ni la presentación de información ante la SEC significan que la inversión esté asegurada, sea adecuada para una persona determinada o haya sido aprobada como una buena inversión."
+        "text": "Antes de comparar empresas, anote si las acciones cotizan, la estrategia de inversión, el sistema de gestión y la fecha de información. Identifique préstamos, participaciones de capital y otros instrumentos en la cartera, sin suponer que todas las posiciones son préstamos de primer rango. Localice la nota de financiación y las declaraciones de distribuciones, y señale qué sigue sin conocerse. Los boletines de Investor.gov ayudan a entender la estructura y los riesgos; las inversiones y condiciones reales requieren los documentos del emisor. Ni la etiqueta BDC ni la presentación de información ante la SEC significan que la inversión esté asegurada, sea adecuada para una persona determinada o haya sido aprobada como una buena inversión."
       }
     ],
     "example": {
@@ -79,10 +79,10 @@
     },
     "pitfall": "Tratar una acción de una BDC como un depósito directo asegurado o como un préstamo reembolsable al valor de los activos netos.",
     "checklist": [
-      "Identifica el vehículo cotizado o no cotizado y la clase de acción concreta.",
+      "Identifique el vehículo cotizado o no cotizado y la clase de acción concreta.",
       "Lea la estrategia de inversión y los instrumentos de la cartera.",
-      "Separa la deuda de la BDC de la deuda de las empresas de su cartera.",
-      "Registra la distribución declarada y el periodo de información."
+      "Separe la deuda de la BDC de la deuda de las empresas de su cartera.",
+      "Registre la distribución declarada y el periodo de información."
     ],
     "sources": [
       {
@@ -104,8 +104,8 @@
   {
     "english_slug": "learn-yield-total-return",
     "slug": "rentabilidad-dividendos",
-    "title": "Rentabilidad por dividendo y rentabilidad total: cuenta ambos lados",
-    "description": "Calcula conjuntamente las distribuciones y los cambios de precio. Una rentabilidad por dividendo creciente puede señalar riesgo y no una recompensa.",
+    "title": "Rentabilidad por dividendo y rentabilidad total: cuente ambos lados",
+    "description": "Calcule conjuntamente las distribuciones y los cambios de precio. Una rentabilidad por dividendo creciente puede señalar riesgo y no una recompensa.",
     "sections": [
       {
         "heading": "La rentabilidad por dividendo es una proporción a un precio",
@@ -117,23 +117,23 @@
       },
       {
         "heading": "La rentabilidad sobre el coste responde a una pregunta más limitada",
-        "text": "La rentabilidad sobre el coste compara el dividendo anual actual con tu precio histórico de compra. Puede describir el crecimiento del ingreso de una inversión original, pero no representa la rentabilidad disponible para un nuevo inversor ni el coste de oportunidad de conservar la posición. Las decisiones actuales involucran el valor de mercado actual. Una posición mantenida durante mucho tiempo puede tener una rentabilidad sobre el coste elevada y, aun así, presentar un deterioro de cobertura, refinanciación costosa o concentración de riesgos. El precio de compra histórico no elimina esas condiciones actuales."
+        "text": "La rentabilidad sobre el coste compara el dividendo anual actual con su precio histórico de compra. Puede describir el crecimiento del ingreso de una inversión original, pero no representa la rentabilidad disponible para un nuevo inversor ni el coste de oportunidad de conservar la posición. Las decisiones actuales involucran el valor de mercado actual. Una posición mantenida durante mucho tiempo puede tener una rentabilidad sobre el coste elevada y, aun así, presentar un deterioro de cobertura, refinanciación costosa o concentración de riesgos. El precio de compra histórico no elimina esas condiciones actuales."
       },
       {
         "heading": "Compare escenarios en lugar de perseguir la cifra mayor",
-        "text": "Un inversor orientado a los ingresos puede preferir distribuciones regulares, mientras que otro valora la reinversión dentro de la empresa. Ninguna preferencia convierte la rentabilidad anunciada en una puntuación de seguridad. Modela por separado un dividendo sin cambios, una reducción y una variación de precio. Reinvertir los dividendos permite comprar más acciones, pero no elimina el riesgo de caída del valor del activo. Si comparas un REIT con un bono, recuerda que el dividendo y el valor de salida de las acciones ordinarias no son pagos contractuales de un bono. La comparación debe reconocer esa diferencia de derechos."
+        "text": "Un inversor orientado a los ingresos puede preferir distribuciones regulares, mientras que otro valora la reinversión dentro de la empresa. Ninguna preferencia convierte la rentabilidad anunciada en una puntuación de seguridad. Modele por separado un dividendo sin cambios, una reducción y una variación de precio. Reinvertir los dividendos permite comprar más acciones, pero no elimina el riesgo de caída del valor del activo. Si compara un REIT con un bono, recuerde que el dividendo y el valor de salida de las acciones ordinarias no son pagos contractuales de un bono. La comparación debe reconocer esa diferencia de derechos."
       }
     ],
     "example": {
       "heading": "Ejemplo hipotético: ingreso del 6%, rentabilidad negativa",
-      "text": "Compras una acción por 100 USD, recibes 6 USD de distribuciones y terminas el año con una acción valorada en 90 USD. La rentabilidad total simple antes de impuestos es (90 USD − 100 USD + 6 USD) ÷ 100 USD = −4%. La rentabilidad inicial por dividendo del 6% era una proporción de ingresos, no una promesa de rentabilidad positiva. La reinversión, los impuestos y las comisiones modificarían el resultado obtenido."
+      "text": "Compra una acción por 100 USD, recibe 6 USD de distribuciones y termina el año con una acción valorada en 90 USD. La rentabilidad total simple antes de impuestos es (90 USD − 100 USD + 6 USD) ÷ 100 USD = −4%. La rentabilidad inicial por dividendo del 6% era una proporción de ingresos, no una promesa de rentabilidad positiva. La reinversión, los impuestos y las comisiones modificarían el resultado obtenido."
     },
     "pitfall": "Una caída del precio de la acción aumenta mecánicamente la rentabilidad indicada si el dividendo supuesto no cambia. Puede señalar un riesgo que el dividendo actual todavía no refleja.",
     "checklist": [
-      "Especifica si el dividendo es histórico, indicado o previsto.",
-      "Separa las distribuciones recurrentes de los pagos extraordinarios.",
-      "Muestra la variación de precio junto al ingreso en efectivo.",
-      "Utiliza monedas coherentes e identifica las comisiones y los supuestos fiscales."
+      "Especifique si el dividendo es histórico, indicado o previsto.",
+      "Separe las distribuciones recurrentes de los pagos extraordinarios.",
+      "Muestre la variación de precio junto al ingreso en efectivo.",
+      "Utilice monedas coherentes e identifica las comisiones y los supuestos fiscales."
     ],
     "sources": [
       {
@@ -155,24 +155,24 @@
   {
     "english_slug": "learn-bdc-nii-coverage",
     "slug": "nii-cobertura-dividendos",
-    "title": "NII y cobertura de distribuciones: iguala ingresos, denominador y periodo",
-    "description": "Concilia la cobertura de distribuciones ordinarias y totales de una BDC estadounidense sin confundir NII declarado, medidas ajustadas y efectivo disponible.",
+    "title": "NII y cobertura de distribuciones: iguale ingresos, denominador y periodo",
+    "description": "Concilie la cobertura de distribuciones ordinarias y totales de una BDC estadounidense sin confundir NII declarado, medidas ajustadas y efectivo disponible.",
     "sections": [
       {
         "heading": "Defina el NII antes de compararlo con una distribución",
-        "text": "El ingreso neto de inversión, identificado aquí por sus siglas inglesas NII, es un resultado contable después de los gastos de inversión incluidos en la presentación del emisor. No equivale al ingreso total de inversión, una línea anterior a esos gastos, ni al cambio neto completo procedente de las operaciones, que también puede incluir resultados de inversión realizados y no realizados. Una empresa puede publicar una medida ajustada o recurrente con su propia conciliación. Conserva el NII declarado y muestra los ajustes por separado. Que dos emisores repitan una etiqueta no demuestra que sus definiciones, la atribución a accionistas ordinarios o el tratamiento de comisiones sean iguales."
+        "text": "El ingreso neto de inversión, identificado aquí por sus siglas inglesas NII, es un resultado contable después de los gastos de inversión incluidos en la presentación del emisor. No equivale al ingreso total de inversión, una línea anterior a esos gastos, ni al cambio neto completo procedente de las operaciones, que también puede incluir resultados de inversión realizados y no realizados. Una empresa puede publicar una medida ajustada o recurrente con su propia conciliación. Conserve el NII declarado y muestre los ajustes por separado. Que dos emisores repitan una etiqueta no demuestra que sus definiciones, la atribución a accionistas ordinarios o el tratamiento de comisiones sean iguales."
       },
       {
         "heading": "Elija deliberadamente el denominador",
-        "text": "Las distribuciones regulares, complementarias y extraordinarias transfieren valor a los accionistas ordinarios, pero pueden responder a políticas distintas. La cobertura de la distribución regular pregunta si la medida de ingresos elegida cubre la base recurrente declarada. La cobertura total incluye todos los componentes de la base seleccionada. Ambas comparaciones pueden ser útiles si se etiquetan con claridad; utilizar solo la base y afirmar que todos los pagos están cubiertos exagera lo que demuestra la proporción. Distingue las distribuciones declaradas para el periodo del efectivo pagado durante él. Un pago del trimestre puede liquidar una declaración anterior, de modo que el estado de flujos y las declaraciones del consejo no proporcionan denominadores intercambiables."
+        "text": "Las distribuciones regulares, complementarias y extraordinarias transfieren valor a los accionistas ordinarios, pero pueden responder a políticas distintas. La cobertura de la distribución regular pregunta si la medida de ingresos elegida cubre la base recurrente declarada. La cobertura total incluye todos los componentes de la base seleccionada. Ambas comparaciones pueden ser útiles si se etiquetan con claridad; utilizar solo la base y afirmar que todos los pagos están cubiertos exagera lo que demuestra la proporción. Distinga las distribuciones declaradas para el periodo del efectivo pagado durante él. Un pago del trimestre puede liquidar una declaración anterior, de modo que el estado de flujos y las declaraciones del consejo no proporcionan denominadores intercambiables."
       },
       {
         "heading": "Use importes totales comparables o datos por acción comparables",
-        "text": "Dividir el NII total entre las distribuciones totales a los accionistas ordinarios evita combinar sin explicarlo las acciones medias ponderadas de los beneficios con un número diferente de acciones con derecho a distribución. Una comparación por acción también puede ser útil si ambas cifras se presentan con bases apropiadas y compatibles, pero una emisión durante el periodo puede complicar la conciliación con los totales. Los intereses pagados en especie (payment-in-kind, PIK) pueden reconocerse como ingreso sin cobrarse en efectivo en ese momento, según el contrato y la política de reconocimiento del emisor. No fabriques un importe de PIK por acción dividiendo los ingresos del periodo entre el número de acciones más fácil de encontrar. Registra si calculas ingresos divididos entre distribuciones, denominado aquí cobertura, o distribuciones divididas entre ingresos, denominado porcentaje de distribución o payout. Solo son recíprocos cuando ambos datos permiten esa interpretación."
+        "text": "Dividir el NII total entre las distribuciones totales a los accionistas ordinarios evita combinar sin explicarlo las acciones medias ponderadas de los beneficios con un número diferente de acciones con derecho a distribución. Una comparación por acción también puede ser útil si ambas cifras se presentan con bases apropiadas y compatibles, pero una emisión durante el periodo puede complicar la conciliación con los totales. Los intereses pagados en especie (payment-in-kind, PIK) pueden reconocerse como ingreso sin cobrarse en efectivo en ese momento, según el contrato y la política de reconocimiento del emisor. No fabrique un importe de PIK por acción dividiendo los ingresos del periodo entre el número de acciones más fácil de encontrar. Registre si calcula ingresos divididos entre distribuciones, denominado aquí cobertura, o distribuciones divididas entre ingresos, denominado porcentaje de distribución o payout. Solo son recíprocos cuando ambos datos permiten esa interpretación."
       },
       {
         "heading": "Mantenga visibles los límites de la proporción",
-        "text": "Una cobertura superior a uno no prueba que se cobrara el ingreso en efectivo, que se preservara el principal ni que el consejo mantenga el pago. Una cobertura inferior a uno tampoco demuestra por sí sola un recorte inminente; la financiación, las ganancias realizadas, el calendario fiscal y otros recursos requieren análisis separado. El NII negativo debe conservar su signo en vez de convertirse en cero. Un denominador de distribuciones igual a cero produce una cobertura no definida, no seguridad infinita. Si se desconoce el importe complementario, conserva la cobertura regular válida y marca la cobertura total como incompleta. Ante un dato ausente corresponde formular una pregunta, no presentar un porcentaje más atractivo."
+        "text": "Una cobertura superior a uno no prueba que se cobrara el ingreso en efectivo, que se preservara el principal ni que el consejo mantenga el pago. Una cobertura inferior a uno tampoco demuestra por sí sola un recorte inminente; la financiación, las ganancias realizadas, el calendario fiscal y otros recursos requieren análisis separado. El NII negativo debe conservar su signo en vez de convertirse en cero. Un denominador de distribuciones igual a cero produce una cobertura no definida, no seguridad infinita. Si se desconoce el importe complementario, conserve la cobertura regular válida y marque la cobertura total como incompleta. Ante un dato ausente corresponde formular una pregunta, no presentar un porcentaje más atractivo."
       }
     ],
     "example": {
@@ -181,10 +181,10 @@
     },
     "pitfall": "Afirmar que una cobertura regular de 1,20 veces prueba que están cubiertas todas las distribuciones, o describir la cobertura como si fuera un porcentaje de payout.",
     "checklist": [
-      "Conserva la definición de NII y cualquier conciliación.",
-      "Iguala periodos, moneda, escala y atribución a las acciones ordinarias.",
-      "Enumera por separado las distribuciones regulares, complementarias y extraordinarias.",
-      "Distingue declaraciones y pagos, y los datos desconocidos de los ceros confirmados."
+      "Conserve la definición de NII y cualquier conciliación.",
+      "Iguale periodos, moneda, escala y atribución a las acciones ordinarias.",
+      "Enumere por separado las distribuciones regulares, complementarias y extraordinarias.",
+      "Distinga declaraciones y pagos, y los datos desconocidos de los ceros confirmados."
     ],
     "sources": [
       {

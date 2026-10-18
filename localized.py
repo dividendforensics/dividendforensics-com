@@ -25,13 +25,17 @@ def alternates(english,spanish):
 
 def inject_alternates(path,text,root):
     import re
+    from international import groups, NAMES
     relative=path.relative_to(root).as_posix()
-    pair=next(((en,es) for en,es in PAIRS.items() if relative in (en,es)),None)
-    if not pair:return text
+    group=next((g for g in groups(PAIRS).values() if relative in g.values()),None)
+    if not group:return text
     text=re.sub(r'<link\b[^>]*hreflang="[^"]+"[^>]*>\s*','',text)
-    text=text.replace('</head>',alternates(*pair)+'</head>')
-    if relative==pair[0] and 'data-language-switch' not in text:
-        text=text.replace('<main id="main" tabindex="-1">','<main id="main" tabindex="-1"><nav class="wrap language-switch" aria-label="Language" data-language-switch><a href="'+url(pair[1])+'" lang="es" hreflang="es">Español →</a></nav>',1)
+    links=''.join(f'<link rel="alternate" hreflang="{lang}" href="{url(target)}">\n' for lang,target in {**group,'x-default':group['en']}.items())
+    text=text.replace('</head>',links+'</head>')
+    text=re.sub(r'<nav\b[^>]*data-language-switch[^>]*>.*?</nav>','',text,flags=re.S)
+    # Spanish remains the first alternative on English pages for established links.
+    choices=' · '.join(f'<a href="{url(target)}" lang="{lang}" hreflang="{lang}">{NAMES[lang]}</a>' for lang,target in group.items() if target!=relative)
+    text=text.replace('<main id="main" tabindex="-1">','<main id="main" tabindex="-1"><nav class="wrap language-switch" aria-label="Language" data-language-switch>'+choices+'</nav>',1)
     return text
 
 

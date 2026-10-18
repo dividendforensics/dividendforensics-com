@@ -8,6 +8,7 @@ from urllib.parse import urlsplit
 from bs4 import BeautifulSoup
 import build_site
 import localized
+from international import groups
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -20,11 +21,12 @@ class LocalizedTests(unittest.TestCase):
     def test_seven_pairs_have_reciprocal_hreflang_and_self_canonicals(self):
         self.assertEqual(len(localized.PAIRS),7)
         for english,spanish in localized.PAIRS.items():
-            expected={'en':localized.url(english),'es':localized.url(spanish),'x-default':localized.url(english)}
+            expected={lang:localized.url(path) for lang,path in groups(localized.PAIRS)[english].items()}
+            expected['x-default']=localized.url(english)
             for path in (english,spanish):
                 soup=BeautifulSoup(self.pages[ROOT/path],'html.parser')
                 links=soup.select('link[rel=alternate][hreflang]')
-                self.assertEqual(len(links),3,path)
+                self.assertEqual(len(links),len(expected),path)
                 self.assertEqual({x['hreflang']:x['href'] for x in links},expected,path)
                 canonicals=soup.select('link[rel=canonical]')
                 self.assertEqual(len(canonicals),1,path)

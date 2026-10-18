@@ -260,6 +260,8 @@ def education_outputs(root):
     output.update(bdc_education_outputs(root))
     from localized import outputs as localized_outputs
     output.update(localized_outputs(root))
+    from international import outputs as international_outputs
+    output.update(international_outputs(root))
     from research_resources import outputs as resource_outputs
     output.update(resource_outputs(root))
     pages={p:p.read_text(encoding='utf-8') for p in root.glob('*.html')}
