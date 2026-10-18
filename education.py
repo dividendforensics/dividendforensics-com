@@ -3,10 +3,10 @@ from pathlib import Path
 import html
 import json
 import re
+from datetime import date
 from urllib.parse import urlsplit
 
 DOMAIN = 'https://dividendforensics.com'
-UPDATED = '2026-10-18'
 E = lambda value: html.escape(str(value), quote=True)
 
 # id, label, example value, minimum, maximum, step
@@ -27,10 +27,10 @@ TOOLS = [
          related=['learn-reinvestment','learn-yield-total-return','learn-dividend-cuts']),
     dict(slug='calculator-payout-ratio',kind='payout',title='AFFO payout & stress calculator',
          description='Compare common dividends with AFFO on a matching basis, then model a decline in the chosen measure.',
-         inputs=[('affo','Annual AFFO per common share',4,0.000001,1e9,'any'),('dividend','Annual dividend per common share',3,0,1e9,'any'),('decline','AFFO decline scenario (%)',15,0,100,'any')],
+         inputs=[('affo','Annual AFFO per common share',4,-1e9,1e9,'any'),('dividend','Annual dividend per common share',3,0,1e9,'any'),('decline','AFFO decline scenario (%)',15,0,100,'any')],
          formula='Payout = dividend ÷ AFFO. Coverage = AFFO ÷ dividend. Stressed AFFO = AFFO × (1 − decline). Cushion = AFFO − dividend. Use consistent annual periods and common-share bases.',
          example='With AFFO of 4.00 and a dividend of 3.00, payout is 75% and coverage is 1.33×. A 15% AFFO decline reduces AFFO to 3.40 and raises payout to 88.24%. The remaining cushion is 0.40 per share.',
-         limits='AFFO has no single standardized definition. Use the issuer reconciliation and account for excluded recurring cash costs. Coverage is not a safety rating. Zero AFFO or zero dividend produces an undefined ratio where appropriate, not a fabricated percentage.',
+         limits='AFFO has no single standardized definition. Use the issuer reconciliation and account for excluded recurring cash costs. Coverage is not a safety rating. Payout and coverage are not meaningful when AFFO is zero or negative and are shown as Not defined. Coverage is also undefined when the dividend is zero. Negative cash cushions remain visible. For negative AFFO, the decline input scales the signed amount; it is not a worsening-loss model.',
          related=['learn-affo','learn-payout-ratio','learn-dividend-cuts']),
     dict(slug='calculator-ffo-affo',kind='bridge',title='FFO to AFFO learning calculator',
          description='Build a simplified non-GAAP reconciliation and see how recurring capex and straight-line rent change a modeled result.',
@@ -72,19 +72,33 @@ def load_articles(root):
     if len(slugs)!=len(set(slugs)): raise ValueError('Duplicate education slug')
     for a in articles:
         if not re.fullmatch(r'learn-[a-z0-9-]+',a['slug']): raise ValueError('Invalid article slug')
+        published=date.fromisoformat(a['published'])
+        updated=date.fromisoformat(a['updated'])
+        if updated<published: raise ValueError(f'Update precedes publication: {a["slug"]}')
+        if a.get('calculator') not in {None,*(t['slug'] for t in TOOLS)}:
+            raise ValueError(f'Unknown calculator: {a["slug"]}')
         for link in a['related']:
             if link not in slugs: raise ValueError(f'Unknown related article: {link}')
         for s in a['sources']:
             if urlsplit(s['url']).scheme!='https': raise ValueError('Sources require HTTPS')
     return articles
 
-def shell(root,name,title,description,body,kind='WebPage',extra='',index=True):
+def breadcrumb_items(name,title):
+    trail=[('Home',DOMAIN+'/')]
+    if name.startswith('calculator-'):
+        trail.append(('Calculators',DOMAIN+'/tools.html'))
+    elif name.startswith(('learn-','course-')):
+        trail.append(('Learn',DOMAIN+'/learn.html'))
+    if name!='index.html':trail.append((title,DOMAIN+'/'+name))
+    return [{'@type':'ListItem','position':i,'name':label,'item':url} for i,(label,url) in enumerate(trail,1)]
+
+def shell(root,name,title,description,body,kind='WebPage',extra='',index=True,article=None):
     from build_site import header,footer
     url=DOMAIN+('/' if name=='index.html' else '/'+name)
     schema={'@context':'https://schema.org','@type':kind,'name':title,'description':description,'url':url,'inLanguage':'en','isAccessibleForFree':True,'publisher':{'@type':'Organization','name':'Dividend Forensics Bureau','url':DOMAIN}}
     if kind=='Article':
-        schema.update(headline=title,datePublished=UPDATED,dateModified=UPDATED,author={'@type':'Organization','name':'DFB Education','url':DOMAIN+'/editorial-policy.html'},mainEntityOfPage=url)
-    breadcrumb={'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Home','item':DOMAIN+'/'},{'@type':'ListItem','position':2,'name':'Learning center','item':DOMAIN+'/learn.html'},{'@type':'ListItem','position':3,'name':title,'item':url}]}
+        schema.update(headline=title,datePublished=article['published'],dateModified=article['updated'],author={'@type':'Organization','name':'DFB Education','url':DOMAIN+'/editorial-policy.html'},mainEntityOfPage=url)
+    breadcrumb={'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':breadcrumb_items(name,title)}
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(title)} · DFB</title><meta name="description" content="{E(description)}"><meta name="dfb-design" content="education-20261018">
@@ -119,19 +133,22 @@ def article_page(root,a,lookup):
     checklist=''.join(f'<li>{E(c)}</li>' for c in a['checklist'])
     sources=''.join(f'<li><a href="{E(s["url"])}" target="_blank" rel="noopener">{E(s["title"])} ↗</a></li>' for s in a['sources'])
     related=cards([lookup[s] for s in a['related']])
-    matching=next((t for t in TOOLS if a['slug'] in t['related']),TOOLS[0])
+    matching=next((t for t in TOOLS if t['slug']==a.get('calculator')),None)
+    calculator_link=(f'<a class="text-link" href="/{matching["slug"]}.html">Try a related calculator ↗</a>' if matching else '')
+    updated=date.fromisoformat(a['updated'])
+    display_updated=f'{updated.day} {("January","February","March","April","May","June","July","August","September","October","November","December")[updated.month-1]} {updated.year}'
     words=len(' '.join(s['text'] for s in a['sections']).split())+len(a['example']['text'].split())
     exercise=''
     if a.get('exercise'):
         exercise=f'<section><h2>Test your reasoning</h2><p>{E(a["exercise"]["question"])}</p><details class="workshop-answer"><summary>Reveal the worked answer</summary><p>{E(a["exercise"]["answer"])}</p></details></section>'
-    body=f'''<div class="wrap breadcrumbs"><a href="/">Home</a><span>/</span><a href="/learn.html">Learn</a><span>/</span>{E(a['category'])}</div>
+    body=f'''<div class="wrap breadcrumbs"><a href="/">Home</a><span>/</span><a href="/learn.html">Learn</a><span>/</span><span aria-current="page">{E(a['title'])}</span></div>
 {section_head(a['category'],E(a['title']),a['description'])}
-<div class="wrap article-meta">DFB Education <span>·</span> <a href="/course-{level['key']}.html">{E(a['level'])} learning path</a> <span>·</span> {max(3,round(words/180))} min read <span>·</span> Updated <time datetime="{UPDATED}">18 October 2026</time> <span>·</span> <a href="/editorial-policy.html">Editorial approach</a></div>
+<div class="wrap article-meta">DFB Education <span>·</span> <a href="/course-{level['key']}.html">{E(a['level'])} learning path</a> <span>·</span> {max(3,round(words/180))} min read <span>·</span> Updated <time datetime="{a['updated']}">{display_updated}</time> <span>·</span> <a href="/editorial-policy.html">Editorial approach</a></div>
 <div class="wrap article-visual">{figure(image_for(a),root)}</div>
-<div class="wrap reading-layout"><aside class="article-toc"><span class="kicker">In this guide</span><ol>{toc}<li><a href="#worked-example">Worked example</a></li><li><a href="#source-notes">Sources &amp; next steps</a></li></ol><a class="text-link" href="/{matching['slug']}.html">Try a related calculator ↗</a></aside>
+<div class="wrap reading-layout"><aside class="article-toc"><span class="kicker">In this guide</span><ol>{toc}<li><a href="#worked-example">Worked example</a></li><li><a href="#source-notes">Sources &amp; next steps</a></li></ol>{calculator_link}</aside>
 <article class="lesson-body">{content}<section class="worked-example" id="worked-example"><span class="kicker">Work through the numbers</span><h2>{E(a['example']['heading'])}</h2><p>{E(a['example']['text'])}</p></section>{exercise}<section class="pitfall"><h2>A common mistake</h2><p>{E(a['pitfall'])}</p></section><section><h2>What to check in the disclosures</h2><ul>{checklist}</ul></section><section id="source-notes"><h2>Sources &amp; scope</h2><p>This guide focuses on US REITs. Examples are hypothetical unless explicitly attributed. Definitions and issuer disclosures can change; use the current source and the issuer's own reconciliation.</p><ul class="source-list">{sources}</ul><p class="small-note">Educational material, not a recommendation or personalized investment advice. <a href="/editorial-policy.html">How these guides are prepared</a> · <a href="mailto:dividendforensics@gmail.com?subject=Education%20correction%3A%20{a['slug']}">Report a correction</a></p></section></article></div>
 <section class="wrap education-section"><div class="section-heading"><div><span class="kicker">Continue learning</span><h2>Connect the next piece.</h2></div><a class="text-link" href="/learn.html">All guides →</a></div><div class="lesson-grid">{related}</div></section>'''
-    return shell(root,a['slug']+'.html',a['title'],a['description'],body,'Article')
+    return shell(root,a['slug']+'.html',a['title'],a['description'],body,'Article',article=a)
 
 def hub(root,articles):
     from curriculum import level_cards,LEVELS
@@ -149,8 +166,8 @@ def hub(root,articles):
 
 def calculator_page(root,t,lookup):
     fields=''.join(f'<label for="input-{key}">{E(label)}<input id="input-{key}" name="{key}" type="number" value="{value}" min="{minimum}" max="{maximum}" step="{step}" required inputmode="decimal"></label>' for key,label,value,minimum,maximum,step in t['inputs'])
-    body=f'<div class="wrap breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools.html">Calculators</a></div>'+section_head('Free tools / transparent assumptions',E(t['title']),t['description'])
-    body+=f'''<section class="wrap calculator-layout"><form class="calculator-form" data-calculator="{t['kind']}"><h2>Your assumptions</h2><p class="small-note">Use one currency throughout. Figures below are illustrative inputs, not market data.</p><div class="calculator-fields">{fields}</div><div class="btns"><button class="btn btn-p" type="submit">Calculate <span aria-hidden="true">→</span></button><button class="btn btn-s" type="reset">Reset example</button></div><p class="calculator-error" role="alert" hidden></p><p class="small-note">Calculations stay in this browser tab. No inputs are saved or sent to DFB.</p><noscript><p>Enable JavaScript to calculate interactively, or use the formula and worked example below.</p></noscript></form><div class="calculator-output" role="region" aria-label="Calculation results" aria-live="polite"><span class="kicker">Your scenario</span><h2>The result, with context.</h2><div data-result><p>Select Calculate to run the example or enter your own assumptions.</p></div></div></section>
+    body=f'<div class="wrap breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools.html">Calculators</a><span>/</span><span aria-current="page">{E(t["title"])}</span></div>'+section_head('Free tools / transparent assumptions',E(t['title']),t['description'])
+    body+=f'''<section class="wrap calculator-layout"><form class="calculator-form" data-calculator="{t['kind']}"><h2>Your assumptions</h2><p class="small-note">Educational scenario, not a forecast. Use one currency throughout. Figures below are illustrative inputs, not market data. Percentage inputs use 5 for 5%, not 0.05.</p><div class="calculator-fields">{fields}</div><div class="btns"><button class="btn btn-p" type="submit">Calculate <span aria-hidden="true">→</span></button><button class="btn btn-s" type="reset">Reset example</button></div><p class="calculator-error" role="alert" hidden></p><p class="small-note">Calculations stay in this browser tab. No inputs are saved or sent to DFB.</p><noscript><p>Enable JavaScript to calculate interactively, or use the formula and worked example below.</p></noscript></form><div class="calculator-output" role="region" aria-label="Calculation results" aria-live="polite"><span class="kicker">Your scenario</span><h2>The result, with context.</h2><div data-result><p>Select Calculate to run the example or enter your own assumptions.</p></div></div></section>
 <div class="wrap reading-layout calculator-notes"><aside class="article-toc"><span class="kicker">How to use this tool</span><ol><li><a href="#formula">Formula</a></li><li><a href="#example">Worked example</a></li><li><a href="#limits">What it leaves out</a></li></ol></aside><article class="lesson-body"><section id="formula"><h2>The calculation</h2><p>{E(t['formula'])}</p></section><section id="example" class="worked-example"><span class="kicker">Hypothetical illustration</span><h2>Check the arithmetic.</h2><p>{E(t['example'])}</p></section><section id="limits"><h2>Read the limits before the result.</h2><p>{E(t['limits'])}</p><p>The output is an educational scenario. It is not a forecast, a tax determination or a personalized investment recommendation.</p><p><a href="/editorial-policy.html">Method and corrections</a> · <a href="/sources.html">Primary-source reading room</a></p></section></article></div><section class="wrap education-section"><h2>Understand the inputs.</h2><div class="lesson-grid">{cards([lookup[s] for s in t['related']])}</div></section>'''
     return shell(root,t['slug']+'.html',t['title'],t['description'],body,extra='<script src="/calculators.js" defer></script>')
 

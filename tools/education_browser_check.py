@@ -73,6 +73,16 @@ def main():
         page.get_by_role('button',name='Calculate',exact=False).first.click()
         assert 'Not defined' in page.locator('[data-result]').inner_text()
         assert '-3.00' in page.locator('[data-result]').inner_text()
+        for affo in ('0','-1'):
+            page.locator('#input-affo').fill(affo)
+            page.get_by_role('button',name='Calculate',exact=False).first.click()
+            assert page.locator('.result-metrics dd').all_inner_texts()[:3]==['Not defined']*3
+            assert not page.locator('.calculator-error').is_visible()
+            assert 'not meaningful' in page.locator('[data-result]').inner_text()
+        with page.expect_download() as download:
+            page.get_by_role('button',name='Download this scenario (CSV)').click()
+        csv=Path(download.value.path()).read_text(encoding='utf-8-sig')
+        assert '"Current payout","Not defined"' in csv
         page.goto(base+'/calculator-total-return.html');page.locator('#input-buyFees').fill('2')
         page.get_by_role('button',name='Calculate',exact=False).first.click()
         assert '-5.88%' in page.locator('[data-result]').inner_text()

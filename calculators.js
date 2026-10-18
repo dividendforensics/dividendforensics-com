@@ -1,8 +1,23 @@
-/* Pure scenario arithmetic shared by the browser UI and node tests. No network or storage. */
+/* Pure scenario arithmetic shared by the browser UI and node tests. No network or storage.
+ * Input contract: percentage fields use percentage points (5 means 5%, not 0.05).
+ * Income/reinvestment use one currency; bridge keeps any consistent currency/scale.
+ * NAV/refinancing amounts AND shares are in millions; their quotient is currency/share.
+ * Payout and total return use currency/share. Annual inputs must cover matching periods.
+ * Reinvestment credits income before each month-end contribution and applies assumed
+ * withholding; income applies withholding too. Other tools are pretax sensitivities
+ * except that total return may accept user-entered net dividends. Only total return
+ * models explicit purchase/sale fees. Reinvestment years are whole years, 1 through 50.
+ */
 (function (root) {
   'use strict';
   function calculate(kind, v) {
     if (Object.values(v).some(x => !Number.isFinite(x))) throw new Error('Enter a finite number in every field.');
+    if (['nav', 'refinancing'].includes(kind) && !(v.shares > 0)) throw new Error('Common shares must be greater than zero.');
+    if (kind === 'nav' && !(v.cap > 0)) throw new Error('Capitalization rate must be greater than zero.');
+    if (kind === 'return' && !(v.start > 0)) throw new Error('Purchase price must be greater than zero.');
+    if (kind === 'return' && (v.buyFees < 0 || v.sellFees < 0)) throw new Error('Fees cannot be negative.');
+    if (kind === 'payout' && (v.dividend < 0 || v.decline < 0 || v.decline > 100)) throw new Error('Use a nonnegative dividend and an AFFO decline from 0 to 100%.');
+    if (kind === 'reinvestment' && (!Number.isInteger(v.years) || v.years < 1 || v.years > 50)) throw new Error('Enter a whole number of years from 1 to 50.');
     const rate = (v.yield || 0) / 100 * (1 - (v.tax || 0) / 100);
     let metrics = [], columns = [], rows = [], note = '';
     const m = (label, value, format = 'number') => ({ label, value, format });
@@ -30,10 +45,10 @@
       }
       case 'payout': {
         const stressed = v.affo * (1 - v.decline / 100);
-        metrics = [m('Current payout', v.dividend / v.affo * 100, 'percent'), m('Current coverage', v.dividend > 0 ? v.affo / v.dividend : null, 'multiple'), m('Stressed payout', stressed > 0 ? v.dividend / stressed * 100 : null, 'percent'), m('Stressed per-share cushion', stressed - v.dividend)];
+        metrics = [m('Current payout', v.affo > 0 ? v.dividend / v.affo * 100 : null, 'percent'), m('Current coverage', v.affo > 0 && v.dividend > 0 ? v.affo / v.dividend : null, 'multiple'), m('Stressed payout', stressed > 0 ? v.dividend / stressed * 100 : null, 'percent'), m('Stressed per-share cushion', stressed - v.dividend)];
         columns = ['Scenario', 'AFFO per share', 'Dividend per share', 'Remaining cushion'];
         rows = [['Base', v.affo, v.dividend, v.affo - v.dividend], ['Selected decline (' + v.decline + '%)', stressed, v.dividend, stressed - v.dividend]];
-        note = 'Ratios with a zero denominator are undefined. A negative cushion means the assumed dividend exceeds the selected AFFO measure; it is not a prediction of a cut.';
+        note = 'Payout and coverage are not meaningful with zero or negative AFFO and are shown as Not defined. Coverage is undefined at zero dividends. Negative cash cushions remain visible; they do not predict a cut. For negative AFFO, the decline input scales the signed amount rather than modeling a worsening loss.';
         break;
       }
       case 'bridge': {
@@ -70,12 +85,18 @@
       }
       default: throw new Error('Unknown calculator.');
     }
-    if (metrics.some(x => x.value !== null && !Number.isFinite(x.value))) throw new Error('These inputs produce a result too large to display. Reduce the assumptions.');
+    if (metrics.some(x => x.value !== null && !Number.isFinite(x.value)) || rows.some(row => row.some(x => typeof x === 'number' && !Number.isFinite(x)))) throw new Error('These inputs produce a result too large to display. Reduce the assumptions.');
     return { metrics, columns, rows, note };
   }
-  if (typeof module !== 'undefined' && module.exports) module.exports = { calculate };
+  function format(x, type = 'number') {
+    if (x === null) return 'Not defined';
+    const digits = type === 'precise' ? 4 : 2;
+    const small = x !== 0 && Math.abs(x) < 0.5 * 10 ** -digits;
+    const number = small ? (Math.abs(x) < 1e-6 ? x.toExponential(3) : x.toLocaleString('en-US', { maximumSignificantDigits: 4 })) : x.toLocaleString('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+    return number + (type === 'percent' ? '%' : type === 'multiple' ? '×' : '');
+  }
+  if (typeof module !== 'undefined' && module.exports) module.exports = { calculate, format };
   if (typeof document === 'undefined') return;
-  const format = (x, type = 'number') => x === null ? 'Not defined' : x.toLocaleString('en-US', { minimumFractionDigits: type === 'precise' ? 4 : 2, maximumFractionDigits: type === 'precise' ? 4 : 2 }) + (type === 'percent' ? '%' : type === 'multiple' ? '×' : '');
   function el(tag, text, className) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (className) n.className = className; return n; }
   document.querySelectorAll('[data-calculator]').forEach(form => {
     const output = form.closest('.calculator-layout').querySelector('[data-result]'), error = form.querySelector('.calculator-error');

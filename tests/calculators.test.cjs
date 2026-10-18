@@ -1,6 +1,6 @@
 const {test} = require('node:test');
 const assert = require('node:assert/strict');
-const {calculate} = require('../calculators.js');
+const {calculate,format} = require('../calculators.js');
 const close = (a,b) => assert.ok(Math.abs(a-b)<1e-7, `${a} != ${b}`);
 test('income and target use the same after-withholding basis',()=>{
   const r=calculate('income',{capital:10000,yield:5,tax:15,target:500});
@@ -51,4 +51,41 @@ test('purchase fees belong in the initial capital denominator',()=>{
 });
 test('nonfinite inputs fail instead of displaying misleading output',()=>{
   assert.throws(()=>calculate('income',{capital:NaN,yield:5,tax:0,target:500}),/finite/);
+});
+
+test('nonpositive AFFO gives no misleading payout or coverage percentage',()=>{
+  for (const affo of [0,-1]) {
+    const r=calculate('payout',{affo,dividend:2,decline:0});
+    assert.deepEqual(r.metrics.slice(0,3).map(m=>m.value),[null,null,null]);
+    close(r.metrics[3].value,affo-2);
+    assert.match(r.note,/not meaningful/);
+  }
+});
+
+test('zero denominators identify the input problem, not overflow',()=>{
+  assert.throws(()=>calculate('nav',{noi:100,cap:6,cash:0,debt:0,shares:0}),/shares must be greater/);
+  assert.throws(()=>calculate('nav',{noi:100,cap:0,cash:0,debt:0,shares:100}),/rate must be greater/);
+  assert.throws(()=>calculate('refinancing',{principal:100,old:3,new:5,shares:0}),/shares must be greater/);
+  assert.throws(()=>calculate('return',{start:0,end:10,dividends:0,buyFees:0,sellFees:0}),/Purchase price/);
+  for (const years of [0,0.5,51]) assert.throws(()=>calculate('reinvestment',{capital:100,contribution:0,yield:5,tax:0,years}),/whole number of years/);
+});
+
+test('percentage points, money scale and per-share units agree in all seven tools',()=>{
+  close(calculate('income',{capital:100,yield:5,tax:0,target:0}).metrics[0].value,5);
+  close(calculate('income',{capital:100,yield:0.05,tax:0,target:0}).metrics[0].value,0.05);
+  const reinvest=calculate('reinvestment',{capital:100,contribution:0,yield:12,tax:50,years:1});
+  close(reinvest.metrics[0].value,100*1.005**12);
+  close(calculate('payout',{affo:0.04,dividend:0.03,decline:0}).metrics[0].value,75);
+  close(calculate('bridge',{net:0.5,depreciation:0.4,gains:0.1,ffoOther:0,capex:0.08,rent:0.02,affoOther:0}).metrics[1].value,0.7);
+  close(calculate('nav',{noi:1,cap:5,debt:0,cash:0,shares:2}).metrics[2].value,10);
+  close(calculate('refinancing',{principal:1,old:3,new:5,shares:2}).metrics[3].value,0.01);
+  close(calculate('return',{start:1,end:1.1,dividends:0.05,buyFees:0.02,sellFees:0.01}).metrics[0].value,0.12/1.02*100);
+});
+
+test('small nonzero results retain their sign and do not round to zero',()=>{
+  assert.equal(format(null),'Not defined');
+  assert.equal(format(0),'0.00');
+  assert.equal(format(0.001),'0.001');
+  assert.equal(format(-0.000001,'precise'),'-0.000001');
+  assert.equal(format(1e-9,'percent'),'1.000e-9%');
 });
