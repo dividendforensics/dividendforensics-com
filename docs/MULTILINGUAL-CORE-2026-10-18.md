@@ -21,7 +21,16 @@
 - 계산기: 10,000×5%=500; 15% 가정 공제 후425; 월35.42; 월500 목표 원금141,176.47. 1024.59999999999999999999×0.075의 출력은76.84(독일어76,84).
 
 ## 확인 범위
-로컬 Python 125개, Node 73개 통과. 정적 활성 페이지137개, 사이트맵125개, SEO오류0개(기존 권고2개). 새18페이지의 320/390/1440px Chrome 렌더54회와 no-JS18페이지, 세 계산기의 기본값·세금가정·0분모·소수 경계·오류복구·리셋 검사를 수행했다. 원어민이나 외부 전문가의 검수 완료를 주장하지 않는다. 실제 검색노출, Google색인, AdSense승인, 실폰·스크린리더는 확인하지 않았다. 공개 배포 결과는 PR 및 배포 기록으로 별도 확인한다.
+로컬 Python 125개, Node 73개 통과. 정적 활성 페이지137개, 사이트맵125개, SEO오류0개(기존 권고2개). 새18페이지의 320/390/1440px Chrome 렌더54회와 no-JS18페이지, 세 계산기의 기본값·세금가정·0분모·소수 경계·오류복구·리셋 검사를 수행했다. 별도 Python Decimal 연산으로 핵심 예제13개도 재계산했다. 원어민이나 외부 전문가의 검수 완료를 주장하지 않는다. 실제 검색노출, Google색인, AdSense승인, 실폰·스크린리더는 확인하지 않았다.
+
+## 배포 완료 기록
+- PR #11: https://github.com/dividendforensics/dividendforensics-com/pull/11
+- 고정 제품 병합 코드: `f5ef4b3614c4be9295081d6220cf6709c380797c`
+- GitHub Design review `39113680997` 성공: Python125, Node73, 신규언어54렌더, 전체137페이지685렌더 통과.
+- main build `39114417735`, Pages `39114450265` 성공.
+- 일반 공개 URL·자산158개 모두 제품과 일치: `.qa/multilingual-live.json` (LF 정규화 및 앞뒤 공백 제거 비교, 캐시 우회 응답으로 통과시키지 않음).
+- 공개 입구: https://dividendforensics.com/zh-hant/ · https://dividendforensics.com/ja/ · https://dividendforensics.com/de/
+- 기존 AdSense 정적 소유권 확인 및 ads.txt 유지. 광고 송출이나 계정 작업을 새로 활성화하지 않음.
 
 ## 공식 근거
 - 다국어 상호 참조: https://developers.google.com/search/docs/specialty/international/localized-versions
