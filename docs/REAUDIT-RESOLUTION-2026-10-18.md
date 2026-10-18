@@ -73,4 +73,4 @@ python tools/education_browser_check.py
 
 ## 배포 상태
 
-수정본 검증 완료. GitHub PR 자동 검사와 배포 후 공개 응답 확인 결과는 완료 시 상태 기록에 추가한다.
+수정본 검증·배포 완료. [PR #2](https://github.com/dividendforensics/dividendforensics-com/pull/2)의 Design review 전체 검사 성공 후 main에 병합했다 (`b0d927d0298f169e478580f192a299317ae2ff92`). main 빌드와 [Pages 배포](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39096528191)도 성공했다. 공개 HTML 79개, calculators.js, sitemap.xml 총 81개 응답을 캐시 우회 요청하여 검사본과 줄바꿈 정규화 후 비교했고 **81개 모두 일치**했다. 이 확인은 실제 호스트의 파일 배포 검증이며 Google 색인이나 AdSense 승인을 뜻하지 않는다.
