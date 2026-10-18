@@ -58,6 +58,8 @@ def main():
                     assert form.locator('[name=capital]').get_attribute('aria-describedby')=='calculator-input-error'
                     assert page.locator('[data-international-result] dd').count()==0
                     assert 'Dezimalkomma' in form.locator('[role=alert]').inner_text()
+                    assert page.locator('[data-international-result]').inner_text()==form.locator('[role=alert]').inner_text()
+                    assert form.locator('[name=capital]').evaluate('e=>e===document.activeElement')
                     style=form.locator('[role=alert]').evaluate('e=>({color:getComputedStyle(e).color,weight:getComputedStyle(e).fontWeight,background:getComputedStyle(e).backgroundColor})')
                     assert style=={'color':'rgb(121, 27, 39)','weight':'700','background':'rgb(255, 240, 241)'},style
                     assert form.locator('[name=capital]').evaluate('e=>getComputedStyle(e).borderTopWidth')=='2px'
@@ -75,6 +77,7 @@ def main():
                 form.locator('[name=capital]').fill('1.000,00');form.locator('[type=submit]').click()
                 assert form.locator('[role=alert]').is_visible()
                 assert page.locator('[data-international-result] dd').count()==0
+                assert page.locator('[data-international-result]').inner_text().strip()
                 form.locator('[type=reset]').click();assert form.locator('[name=capital]').input_value()=='10000'
                 form.locator('[type=submit]').click();assert page.locator('[data-international-result] dd').count()==4
             nojs=browser.new_context(java_script_enabled=False)

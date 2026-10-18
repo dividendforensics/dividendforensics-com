@@ -111,7 +111,7 @@ def article_page(root, a, lookup):
         table='<div class="table-scroll" tabindex="0" role="region" aria-label="Worked example table"><table><caption>Synthetic worked example</caption><thead><tr>'+''.join(f'<th scope="col">{E(x)}</th>' for x in t['headers'])+'</tr></thead><tbody>'+''.join('<tr>'+''.join(f'<td>{E(x)}</td>' for x in row)+'</tr>' for row in t['rows'])+'</tbody></table></div>'
     body=f'<div class="wrap breadcrumbs"><a href="/">Home</a><span>/</span><a href="/learn-bdc.html">BDC learning</a><span>/</span><span aria-current="page">{E(a["title"])}</span></div>'
     body+=section_head('BDC / '+a['level'],E(a['title']),a['description'])
-    body+=f'<div class="wrap article-meta">DFB Education · <a href="/course-bdc-{level["key"]}.html">{a["level"]} route</a> · Updated <time datetime="{a["updated"]}">{display_date(a["updated"])}</time></div>'
+    body+=f'<div class="wrap article-meta"><a href="/editorial-policy.html">DFB Education</a> · <a href="/course-bdc-{level["key"]}.html">{a["level"]} route</a> · Updated <time datetime="{a["updated"]}">{display_date(a["updated"])}</time></div>'
     body+=f'<div class="wrap reading-layout"><aside class="article-toc"><span class="kicker">In this guide</span><ol>{toc}<li><a href="#worked-example">Worked example</a></li><li><a href="#source-notes">Sources</a></li></ol>{tool_link}</aside><article class="lesson-body"><section><h2>Before you start</h2><p>{prereqs}</p><ul>{objectives}</ul></section>{sections}<section id="worked-example" class="worked-example"><span class="kicker">Synthetic example / not company data</span><h2>{E(a["example"]["heading"])}</h2><p>{E(a["example"]["text"])}</p>{table}</section><section><h2>Test your reasoning</h2><p>{E(a["exercise"]["question"])}</p><details class="workshop-answer"><summary>Reveal the worked answer</summary><p>{E(a["exercise"]["answer"])}</p></details></section><section class="pitfall"><h2>A common mistake</h2><p>{E(a["pitfall"])}</p></section><section><h2>What to check in the disclosures</h2><ul>{checks}</ul>{tool_link}</section><section><h2>Check your understanding</h2>{quiz(a["quiz"])}</section><section id="source-notes"><h2>Sources &amp; scope</h2><p>US BDC education. Examples are hypothetical unless expressly attributed. Filing dates, contractual definitions and tax rules matter. An issuer source describes that issuer; it is not evidence that every BDC uses the same policy.</p><ul class="source-list">{sources}</ul><p class="small-note">Educational material, not a recommendation or personalized investment advice. <a href="/editorial-policy.html">Source and correction policy</a>.</p></section></article></div>'
     ordered=list(lookup)
     position=ordered.index(a['slug'])
@@ -125,6 +125,9 @@ def article_page(root, a, lookup):
         body+=resource_cards()
     from lesson_formats import compose
     body = compose(body, a)
+    if a['slug'] in ('learn-bdc-read-filings','learn-bdc-nii-coverage','learn-bdc-pik-income','learn-bdc-expert-income-bridge','learn-bdc-expert-credit-memo'):
+        from filing_labs import cards as filing_cards
+        body+=filing_cards(root,sector='bdc')
     return shell(root,a['slug']+'.html',a['title'],a['description'],body,'Article',article=a,extra='<link rel="stylesheet" href="/lesson-formats.css">')
 
 
@@ -140,6 +143,8 @@ def outputs(root):
     body+=research_links(root)
     from research_resources import resource_cards
     body+=resource_cards()
+    from filing_labs import cards as filing_cards
+    body+=filing_cards(root,sector='bdc')
     output[root/'learn-bdc.html']=shell(root,'learn-bdc.html','BDC learning center: NII, PIK, credit risk & filing workshops','Study BDCs through four free learning levels, with source-backed guides, worked examples, quizzes and related calculators.',body,'CollectionPage')
     for i,l in enumerate(LEVELS):
         lessons=[a for a in articles if a['level']==l['name']]

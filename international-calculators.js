@@ -40,7 +40,7 @@
            field.setAttribute('aria-invalid','true');field.setAttribute('aria-describedby',error.id);
            error.textContent=messages.labelsInput?.[field.name]||field.closest('label').firstChild.textContent.trim();
            error.textContent+=': '+(e.message==='invalid number'?messages.error:e.message);
-           error.hidden=false;output.replaceChildren();field.focus();return;
+           error.hidden=false;clear(error.textContent);field.focus();return;
          }
        }
        const result=root.DFBOriginal.calculate('income',input);
@@ -49,7 +49,7 @@
        const dl=document.createElement('dl');dl.className='calculator-metrics';
        result.metrics.forEach((metric,i)=>{const div=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=messages.labels[i];dd.textContent=format(metric.exactValue,locale,messages.undefined);div.append(dt,dd);dl.append(div);});output.append(dl);
        const p=document.createElement('p');p.textContent=messages.note;output.append(p);
-     }catch(_){output.replaceChildren();error.textContent=messages.unavailable;error.hidden=false;}
+     }catch(_){clear(messages.unavailable);error.textContent=messages.unavailable;error.hidden=false;}
    });
    form.addEventListener('input',()=>{error.hidden=true;clearInvalid();clear(messages.changed);});
    form.addEventListener('reset',()=>{error.hidden=true;clearInvalid();clear(messages.pending);});

@@ -29,7 +29,7 @@ def outputs(root):
         content=(root/'templates'/'resources'/(r['slug']+'.html')).read_text(encoding='utf-8')
         body='<div class="wrap breadcrumbs"><a href="/">Home</a><span>/</span><span aria-current="page">'+E(r['title'])+'</span></div>'
         body+=section_head('Practical dividend research',E(r['title']),r['description'])
-        body+=f'<div class="wrap article-meta">DFB Education <span>·</span> Updated <time datetime="{r["updated"]}">{display_date(r["updated"])}</time> <span>·</span> <a href="/editorial-policy.html">Sources and editorial approach</a></div>'
+        body+=f'<div class="wrap article-meta"><a href="/editorial-policy.html">DFB Education</a> <span>·</span> Updated <time datetime="{r["updated"]}">{display_date(r["updated"])}</time> <span>·</span> <a href="/editorial-policy.html">Sources and editorial approach</a></div>'
         body+='<article class="wrap policy-reading lesson-body resource-article">'+content+'</article>'+resource_cards(r['slug'])
         extra='<link rel="stylesheet" href="/research-resources.css">'
         if r['slug']=='dividend-research-worksheet':

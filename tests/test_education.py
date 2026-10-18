@@ -22,7 +22,10 @@ class EducationTests(unittest.TestCase):
             self.assertEqual(len(urls),len(set(urls)),path.name)
             self.assertEqual(urls[-1],education.DOMAIN+'/'+path.name)
             self.assertEqual([i['position'] for i in items],list(range(1,len(items)+1)))
-            if path.name.startswith(('learn-bdc-', 'course-bdc-')):
+            if path.name.startswith('filing-lab-'):
+                self.assertEqual(len(items),3)
+                self.assertEqual(urls[-2],education.DOMAIN+'/filing-labs.html')
+            elif path.name.startswith(('learn-bdc-', 'course-bdc-')):
                 self.assertEqual(urls[-2],education.DOMAIN+'/learn-bdc.html')
             elif path.name.startswith('calculator-'):
                 self.assertEqual(urls[-2],education.DOMAIN+'/tools.html')

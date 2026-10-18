@@ -19,7 +19,8 @@
     "disclaimer": "Bildungsmaterial, keine persönliche Anlageempfehlung. Ausschüttungen und Kapitalerhalt sind nicht garantiert. Prüfen Sie Datum, Definition und Annahmen jeder Zahl.",
     "policy": "Redaktionsrichtlinien (Englisch)",
     "privacy": "Datenschutz (Englisch)",
-    "about": "Über DFB (Englisch)"
+    "about": "Über DFB (Englisch)",
+    "filing_index": "Einreichungsübersicht bei der SEC (Englisch)"
   },
   "home": {
     "title": "Die Zahlen hinter US-Dividenden verstehen",
@@ -135,7 +136,7 @@
         ],
         [
           "AFFO und NII sind kein austauschbares Bankguthaben",
-          "Beim REIT beginnt die Prüfung mit Nettogewinn, Nareit FFO und der emittentenspezifischen AFFO-Überleitung. Wiederkehrende Gebäudekosten, Mieterausbauten und Vermietungskosten können den sichtbaren Puffer beanspruchen. Bei der BDC beginnt sie mit NII, Finanzierung und Gebühren. PIK kann Ertrag ohne aktuellen Zahlungseingang sein. Kreditverluste können zusätzlich das Nettovermögen treffen. Bewahren Sie berichtete Größen und analytische Anpassungen getrennt auf; ziehen Sie einen bereits berücksichtigten Aufwand nicht erneut ab."
+          "Beim REIT beginnt die Prüfung mit Nettogewinn, Nareit FFO und der emittentenspezifischen AFFO-Überleitung. Wiederkehrende Gebäudekosten, Mieterausbauten und Vermietungskosten können den sichtbaren Puffer beanspruchen. Bei der BDC beginnt sie mit NII, Finanzierung und Gebühren. Payment-in-kind-Zinsen (PIK) werden beispielsweise dem Kreditbetrag zugeschlagen, statt sofort bar gezahlt zu werden. Sie können daher als Ertrag erfasst werden, obwohl noch kein Geld eingegangen ist. Kreditverluste können zusätzlich das Nettovermögen treffen. Bewahren Sie berichtete Größen und analytische Anpassungen getrennt auf; ziehen Sie einen bereits berücksichtigten Aufwand nicht erneut ab."
         ],
         [
           "NAV und Zinsrisiko folgen unterschiedlichen Wegen",

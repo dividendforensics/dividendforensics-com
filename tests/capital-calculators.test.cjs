@@ -30,3 +30,39 @@ test('Fiscal resource date required and independent from unused dated cutoff',()
 
 test('Fiscal2030cannot use2027resource check to claim complete funding',()=>{const v=liq();v.maturityBasis='fiscal';v.resourceDate='2027-09-30';v.facilityExpiry='2028-09-30';v.maturities[0].date='2030';const r=C.calculateLiquidity(v);assert.equal(r.metrics['Known maturity subtotal'],'90');assert.equal(r.metrics['Complete supplied maturity subtotal'],'90');assert.equal(r.metrics['Facility amount at resource date (informational only)'],'30');assert.equal(r.metrics['Available liquidity'],null);assert.equal(r.metrics['Residual after supplied fiscal buckets'],null);assert.equal(r.metrics['Residual after supplied fiscal buckets and mandatory spend'],null);assert.match(r.warnings.join(' '),/withheld in fiscal mode/);});
 test('Maturity CSV canonical decimals include +90roundtrip and preserve unknown',()=>{const rows=[['2027-03-31','+90','=USER_TEXT','2026-09-30'],['2028-03-31','000.10','ordinary','2026-09-30'],['2028-06-30','','unknown','2026-09-30']];const normalized=C.normalizeMaturityRows(rows);assert.equal(normalized[0][1],'90');assert.equal(normalized[1][1],'0.1');assert.equal(normalized[2][1],'');const text=C.csv(normalized);assert.doesNotMatch(text,/'\+90/);assert.match(text,/'=USER_TEXT/);const imported=C.normalizeMaturityRows(C.parseCsv(text));assert.equal(imported[0][1],'90');assert.equal(imported[1][1],'0.1');assert.equal(imported[2][1],'');const v=liq();v.maturities=imported.slice(0,1).map(r=>({...meta,date:r[0],amount:r[1],scope:r[2]}));assert.equal(C.calculateLiquidity(v).metrics['Complete supplied maturity subtotal'],'90');assert.throws(()=>C.normalizeMaturityRows([['x','=1+2','scope','x']]));});
+
+test('Capital display preserves small signed amounts and shortfalls across rounding boundaries',()=>{
+ for(const [raw,shown] of [['0','0'],['0.00001','1.0000e-5'],['-0.00001','-1.0000e-5'],['0.000049999','4.9999e-5'],['0.00005','0.0001'],['-0.00005','-0.0001'],['1e-20','1.0000e-20']])assert.equal(C.format(raw),shown);
+ assert.equal(C.format(null),'Not defined / incomplete');
+ assert.equal(C.format('Not supplied'),'Not supplied');
+ const v=pref();v.earnings='0.00001';v.preferred='0';v.common='0.00002';
+ const r=C.calculatePreferred(v);
+ assert.equal(C.format(r.metrics['Common-attributed measure']),'1.0000e-5');
+ assert.equal(C.format(r.metrics['Common measure less common distributions']),'-1.0000e-5');
+ v.earnings='0.3';v.preferred='0.1';v.common='0.2';
+ assert.equal(C.format(C.calculatePreferred(v).metrics['Common measure less common distributions']),'0');
+});
+
+test('Capital results identify the precision-display and CSV revision',()=>{
+ assert.equal(C.formulaVersion,'capital-1.0.2');
+ for(const result of [C.calculateJv(jv()),C.calculateLiquidity(liq()),C.calculatePreferred(pref())])assert.equal(result.formulaVersion,C.formulaVersion);
+});
+
+test('CSV accepts BOM and CR, LF or CRLF without corrupting quoted line breaks',()=>{
+ const header='date,amount,scope,asOf';
+ const row='2027-03-31,+90,"Bond, ""A""\r\nSecond line",2026-09-30';
+ for(const eol of ['\r','\n','\r\n']){
+  const parsed=C.parseCsv('\ufeff'+header+eol+row+eol);
+  assert.deepEqual(parsed[0],['date','amount','scope','asOf']);
+  assert.deepEqual(parsed[1],['2027-03-31','+90','Bond, "A"\r\nSecond line','2026-09-30']);
+  assert.deepEqual(C.parseCsv(C.csv(parsed)),[parsed[0],['2027-03-31',"'+90",parsed[1][2],'2026-09-30']]);
+ }
+ assert.throws(()=>C.parseCsv('"a"\rb"c'),/quote/);
+});
+
+test('CSV neutralizes leading whitespace formulas and keeps negative decimal results numeric',()=>{
+ const values=['=1+1','  =1+1','\t=1+1','\n=1+1','\r@SUM(1)',' +SUM(1)',' -cmd','ordinary','-20','-1e-20'];
+ const escaped=C.parseCsv(C.csv([values]))[0];
+ assert.deepEqual(escaped,values.map((value,i)=>i<7?"'"+value:value));
+ assert.deepEqual(C.parseCsv(C.csv([escaped]))[0],escaped);
+});

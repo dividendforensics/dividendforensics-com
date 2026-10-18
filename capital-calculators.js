@@ -1,10 +1,10 @@
-/* DFB capital worksheets v1.0.1. Decimal arithmetic, browser-local scenarios only. */
+/* DFB capital worksheets v1.0.2. Decimal arithmetic, browser-local scenarios only. */
 (function(root){
 'use strict';
 const Decimal = typeof module === 'object' && module.exports ? require('./vendor/decimal.js/decimal.js') : root.Decimal;
 if(!Decimal)return;
 Decimal.set({precision:40});
-const VERSION='capital-1.0.1';
+const VERSION='capital-1.0.2';
 function dec(value,name,negative=false){
  if(value===null||value===undefined||String(value).trim()==='') return null;
  const s=String(value).trim();
@@ -46,13 +46,37 @@ function calculatePreferred(v){
  const earnings=required(v.earnings,'Period earnings measure',true),preferred=dec(v.preferred,'Preferred distributions'),common=dec(v.common,'Common distributions');const attributed=v.earningsBasis==='already-common'?earnings:preferred===null?null:earnings.sub(preferred);const total=preferred!==null&&common!==null?preferred.add(common):null;
  return result({'Selected period earnings':out(earnings),'Common-attributed measure':out(attributed),'Preferred distributions':out(preferred),'Common distributions':out(common),'Total distributions':out(total),'Common measure less common distributions':attributed!==null&&common!==null?out(attributed.sub(common)):null},[['Selected earnings definition',v.earningsDefinition?.trim()||'Not supplied — preserve the source definition before interpreting'],['Selected earnings basis',v.earningsBasis],['Distribution basis',v.distributionBasis],['Preferred deducted in this bridge',v.earningsBasis==='already-common'?'No: already attributed':out(preferred)]],['This is an attribution bridge, not cash flow, a solvency test or a legal liquidation waterfall. Preferred rights, cumulative arrears, redemption and payment restrictions require the actual security documents. Already-common earnings do not have preferred distributions deducted again.'],{...v,meta});
 }
-function parseCsv(text){if(typeof text!=='string'||text.length>100000)throw Error('CSV exceeds 100 KB.');const rows=[];let row=[],cell='',quoted=false,closed=false;for(let i=0;i<text.length;i++){const c=text[i];if(quoted){if(c==='"'&&text[i+1]==='"'){cell+='"';i++;}else if(c==='"'){quoted=false;closed=true;}else cell+=c;}else if(c==='"'){if(cell||closed)throw Error('Invalid CSV quote.');quoted=true;}else if(c===','||c==='\n'){row.push(cell);cell='';closed=false;if(c==='\n'){rows.push(row);row=[];}}else if(c!=='\r'){if(closed)throw Error('Unexpected content after CSV quote.');cell+=c;}}if(quoted)throw Error('Unclosed CSV quote.');if(cell||row.length){row.push(cell);rows.push(row);}return rows.filter(r=>r.some(c=>c!==''));}
-function csv(rows){return rows.map(r=>r.map(v=>{let s=v===null||v===undefined?'Not defined':String(v);if(/^[=+@\t\r]/.test(s)||(/^[-]/.test(s)&&!/^[-]\d+(\.\d+)?$/.test(s)))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}).join(',')).join('\r\n');}
+function parseCsv(text){
+ if(typeof text!=='string'||text.length>100000)throw Error('CSV exceeds 100 KB.');
+ // Clipboard input may retain a BOM even when a browser's File.text() removes it.
+ if(text.charCodeAt(0)===0xFEFF)text=text.slice(1);
+ const rows=[];let row=[],cell='',quoted=false,closed=false;
+ for(let i=0;i<text.length;i++){
+  const c=text[i];
+  if(quoted){if(c==='"'&&text[i+1]==='"'){cell+='"';i++;}else if(c==='"'){quoted=false;closed=true;}else cell+=c;}
+  else if(c==='"'){if(cell||closed)throw Error('Invalid CSV quote.');quoted=true;}
+  else if(c===','||c==='\n'||c==='\r'){
+   row.push(cell);cell='';closed=false;
+   if(c!==','){rows.push(row);row=[];if(c==='\r'&&text[i+1]==='\n')i++;}
+  }else{if(closed)throw Error('Unexpected content after CSV quote.');cell+=c;}
+ }
+ if(quoted)throw Error('Unclosed CSV quote.');
+ if(cell||row.length||closed){row.push(cell);rows.push(row);}
+ return rows.filter(r=>r.some(c=>c!==''));
+}
+function csv(rows){return rows.map(r=>r.map(v=>{let s=v===null||v===undefined?'Not defined':String(v);const start=s.trimStart();if(/^[=+@]/.test(start)||/^[\t\r\n]/.test(s)||(/^[-]/.test(start)&&!/^[-]\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(start)))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}).join(',')).join('\r\n');}
 function normalizeMaturityRows(rows){if(!Array.isArray(rows)||rows.length===0||rows.length>100)throw Error('Use 1 to 100 maturity rows.');return rows.map((r,i)=>{if(!Array.isArray(r)||r.length!==4)throw Error('Maturity CSV row '+(i+1)+' needs date,amount,scope,asOf.');const amount=dec(r[1],'Maturity amount');return [r[0],amount===null?'':amount.toFixed(),r[2],r[3]];});}
-const api={normalizeMaturityRows,calculateJv,calculateLiquidity,calculatePreferred,parseCsv,csv,formulaVersion:VERSION};if(typeof module==='object'&&module.exports)module.exports=api;else root.DFBCapital=api;
+function format(value){
+ if(value===null)return 'Not defined / incomplete';
+ if(!/^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(String(value)))return String(value);
+ const d=new Decimal(value);
+ // A real small amount or shortfall must not be presented as an exact zero.
+ return !d.isZero()&&d.abs().lt('0.00005')?d.toExponential(4):d.toDecimalPlaces(4).toString();
+}
+const api={normalizeMaturityRows,calculateJv,calculateLiquidity,calculatePreferred,parseCsv,csv,format,formulaVersion:VERSION};if(typeof module==='object'&&module.exports)module.exports=api;else root.DFBCapital=api;
 if(typeof document==='undefined')return;
 const esc=s=>String(s===null?'Not defined / incomplete':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const number=s=>s===null?'Not defined / incomplete':/^-?\d+(\.\d+)?$/.test(String(s))?new Decimal(s).toDecimalPlaces(4).toString():String(s);
+const number=format;
 function download(name,rows){const url=URL.createObjectURL(new Blob([csv(rows)],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),500);}
 for(const form of document.querySelectorAll('[data-capital-tool]')){
  const kind=form.dataset.capitalTool,resultEl=document.querySelector('[data-capital-result]'),error=form.querySelector('[role=alert]');let last=null;
@@ -62,7 +86,7 @@ for(const form of document.querySelectorAll('[data-capital-tool]')){
  if(kind==='jv')return {meta,consolidatedDebt:f.consolidatedDebt,guarantees:f.guarantees,jvs:parseCsv(f.rows).map((r,i)=>{if(r.length!==5)throw Error('JV CSV row '+(i+1)+' needs name,debt,ownership,consolidated,asOf.');if(!['true','false'].includes(r[3]))throw Error('Consolidated must be true or false.');return {...meta,name:r[0],debt:r[1],ownership:r[2],consolidated:r[3]==='true',asOf:r[4]};})};
  if(kind==='liquidity')return {...f,meta,conditionsConfirmed:f.conditionsConfirmed==='yes',maturities:parseCsv(f.rows).map((r,i)=>{if(r.length!==4)throw Error('Maturity CSV row '+(i+1)+' needs date,amount,scope,asOf.');return {...meta,date:r[0],amount:r[1],scope:r[2],asOf:r[3]};})};return {...f,meta};};
  function run(){try{const data=get();last=kind==='jv'?calculateJv(data):kind==='liquidity'?calculateLiquidity(data):calculatePreferred(data);const table=(caption,headers,rows)=>'<div class="table-scroll"><table><caption>'+esc(caption)+'</caption><thead><tr>'+headers.map(x=>'<th scope="col">'+esc(x)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map((c,i)=>'<'+(i?'td':'th scope="row"')+'>'+esc(number(c))+'</'+(i?'td':'th')+'>').join('')+'</tr>').join('')+'</tbody></table></div>';
- resultEl.innerHTML='<p><strong>User scenario / synthetic default · '+esc(data.meta.currency)+' '+esc(data.meta.scale)+' · as of '+esc(data.meta.asOf)+'</strong></p>'+(kind==='liquidity'?'<p>'+esc(data.maturityBasis==='fiscal'?'All supplied fiscal buckets; resource / facility eligibility date: '+data.resourceDate:'Dated maturity cutoff and resource eligibility date: '+data.horizonEnd)+'</p>':'')+table('Calculated results · '+VERSION,['Measure','Value'],Object.entries(last.metrics))+table('Input detail',kind==='jv'?['JV','Gross debt','Ownership %','Proportionate debt']:kind==='liquidity'?['Maturity','Scope','Amount',data.maturityBasis==='fiscal'?'Supplied-bucket treatment':'Dated cutoff treatment']:['Item','Value'],last.rows)+'<ul>'+last.warnings.map(w=>'<li>'+esc(w)+'</li>').join('')+'</ul><p class="small-note">Rounded for display only, up to four decimal places. CSV retains full arithmetic precision. No score or investment recommendation.</p>';error.hidden=true;return true;}catch(e){last=null;error.textContent=e.message;error.hidden=false;resultEl.textContent='Result cleared. Correct the inputs; previous output is not current.';return false;}}
+ resultEl.innerHTML='<p><strong>User scenario / synthetic default · '+esc(data.meta.currency)+' '+esc(data.meta.scale)+' · as of '+esc(data.meta.asOf)+'</strong></p>'+(kind==='liquidity'?'<p>'+esc(data.maturityBasis==='fiscal'?'All supplied fiscal buckets; resource / facility eligibility date: '+data.resourceDate:'Dated maturity cutoff and resource eligibility date: '+data.horizonEnd)+'</p>':'')+table('Calculated results · '+VERSION,['Measure','Value'],Object.entries(last.metrics))+table('Input detail',kind==='jv'?['JV','Gross debt','Ownership %','Proportionate debt']:kind==='liquidity'?['Maturity','Scope','Amount',data.maturityBasis==='fiscal'?'Supplied-bucket treatment':'Dated cutoff treatment']:['Item','Value'],last.rows)+'<ul>'+last.warnings.map(w=>'<li>'+esc(w)+'</li>').join('')+'</ul><p class="small-note">Rounded for display only, up to four decimal places; small nonzero values use scientific notation. CSV retains full arithmetic precision. No score or investment recommendation.</p>';error.hidden=true;return true;}catch(e){last=null;error.textContent=e.message;error.hidden=false;resultEl.textContent='Result cleared. Correct the inputs; previous output is not current.';return false;}}
  for(const event of ['input','change'])form.addEventListener(event,()=>{last=null;resultEl.textContent='Inputs changed. Select Calculate to update this scenario.';error.hidden=true;});
  function updateTemporalMode(){if(kind!=='liquidity')return;const fiscal=form.elements.maturityBasis.value==='fiscal';for(const [name,active] of [['horizonEnd',!fiscal],['resourceDate',fiscal]]){form.elements[name].disabled=!active;form.querySelector('label[for=capital-'+name+']').hidden=!active;}form.querySelector('[data-fiscal-hint]').hidden=!fiscal;form.querySelector('[data-dated-hint]').hidden=fiscal;}
  if(kind==='liquidity'){form.elements.maturityBasis.addEventListener('change',updateTemporalMode);updateTemporalMode();}
