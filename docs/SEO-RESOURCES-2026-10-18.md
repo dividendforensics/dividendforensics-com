@@ -43,3 +43,15 @@
 - 새페이지를발견할내부링크와기존글과의실질적차이. 검색량/순위보장·가짜검토주장여부.
 
 문제는P0~P3/파일·URL/원문/재현입력/영향/수정제안으로기록한다. 계정작업·외부폼제출·메일·결제·SEC실수집·저장소수정은실행하지말것. 실제Google색인·광고심사결과는이번코드검사로확정하지않는다.
+
+
+## 최종 배포 기록
+
+- PR #8 병합 완료: https://github.com/dividendforensics/dividendforensics-com/pull/8
+- 고정 제품 코드: `961932f4dd18ca07ddb4b1e33989a501f03b5ec5`.
+- PR CI: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39107998753 — 성공. Python117/Node70 및119페이지595회렌더·기능검사통과. 새워크시트브라우저검사도해당CI에포함.
+- main빌드: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39108505418 — 성공.
+- Pages: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39108520892 — 성공.
+- 공개대조: 일반URL137개(활성HTML119+주요자산18)의HTTP200/LF정규화내용일치. 초기두번은배포전응답17개가남았고3회째모두일치. 캐시우회응답으로일반주소의실패를대체하지않음. 로컬원시기록 `.qa/resources-live-verification.json`.
+- 공개사이트맵107개. 같은 `/sitemap.xml` 주소를사용한다. 실제SearchConsole의색인/노출/클릭변화는아직측정하지않음.
+- 이후완료기록·검수요청서만바뀌는문서커밋은제품코드변경과구분한다. 운영자계정작업/실기기/스크린리더검수는추가로완료했다고주장하지않는다.
