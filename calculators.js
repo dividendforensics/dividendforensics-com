@@ -20,9 +20,10 @@
     });
     return;
   }
-  // Each operation uses decimal inputs. Display conversion never feeds the model.
+  // Finite 80-significant-digit arithmetic, not unlimited/exact rational arithmetic.
+  // Decimal strings remain authoritative through display and CSV serialization.
   const D = Decimal.clone({precision:80,rounding:Decimal.ROUND_HALF_UP});
-  const VERSION='original-1.1.0';
+  const VERSION='original-1.1.1';
   const FIELDS={income:['capital','yield','tax','target'],reinvestment:['capital','contribution','yield','tax','years'],payout:['affo','dividend','decline'],bridge:['net','depreciation','gains','ffoOther','capex','rent','affoOther'],nav:['noi','cap','debt','cash','shares'],refinancing:['principal','old','new','shares'],return:['start','end','dividends','buyFees','sellFees']};
   function decimal(value) {
     if (!['string','number'].includes(typeof value) || String(value).trim()==='' || String(value).length>512) throw Error('Enter a finite number in every field.');
@@ -119,7 +120,15 @@
         break;
       }
     }
-    return { metrics:metrics.map(m=>({...m,value:exported(m.value)})), columns, rows:rows.map(row=>row.map(exported)), note, formulaVersion:VERSION };
+    const exact=value=>D.isDecimal(value) ? value.toString() : value;
+    return {
+      // value/rows retain the old approximate Number API. Display/export consumers
+      // must use exactValue/exactRows instead of converting these approximations back.
+      metrics:metrics.map(m=>({...m,value:exported(m.value),exactValue:exact(m.value)})),
+      columns,rows:rows.map(row=>row.map(exported)),exactRows:rows.map(row=>row.map(exact)),
+      numericCells:rows.map(row=>row.map(value=>D.isDecimal(value))),note,formulaVersion:VERSION,
+      arithmetic:{precision:80,rounding:'ROUND_HALF_UP',authoritativeFields:['metrics[].exactValue','exactRows']}
+    };
   }
   function format(x, type = 'number') {
     if (x === null) return 'Not defined';
@@ -146,18 +155,18 @@
         current = calculate(form.dataset.calculator, v);
         output.replaceChildren();
         const dl = el('dl', undefined, 'result-metrics');
-        current.metrics.forEach(m => { const group = el('div'); group.append(el('dt', m.label), el('dd', format(m.value, m.format))); dl.append(group); });
+        current.metrics.forEach(m => { const group = el('div'); group.append(el('dt', m.label), el('dd', format(m.exactValue, m.format))); dl.append(group); });
         output.append(dl, el('p', current.note, 'result-note'));
         if (current.rows.length) {
           const wrap = el('div', undefined, 'table-scroll'), table = el('table'), head = el('thead'), tr = el('tr');
           wrap.tabIndex = 0; wrap.setAttribute('role', 'region'); wrap.setAttribute('aria-label', 'Scrollable scenario details');
           table.append(el('caption', 'Scenario details')); current.columns.forEach(label => { const th = el('th', label); th.scope = 'col'; tr.append(th); }); head.append(tr); table.append(head);
-          const tbody = el('tbody'); current.rows.forEach(row => { const tr = el('tr'); row.forEach(value => tr.append(el('td', typeof value === 'number' || typeof value === 'string' && /^[-+]?\d+(?:\.\d+)?e[-+]\d+$/i.test(value) ? format(value) : value))); tbody.append(tr); }); table.append(tbody); wrap.append(table); output.append(wrap);
+          const tbody = el('tbody'); current.exactRows.forEach((row,i) => { const tr = el('tr'); row.forEach((value,j) => tr.append(el('td', current.numericCells[i][j] ? format(value) : value))); tbody.append(tr); }); table.append(tbody); wrap.append(table); output.append(wrap);
         }
         const download = el('button', 'Download this scenario (CSV)', 'btn btn-s'); download.type = 'button';
         download.addEventListener('click', () => {
           const quote = x => '"' + String(x === null ? 'Not defined' : x).replaceAll('"', '""') + '"';
-          const data = [['Educational scenario — not a forecast'], ['Input', 'Value'], ...Object.entries(v), [], ['Result', 'Value'], ...current.metrics.map(m => [m.label, m.value]), [], current.columns, ...current.rows, [], [current.note]];
+          const data = [['Educational scenario — not a forecast'], ['Input', 'Value'], ...Object.entries(v), [], ['Result', 'Value'], ...current.metrics.map(m => [m.label, m.exactValue]), [], current.columns, ...current.exactRows, [], [current.note]];
           const blob = new Blob(['\uFEFF' + data.map(row => row.map(quote).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
           const url = URL.createObjectURL(blob), a = document.createElement('a'); a.href = url; a.download = 'dfb-' + form.dataset.calculator + '-scenario.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
         });
