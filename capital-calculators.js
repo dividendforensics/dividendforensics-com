@@ -2,6 +2,7 @@
 (function(root){
 'use strict';
 const Decimal = typeof module === 'object' && module.exports ? require('./vendor/decimal.js/decimal.js') : root.Decimal;
+if(!Decimal)return;
 Decimal.set({precision:40});
 const VERSION='capital-1.0.1';
 function dec(value,name,negative=false){
@@ -69,5 +70,6 @@ for(const form of document.querySelectorAll('[data-capital-tool]')){
  document.querySelector('[data-capital-print]').addEventListener('click',()=>{if(run())window.print();});document.querySelector('[data-capital-export]').addEventListener('click',()=>{if(run())download('dfb-'+kind+'-results.csv',[['DFB user scenario / synthetic default',VERSION],['Input JSON',JSON.stringify(last.inputs)],...Object.entries(last.metrics),[],...last.rows,...last.warnings.map(w=>['Limit',w])]);});
  if(kind==='liquidity'){const file=form.querySelector('[data-maturity-file]');file.addEventListener('change',async()=>{try{const selected=file.files[0];if(!selected)return;if(selected.size>100000)throw Error('File exceeds 100 KB.');const rows=parseCsv(await selected.text());if(rows[0]?.join(',')!=='date,amount,scope,asOf')throw Error('CSV header must be date,amount,scope,asOf.');form.elements.rows.value=csv(normalizeMaturityRows(rows.slice(1)));run();}catch(e){error.textContent=e.message;error.hidden=false;last=null;resultEl.textContent='Import rejected. No current result.';}});form.querySelector('[data-maturity-export]').addEventListener('click',()=>{try{calculateLiquidity(get());download('dfb-maturity-input.csv',[['date','amount','scope','asOf'],...normalizeMaturityRows(parseCsv(form.elements.rows.value))]);}catch(e){error.textContent=e.message;error.hidden=false;}});}
  form.querySelector("[data-calculator-controls]").disabled=false;
+ resultEl.textContent="Select Calculate to run the synthetic example.";
 }
 })(typeof globalThis!=='undefined'?globalThis:this);

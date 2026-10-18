@@ -177,3 +177,9 @@ h1,h2,h3{color:var(--text)}
 .calculator-form fieldset[data-calculator-controls]>.small-note{margin:15px 0}
 .education-page .calculator-form input,.education-page .calculator-form select,.education-page .calculator-form textarea,.education-page .calculator-form button{font-size:16px}
 .calculator-form [aria-invalid="true"]{outline:2px solid #a22b36;outline-offset:2px}
+
+/* Feedback must remain identifiable alongside the keyboard focus ring. */
+.education-page .calculator-form [role="alert"]:not([hidden]){color:#791b27;background:#fff0f1;border-left:4px solid #a22b36;padding:14px 16px;margin-top:18px;font-weight:700;line-height:1.65}
+.education-page .calculator-form input[aria-invalid="true"]{border:2px solid #a22b36;background:#fff4f4;box-shadow:inset 4px 0 #a22b36}
+.calculator-form [data-calculator-loading]{padding:14px;background:#e9ece4;border-left:4px solid #40545f;line-height:1.7;margin-bottom:18px}
+.calculator-form fieldset:not([disabled]) [data-calculator-loading]{display:none}

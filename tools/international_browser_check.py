@@ -43,6 +43,7 @@ def main():
             page.set_viewport_size({'width':390,'height':950})
             for locale in LOCALES:
                 page.goto(base+'/'+path_for(locale,'income'))
+                assert not page.locator('[data-calculator-loading]').is_visible()
                 form=page.locator('form');form.locator('[name=tax]').fill('15');form.locator('[type=submit]').click()
                 expected=['500,00','425,00','35,42','141.176,47'] if locale=='de' else ['500.00','425.00','35.42','141,176.47']
                 assert page.locator('[data-international-result] dd').all_text_contents()==expected
@@ -57,6 +58,14 @@ def main():
                     assert form.locator('[name=capital]').get_attribute('aria-describedby')=='calculator-input-error'
                     assert page.locator('[data-international-result] dd').count()==0
                     assert 'Dezimalkomma' in form.locator('[role=alert]').inner_text()
+                    style=form.locator('[role=alert]').evaluate('e=>({color:getComputedStyle(e).color,weight:getComputedStyle(e).fontWeight,background:getComputedStyle(e).backgroundColor})')
+                    assert style=={'color':'rgb(121, 27, 39)','weight':'700','background':'rgb(255, 240, 241)'},style
+                    assert form.locator('[name=capital]').evaluate('e=>getComputedStyle(e).borderTopWidth')=='2px'
+                    page.screenshot(path=str(out/'international-de-error-390.png'),full_page=True)
+                    page.set_viewport_size({'width':1024,'height':950})
+                    assert abs(form.locator('[name=capital]').bounding_box()['y']-form.locator('[name=yield]').bounding_box()['y'])<1
+                    page.screenshot(path=str(out/'international-de-alignment-1024.png'),full_page=True)
+                    page.set_viewport_size({'width':390,'height':950})
                     form.locator('[name=capital]').fill('-1');form.locator('[type=submit]').click()
                     assert 'zwischen 0' in form.locator('[role=alert]').inner_text()
                     form.locator('[name=capital]').fill('10000')
