@@ -13,11 +13,11 @@ LABELS = {
 # Display-only summaries of the existing hypothetical examples, not live data.
 NUMBER_NOTES = {
     'learn-ffo': ('USD millions · simplified bridge', [('Net income', '40'), ('Depreciation adjustment', '+ 50'), ('Property-sale gain', '− 10'), ('Simplified FFO', '= 80')]),
-    'learn-affo': ('USD millions · same dividend, different definitions', [('FFO', '100'), ('Rent + recurring expenditure', '− 8 − 12'), ('First AFFO view', '80'), ('With compensation add-back', '84')]),
+    'learn-affo': ('USD millions · dividend 60: 75% of 80; approximately 71.4% of 84', [('FFO', '100'), ('Straight-line rent + recurring expenditure', '− 8 − 12'), ('First AFFO view', '80'), ('With compensation add-back', '84')]),
     'learn-payout-ratio': ('Annual USD per share · dividend held at 3', [('AFFO 4.00', '75% payout'), ('AFFO 3.20', '93.75% payout'), ('AFFO 2.80', '107.1% payout')]),
     'learn-nav': ('USD per share · same NOI and claims', [('6% cap rate', '31.00 NAV'), ('7% cap rate', '≈ 23.86 NAV')]),
     'learn-bdc-nii-coverage': ('Same quarter · USD millions', [('Reported NII', '120'), ('Regular distributions', '100'), ('All distributions', '115'), ('Total coverage', '1.0435×')]),
-    'learn-bdc-pik-income': ('Same quarterly PIK of 18 · different denominators', [('Total investment income 180', '10% PIK / TII'), ('Reported NII 120', '15% PIK / NII')]),
+    'learn-bdc-pik-income': ('Quarterly · USD millions · PIK 18 · different denominators', [('Total investment income 180', '10% PIK / TII'), ('Reported NII 120', '15% PIK / NII')]),
 }
 
 
@@ -111,10 +111,11 @@ def compose(body, a, spanish=False):
         example.h2.insert_after(figure)
     pitfall = article.select_one('.pitfall')
     if kind in ('calculation', 'workshop') and example and numbered:
-        # Definition precedes arithmetic; expert readers begin with the case.
+        # Workshop examples contain solved control totals. All assumptions and
+        # analysis must precede them, including claims defined in later sections.
         anchor = numbered[0]
         if kind == 'workshop':
-            anchor.insert_before(example.extract())
+            numbered[-1].insert_after(example.extract())
         else:
             anchor.insert_after(example.extract())
         example['class'].append('notebook-example')
@@ -126,6 +127,12 @@ def compose(body, a, spanish=False):
         for section in numbered:
             group.append(section.extract())
     if kind == 'workshop':
+        for i, table in enumerate(article.select('.table-scroll'), 1):
+            hint = soup.new_tag('p', attrs={'id': f'table-scroll-help-{i}', 'class': 'table-scroll-help'})
+            hint.string = 'Scroll horizontally to see all columns. With the table focused, use the left and right arrow keys.'
+            table.insert_before(hint)
+            table['aria-describedby'] = hint['id']
+            table['tabindex'] = '0'
         analysis = soup.new_tag('div', attrs={'class': 'workshop-analysis'})
         if numbered:
             numbered[0].insert_before(analysis)
@@ -148,6 +155,20 @@ def compose(body, a, spanish=False):
             exercise.insert_before(panel)
             panel.append(exercise.extract())
             panel.append(quiz.extract())
+    if spanish and not toc:
+        toc = soup.new_tag('nav', attrs={'class': ['lesson-jump-menu', 'wrap'], 'aria-label': 'En esta página'})
+        listing = soup.new_tag('ol')
+        for i, section in enumerate(article.find_all('section', recursive=False), 1):
+            if not section.find('h2'):
+                continue
+            if not section.get('id'):
+                section['id'] = 'reading-' + str(i)
+            item = soup.new_tag('li')
+            link = soup.new_tag('a', href='#' + section['id'])
+            link.string = section.h2.get_text()
+            item.append(link); listing.append(item)
+        toc.append(listing)
+        article.insert_before(toc)
     if toc:
         order = {node['id']: i for i, node in enumerate(article.select('[id]'))}
         listing = toc.find('ol')

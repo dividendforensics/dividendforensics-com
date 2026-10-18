@@ -45,12 +45,17 @@ class ReadingFormatTests(unittest.TestCase):
                     for cell in row:
                         self.assertIn(str(cell), text)
 
-    def test_numbers_follow_definition_and_workshops_start_with_case(self):
-        for slug, earlier, later in [('learn-ffo', 'section-1', 'worked-example'),
-                                     ('learn-bdc-expert-income-bridge', 'worked-example', 'section-1')]:
+    def test_numbers_follow_definition_and_workshop_results_follow_analysis(self):
+        cases = [('learn-ffo', 'section-1', 'worked-example')]
+        cases += [(a['slug'], 'section-' + str(len(a['sections'])), 'worked-example')
+                  for a in self.articles if format_for(a) == 'workshop']
+        self.assertEqual(len(cases), 9)
+        for slug, earlier, later in cases:
             soup = BeautifulSoup(self.outputs[ROOT/(slug+'.html')], 'html.parser')
             order = [node['id'] for node in soup.select('article.lesson-body [id]')]
             self.assertLess(order.index(earlier), order.index(later))
+            for table in soup.select('.table-scroll'):
+                self.assertIsNotNone(soup.find(id=table['aria-describedby']))
 
     def test_spanish_original_values_and_us_scope_remain(self):
         articles = json.loads((ROOT/'content/spanish.json').read_text(encoding='utf-8'))
@@ -61,3 +66,7 @@ class ReadingFormatTests(unittest.TestCase):
             self.assertIn('USD', text)
             self.assertEqual(soup.html['lang'], 'es')
             self.assertIsNotNone(soup.select_one('[data-reading-format]'))
+            links = soup.select('.lesson-jump-menu a')
+            self.assertGreaterEqual(len(links), len(a['sections']))
+            for link in links:
+                self.assertIsNotNone(soup.find(id=link['href'][1:]))
