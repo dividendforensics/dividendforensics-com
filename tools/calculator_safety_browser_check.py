@@ -40,7 +40,9 @@ def main():
                     button=form.locator('[type=submit]');assert button.is_disabled(),(path,blocked)
                     requests.clear();before=page.url
                     # Real pointer and keyboard actions: disabled controls must not activate.
+                    button.scroll_into_view_if_needed()
                     box=button.bounding_box();page.mouse.click(box['x']+box['width']/2,box['y']+box['height']/2)
+                    form.locator('input').first.scroll_into_view_if_needed()
                     box=form.locator('input').first.bounding_box();page.mouse.click(box['x']+box['width']/2,box['y']+box['height']/2)
                     page.keyboard.type('928371');page.keyboard.press('Enter');page.wait_for_timeout(80)
                     assert page.url==before,(path,blocked,page.url)
