@@ -41,6 +41,17 @@ def main():
                     assert page.locator('h1').count() == 1, path
                     assert page.locator('[data-reading-format]').count() == 1, path
                     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), (path, width)
+                    if 'expert-' in path:
+                        assert page.locator('.workshop-analysis').evaluate('(e)=>e.compareDocumentPosition(document.querySelector(".worked-example")) & Node.DOCUMENT_POSITION_FOLLOWING'), path
+                        for table in page.locator('.table-scroll').all():
+                            assert page.locator('#'+table.get_attribute('aria-describedby')).is_visible()
+                            table.focus()
+                            page.keyboard.press('ArrowRight')
+                            page.wait_for_timeout(100)
+                            if table.evaluate('(e)=>e.scrollWidth>e.clientWidth'):
+                                assert table.evaluate('(e)=>e.scrollLeft>0'), (path, width)
+                                table.evaluate('(e)=>e.scrollLeft=e.scrollWidth')
+                                assert table.evaluate('(e)=>Math.abs(e.scrollWidth-e.clientWidth-e.scrollLeft)<2'), path
                     page.evaluate('Array.from(document.images).forEach(i=>i.loading="eager")')
                     page.wait_for_function('Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0)')
                     if path[:-5] in samples and width in (390, 1440):

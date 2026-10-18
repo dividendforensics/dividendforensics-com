@@ -1,19 +1,18 @@
 # Dividend Forensics Bureau
 
-## Free REIT education edition — 2026-10-18
+## Free REIT and BDC education — 2026-10-18
 
-The homepage now leads with free REIT education for readers arriving from
-Benzinga and search. There are 36 substantive education guides, seven working
-calculators, a 25-term glossary, primary-source directory and editorial policy.
-Four leveled learning paths (6 beginner / 18 intermediate / 8 advanced / 4 expert)
-include self-check quizzes. Four GPT-generated educational illustrations have
-optimized WebP assets and accessible captions. Exact prompts are retained in
-`img/education/prompts.json`; local full-resolution originals are ignored by Git.
-The independent-review handoff is [docs/AI-CONSULTATION.md](docs/AI-CONSULTATION.md).
+The site provides 36 REIT guides, 16 BDC guides, 15 calculators, two
+subject glossaries, a primary-source directory and an editorial policy.
+Both subjects have four learning levels. The initial Spanish edition has
+seven pages, including four introductory lessons and two calculators.
+Illustration production records are retained in `img/education/prompts.json`;
+local full-resolution originals are ignored by Git.
 
 Existing research records, author information, inquiry endpoint and free report
-remain available. Membership remains closed. AdSense is not activated: the
-owner has no publisher ID yet, and this release contains no ad or analytics code.
+remain available. Membership remains closed. AdSense ownership verification
+is configured with a static homepage meta tag and ads.txt. Ad serving and
+analytics are not activated; account approval is not established by this code.
 
 `content/*.json` owns the education text. `education.py` renders these articles,
 learning/tools hubs, calculator explanation pages, glossary, source directory,

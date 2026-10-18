@@ -76,3 +76,7 @@
  .edition-workflow .filing-steps{padding-left:25px;margin-left:12px}.edition-workflow .section-index{left:-44px}
 }
 @media print{.lesson-jump-menu{display:none}.lesson-edition .field-notes,.lesson-edition .field-review,.lesson-edition .workshop-practice,.lesson-edition .workshop-analysis,.edition-risk .editorial-section,.edition-sector .lesson-body>.worked-example{display:block}.lesson-edition .edition-layout{width:100%;max-width:none}.lesson-edition section{break-inside:auto}}
+
+.edition-workshop .workshop-analysis>section:first-child{grid-column:1/-1}
+.lesson-edition .table-scroll-help{font-size:14px;line-height:1.6;color:#40575b}
+.lesson-edition .table-scroll:focus-visible{outline:3px solid #76532d;outline-offset:4px}

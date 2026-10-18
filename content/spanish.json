@@ -30,7 +30,7 @@
     "checklist": [
       "Identifica si el negocio posee inmuebles o proporciona financiación hipotecaria.",
       "Revisa la composición de los inmuebles y la exposición a los principales inquilinos.",
-      "Compara el dividendo con una medida operativa adecuada y conciliada.",
+      "Compare el dividendo con una medida operativa adecuada y conciliada.",
       "Examina las necesidades recurrentes de inversión y la deuda que vence en los próximos años."
     ],
     "sources": [
@@ -65,7 +65,7 @@
         "text": "Una estructura cerrada no suele conceder a todos los accionistas el derecho de reembolso abierto habitual en un fondo de inversión convencional. El accionista de una BDC cotizada normalmente sale vendiendo a otro participante del mercado. Mientras tanto, la BDC puede originar inversiones, recibir amortizaciones, modificar su financiación y, en ocasiones, emitir o recomprar acciones. La cartera cambia aunque el vehículo siga siendo cerrado. En una BDC no cotizada deben revisarse por separado los programas de liquidez y sus límites. Una posible oferta de recompra no equivale a negociar en bolsa ni garantiza atender todas las solicitudes. La ausencia de cotización tampoco identifica por sí sola la vía de colocación ni las restricciones de transmisión: hay que leer el folleto o los documentos de la oferta privada."
       },
       {
-        "heading": "Lee conjuntamente los ingresos y el valor del capital",
+        "heading": "Lea conjuntamente los ingresos y el valor del capital",
         "text": "Una distribución es una transferencia del vehículo a sus accionistas, no una prueba de que todos los préstamos se paguen correctamente ni de que el precio de la acción deba mantenerse. Pregunta qué inversiones generaron los ingresos reconocidos, cuánto se cobró en efectivo, qué gastos preceden a los accionistas ordinarios y si las pérdidas de valor razonable reducen los activos netos. Una BDC puede reconocer ingresos mientras se deteriora el valor de una inversión. A la inversa, un trimestre con pocos ingresos puede reflejar diferencias de calendario o comisiones, no necesariamente una pérdida permanente de principal. Conviene separar estas posibilidades en lugar de resumir todo el negocio en su última rentabilidad anualizada."
       },
       {
@@ -80,7 +80,7 @@
     "pitfall": "Tratar una acción de una BDC como un depósito directo asegurado o como un préstamo reembolsable al valor de los activos netos.",
     "checklist": [
       "Identifica el vehículo cotizado o no cotizado y la clase de acción concreta.",
-      "Lee la estrategia de inversión y los instrumentos de la cartera.",
+      "Lea la estrategia de inversión y los instrumentos de la cartera.",
       "Separa la deuda de la BDC de la deuda de las empresas de su cartera.",
       "Registra la distribución declarada y el periodo de información."
     ],
@@ -120,7 +120,7 @@
         "text": "La rentabilidad sobre el coste compara el dividendo anual actual con tu precio histórico de compra. Puede describir el crecimiento del ingreso de una inversión original, pero no representa la rentabilidad disponible para un nuevo inversor ni el coste de oportunidad de conservar la posición. Las decisiones actuales involucran el valor de mercado actual. Una posición mantenida durante mucho tiempo puede tener una rentabilidad sobre el coste elevada y, aun así, presentar un deterioro de cobertura, refinanciación costosa o concentración de riesgos. El precio de compra histórico no elimina esas condiciones actuales."
       },
       {
-        "heading": "Compara escenarios en lugar de perseguir la cifra mayor",
+        "heading": "Compare escenarios en lugar de perseguir la cifra mayor",
         "text": "Un inversor orientado a los ingresos puede preferir distribuciones regulares, mientras que otro valora la reinversión dentro de la empresa. Ninguna preferencia convierte la rentabilidad anunciada en una puntuación de seguridad. Modela por separado un dividendo sin cambios, una reducción y una variación de precio. Reinvertir los dividendos permite comprar más acciones, pero no elimina el riesgo de caída del valor del activo. Si comparas un REIT con un bono, recuerda que el dividendo y el valor de salida de las acciones ordinarias no son pagos contractuales de un bono. La comparación debe reconocer esa diferencia de derechos."
       }
     ],
@@ -159,19 +159,19 @@
     "description": "Concilia la cobertura de distribuciones ordinarias y totales de una BDC estadounidense sin confundir NII declarado, medidas ajustadas y efectivo disponible.",
     "sections": [
       {
-        "heading": "Define el NII antes de compararlo con una distribución",
+        "heading": "Defina el NII antes de compararlo con una distribución",
         "text": "El ingreso neto de inversión, identificado aquí por sus siglas inglesas NII, es un resultado contable después de los gastos de inversión incluidos en la presentación del emisor. No equivale al ingreso total de inversión, una línea anterior a esos gastos, ni al cambio neto completo procedente de las operaciones, que también puede incluir resultados de inversión realizados y no realizados. Una empresa puede publicar una medida ajustada o recurrente con su propia conciliación. Conserva el NII declarado y muestra los ajustes por separado. Que dos emisores repitan una etiqueta no demuestra que sus definiciones, la atribución a accionistas ordinarios o el tratamiento de comisiones sean iguales."
       },
       {
-        "heading": "Elige deliberadamente el denominador",
+        "heading": "Elija deliberadamente el denominador",
         "text": "Las distribuciones regulares, complementarias y extraordinarias transfieren valor a los accionistas ordinarios, pero pueden responder a políticas distintas. La cobertura de la distribución regular pregunta si la medida de ingresos elegida cubre la base recurrente declarada. La cobertura total incluye todos los componentes de la base seleccionada. Ambas comparaciones pueden ser útiles si se etiquetan con claridad; utilizar solo la base y afirmar que todos los pagos están cubiertos exagera lo que demuestra la proporción. Distingue las distribuciones declaradas para el periodo del efectivo pagado durante él. Un pago del trimestre puede liquidar una declaración anterior, de modo que el estado de flujos y las declaraciones del consejo no proporcionan denominadores intercambiables."
       },
       {
-        "heading": "Usa importes totales comparables o datos por acción comparables",
+        "heading": "Use importes totales comparables o datos por acción comparables",
         "text": "Dividir el NII total entre las distribuciones totales a los accionistas ordinarios evita combinar sin explicarlo las acciones medias ponderadas de los beneficios con un número diferente de acciones con derecho a distribución. Una comparación por acción también puede ser útil si ambas cifras se presentan con bases apropiadas y compatibles, pero una emisión durante el periodo puede complicar la conciliación con los totales. Los intereses pagados en especie (payment-in-kind, PIK) pueden reconocerse como ingreso sin cobrarse en efectivo en ese momento, según el contrato y la política de reconocimiento del emisor. No fabriques un importe de PIK por acción dividiendo los ingresos del periodo entre el número de acciones más fácil de encontrar. Registra si calculas ingresos divididos entre distribuciones, denominado aquí cobertura, o distribuciones divididas entre ingresos, denominado porcentaje de distribución o payout. Solo son recíprocos cuando ambos datos permiten esa interpretación."
       },
       {
-        "heading": "Mantén visibles los límites de la proporción",
+        "heading": "Mantenga visibles los límites de la proporción",
         "text": "Una cobertura superior a uno no prueba que se cobrara el ingreso en efectivo, que se preservara el principal ni que el consejo mantenga el pago. Una cobertura inferior a uno tampoco demuestra por sí sola un recorte inminente; la financiación, las ganancias realizadas, el calendario fiscal y otros recursos requieren análisis separado. El NII negativo debe conservar su signo en vez de convertirse en cero. Un denominador de distribuciones igual a cero produce una cobertura no definida, no seguridad infinita. Si se desconoce el importe complementario, conserva la cobertura regular válida y marca la cobertura total como incompleta. Ante un dato ausente corresponde formular una pregunta, no presentar un porcentaje más atractivo."
       }
     ],
@@ -197,7 +197,7 @@
       }
     ],
     "exercise": {
-      "question": "Mantén el NII en 120 y aumenta la distribución extraordinaria de 5 a 20. ¿Cuáles son las coberturas regular y total?",
+      "question": "Mantenga el NII en 120 y aumente la distribución extraordinaria de 5 a 20. ¿Cuáles son las coberturas regular y total?",
       "answer": "La cobertura regular permanece en 1,2000 veces. Las declaraciones totales ascienden a 130, por lo que la cobertura total baja a 120 ÷ 130 = 0,9231 veces. Es una comparación contable con bases compatibles, no una previsión de efectivo."
     },
     "published": "2026-10-18",
