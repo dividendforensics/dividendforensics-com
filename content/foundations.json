@@ -1,6 +1,8 @@
 [
   {
     "slug": "learn-reit-basics",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
     "title": "What is a REIT? Follow the asset, the income and the claim",
     "description": "Understand how a US REIT earns income, what shareholders own, and why a dividend is different from a guaranteed property return.",
     "category": "Start here",
@@ -18,7 +20,9 @@
     "related":["learn-reit-types","learn-distribution-rule","learn-ffo"]
   },
   {
-    "slug":"learn-reit-types","title":"Listed, non-traded and private REITs: access changes the risk","description":"Separate a REIT's business model from its trading structure, liquidity, fees and disclosure obligations.","category":"Start here","level":"Beginner",
+    "slug":"learn-reit-types",
+    "published": "2026-10-18",
+    "updated": "2026-10-18","title":"Listed, non-traded and private REITs: access changes the risk","description":"Separate a REIT's business model from its trading structure, liquidity, fees and disclosure obligations.","category":"Start here","level":"Beginner",
     "sections":[
       {"heading":"Use two separate classification questions","text":"First ask what the REIT does: own real estate, finance it, or combine activities. Then ask how the investment is offered and traded. A listed equity REIT and a non-traded equity REIT can own similar buildings but give investors very different liquidity and price-discovery experiences. Publicly traded, public non-listed and private are distribution and market-access categories. Apartment, industrial and office are property categories. Mixing these axes hides important risks."},
       {"heading":"Listed shares make price changes visible","text":"Listed REITs trade on an exchange and file public disclosures. Prices respond to interest rates, expected rent growth, financing conditions and investor sentiment. Daily volatility can be uncomfortable, but it also provides an observable price at which other investors are willing to trade. That price is not an appraisal and does not necessarily equal the company's net asset value. Bid-ask spreads, market conditions and order size can affect the actual execution price."},
@@ -31,7 +35,9 @@
     "sources":[{"title":"Nareit glossary: REIT structures and measures","url":"https://www.reit.com/glossary"},{"title":"SEC investor bulletin: publicly traded REITs","url":"https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-65"}],"related":["learn-reit-basics","learn-mortgage-reits","learn-reit-etfs"]
   },
   {
-    "slug":"learn-distribution-rule","title":"The 90% REIT rule: taxable income is not cash flow","description":"Why the US distribution requirement cannot be used as a dividend safety test or an AFFO payout target.","category":"Start here","level":"Beginner",
+    "slug":"learn-distribution-rule",
+    "published": "2026-10-18",
+    "updated": "2026-10-18","title":"The 90% REIT rule: taxable income is not cash flow","description":"Why the US distribution requirement cannot be used as a dividend safety test or an AFFO payout target.","category":"Start here","level":"Beginner",
     "sections":[
       {"heading":"Keep the tax base attached to the percentage","text":"The commonly cited US REIT distribution requirement generally means at least 90% of REIT taxable income, excluding net capital gains and subject to applicable adjustments. Removing the phrase taxable income changes the meaning. It does not require a company to pay out 90% of rent collected, property value, operating cash flow or AFFO. Tax rules also address qualification, timing and other matters; the percentage alone is not a complete guide to REIT taxation."},
       {"heading":"Why several income numbers coexist","text":"GAAP net income follows financial reporting rules. Taxable income follows tax rules. FFO adjusts selected real-estate accounting items, and AFFO is an issuer-defined non-GAAP measure. Depreciation and transaction treatment can make these amounts diverge. A company can distribute a large fraction of taxable income while retaining a larger fraction of its reported AFFO. That does not eliminate its capital spending, debt repayments or other uses of cash."},
@@ -44,7 +50,9 @@
     "sources":[{"title":"SEC: REIT investor bulletin","url":"https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-65"},{"title":"Nareit glossary","url":"https://www.reit.com/glossary"}],"related":["learn-affo","learn-payout-ratio","learn-dividend-cuts"]
   },
   {
-    "slug":"learn-read-filings","title":"How to read a REIT filing without getting lost","description":"A practical reading sequence for the 10-K, 10-Q, earnings release and supplemental operating tables.","category":"Research practice","level":"Beginner",
+    "slug":"learn-read-filings",
+    "published": "2026-10-18",
+    "updated": "2026-10-18","title":"How to read a REIT filing without getting lost","description":"A practical reading sequence for the 10-K, 10-Q, earnings release and supplemental operating tables.","category":"Research practice","level":"Beginner",
     "sections":[
       {"heading":"Start with a question and the right period","text":"A filing is easier to read when you have a question: did recurring income per share improve, are leases rolling at higher rents, or is a maturity becoming expensive? Start with the latest annual 10-K for the business and audited statements, then the subsequent 10-Qs for changes. Earnings releases and supplements can add property-level detail and non-GAAP reconciliations. Check publication dates and reporting periods. A quarter, a year-to-date amount and full-year guidance are not interchangeable."},
       {"heading":"Read the business before the ratios","text":"The business section explains what the company owns and how it earns money. Risk factors identify exposures, although not every risk has equal probability. Management's discussion and analysis explains movements in results and liquidity. Read geographic, tenant and property concentrations alongside the operating tables. A tenant's percentage of annualized rent is not necessarily its percentage of cash collected, and a headline occupancy rate may exclude properties under development."},
@@ -57,7 +65,10 @@
     "sources":[{"title":"Investor.gov: How to read a 10-K and 10-Q","url":"https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/how-read"},{"title":"SEC EDGAR search","url":"https://www.sec.gov/edgar/search/"}],"related":["learn-affo","learn-debt-maturities","learn-checklist"]
   },
   {
-    "slug":"learn-yield-total-return","title":"Dividend yield versus total return: count both sides","description":"Calculate income and price change together, and understand why a rising dividend yield can be a warning rather than a reward.","category":"Start here","level":"Beginner",
+    "slug":"learn-yield-total-return",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-total-return","title":"Dividend yield versus total return: count both sides","description":"Calculate income and price change together, and understand why a rising dividend yield can be a warning rather than a reward.","category":"Start here","level":"Beginner",
     "sections":[
       {"heading":"Yield describes a ratio at a price","text":"Dividend yield divides an annual dividend amount by a share price. The numerator might be the most recent payment annualized, trailing twelve-month payments, or an analyst forecast. Those conventions can produce different yields for the same security. A special distribution can distort the trailing figure. Always identify the basis. Yield tells you how an assumed distribution compares with price; it does not tell you whether that distribution will continue."},
       {"heading":"Total return includes the changing claim","text":"For one share held over a period, a simple total return includes the ending price minus the starting price plus cash distributions, divided by the starting price. It ignores reinvestment timing, transaction costs and taxes unless explicitly adjusted. A high cash yield can coexist with a negative total return when the share price falls. Conversely, a lower-yielding business may generate stronger total return if per-share cash generation and market value rise."},
@@ -70,7 +81,10 @@
     "sources":[{"title":"Nareit glossary: total return and dividend yield","url":"https://www.reit.com/glossary"},{"title":"SEC REIT investor bulletin","url":"https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-65"}],"related":["learn-dividend-cuts","learn-reinvestment","learn-payout-ratio"]
   },
   {
-    "slug":"learn-reinvestment","title":"Dividend reinvestment: compounding with assumptions visible","description":"Understand what a DRIP changes, what it cannot fix, and how to interpret a constant-yield reinvestment model.","category":"Start here","level":"Beginner",
+    "slug":"learn-reinvestment",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-reinvestment","title":"Dividend reinvestment: compounding with assumptions visible","description":"Understand what a DRIP changes, what it cannot fix, and how to interpret a constant-yield reinvestment model.","category":"Start here","level":"Beginner",
     "sections":[
       {"heading":"Reinvestment changes the number of shares","text":"A dividend reinvestment plan uses distributions to purchase additional shares under the plan's terms. If a payment is reinvested at a lower price, it can buy more shares; at a higher price, fewer. Fractional-share handling, fees and the execution date depend on the broker or issuer. The key distinction is that receiving cash and reinvesting cash are two steps. A dividend is not an extra return that can be added on top of a total-return figure already including distributions."},
       {"heading":"A smooth model is a controlled experiment","text":"The calculator on this site applies a constant annual distribution yield to the modeled balance in monthly periods, with optional monthly contributions and a user-set withholding assumption. That makes the compounding arithmetic inspectable. Real prices, dividend rates, tax treatment and payment schedules vary. A constant-yield model does not predict a particular REIT's share count or future market price. Use it to understand the effect of time, contributions and reinvestment, then stress the inputs."},
@@ -83,7 +97,10 @@
     "sources":[{"title":"Investor.gov: Dividend Reinvestment Plans","url":"https://www.investor.gov/introduction-investing/investing-basics/glossary/direct-investment-plans-buying-stock-directly"},{"title":"Nareit glossary","url":"https://www.reit.com/glossary"}],"related":["learn-yield-total-return","learn-dividend-cuts","learn-reit-etfs"]
   },
   {
-    "slug":"learn-interest-rates","title":"REITs and interest rates: more than one transmission channel","description":"Separate financing costs, property valuation, tenant demand and rent growth when thinking about interest-rate changes.","category":"Research practice","level":"Intermediate",
+    "slug":"learn-interest-rates",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-refinancing","title":"REITs and interest rates: more than one transmission channel","description":"Separate financing costs, property valuation, tenant demand and rent growth when thinking about interest-rate changes.","category":"Research practice","level":"Intermediate",
     "sections":[
       {"heading":"Debt costs move on a schedule","text":"A change in market interest rates does not instantly reprice every dollar of a REIT's debt. Fixed-rate borrowings remain at their contractual rates until refinancing or another relevant event. Floating-rate debt may respond sooner, subject to the benchmark, spread, floors and hedging. Read the debt maturity schedule and derivative notes together. A low average coupon can describe the existing book while concealing a much higher rate on the next borrowing."},
       {"heading":"Property values depend on required returns","text":"Investors may demand higher yields from property when alternative yields rise, but the relationship is not mechanical. Property cap rates also reflect growth expectations, risk, transaction evidence and asset quality. In a simplified constant-NOI calculation, a higher cap rate lowers value. Real property income can change at the same time. Applying a single cap rate to a diverse portfolio can therefore obscure more than it explains."},
@@ -96,7 +113,9 @@
     "sources":[{"title":"SEC: publicly traded REIT risks","url":"https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-65"},{"title":"Nareit glossary: capitalization rates and debt","url":"https://www.reit.com/glossary"}],"related":["learn-debt-maturities","learn-cap-rate","learn-dilution"]
   },
   {
-    "slug":"learn-checklist","title":"A REIT research checklist: from business model to open questions","description":"A repeatable, evidence-first worksheet for reviewing a REIT without reducing the analysis to a single score.","category":"Research practice","level":"Intermediate",
+    "slug":"learn-checklist",
+    "published": "2026-10-18",
+    "updated": "2026-10-18","title":"A REIT research checklist: from business model to open questions","description":"A repeatable, evidence-first worksheet for reviewing a REIT without reducing the analysis to a single score.","category":"Research practice","level":"Intermediate",
     "sections":[
       {"heading":"Map the cash engine","text":"Write a short description of the assets, customers and contracts before collecting ratios. Identify the property sectors, geographic exposure and tenant concentration. Note the revenue model: contractual lease payments, short-term rentals, operating revenue or financing spreads. A good description explains who pays, why they keep paying and what would interrupt the payment. If you cannot explain the revenue driver, a precise valuation multiple is premature."},
       {"heading":"Reconcile the operating result","text":"Record revenue, property-level income and the issuer's preferred performance measures with matching periods. For equity REITs, inspect the FFO reconciliation and the full AFFO definition where supplied. Separate total-company growth from per-share growth. Compare cash collection with reported rent and ask what recurring capital spending sits outside an adjusted measure. A checklist should surface uncertainty rather than convert every missing disclosure into an assumed zero."},

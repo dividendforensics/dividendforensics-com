@@ -4,7 +4,7 @@
 
 ## SEO는 어디서 보는가
 
-1. [Google Search Console](https://search.google.com/search-console)에 실제 사이트를 소유한 Google 계정으로 로그인한다. `dividendforensics.com` 도메인 속성을 선택한다. 없다면 도메인 속성을 만들고 DNS 소유권을 확인한다. 저장소에 기존 Google HTML 확인 파일이 있지만, 파일이 있다는 것만으로 현재 계정의 소유권 확인 성공을 의미하지는 않는다.
+1. [Google Search Console](https://search.google.com/search-console)에 실제 사이트를 소유한 Google 계정으로 로그인한다. `dividendforensics.com` 도메인 속성을 선택한다. 없다면 도메인 속성을 만들고 DNS 소유권을 확인한다. Domain 속성은 DNS로 확인한다. 기존 Google HTML 확인 파일은 URL-prefix 속성에 사용하는 별도 방법이며 Domain 속성의 DNS 확인을 대신하지 않는다. 파일이 있다는 것만으로 현재 계정의 소유권 확인 성공을 의미하지는 않는다.
 2. **실적 → 검색결과**에서 클릭수, 노출수, 평균 CTR, 평균 게재순위를 본다. 처음에는 28일을 이전 28일과 비교하고 검색어·페이지·국가·기기별로 나눈다. 평균 순위 하나로 성과를 판단하지 않는다.
 3. **색인 생성 → 페이지**에서 색인 제외 이유를 확인한다. **Sitemaps**에 `https://dividendforensics.com/sitemap.xml`을 제출한다. 사이트맵은 발견을 돕지만 색인이나 순위를 보장하지 않는다.
 4. **URL 검사**에 홈, 학습 허브, 대표 글, 계산기 URL을 넣어 크롤링 가능 여부와 Google이 선택한 canonical을 확인한다. 모든 URL에 반복적으로 색인 요청을 하는 방식보다 내부 링크와 콘텐츠 품질을 점검한다.
@@ -62,3 +62,7 @@ node --test tests/calculators.test.cjs
 ```
 
 자동 빌드가 HTML과 사이트맵을 갱신한다. GitHub Pages의 실제 배포 완료는 Actions/Pages 결과와 공개 URL을 확인해야 하며, Git 커밋만으로 배포 성공을 선언하지 않는다.
+
+## 재검수 수정 이후 유지 방법
+
+교육 원고의 `published`는 최초 발행일, `updated`는 실제 내용 수정일로 글별 관리한다. 빌드 실행이나 다른 글 수정 때문에 일괄 갱신하지 않는다. 관련 계산기는 원고의 `calculator` 필드에 정확한 도구 slug를 지정하며, 관련 도구가 없으면 필드를 생략한다. 보고서별 수용·정정·대기 판단은 [재검수 처리 결과](REAUDIT-RESOLUTION-2026-10-18.md)를 참고한다.

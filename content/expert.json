@@ -1,6 +1,9 @@
 [
   {
     "slug": "learn-expert-affo-normalization",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-ffo-affo",
     "title": "Expert workshop: normalize AFFO across competing definitions",
     "description": "Rebuild two hypothetical issuer reconciliations, distinguish owner earnings from cash timing, and test whether apparent dividend coverage survives normalization.",
     "category": "Expert workshops",
@@ -67,6 +70,9 @@
   },
   {
     "slug": "learn-expert-jv-nav",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-nav",
     "title": "Expert workshop: build NAV through joint ventures",
     "description": "Reconcile proportionate ownership with consolidated reporting, eliminate duplicate assets, and stress a multi-entity NAV model.",
     "category": "Expert workshops",
@@ -82,7 +88,7 @@
       },
       {
         "heading": "Remove outside ownership from consolidated property",
-        "text": "The controlled venture has total NOI of 20, an 8% cap rate, debt of 100, and no other assets or liabilities. Its full property value is 250, leaving equity of 150. The parent's 60% interest is worth 90 under these assumptions; outside holders own the other 60. A consolidated bridge can include property value of 250 and debt of 100, then subtract 60 of noncontrolling equity. A proportionate bridge can instead include 150 of property value and 60 of debt. Do not use the proportionate bridge and subtract the outside equity again."
+        "text": "The controlled venture has total NOI of 20, an 8% cap rate, debt of 100, and no other assets or liabilities. Its full property value is 250, leaving equity of 150. The parent's 60% interest is worth 90 under these assumptions; outside holders own the remaining 40%, worth 60 million. A consolidated bridge can include property value of 250 and debt of 100, then subtract 60 of noncontrolling equity. A proportionate bridge can instead include 150 of property value and 60 of debt. Do not use the proportionate bridge and subtract the outside equity again."
       },
       {
         "heading": "Complete the common-equity bridge",
@@ -137,6 +143,9 @@
   },
   {
     "slug": "learn-expert-refinancing-model",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-refinancing",
     "title": "Expert workshop: model refinancing, fees, and dilution",
     "description": "Build partial-year and full-year earnings bridges for debt refinancing with and without equity, then reconcile the separate cash budget.",
     "category": "Expert workshops",
@@ -203,6 +212,8 @@
   },
   {
     "slug": "learn-expert-investment-memo",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
     "title": "Expert workshop: write a falsifiable REIT research memo",
     "description": "Separate facts from assumptions, test opposing explanations, and turn a valuation spreadsheet into an auditable research document.",
     "category": "Expert workshops",

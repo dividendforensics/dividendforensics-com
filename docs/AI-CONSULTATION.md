@@ -34,7 +34,7 @@
 - 재현: `git push --dry-run origin HEAD:refs/heads/codex/reit-education`을 대화형 로그인 없이 실행.
 - 실제 오류: `Cannot prompt because user interactivity has been disabled` / `could not read Username for 'https://github.com': terminal prompts disabled`.
 - 확인된 사실: Codex GitHub 커넥터 계정은 `dividendforensics`, 대상 저장소는 `dividendforensics/dividendforensics-com`이며 읽기·쓰기 권한이 확인되었다. CLI 자격증명과 커넥터 연결은 별개다.
-- 대안: 연결된 GitHub 도구의 blob/tree/commit/branch/PR 작업으로 검증된 변경을 업로드하는 경로를 사용한다. 최종 업로드·배포 상태는 아래 상태 기록과 실제 GitHub 결과로 판단한다.
+- 대안: 연결된 GitHub 도구의 blob/tree/commit/branch/PR 작업으로 검증된 변경을 업로드하는 경로를 사용한다. 최초 교육 사이트 업로드·배포는 완료했다. 이후 변경 상태는 아래 상태 기록과 실제 GitHub 결과로 판단한다.
 - 자문 질문: **연결된 GitHub 커넥터로 텍스트와 WebP를 동일한 Git tree에 올리고, 기대 SHA를 지정해 브랜치를 갱신한 뒤 기존 Pages 워크플로를 통해 배포하는 과정에서 추가로 검증할 것은 무엇인가?**
 - 금지할 우회: 토큰을 채팅에 붙여넣게 하거나 저장소에 커밋하지 않는다. 실패했다고 강제 푸시하거나 다른 계정 권한을 추정하지 않는다.
 
@@ -52,7 +52,7 @@
 
 ## 상태 기록
 
-- 2026-10-18: 최초 자문 문서 작성. CLI 인증 장애는 실제 확인. 커넥터 업로드와 최종 배포 확인은 진행 중.
+- 2026-10-18: 최초 자문 문서 작성. CLI 인증 장애는 실제 확인. 당시 진행 중이던 커넥터 업로드와 최종 배포 확인은 같은 날 완료했다(아래 완료 기록).
 - 2026-10-18: 별도 검토 에이전트가 초기 계산기에서 매수 수수료를 초기 투자액 분모에 포함해야 한다고 지적. 매수/매도 수수료를 분리해 수정하고 회귀 검사를 추가했다.
 
 아래 상태 기록을 기준으로 판단한다. AdSense 신청·승인은 아직 완료되지 않았다.
@@ -65,3 +65,5 @@
 
 - 2026-10-18: PR #1의 GitHub Design review 성공 후 main에 squash merge 완료 (`df77a445e9564635bd69bd4cc0bafd321db71217`). Build and publish research site와 Pages 배포 성공. https://dividendforensics.com/ 와 전문가 과정·교육 허브·배당 계산기·GPT WebP 이미지의 HTTP 200 확인. 최종 미완료 항목은 운영자 계정이 필요한 AdSense 신청/연결 및 Search Console/분석 설정이다.
 
+
+- 2026-10-18: 외부 재검수 의견을 실제 코드와 대조하고 확인된 결함을 수정했다. 현재 코드 변경·정정한 보고서 주장·재계산 표·계정 대기 사항은 [재검수 처리 결과](REAUDIT-RESOLUTION-2026-10-18.md)에 정리했다. 해당 수정본의 배포 상태는 그 문서의 마지막 항목을 기준으로 한다.

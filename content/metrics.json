@@ -1,12 +1,15 @@
 [
   {
     "slug": "learn-ffo",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-ffo-affo",
     "title": "FFO: reading REIT performance beyond net income",
     "description": "Understand the FFO bridge, per-share growth, and why adding back depreciation does not make buildings free to maintain.",
     "category": "Financial analysis",
     "level": "Intermediate",
     "sections": [
-      {"heading":"What FFO measures","text":"Funds from operations is a supplemental performance measure for equity REITs. Nareit's definition starts with GAAP net income and makes specified adjustments for real estate depreciation, certain property disposal results, and qualifying impairments. The purpose is to make recurring real estate performance easier to interpret when historical-cost depreciation dominates accounting earnings. FFO is neither the cash-flow statement nor the amount legally required to be distributed. A mortgage REIT needs a different analytical framework because its main assets are loans or securities rather than depreciable buildings."},
+      {"heading":"What FFO measures","text":"Funds from operations is a supplemental performance measure for equity REITs. Nareit's definition starts with GAAP net income and makes specified adjustments for real estate depreciation, certain property disposal results, gains and losses from changes in control, and qualifying impairments. The purpose is to make recurring real estate performance easier to interpret when historical-cost depreciation dominates accounting earnings. FFO is neither the cash-flow statement nor the amount legally required to be distributed. A mortgage REIT needs a different analytical framework because its main assets are loans or securities rather than depreciable buildings."},
       {"heading":"Use the bridge, then the share count","text":"Read each reconciliation line before accepting the headline. Distinguish Nareit FFO from management's additional measures labeled core, normalized, or adjusted FFO. Then ask whether the result belongs to common shareholders after preferred claims and noncontrolling interests. Aggregate growth can coexist with declining FFO per share when acquisitions require many new shares. Match annual performance with annual weighted-average diluted shares; a quarter-end share count can give a misleading result after a large issuance. For historical comparisons, keep ownership scope and reporting periods consistent."},
       {"heading":"Two useful, competing perspectives","text":"An operating perspective treats FFO as a cleaner starting point than earnings per share for comparing property businesses. A capital-preservation perspective asks what the add-back hides: roofs age, elevators need replacement, and tenants demand improvements. Both views can be useful. A growing FFO figure supported by healthy occupancy has different implications from growth accompanied by mounting deferred maintenance. Compare capital spending and leasing obligations separately instead of assuming that the accounting depreciation add-back makes all reported earnings economically distributable."},
       {"heading":"A source-reading workflow","text":"Open the issuer's annual filing and locate net income, its FFO reconciliation, diluted shares, the cash-flow statement, and capital commitments. Recreate the bridge for two periods and annotate changes in definitions. Use Nareit's guidance to understand the standard; use the issuer's notes to understand its application. Finally, explain any difference between FFO growth and operating cash-flow growth. Working capital, payment timing, and cash rent can create legitimate differences. Unexplained differences are a reason to read further, not proof of misconduct."}
@@ -19,6 +22,9 @@
   },
   {
     "slug":"learn-affo",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-ffo-affo",
     "title":"AFFO: useful estimate, nonstandard definition",
     "description":"Learn to audit recurring cash adjustments and compare AFFO definitions before comparing payout ratios.",
     "category":"Financial analysis",
@@ -37,6 +43,9 @@
   },
   {
     "slug":"learn-noi",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-nav",
     "title":"NOI: separate the property from its financing",
     "description":"Build a property operating view and understand why positive NOI does not guarantee positive shareholder cash flow.",
     "category":"Financial analysis",
@@ -55,6 +64,9 @@
   },
   {
     "slug":"learn-nav",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-nav",
     "title":"NAV: an estimate with assumptions, not a price promise",
     "description":"Construct a simple net asset value bridge and test how debt and capitalization rates change the result.",
     "category":"Financial analysis",
@@ -73,6 +85,9 @@
   },
   {
     "slug":"learn-cap-rate",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-nav",
     "title":"Cap rates: reading income, price, and risk together",
     "description":"Understand the cap-rate equation, differences from dividend yield, and the limits of acquisition spreads.",
     "category":"Financial analysis",
@@ -91,6 +106,9 @@
   },
   {
     "slug":"learn-payout-ratio",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-payout-ratio",
     "title":"Payout ratios: choose the denominator before judging safety",
     "description":"Compare FFO and AFFO coverage without confusing dividend policy with the REIT taxable-income distribution requirement.",
     "category":"Financial analysis",
@@ -109,6 +127,9 @@
   },
   {
     "slug":"learn-debt-maturities",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-refinancing",
     "title":"Debt maturities: read the calendar, not just the average",
     "description":"Map refinancing needs against cash, committed liquidity, lease risk, and future borrowing costs.",
     "category":"Financial analysis",
@@ -127,6 +148,9 @@
   },
   {
     "slug":"learn-interest-coverage",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-refinancing",
     "title":"Interest coverage: test the earnings cushion",
     "description":"Understand coverage ratios, covenant definitions, and why principal repayments require a separate check.",
     "category":"Financial analysis",
@@ -145,6 +169,8 @@
   },
   {
     "slug":"learn-dilution",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
     "title":"Dilution: follow your share of the business",
     "description":"Distinguish a rising share count from harmful economic dilution and evaluate acquisition growth per share.",
     "category":"Financial analysis",
@@ -163,6 +189,8 @@
   },
   {
     "slug":"learn-lease-expirations",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
     "title":"Lease expirations: the calendar behind rental income",
     "description":"Read lease rollover exposure, renewal economics, downtime, and why long leases can be both protection and a constraint.",
     "category":"Financial analysis",
@@ -181,6 +209,8 @@
   },
   {
     "slug":"learn-same-store-noi",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
     "title":"Same-store NOI: test growth inside the existing portfolio",
     "description":"Understand comparable-property pools, cash versus accounting growth, and the exclusions that can change the story.",
     "category":"Financial analysis",
@@ -199,6 +229,9 @@
   },
   {
     "slug":"learn-dividend-cuts",
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "calculator": "calculator-payout-ratio",
     "title":"Dividend cuts: analyze the funding gap before the yield",
     "description":"Build a dividend stress review using recurring earnings, liquidity, debt repayments, and board disclosures.",
     "category":"Financial analysis",
