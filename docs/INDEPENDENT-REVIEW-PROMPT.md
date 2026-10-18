@@ -1,8 +1,8 @@
 # 다른 AI 전달용 — DFB 홈페이지 완성본 독립 검토 요청
 
 검토 기준일: 2026-10-18 (한국 시간).
-코드 배포 버전: `f3af0fb0a836e38986dd8daf984f881ef4043c42`.
-배포·공개 응답 대조 상태: `PR #4 병합, CI 통과. 공개 HTML87개와 주요 자산·사이트맵·기존 이동 URL 총97응답이 로컬 배포 원본과 일치. 실제 Google 색인/광고/메일 수신은 미확인.`.
+코드 배포 버전: `848e753b9aa77896768e25c8a1a7d52650f33126`.
+배포·공개 응답 대조 상태: `PR #5 병합 및 후속 문구·색인 정리. Python89/Node63 및 PR5 CI435렌더 통과. 일반 공개101응답 원본 일치·vendor3원문 해시 일치. 최신 범위와 한계는 후속 수정 기록 참조. 실제 Google 색인/광고/메일 수신은 미확인.`.
 
 아래 요청문은 대화 내용 없이도 검토할 수 있도록 작성했다. 그대로 전달하고, 가능하면 웹·GitHub 접근이 가능한 AI에 맡긴다. 범위를 나누려면 맨 아래 추가 초점 중 하나를 덧붙인다.
 
@@ -14,8 +14,8 @@ DFB(Dividend Forensics Bureau)의 실제 홈페이지 완성본을 독립적으�
 
 공개 사이트: https://dividendforensics.com/
 저장소: https://github.com/dividendforensics/dividendforensics-com
-이번 변경 PR: https://github.com/dividendforensics/dividendforensics-com/pull/4
-고정 코드 버전: `f3af0fb0a836e38986dd8daf984f881ef4043c42` — main이 이후 바뀌면 이 버전과 현행 사이트를 구분해 주세요.
+이번 변경 PR: https://github.com/dividendforensics/dividendforensics-com/pull/5
+고정 코드 버전: `848e753b9aa77896768e25c8a1a7d52650f33126` — main이 이후 바뀌면 이 버전과 현행 사이트를 구분해 주세요.
 확장 검수 기록: https://github.com/dividendforensics/dividendforensics-com/blob/main/docs/EXPANSION-RELEASE-2026-10-18.md
 디자인 검수 기록: https://github.com/dividendforensics/dividendforensics-com/blob/f3af0fb0a836e38986dd8daf984f881ef4043c42/docs/DESIGN-REVIEW-2026-10-18.md
 
@@ -30,7 +30,7 @@ DFB(Dividend Forensics Bureau)의 실제 홈페이지 완성본을 독립적으�
 - **설명 도해 4개**: property atlas, cash-flow bridge, capital stack, evidence desk. 개념·가상 예시이며 실제 기업 데이터나 실사로 표현하지 않습니다. 웹용 WebP에 크기 속성을 지정했습니다.
 - **디자인 개정**: Tabler·Tremor의 정보 위계와 숫자 가독성을 참고한 DFB 전용 정적 HTML/CSS입니다. 네이비·아이보리·브라스, 큰 세리프 제목, 밝은 읽기 화면, 짙은 계산 결과 패널, 공통 읽기 메뉴를 적용했습니다. 템플릿의 데모 방문자 수·수익·시장 수치 같은 가짜 실적은 추가하지 않았습니다.
 - **리서치 아카이브**: 확인된 선택 기록 20건. 이번에 Ready Capital(9/22), Millrose(9/23), CoreWeave(9/25)를 실제 Benzinga 원문과 대조해 추가했습니다. 선택 아카이브의 최신 날짜는 25 Sep 2026이며 전체 발행 건수를 주장하지 않습니다.
-- **검색용 구성**: 정적 본문, 제목·설명·canonical, Article/Breadcrumb, 사이트맵. 활성 HTML 87개, 사이트맵 URL 75개입니다. 404.html·membership.html·breakbefore.html은 및 짧은 출처 안내 case-* 9개를 의도적으로 제외했습니다. noindex는 광고 정책 예외가 아닙니다. Google 확인 파일과 과거 리디렉션은 활성 콘텐츠 수에 포함하지 않습니다.
+- **검색용 구성**: 정적 본문, 제목·설명·canonical, Article/Breadcrumb, 사이트맵. 활성 HTML 87개, 사이트맵 URL 75개입니다. 404.html·membership.html·breakbefore.html 및 짧은 출처 안내 case-* 9개를 의도적으로 제외했습니다. noindex는 광고 정책 예외가 아닙니다. Google 확인 파일과 과거 리디렉션은 활성 콘텐츠 수에 포함하지 않습니다.
 - **기존 URL 보존**: 기존 입문 글의 7월 발행일을 보존했습니다. 환불 정책 canonical은 `/refund-policy.html`, 기존 `/Refund.html`은 이동 안내로 남겼습니다. 기존 무료 보고서 전달과 문의 폼도 유지했습니다.
 
 - **새 BDC 도구 5개** (인쇄·JSON 계산 기록, CSV 기능 없음): NII/PIK/정규·추가·특별 배당, PIK 분모 비교, non-accrual 원가/공정가치, NAV 할인·프리미엄, 부채/자본. 보고·조정 기준과 기간·단위·출처를 보존하고 미확인 값과 0을 구분합니다.
@@ -82,7 +82,7 @@ DFB(Dividend Forensics Bureau)의 실제 홈페이지 완성본을 독립적으�
 
 주요 소스 경로: `templates/home.html`, `templates/header.html`, `templates/footer.html`, `bureau.css`, `build_site.py`, `education.py`, `curriculum.py`, `education.js`, `calculators.js`, `bdc_tools.py`, `bdc-calculators.js`, `capital_tools.py`, `capital-calculators.js`, `proposal.js`, `scripts/filing_review.py`, `vendor/manifest.json`, `content/foundations.json`, `content/sectors.json`, `content/metrics.json`, `content/expert.json`, `articles.json`.
 
-검증 명령: `python build_site.py --check`, `python -m unittest discover -s tests`, `node --test tests/*.test.cjs`, `python tools/check_site.py`, `python tools/education_browser_check.py`. 브라우저 검사는 Playwright/Chromium이 필요합니다. 현재 검증 기록은 Python 77개, Node 55개, 87페이지 정적 검사; 로컬 인라인261회 렌더링 통과(87×320/390/1440), 실제 HTTP 교육 기능 재검사 통과. GitHub CI435회 렌더링 통과(87×5너비), 공개97응답 일치. 세부 범위는 릴리스 문서 확인입니다. 실제로 재실행하지 않았다면 이 숫자를 본인의 검증 결과로 합산하지 마세요.
+검증 명령: `python build_site.py --check`, `python -m unittest discover -s tests`, `node --test tests/*.test.cjs`, `python tools/check_site.py`, `python tools/education_browser_check.py`, `python tools/audit_browser_check.py`. 브라우저 검사는 Playwright/Chromium이 필요합니다. 이번 로컬 검증은 Python89개·Node63개, 정적87페이지, 새 감사 브라우저 회귀(날짜·fiscal·CSV왕복·취소선·대비·포커스·과정3너비) 통과입니다. 전체435회 CI 렌더와 공개 응답 대조의 최신 실행 상태는 후속 수정 기록을 확인해 주세요. 과거 PR4의 검사 숫자와 합산하지 마세요. 직접 재실행하지 않은 숫자를 본인의 검증 결과로 기록하지 마세요.
 
 ## 4. 반드시 구분해 주세요
 
@@ -117,3 +117,9 @@ DFB(Dividend Forensics Bureau)의 실제 홈페이지 완성본을 독립적으�
 ## 후속 수정판 집중 재검수
 
 INDEPENDENT-REVIEW-RESOLUTION-2026-10-18.md의 후속 판정을 우선 확인해 주세요. BDC 분석일<기간종료일 차단, 우선주 부채 기준 제거, 회계연도 완전 잔액 미산출, +90 CSV 정규화, Research Desk 취소선·대비·포커스, 실제 LF 공급 파일 해시, 10-Q+Form4 혼합 수집을 재현해 주세요. 새 공개 검증 도구는 일반 URL이 오래됐으면 쿼리 우회 응답만 맞아도 실패합니다. 현재 계정/SEC 실제 수집/메일은 여전히 미검수입니다.
+
+## 최신 보고서 후속 확인
+
+현재 소스의 `docs/INDEPENDENT-REVIEW-RESOLUTION-2026-10-18.md`를 먼저 읽되 그 설명도 독립 검증 대상으로 삼아 주세요. 수정된 취소선 DOM·10개 대비 표본·키보드 포커스, BDC 분석일, fiscal 잔액 미산출, +90 CSV 왕복, SEC 대상 폼 필터 순서와 vendor LF 원본 해시를 우선 확인해 주세요.
+
+추가 정리: 준비 페이지 noindex, canonical 환불 링크, FormSubmit 명시, MAA·Saratoga 발행 제목, JV 계산 결과의 범위 라벨. JV는 연결부채100%와 비연결 JV 지분비례 부채의 합계이며, NAV 실습의 완전 지분비례 경로와 출발점이 다릅니다. 시설 만기 미입력의 처리된 검증 오류를 미처리 예외로, 런타임 js 클래스를 정적 클래스 오류로 판정하지 말고 직접 소스와 실행을 확인해 주세요.

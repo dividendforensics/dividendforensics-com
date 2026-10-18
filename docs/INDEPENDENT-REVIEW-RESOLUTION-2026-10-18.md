@@ -40,4 +40,19 @@
 대비 기준 참고: [W3C SC1.4.3](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html). 표본은 브라우저의 계산된 전경/배경색으로 산출했으며 전체 접근성 준수 판정이 아니다.
 
 ## 최종 배포 기록
-검사·배포 진행 중. 실제 성공 기록과 일반 URL 원본 대조 결과를 완료 후 추가한다.
+- PR #5 병합 커밋: `9d01375005881066e74be9d9131b8bf8dd322344`. [Design review 39101079054](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39101079054) 성공: Python89·Node63·정적87·435회 렌더·새 감사 브라우저 회귀 통과.
+- 최신 공개 코드: `848e753b9aa77896768e25c8a1a7d52650f33126` (추가 보고서의 문구·색인 정리 포함). [Build39101423101](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39101423101) 및 [Pages39101433529](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39101433529) 성공. 앞선 자동 Pages 작업 취소는 후속 Pages 작업으로 대체되었으며 실패로 숨기지 않는다.
+- 추가 정리 후 로컬 Python89·Node63·정적87·새 감사 브라우저 회귀를 다시 통과. JV 라벨은 Calculate 후 320/390/1440px에서 표시·페이지 넘침 없음 확인. 435회 전체 렌더는 PR5 코드의 CI 결과이며 이후 문구 정리에 다시 실행했다고 주장하지 않는다.
+- 일반 URL101개(활성HTML87+주요자산·사이트맵·이동안내14) 모두 원본과 일치. 배포 전 시작한 최초2회에는 이전 응답19개가 남았고3회째 일반 URL도 모두 일치했다. 쿼리 우회 성공으로 판정을 대신하지 않았다. 캐시 purge/TTL 변경은 수행하지 않았다.
+- 별도 원문 검증: 공개 vendor3파일의 실제 바이트 SHA256이 manifest와 모두 일치(줄바꿈 정규화 없이 비교).
+- 재검수 요청문은 이 코드 버전과 이번 수정 내용을 대상으로 갱신했다. Google 색인·AdSense·폼 수신·실제 SEC 수집은 여전히 미확인/비활성이다.
+
+## 추가 공개 사이트 검수 대조
+
+`DFB_SITE_INDEPENDENT_REVIEW_2026-10-18.md`도 읽고 현행 소스와 대조했다. 보고서가 직접 실행하지 않은 브라우저/JS 검사를 실행한 것으로 합산하지 않는다.
+
+- 실제 정리 항목: legal의 정상 작동하는 구형 환불 링크를 canonical 주소로 교체, 사이트맵 제외 준비 페이지 membership/breakbefore에 noindex, 개인정보 고지에 현재 사용 중인 FormSubmit 이름과 링크 명시. 보존 기간 일수·실제 처리 위치 등 확인되지 않은 사실은 만들지 않는다.
+- MAA·Saratoga의 아카이브 제목은 요약형 제목이었으며 재무 오류는 아니었다. 원문 검색과 대조를 쉽게 하도록 실제 Benzinga 발행 제목으로 맞춘다.
+- JV 부채 도구는 연결부채100%에 비연결 JV의 지분비례 부채를 더하는 정의다. NAV 실습의 완전 지분비례 경로와 출발점이 다르다. 수식은 바꾸지 않고 결과 라벨을 정확히 풀어 쓴다.
+- 재현되지 않은 주장: 정적 class=js(실제는 site.js가 런타임에 추가), research의 case 페이지 약속(현재 없음), 보존 관련 설명 전체 누락(목적 기반 설명 존재), 시설 부적격 시 현금 소실(현금40은 남고 불완전한 전체 결과만 미산출), 빈 시설 만기일의 미처리 예외(읽을 수 있는 검증 오류로 처리됨).
+- 닫히지 않은 s·낮은 대비·포커스는 이전 f3af0fb를 대상으로 한 문제로, 이번 PR5 수정과 브라우저 회귀 범위에 포함된다. 보고서의 심각도를 검증 없이 그대로 확정하지 않는다.
