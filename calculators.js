@@ -176,6 +176,7 @@
     form.addEventListener('submit', e => { e.preventDefault(); render(); });
     form.addEventListener('reset', () => setTimeout(render, 0));
     form.addEventListener('input', () => { output.replaceChildren(el('p', 'Inputs changed. Select Calculate to update your scenario.')); });
+    form.querySelector("[data-calculator-controls]").disabled=false;
     render();
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);

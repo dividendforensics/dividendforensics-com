@@ -137,6 +137,7 @@
     let printState=[];
     scope.addEventListener('beforeprint',()=>{printState=[...form.querySelectorAll('details'),...target.querySelectorAll('details')].map(el=>[el,el.open]);printState.forEach(([el])=>{el.open=true;});});
     scope.addEventListener('afterprint',()=>{printState.forEach(([el,open])=>{el.open=open;});printState=[];});
+    form.querySelector("[data-calculator-controls]").disabled=false;
     run();
   });
 })(typeof globalThis === 'undefined' ? this : globalThis);
