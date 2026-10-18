@@ -1,5 +1,40 @@
 # Dividend Forensics Bureau
 
+## Free REIT education edition — 2026-10-18
+
+The homepage now leads with free REIT education for readers arriving from
+Benzinga and search. There are 36 substantive education guides, seven working
+calculators, a 25-term glossary, primary-source directory and editorial policy.
+Four leveled learning paths (6 beginner / 18 intermediate / 8 advanced / 4 expert)
+include self-check quizzes. Four GPT-generated educational illustrations have
+optimized WebP assets and accessible captions. Exact prompts are retained in
+`img/education/prompts.json`; local full-resolution originals are ignored by Git.
+The independent-review handoff is [docs/AI-CONSULTATION.md](docs/AI-CONSULTATION.md).
+
+Existing research records, author information, inquiry endpoint and free report
+remain available. Membership remains closed. AdSense is not activated: the
+owner has no publisher ID yet, and this release contains no ad or analytics code.
+
+`content/*.json` owns the education text. `education.py` renders these articles,
+learning/tools hubs, calculator explanation pages, glossary, source directory,
+editorial policy and sitemap as part of `python build_site.py`. Do not edit
+generated education HTML directly. `calculators.js` contains browser-local
+arithmetic; `education.js` adds optional search to static, crawlable HTML.
+
+The owner-facing Korean setup guide is [docs/SEO-ADSENSE-OPERATIONS.md](docs/SEO-ADSENSE-OPERATIONS.md).
+It explains Search Console, Benzinga links, future analytics and AdSense setup
+without claiming that those account actions have been completed.
+
+Additional verification:
+
+```text
+node --test tests/calculators.test.cjs
+python tools/education_browser_check.py
+```
+
+The remaining sections document the preserved research publishing workflow and
+the previous editorial release.
+
 Independent, filing-anchored research on capital structure, debt, dilution,
 financing, refinancing, credit and payout mechanics. Production site: https://dividendforensics.com
 

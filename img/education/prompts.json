@@ -1,0 +1,38 @@
+[
+  {
+    "name": "property-atlas",
+    "prompt": "Use case: scientific-educational. Landscape educational illustration for the DFB REIT education website. Warm cream paper background #f3f0e8, oxblood #653239 accents, charcoal ink, muted stone and sage washes. Sophisticated architectural watercolor and fine ink, tactile editorial illustration, crisp legible English typography, generous whitespace. A polished final standalone raster image, no photography, no logos or watermarks. Create a balanced 3-column by 2-row atlas of six miniature architectural cutaway vignettes. Top row: a modest freestanding retail storefront, an apartment building with visible residential rooms, a logistics warehouse with loading bays. Bottom row: an office building, a data center with visible server racks and cooling, a healthcare building. Each appears distinctly and realistically built, with subtle grounding shadows and no people required. Put exactly one clear label under each respective vignette: \"Net lease storefront\", \"Apartments\", \"Logistics warehouse\", \"Office\", \"Data center\", \"Healthcare\". No other text, numbers, charts or financial claims. The six labels must be spelled exactly. All art and labels fully inside safe margins.",
+    "file": "originals/property-atlas.png",
+    "tool": "Built-in image_gen",
+    "generatedAt": "2026-10-18",
+    "attribution": "AI-generated educational illustration for DFB. No real company data.",
+    "review": "Exact primary labels checked visually. Conceptual illustration; not a complete formula or scaled financial chart."
+  },
+  {
+    "name": "cash-flow",
+    "prompt": "Use case: scientific-educational. Landscape educational illustration for the DFB REIT education website. Warm cream paper background #f3f0e8, oxblood #653239 accents, charcoal ink, muted stone and sage washes. Sophisticated architectural watercolor and fine ink, tactile editorial illustration, crisp legible English typography, generous whitespace. A polished final standalone raster image, no photography, no logos or watermarks. Create an illustrated conceptual reconciliation, with three large document-like stations left to right joined by clear arrows: \"Net income\" → \"FFO\" → \"Issuer-defined AFFO\". Title at top: \"Read the reconciliation\". At the first arrow place an elegant small illustrated accounting note labeled \"Real-estate D&A add-back\". At the second arrow place a small building-maintenance illustration with note \"Recurring capex deduction\". Add one restrained footer note: \"Simplified adjustments — check the issuer's full reconciliation\". This is a conceptual teaching visual, not a complete formula; do not include equals signs, numbers, currency, stacks of cash, or anything suggesting FFO or AFFO equals cash flow. Avoid an upward growth chart. Typography must be exact and readable. Make the three main stations equally weighted and architecturally illustrated rather than plain software boxes.",
+    "file": "originals/cash-flow.png",
+    "tool": "Built-in image_gen",
+    "generatedAt": "2026-10-18",
+    "attribution": "AI-generated educational illustration for DFB. No real company data.",
+    "review": "Exact primary labels checked visually. Conceptual illustration; not a complete formula or scaled financial chart."
+  },
+  {
+    "name": "capital-stack",
+    "prompt": "Use case: scientific-educational. Landscape educational illustration for the DFB REIT education website. Warm cream paper background #f3f0e8, oxblood #653239 accents, charcoal ink, muted stone and sage washes. Sophisticated architectural watercolor and fine ink, tactile editorial illustration, crisp legible English typography, generous whitespace. A polished final standalone raster image, no photography, no logos or watermarks. Create a conceptual illustration titled exactly \"Assets and claims\". On the left, an elegant cutaway commercial building on a solid stone platform labeled \"Property value\". On the right, a freestanding stack of three equal-width architectural strata, bottom stratum labeled \"Debt\", middle stratum labeled \"Preferred\", top stratum labeled \"Common equity\". Connect the asset and claims composition with a fine line. Add a small tasteful weather-vane or pressure-gauge motif above, labeled \"Interest-rate sensitivity\", with subtle curved motion arrows to imply sensitivity, not a numerical relationship. Treat this as an illustrative conceptual balance of assets and claims, not a scale-accurate chart and not a priority payment schedule. Bottom caption exactly \"Conceptual, not to scale\". No numbers, percentages, guarantees, money icons or fabricated financial data. Legible exact labels, all elements inside safe margins.",
+    "file": "originals/capital-stack.png",
+    "tool": "Built-in image_gen",
+    "generatedAt": "2026-10-18",
+    "attribution": "AI-generated educational illustration for DFB. No real company data.",
+    "review": "Exact primary labels checked visually. Conceptual illustration; not a complete formula or scaled financial chart."
+  },
+  {
+    "name": "evidence-desk",
+    "prompt": "Use case: illustration-story. Landscape educational illustration for the DFB REIT education website. Warm cream paper background #f3f0e8, oxblood #653239 accents, charcoal ink, muted stone and sage washes. Sophisticated architectural watercolor and fine ink, tactile editorial illustration, crisp legible English typography, generous whitespace. A polished final standalone raster image, no photography, no logos or watermarks. An inviting slightly elevated view of a meticulous analyst's research desk. Four distinct illustrated paper artifacts connected by delicate oxblood annotation lines: an annual filing booklet labeled exactly \"Filing\", a ruled reconciliation worksheet labeled exactly \"Reconciliation\", a signed lease document labeled exactly \"Lease\", and a debt-maturity calendar booklet labeled exactly \"Debt\". Use clean ink strokes to suggest document content without any additional readable words, letters or numerals. A small pencil, magnifying glass and architectural model create useful tangible research context. Exact four labels only, no company names, figures, logos, financial promises or fabricated data. Compose landscape with balanced quiet whitespace and lovely editorial detail. Labels large enough to read at web article width.",
+    "file": "originals/evidence-desk.png",
+    "tool": "Built-in image_gen",
+    "generatedAt": "2026-10-18",
+    "attribution": "AI-generated educational illustration for DFB. No real company data.",
+    "review": "Exact primary labels checked visually. Conceptual illustration; not a complete formula or scaled financial chart."
+  }
+]

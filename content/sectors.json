@@ -1,0 +1,578 @@
+[
+  {
+    "slug": "learn-net-lease",
+    "title": "Net-lease REITs: contracts, credit and the cost of growth",
+    "description": "Understand triple-net leases, tenant credit, rent escalators and why long contracts do not guarantee stable shareholder returns.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "The lease allocates expenses",
+        "text": "A net lease assigns specified property expenses to the tenant in addition to base rent. A triple-net arrangement generally covers property taxes, insurance and maintenance, but the contract determines roof, structure, casualty, environmental and capital obligations. Net lease is a contract structure used across property types, not simply a synonym for retail. A landlord still carries corporate overhead, financing obligations and the consequences of a tenant failing to perform. Read contractual exceptions before assuming an expense has disappeared."
+      },
+      {
+        "heading": "Separate the tenant from the building",
+        "text": "Two questions belong on different lines of an underwriting worksheet: can the tenant pay, and what could the property earn with another tenant? A strong parent name does not establish that the parent guarantees the lease. Review the legal obligor, guarantees, rent concentration and unit-level disclosure where available. A specialized building can require substantial conversion spending after a default. Portfolio occupancy may remain high while a small cluster of troubled tenants consumes disproportionate management time and capital."
+      },
+      {
+        "heading": "Competing views on long leases",
+        "text": "Long contracts can provide visibility and reduce near-term leasing work. The opposing view is that fixed annual escalators may lag inflation while financing costs reset more quickly. Inflation-linked provisions also may have caps, floors or delayed adjustments. Acquisition growth can create value when returns exceed the full cost of funding; it can dilute owners when equity issuance, debt costs and transaction expenses overwhelm the apparent property yield. Growth in total rent is therefore less informative than sustainable cash flow per share."
+      },
+      {
+        "heading": "Read the reconciliation and maturity tables",
+        "text": "Review rent collection, lease expirations, tenant industries, geographic concentration and debt maturities together. Distinguish contractual rent from straight-line accounting rent and compare cash rent growth with reported revenue growth. AFFO is not standardized; examine the issuer's reconciliation and recurring expenditure assumptions instead of comparing labels alone. A long weighted-average lease term is only an average: concentrated expirations or a large tenant failure can matter more than that headline. Issuer presentations should be cross-checked against annual-report risk factors and contractual disclosures."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "Assume a property costs $10 million and produces $650,000 of annual rent, with the tenant paying the specified property expenses. The initial rent yield is $650,000 / $10 million = 6.5%. A 1.5% escalator adds $9,750 next year. If $5 million of debt refinances two percentage points higher, annual interest rises $100,000. This simplified comparison excludes other income, overhead, hedges and capital spending; the escalation alone does not offset the financing change."
+    },
+    "pitfall": "Do not treat triple-net as a guarantee of zero landlord spending or equate a contractual property yield with the shareholder's return.",
+    "checklist": [
+      "Identify the actual tenant and guarantee.",
+      "Read expense and capital-work exceptions.",
+      "Compare escalators with refinancing exposure.",
+      "Check AFFO adjustments and per-share growth."
+    ],
+    "sources": [
+      {
+        "title": "Realty Income: business model",
+        "url": "https://www.realtyincome.com/who-we-are/business-model"
+      },
+      {
+        "title": "Realty Income 2025 Form 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/726728/000072672826000011/o-20251231.htm"
+      }
+    ],
+    "related": [
+      "learn-retail",
+      "learn-industrial-logistics",
+      "learn-office"
+    ]
+  },
+  {
+    "slug": "learn-apartments",
+    "title": "Apartment REITs: rent growth is only half the story",
+    "description": "Read apartment occupancy, concessions, resident turnover and supply alongside operating expenses and recurring property investment.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "A local housing business",
+        "text": "Apartment REITs own rental communities, while the wider residential category also includes other housing models. The relevant market is often a neighborhood or commuting area, not the national housing market. Employment, household formation, homeownership affordability and competing supply affect demand differently across locations. Shorter residential leases allow rents to adjust relatively frequently, but they also expose the landlord to weakening market rents sooner. State and local rules can change what adjustments are permitted and when they become effective."
+      },
+      {
+        "heading": "From advertised rent to collected revenue",
+        "text": "Asking rents are not the same as achieved rents. Free months, move-in credits, bad debt and vacancy reduce effective revenue. Renewal rent growth describes residents who stay, while new-lease growth reflects incoming residents; their blend depends on turnover. Physical occupancy counts occupied units, whereas economic measures can incorporate lost revenue. Always read the definition. A portfolio can report positive renewal increases while new residents receive concessions, so the headline increase may overstate the direction of marginal demand."
+      },
+      {
+        "heading": "Competing views on supply and affordability",
+        "text": "An optimistic argument links expensive homeownership to sustained rental demand. A cautious argument notes that renters still face income constraints and can share housing, move or negotiate. New construction can pressure nearby landlords even if long-term demand is healthy. Conversely, a temporary construction slowdown does not automatically create pricing power in every submarket. Compare delivered units, properties still under construction and the location of the REIT's communities, rather than applying one national supply narrative to the whole portfolio."
+      },
+      {
+        "heading": "Expenses, capital and disclosure checks",
+        "text": "Property taxes, insurance, payroll, utilities and repairs can rise independently of rent. Same-store NOI helps compare an established pool but excludes properties according to issuer-specific rules and does not deduct interest or all capital investment. Inspect the inclusion period, renovation exclusions and occupancy calculation in the supplemental report. Distinguish apartment-turnover costs from major replacements and development commitments. If management presents AFFO, assess its treatment of recurring maintenance; the measure is not standardized and cannot replace the cash-flow statement."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "A hypothetical 100-unit community charges $2,000 monthly and is 95% occupied all year. Before concessions, revenue is 100 × $2,000 × 12 × 95% = $2.28 million. With $900,000 of property expenses, simplified NOI is $1.38 million. If revenue grows 3% but expenses grow 8%, NOI becomes $2.3484 million − $972,000 = $1.3764 million, slightly lower despite rent-related revenue growth. Debt service, capital replacements and tax are excluded."
+    },
+    "pitfall": "An attractive rent-growth figure can conceal rising concessions or expenses. Compare equivalent properties and consistent periods before drawing a conclusion about operating momentum.",
+    "checklist": [
+      "Separate new leases from renewals.",
+      "Read concessions and bad-debt disclosure.",
+      "Map competing supply to actual submarkets.",
+      "Inspect same-store definitions and capital spending."
+    ],
+    "sources": [
+      {
+        "title": "Nareit: residential REITs",
+        "url": "https://www.reit.com/what-reit/reit-sectors/residential"
+      }
+    ],
+    "related": [
+      "learn-self-storage",
+      "learn-office",
+      "learn-reit-etfs"
+    ]
+  },
+  {
+    "slug": "learn-industrial-logistics",
+    "title": "Industrial REITs: warehouses, rent resets and supply",
+    "description": "Learn how logistics properties earn rent and why lease spreads, building specifications and development exposure need separate analysis.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "Buildings within a distribution network",
+        "text": "Industrial REITs own facilities used for manufacturing, storage and distribution. Warehouses serving ports, regional networks and local delivery routes can have different economics. Location matters alongside clear height, loading docks, yard space, power availability and road access. A building suited to one operation may not attract the same rent from another tenant. E-commerce is one demand source, but the sector also depends on inventory decisions, trade flows and the health of business customers."
+      },
+      {
+        "heading": "Understand the rent-reset opportunity",
+        "text": "A lease signed years earlier may be below today's market rent. Management may call that gap embedded growth or mark-to-market opportunity. It becomes cash only when the lease resets, a customer agrees to pay and occupancy is maintained. Cash leasing spreads compare contractual cash rents; accounting-based spreads can reflect straight-line recognition. Neither measure alone tells you how many leases will expire, how much downtime is expected or what leasing incentives and building improvements are needed."
+      },
+      {
+        "heading": "Competing views on demand and construction",
+        "text": "The favorable case emphasizes scarce infill locations and expensive or impractical alternatives for tenants. The skeptical case emphasizes new competing facilities, slower goods demand and customers releasing excess space. Both can be true in different markets. Construction starts, deliveries and vacancy should be assessed locally and over several quarters. A recently completed facility can command strong rent yet take time to stabilize. Development creates potential value but also adds cost overruns, leasing uncertainty and a need for funding before rent arrives."
+      },
+      {
+        "heading": "Read beyond portfolio occupancy",
+        "text": "Inspect lease-expiration schedules, retention, tenant concentration, signed-but-not-commenced leases and development commitments. Separate properties owned outright from joint ventures; fee income and proportionate property results do not necessarily represent the same cash flows. Check whether same-store NOI excludes developments and recent acquisitions, and whether leasing spreads cover comparable spaces. AFFO adjustments require particular attention to recurring capital needs and tenant improvements. Sustainable per-share progress depends on the cost of financing acquisitions and developments as well as headline property growth."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "Suppose 10% of a hypothetical portfolio's $20 million annual rent rolls this year and those leases reset 20% higher. With immediate full occupancy, the annualized increase is $20 million × 10% × 20% = $400,000, or 2% of portfolio rent. If resets happen halfway through the year, the first-year contribution is about $200,000 before downtime, incentives and costs. A 20% leasing spread is therefore not 20% portfolio revenue growth."
+    },
+    "pitfall": "Do not apply a leasing spread to the entire rent base or assume every modern warehouse benefits equally from the same logistics trend.",
+    "checklist": [
+      "Check cash versus accounting spreads.",
+      "Locate upcoming expirations by market.",
+      "Include tenant improvements and downtime.",
+      "Review development funding and joint ventures."
+    ],
+    "sources": [
+      {
+        "title": "Nareit: industrial REITs",
+        "url": "https://www.reit.com/what-reit/reit-sectors/industrial"
+      }
+    ],
+    "related": [
+      "learn-net-lease",
+      "learn-retail",
+      "learn-data-centers"
+    ]
+  },
+  {
+    "slug": "learn-retail",
+    "title": "Retail REITs: tenant sales, lease terms and redevelopment",
+    "description": "Distinguish shopping centers and malls, then connect tenant sales and occupancy to the landlord's sustainable cash flow.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "Retail contains several businesses",
+        "text": "Retail REITs can own grocery-anchored centers, malls, outlet centers and other shopping properties. A grocery visit, a luxury shopping trip and a discount-store visit create different tenant demand. Evaluate each property's customer catchment, competing destinations, accessibility and tenant mix. The number of stores alone does not reveal diversification: many tenants can depend on the same local household spending. Lease structures also differ, including expense reimbursements, percentage rent and provisions linked to anchor tenants or occupancy."
+      },
+      {
+        "heading": "Follow the tenant's economics",
+        "text": "Tenant sales can help explain whether rent is affordable, but disclosed sales often cover only a subset of tenants. Occupancy cost ratios need a clear denominator and consistent treatment of rent and other charges. A profitable store may support renewal increases; a weak location can close even when its parent company is healthy. Compare physical occupancy with leased occupancy, and identify signed leases that have not begun paying rent. Leasing success today can take months to translate into cash."
+      },
+      {
+        "heading": "Competing views on physical retail",
+        "text": "The constructive argument sees stores as part of an integrated shopping and fulfillment network, with strong locations drawing repeat visits. The cautious argument highlights retailer failures, consumer pressure and changing shopping habits. Redevelopment can make a center more useful but consumes cash and carries construction and permitting risk. Replacing an anchor with several smaller tenants may improve eventual rent while requiring long downtime. A strong long-term story should still be tested against near-term funding needs and realistic completion schedules."
+      },
+      {
+        "heading": "Disclosures that reveal the cash bridge",
+        "text": "Read new-lease and renewal spreads, tenant allowances, leasing commissions, anchor concentration, co-tenancy exposure and redevelopment commitments. Same-store NOI does not capture every cash cost and can exclude projects undergoing major work. Reconcile it with cash flow and recurring capital investment. When comparing AFFO, inspect whether recurring tenant costs are deducted and whether the treatment is consistent across years. Annual-report lease and risk disclosures help clarify provisions that a polished occupancy chart cannot show."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "A hypothetical store pays $100,000 annual base rent. A renewal raises that to $110,000, a 10% increase. If securing the five-year renewal requires a $50,000 landlord allowance, the simple annualized allowance is $10,000. The added rent and that allowance offset each other before financing, commissions and timing effects. This is not a discounted valuation; it illustrates why a positive rent spread can produce little incremental cash value. Expense reimbursements and sales-based rent would require separate modeling."
+    },
+    "pitfall": "A shopping center with rising contractual rent can still consume cash through redevelopment and leasing costs. Sales, occupancy and rent spreads describe different parts of the picture.",
+    "checklist": [
+      "Identify the retail format and catchment.",
+      "Check the sample behind tenant sales.",
+      "Compare leased and paying occupancy.",
+      "Read allowances, commissions and co-tenancy terms."
+    ],
+    "sources": [
+      {
+        "title": "Nareit: retail REITs",
+        "url": "https://www.reit.com/what-reit/reit-sectors/retail"
+      }
+    ],
+    "related": [
+      "learn-net-lease",
+      "learn-industrial-logistics",
+      "learn-office"
+    ]
+  },
+  {
+    "slug": "learn-office",
+    "title": "Office REITs: lease expirations and the cost of occupancy",
+    "description": "Analyze office properties through lease rollover, tenant improvements, effective rents and the funding required to retain occupants.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "Long leases delay the signal",
+        "text": "Office buildings lease space to organizations, often through multiyear contracts. Existing revenue can remain stable even when demand for new space weakens. Consequently, current occupancy and the next several years of expirations need to be considered together. A central business district tower, a suburban campus and a specialized research building can serve different needs. Building quality is not a universal label: location, transport, floor design, operating costs and the tenant's use determine practical competitiveness."
+      },
+      {
+        "heading": "Effective rent beats face rent",
+        "text": "A new lease may show higher stated rent while offering free-rent periods, substantial tenant improvements and commissions. These costs affect economic returns and cash timing. Leasing spreads also may compare different rent concepts or omit noncomparable space. Read the footnotes before comparing issuers. A signed lease is not necessarily commenced, and commenced space is not necessarily producing full cash rent during concessions. The gap between signed commitments and cash collection can be significant during a leasing recovery."
+      },
+      {
+        "heading": "Competing views on recovery",
+        "text": "A positive thesis might focus on tenants consolidating into better buildings and a shortage of suitable premium space. The counterargument is that gains for certain properties can coexist with weak aggregate demand and persistent vacancy elsewhere. Conversion to residential use is sometimes possible, but floor plates, windows, plumbing, zoning and project costs constrain feasibility. Treat conversion as a property-specific capital project, not an automatic floor under every office valuation. Both optimistic and cautious scenarios should incorporate time and funding."
+      },
+      {
+        "heading": "The balance sheet is part of leasing",
+        "text": "Inspect expirations by year, largest tenant exposure, sublease competition, tenant-improvement commitments and debt maturities. A landlord may need to spend before a new occupant pays. Same-store NOI excludes financing and can miss the burden of capital-intensive leasing. FFO reverses specified real-estate accounting effects, while issuer-defined AFFO requires a separate review of recurring expenditure assumptions. Examine secured debt, unencumbered assets and joint-venture obligations to understand which cash flows are available to common shareholders."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "A hypothetical 10,000-square-foot lease quotes $50 per square foot annually for five years: $2.5 million in stated rent. Six months of free rent reduces receipts by $250,000. A $60-per-square-foot improvement allowance costs $600,000. Before commissions, operating expenses and discounting, remaining rent less that allowance is $1.65 million, equivalent to $33 per square foot per year. The example assumes fixed rent and full performance; actual timing and reimbursements change the economics."
+    },
+    "pitfall": "Do not infer financial recovery from signed leasing volume alone. The combination of concessions, commencement timing and capital costs determines when shareholders benefit.",
+    "checklist": [
+      "Map expirations to debt maturities.",
+      "Read free-rent and improvement assumptions.",
+      "Compare cash and straight-line rents.",
+      "Assess conversions building by building."
+    ],
+    "sources": [
+      {
+        "title": "Nareit: office REITs",
+        "url": "https://www.reit.com/what-reit/reit-sectors/office"
+      }
+    ],
+    "related": [
+      "learn-apartments",
+      "learn-retail",
+      "learn-net-lease"
+    ]
+  },
+  {
+    "slug": "learn-healthcare",
+    "title": "Healthcare REITs: properties, operators and reimbursement",
+    "description": "Separate healthcare property ownership from operating exposure and examine the different risks in senior housing, hospitals and medical offices.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "The label covers different cash flows",
+        "text": "Healthcare REITs can own medical offices, hospitals, skilled nursing facilities and senior housing. The building type does not fully explain the investment: the operating arrangement matters too. A landlord collecting contractual rent faces a different cash-flow profile from a structure whose results reflect operating revenue and expenses at the facility. Some portfolios contain both. Read the segment descriptions and ownership structure before comparing margins or occupancy, because the same sector label can conceal very different economic exposure."
+      },
+      {
+        "heading": "Tenant health versus resident demand",
+        "text": "Demographic demand is only a starting point. Operators must staff facilities, maintain service quality and collect payment from residents, insurers or government programs, depending on the business. An aging population does not guarantee that a particular operator can afford its lease. Where disclosed, rent coverage measures compare operator earnings with rent; definitions, reporting lags and exclusions matter. Coverage based on management estimates or an incomplete tenant sample deserves less confidence than directly comparable, comprehensive information."
+      },
+      {
+        "heading": "Competing views on operating leverage",
+        "text": "The positive case for senior housing may emphasize occupancy recovery spreading fixed costs over more residents. The cautious case emphasizes wages, staffing availability, liability exposure and residents' ability to pay. Medical offices can have a different demand and lease profile from hospitals or skilled nursing. Reimbursement sensitivity also differs by property and operator. A useful analysis builds separate scenarios by segment instead of assuming that all healthcare real estate is either defensive or strongly tied to the same demographic trend."
+      },
+      {
+        "heading": "Disclosures to read before valuation",
+        "text": "Review the segment split, operator concentration, occupancy definitions, same-store portfolio changes, capital commitments and any transition of troubled assets. For leased properties, inspect guarantees, rent deferrals and coverage disclosure. For operating exposure, look at revenue per occupied unit and controllable expenses alongside occupancy. AFFO is issuer-defined, and restructurings or operator support can complicate its interpretation. Cross-check adjustments against the cash-flow statement and annual-report discussion rather than treating an adjusted earnings label as evidence of readily distributable cash."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "Consider a hypothetical 100-unit facility with 85 occupied units, each generating $4,000 monthly. Annual revenue is 85 × $4,000 × 12 = $4.08 million. If operating costs total $3.4 million, the simplified operating surplus is $680,000. Adding five occupied units at the same revenue adds $240,000 annually; with $120,000 incremental costs, surplus rises to $800,000. This excludes rent, corporate costs, financing and capital work, and it does not establish operator rent coverage without those definitions."
+    },
+    "pitfall": "Demographic growth and landlord dividend safety are different claims. The path between them runs through operator profitability, contracts, funding and actual cash collection.",
+    "checklist": [
+      "Separate leased and operating structures.",
+      "Check operator concentration and coverage definitions.",
+      "Identify reimbursement exposure by segment.",
+      "Inspect staffing costs and recurring capital needs."
+    ],
+    "sources": [
+      {
+        "title": "Nareit: health care REITs",
+        "url": "https://www.reit.com/what-reit/reit-sectors/health-care"
+      }
+    ],
+    "related": [
+      "learn-net-lease",
+      "learn-apartments",
+      "learn-reit-etfs"
+    ]
+  },
+  {
+    "slug": "learn-data-centers",
+    "title": "Data-center REITs: power, capacity and capital intensity",
+    "description": "Understand data-center leasing, power constraints, development spending and the difference between demand growth and shareholder returns.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "Real estate with technical requirements",
+        "text": "Data-center REITs provide facilities that support computing and connectivity infrastructure. Power delivery, cooling, reliability, security and network access matter alongside the building. Business models differ: large dedicated deployments and smaller colocation arrangements can have different customers, contract structures and service requirements. Square footage alone is often an incomplete capacity measure. Read how the issuer describes installed power, available capacity and utilization, and distinguish operating facilities from land or power rights intended for future development."
+      },
+      {
+        "heading": "Translate demand into funded capacity",
+        "text": "Demand for computing does not immediately produce rent. A project may require permits, grid connections, equipment and substantial spending before a customer begins paying. Contracted backlog can improve visibility but is not current revenue; commencement dates, customer conditions and development requirements matter. Power availability can be a competitive advantage and also a bottleneck. Examine who pays electricity costs, how costs pass through and whether contractual arrangements leave exposure to price changes, availability constraints or service-level penalties."
+      },
+      {
+        "heading": "Competing views on growth",
+        "text": "The favorable view links growing digital workloads to demand for reliable, connected capacity. The opposing view highlights expensive construction, customer concentration, technology changes and the risk of committing capital before demand becomes durable cash flow. Strong revenue growth can coexist with weak free cash flow while facilities are built. A project can be attractive at one cost of capital and less attractive after financing changes. Evaluate expected returns on completed capacity and per-share economics, not just the size of announced investment."
+      },
+      {
+        "heading": "Issuer disclosure checks",
+        "text": "Review development budgets, preleasing, projected delivery, power commitments, debt maturities and customer concentration. Ask whether booking figures describe annualized revenue, total contract value or another measure. Compare renewal spreads and churn only when definitions match. Separate maintenance from expansion spending, recognizing that reliable infrastructure still requires replacement. AFFO is nonstandard; inspect treatment of recurring infrastructure capital, stock compensation and other adjustments. Joint ventures and customer-funded projects can reduce funding needs while also changing how much economic ownership the REIT retains."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "A hypothetical project costs $200 million and is expected to generate $16 million of stabilized annual NOI. The simple yield on cost is 8%. If final cost rises to $230 million with the same NOI, yield falls to about 6.96%. A one-year delay also postpones cash receipts and may add carrying costs. Neither yield is an equity return: the calculation excludes corporate overhead, financing, tax, future replacements and the cash-flow timing needed for a full valuation."
+    },
+    "pitfall": "Do not equate a large computing-demand forecast or booking announcement with cash available for dividends. Check the capacity, timing and capital required to deliver it.",
+    "checklist": [
+      "Define capacity and booking metrics.",
+      "Review power availability and obligations.",
+      "Compare development cost with stabilized income.",
+      "Read AFFO and recurring infrastructure spending."
+    ],
+    "sources": [
+      {
+        "title": "Nareit: data center REITs",
+        "url": "https://www.reit.com/what-reit/reit-sectors/data-center"
+      }
+    ],
+    "related": [
+      "learn-towers",
+      "learn-industrial-logistics",
+      "learn-reit-etfs"
+    ]
+  },
+  {
+    "slug": "learn-towers",
+    "title": "Tower REITs: colocations, carrier concentration and ground leases",
+    "description": "Examine tower revenue growth through tenant additions, amendments, cancellations and the obligations beneath the infrastructure.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "The customer rents infrastructure access",
+        "text": "Tower-focused REITs lease space and related rights to wireless operators that install equipment. Some telecommunications REIT portfolios also contain other infrastructure, so the segment mix matters. Multiple tenants can use one site, potentially improving its economics because certain costs are shared. A tower's value depends on usefulness within a communications network, available capacity, approvals and alternatives. Counting towers without considering their location, occupancy and ownership rights can obscure large differences in income quality."
+      },
+      {
+        "heading": "Disaggregate organic growth",
+        "text": "Revenue can increase through escalators, additional tenants and changes to existing equipment arrangements. It can decline through cancellations or decommissioning. Read whether organic growth excludes currency movements, acquisitions and pass-through revenue, and whether straight-line accounting affects the comparison. A large tenant may account for many individual leases, so thousands of contracts do not necessarily mean thousands of independent credit exposures. Carrier consolidation can reduce duplicate sites, and equipment upgrades do not automatically create the same economics at every location."
+      },
+      {
+        "heading": "Competing views on infrastructure demand",
+        "text": "The optimistic case emphasizes expanding data usage and the difficulty of replacing established sites. The cautious case emphasizes concentrated customers, network redesign, lease cancellations and differing economics across countries. Both perspectives require contract-level context. Higher data traffic is not identical to higher landlord rent: what the tenant may install and what triggers additional payments are contractual questions. International growth can diversify customers but introduces currency, regulatory and operating differences that deserve explicit treatment rather than being absorbed into a single growth rate."
+      },
+      {
+        "heading": "Land rights and cash-flow checks",
+        "text": "Determine whether the REIT owns the underlying land or leases it, and compare ground-lease duration with customer lease commitments. Review renewal options, escalation terms, remaining site rights and spending to extend control. Inspect customer concentration, churn assumptions, geographic exposure and debt currency. AFFO reconciliations should be read for recurring capital, straight-line rent and other adjustments; definitions are not uniform. Acquisition spending and development commitments are separate funding decisions, even when management presents attractive organic growth."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "Suppose a hypothetical site earns $30,000 annually from its first tenant and incurs $12,000 in direct site costs. Its simplified contribution is $18,000. A second tenant adds $20,000 of revenue and $3,000 of incremental cost, raising contribution to $35,000. Revenue grows about 66.7%, while contribution grows about 94.4%. This illustrates shared-cost economics, not a sector forecast; it excludes installation capital, overhead, financing, taxes and the possibility of later tenant cancellation."
+    },
+    "pitfall": "Do not use mobile-data growth as a direct forecast for tower rent. Contract terms, customer concentration and the cost of controlling the site determine the connection.",
+    "checklist": [
+      "Separate escalators, additions and cancellations.",
+      "Read customer concentration by revenue.",
+      "Compare ground and customer lease terms.",
+      "Assess currency exposure and AFFO adjustments."
+    ],
+    "sources": [
+      {
+        "title": "Nareit: telecommunications REITs",
+        "url": "https://www.reit.com/what-reit/reit-sectors/telecommunications"
+      }
+    ],
+    "related": [
+      "learn-data-centers",
+      "learn-net-lease",
+      "learn-reit-etfs"
+    ]
+  },
+  {
+    "slug": "learn-self-storage",
+    "title": "Self-storage REITs: street rates, existing rents and turnover",
+    "description": "Learn why storage occupancy and advertised move-in prices can send different signals about revenue and operating performance.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "Small spaces with short commitments",
+        "text": "Self-storage operators rent units to households and businesses. Demand can come from moving, household changes, renovation and business storage, but the importance of each driver varies locally. Short rental arrangements allow prices to change relatively quickly. That flexibility works in both directions: competitors can discount available units, and customers can leave. Unit size, climate control, accessibility and location affect achieved rent, so a simple facility count or total square footage does not fully describe the portfolio."
+      },
+      {
+        "heading": "Street rates are not portfolio rents",
+        "text": "The advertised price for a new customer may differ from what existing customers pay. Introductory discounts, promotions and later increases complicate the comparison. Track move-in rates, existing-customer revenue trends, occupancy and move-outs together. A landlord can maintain revenue temporarily through increases to existing customers even when marginal new-customer pricing weakens. That may be sustainable or may lead to higher departures. A useful analysis asks how long customers stay and what replacement tenants are paying, where that information is disclosed."
+      },
+      {
+        "heading": "Competing views on pricing power",
+        "text": "The constructive argument is that moving stored possessions is inconvenient and customers may value proximity more than a small price difference. The skeptical argument notes that households under pressure can empty units and competing facilities can offer aggressive promotions. New supply is intensely local: a facility across town may matter less than one nearby. Short leases can accelerate recovery when demand improves but do not insulate the business from weak housing turnover, customer affordability pressures or an oversupplied neighborhood."
+      },
+      {
+        "heading": "Read the operating and ownership details",
+        "text": "Inspect same-store occupancy, realized rent, promotional activity, expenses and development lease-up. Determine whether management fees come from properties owned by others, and distinguish those revenues from owned-property rental income. New stores may dilute aggregate occupancy while adding future potential, so compare stabilized and lease-up pools carefully. Review recurring maintenance and major improvements before accepting an AFFO figure. Property taxes, insurance and marketing costs can rise even when rent slows, making the expense bridge essential to understanding cash flow."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "A hypothetical facility has 500 identical units renting for an average collected $120 monthly at 90% occupancy. Annual revenue is 500 × 90% × $120 × 12 = $648,000. If collected rent rises 5% to $126 but occupancy falls to 85%, revenue becomes $642,600, about 0.83% lower. This simplified example assumes stable rates throughout the year and excludes fees, promotions and expenses. It demonstrates why price increases cannot be evaluated independently of customer retention."
+    },
+    "pitfall": "A higher existing-customer rate does not prove stronger new demand. Compare achieved prices and occupancy, and keep stabilized properties separate from new facilities still leasing up.",
+    "checklist": [
+      "Compare move-in and existing-customer pricing.",
+      "Read occupancy and same-store definitions.",
+      "Inspect nearby supply and promotions.",
+      "Separate owned properties from management fees."
+    ],
+    "sources": [
+      {
+        "title": "Nareit: self-storage REITs",
+        "url": "https://www.reit.com/what-reit/reit-sectors/self-storage"
+      }
+    ],
+    "related": [
+      "learn-apartments",
+      "learn-hotels",
+      "learn-reit-etfs"
+    ]
+  },
+  {
+    "slug": "learn-hotels",
+    "title": "Hotel REITs: RevPAR, operating leverage and renovations",
+    "description": "Connect hotel room pricing and occupancy with operating profit, brand obligations and the cash required to keep properties competitive.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "Rooms reprice quickly",
+        "text": "Hotel REITs own properties serving leisure, business and group travelers. Their economic exposure differs from a landlord collecting fixed multiyear rent because room revenue changes as guests book and stay. Ownership, brand and management arrangements can separate the real-estate owner from day-to-day hotel operations; inspect the actual structure. Location, service level, meeting space and guest mix influence performance. A resort, airport hotel and urban convention property can react differently to the same economic conditions."
+      },
+      {
+        "heading": "The three room metrics",
+        "text": "Occupancy measures rooms sold relative to available rooms. Average daily rate, or ADR, is room revenue divided by rooms sold. Revenue per available room, or RevPAR, combines occupancy and ADR. It helps describe room performance but excludes parts of the business such as food, beverages and other services, and says nothing directly about costs. Comparisons also depend on consistent room availability and treatment of renovations or closures. Revenue growth driven by price can have different cost implications from growth driven by occupied rooms."
+      },
+      {
+        "heading": "Competing views on rapid repricing",
+        "text": "The optimistic argument is that hotels can respond quickly to strong demand and higher prices. The cautious argument is that weak demand also reaches revenue quickly, while many operating costs cannot be removed at the same speed. Labor, insurance, utilities, distribution commissions and management fees affect margins. Strong leisure demand may not offset weak meetings at a group-oriented property. Examine demand segments and booking timing rather than applying one travel narrative to every hotel or treating a strong holiday period as a full-year trend."
+      },
+      {
+        "heading": "Capital spending and issuer checks",
+        "text": "Review comparable-property definitions, occupancy, ADR, RevPAR, hotel-level profit and corporate expense separately. Reconcile adjusted measures with reported results, and distinguish recurring refurbishment from expansion projects. Brand-required renovations can consume cash and temporarily remove rooms from service. Debt maturities and liquidity matter because revenue is variable while financing obligations continue. AFFO is not standardized; a measure that adds back depreciation without realistic recurring capital allowances can overstate the cash available to owners. Check management agreements and renovation commitments in the annual report."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "A hypothetical 200-room hotel has 75% occupancy and $160 ADR for a 365-day year. RevPAR is 75% × $160 = $120, and annual room revenue is 200 × 365 × $120 = $8.76 million. If occupancy falls to 70% and ADR rises to $165, RevPAR falls to $115.50 and room revenue to $8.4315 million. That is a 3.75% revenue decline despite a higher room rate, before considering other revenue, operating costs or renovations."
+    },
+    "pitfall": "RevPAR is a revenue indicator, not profit or dividend coverage. Hotels with equal RevPAR can have materially different labor costs, service obligations and capital needs.",
+    "checklist": [
+      "Compare occupancy, ADR and RevPAR together.",
+      "Separate leisure, business and group exposure.",
+      "Read renovation and brand obligations.",
+      "Bridge hotel profit to corporate cash flow."
+    ],
+    "sources": [
+      {
+        "title": "Nareit: lodging and resort REITs",
+        "url": "https://www.reit.com/what-reit/reit-sectors/lodgingresorts"
+      }
+    ],
+    "related": [
+      "learn-self-storage",
+      "learn-retail",
+      "learn-reit-etfs"
+    ]
+  },
+  {
+    "slug": "learn-mortgage-reits",
+    "title": "Mortgage REITs: spreads, leverage and book-value risk",
+    "description": "Understand why mortgage REITs require a financing and credit framework rather than the operating-property metrics used for equity REITs.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "Financing rather than collecting property rent",
+        "text": "Mortgage REITs hold or originate mortgages and mortgage-related securities. Their business therefore differs from an equity REIT that owns buildings and leases space. Agency mortgage securities, non-agency securities and commercial mortgage loans have different risk profiles. Guarantees on qualifying agency securities can reduce specified credit risks but do not prevent market-price declines, financing stress or losses for common shareholders. Identify what assets the company actually holds before interpreting its dividend yield or comparing it with a property landlord."
+      },
+      {
+        "heading": "Funding, hedging and liquidity interact",
+        "text": "An mREIT may finance assets through collateralized borrowings such as repurchase agreements. Changes in collateral values or lender requirements can create demands for additional cash. Interest-rate hedges can offset selected exposures but are imperfect and may leave mortgage-spread, prepayment and other risks. When borrowers refinance more quickly or slowly than expected, asset cash flows change. Examine asset duration, funding terms, unpledged liquidity and sensitivity disclosure together; a narrow focus on the current interest spread misses the balance-sheet mechanism."
+      },
+      {
+        "heading": "Competing views on high distributions",
+        "text": "A favorable view emphasizes income earned from a carefully financed portfolio and potential improvement when market conditions stabilize. A skeptical view emphasizes leverage, credit losses, spread volatility and the possibility that distributions coexist with declining book value. A high dividend yield can reflect a low share price rather than a safer income stream. Compare dividends with changes in per-share book value over a consistent period, while recognizing that book value itself depends on accounting and valuation choices. Neither measure independently predicts future returns."
+      },
+      {
+        "heading": "Use the issuer's actual framework",
+        "text": "Do not import equity-REIT FFO or AFFO comparisons mechanically. Mortgage REITs may present distributable earnings, earnings available for distribution or other adjusted measures with different definitions. Read the reconciliation, credit-loss treatment and realized-versus-unrealized adjustments. For loan portfolios, review loan-to-value assumptions, borrower concentration, nonaccruals, modifications and funding commitments. For securities portfolios, review leverage, hedges, spread sensitivity and repo exposure. Issuer filings are essential because superficially similar companies may pursue materially different strategies and bear different risks."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "Assume a simplified hypothetical balance sheet holds $1 billion of mortgage assets funded by $800 million of debt and $200 million of equity. A 3% asset-value decline is $30 million. With debt unchanged and no offsetting hedge gains, equity falls to $170 million, a 15% decline. This is an illustration of leverage, not a forecast. Actual hedges, income, collateral requirements, valuation methods and asset sales can change both the amount and timing of the outcome."
+    },
+    "pitfall": "Agency credit support does not protect a common shareholder from interest-rate, mortgage-spread or liquidity risk. A large distribution should not replace analysis of total economic performance.",
+    "checklist": [
+      "Identify asset type and credit exposure.",
+      "Read leverage and collateral requirements.",
+      "Inspect hedges and spread sensitivities.",
+      "Reconcile adjusted earnings and book-value changes."
+    ],
+    "sources": [
+      {
+        "title": "Nareit: mortgage REITs",
+        "url": "https://www.reit.com/what-reit/reit-sectors/mortgage"
+      },
+      {
+        "title": "AGNC 2024 Form 10-K: funding and risk disclosures",
+        "url": "https://www.sec.gov/Archives/edgar/data/1423689/000142368925000007/agnc-20241231.htm"
+      }
+    ],
+    "related": [
+      "learn-net-lease",
+      "learn-reit-etfs",
+      "learn-office"
+    ]
+  },
+  {
+    "slug": "learn-reit-etfs",
+    "title": "REIT ETFs: what diversification does and does not solve",
+    "description": "Read REIT fund holdings, index rules, costs and distributions before assuming that a real-estate label defines the exposure.",
+    "category": "Property sectors",
+    "level": "Intermediate",
+    "sections": [
+      {
+        "heading": "A fund owns a portfolio",
+        "text": "A REIT exchange-traded fund provides exposure through a portfolio of securities rather than a direct claim on one building. Funds differ in geography, eligible security types, weighting rules and whether they include mortgage REITs or other real-estate companies. An equity-REIT index fund and a mortgage-focused fund can have very different risks. Start with the current prospectus, investment objective and holdings file. A fund name is a useful search label, but it is not a sufficient description of the investment."
+      },
+      {
+        "heading": "Look through the number of holdings",
+        "text": "More securities can reduce the impact of one issuer's specific problem, yet concentration can remain in the largest constituents, property sectors or funding factors. A market-cap-weighted portfolio may allocate much more to a few companies than an equal-weighted portfolio. Different indexes can also classify property businesses differently. Compare actual weights, including overlapping exposure with other funds already held. A long holdings list does not establish that economic risks are evenly distributed or that prices will remain stable during a broad market selloff."
+      },
+      {
+        "heading": "Competing views on convenience and control",
+        "text": "The constructive case for a fund is simple implementation, ongoing portfolio maintenance and reduced dependence on selecting individual issuers. The opposing view is that investors also receive exposures they may not want and generally cannot choose which holdings the index retains. Expense ratios, trading spreads and tracking differences reduce realized results. Index turnover and rebalancing rules can matter as well. These tradeoffs are structural questions; they do not establish that either funds or individual REITs will produce superior returns."
+      },
+      {
+        "heading": "Read distributions and trading carefully",
+        "text": "A fund distribution is not guaranteed and should not be confused with expected total return. Review how any displayed yield is calculated and what period it covers. Distributions can have different tax character, which is reported through applicable fund documents and tax statements. ETF shares trade in the market and may differ from underlying net asset value. Inspect premiums or discounts, trading costs and the fund's published information, while remembering that historical liquidity measures do not guarantee future conditions."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical worked example",
+      "text": "A hypothetical fund investment of $10,000 faces a 0.30% annual expense ratio. If the investment value remained constant, the approximate annual fund expense would be $30, reflected within fund results rather than a separate monthly invoice. A 0.20% round-trip trading cost would add about $20. A $400 distribution does not establish a 4% total gain: if the ending position is worth $9,500, value plus distribution is $9,900, a simplified loss of 1% before personal tax and trading costs."
+    },
+    "pitfall": "Do not compare a trailing distribution yield with another fund's differently defined yield. Match the calculation, period, holdings and expense information before comparing products.",
+    "checklist": [
+      "Read current holdings and index eligibility.",
+      "Check sector, issuer and geographic weights.",
+      "Compare expenses, spreads and tracking.",
+      "Distinguish distributions from total return."
+    ],
+    "sources": [
+      {
+        "title": "SEC Investor.gov: exchange-traded funds bulletin",
+        "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24"
+      },
+      {
+        "title": "Nareit: types of REITs",
+        "url": "https://www.reit.com/what-reit/types-reits"
+      }
+    ],
+    "related": [
+      "learn-mortgage-reits",
+      "learn-net-lease",
+      "learn-data-centers"
+    ]
+  }
+]
