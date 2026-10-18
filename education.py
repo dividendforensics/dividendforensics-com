@@ -152,6 +152,9 @@ def article_page(root,a,lookup):
 <div class="wrap reading-layout"><aside class="article-toc"><span class="kicker">In this guide</span><ol>{toc}<li><a href="#worked-example">Worked example</a></li><li><a href="#source-notes">Sources &amp; next steps</a></li></ol>{calculator_link}</aside>
 <article class="lesson-body">{content}<section class="worked-example" id="worked-example"><span class="kicker">Work through the numbers</span><h2>{E(a['example']['heading'])}</h2><p>{E(a['example']['text'])}</p></section>{exercise}<section class="pitfall"><h2>A common mistake</h2><p>{E(a['pitfall'])}</p></section><section><h2>What to check in the disclosures</h2><ul>{checklist}</ul></section><section id="source-notes"><h2>Sources &amp; scope</h2><p>This guide focuses on US REITs. Examples are hypothetical unless explicitly attributed. Definitions and issuer disclosures can change; use the current source and the issuer's own reconciliation.</p><ul class="source-list">{sources}</ul><p class="small-note">Educational material, not a recommendation or personalized investment advice. <a href="/editorial-policy.html">How these guides are prepared</a> · <a href="mailto:dividendforensics@gmail.com?subject=Education%20correction%3A%20{a['slug']}">Report a correction</a></p></section></article></div>
 <section class="wrap education-section"><div class="section-heading"><div><span class="kicker">Continue learning</span><h2>Connect the next piece.</h2></div><a class="text-link" href="/learn.html">All guides →</a></div><div class="lesson-grid">{related}</div></section>'''
+    if a['slug'] in ('learn-reit-basics','learn-read-filings','learn-yield-total-return'):
+        from research_resources import resource_cards
+        body+=resource_cards()
     return shell(root,a['slug']+'.html',a['title'],a['description'],body,'Article',article=a)
 
 def hub(root,articles):
@@ -167,6 +170,8 @@ def hub(root,articles):
     body+=f'<section class="wrap learning-paths" aria-label="Suggested starting questions">{pathhtml}</section><section class="wrap education-section" id="library"><div class="section-heading"><div><span class="kicker">The complete reading room</span><h2>Find your next question.</h2></div><a class="text-link" href="/glossary.html">Open the glossary ↗</a></div><div class="library-filters" data-library-controls hidden><label>Search guides<input id="lesson-search" type="search" placeholder="Try AFFO, net lease, refinancing…"></label><label>Subject<select id="lesson-category"><option value="all">All subjects</option>{options}</select></label><label>Level<select id="lesson-level"><option value="all">All levels</option>{level_options}</select></label><button id="lesson-reset" type="button" class="btn btn-s">Clear filters</button><p id="lesson-count" aria-live="polite">{len(articles)} guides</p></div><noscript><p>All guides are listed below. Search is an optional enhancement.</p></noscript><p id="lesson-empty" hidden>No guides match. Try a shorter term or clear the filters.</p><div class="lesson-grid">{cards(articles)}</div></section>'
     body+='<section class="wrap education-section" id="property-sectors"><div class="section-heading"><div><span class="kicker">Different assets, different questions</span><h2>Explore the property sectors.</h2></div></div><div class="sector-strip">'+''.join(f'<a href="/{a["slug"]}.html">{E(a["title"].split(":")[0])} ↗</a>' for a in articles if a['category']=='Property sectors')+'</div></section>'
     body+='<section class="wrap education-section"><div class="section-heading"><div><span class="kicker">Beyond the REIT library</span><h2>Keep the wider context.</h2></div></div><div class="sector-strip"><a href="/research.html">Published research ↗</a><a href="/bdc-guide.html">BDC field guide ↗</a><a href="/industrials-guide.html">Industrials field guide ↗</a><a href="/telecom-guide.html">Telecom field guide ↗</a><a href="/methodology.html">DFB methodology ↗</a><a href="/tools.html">Working papers &amp; calculators ↗</a></div></section>'
+    from research_resources import resource_cards
+    body+=resource_cards()
     return shell(root,'learn.html','REIT learning center: free guides, sectors & financial analysis','Learn what REITs are, explore property sectors and understand FFO, AFFO, net leases, dividends, valuation and refinancing risk.',body,'CollectionPage')
 
 def calculator_page(root,t,lookup):
@@ -182,7 +187,9 @@ def tools_page(root):
     tiles=''.join(f'<a class="tool-card" href="/{t["slug"]}.html"><span class="kicker">{i:02d} / Calculator or worksheet</span><h2>{E(t["title"])}</h2><p>{E(t["description"])}</p><span class="text-link">Open the tool ↗</span></a>' for i,t in enumerate(tools,1))
     body=section_head('The numbers desk','Test an assumption.<br><em>Understand the result.</em>',f'{len(tools)} free calculators and worksheets for REITs, BDCs, income, ownership and debt. Each shows its formula, a worked example and the limits of the model.')
     body+=f'<section class="wrap tool-grid">{tiles}</section><section class="wrap education-section"><div class="worked-example"><span class="kicker">Published REIT working paper / Report 001</span><h2>See the method in a real research record.</h2><p>Read the MAA / W. P. Carey working paper and its REIT Dividend Checklist. The existing free report is delivered through the original checkout; email is required for delivery.</p><div class="btns"><a class="btn btn-p" href="{E(REPORT_URL)}" target="_blank" rel="noopener">Get Report No. 001 — Free ↗</a><a class="text-link" href="/learn-checklist.html">Read the research checklist →</a></div></div></section>'
-    return shell(root,'tools.html','Free REIT, BDC & capital analysis tools',f'{len(tools)} free calculators and worksheets for income, AFFO, BDC NII and PIK, non-accruals, NAV, leverage, JV debt and liquidity. Formulas and limitations included.',body,'CollectionPage')
+    from research_resources import resource_cards
+    body+=resource_cards()
+    return shell(root,'tools.html','Free REIT, BDC & capital analysis tools',f'{len(tools)} free calculation tools for income, AFFO, BDC NII and PIK, non-accruals, NAV, leverage, JV debt and liquidity. Formulas and limitations included.',body,'CollectionPage')
 
 def all_tools():
     from bdc_tools import TOOLS as bdc_tools
@@ -251,6 +258,8 @@ def education_outputs(root):
     output.update(bdc_education_outputs(root))
     from localized import outputs as localized_outputs
     output.update(localized_outputs(root))
+    from research_resources import outputs as resource_outputs
+    output.update(resource_outputs(root))
     pages={p:p.read_text(encoding='utf-8') for p in root.glob('*.html')}
     pages.update(output)
     urls=[]

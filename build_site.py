@@ -198,6 +198,8 @@ def planned_outputs(root: Path = ROOT):
                 from bdc_education import load_articles as load_bdc_articles
                 body=body.replace('{{bdc_lesson_count}}',str(len(load_bdc_articles(root))))
                 body=body.replace('{{lesson_count}}',str(len(lessons))).replace('{{education_paths}}',level_cards(lessons)).replace('{{education_atlas}}',figure('property-atlas',root))
+                from research_resources import resource_cards
+                body=body.replace('{{research_resources}}',resource_cards())
                 alltool=all_tools()
                 body=body.replace('{{tool_count}}',str(len(alltool)))
                 extra_links=''.join(f'<a href="/{t["slug"]}.html"><span>{i:02d}</span> {esc(t["title"])} <b aria-hidden="true">↗</b></a>' for i,t in enumerate(alltool[7:],8))
