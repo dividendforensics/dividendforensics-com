@@ -172,7 +172,7 @@
       },
       {
         "heading": "Mantenga visibles los límites de la proporción",
-        "text": "Una cobertura superior a uno no prueba que se cobrara el ingreso en efectivo, que se preservara el principal ni que el consejo mantenga el pago. Una cobertura inferior a uno tampoco demuestra por sí sola un recorte inminente; la financiación, las ganancias realizadas, el calendario fiscal y otros recursos requieren análisis separado. El NII negativo debe conservar su signo en vez de convertirse en cero. Un denominador de distribuciones igual a cero produce una cobertura no definida, no seguridad infinita. Si se desconoce el importe complementario, conserve la cobertura regular válida y marca la cobertura total como incompleta. Ante un dato ausente corresponde formular una pregunta, no presentar un porcentaje más atractivo."
+        "text": "Una cobertura superior a uno no prueba que se cobrara el ingreso en efectivo, que se preservara el principal ni que el consejo mantenga el pago. Una cobertura inferior a uno tampoco demuestra por sí sola un recorte inminente; la financiación, las ganancias realizadas, el calendario fiscal y otros recursos requieren análisis separado. El NII negativo debe conservar su signo en vez de convertirse en cero. Un denominador de distribuciones igual a cero produce una cobertura no definida, no seguridad infinita. Si se desconoce el importe complementario, conserve la cobertura regular válida y marque la cobertura total como incompleta. Ante un dato ausente corresponde formular una pregunta, no presentar un porcentaje más atractivo."
       }
     ],
     "example": {
