@@ -74,3 +74,5 @@ python tools/education_browser_check.py
 ## 배포 상태
 
 수정본 검증·배포 완료. [PR #2](https://github.com/dividendforensics/dividendforensics-com/pull/2)의 Design review 전체 검사 성공 후 main에 병합했다 (`b0d927d0298f169e478580f192a299317ae2ff92`). main 빌드와 [Pages 배포](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39096528191)도 성공했다. 공개 HTML 79개, calculators.js, sitemap.xml 총 81개 응답을 캐시 우회 요청하여 검사본과 줄바꿈 정규화 후 비교했고 **81개 모두 일치**했다. 이 확인은 실제 호스트의 파일 배포 검증이며 Google 색인이나 AdSense 승인을 뜻하지 않는다.
+
+후속 개정: 위 AI 고지 유지 판단은 사용자의 직접 선택 이전 기록이다. 이후 사용자가 공개 선제 고지를 제거하고 제작 기록을 보관하도록 선택했다. 음수 AFFO 스트레스도 후속 개정에서 손실을 확대하는 방식으로 바뀌었다. 최신 상태는 [디자인 및 후속 검수 기록](DESIGN-REVIEW-2026-10-18.md)을 따른다.

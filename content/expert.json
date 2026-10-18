@@ -233,7 +233,7 @@
       },
       {
         "heading": "Combine financing and operating stresses explicitly",
-        "text": "Assume 300 of debt, already included in earnings at 3%, resets to 6% for the entire next year. The incremental cost is 9, reducing normalized earnings from 109 to 100 if everything else is flat. Dividends of 90 then imply 90% payout. A downside case loses another 12 of NOI and requires 4 more recurring expenditure, producing 84 and payout of 107.14%. An upside case adds 8 of NOI with no extra recurring investment, producing 108 and payout of 83.33%. These are conditional calculations, not assigned probabilities. Do not average them into expected earnings without a defensible probability model."
+        "text": "Assume 300 of debt, already included in earnings at 3%, resets to 6% for the entire next year. The incremental cost is 9, reducing normalized earnings from 109 to 100 if everything else is flat. Dividends of 90 then imply 90% payout. A downside case loses another 12 of NOI and requires an additional $4 million in recurring expenditure, producing 84 and payout of 107.14%. An upside case adds 8 of NOI with no extra recurring investment, producing 108 and payout of 83.33%. These are conditional calculations, not assigned probabilities. Do not average them into expected earnings without a defensible probability model."
       },
       {
         "heading": "Put valuation and liquidity beside earnings",

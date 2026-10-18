@@ -27,7 +27,7 @@
         metrics = [m('Annual gross distributions', gross), m('Annual after-withholding income', net), m('Monthly equivalent', net / 12), m('Capital for monthly target', v.target === 0 ? 0 : rate > 0 ? v.target * 12 / rate : null)];
         columns = ['Yield scenario', 'Gross annual', 'After withholding'];
         rows = [0.75, 1, 1.25].map(f => [(v.yield * f).toFixed(2) + '%', gross * f, net * f]);
-        note = 'Income scenarios assume unchanged capital. A null target result means the target cannot be funded at zero after-withholding yield. Figures do not include price change.';
+        note = 'Income scenarios assume unchanged capital. A target result shown as Not defined means a positive target cannot be funded at zero after-withholding yield. Figures do not include price change.';
         break;
       }
       case 'reinvestment': {
@@ -44,11 +44,11 @@
         break;
       }
       case 'payout': {
-        const stressed = v.affo * (1 - v.decline / 100);
+        const stressed = v.affo - Math.abs(v.affo) * v.decline / 100;
         metrics = [m('Current payout', v.affo > 0 ? v.dividend / v.affo * 100 : null, 'percent'), m('Current coverage', v.affo > 0 && v.dividend > 0 ? v.affo / v.dividend : null, 'multiple'), m('Stressed payout', stressed > 0 ? v.dividend / stressed * 100 : null, 'percent'), m('Stressed per-share cushion', stressed - v.dividend)];
         columns = ['Scenario', 'AFFO per share', 'Dividend per share', 'Remaining cushion'];
         rows = [['Base', v.affo, v.dividend, v.affo - v.dividend], ['Selected decline (' + v.decline + '%)', stressed, v.dividend, stressed - v.dividend]];
-        note = 'Payout and coverage are not meaningful with zero or negative AFFO and are shown as Not defined. Coverage is undefined at zero dividends. Negative cash cushions remain visible; they do not predict a cut. For negative AFFO, the decline input scales the signed amount rather than modeling a worsening loss.';
+        note = 'Payout and coverage are not meaningful with zero or negative AFFO and are shown as Not defined. Coverage is undefined at zero dividends. The downside scenario subtracts the selected percentage of the absolute AFFO amount, so a negative AFFO becomes more negative; zero stays zero. Cash cushions remain visible and do not predict a cut.';
         break;
       }
       case 'bridge': {

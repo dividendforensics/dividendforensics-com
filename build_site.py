@@ -177,6 +177,8 @@ def planned_outputs(root: Path = ROOT):
             continue  # verification files and retired redirects are intentionally unchanged
         text = splice(text, header(path.name, root), HEADER_START, HEADER_END)
         text = splice(text, footer(root, path.name), FOOTER_START, FOOTER_END)
+        if 'href="/bureau.css"' not in text:
+            text = text.replace('</head>', '<link rel="stylesheet" href="/bureau.css">\n</head>')
         if path.name in ('index.html','research.html'):
             template = 'home.html' if path.name == 'index.html' else 'research.html'
             body = (root / 'templates' / template).read_text(encoding='utf-8').replace('{{report_url}}', esc(REPORT_URL))

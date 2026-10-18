@@ -62,6 +62,14 @@ test('nonpositive AFFO gives no misleading payout or coverage percentage',()=>{
   }
 });
 
+test('downside stress deepens an AFFO loss rather than reducing it',()=>{
+  const r=calculate('payout',{affo:-4,dividend:3,decline:25});
+  close(r.rows[1][1],-5);
+  close(r.metrics[3].value,-8);
+  assert.equal(r.metrics[2].value,null);
+  close(calculate('payout',{affo:0,dividend:3,decline:25}).rows[1][1],0);
+});
+
 test('zero denominators identify the input problem, not overflow',()=>{
   assert.throws(()=>calculate('nav',{noi:100,cap:6,cash:0,debt:0,shares:0}),/shares must be greater/);
   assert.throws(()=>calculate('nav',{noi:100,cap:0,cash:0,debt:0,shares:100}),/rate must be greater/);

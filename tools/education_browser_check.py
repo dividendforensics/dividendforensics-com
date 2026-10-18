@@ -25,7 +25,11 @@ def main():
         context.route('https://fonts.gstatic.com/**',lambda route:route.abort())
         page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
         page.on('request',lambda r:requests.append(r.url))
-        page.goto(base+'/learn.html');page.locator('#lesson-search').fill('AFFO')
+        page.goto(base+'/index.html')
+        page.locator('#home-topic').fill('AFFO')
+        page.get_by_role('button',name='Search guides').click()
+        page.wait_for_url('**/learn.html?q=AFFO')
+        page.wait_for_function('document.querySelector("#lesson-search").value === "AFFO"')
         assert 0<page.locator('[data-lesson]:visible').count()<36
         page.locator('#lesson-category').select_option('Start here')
         page.locator('#lesson-search').fill('zzzz-no-result')
@@ -83,6 +87,10 @@ def main():
             page.get_by_role('button',name='Download this scenario (CSV)').click()
         csv=Path(download.value.path()).read_text(encoding='utf-8-sig')
         assert '"Current payout","Not defined"' in csv
+        page.locator('#input-affo').fill('-4');page.locator('#input-dividend').fill('3');page.locator('#input-decline').fill('25')
+        page.get_by_role('button',name='Calculate',exact=False).first.click()
+        assert page.locator('.result-metrics dd').all_inner_texts()[-1]=='-8.00'
+        assert '-5.00' in page.locator('.table-scroll').inner_text()
         page.goto(base+'/calculator-total-return.html');page.locator('#input-buyFees').fill('2')
         page.get_by_role('button',name='Calculate',exact=False).first.click()
         assert '-5.88%' in page.locator('[data-result]').inner_text()
