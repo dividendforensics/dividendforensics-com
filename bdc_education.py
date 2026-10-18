@@ -123,7 +123,9 @@ def article_page(root, a, lookup):
     if a['slug'] in ('learn-bdc-basics','learn-bdc-read-filings','learn-bdc-dividends-tax'):
         from research_resources import resource_cards
         body+=resource_cards()
-    return shell(root,a['slug']+'.html',a['title'],a['description'],body,'Article',article=a)
+    from lesson_formats import compose
+    body = compose(body, a)
+    return shell(root,a['slug']+'.html',a['title'],a['description'],body,'Article',article=a,extra='<link rel="stylesheet" href="/lesson-formats.css">')
 
 
 def outputs(root):
