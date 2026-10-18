@@ -195,6 +195,8 @@ def planned_outputs(root: Path = ROOT):
                 from education import load_articles,all_tools
                 from curriculum import level_cards, figure
                 lessons=load_articles(root)
+                from bdc_education import load_articles as load_bdc_articles
+                body=body.replace('{{bdc_lesson_count}}',str(len(load_bdc_articles(root))))
                 body=body.replace('{{lesson_count}}',str(len(lessons))).replace('{{education_paths}}',level_cards(lessons)).replace('{{education_atlas}}',figure('property-atlas',root))
                 alltool=all_tools()
                 body=body.replace('{{tool_count}}',str(len(alltool)))
@@ -211,7 +213,8 @@ def planned_outputs(root: Path = ROOT):
     for required in ('index.html','research.html'):
         if root / required not in planned:
             raise BuildError(f'{required} does not contain the shared build markers.')
-    return planned
+    from localized import inject_alternates
+    return {p:inject_alternates(p,text,root) for p,text in planned.items()}
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
@@ -229,6 +232,7 @@ def main(argv=None):
             originals = {p:p.read_bytes() if p.exists() else None for p in changed}
             try:
                 for p,t in changed.items():
+                    p.parent.mkdir(parents=True,exist_ok=True)
                     p.with_suffix(p.suffix+'.tmp').write_text(t, encoding='utf-8')
                 for p in changed:
                     p.with_suffix(p.suffix+'.tmp').replace(p)

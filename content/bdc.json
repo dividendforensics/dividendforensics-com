@@ -1,0 +1,1477 @@
+[
+  {
+    "slug": "learn-bdc-basics",
+    "title": "What is a BDC? Follow the fund, the borrowers and the shareholder",
+    "description": "Understand the closed-end structure, the difference between borrower interest and shareholder distributions, and why a traded share is not a redeemable loan.",
+    "category": "BDC foundations",
+    "level": "Beginner",
+    "prerequisites": [],
+    "learning_objectives": [
+      "Draw the legal claim from shareholder to BDC to portfolio company.",
+      "Separate a listed share's liquidity from the liquidity of private investments.",
+      "Identify the business questions that a quoted yield leaves unanswered."
+    ],
+    "sections": [
+      {
+        "heading": "Three parties, three different claims",
+        "text": "A business development company is an investment company that has elected a particular regulatory framework; it is not simply another name for every private-credit fund. A useful first diagram has three boxes: the shareholder, the BDC and the businesses in its portfolio. A portfolio borrower owes obligations under its own loan documents. The BDC owns that investment, incurs its own expenses and financing costs, and may declare distributions to common shareholders. Buying a common share does not give its holder a direct contractual right to collect one borrower's interest or require a borrower to repay the shareholder personally. Its portfolio can include loans and equity in smaller or middle-market businesses; the vehicle's actual strategy must still be identified. BDC regulatory status and RIC tax treatment are separate concepts, explored later in the tax lesson."
+      },
+      {
+        "heading": "Closed-end does not mean the portfolio is frozen",
+        "text": "A closed-end structure does not ordinarily give every shareholder the open-ended redemption right familiar from a conventional mutual fund. A listed shareholder generally exits by selling to another market participant. Meanwhile, the BDC can originate investments, receive repayments, change financing and sometimes issue or repurchase shares. Those activities change the portfolio even if the vehicle remains closed-end. Non-traded BDCs require separate attention to their disclosed liquidity programs and limitations; a possible repurchase offer is not the same as exchange trading or a promise that every requested exit will be met. Non-traded alone does not identify the offering route or transfer restrictions: inspect the actual prospectus or private-offering documents rather than assuming all unlisted vehicles provide the same access or exit terms."
+      },
+      {
+        "heading": "Read the income and the capital value together",
+        "text": "A distribution is a transfer from the vehicle to its shareholders, not proof that every loan is performing or that the share price must remain unchanged. Ask what investments generated recognized income, how much was received in cash, what expenses sit ahead of common shareholders, and whether fair-value losses are eroding net assets. A BDC may report income while an investment's value deteriorates. Conversely, one low-income quarter may include timing or fee effects rather than a permanent loss of principal. Keep those possibilities separate instead of compressing the whole business into its latest annualized yield."
+      },
+      {
+        "heading": "Make the first reading a map rather than a verdict",
+        "text": "Before comparing companies, record whether the shares are listed, the investment strategy, the management arrangement and the reporting date. Identify debt, equity and other instruments in the portfolio rather than assuming every position is a first-lien loan. Locate the borrowing note and the distribution disclosures, then mark what remains unknown. Investor.gov's BDC bulletins are useful for the structure and risks; the issuer's own filing is needed for its actual assets and terms. Neither the label BDC nor filing with the SEC means the investment is insured, suitable for a particular person or approved as a good investment."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: the BDC is between the loan and the dividend",
+      "text": "Assume a fictional BDC recognizes 12 of investment income during one period, incurs 3 of financing expense and 2 of operating expenses, and therefore has 7 before any other items in this simplified illustration. If common distributions are 6, the difference is 1. That 1 is not a complete cash-flow reconciliation: income may include noncash amounts and other cash movements may exist. A separate 4 fair-value decline can reduce net assets even though the simplified income-minus-distribution difference is positive. All amounts are invented and use the same monetary scale."
+    },
+    "pitfall": "Treating a BDC share as if it were a direct, insured deposit or a loan redeemable at NAV.",
+    "checklist": [
+      "Identify the actual listed or non-traded vehicle and share class.",
+      "Read the investment strategy and portfolio instruments.",
+      "Separate BDC borrowings from portfolio-company debt.",
+      "Record the declared distribution and reporting period."
+    ],
+    "related": [
+      "learn-bdc-loan-pipeline",
+      "learn-bdc-management-fees",
+      "learn-bdc-read-filings"
+    ],
+    "sources": [
+      {
+        "title": "Investor.gov: Publicly Traded Business Development Companies — investor bulletin",
+        "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/publicly-traded-business-development-companies-bdcs-investor-bulletin"
+      },
+      {
+        "title": "Investor.gov: Non-Publicly Traded BDCs — liquidity, structure and disclosure",
+        "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/investor-bulletin-non-publicly-traded-business-development-companies-bdcs"
+      }
+    ],
+    "exercise": {
+      "question": "In the synthetic example, does the 1 income-minus-distribution difference prove that net assets grew?",
+      "answer": "No. The separate 4 valuation decline and other changes must enter the net-asset bridge. Income coverage, cash generation and capital preservation are different questions."
+    },
+    "quiz": [
+      {
+        "question": "A listed BDC shareholder normally exits by:",
+        "options": [
+          "Demanding that a portfolio borrower repay the share's NAV",
+          "Selling the share to another market participant",
+          "Automatically redeeming at the last reported NAV"
+        ],
+        "answer": 1,
+        "explanation": "Exchange liquidity concerns the share; it does not give a contractual redemption claim on private portfolio assets."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-loan-pipeline",
+    "title": "From origination to repayment: how a BDC investment earns and loses money",
+    "description": "Trace a loan through commitment, funding, recognized income, amendments, valuation and exit without confusing commitments with invested assets.",
+    "category": "BDC foundations",
+    "level": "Beginner",
+    "prerequisites": [
+      "learn-bdc-basics"
+    ],
+    "learning_objectives": [
+      "Distinguish commitments, funded principal and fair value.",
+      "Separate borrower interest from principal repayment.",
+      "Map an investment's contractual seniority and exit risks."
+    ],
+    "sections": [
+      {
+        "heading": "A commitment is not the same as money already invested",
+        "text": "Start with the investment's life cycle. A BDC may agree to provide financing before the borrower draws the full amount. A headline commitment therefore need not equal the funded principal or the carrying value shown in the schedule of investments. Undrawn commitments can create future funding needs at the BDC even when no interest-producing principal is yet outstanding. Follow the legal entity and instrument, the funding dates, the amount drawn and the conditions for additional draws. Do not add committed capacity and funded investments together as if both were separate earning assets."
+      },
+      {
+        "heading": "Identify which payment changes income and which changes principal",
+        "text": "Cash interest compensates the lender for providing capital, while principal repayment returns invested capital. Payment-in-kind interest can increase a contractual balance instead of arriving as current cash, subject to the issuer's recognition policy. Origination discounts, fees and prepayment charges may enter accounting income on different schedules. A loan's stated coupon is consequently only one part of the earnings story. Before comparing yields, establish whether the reported measure includes fee accretion, equity distributions, repayment fees or other items, and whether its denominator is amortized cost, fair value, average invested assets or another base."
+      },
+      {
+        "heading": "Seniority describes a claim, not a guaranteed recovery",
+        "text": "The words first lien, second lien, subordinated and equity help locate contractual claims, but they do not state an eventual recovery amount. Collateral quality, additional permitted debt, intercreditor terms, restructuring costs and the operating business all matter. The borrower may also have obligations elsewhere in its group. A sponsor's involvement does not automatically create a sponsor guarantee. Read maturity, cash-pay and PIK terms, covenants, collateral and any guarantee independently. If an investment is amended, ask what economic concession was made and what consideration the lender received rather than treating every extension as either a cure or a default. A unitranche label does not eliminate priority differences created by first-out and last-out arrangements; inspect the actual allocation and enforcement terms rather than deriving recovery from a marketing category."
+      },
+      {
+        "heading": "Connect exit events to the next investment opportunity",
+        "text": "A repayment can release cash and generate a fee, but it can also remove a high-spread asset. The BDC must then retain cash, repay its own debt, fund commitments or reinvest under the conditions available at that time. A sale below amortized cost produces a realized loss, while the current-period accounting result also depends on marks already recorded. Follow the investment's prior carrying value before describing a new loss. The source-reading task is to connect the investment schedule, income-recognition policy, cash-flow statement and subsequent events, preserving uncertainty when the filing does not disclose the precise cause of a change."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: cash received is not all income",
+      "text": "A fictional loan has funded principal of 100, with a separate undrawn commitment of 20. During the period it pays 2 of cash interest, adds 1 of contractual PIK and repays 10 of principal. Ignoring discounts, fees and other changes, ending principal is 100 + 1 − 10 = 91. Cash received is 12, but only the 2 interest payment is cash interest; the 10 is returned principal. The 20 undrawn commitment is a separate future obligation. A fair value of 85 would be another measurement, not an additional loan to add to the 91."
+    },
+    "pitfall": "Counting principal repayments as recurring income, or adding an undrawn commitment to the funded asset balance.",
+    "checklist": [
+      "Reconcile opening principal, PIK, draws, repayments and ending principal.",
+      "Keep amortized cost and fair value in separate columns.",
+      "Read collateral, ranking, covenants and guarantees independently.",
+      "Track undrawn commitments and the cash needed to fund them."
+    ],
+    "related": [
+      "learn-bdc-read-filings",
+      "learn-bdc-pik-income",
+      "learn-bdc-non-accrual"
+    ],
+    "sources": [
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      },
+      {
+        "title": "Main Street September 2025 Form 10-Q: PIK and non-accrual accounting policies — historical definitions",
+        "url": "https://www.mainstcapital.com/investors/sec-filings/all-sec-filings/content/0001396440-25-000184/0001396440-25-000184.pdf"
+      }
+    ],
+    "exercise": {
+      "question": "If the borrower draws another 5 after the example's closing date, is the original 12 of cash received evidence that the BDC can meet that draw?",
+      "answer": "Not by itself. The 12 includes returned principal and may already have been reinvested or used elsewhere. Establish the later liquidity position, other commitments and legally available funding."
+    },
+    "quiz": [
+      {
+        "question": "A repayment of loan principal is generally:",
+        "options": [
+          "A return of invested capital, distinct from interest income",
+          "Automatically NII in the same amount",
+          "A second asset added to remaining principal"
+        ],
+        "answer": 0,
+        "explanation": "Principal and income must be separated before assessing the earning capacity of the remaining portfolio."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-management-fees",
+    "title": "Internal and external BDC management: follow the expense contract",
+    "description": "Compare management arrangements by what shareholders actually bear, including asset-based fees, incentive compensation, reimbursements and waivers.",
+    "category": "BDC foundations",
+    "level": "Beginner",
+    "prerequisites": [
+      "learn-bdc-basics",
+      "learn-bdc-loan-pipeline"
+    ],
+    "learning_objectives": [
+      "Separate management structure from investment performance.",
+      "Identify the fee base, expenses and incentive arrangements.",
+      "Compare net shareholder economics on a consistent scale."
+    ],
+    "sections": [
+      {
+        "heading": "Begin with who employs and pays the investment team",
+        "text": "An internally managed BDC generally incurs the costs of its own investment professionals and operations. An externally managed BDC contracts with an investment adviser, often with separate administrative arrangements. These structures organize expenses differently; neither label alone demonstrates better underwriting, lower total shareholder costs or a more durable distribution. An internal team can have material compensation costs, and an external arrangement can include negotiated terms or waivers. Read the actual arrangement for the period under review instead of ranking two vehicles solely by whether their advisers sit inside or outside the corporate structure."
+      },
+      {
+        "heading": "A percentage means little until the base is identified",
+        "text": "A management fee can be stated as a percentage of a defined asset base rather than of common equity. Borrowing can expand assets without increasing shareholder equity by the same amount, so the resulting charge relative to common net assets can differ from the headline percentage. Cash exclusions, tiers and averaging dates can also matter. Separately identify incentive fees, administration reimbursements and other operating expenses. A prospectus expense table and the accounting expense in a historical quarter answer related but different questions; do not mechanically add a projected table percentage to fees already deducted from reported NII."
+      },
+      {
+        "heading": "Waivers and related businesses need a second column",
+        "text": "A waived fee can improve current income while leaving a different expense burden after the waiver expires. Record whether the waiver is voluntary, contractual, temporary or subject to recoupment, using the governing documents. Some BDCs also earn income from managing other vehicles, which is a distinct business from paying an adviser to manage the BDC itself. Map the direction of each payment. An issuer explanation can help locate its structure, but statements about superior alignment or lower costs remain the issuer's perspective until supported by comparable definitions and evidence."
+      },
+      {
+        "heading": "Compare the result after expenses without losing the explanation",
+        "text": "Create a table of investment income, financing expense, base fees or internal operating cost, incentive expense and remaining NII on the same period and monetary basis. Then ask what changed when assets, leverage or compensation changed. A low expense ratio may reflect a large denominator, deferred spending or a waiver rather than permanently superior economics. A high ratio may include an unusual item that deserves a separately labeled comparison. Keep both the reported result and any analytical adjustment visible. The goal is to explain the source of differences, not manufacture one universally correct cost ranking."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: the same fee rate can produce a different equity burden",
+      "text": "Assume a fictional externally managed vehicle has 1,000 of common equity and 800 of debt funding 1,800 of assets. A deliberately simplified 1.5% annual fee on all assets is 27, equal to 2.7% of equity. Without the 800 of borrowing, the same fee rule would charge 15 on 1,000 of assets. This is not a complete expense ratio and not any issuer's actual contract: exclusions, tiers, incentive fees, interest and administration are omitted. An internally managed comparison must include its actual employee and operating costs rather than inserting zero."
+    },
+    "pitfall": "Comparing a fee expressed on gross assets with a cost expressed on common equity and calling the percentages directly comparable.",
+    "checklist": [
+      "Locate the current advisory and administrative agreements.",
+      "Record the base, averaging dates, tiers and exclusions.",
+      "Separate waived, accrued and paid fees.",
+      "Include internal compensation and related-party reimbursements."
+    ],
+    "related": [
+      "learn-bdc-incentive-fees",
+      "learn-bdc-nii-coverage",
+      "learn-bdc-leverage-coverage"
+    ],
+    "sources": [
+      {
+        "title": "Main Street Capital: management structure FAQ — issuer perspective",
+        "url": "https://www.mainstcapital.com/investors/company-information/faq"
+      },
+      {
+        "title": "Main Street filed investor presentation: management and regulatory structure — historical issuer explanation",
+        "url": "https://www.mainstcapital.com/investors/sec-filings/all-sec-filings/content/0001396440-25-000070/q12025mainip_lp-fwp.htm"
+      },
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      }
+    ],
+    "exercise": {
+      "question": "In the example, does the increase from 15 to 27 prove that borrowing harmed shareholders?",
+      "answer": "No. It identifies an additional expense channel. Compare the income and risks from the additional assets with financing and all other costs before assessing the combined economics."
+    },
+    "quiz": [
+      {
+        "question": "An internally managed BDC should be modeled with:",
+        "options": [
+          "Zero management-related operating expense",
+          "Its actual employee and operating costs",
+          "The external adviser's advertised fee regardless of structure"
+        ],
+        "answer": 1,
+        "explanation": "Internal management changes how costs are organized; it does not make investment professionals or administration free."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-read-filings",
+    "title": "Read a BDC filing in order: four statements and the investment schedule",
+    "description": "Build a source map for portfolio assets, recognized income, distributions and cash before collecting ratios or copying a presentation.",
+    "category": "BDC foundations",
+    "level": "Beginner",
+    "prerequisites": [
+      "learn-bdc-basics",
+      "learn-bdc-loan-pipeline",
+      "learn-bdc-management-fees"
+    ],
+    "learning_objectives": [
+      "Locate each analytical input in a filing rather than infer it from a slide.",
+      "Keep flow periods, balance-sheet dates and share bases separate.",
+      "Record unknowns, revisions and source locations reproducibly."
+    ],
+    "sections": [
+      {
+        "heading": "Define the document before extracting a number",
+        "text": "Record the registrant, accession, form, filing date and reporting period. A fiscal quarter may not match a calendar quarter, and a year-to-date statement covers a different interval from a standalone quarter. A filed earnings exhibit can provide a useful table without replacing the complete financial statements and notes. A later amendment is a separate document to investigate, not permission to overwrite an earlier value silently. The SEC's guide explains how management discussion, financial statements and exhibits fit together; use the current filing's table of contents because form requirements and presentation can change."
+      },
+      {
+        "heading": "Give every statement a distinct question",
+        "text": "Use the statement of assets and liabilities to establish the measurement-date balance sheet. Use the statement of operations to locate income, expenses, realized results and valuation changes for a period. Use changes in net assets to connect operations, shareholder distributions and capital transactions. Use cash flows to identify where cash actually moved. A positive operating cash-flow total in an investment company may include investment purchases and repayments under its presentation, so it is not automatically a recurring dividend-funding measure. Read classifications and notes rather than importing an industrial-company free-cash-flow formula without checking its meaning."
+      },
+      {
+        "heading": "The investment schedule supplies the credit map",
+        "text": "The schedule of investments can identify issuer, instrument, stated terms, principal, cost and fair value, supported by footnotes. Its ranking and non-accrual symbols matter as much as the row total. Distinguish the legal borrower from a sponsor or broad industry label, and investigate multiple positions in the same business before claiming diversification. Commitments, PIK provisions and affiliated or controlled investments may require separate notes. Some desired details are not disclosed individually. Preserve that boundary instead of filling gaps with portfolio averages or treating an undisclosed exposure as an exact zero. Concentration includes shared borrower, industry and sponsor exposures, as well as correlated business risks. Ten positions exposed to the same economic shock are not automatically ten independent sources of repayment."
+      },
+      {
+        "heading": "Build a source card before building a conclusion",
+        "text": "For every input, retain source URL, accession, document location, amount or per-share basis, currency, scale, period and whether the value is reported or analytically derived. A derived value needs its formula and inputs. Record declared versus paid distributions and weighted-average versus period-end shares. Reconcile a sample of copied totals back to the filing before interpreting differences. An automated extraction or a successful spreadsheet formula is not independent verification. Mark an unresolved item as unknown, explain its impact on the conclusion, and name the next disclosure or clarification needed to resolve it."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: the period label changes the comparison",
+      "text": "A fictional filing reports nine-month NII of 90, of which 35 arose in the latest quarter. Annual common distributions are not disclosed. The latest quarter declares regular distributions of 25 and supplemental distributions of 5, for total declarations of 30. Matching the quarter gives total coverage of 35 / 30 = 1.1667×. Dividing the nine-month 90 by the quarter's 30 gives 3.0×, an invalid period comparison. The result is not fixed by calling both figures dollars: their time bases must also match."
+    },
+    "pitfall": "Using a nine-month income total against one quarter's distribution, or substituting current shares for the disclosed earnings-per-share denominator.",
+    "checklist": [
+      "Capture form, accession, reporting period and filing date.",
+      "Reconcile investment, income and net-asset totals.",
+      "Retain footnotes explaining the investment schedule.",
+      "Store unknown values separately from explicit zeros."
+    ],
+    "related": [
+      "learn-bdc-nii-coverage",
+      "learn-bdc-pik-income",
+      "learn-bdc-expert-credit-memo"
+    ],
+    "sources": [
+      {
+        "title": "SEC: How to Read a 10-K — statements, notes and issuer responsibility",
+        "url": "https://www.sec.gov/answers/reada10k.htm"
+      },
+      {
+        "title": "Ares Capital March 2026 results: statement and reconciliation format — not example data",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000162828026027685/arccq1-2026exhibit991.htm"
+      }
+    ],
+    "exercise": {
+      "question": "If the quarter's supplemental distribution is undisclosed rather than confirmed at 5, can total coverage still be 1.1667×?",
+      "answer": "No. Regular coverage can be 35 / 25 = 1.4×, but total coverage is incomplete until the supplemental and special amounts are established."
+    },
+    "quiz": [
+      {
+        "question": "A source card should preserve:",
+        "options": [
+          "Only the final ratio",
+          "The amount, source location, period, unit and calculation basis",
+          "A guessed zero for every blank field"
+        ],
+        "answer": 1,
+        "explanation": "A ratio cannot be reproduced or compared reliably if its inputs lose their definition and provenance."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-nii-coverage",
+    "title": "NII and distribution coverage: match the income, denominator and period",
+    "description": "Reconcile regular and total common-distribution coverage without confusing reported NII, issuer-adjusted measures or cash available.",
+    "category": "BDC income analysis",
+    "level": "Intermediate",
+    "prerequisites": [
+      "learn-bdc-read-filings"
+    ],
+    "calculator": "calculator-bdc-nii-pik",
+    "learning_objectives": [
+      "Compute regular and total distribution coverage on a matching basis.",
+      "Separate reported NII, adjusted measures, GAAP net results and cash flow.",
+      "Preserve partial results when one distribution component is unknown."
+    ],
+    "sections": [
+      {
+        "heading": "Define NII before comparing it with a distribution",
+        "text": "Net investment income is an accounting result after the investment expenses included in the issuer's presentation. It is not the same as total investment income, which is an income line before those expenses, or the full net change from operations, which can also include realized and unrealized investment results. A company may publish an adjusted or core measure with its own reconciliation. Preserve the reported NII and show adjustments separately. A label repeated across two issuers does not establish that their definitions, attribution to common shareholders or treatment of fees are identical."
+      },
+      {
+        "heading": "Choose the denominator deliberately",
+        "text": "Regular, supplemental and special distributions all transfer value to common shareholders, but they can follow different policies. Regular-distribution coverage answers whether the chosen income measure covers the recurring declared base. Total-distribution coverage includes every component on the selected basis. Both can be useful if clearly labeled; choosing only the base while describing all payments as covered overstates what the ratio establishes. Distinguish declarations for the period from cash paid during the period. A payment made this quarter can settle an earlier declaration, so the cash-flow statement and board declarations may not supply interchangeable denominators."
+      },
+      {
+        "heading": "Use either matching total amounts or matching per-share data",
+        "text": "Total NII divided by total common distributions avoids silently combining weighted-average earnings shares with a different distribution share count. A per-share comparison can also be useful when both values are reported on appropriate matching bases, but share issuance during the period may complicate the bridge back to totals. Do not manufacture PIK per share by dividing a period's income by whatever share count is easiest to find. Record whether the ratio is income divided by distributions, called coverage here, or distributions divided by income, called payout. They are reciprocals only when both inputs support that interpretation."
+      },
+      {
+        "heading": "Keep the ratio's limits visible",
+        "text": "Coverage above one does not prove that income arrived in cash, that principal values were preserved or that the board will maintain the payment. Coverage below one does not by itself establish an imminent cut; financing, realized gains, tax timing and other resources need separate analysis. Negative NII should remain a signed result rather than disappear into zero. A zero distribution denominator produces an undefined coverage ratio, not infinite safety. If a supplemental amount is unknown, retain valid regular coverage but mark total coverage incomplete. The appropriate response to a missing input is a question, not a more attractive percentage."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: base coverage can hide a narrower total margin",
+      "text": "For one invented quarter in USD millions, reported NII is 120. Common distributions declared for that same quarter are regular 100, supplemental 10 and special 5, totaling 115. Regular coverage is 120 / 100 = 1.2000×. Total coverage is 120 / 115 = 1.0435×. The corresponding total payout is 115 / 120 = 95.8333%. If the supplemental 10 is not known, regular coverage remains 1.2000× while total coverage is unknown. A confirmed zero supplemental is a different input and would make the known total 105."
+    },
+    "pitfall": "Calling 1.20× regular coverage proof that all distributions are covered, or describing coverage as a payout percentage.",
+    "checklist": [
+      "Retain the NII definition and any reconciliation.",
+      "Match periods, currency, scale and common-share attribution.",
+      "List regular, supplemental and special distributions separately.",
+      "Label declarations versus payments and unknown versus zero."
+    ],
+    "related": [
+      "learn-bdc-pik-income",
+      "learn-bdc-dividends-tax",
+      "learn-bdc-expert-income-bridge"
+    ],
+    "sources": [
+      {
+        "title": "Ares Capital March 2026 results: statement and reconciliation format — not example data",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000162828026027685/arccq1-2026exhibit991.htm"
+      },
+      {
+        "title": "Horizon Technology Finance 2025 financial highlights: tax/GAAP and spillover explanation, footnote 1",
+        "url": "https://www.sec.gov/Archives/edgar/data/1487428/000143774926006636/R68.htm"
+      }
+    ],
+    "exercise": {
+      "question": "Keep NII at 120 but increase the special declaration from 5 to 20. What are regular and total coverage?",
+      "answer": "Regular coverage stays 1.2000×. Total declarations become 130, so total coverage falls to 120 / 130 = 0.9231×. This is a matched accounting comparison, not a cash forecast."
+    },
+    "quiz": [
+      {
+        "question": "If a supplemental distribution is unknown, the defensible output is:",
+        "options": [
+          "Treat it as zero to complete the ratio",
+          "Keep regular coverage and mark total coverage incomplete",
+          "Delete every result, including the known regular comparison"
+        ],
+        "answer": 1,
+        "explanation": "Missing one component should limit the dependent result without destroying unrelated valid arithmetic."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-pik-income",
+    "title": "PIK income: distinguish the contract, the accounting and the cash",
+    "description": "Understand payment-in-kind recognition, two different PIK denominators and a transparent sensitivity that does not claim to be cash earnings.",
+    "category": "BDC income analysis",
+    "level": "Intermediate",
+    "prerequisites": [
+      "learn-bdc-loan-pipeline",
+      "learn-bdc-nii-coverage"
+    ],
+    "calculator": "calculator-bdc-pik-ratios",
+    "learning_objectives": [
+      "Distinguish PIK income for a period from PIK-bearing investment balances.",
+      "Calculate PIK/TII and PIK/NII as different questions.",
+      "Explain why subtracting PIK does not create a cash-flow statement."
+    ],
+    "sections": [
+      {
+        "heading": "A contractual balance increase and recognized income are distinct records",
+        "text": "Payment-in-kind interest can be added to a loan's contractual principal rather than collected in cash currently. Whether and how it is recognized in accounting income depends on the instrument and the issuer's policy, including collectibility. A position with a PIK feature does not mean its entire balance is PIK income, and a period's recognized PIK is not necessarily the same as the cumulative PIK embedded in principal. Read the income policy, investment schedule and principal roll-forward together. Separate PIK interest from noncash dividends, discount accretion and other adjustments unless the disclosure explicitly groups them."
+      },
+      {
+        "heading": "Keep the two denominators separate",
+        "text": "PIK divided by total investment income asks how much of the stated investment revenue consists of that recognized PIK amount. PIK divided by NII compares the same numerator with a narrower result after expenses. The second percentage can rise even if PIK is unchanged because financing or operating costs reduce NII. It is therefore not another spelling of the first percentage. When NII is zero or negative, a conventional income-share interpretation becomes unhelpful; retain the actual income result but do not relabel a negative PIK/NII ratio as healthy cash conversion. A missing denominator is not an estimated one."
+      },
+      {
+        "heading": "A deduction sensitivity is an assumption, not a cash result",
+        "text": "Subtracting a selected fraction of recognized PIK from NII can show how sensitive distribution coverage is to one noncash component. It holds the rest of the income statement fixed. That does not model collection timing, investment purchases, taxes, working capital, fee adjustments or other noncash income. Deducting all PIK does not prove that none will ever be collected, just as retaining it does not prove full repayment. Show the assumption explicitly and preserve the reported NII beside the sensitivity. If PIK itself is unknown, keep reported coverage but withhold the PIK-dependent scenarios."
+      },
+      {
+        "heading": "Follow the borrower and the accounting policy after recognition",
+        "text": "Contractual PIK in a performing financing and PIK added during a distressed amendment may carry different implications. Investigate the borrower's operating capacity, amendments, additional collateral and subsequent cash receipts before assigning a narrative. When a loan moves to non-accrual, the treatment of uncapitalized accruals versus amounts already added to principal may differ. Read the issuer's policy rather than reversing the entire historical PIK balance automatically. A fair-value decline can capture risk through the asset valuation channel while income recognition changes affect NII; these are connected records that require a bridge, not automatic double deductions."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: 10% and 15% describe the same PIK amount differently",
+      "text": "Assume quarterly PIK income of 18, total investment income of 180 and reported NII of 120, all invented USD millions. PIK/TII is 10%; PIK/NII is 15%. A simple 25% PIK deduction gives 120 − 18 × 25% = 115.5; 50% gives 111; 100% gives 102. Against total distributions of 115, the respective coverage ratios are 1.0043×, 0.9652× and 0.8870×. These are sensitivity amounts, not measured cash earnings or default probabilities. If NII falls to 60 with PIK unchanged, PIK/NII becomes 30% while PIK/TII stays 10%."
+    },
+    "pitfall": "Calling NII minus PIK cash available for distributions, or treating the principal of a PIK-bearing loan as current-period PIK income.",
+    "checklist": [
+      "Capture the exact PIK definition and reporting period.",
+      "Keep cash interest, PIK, discount accretion and noncash dividends distinct.",
+      "Read reversal and non-accrual policies.",
+      "State which expenses and other noncash items remain unchanged in a sensitivity."
+    ],
+    "related": [
+      "learn-bdc-non-accrual",
+      "learn-bdc-nii-coverage",
+      "learn-bdc-expert-income-bridge"
+    ],
+    "sources": [
+      {
+        "title": "Main Street September 2025 Form 10-Q: PIK and non-accrual accounting policies — historical definitions",
+        "url": "https://www.mainstcapital.com/investors/sec-filings/all-sec-filings/content/0001396440-25-000184/0001396440-25-000184.pdf"
+      },
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      }
+    ],
+    "exercise": {
+      "question": "If PIK is 18 and NII is −10, should PIK/NII be marketed as a −180% noncash share?",
+      "answer": "No. Preserve the −10 loss and any signed distribution coverage, but explain that a conventional positive-income share is not meaningful. The underlying PIK amount still needs disclosure and credit review."
+    },
+    "quiz": [
+      {
+        "question": "A 100% PIK deduction from reported NII is:",
+        "options": [
+          "A complete cash-flow calculation",
+          "A simple sensitivity with other items held unchanged",
+          "Proof that every PIK loan will default"
+        ],
+        "answer": 1,
+        "explanation": "The deduction isolates one assumption and does not reconcile all sources and uses of cash or forecast credit losses."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-non-accrual",
+    "title": "Non-accruals at cost and fair value: read the exposure and the mark",
+    "description": "Compare matched non-accrual populations, understand why a fair-value percentage can fall without credit improving, and trace migration.",
+    "category": "BDC credit analysis",
+    "level": "Intermediate",
+    "prerequisites": [
+      "learn-bdc-read-filings",
+      "learn-bdc-pik-income"
+    ],
+    "calculator": "calculator-bdc-non-accrual",
+    "learning_objectives": [
+      "Separate cost exposure from fair-value exposure.",
+      "Explain numerator and denominator effects in a non-accrual percentage.",
+      "Track positions entering, leaving and remaining on non-accrual."
+    ],
+    "sections": [
+      {
+        "heading": "Non-accrual is an income-recognition status",
+        "text": "A non-accrual designation concerns recognition of investment income under the issuer's accounting policy. It is not a universal legal declaration that a borrower is bankrupt, that the investment is worth zero or that a specific recovery rate is certain. Policies can consider overdue payments, doubt about collection and other factors. Read the actual thresholds and exceptions rather than applying a generic number of days to every BDC. An investment can retain a positive fair value while income is no longer accrued, and a performing designation does not itself establish that a borrower is free of risk."
+      },
+      {
+        "heading": "Cost and fair value answer different exposure questions",
+        "text": "The non-accrual amount at cost compares an investment basis with the matching portfolio cost. The fair-value measure compares the marked value with the matching portfolio fair value. A heavily written-down asset contributes less to the fair-value numerator, so a low fair-value percentage can coexist with a larger original exposure. Check whether the population is all investments, only debt investments or some other subset. A cost numerator divided by a fair-value denominator is a different, usually unintended ratio. The date, portfolio perimeter and treatment of accrued income must also match."
+      },
+      {
+        "heading": "A changing percentage needs a position-level explanation",
+        "text": "Between two periods, a ratio can change because a borrower resumed payments, a position was sold, an investment was restructured, its mark moved or the rest of the portfolio grew. These mechanisms have different implications. Selling a deeply impaired position can reduce reported non-accrual exposure while crystallizing a loss. Adding new performing investments can dilute the percentage without resolving old problems. Build an opening-to-closing list of entrants, exits and valuation changes, and investigate undisclosed movements rather than assigning a cause from the percentage alone. A missing schedule is a limitation to record, not proof of concealment."
+      },
+      {
+        "heading": "Connect income reversals, carrying values and realizations",
+        "text": "When accrual stops, uncollected amounts and capitalized balances may have different accounting treatment. Later sale proceeds need to be compared with both original or amortized cost and the value already marked in prior periods. Otherwise the analyst can count an old loss again. Keep a row for recognized income changes and a separate row for fair-value changes, then reconcile the net-asset result. The goal is not to label every accounting change as good or bad; it is to establish what changed economically, what was already recognized and what evidence would support a different assessment."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: a lower fair-value share need not mean a recovery",
+      "text": "A fictional portfolio has cost of 1,000 and fair value of 950. Non-accrual investments have cost 50 and fair value 20. The matching ratios are 50/1,000 = 5% at cost and 20/950 = 2.1053% at fair value. Suppose those same investments are marked down another 10 and nothing else changes. Total fair value becomes 940 and non-accrual fair value becomes 10, so the fair-value share falls to 1.0638%. Cost exposure remains 5%. The lower percentage came from deterioration in marks, not a demonstrated restoration of borrower payments."
+    },
+    "pitfall": "Treating a falling non-accrual fair-value percentage as proof that credit performance improved.",
+    "checklist": [
+      "Match cost with cost and fair value with fair value.",
+      "Record all-investment versus debt-only scope.",
+      "Trace individual entries, exits and mark movements.",
+      "Read policies for income reversals and capitalized PIK."
+    ],
+    "related": [
+      "learn-bdc-nav-discounts",
+      "learn-bdc-expert-nav-bridge",
+      "learn-bdc-pik-income"
+    ],
+    "sources": [
+      {
+        "title": "Main Street September 2025 Form 10-Q: PIK and non-accrual accounting policies — historical definitions",
+        "url": "https://www.mainstcapital.com/investors/sec-filings/all-sec-filings/content/0001396440-25-000184/0001396440-25-000184.pdf"
+      },
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      }
+    ],
+    "exercise": {
+      "question": "A non-accrual asset's cost is 50 and fair value is explicitly zero. Should the asset disappear from the analysis?",
+      "answer": "No. Keep its cost exposure and the reported zero fair value. Zero is a measured input; it is not the same as an unknown value or evidence that the historical exposure never existed."
+    },
+    "quiz": [
+      {
+        "question": "If non-accrual fair value falls because an impaired asset is written down, the fair-value exposure ratio may:",
+        "options": [
+          "Fall even though the credit outcome did not improve",
+          "Always rise",
+          "Prove the borrower has repaid principal"
+        ],
+        "answer": 0,
+        "explanation": "A lower numerator can lower the percentage while signaling a worse valuation outcome."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-nav-discounts",
+    "title": "BDC NAV and market discounts: separate the valuation from the trading price",
+    "description": "Read common NAV per share, price/NAV and capital transactions without treating a discount as a promised return.",
+    "category": "BDC valuation",
+    "level": "Intermediate",
+    "prerequisites": [
+      "learn-bdc-read-filings",
+      "learn-bdc-non-accrual"
+    ],
+    "calculator": "calculator-bdc-nav-discount",
+    "learning_objectives": [
+      "Calculate a signed premium or discount with NAV as denominator.",
+      "Separate a discount from the return needed to reach NAV.",
+      "Identify the effects of valuation changes and share transactions."
+    ],
+    "sections": [
+      {
+        "heading": "NAV is a residual measured at a particular date",
+        "text": "Common net asset value starts with the relevant assets and subtracts liabilities and other claims ahead of common shareholders on the disclosed basis. NAV per share then uses the applicable common-share count. Portfolio investments may depend on valuation judgments because they do not trade continuously in a deep market. A reported NAV is therefore a dated accounting measure rather than a standing offer to buy a shareholder's stock at that amount. Read the valuation process and the definition of common net assets, especially when preferred securities, subsidiaries or other claims complicate the residual."
+      },
+      {
+        "heading": "Market price and NAV can move for different reasons",
+        "text": "A listed share's price reflects market trading at its observation time. NAV reflects the underlying measured assets and liabilities at a reporting date, often earlier. Price divided by NAV is useful only after those dates, share classes and currencies are stated. A discount can reflect expectations about credit losses, expenses, distributions, management or liquidity; it does not identify which explanation is correct. A premium is not automatically an error either. The analytical task is to compare possible explanations with evidence rather than turn the distance from NAV into a mechanical buy or sell signal."
+      },
+      {
+        "heading": "The discount percentage is not the upside percentage",
+        "text": "The signed premium or discount uses NAV as its denominator: price/NAV minus one. The return from the current price to a future price uses the current investment cost instead. Even if future NAV were unchanged and the market later traded exactly at it, these percentages would differ. Actual returns also depend on distributions, fees, taxes and changes in NAV during the holding period. Do not add an annualized distribution yield to a discount as if both represented separate guaranteed gains. A distribution can reduce net assets while transferring value to the shareholder."
+      },
+      {
+        "heading": "Capital transactions can change the per-share result",
+        "text": "New equity increases cash and shares at the same time. Whether it increases or decreases NAV per existing share depends on net proceeds per new share relative to the pre-transaction NAV, with timing and transaction costs included. Repurchases create another set of effects and consume liquidity. A larger total net-asset base does not establish accretion per share. Keep transaction math separate from expected future investment returns on the proceeds, and read any applicable issuance restrictions in the actual filing. The worksheet here describes a ratio; it does not decide whether an offering is legally permitted."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: a 10% discount requires an 11.11% price rise to close",
+      "text": "An invented common NAV is 20 per share and the entered market price is 18. Price/NAV is 0.9× and the signed discount is −10%. Reaching an unchanged NAV of 20 from price 18 would require a price rise of 2/18 = 11.1111%, before distributions and costs. If NAV instead falls to 16 and price stays at 18, the same price is now a 12.5% premium. Neither calculation predicts a future price. Record the source date for each input, not merely the day the ratio was typed into a calculator."
+    },
+    "pitfall": "Calling a 10% discount a guaranteed 10% gain, or confusing total net-asset growth with NAV-per-share accretion.",
+    "checklist": [
+      "Use common NAV and the correct share class.",
+      "Retain NAV and market-price observation dates separately.",
+      "Include issuance or repurchase costs in per-share bridges.",
+      "Read valuation assumptions and later credit events."
+    ],
+    "related": [
+      "learn-bdc-expert-nav-bridge",
+      "learn-bdc-leverage-coverage",
+      "learn-bdc-expert-credit-memo"
+    ],
+    "sources": [
+      {
+        "title": "Investor.gov: Publicly Traded Business Development Companies — investor bulletin",
+        "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/publicly-traded-business-development-companies-bdcs-investor-bulletin"
+      },
+      {
+        "title": "Horizon Technology Finance 2025 financial highlights: tax/GAAP and spillover explanation, footnote 1",
+        "url": "https://www.sec.gov/Archives/edgar/data/1487428/000143774926006636/R68.htm"
+      },
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      }
+    ],
+    "exercise": {
+      "question": "A fictional BDC has equity 1,000 and 50 shares, so NAV is 20. It issues 10 shares for net proceeds of 180. What happens?",
+      "answer": "Equity becomes 1,180 and shares become 60, giving NAV of 19.6667. Total equity rose, but NAV per share fell because net proceeds per new share were below the original 20."
+    },
+    "quiz": [
+      {
+        "question": "The denominator in a signed price/NAV discount is:",
+        "options": [
+          "The market price",
+          "NAV per share",
+          "The latest annualized distribution"
+        ],
+        "answer": 1,
+        "explanation": "Price/NAV minus one expresses the price difference relative to NAV, whereas a return from purchase price uses the investment cost."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-leverage-coverage",
+    "title": "BDC leverage and asset coverage: a descriptive ratio is not a compliance test",
+    "description": "Connect debt, common equity and asset values while distinguishing a debt/equity worksheet from statutory asset coverage and borrowing covenants.",
+    "category": "BDC risk and financing",
+    "level": "Advanced",
+    "prerequisites": [
+      "learn-bdc-nav-discounts",
+      "learn-bdc-non-accrual"
+    ],
+    "calculator": "calculator-bdc-leverage",
+    "learning_objectives": [
+      "Explain how asset marks change leverage without new borrowing.",
+      "Distinguish descriptive debt/equity from statutory asset coverage.",
+      "Identify the scope and conditions needed before assessing borrowing headroom."
+    ],
+    "sections": [
+      {
+        "heading": "Three different leverage questions require three definitions",
+        "text": "Debt divided by common equity is a descriptive balance-sheet relationship. Statutory asset coverage is a legal calculation with its own treatment of assets, liabilities and senior securities. A credit agreement can impose another covenant definition. These measures are related but not interchangeable. Read which asset-coverage framework the particular BDC has adopted, the applicable conditions and the issuer's disclosed calculation. Investor.gov describes borrowing of up to two dollars for one dollar of equity under certain conditions; that statement is not permission to apply a universal two-times debt/equity rule to every instrument, entity and transaction. The SEC staff explanation describes lowering the requirement from 200% to 150% subject to approvals and other conditions; 150% is not automatic for every BDC."
+      },
+      {
+        "heading": "Valuation losses consume equity before debt disappears",
+        "text": "With debt principal unchanged, a decline in investment value generally reduces the residual equity and raises a simple debt/equity ratio. No new borrowing is necessary for leverage to rise. That mechanism can constrain flexibility at the same time credit conditions make asset sales or equity issuance more difficult. Conversely, a repayment funded with available cash reduces both assets and debt, and its ratio effect depends on the starting structure. Reconcile marks, liabilities and capital transactions before attributing an entire ratio change to management's financing decisions. A carrying-value movement in debt also needs its own explanation."
+      },
+      {
+        "heading": "Exemptions, preferred claims and entity boundaries matter",
+        "text": "The issuer may disclose excluded or specially treated borrowings, including applicable subsidiary arrangements, while preferred securities and other liabilities complicate the relationship between common equity and regulatory measures. These details are reasons to read the actual senior-securities table, borrowing notes and governing rules, not reasons to improvise a favorable exemption. A proportionate JV exposure table is another analytical view and need not match the accounting or regulatory perimeter. Keep it separate unless the relevant definition explicitly incorporates those exposures. The simplified calculator intentionally makes no statutory pass/fail judgment and does not estimate legally permitted additional borrowing."
+      },
+      {
+        "heading": "Cash adjustment is a scenario, not a cancellation of obligations",
+        "text": "Subtracting cash from debt can describe a chosen economic position, but it does not repay creditors or establish that the cash is unrestricted and available to the same entities. Keep gross debt visible beside any cash-adjusted figure. Funding commitments, settlement needs, facility restrictions and ordinary operating requirements can limit the amount available for debt reduction. A reported low ratio also does not reveal maturity concentration, security ranking or interest sensitivity. Pair a balance-sheet measure with a dated maturity and liquidity bridge, and identify which future marks or transactions would narrow the room rather than convert one ratio into a safety score."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: the asset mark changes both ratios",
+      "text": "Assume only assets of 2,500, debt of 1,500 and common equity of 1,000, with no other claims. Debt/equity is 1.5× and the simplified assets/debt ratio is 166.6667%. A 250 asset markdown leaves assets of 2,250 and equity of 750, with debt unchanged. Debt/equity becomes 2.0× and simplified assets/debt becomes 150%. This is deliberately elementary balance-sheet arithmetic, not a statutory compliance calculation. Real asset coverage must apply the issuer's actual definitions, exclusions, senior claims and conditions before describing any threshold or remaining capacity."
+    },
+    "pitfall": "Treating a simplified debt/equity result as statutory approval to borrow, or using a net-cash adjustment to erase gross obligations.",
+    "checklist": [
+      "Read the issuer's adopted framework and conditions.",
+      "Distinguish principal, carrying value and covenant debt.",
+      "Keep common equity separate from preferred claims.",
+      "Show gross and cash-adjusted measures with dated scope."
+    ],
+    "related": [
+      "learn-bdc-rates-floors",
+      "learn-bdc-expert-nav-bridge",
+      "learn-bdc-expert-refinancing"
+    ],
+    "sources": [
+      {
+        "title": "SEC staff responses on Section 61(a): conditional reduction from 200% to 150% asset coverage; staff views, not a new rule",
+        "url": "https://www.sec.gov/rules-regulations/staff-guidance/division-investment-management-frequently-asked-questions/staff-responses-regarding-business-development-companies"
+      },
+      {
+        "title": "Investor.gov: Publicly Traded Business Development Companies — investor bulletin",
+        "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/publicly-traded-business-development-companies-bdcs-investor-bulletin"
+      },
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      },
+      {
+        "title": "Main Street filed investor presentation: management and regulatory structure — historical issuer explanation",
+        "url": "https://www.mainstcapital.com/investors/sec-filings/all-sec-filings/content/0001396440-25-000070/q12025mainip_lp-fwp.htm"
+      }
+    ],
+    "exercise": {
+      "question": "If assets fall by 100 from the initial synthetic balance sheet while debt stays 1,500, what is simple debt/equity?",
+      "answer": "Equity becomes 900 and debt/equity is 1,500 / 900 = 1.6667×. That descriptive increase does not itself establish the issuer's statutory or covenant result."
+    },
+    "quiz": [
+      {
+        "question": "A falling equity denominator can increase leverage:",
+        "options": [
+          "Only if the BDC raises new debt",
+          "Even when debt stays unchanged",
+          "Only after the share price falls"
+        ],
+        "answer": 1,
+        "explanation": "Asset-value losses can reduce common equity while the debt balance remains outstanding."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-rates-floors",
+    "title": "Floating rates and floors: why a BDC is not a one-way rate bet",
+    "description": "Build separate asset and liability repricing maps, identify floors and hedges, and distinguish interest sensitivity from borrower-credit effects.",
+    "category": "BDC risk and financing",
+    "level": "Advanced",
+    "prerequisites": [
+      "learn-bdc-loan-pipeline",
+      "learn-bdc-nii-coverage",
+      "learn-bdc-leverage-coverage"
+    ],
+    "learning_objectives": [
+      "Model asset and funding-rate changes on matching annual bases.",
+      "Identify when a floor changes the shape of a sensitivity.",
+      "Separate contractual repricing from borrower stress and credit marks."
+    ],
+    "sections": [
+      {
+        "heading": "Map assets and liabilities before choosing a direction",
+        "text": "A portfolio of floating-rate loans does not automatically make higher rates favorable for common shareholders. The BDC also funds itself through facilities, notes and other liabilities, some of which reprice or are economically altered by derivatives. Record the benchmark, spread, reset date, principal and hedging arrangement on each side. A fixed-coupon bond can have a different economic exposure after a swap. A portfolio percentage labeled floating rate is therefore a starting point, not a complete sensitivity model. Keep contractual coupon, effective interest cost and derivative cash settlements distinct when building the bridge."
+      },
+      {
+        "heading": "Floors introduce thresholds rather than a constant slope",
+        "text": "An asset floor can limit how far a loan's reference rate falls for coupon purposes, while liability floors and other terms can affect the funding side. A rate cut that crosses a floor can produce a different effect from an equally sized cut above it. Test the benchmark before and after the move against each threshold; do not multiply every floating balance by the same change blindly. Reset lags, payment schedules, caps and the treatment of default interest can also matter. A single company-wide average floor can conceal loans on opposite sides of the threshold."
+      },
+      {
+        "heading": "Credit performance can move against the coupon benefit",
+        "text": "Higher contractual interest may increase the borrower's financing burden, pressure its coverage and eventually reduce collections or fair values. Lower rates can ease that burden while compressing the lender's contractual revenue. These effects occur through different channels and need not be simultaneous. A first-order interest sensitivity that keeps principal, performing status and expenses unchanged should say so. Do not add a separate credit loss mechanically unless the scenario defines which borrower deteriorates, what recognition changes and how marks move. Otherwise the model can count the same adverse development twice or imply an unsupported forecast."
+      },
+      {
+        "heading": "Use scenarios to identify the next disclosure needed",
+        "text": "Calculate the isolated asset-income change and the isolated funding-expense change before netting them. Then consider fees, leverage, non-accruals and reinvestment under explicitly different assumptions. Compare your contractual scenario with the issuer's disclosed interest-rate sensitivity, noting its date, scope and exclusions instead of assuming the two should match. A model that identifies the missing hedge notional or reset schedule can be useful even when a precise final answer is unavailable. The purpose is to explain what would change under stated conditions, not assign a probability to a rate path or promise a dividend response."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: crossing an asset floor changes the net result",
+      "text": "Assume 1,000 of floating assets earn benchmark plus 6%, with a 3% benchmark floor. Debt of 600 costs benchmark plus 2%, without a floor or hedge. At benchmark 4%, annual asset interest is 100 and funding interest is 36, leaving 64 before all other items. If benchmark falls to 2%, the asset floor makes its coupon 9%, so asset interest is 90; funding interest falls to 24. The difference becomes 66. Without the asset floor, asset interest would be 80 and the difference 56. These invented full-year balances assume no defaults, repayments, fees or other changes."
+    },
+    "pitfall": "Applying the same rate change to every asset and liability while ignoring floors, reset timing or swaps.",
+    "checklist": [
+      "List benchmarks, spreads, floors, caps and reset dates.",
+      "Identify fixed debt changed economically by derivatives.",
+      "Separate contractual sensitivity from credit and valuation scenarios.",
+      "Retain the issuer sensitivity's assumptions and reporting date."
+    ],
+    "related": [
+      "learn-bdc-expert-refinancing",
+      "learn-bdc-incentive-fees",
+      "learn-bdc-expert-credit-memo"
+    ],
+    "sources": [
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      },
+      {
+        "title": "Ares Capital January 2025 filed financing prospectus: instrument terms and claims — historical example",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000110465925000820/arcc-20250102xn2.htm"
+      }
+    ],
+    "exercise": {
+      "question": "In the synthetic model, why does the net interest difference improve by 2 after the cut?",
+      "answer": "The asset floor limits the asset-income decline to 10, while funding expense falls by 12. The resulting 2 improvement is before operating expenses, fees, credit changes and other items; it is not a complete NII forecast."
+    },
+    "quiz": [
+      {
+        "question": "A fixed-coupon note with a pay-floating, receive-fixed swap may have:",
+        "options": [
+          "No interest-rate exposure under any circumstances",
+          "Different economic exposure from its headline fixed coupon",
+          "The same effect as removing the debt"
+        ],
+        "answer": 1,
+        "explanation": "The financing and hedge must be considered together, including their notional amounts, dates and contractual terms."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-incentive-fees",
+    "title": "Incentive fees: model the hurdle and catch-up before adjusting NII",
+    "description": "Trace a hypothetical piecewise fee schedule, distinguish income and capital-gains fees, and test the effect of noncash income without double counting.",
+    "category": "BDC risk and financing",
+    "level": "Advanced",
+    "prerequisites": [
+      "learn-bdc-management-fees",
+      "learn-bdc-nii-coverage",
+      "learn-bdc-pik-income"
+    ],
+    "learning_objectives": [
+      "Calculate a transparent hypothetical hurdle and catch-up schedule.",
+      "Separate pre-fee income, fee expense and income after the fee.",
+      "Identify why accounting accruals and contractual fees paid may differ."
+    ],
+    "sections": [
+      {
+        "heading": "Read the specific contract, not an industry slogan",
+        "text": "An income incentive fee can use a defined pre-fee income base, a hurdle, a catch-up and further participation above the catch-up band. Some agreements include additional limitations, lookbacks or total-return features. Rates, bases and treatment of PIK or waived amounts differ. A fee described as a percentage of income is not necessarily that percentage of every dollar above a hurdle. Start with the actual agreement for the relevant period and reconstruct its intervals before applying a sensitivity. The deliberately simplified schedule below is an original teaching example, not a description of any named issuer's terms."
+      },
+      {
+        "heading": "A catch-up can change who keeps the next dollar",
+        "text": "In a full catch-up band, the adviser may receive all of the defined income above the hurdle until its share reaches the contractual participation rate. The shareholder result can consequently remain flat through that interval even as pre-fee income rises. Above the catch-up band, the ordinary participation rate applies to incremental income under the assumed schedule. This is a marginal calculation, so retain the lower intervals instead of repeatedly applying one rate to the whole amount. State whether the hurdle is quarterly or annual and which net-asset value determines its dollar amount."
+      },
+      {
+        "heading": "Income and capital-gains fees are separate bridges",
+        "text": "A capital-gains incentive calculation can depend on cumulative realized results, unrealized depreciation and amounts already paid, according to the contract. Accounting expense or accrual can differ from the fee currently payable. A mark reversing in the next quarter may therefore affect accrued expense differently from cash payment. Do not subtract an estimate of a future fee on top of a reported expense without reconciling what is already recognized. Also distinguish base management fees from incentive fees: both may appear within NII, but their bases and sensitivities need not respond to the same inputs."
+      },
+      {
+        "heading": "PIK sensitivities should state what happens to fees",
+        "text": "A simple NII-minus-PIK illustration intentionally leaves other items unchanged. A contract-sensitive alternative might adjust the income fee when the relevant pre-fee base changes, but that is a different model requiring the fee agreement. Show the reported result, the simple sensitivity and the contract-based alternative in separate columns. Do not automatically assume that a fee on previously recognized noncash income will be refunded after a later loss; examine actual provisions. Likewise, a hypothetical exclusion from your research model does not change the issuer's contract or prove misconduct in its accounting."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: the hurdle is not merely a deductible",
+      "text": "Assume equity of 100, a quarterly hurdle of 1.5% or 1.5, a 20% participation rate and a full catch-up. The catch-up ends at 1.5 / (1 − 20%) = 1.875 of pre-fee income. At income 1.4, the fee is zero. At 1.6, the assumed fee is 1.6 − 1.5 = 0.1, leaving 1.5. At 2.0, the fee is 0.375 for the catch-up plus 20% × (2.0 − 1.875) = 0.025, totaling 0.4 and leaving 1.6. No base fees, losses, waivers, lookbacks or capital-gains fee are included."
+    },
+    "pitfall": "Charging 20% only on income above the hurdle when the actual contract includes a full catch-up, or adjusting fees twice.",
+    "checklist": [
+      "Read the agreement effective for the period.",
+      "Translate rates into matching-period dollar thresholds.",
+      "Separate expense accrued, amounts payable and cash paid.",
+      "Identify PIK treatment, waivers, limitations and prior fees."
+    ],
+    "related": [
+      "learn-bdc-expert-income-bridge",
+      "learn-bdc-management-fees",
+      "learn-bdc-pik-income"
+    ],
+    "sources": [
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      },
+      {
+        "title": "Main Street filed investor presentation: management and regulatory structure — historical issuer explanation",
+        "url": "https://www.mainstcapital.com/investors/sec-filings/all-sec-filings/content/0001396440-25-000070/q12025mainip_lp-fwp.htm"
+      }
+    ],
+    "exercise": {
+      "question": "Under only the synthetic schedule, what fee and post-fee income result from pre-fee income of 1.8?",
+      "answer": "The amount is inside the full catch-up band. Fee is 1.8 − 1.5 = 0.3 and post-fee income remains 1.5. Do not apply this toy schedule to an issuer without its actual agreement."
+    },
+    "quiz": [
+      {
+        "question": "Before changing a fee in a PIK sensitivity, establish:",
+        "options": [
+          "Only the common dividend yield",
+          "The contractual fee base and amounts already expensed",
+          "That every BDC has identical fee terms"
+        ],
+        "answer": 1,
+        "explanation": "A contract-based adjustment requires the actual fee definition and a bridge that avoids double-counting recognized expense."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-dividends-tax",
+    "title": "BDC distributions, RIC tax status and spillover: keep three records separate",
+    "description": "Distinguish BDC regulation from RIC treatment, separate tax distribution requirements from NII coverage, and understand why spillover is not a cash reserve.",
+    "category": "BDC risk and financing",
+    "level": "Advanced",
+    "prerequisites": [
+      "learn-bdc-basics",
+      "learn-bdc-nii-coverage",
+      "learn-bdc-pik-income"
+    ],
+    "learning_objectives": [
+      "Separate BDC regulatory election from RIC tax treatment.",
+      "Distinguish tax requirements, accounting coverage and payment liquidity.",
+      "Explain spillover without treating it as ring-fenced cash."
+    ],
+    "sections": [
+      {
+        "heading": "BDC and RIC describe different dimensions",
+        "text": "BDC status concerns an investment company's regulatory framework. Regulated investment company, or RIC, treatment concerns federal income taxation and carries separate qualification and distribution rules. Do not say that every BDC is automatically tax-free or that the letters BDC alone dictate a shareholder's tax outcome. Read the issuer's election and tax note for the applicable period. The familiar distribution requirement is generally described in relation to investment company taxable income, not GAAP NII, total investment income, NAV or a calculation of cash available. Other conditions, capital-gain treatment and timing rules also matter."
+      },
+      {
+        "heading": "Taxable income and accounting income need a reconciliation",
+        "text": "Valuation changes, recognition timing and other temporary or permanent differences can make tax and financial-statement results diverge. Noncash income can create distribution-funding questions even when it is recognized for tax purposes. A board may also declare regular, supplemental or special distributions based on more than one period's results. That does not make a NII coverage comparison useless, but it limits the conclusion that can be drawn from it. Preserve tax-character information, accounting coverage and the cash-payment timetable as separate records. A tax distribution rule is not a guarantee of the amount or durability of a future payment."
+      },
+      {
+        "heading": "Spillover is not a separate bank account",
+        "text": "Spillover commonly describes taxable income carried into a later distribution period under the relevant rules and issuer reporting. Its definition, tax year, timing and per-share denominator need to be read in the actual disclosure. A stated spillover amount does not establish that the same amount is held in unrestricted cash, nor can it be added to cash as a second liquidity resource. The associated assets may be invested or subject to other obligations. Retaining or distributing income can also involve separate excise-tax and timing considerations; a simple arithmetic undistributed balance is not a complete legal calculation of eligible carryover."
+      },
+      {
+        "heading": "Separate corporate funding from the shareholder tax result",
+        "text": "A distribution's final tax character may be determined after the year closes and can differ from a preliminary description. Ordinary income, capital gains and return of capital should not be inferred solely from the current quarter's NII or from whether the distribution was called special. A return-of-capital classification is not automatically proof of wrongdoing, while a high distribution does not prove strong recurring earnings. Use the issuer's final tax documents and the shareholder's applicable jurisdiction for actual tax decisions. This guide explains the analytical distinctions; it does not calculate personal taxes or determine legal compliance."
+      }
+    ],
+    "example": {
+      "heading": "Synthetic: three different questions, three different numbers",
+      "text": "Assume an invented year with GAAP NII of 120, investment company taxable income of 100, no net tax-exempt interest and common distributions of 95. In this deliberately simplified tax illustration, 90% of the stated taxable-income base is 90; that is not 90% of 120. Accounting distribution coverage is 120 / 95 = 1.2632×. The remaining 5 of the stated taxable-income base is not automatically an unrestricted cash balance or legally qualifying spillover. Actual qualification, excise tax, capital gains and timing rules are outside this arithmetic, and the ability to fund 95 needs a separate cash analysis."
+    },
+    "pitfall": "Applying 90% to NII, treating spillover as extra cash, or presenting a tax requirement as a dividend-safety test.",
+    "checklist": [
+      "Identify BDC status and RIC tax election separately.",
+      "Record the taxable-income definition and relevant tax year.",
+      "Separate regular, supplemental and special declarations.",
+      "Read final tax character and timing disclosures rather than guessing."
+    ],
+    "related": [
+      "learn-bdc-expert-credit-memo",
+      "learn-bdc-nii-coverage",
+      "learn-bdc-expert-income-bridge"
+    ],
+    "sources": [
+      {
+        "title": "Horizon Technology Finance 2025 financial highlights: tax/GAAP and spillover explanation, footnote 1",
+        "url": "https://www.sec.gov/Archives/edgar/data/1487428/000143774926006636/R68.htm"
+      },
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      },
+      {
+        "title": "Main Street filed investor presentation: management and regulatory structure — historical issuer explanation",
+        "url": "https://www.mainstcapital.com/investors/sec-filings/all-sec-filings/content/0001396440-25-000070/q12025mainip_lp-fwp.htm"
+      }
+    ],
+    "exercise": {
+      "question": "If the issuer reports spillover of 20 and unrestricted cash of 30, can a liquidity bridge simply show 50 of cash resources?",
+      "answer": "No. Spillover is not independently established cash and may overlap with investments or other assets. Start from actual unrestricted cash and separately verified financing, then explain the tax-distribution context."
+    },
+    "quiz": [
+      {
+        "question": "Which statement is supportable?",
+        "options": [
+          "BDC status automatically means every distribution is tax-free",
+          "The tax distribution base can differ from reported NII",
+          "A spillover amount guarantees the next dividend"
+        ],
+        "answer": 1,
+        "explanation": "Tax rules, financial accounting and payment liquidity are separate systems that require their own definitions and evidence."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-expert-income-bridge",
+    "title": "Expert workshop: reconcile reported NII, adjustments and a PIK sensitivity",
+    "description": "Build a reversible income bridge, retain compensation costs explicitly and distinguish a frozen-fee sensitivity from a contract-based alternative.",
+    "category": "BDC expert workshops",
+    "level": "Expert",
+    "prerequisites": [
+      "learn-bdc-nii-coverage",
+      "learn-bdc-pik-income",
+      "learn-bdc-incentive-fees",
+      "learn-bdc-dividends-tax"
+    ],
+    "calculator": "calculator-bdc-nii-pik",
+    "learning_objectives": [
+      "Reconstruct competing income definitions without double adjustments.",
+      "Separate a run-rate judgment from a historical cash claim.",
+      "Trace every coverage output to an input and a scenario assumption."
+    ],
+    "sections": [
+      {
+        "heading": "Freeze the analytical contract before calculating",
+        "text": "Use one invented annual period in USD millions, with a constant 50 million common shares and total common distributions of 115. Reported NII is 120 and already includes all reported expenses, including stock compensation of 10. It also includes 10 of accelerated fee income and 18 of recognized PIK. A fictional adjusted measure adds back the compensation, yielding 130. These assumptions are supplied for this workshop, not copied from a company. Define the research question narrowly: what comparison results if compensation is retained as an ownership cost and the accelerated fee income is excluded from a chosen run-rate view?"
+      },
+      {
+        "heading": "Make every adjustment reversible and distinct from a cash reconciliation",
+        "text": "Start from adjusted income of 130. Reverse the compensation add-back by subtracting 10, returning to reported NII of 120; do not subtract that expense again from reported NII. Then remove the 10 accelerated fee income from the analytical run-rate view to obtain 110. Historical reported NII remains 120. Excluding income from a future run-rate comparison does not undo cash already received or imply that its original recognition was wrong. Similarly, retaining stock compensation expense is one policy for recognizing an ownership cost, not a statement that the expense was paid in cash this period."
+      },
+      {
+        "heading": "Add a PIK assumption without relabeling it cash earnings",
+        "text": "Take the normalized analytical 110 and deduct 50% of the stated PIK of 18, giving 101. If an additional recurring expense assumption is 2, the selected downside amount is 99. This branch holds fees, taxes and all other items unchanged. A separate contract-based alternative might reduce an income incentive fee if the fee base actually declines. For illustration only, assume a 20% marginal participation rate applies fully across the removed 9 with no hurdle transition, cap or other limitation: the fee reduction would be 1.8, producing 102.8 before the extra expense, not 101 plus an unrelated dividend adjustment. Keep that alternative in a separate column."
+      },
+      {
+        "heading": "Write the evidence that could overturn the normalization",
+        "text": "An issuer might argue that accelerated fees recur often enough across the portfolio to be part of normal economics; an analyst might instead identify a pattern of one-off exits that is unlikely to repeat. A compensation adjustment also needs a stated objective and cannot be called objectively correct merely because it lowers income. To resolve the dispute, inspect the fee-recognition note, origination and repayment history, compensation policy and actual incentive-fee agreement. Preserve the period, source location and disclosed definition for each real input. The workshop's arithmetic is reproducible, but whether its normalization fits a real issuer remains an evidence question."
+      }
+    ],
+    "table": {
+      "headers": [
+        "Synthetic income bridge",
+        "USD million",
+        "Coverage versus 115 distributions"
+      ],
+      "rows": [
+        [
+          "Issuer-adjusted measure",
+          "130",
+          "1.130435×"
+        ],
+        [
+          "Reported NII: reverse compensation add-back",
+          "120",
+          "1.043478×"
+        ],
+        [
+          "Analytical run-rate: exclude accelerated fee income",
+          "110",
+          "0.956522×"
+        ],
+        [
+          "Frozen-fee 50% PIK deduction",
+          "101",
+          "0.878261×"
+        ],
+        [
+          "Add extra recurring expense of 2",
+          "99",
+          "0.860870×"
+        ],
+        [
+          "Separate marginal-fee alternative, before extra expense",
+          "102.8",
+          "0.893913×"
+        ]
+      ]
+    },
+    "example": {
+      "heading": "Synthetic: reproduce the per-share and total comparisons",
+      "text": "At 50 million unchanged shares, reported NII per share is 120/50 = 2.40, normalized analytical income is 110/50 = 2.20 and total distributions per share are 115/50 = 2.30. The selected downside is 99/50 = 1.98 per share. Dividing total or per-share values gives the same coverage because the assumed share bases are identical. The separate fee alternative is 101 + 1.8 = 102.8 before the extra 2 expense. Neither branch is a measured cash result, a tax distribution base or a prediction of what the board will pay."
+    },
+    "pitfall": "Subtracting compensation twice, treating a run-rate exclusion as a historical cash reversal, or mixing frozen-fee and contract-sensitive branches.",
+    "checklist": [
+      "Reconcile adjusted income back to reported NII first.",
+      "State why a recurring or nonrecurring classification is justified.",
+      "List the items held fixed in every sensitivity.",
+      "Check whether the fee branch crosses a hurdle or catch-up interval."
+    ],
+    "related": [
+      "learn-bdc-expert-nav-bridge",
+      "learn-bdc-incentive-fees",
+      "learn-bdc-expert-credit-memo"
+    ],
+    "sources": [
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      },
+      {
+        "title": "Ares Capital March 2026 results: statement and reconciliation format — not example data",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000162828026027685/arccq1-2026exhibit991.htm"
+      },
+      {
+        "title": "Main Street September 2025 Form 10-Q: PIK and non-accrual accounting policies — historical definitions",
+        "url": "https://www.mainstcapital.com/investors/sec-filings/all-sec-filings/content/0001396440-25-000184/0001396440-25-000184.pdf"
+      }
+    ],
+    "exercise": {
+      "question": "Use the normalized 110 but deduct only 25% of PIK and hold all expenses fixed. What income and coverage result before the extra 2 expense?",
+      "answer": "The deduction is 18 × 25% = 4.5. Income is 105.5 and coverage is 105.5/115 = 0.917391×. This is a separate frozen-expense branch, not a weighted expected result."
+    },
+    "quiz": [
+      {
+        "question": "Reported NII is 120 after compensation expense. To retain that expense in the analytical result, start by:",
+        "options": [
+          "Subtracting compensation again from 120",
+          "Leaving the expense in reported NII; reverse only an actual add-back when starting from 130",
+          "Adding it back and calling the result cash earnings"
+        ],
+        "answer": 1,
+        "explanation": "The adjustment depends on the starting measure. Reversing an add-back and subtracting an expense already recognized are different operations."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-expert-nav-bridge",
+    "title": "Expert workshop: bridge NAV through marks, realizations and share issuance",
+    "description": "Reconcile net assets and per-share NAV, avoid double-counting old losses and separate issuance proceeds from investment performance.",
+    "category": "BDC expert workshops",
+    "level": "Expert",
+    "prerequisites": [
+      "learn-bdc-non-accrual",
+      "learn-bdc-nav-discounts",
+      "learn-bdc-leverage-coverage"
+    ],
+    "calculator": "calculator-bdc-nav-discount",
+    "learning_objectives": [
+      "Reconstruct ending common net assets and NAV per share.",
+      "Distinguish a current-period mark from a loss measured against cost.",
+      "Quantify issuance effects using net proceeds and the new denominator."
+    ],
+    "sections": [
+      {
+        "heading": "Define the opening equity and the period bridge",
+        "text": "Assume an invented annual opening common net-asset balance of 1,000 and 50 million shares, giving NAV of 20 per share. During the year, NII is 120, common distributions are 115, net realized losses are 20 and the net unrealized change is a loss of 75. There are no other liabilities, capital movements or attribution changes in this simplified common-equity bridge. Treat the realized and unrealized amounts as the period's net statement amounts, already including any required reversals. Before calculating, write the perimeter and confirm that distributions and operations refer to the same common-share base."
+      },
+      {
+        "heading": "Reconcile the total before discussing the per-share result",
+        "text": "The change in common net assets is 120 − 115 − 20 − 75 = −90, so closing equity is 910 and closing NAV is 18.20 per share with shares unchanged. Positive accounting distribution coverage can therefore coexist with declining net assets. Do not add a market-price decline as another deduction from the BDC's accounting NAV; a traded share price is a separate measurement. Likewise, a realized loss already included in operations is not a distribution of cash to common shareholders. Reconcile classifications first, then explain what the bridge says about income, credit marks and capital preservation."
+      },
+      {
+        "heading": "Do not recognize the same old loss twice",
+        "text": "Consider a separate illustrative position that cost 100, was already marked at 60 at the opening date and is sold for 62. Its loss measured from cost is 38, but the current-period improvement relative to the opening carrying value is 2. In a simplified statement bridge, a realized loss of 38 and reversal of the prior unrealized loss of 40 combine to a net positive 2. Do not deduct both the old 40 markdown and the new cost-based 38 from the current opening NAV. For a real filing, inspect the actual classification and reversal policy; the workshop's separate position is not an additional item to add to the 910 total."
+      },
+      {
+        "heading": "Add financing transactions with their full denominator",
+        "text": "After the first bridge, assume 10 million new shares are issued. At a gross price of 18 with total issuance expenses of 2 million, net proceeds are 178, equity becomes 1,088 and shares become 60 million, producing NAV of 18.133333. At a gross price of 20 with the same expenses, net proceeds are 198 and NAV becomes 1,108/60 = 18.466667. These are separate transaction scenarios, not two offerings to combine. The first is dilutive to the pre-issue 18.20 and the second accretive. Neither result estimates returns on subsequent deployment or determines whether the offering is legally permitted."
+      }
+    ],
+    "table": {
+      "headers": [
+        "Synthetic common-equity bridge",
+        "USD million or million shares",
+        "Result"
+      ],
+      "rows": [
+        [
+          "Opening net assets / shares",
+          "1,000 / 50",
+          "NAV 20.00"
+        ],
+        [
+          "Period NII minus distributions",
+          "120 − 115",
+          "+5"
+        ],
+        [
+          "Net realized / net unrealized change",
+          "−20 / −75",
+          "−95"
+        ],
+        [
+          "Closing equity / unchanged shares",
+          "910 / 50",
+          "NAV 18.20"
+        ],
+        [
+          "Separate issue at 18, expenses 2",
+          "910 + 178; 60 shares",
+          "NAV 18.133333"
+        ],
+        [
+          "Separate issue at 20, expenses 2",
+          "910 + 198; 60 shares",
+          "NAV 18.466667"
+        ]
+      ]
+    },
+    "example": {
+      "heading": "Synthetic: income coverage and NAV preservation diverge",
+      "text": "Reported NII coverage is 120/115 = 1.043478×, yet ending NAV falls from 20 to 18.20 before any issuance because net realized and unrealized losses exceed the 5 retained income. The reduction is 1.80 per share or 9% of opening NAV. This is not a market total-return calculation: the holder also received distributions and the share's market price can differ from NAV. For the separate old-loss example, 62 − 60 = 2 must agree with −38 + 40 = 2. That control total prevents the previous period's mark from being counted again."
+    },
+    "pitfall": "Double-counting a prior unrealized loss on sale, adding a market-price decline to NAV or calling total-equity growth per-share accretion.",
+    "checklist": [
+      "Reconcile opening equity to operations, distributions and capital transactions.",
+      "Identify reversal of old marks within the period's realized/unrealized presentation.",
+      "Use net issuance proceeds and the post-issue share count.",
+      "Separate NAV return, market total return and accounting income coverage."
+    ],
+    "related": [
+      "learn-bdc-expert-refinancing",
+      "learn-bdc-expert-credit-memo",
+      "learn-bdc-nav-discounts"
+    ],
+    "sources": [
+      {
+        "title": "Horizon Technology Finance 2025 financial highlights: tax/GAAP and spillover explanation, footnote 1",
+        "url": "https://www.sec.gov/Archives/edgar/data/1487428/000143774926006636/R68.htm"
+      },
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      }
+    ],
+    "exercise": {
+      "question": "Keep closing pre-issue equity at 910 and issue 5 million shares at 19 with issuance expenses of 1 million. What is post-issue NAV?",
+      "answer": "Gross proceeds are 95 and net proceeds 94. Equity becomes 1,004 and shares 55 million. NAV is 1,004/55 = 18.254545, slightly above 18.20. The calculation assumes no other changes."
+    },
+    "quiz": [
+      {
+        "question": "A position opening at fair value 60 is sold for 62 after originally costing 100. Its current-period change relative to opening value is:",
+        "options": [
+          "A new loss of 38 plus the old loss of 40",
+          "A gain of 2, before other items",
+          "Zero because original cost must always equal fair value"
+        ],
+        "answer": 1,
+        "explanation": "Cost-based realized results and reversals of prior marks must reconcile to the current-period change from the opening carrying value."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-expert-refinancing",
+    "title": "Expert workshop: refinancing, equity funding and NII per share",
+    "description": "Compare full-year refinancing branches, include net equity proceeds and share-count effects, and keep liquidity separate from income accretion.",
+    "category": "BDC expert workshops",
+    "level": "Expert",
+    "prerequisites": [
+      "learn-bdc-leverage-coverage",
+      "learn-bdc-rates-floors",
+      "learn-bdc-nav-discounts",
+      "learn-bdc-nii-coverage"
+    ],
+    "calculator": "calculator-debt-ladder",
+    "learning_objectives": [
+      "Compare debt-only and equity-assisted refinancing on a consistent period.",
+      "Use net proceeds rather than gross issuance to reduce debt.",
+      "Separate interest savings, per-share dilution and available liquidity."
+    ],
+    "sections": [
+      {
+        "heading": "State what the baseline income already includes",
+        "text": "Use an invented full-year NII of 120 and 50 million common shares. The starting income already includes a full year of 3% interest on the 300 debt principal to be refinanced. The transaction takes effect at the start of the modeled year, and the new debt rate is 6%. Assume unchanged asset earnings and all other expenses, no swaps, no taxes and no additional amortization of issuance costs. These exclusions are explicit so that the comparison isolates funding and share-count effects. A real model must restore those items and use actual transaction dates rather than treat this exercise as a forecast."
+      },
+      {
+        "heading": "Calculate the debt-only branch from the incremental cost",
+        "text": "Refinancing all 300 at 6% creates annual interest of 18 instead of the 9 already embedded in baseline NII. The incremental cost is 9, not 18, so modeled NII becomes 111. With 50 million shares, NII per share is 2.22. A halfway-through-the-year repricing would instead add 4.5 during that particular year before other effects, but its subsequent full-year run rate would still differ. Do not subtract both the full new interest and the incremental cost. Keep modeled-period income, future run rate and the principal maturity table as distinct outputs."
+      },
+      {
+        "heading": "Model equity funding with net cash and new shares",
+        "text": "In the separate equity-assisted branch, issue 50 of gross common equity at 20 per share, creating 2.5 million shares. A 2% issuance cost consumes 1, leaving 49 to reduce refinancing principal from 300 to 251. New annual interest is 251 × 6% = 15.06, which is 6.06 above the original 9. NII is therefore 113.94, higher than the debt-only branch, but the 52.5 million shares reduce NII per share to 2.170286. The higher total income does not establish per-share accretion. The 1 equity issuance cost reduces net equity proceeds. Any debt issuance fees or other financing-cost amortization would require a separate explicit adjustment; it is not an automatic second deduction of this equity issuance cost."
+      },
+      {
+        "heading": "Reconcile the dividend and liquidity questions separately",
+        "text": "If the assumed annual common distribution is 2.20 per share, the debt-only branch requires 110 of common distributions and has 111/110 = 1.009091× coverage. The equity-assisted branch requires 115.5 and has 113.94/115.5 = 0.986494×. Neither ratio predicts the board's decision. Separately, principal of 90 due inside a selected horizon compared with unrestricted cash of 40 and confirmed usable capacity of 30 leaves a funding difference of −20 before required spending. Do not add a spillover-tax balance or an unconfirmed facility extension to close that gap. Exact dates and legal availability matter independently of the income comparison."
+      }
+    ],
+    "table": {
+      "headers": [
+        "Synthetic full-year branch",
+        "Debt only",
+        "Equity-assisted"
+      ],
+      "rows": [
+        [
+          "New debt principal",
+          "300",
+          "251"
+        ],
+        [
+          "New interest at 6%",
+          "18",
+          "15.06"
+        ],
+        [
+          "Increment versus embedded 9",
+          "9",
+          "6.06"
+        ],
+        [
+          "Modeled NII",
+          "111",
+          "113.94"
+        ],
+        [
+          "Common shares, million",
+          "50",
+          "52.5"
+        ],
+        [
+          "NII per share",
+          "2.22",
+          "2.170286"
+        ],
+        [
+          "Distributions at 2.20/share",
+          "110",
+          "115.5"
+        ],
+        [
+          "Income / common distributions",
+          "1.009091×",
+          "0.986494×"
+        ]
+      ]
+    },
+    "example": {
+      "heading": "Synthetic: total income can improve while per-share income falls",
+      "text": "The equity branch saves 49 × 6% = 2.94 of annual new interest relative to debt-only funding. Adding 2.94 to 111 gives 113.94. But 113.94 / 52.5 is lower than 111 / 50. The extra 2.5 million shares also require 5.5 of annual common distributions at the assumed 2.20 rate. These are matched full-year calculations. They do not measure statutory leverage, NAV accretion, market reaction or a return on any future assets. A transaction can benefit liquidity or capital flexibility even while its immediate per-share earnings arithmetic is dilutive."
+    },
+    "pitfall": "Using gross equity proceeds to repay debt, forgetting new common distributions or comparing a partial-year expense with a full-year share count.",
+    "checklist": [
+      "Identify interest already present in baseline income.",
+      "Retain issue price, costs, net proceeds and new shares.",
+      "Match the income period and distribution share base.",
+      "Verify facility expiry and cash restrictions in a separate dated bridge."
+    ],
+    "related": [
+      "learn-bdc-expert-credit-memo",
+      "learn-bdc-rates-floors",
+      "learn-bdc-leverage-coverage"
+    ],
+    "sources": [
+      {
+        "title": "Ares Capital January 2025 filed financing prospectus: instrument terms and claims — historical example",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000110465925000820/arcc-20250102xn2.htm"
+      },
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      },
+      {
+        "title": "Ares Capital March 2026 results: statement and reconciliation format — not example data",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000162828026027685/arccq1-2026exhibit991.htm"
+      }
+    ],
+    "exercise": {
+      "question": "Assume no equity issue and the new rate is 5% instead of 6%. What are incremental interest, NII and NII per share?",
+      "answer": "New annual interest is 300 × 5% = 15. The increment above the embedded 9 is 6; NII becomes 114 and NII per share 114/50 = 2.28. This branch still excludes fees, hedges and timing changes."
+    },
+    "quiz": [
+      {
+        "question": "Why can the equity-assisted branch have higher total NII but lower NII per share?",
+        "options": [
+          "New shares expand the denominator as well as reducing debt",
+          "Common distributions are an interest expense",
+          "Issuance fees create earnings automatically"
+        ],
+        "answer": 0,
+        "explanation": "The reduction in debt interest must be compared with the additional common-share denominator on a matching time basis."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  },
+  {
+    "slug": "learn-bdc-expert-credit-memo",
+    "title": "Expert workshop: write a BDC credit and distribution memo that can be challenged",
+    "description": "Integrate income quality, portfolio losses, leverage and liquidity while separating established facts, analytical scenarios and unresolved evidence.",
+    "category": "BDC expert workshops",
+    "level": "Expert",
+    "prerequisites": [
+      "learn-bdc-expert-income-bridge",
+      "learn-bdc-expert-nav-bridge",
+      "learn-bdc-expert-refinancing",
+      "learn-bdc-dividends-tax"
+    ],
+    "learning_objectives": [
+      "Create a reproducible evidence ledger with source and assumption boundaries.",
+      "Connect portfolio concentration and cash needs without duplicating exposures.",
+      "Write competing interpretations and a falsifiable next-disclosure test."
+    ],
+    "sections": [
+      {
+        "heading": "Write the question and the evidence perimeter first",
+        "text": "A useful memo begins with a bounded question, such as whether an unchanged common distribution fits the next year's stated income and funding assumptions. It does not begin with a desired rating. Record the actual issuer, form, accession, fiscal period, currency, scale, share class and review date for a real assignment. Here every figure is synthetic and there is no live issuer conclusion. Separate disclosed observations, derived arithmetic and analyst judgments into three columns. Add a fourth for unresolved information so that an unverified PIK amount, borrowing-base limit or sponsor guarantee cannot quietly become an input."
+      },
+      {
+        "heading": "Connect income quality with credit exposure without equating them",
+        "text": "Assume annual NII of 120, included PIK of 18 and total common distributions of 115. Reported coverage is 1.043478×. A simple 50% PIK deduction produces 111 and coverage of 0.965217×, with all other items unchanged. Separately, suppose common equity is 1,000 and a proposed credit-mark stress reduces asset values by 50, leaving equity of 950 before other effects. Do not subtract that entire mark again from the NII sensitivity unless a defined accounting adjustment enters income. Recognition quality, valuation loss and cash collection are linked analytical questions but are not the same line in a model."
+      },
+      {
+        "heading": "Map concentration, structure and liquidity as different layers",
+        "text": "List borrower and industry exposures, and distinguish multiple facilities to the same borrower from separate economic risks. First-lien or unitranche labels do not eliminate concentration, collateral weaknesses or differences in payment priority. A sponsor relationship is not a guarantee unless the contract says so. At the BDC level, debt of 800 against equity of 1,000 is 0.8× descriptively; after the isolated 50 mark it becomes 800/950 = 0.842105×. That is not a statutory asset-coverage test. A separate horizon with cash 40, confirmed facility 30, maturities 90 and required spending 10 has a −30 residual under the stated availability assumptions."
+      },
+      {
+        "heading": "End with an opposing case and an observable revision rule",
+        "text": "The stronger interpretation might be that current coverage is narrow once one noncash component is stressed. The counterargument might be that PIK is contractual, borrowers are paying as agreed, fees normalize and the distribution also reflects a documented tax timetable. Neither interpretation wins by assertion. Specify the next evidence: realized cash collections, non-accrual migration, a position-level valuation bridge, updated fee terms or confirmed facility availability. State which result would weaken each interpretation. A memo should retain its original dated facts when later information arrives, add a revision record and avoid turning an evidence gap into an accusation."
+      }
+    ],
+    "table": {
+      "headers": [
+        "Synthetic analytical layer",
+        "Calculation",
+        "What it does not establish"
+      ],
+      "rows": [
+        [
+          "Reported accounting coverage",
+          "120 / 115 = 1.043478×",
+          "Cash collection or principal preservation"
+        ],
+        [
+          "Frozen-item 50% PIK sensitivity",
+          "(120 − 9) / 115 = 0.965217×",
+          "Cash earnings or default probability"
+        ],
+        [
+          "Isolated common-equity mark",
+          "1,000 − 50 = 950",
+          "A second deduction from NII"
+        ],
+        [
+          "Descriptive debt/equity after mark",
+          "800 / 950 = 0.842105×",
+          "Statutory or covenant compliance"
+        ],
+        [
+          "Dated liquidity after required spending",
+          "40 + 30 − 90 − 10 = −30",
+          "Automatic insolvency or dividend-cut prediction"
+        ]
+      ]
+    },
+    "example": {
+      "heading": "Synthetic: a memo conclusion with a testable boundary",
+      "text": "A defensible statement is: under the stated frozen-expense 50% PIK assumption, income coverage falls below one; separately, the specified funding horizon has a 30 resource gap if no additional permitted sources are established. That statement is conditional and does not declare a default or recommend a trade. A stronger cash-collection record, a verified eligible funding source or different fee mechanics could change the analysis. A lower share price alone would not fill the cash gap or validate the accounting assumptions. Keep the sources, scenario version and unanswered questions attached when sharing the memo."
+    },
+    "pitfall": "Combining a valuation mark, lost interest, non-accrual exposure and a liquidity deficit into one undifferentiated loss number.",
+    "checklist": [
+      "Separate reported facts, derived values, assumptions and unknowns.",
+      "Reconcile borrower, portfolio, corporate and shareholder perimeters.",
+      "Name at least one credible alternative interpretation.",
+      "Specify the next disclosure and the result that would change the conclusion."
+    ],
+    "related": [
+      "learn-bdc-expert-income-bridge",
+      "learn-bdc-expert-nav-bridge",
+      "learn-bdc-expert-refinancing"
+    ],
+    "sources": [
+      {
+        "title": "SEC: How to Read a 10-K — statements, notes and issuer responsibility",
+        "url": "https://www.sec.gov/answers/reada10k.htm"
+      },
+      {
+        "title": "Ares Capital original 2025 Form 10-K: historical definitions, not current issuer data; check amendments and later filings",
+        "url": "https://www.sec.gov/Archives/edgar/data/1287750/000128775026000006/arcc-20251231.htm"
+      },
+      {
+        "title": "Main Street September 2025 Form 10-Q: PIK and non-accrual accounting policies — historical definitions",
+        "url": "https://www.mainstcapital.com/investors/sec-filings/all-sec-filings/content/0001396440-25-000184/0001396440-25-000184.pdf"
+      },
+      {
+        "title": "Horizon Technology Finance 2025 financial highlights: tax/GAAP and spillover explanation, footnote 1",
+        "url": "https://www.sec.gov/Archives/edgar/data/1487428/000143774926006636/R68.htm"
+      }
+    ],
+    "exercise": {
+      "question": "If a later filing reports cash collection of the previously stressed PIK, should the old memo be silently replaced with a stronger conclusion?",
+      "answer": "No. Preserve the original dated assumptions and add a revision explaining the new evidence, its period and which scenario changes. Collection may alter one branch while other credit, tax or liquidity questions remain."
+    },
+    "quiz": [
+      {
+        "question": "A conclusion is most useful when it:",
+        "options": [
+          "Converts every unknown into a zero",
+          "Names the evidence that would weaken or change it",
+          "Omits the opposing case to sound decisive"
+        ],
+        "answer": 1,
+        "explanation": "A reproducible memo states its limits and a revision rule rather than presenting a conditional calculation as certainty."
+      }
+    ],
+    "track": "BDC",
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
+  }
+]

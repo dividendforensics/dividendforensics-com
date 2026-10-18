@@ -98,6 +98,7 @@ class PublicCopyTests(unittest.TestCase):
                 relative=url.path.lstrip('/') or 'index.html'
                 self.assertNotIn('..',Path(relative).parts)
                 target=ROOT/relative
+                if target.is_dir():target=target/'index.html'
                 self.assertTrue(target.is_file())
                 text=target.read_text(encoding='utf-8')
                 canonical=re.search(r'<link\s+rel="canonical"\s+href="([^"]+)"',text)

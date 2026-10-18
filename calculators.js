@@ -10,92 +10,129 @@
  */
 (function (root) {
   'use strict';
-  function calculate(kind, v) {
-    if (Object.values(v).some(x => !Number.isFinite(x))) throw new Error('Enter a finite number in every field.');
-    if (['nav', 'refinancing'].includes(kind) && !(v.shares > 0)) throw new Error('Common shares must be greater than zero.');
-    if (kind === 'nav' && !(v.cap > 0)) throw new Error('Capitalization rate must be greater than zero.');
-    if (kind === 'return' && !(v.start > 0)) throw new Error('Purchase price must be greater than zero.');
-    if (kind === 'return' && (v.buyFees < 0 || v.sellFees < 0)) throw new Error('Fees cannot be negative.');
-    if (kind === 'payout' && (v.dividend < 0 || v.decline < 0 || v.decline > 100)) throw new Error('Use a nonnegative dividend and an AFFO decline from 0 to 100%.');
-    if (kind === 'reinvestment' && (!Number.isInteger(v.years) || v.years < 1 || v.years > 50)) throw new Error('Enter a whole number of years from 1 to 50.');
-    const rate = (v.yield || 0) / 100 * (1 - (v.tax || 0) / 100);
+  const Decimal = typeof module === 'object' && module.exports ? require('./vendor/decimal.js/decimal.js') : root.Decimal;
+  if (!Decimal) {
+    if (typeof document !== 'undefined') document.querySelectorAll('[data-calculator]').forEach(form => {
+      const output=form.closest('.calculator-layout').querySelector('[data-result]');
+      output.textContent='This cached page needs the current calculation library. Reload this page before calculating.';
+      form.addEventListener('submit',event=>event.preventDefault());
+      form.querySelector('[type=submit]').disabled=true;
+    });
+    return;
+  }
+  // Each operation uses decimal inputs. Display conversion never feeds the model.
+  const D = Decimal.clone({precision:80,rounding:Decimal.ROUND_HALF_UP});
+  const VERSION='original-1.1.0';
+  const FIELDS={income:['capital','yield','tax','target'],reinvestment:['capital','contribution','yield','tax','years'],payout:['affo','dividend','decline'],bridge:['net','depreciation','gains','ffoOther','capex','rent','affoOther'],nav:['noi','cap','debt','cash','shares'],refinancing:['principal','old','new','shares'],return:['start','end','dividends','buyFees','sellFees']};
+  function decimal(value) {
+    if (!['string','number'].includes(typeof value) || String(value).trim()==='' || String(value).length>512) throw Error('Enter a finite number in every field.');
+    const raw=String(value).trim(), syntax=raw.match(/^[+-]?(?:\d+\.?\d*|\.\d+)(?:e([+-]?\d+))?$/i);
+    if(!syntax || syntax[1] && Math.abs(Number(syntax[1]))>10000) throw Error('Enter a finite decimal number; exponent magnitude cannot exceed 10000.');
+    let d;
+    try { d=new D(raw); } catch (_) { throw Error('Enter a finite number in every field.'); }
+    if(!d.isFinite()) throw Error('Enter a finite number in every field.');
+    return d;
+  }
+  function exported(value) {
+    if(!D.isDecimal(value)) return value;
+    if(value.isZero()) return 0;
+    const n=value.toNumber();
+    if(!Number.isFinite(n)) throw Error('These inputs produce a result too large to display. Reduce the assumptions.');
+    // Preserve real values below the Number range; never flatten them to zero.
+    return n===0 ? value.toString() : n;
+  }
+  function calculate(kind, input) {
+    if(!FIELDS[kind]) throw Error('Unknown calculator.');
+    const v=Object.fromEntries(FIELDS[kind].map(key=>[key,decimal(input[key])]));
+    if (['nav', 'refinancing'].includes(kind) && !v.shares.gt(0)) throw new Error('Common shares must be greater than zero.');
+    if (kind === 'nav' && !v.cap.gt(0)) throw new Error('Capitalization rate must be greater than zero.');
+    if (kind === 'return' && !v.start.gt(0)) throw new Error('Purchase price must be greater than zero.');
+    if (kind === 'return' && (v.buyFees.lt(0) || v.sellFees.lt(0))) throw new Error('Fees cannot be negative.');
+    if (kind === 'payout' && (v.dividend.lt(0) || v.decline.lt(0) || v.decline.gt(100))) throw new Error('Use a nonnegative dividend and an AFFO decline from 0 to 100%.');
+    if (kind === 'reinvestment' && (!v.years.isInteger() || v.years.lt(1) || v.years.gt(50))) throw new Error('Enter a whole number of years from 1 to 50.');
+    const rate = (v.yield || new D(0)).div(100).times(new D(1).minus((v.tax || new D(0)).div(100)));
     let metrics = [], columns = [], rows = [], note = '';
     const m = (label, value, format = 'number') => ({ label, value, format });
     switch (kind) {
       case 'income': {
-        const gross = v.capital * v.yield / 100, net = v.capital * rate;
-        metrics = [m('Annual gross distributions', gross), m('Annual after-withholding income', net), m('Monthly equivalent', net / 12), m('Capital for monthly target', v.target === 0 ? 0 : rate > 0 ? v.target * 12 / rate : null)];
+        const gross = v.capital.times(v.yield).div(100), net = v.capital.times(rate);
+        metrics = [m('Annual gross distributions', gross), m('Annual after-withholding income', net), m('Monthly equivalent', net.div(12)), m('Capital for monthly target', v.target.isZero() ? new D(0) : rate.gt(0) ? v.target.times(12).div(rate) : null)];
         columns = ['Yield scenario', 'Gross annual', 'After withholding'];
-        rows = [0.75, 1, 1.25].map(f => [(v.yield * f).toFixed(2) + '%', gross * f, net * f]);
+        rows = ['0.75','1','1.25'].map(f => [v.yield.times(f).toFixed(2) + '%', gross.times(f), net.times(f)]);
         note = 'Income scenarios assume unchanged capital. A target result shown as Not defined means a positive target cannot be funded at zero after-withholding yield. Figures do not include price change.';
         break;
       }
       case 'reinvestment': {
-        let balance = v.capital, earned = 0;
+        let balance = v.capital, earned = new D(0);
         columns = ['Year', 'Total contributed', 'Reinvested income', 'Ending balance'];
-        for (let month = 1; month <= v.years * 12; month++) {
-          const income = balance * rate / 12;
-          earned += income;
-          balance += income + v.contribution;
-          if (month % 12 === 0) rows.push([String(month / 12), v.capital + v.contribution * month, earned, balance]);
+        for (let month = 1; month <= v.years.toNumber() * 12; month++) {
+          const income = balance.times(rate).div(12);
+          earned = earned.plus(income);
+          balance = balance.plus(income).plus(v.contribution);
+          if (month % 12 === 0) rows.push([String(month / 12), v.capital.plus(v.contribution.times(month)), earned, balance]);
         }
-        metrics = [m('Modeled ending balance', balance), m('Total contributed', v.capital + v.contribution * v.years * 12), m('Reinvested income', earned)];
+        metrics = [m('Modeled ending balance', balance), m('Total contributed', v.capital.plus(v.contribution.times(v.years).times(12))), m('Reinvested income', earned)];
         note = 'Constant yield, monthly reinvestment, contributions at month-end. No price changes or fees are modeled. This is not a forecast.';
         break;
       }
       case 'payout': {
-        const stressed = v.affo - Math.abs(v.affo) * v.decline / 100;
-        metrics = [m('Current payout', v.affo > 0 ? v.dividend / v.affo * 100 : null, 'percent'), m('Current coverage', v.affo > 0 && v.dividend > 0 ? v.affo / v.dividend : null, 'multiple'), m('Stressed payout', stressed > 0 ? v.dividend / stressed * 100 : null, 'percent'), m('Stressed per-share cushion', stressed - v.dividend)];
+        const stressed = v.affo.minus(v.affo.abs().times(v.decline).div(100));
+        metrics = [m('Current payout', v.affo.gt(0) ? v.dividend.div(v.affo).times(100) : null, 'percent'), m('Current coverage', v.affo.gt(0) && v.dividend.gt(0) ? v.affo.div(v.dividend) : null, 'multiple'), m('Stressed payout', stressed.gt(0) ? v.dividend.div(stressed).times(100) : null, 'percent'), m('Stressed per-share cushion', stressed.minus(v.dividend))];
         columns = ['Scenario', 'AFFO per share', 'Dividend per share', 'Remaining cushion'];
-        rows = [['Base', v.affo, v.dividend, v.affo - v.dividend], ['Selected decline (' + v.decline + '%)', stressed, v.dividend, stressed - v.dividend]];
+        rows = [['Base', v.affo, v.dividend, v.affo.minus(v.dividend)], ['Selected decline (' + v.decline.toString() + '%)', stressed, v.dividend, stressed.minus(v.dividend)]];
         note = 'Payout and coverage are not meaningful with zero or negative AFFO and are shown as Not defined. Coverage is undefined at zero dividends. The downside scenario subtracts the selected percentage of the absolute AFFO amount, so a negative AFFO becomes more negative; zero stays zero. Cash cushions remain visible and do not predict a cut.';
         break;
       }
       case 'bridge': {
-        const ffo = v.net + v.depreciation - v.gains + v.ffoOther, affo = ffo - v.capex - v.rent + v.affoOther;
-        metrics = [m('Simplified FFO', ffo), m('Modeled AFFO', affo), m('Net FFO-to-AFFO adjustment', affo - ffo)];
+        const ffo = v.net.plus(v.depreciation).minus(v.gains).plus(v.ffoOther), affo = ffo.minus(v.capex).minus(v.rent).plus(v.affoOther);
+        metrics = [m('Simplified FFO', ffo), m('Modeled AFFO', affo), m('Net FFO-to-AFFO adjustment', affo.minus(ffo))];
         columns = ['Bridge line', 'Amount'];
-        rows = [['Common net income', v.net], ['Real-estate D&A add-back', v.depreciation], ['Qualifying sale gains deduction', -v.gains], ['Other FFO adjustments', v.ffoOther], ['Simplified FFO', ffo], ['Recurring capex deduction', -v.capex], ['Straight-line rent deduction', -v.rent], ['Other AFFO adjustments', v.affoOther], ['Modeled AFFO', affo]];
+        rows = [['Common net income', v.net], ['Real-estate D&A add-back', v.depreciation], ['Qualifying sale gains deduction', v.gains.negated()], ['Other FFO adjustments', v.ffoOther], ['Simplified FFO', ffo], ['Recurring capex deduction', v.capex.negated()], ['Straight-line rent deduction', v.rent.negated()], ['Other AFFO adjustments', v.affoOther], ['Modeled AFFO', affo]];
         note = 'All amounts retain your chosen currency and scale. This teaching bridge does not define any issuer’s AFFO or replace a full Nareit reconciliation.';
         break;
       }
       case 'nav': {
-        const property = v.noi / (v.cap / 100), equity = property + v.cash - v.debt;
-        metrics = [m('Property value (millions)', property), m('Common equity NAV (millions)', equity), m('NAV per share', equity / v.shares)];
+        const property = v.noi.div(v.cap.div(100)), equity = property.plus(v.cash).minus(v.debt);
+        metrics = [m('Property value (millions)', property), m('Common equity NAV (millions)', equity), m('NAV per share', equity.div(v.shares))];
         columns = ['Cap-rate scenario', 'Property value (m)', 'Equity NAV (m)', 'NAV per share'];
-        rows = [...new Set([Math.max(0.01, v.cap - 1), v.cap, Math.min(100, v.cap + 1)])].map(cap => {
-          const pv = v.noi / (cap / 100), ev = pv + v.cash - v.debt;
-          return [cap.toFixed(2) + '%', pv, ev, ev / v.shares];
+        const scenarios=[D.max('0.01',v.cap.minus(1)),v.cap,D.min(100,v.cap.plus(1))];
+        rows = [...new Map(scenarios.map(cap=>[cap.toString(),cap])).values()].map(cap => {
+          const pv = v.noi.div(cap.div(100)), ev = pv.plus(v.cash).minus(v.debt);
+          return [cap.toFixed(2) + '%', pv, ev, ev.div(v.shares)];
         });
         note = 'Negative equity values remain visible. Cap-rate scenarios hold NOI and every other assumption constant; they are not appraisals.';
         break;
       }
       case 'refinancing': {
-        const oldCost = v.principal * v.old / 100, newCost = v.principal * v.new / 100;
-        metrics = [m('Old annual interest (millions)', oldCost), m('New annual interest (millions)', newCost), m('Annual expense change (millions)', newCost - oldCost), m('Expense change per common share', (newCost - oldCost) / v.shares, 'precise')];
+        const oldCost = v.principal.times(v.old).div(100), newCost = v.principal.times(v.new).div(100), change = newCost.minus(oldCost);
+        metrics = [m('Old annual interest (millions)', oldCost), m('New annual interest (millions)', newCost), m('Annual expense change (millions)', change), m('Expense change per common share', change.div(v.shares), 'precise')];
         note = 'Positive change means higher expense; negative means savings. Full-year, constant-principal sensitivity before fees, hedges and other effects.';
         break;
       }
       case 'return': {
-        const initial = v.start + v.buyFees;
-        const price = (v.end - v.start) / initial * 100, income = v.dividends / initial * 100, fees = (v.buyFees + v.sellFees) / initial * 100;
-        metrics = [m('Holding-period total return', price + income - fees, 'percent'), m('Price return component', price, 'percent'), m('Cash distribution component', income, 'percent'), m('Fee drag', fees, 'percent')];
+        const initial = v.start.plus(v.buyFees);
+        const price = v.end.minus(v.start).div(initial).times(100), income = v.dividends.div(initial).times(100), fees = v.buyFees.plus(v.sellFees).div(initial).times(100);
+        // Calculate the return from its decimal cash numerator, not rounded components.
+        const total=v.end.minus(v.start).plus(v.dividends).minus(v.buyFees).minus(v.sellFees).div(initial).times(100);
+        metrics = [m('Holding-period total return', total, 'percent'), m('Price return component', price, 'percent'), m('Cash distribution component', income, 'percent'), m('Fee drag', fees, 'percent')];
         note = 'Holding-period result, not annualized. All components divide by initial cost including purchase fees. No reinvestment or interim purchases. Tax and currency effects are not calculated.';
         break;
       }
-      default: throw new Error('Unknown calculator.');
     }
-    if (metrics.some(x => x.value !== null && !Number.isFinite(x.value)) || rows.some(row => row.some(x => typeof x === 'number' && !Number.isFinite(x)))) throw new Error('These inputs produce a result too large to display. Reduce the assumptions.');
-    return { metrics, columns, rows, note };
+    return { metrics:metrics.map(m=>({...m,value:exported(m.value)})), columns, rows:rows.map(row=>row.map(exported)), note, formulaVersion:VERSION };
   }
   function format(x, type = 'number') {
     if (x === null) return 'Not defined';
-    const digits = type === 'precise' ? 4 : 2;
-    const small = x !== 0 && Math.abs(x) < 0.5 * 10 ** -digits;
-    const number = small ? (Math.abs(x) < 1e-6 ? x.toExponential(3) : x.toLocaleString('en-US', { maximumSignificantDigits: 4 })) : x.toLocaleString('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits });
-    return number + (type === 'percent' ? '%' : type === 'multiple' ? '×' : '');
+    const d=decimal(x), digits = type === 'precise' ? 4 : 2;
+    const small=!d.isZero() && d.abs().lt(new D('0.5').times(new D(10).pow(-digits)));
+    let shown;
+    if(small) shown=d.abs().lt('0.000001') ? d.toExponential(3) : d.toSignificantDigits(4).toFixed();
+    // Group only the integer part; the decimal fraction must stay untouched.
+    if(!small){const [whole,fraction]=d.toFixed(digits).split('.');shown=whole.replace(/\B(?=(\d{3})+(?!\d))/g,',')+'.'+fraction;}
+    return shown + (type === 'percent' ? '%' : type === 'multiple' ? '×' : '');
   }
   if (typeof module !== 'undefined' && module.exports) module.exports = { calculate, format };
+  else root.DFBOriginal = { calculate, format };
   if (typeof document === 'undefined') return;
   function el(tag, text, className) { const n = document.createElement(tag); if (text !== undefined) n.textContent = text; if (className) n.className = className; return n; }
   document.querySelectorAll('[data-calculator]').forEach(form => {
@@ -105,7 +142,7 @@
       error.hidden = true;
       if (!form.checkValidity()) { output.replaceChildren(el('p', 'Correct the highlighted inputs, then calculate again.')); form.reportValidity(); return; }
       try {
-        const v = Object.fromEntries([...form.querySelectorAll('input')].map(input => [input.name, input.valueAsNumber]));
+        const v = Object.fromEntries([...form.querySelectorAll('input')].map(input => [input.name, input.value]));
         current = calculate(form.dataset.calculator, v);
         output.replaceChildren();
         const dl = el('dl', undefined, 'result-metrics');
@@ -115,7 +152,7 @@
           const wrap = el('div', undefined, 'table-scroll'), table = el('table'), head = el('thead'), tr = el('tr');
           wrap.tabIndex = 0; wrap.setAttribute('role', 'region'); wrap.setAttribute('aria-label', 'Scrollable scenario details');
           table.append(el('caption', 'Scenario details')); current.columns.forEach(label => { const th = el('th', label); th.scope = 'col'; tr.append(th); }); head.append(tr); table.append(head);
-          const tbody = el('tbody'); current.rows.forEach(row => { const tr = el('tr'); row.forEach(value => tr.append(el('td', typeof value === 'number' ? format(value) : value))); tbody.append(tr); }); table.append(tbody); wrap.append(table); output.append(wrap);
+          const tbody = el('tbody'); current.rows.forEach(row => { const tr = el('tr'); row.forEach(value => tr.append(el('td', typeof value === 'number' || typeof value === 'string' && /^[-+]?\d+(?:\.\d+)?e[-+]\d+$/i.test(value) ? format(value) : value))); tbody.append(tr); }); table.append(tbody); wrap.append(table); output.append(wrap);
         }
         const download = el('button', 'Download this scenario (CSV)', 'btn btn-s'); download.type = 'button';
         download.addEventListener('click', () => {
