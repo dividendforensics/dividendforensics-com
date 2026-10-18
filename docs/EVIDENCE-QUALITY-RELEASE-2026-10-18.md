@@ -32,7 +32,23 @@
 - 집중 계산기 검사 5개: 작은 ±값·정확한 0·CSV 실제 다운로드/재입력·unknown 보존·3언어 키보드 오류 복구, JS 오류·실제 폼 제출 0.
 - 별도 에이전트의 신규 실습 3페이지 × 3폭 no-JS 점검과 원문·산술·메타 교차 검토 완료. 위 통합 수치에 에이전트 검사를 중복 합산하지 않음.
 
-CI와 배포 결과는 완료 후 아래에 고정 커밋과 함께 추가한다. 과거 PR 테스트 수치를 이번 실행으로 간주하지 않는다.
+### GitHub CI·배포·공개 응답 완료
+
+- [PR #14](https://github.com/dividendforensics/dividendforensics-com/pull/14) 병합 완료. 검증한 PR head는 `c6aae16a0188afa3f881e11aca91404efbd9aca7`, 제품 병합 커밋은 `acc84c6d95bfbf4acce2ebb20ebe4fc6e3c49802`이다. 두 커밋의 제품 트리는 `ffb59bf315b6e1a1a2fe216013f60496a9834b25`로 같다.
+- [전체 CI 39122606345](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39122606345) 성공. 작업 `117661071546`의 실제 로그에서 Python 142개·Node 77개, 전체 140페이지 × 320/390/768/1024/1440px = **700회 렌더** 통과를 확인했다. 가로 넘침·깨진 이미지 0건이며, 검색·필터·모바일 메뉴·키보드·no-JS 읽기 등 지정된 기능 검사도 통과했다. 이는 실폰·스크린리더 검증을 뜻하지 않는다.
+- 같은 CI에서 20개 계산기의 스크립트/라이브러리 실패 조건 **65개** 입력 차단과 사용자 동작 후 요청 0건, 새 계산기 품질 검사, 실습→계산기 전환, 다국어 검사도 통과했다. 각 세부 브라우저 검사는 700회 전체 렌더와 별도 실행이며 수치를 합쳐 부풀리지 않는다.
+- [Build and publish 39123357661](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39123357661) 성공, [최종 Pages 배포 39123381865](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39123381865) 성공. 같은 제품 커밋을 배포했다. 앞서 시작된 Pages 작업 `39123357431`은 후속 배포로 대체되어 취소됐으며 최종 배포 실패가 아니다.
+- 배포 후 `python tools/verify_deployment.py --attempts 2 --interval 20 --output .qa/pr14-live.json` 실행: 첫 조회에서 **162/162 HTTP 200 및 저장본 일치**, 실패 0건. 일반 canonical URL을 사용했으며 캐시 우회 응답으로 합격시키지 않았다. 비교는 줄바꿈을 LF로 정규화하고 양끝 공백을 제거한 본문 기준이며 원시 바이트 동일성 주장은 아니다.
+- 현재 활성 HTML은 **140개**, 검색에 포함하도록 구성한 사이트맵은 **128개 URL**이다. 실제 Google 색인 완료 개수와 다르다. SEO 오류 0건, 남은 권고는 기존 BDC 신용 메모 제목 86자와 Research Desk 설명 214자의 검색 표시 길이 2건이다. 고정 글자 수가 순위 기준이라는 뜻은 아니다.
+- AdSense 소유권 메타와 `ads.txt`의 `pub-3030006828946894`는 유지했다. 실제 광고·분석 스크립트나 새 동의 플랫폼은 활성화하지 않았다.
+
+공개 결과:
+
+- [실제 공시 실습 허브](https://dividendforensics.com/filing-labs.html)
+- [Realty Income FY2024 FFO·AFFO·배당 실습](https://dividendforensics.com/filing-lab-realty-income-2024.html)
+- [Ares Capital FY2024 NII·PIK·배당 실습](https://dividendforensics.com/filing-lab-ares-capital-2024.html)
+
+소스 원장에는 공시 입력값 **55개**의 출처, 표 위치, 단위, 기간, 공시 공개일을 기록했다. FY2024 역사적 교육 사례이며 현재 기업 상태나 투자 추천으로 제시하지 않는다. 이 문서의 완료 기록은 제품 배포 후 별도 문서 커밋으로 저장한다. 과거 PR 테스트 숫자나 외부 AI의 PASS 문구를 이번 실행 결과로 합산하지 않았다.
 
 ## 이번 작업이 확인하지 않는 것
 
