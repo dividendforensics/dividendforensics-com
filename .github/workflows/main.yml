@@ -11,6 +11,7 @@ on:
       - 'articles.json'
       - 'build_site.py'
       - 'education.py'
+      - 'research_resources.py'
       - 'bdc_education.py'
       - 'localized.py'
       - 'es/**'

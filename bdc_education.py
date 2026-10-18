@@ -120,6 +120,9 @@ def article_page(root, a, lookup):
         body+=f'<nav class="wrap education-section" aria-label="Learning sequence"><a class="btn btn-p" href="/{next_slug}.html">Next lesson: {E(lookup[next_slug]["title"])} →</a></nav>'
     body+='<section class="wrap education-section"><div class="section-heading"><h2>Continue the BDC route.</h2><a class="text-link" href="/learn-bdc.html">All BDC guides →</a></div><div class="lesson-grid">'+cards([lookup[s] for s in a['related']])+'</div></section>'
     body+=research_links(root)
+    if a['slug'] in ('learn-bdc-basics','learn-bdc-read-filings','learn-bdc-dividends-tax'):
+        from research_resources import resource_cards
+        body+=resource_cards()
     return shell(root,a['slug']+'.html',a['title'],a['description'],body,'Article',article=a)
 
 
@@ -133,6 +136,8 @@ def outputs(root):
     cats=sorted({a['category'] for a in articles})
     body+='<section class="wrap education-section" id="library"><div class="section-heading"><h2>Find your next BDC question.</h2></div><div class="library-filters" data-library-controls hidden><label>Search BDC guides<input id="lesson-search" type="search" placeholder="NII, PIK, fees, non-accrual…"></label><label>Subject<select id="lesson-category"><option value="all">All subjects</option>'+''.join(f'<option>{E(c)}</option>' for c in cats)+'</select></label><label>Level<select id="lesson-level"><option value="all">All levels</option>'+''.join(f'<option>{l["name"]}</option>' for l in LEVELS)+'</select></label><button id="lesson-reset" type="button" class="btn btn-s">Clear filters</button><p id="lesson-count" aria-live="polite">'+str(len(articles))+' guides</p></div><p id="lesson-empty" hidden>No guides match. Clear the filters or use a shorter term.</p><noscript><p>All guides below remain readable without JavaScript.</p></noscript><div class="lesson-grid">'+cards(articles)+'</div></section>'
     body+=research_links(root)
+    from research_resources import resource_cards
+    body+=resource_cards()
     output[root/'learn-bdc.html']=shell(root,'learn-bdc.html','BDC learning center: NII, PIK, credit risk & filing workshops','Study BDCs through four free learning levels, with source-backed guides, worked examples, quizzes and related calculators.',body,'CollectionPage')
     for i,l in enumerate(LEVELS):
         lessons=[a for a in articles if a['level']==l['name']]
