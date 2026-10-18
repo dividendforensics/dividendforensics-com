@@ -26,7 +26,7 @@ def targets(root=ROOT):
               'capital-calculators.js', 'proposal.js', 'calculators.js',
               'vendor/decimal.js/decimal.js', 'vendor/decimal.js/LICENCE.md',
               'vendor/decimal.js/package.json', 'vendor/manifest.json',
-              'research-desk.css', 'spanish-calculators.js', 'sitemap.xml', 'robots.txt', 'Refund.html', 'ads.txt', 'research-resources.css', 'research-worksheet.js']
+              'research-desk.css', 'spanish-calculators.js', 'sitemap.xml', 'robots.txt', 'Refund.html', 'ads.txt', 'research-resources.css', 'research-worksheet.js', 'lesson-formats.css']
     return pages + assets
 
 

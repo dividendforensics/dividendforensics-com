@@ -155,7 +155,9 @@ def article_page(root,a,lookup):
     if a['slug'] in ('learn-reit-basics','learn-read-filings','learn-yield-total-return'):
         from research_resources import resource_cards
         body+=resource_cards()
-    return shell(root,a['slug']+'.html',a['title'],a['description'],body,'Article',article=a)
+    from lesson_formats import compose
+    body = compose(body, a)
+    return shell(root,a['slug']+'.html',a['title'],a['description'],body,'Article',article=a,extra='<link rel="stylesheet" href="/lesson-formats.css">')
 
 def hub(root,articles):
     from curriculum import level_cards,LEVELS

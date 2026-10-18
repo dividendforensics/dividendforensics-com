@@ -1,0 +1,78 @@
+/* Six reading structures. Shared branding, topic-specific pacing. */
+.lesson-edition{--edition-ink:#153440;--edition-accent:#76532d}
+.lesson-edition .format-label{font:600 12px/1.4 Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--edition-accent);margin:0 0 20px}
+.lesson-edition .education-heading{padding-top:36px;padding-bottom:20px}
+.lesson-edition .education-heading h1{font-size:clamp(36px,4.5vw,66px);max-width:950px}
+.lesson-edition .article-meta{padding-bottom:24px}
+.lesson-jump-menu{padding-top:18px;padding-bottom:20px;border-top:1px solid #c8c5b9;border-bottom:1px solid #c8c5b9;margin-bottom:40px}
+.lesson-jump-menu ol{display:flex;flex-wrap:wrap;gap:10px 24px;list-style:none;padding:0;margin:10px 0;font-size:13px;line-height:1.5}
+.lesson-jump-menu a{text-underline-offset:4px}
+.lesson-jump-menu>.text-link{display:inline-block;margin-top:10px}
+.lesson-edition .edition-layout{display:block;margin-bottom:60px}
+.lesson-edition article.lesson-body{max-width:none;min-width:0}
+.lesson-edition .lesson-body>section{max-width:800px;margin:0 auto;padding:32px 0}
+.lesson-edition .lesson-body p{font-size:17px;line-height:1.85}
+.lesson-edition .lesson-body h2{font-size:clamp(25px,2.5vw,35px);line-height:1.2;margin:0 0 18px}
+.lesson-edition .section-index{display:none;font:500 12px/1.5 Arial,sans-serif;letter-spacing:.12em;color:#76532d;margin-bottom:14px}
+.lesson-edition .lesson-body>.worked-example,.lesson-edition .lesson-body>.pitfall{padding:30px;margin-top:24px;margin-bottom:24px}
+.lesson-edition #source-notes{border-top:2px solid #87999d;margin-top:42px}
+.lesson-edition .concept-illustration{max-width:800px;margin:24px auto 36px}
+.lesson-edition .concept-illustration figure{margin:0}
+.lesson-edition .concept-illustration img{max-height:440px;object-fit:contain}
+.edition-concept .editorial-section:first-of-type p{font-size:21px;line-height:1.8}
+.edition-concept .editorial-section:first-of-type{border-bottom:1px solid #c8c5b9;padding-bottom:38px}
+.edition-concept .lesson-body>.pitfall{border-left:4px solid #76532d;background:#ece7da}
+.edition-sector .education-heading{border-left:5px solid #76532d;padding-left:28px}
+.edition-sector .field-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;margin-bottom:28px}
+.edition-sector .field-notes>section{padding:30px 0;border-top:1px solid #b7b3a5;min-width:0}
+.edition-sector .field-notes>section:first-child{grid-column:1/-1;max-width:850px;padding-top:10px;border-top:0}
+.edition-sector .section-index,.edition-workflow .section-index{display:block}
+.edition-sector .lesson-body>.worked-example{max-width:none;background:#e7e4d8;display:grid;grid-template-columns:1fr 1.5fr;column-gap:32px}
+.edition-sector .worked-example>.kicker{grid-column:1/-1}
+.edition-calculation .education-heading{max-width:1000px}
+.edition-calculation .lesson-body>.notebook-example{max-width:1000px;border:1px solid #899b9e;border-top:5px solid #153440;background:#eef1ed;padding:40px}
+.edition-calculation .notebook-example p{font-size:19px;font-variant-numeric:tabular-nums}
+.edition-calculation .editorial-section{border-left:1px solid #c8c5b9;padding-left:32px!important}
+.edition-calculation .section-index{display:block}
+.edition-risk .education-heading{border-bottom:3px solid #8b5646}
+.edition-risk .lesson-body>.pitfall{max-width:1000px;background:#efe2d8;border-left:5px solid #8b5646}
+.edition-risk .editorial-section{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px;max-width:1000px!important;border-bottom:1px solid #c8c5b9}
+.edition-risk .editorial-section h2{font-size:25px}
+.edition-risk .editorial-section p{margin:0}
+.edition-workflow .filing-steps{max-width:850px;margin:auto;border-left:2px solid #899b9e;padding-left:38px}
+.edition-workflow .filing-steps>section{padding:16px 0 35px;position:relative}
+.edition-workflow .section-index{position:absolute;left:-57px;top:18px;background:#153440;color:#fff;padding:7px;border-radius:50%;min-width:36px;text-align:center}
+.edition-workshop .education-heading{background:#e7e8df;padding:35px;max-width:1120px}
+.edition-workshop .lesson-body>.notebook-example{max-width:none;padding:40px;background:#e8eee9;border:1px solid #9baaa3}
+.edition-workshop .workshop-analysis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+.edition-workshop .workshop-analysis>section{padding:30px 0;border-bottom:1px solid #c8c5b9;min-width:0}
+.edition-workshop .section-index{display:block}
+.lesson-edition .field-review{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;background:#e9e5d9;padding:32px;margin:30px 0}
+.lesson-edition .field-review>section{margin:0;padding:0;background:none;border:0}
+.edition-risk .field-review{background:#efe2d8;border-top:4px solid #8b5646}
+.lesson-edition .workshop-practice{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:36px 0;padding:30px;border:1px solid #a9b4ad}
+.lesson-edition .workshop-practice>section{margin:0;padding:0;border:0}
+.lesson-edition .table-scroll{max-width:100%;overflow:auto}
+.lesson-edition .number-note{margin:24px 0 30px}
+.lesson-edition .number-note figcaption{font-size:12px;color:#40575b;margin-bottom:16px}
+.lesson-edition .number-note dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px;margin:0}
+.lesson-edition .number-note dl>div{border-top:1px solid #819697;padding-top:12px}
+.lesson-edition .number-note dt{font-size:12px;line-height:1.5;min-height:36px;color:#40575b}
+.lesson-edition .number-note dd{margin:10px 0 0;font-size:clamp(22px,2.6vw,34px);line-height:1.2;font-family:Georgia,serif;color:#153440;font-variant-numeric:tabular-nums}
+.lesson-edition :target{scroll-margin-top:24px}
+.lesson-edition a:focus-visible,.lesson-edition summary:focus-visible{outline:3px solid #76532d;outline-offset:4px}
+@media(max-width:700px){
+ .lesson-edition .education-heading{padding-top:24px}
+ .lesson-edition .education-heading h1{font-size:36px}
+ .lesson-edition .lesson-body p{font-size:16px;line-height:1.8}
+ .lesson-jump-menu ol{display:block;columns:1}.lesson-jump-menu li{margin:9px 0}
+ .edition-sector .field-notes,.edition-workshop .workshop-analysis{grid-template-columns:1fr;gap:0}
+ .lesson-edition .field-review,.lesson-edition .workshop-practice{grid-template-columns:1fr;gap:24px;padding:22px}
+ .edition-sector .field-notes>section:first-child{grid-column:auto}
+ .edition-sector .lesson-body>.worked-example,.edition-risk .editorial-section{display:block}
+ .edition-calculation .lesson-body>.notebook-example,.edition-workshop .lesson-body>.notebook-example,.lesson-edition .lesson-body>.worked-example,.lesson-edition .lesson-body>.pitfall{padding:22px}
+ .edition-workshop .education-heading{padding:24px 20px}
+ .edition-calculation .editorial-section{padding-left:18px!important}
+ .edition-workflow .filing-steps{padding-left:25px;margin-left:12px}.edition-workflow .section-index{left:-44px}
+}
+@media print{.lesson-jump-menu{display:none}.lesson-edition .field-notes,.lesson-edition .field-review,.lesson-edition .workshop-practice,.lesson-edition .workshop-analysis,.edition-risk .editorial-section,.edition-sector .lesson-body>.worked-example{display:block}.lesson-edition .edition-layout{width:100%;max-width:none}.lesson-edition section{break-inside:auto}}
