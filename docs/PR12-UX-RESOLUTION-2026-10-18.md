@@ -25,4 +25,12 @@
 심각도·파일/URL·실제 입력·관찰 결과·재현 절차를 적어 주세요. requestSubmit()의 빈 쿼리 이동을 입력값 유출과 동일시하지 마세요.
 
 ## 완료 기록
-로컬 수정 및 검사 단계입니다. CI/배포/공개 응답 완료 후 이 절을 갱신합니다.
+- PR #13 병합: https://github.com/dividendforensics/dividendforensics-com/pull/13
+- 고정 제품 커밋: `a78f0f04fcd11d14dea2c6d881aa6d1b8356c271`.
+- 검사한 PR head: `a2fbfc9c75c5298212935af7efdae34101fb54ca`; 로컬/원격 tree `97f32deb58fd5c0b673eee613588daf4ed0e0f21` 일치.
+- CI 성공: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39119572110 . 로그에서 Python 127, Node 73, 실패 모드 65, 신규 다국어 54렌더/no-JS 18페이지, 전체 137페이지 685렌더 통과 확인.
+- 최초 로컬 정렬 검사는 오류 테두리로 인한 2px 높이 차이를 발견했습니다. 정상·오류 입력의 테두리 폭을 같게 한 최종판으로 1024px 정렬 및 오류 표시 검사를 통과했습니다. 실패 실행을 통과에 합산하지 않았습니다.
+- Build and publish 성공: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39120259468 . 최종 Pages 성공: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39120280092 . 중복 선행 Pages 작업 39120259094는 취소되고 최종 작업으로 완료됐습니다.
+- 공개 대조 `.qa/pr13-live.json`: 158/158 일치. 배포 중 첫 조회에서는 29개가 이전 응답이었으며, 두 번째 일반 URL 조회에서 모두 일치했습니다. CRLF/LF·끝 공백 정규화 비교이며 캐시 우회 응답만 맞는 경우는 통과시키지 않았습니다.
+- 활성 HTML 137개 / 사이트맵 125개 유지. AdSense 확인 정보와 계정 설정을 변경하지 않았습니다.
+- 이 완료 기록은 제품 검사 뒤 문서만 갱신했습니다. 실폰·스크린리더·원어민·Google 계정 상태를 검증한 것으로 확대하지 않습니다.
