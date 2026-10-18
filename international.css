@@ -17,3 +17,4 @@ html[lang="ja"] .international-page,html[lang="zh-Hant"] .international-page{fon
 
 .international-page .calculator-fields>label{display:flex;flex-direction:column;gap:8px}
 .international-page .calculator-fields>label>input{margin-top:auto}
+.international-page .calculator-fields>label>input{border-width:2px}
