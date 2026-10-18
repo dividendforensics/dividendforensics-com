@@ -1,14 +1,16 @@
 # Dividend Forensics Bureau
 
-## Historical filing labs and quality controls
+## Operating-company analysis and historical filing labs
 
-The free learning journey now includes two historical FY2024 filing exercises: Realty Income AFFO/dividend reconciliation and Ares Capital NII/PIK/distributions. These are dated educational analyses, separate from the selected publication archive and from current issuer assessments. `content/filing-labs.json` preserves source documents, reported decimal values, units and table locations; `filing_labs.py` renders the source trail and calculations. The home page, learning rooms, relevant lessons/calculators and research worksheet link to the labs.
+The free learning journey includes three historical FY2024 filing exercises: Realty Income AFFO/dividend reconciliation, Ares Capital NII/PIK/distributions, and Apple earnings/cash/capital returns. These are dated educational analyses, separate from the selected publication archive and from current issuer assessments. `content/filing-labs.json` and `content/operating-company-lab.json` preserve source documents, reported decimal values, units and table locations; `filing_labs.py` and `operating_filing_lab.py` render the source trail and calculations.
+
+`operating_companies.py` adds a learning hub, two substantive guides and a cash-flow workbench for US nonfinancial operating companies. The workbench reconciles earnings to operating cash and the separate beginning-to-ending cash balance, shows capital-spending/shareholder-payment residuals, retains an in-memory baseline and exports exact comparisons with source notes. It neither assigns ratings nor fetches live company data. The Apple preset uses its actual fiscal period and keeps the source's restricted-cash definition and FX-input convention explicit. `operating-calculators.js` owns the Decimal arithmetic and browser interaction. The home page, navigation, tools and source directory connect these pathways.
 
 Publisher-readiness work improves actual usefulness and traceability; it does not certify AdSense approval or Google indexing. The Google account state, real contact-form delivery, consent/ad activation, native-speaker review and real-device testing are not established by a green build. See `docs/SEARCH-POLICY-AUDIT-2026-10-18.md` for the official-policy audit and hosting nuance.
 
 ## Free REIT and BDC education — 2026-10-18
 
-The site provides 36 REIT guides, 16 BDC guides, 15 calculators, two
+The site provides 36 REIT guides, 16 BDC guides, 16 calculation tools, two
 subject glossaries, a primary-source directory and an editorial policy.
 Both subjects have four learning levels. The initial Spanish edition has
 seven pages, including four introductory lessons and two calculators.
@@ -40,6 +42,8 @@ Additional verification:
 ```text
 node --test tests/calculators.test.cjs
 python tools/education_browser_check.py
+node --test tests/operating-calculators.test.cjs
+python tools/operating_browser_check.py
 ```
 
 The remaining sections document the preserved research publishing workflow and

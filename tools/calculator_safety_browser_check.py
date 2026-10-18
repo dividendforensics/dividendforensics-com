@@ -18,7 +18,7 @@ def main():
         if not form:continue
         assert form.select_one('fieldset[data-calculator-controls][disabled]'),path
         pages.append((path.relative_to(ROOT).as_posix(),[urlsplit(x['src']).path for x in soup.select('script[src]') if 'calculators.js' in x['src']]))
-    assert len(pages)==20,len(pages)
+    assert len(pages)==21,len(pages)
     server=Server(('127.0.0.1',0),partial(Handler,directory=str(ROOT)))
     Thread(target=server.serve_forever,daemon=True).start()
     base=f'http://127.0.0.1:{server.server_port}';cases=[]
@@ -35,7 +35,7 @@ def main():
                     page=context.new_page();requests=[];errors=[]
                     page.on('pageerror',lambda e:errors.append(str(e)))
                     page.on('request',lambda r:requests.append((r.method,r.url)))
-                    page.goto(base+'/'+path)
+                    page.goto(base+'/'+path, wait_until='networkidle')
                     form=page.locator('form.calculator-form')
                     assert form.locator('input').first.is_disabled(),(path,blocked)
                     assert form.locator('[data-calculator-loading]').is_visible(),(path,blocked)

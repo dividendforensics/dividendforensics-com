@@ -32,20 +32,29 @@ test('Fiscal2030cannot use2027resource check to claim complete funding',()=>{con
 test('Maturity CSV canonical decimals include +90roundtrip and preserve unknown',()=>{const rows=[['2027-03-31','+90','=USER_TEXT','2026-09-30'],['2028-03-31','000.10','ordinary','2026-09-30'],['2028-06-30','','unknown','2026-09-30']];const normalized=C.normalizeMaturityRows(rows);assert.equal(normalized[0][1],'90');assert.equal(normalized[1][1],'0.1');assert.equal(normalized[2][1],'');const text=C.csv(normalized);assert.doesNotMatch(text,/'\+90/);assert.match(text,/'=USER_TEXT/);const imported=C.normalizeMaturityRows(C.parseCsv(text));assert.equal(imported[0][1],'90');assert.equal(imported[1][1],'0.1');assert.equal(imported[2][1],'');const v=liq();v.maturities=imported.slice(0,1).map(r=>({...meta,date:r[0],amount:r[1],scope:r[2]}));assert.equal(C.calculateLiquidity(v).metrics['Complete supplied maturity subtotal'],'90');assert.throws(()=>C.normalizeMaturityRows([['x','=1+2','scope','x']]));});
 
 test('Capital display preserves small signed amounts and shortfalls across rounding boundaries',()=>{
- for(const [raw,shown] of [['0','0'],['0.00001','1.0000e-5'],['-0.00001','-1.0000e-5'],['0.000049999','4.9999e-5'],['0.00005','0.0001'],['-0.00005','-0.0001'],['1e-20','1.0000e-20']])assert.equal(C.format(raw),shown);
+ for(const [raw,shown] of [['0','0'],['0.00001','0.00001'],['-0.00001','-0.00001'],['0.000049999','0.000049999'],['0.00005','0.00005'],['-0.00005','-0.00005'],['1e-20','0.00000000000000000001']])assert.equal(C.format(raw),shown);
  assert.equal(C.format(null),'Not defined / incomplete');
  assert.equal(C.format('Not supplied'),'Not supplied');
  const v=pref();v.earnings='0.00001';v.preferred='0';v.common='0.00002';
  const r=C.calculatePreferred(v);
- assert.equal(C.format(r.metrics['Common-attributed measure']),'1.0000e-5');
- assert.equal(C.format(r.metrics['Common measure less common distributions']),'-1.0000e-5');
+ assert.equal(C.format(r.metrics['Common-attributed measure']),'0.00001');
+ assert.equal(C.format(r.metrics['Common measure less common distributions']),'-0.00001');
  v.earnings='0.3';v.preferred='0.1';v.common='0.2';
  assert.equal(C.format(C.calculatePreferred(v).metrics['Common measure less common distributions']),'0');
 });
 
 test('Capital results identify the precision-display and CSV revision',()=>{
- assert.equal(C.formulaVersion,'capital-1.0.2');
+ assert.equal(C.formulaVersion,'capital-1.0.3');
  for(const result of [C.calculateJv(jv()),C.calculateLiquidity(liq()),C.calculatePreferred(pref())])assert.equal(result.formulaVersion,C.formulaVersion);
+});
+
+test('Capital display bounds extreme tiny values without changing stored results',()=>{
+ for(const [raw,shown] of [['0.000099999','0.000099999'],['0.0001','0.0001'],['0.00015','0.0002'],['-0.00015','-0.0002'],['-1e-24','-0.000000000000000000000001'],['1e-25','1e-25'],['-1e-10000','-1e-10000']])assert.equal(C.format(raw),shown);
+ const v=pref();v.earnings='0.000000000000000000000000123456789';v.preferred='0';v.common='0';
+ const r=C.calculatePreferred(v);
+ assert.equal(r.metrics['Common-attributed measure'],'1.23456789e-25');
+ assert.equal(C.format(r.metrics['Common-attributed measure']),'1.2346e-25');
+ assert.match(C.csv(Object.entries(r.metrics)),/1\.23456789e-25/);
 });
 
 test('CSV accepts BOM and CR, LF or CRLF without corrupting quoted line breaks',()=>{

@@ -40,6 +40,7 @@ jobs:
           python tools/lesson_formats_browser_check.py
           python tools/calculator_safety_browser_check.py
           python tools/calculator_quality_browser_check.py
+          python tools/operating_browser_check.py
           python tools/international_browser_check.py
           python tools/browser_check.py --output /tmp/dfb-preview
       - uses: actions/upload-artifact@v4

@@ -22,3 +22,14 @@ test('documented income example and goal reproduce without currency conversion',
  assert.deepEqual(r.metrics.map(m=>format(m.exactValue,'de','?')),['500,00','425,00','35,42','141.176,47']);
  assert.deepEqual(r.metrics.map(m=>format(m.exactValue,'ja','?')),['500.00','425.00','35.42','141,176.47']);
 });
+
+test('English, Spanish and localized amounts share bounded tiny display rules',()=>{
+ const spanish=require('../spanish-calculators.js');
+ const cases=[['0.004','0.004'],['0.0049999','0.005'],['0.005','0.005'],['0.0099999','0.01'],['0.01','0.01'],['1e-9','0.000000001'],['1e-24','0.000000000000000000000001'],['1.23456e-25','1.235e-25'],['1e-10000','1e-10000']];
+ for(const sign of ['','-'])for(const [raw,shown] of cases){
+  const expected=sign+shown;
+  assert.equal(engine.format(sign+raw),expected);
+  assert.equal(spanish.format(sign+raw),expected.replace('.',','));
+  for(const locale of ['de','ja','zh-Hant'])assert.equal(format(sign+raw,locale,'?'),expected.replace('.',locale==='de'?',':'.'));
+ }
+});

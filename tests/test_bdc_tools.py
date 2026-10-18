@@ -36,7 +36,7 @@ class BdcToolsTests(unittest.TestCase):
 
     def test_nii_static_example_and_safeguards(self):
         doc=bdc_tools.outputs(ROOT)[ROOT/'calculator-bdc-nii-pik.html']
-        for text in ['115.5/111/102','1.0043×/0.9652×/0.8870×','not cash earnings','Blank = not found','Formula version bdc-1.0.1','No automatic currency']:
+        for text in ['115.5/111/102','1.0043×/0.9652×/0.8870×','not cash earnings','Blank = not found','Formula version bdc-1.0.2','No automatic currency']:
             self.assertIn(text,doc)
 
     def test_chronology_and_nav_snapshot_explanation_are_static(self):
@@ -49,5 +49,17 @@ class BdcToolsTests(unittest.TestCase):
         self.assertIn('NAV is a stock measure at its disclosed balance-sheet snapshot date',nav)
         self.assertIn('The market quote can have a different observation date',nav)
         self.assertIn('does not relabel either as a period-end quote',nav)
+
+    def test_pik_and_nii_are_expanded_before_the_input_form(self):
+        pages=bdc_tools.outputs(ROOT)
+        for name in ('calculator-bdc-nii-pik.html','calculator-bdc-pik-ratios.html'):
+            soup=BeautifulSoup(pages[ROOT/name],'html.parser')
+            intro=soup.select_one('[data-pik-introduction]')
+            self.assertIsNotNone(intro,name)
+            self.assertIn('PIK means payment-in-kind',intro.get_text())
+            self.assertIn('net investment income (NII)',intro.get_text())
+            self.assertIn('Total investment income (TII)',intro.get_text())
+            self.assertIs(intro.find_next('form'),soup.select_one('[data-bdc-tool]'))
+            self.assertFalse(intro.find_parent('form'))
 
 if __name__=='__main__':unittest.main()

@@ -3,7 +3,7 @@
   'use strict';
   const Decimal=typeof module==='object' && module.exports ? require('./vendor/decimal.js/decimal.js') : root.Decimal;
   const D=Decimal ? Decimal.clone({precision:80,rounding:Decimal.ROUND_HALF_UP}) : null;
-  const VERSION='es-1.0.1';
+  const VERSION='es-1.0.2';
   const labels={
     'Annual gross distributions':'Distribuciones brutas anuales (USD)',
     'Annual after-withholding income':'Ingreso anual después de la retención supuesta (USD)',
@@ -16,7 +16,10 @@
     if(value===null)return 'No definido';
     const d=new D(String(value)),digits=type==='precise'?4:2;
     let text;
-    if(!d.isZero() && d.abs().lt(new D('0.5').times(new D(10).pow(-digits)))) text=d.toExponential(3).replace('.',',');
+    if(!d.isZero() && d.abs().lt(new D(10).pow(-digits))) {
+      const display=d.toSignificantDigits(4);
+      text=(display.decimalPlaces()>24?display.toExponential():display.toFixed()).replace('.',',');
+    }
     else {
       const [whole,fraction]=d.toFixed(digits).split('.');
       const grouped=whole.replace('-','').length>4 ? whole.replace(/\B(?=(\d{3})+(?!\d))/g,'.') : whole;

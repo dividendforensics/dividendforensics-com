@@ -146,7 +146,7 @@ def header(page_name: str, root: Path = ROOT) -> str:
     if page_name.endswith('-guide.html') or page_name.startswith('reit-'): active = 'learn.html'
     if page_name.startswith('learn-'): active = 'learn.html'
     if page_name.startswith('course-'): active = 'learn.html'
-    if page_name.startswith('calculator-'): active = 'tools.html'
+    if page_name.startswith('calculator-') or page_name == 'cash-flow-workbench.html': active = 'tools.html'
     items = []
     for path, label in nav:
         current = ' aria-current="page"' if path == active else ''

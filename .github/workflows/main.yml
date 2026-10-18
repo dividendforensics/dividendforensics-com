@@ -14,6 +14,8 @@ on:
       - 'lesson_formats.py'
       - 'research_resources.py'
       - 'filing_labs.py'
+      - 'operating_companies.py'
+      - 'operating_filing_lab.py'
       - 'bdc_education.py'
       - 'localized.py'
       - 'international.py'

@@ -19,6 +19,8 @@ BDC_EXPENSES = ('interest_fees', 'management_fee', 'income_fee', 'capital_gains_
                 'administrative_fee', 'other_expenses')
 PIK_INTEREST = ('pik_interest_nonaffiliate', 'pik_interest_affiliate', 'pik_interest_controlled')
 PIK_DIVIDENDS = ('pik_dividend_nonaffiliate', 'pik_dividend_controlled')
+QUARTERLY_DISTRIBUTIONS = tuple(f'q{q}_declared' for q in range(1,5))
+QUARTERLY_PER_SHARE = tuple(f'q{q}_dividend_ps' for q in range(1,5))
 
 
 def load(root):
@@ -108,6 +110,12 @@ def calculate_bdc(lab):
         context.prec = 40
         unit = 'USD million'
         n = lambda key: number(lab, key, unit)
+        if n('distributions_declared') <= 0:
+            raise ValueError('Historical ratio requires a positive denominator')
+        if sum(amounts(lab, QUARTERLY_DISTRIBUTIONS, unit)) != n('distributions_declared'):
+            raise ValueError('Quarterly dividend schedule does not reconcile to declared total')
+        if sum(amounts(lab, QUARTERLY_PER_SHARE, 'USD per share')) != number(lab,'dividends_ps','USD per share'):
+            raise ValueError('Quarterly per-share dividends do not reconcile to annual total')
         income = sum(amounts(lab, BDC_INCOME, unit))
         expenses = sum(amounts(lab, BDC_EXPENSES, unit))
         nii = income - expenses - n('tax')
@@ -237,7 +245,11 @@ def bdc_content(lab, data):
 {table(BDC_EXPENSES+('tax',), 'FY2024 expenses and tax; USD millions')}
 {answer('Reveal the NII reconstruction', f'Investment income: 2,162 + 172 + 594 + 62 = <strong>{fmt(r["income"])}</strong>. Expenses: 715 + 374 + 364 + 18 + 12 + 31 = <strong>{fmt(r["expenses"])}</strong>. Subtract expenses and tax: {fmt(r["income"])} − {fmt(r["expenses"])} − 73 = <strong>{fmt(r["nii"])} USD million</strong> of reported NII. Neither gross investment income nor NII before tax is the final reported NII line.')}
 {table(('nii_ps','core_eps','gaap_eps','dividends_ps','distributions_declared','cash_dividends_paid'), 'Coverage inputs: retain per-share versus aggregate and declared versus cash-paid distinctions')}
-<p>The aggregate denominator comes from the 10-K cash-flow statement’s supplemental disclosure, also shown in stockholders’ equity. The financing cash-flow line is a different amount. {link(s['arcc-10k'], '10-K, pp.F-144–F-145')}</p></section>
+<p>The aggregate denominator comes from the 10-K cash-flow statement’s supplemental disclosure, also shown in stockholders’ equity. The financing cash-flow line is a different amount. {link(s['arcc-10k'], '10-K, pp.F-144–F-145')}</p>
+<h3>Verify all four dividend declarations.</h3>
+{table(QUARTERLY_DISTRIBUTIONS, 'FY2024 dividend schedule: aggregate declared and payable; USD millions')}
+{table(QUARTERLY_PER_SHARE, 'The same four declarations: USD per common share')}
+<p>The full 10-K dividend schedule lists declarations on February 7, May 1, July 30 and October 30: 291 + 300 + 308 + 320 = <strong>1,219 million</strong>, each at <strong>$0.48 per share</strong>, totaling $1.92. These four quarterly declarations exhaust the disclosed FY2024 total; no separate supplemental or special row is present in that annual block. This is checked against the complete schedule, not inferred by multiplying the Q4 release by four. It describes this historical schedule, not future dividend policy or tax character. {link(s['arcc-10k'], '10-K, Notes to Consolidated Financial Statements — Dividends table')}</p></section>
 
 <section id="calculation"><h2>Keep the coverage measure visible.</h2>
 {answer('Reveal reported NII coverage', f'Aggregate reported NII coverage is {value(lab,"nii")} ÷ {value(lab,"distributions_declared")} = <strong>{fmt(r["reported_coverage"],4)}×</strong>, using common dividends declared and payable. The separate published per-share calculation is $2.25 ÷ $1.92 = <strong>{fmt(r["share_coverage"],4)}×</strong>. Their denominators reflect different share populations and timing; the per-share earnings input is also rounded. Do not manufacture an aggregate distribution by multiplying $1.92 by year-end or weighted-average shares when the actual aggregate is disclosed.')}
@@ -271,7 +283,7 @@ def bdc_content(lab, data):
 </section>
 
 <section id="next"><h2>Reproduce the calculation in a worksheet.</h2>
-<p>Open the <a href="/calculator-bdc-nii-pik.html">NII, PIK and distribution worksheet</a>. Replace the synthetic example with period <strong>2024-01-01 to 2024-12-31</strong>, analysis as-of <strong>2026-10-18</strong>, currency <strong>USD</strong>, scale <strong>millions</strong>, reported NII <code data-lab-input="nii">1403</code>, PIK <code data-lab-input="pik">463</code>, total investment income <code data-lab-input="tii">2990</code>, regular common distributions <code data-lab-input="regular">1219</code>, supplemental <strong>0</strong> and special <strong>0</strong>, on a declared basis. Enter numbers without thousands separators; the input-ready values above intentionally omit commas. The full-year source distribution here comprises the regular quarterly dividends; preserve the source record rather than assuming absent disclosures mean zero in a new case.</p>
+<p>Open the <a href="/calculator-bdc-nii-pik.html">NII, PIK and distribution worksheet</a>. Replace the synthetic example with period <strong>2024-01-01 to 2024-12-31</strong>, analysis as-of <strong>2026-10-18</strong>, currency <strong>USD</strong>, scale <strong>millions</strong>, reported NII <code data-lab-input="nii">1403</code>, PIK <code data-lab-input="pik">463</code>, total investment income <code data-lab-input="tii">2990</code>, regular common distributions <code data-lab-input="regular">1219</code>, supplemental <strong>0</strong> and special <strong>0</strong>, on a declared basis. Enter numbers without thousands separators; the input-ready values above intentionally omit commas. The complete 10-K dividend schedule above supports this grouping: four quarterly declarations sum to the annual total, without an additional supplemental or special row in that schedule. Preserve this source basis; do not infer missing amounts are zero in another issuer or period.</p>
 <p>The <a href="/calculator-bdc-pik-ratios.html">PIK ratios worksheet</a> uses the same income inputs without a distribution denominator. For interpretation, read <a href="/learn-bdc-nii-coverage.html">NII coverage</a>, <a href="/learn-bdc-pik-income.html">PIK recognition</a> and <a href="/learn-bdc-incentive-fees.html">incentive fees</a>. Save the open questions in the <a href="/dividend-research-worksheet.html">research worksheet</a>.</p></section>'''
 
 
@@ -311,15 +323,17 @@ def cards(root, sector=None):
         raise ValueError('Unknown filing-lab card sector')
     labs = [lab for lab in load(root)['labs'] if sector is None or lab['sector'] == sector]
     rows = ''.join(f'<article class="lesson-card"><span class="kicker">{lab["sector"].upper()} / historical FY2024</span><h3><a href="/{lab["slug"]}.html">{E(lab["title"])}</a></h3><p>{E(lab["description"])}</p><a class="text-link" href="/{lab["slug"]}.html">Work through the source →</a></article>' for lab in labs)
+    if sector is None:
+        rows += '<article class="lesson-card"><span class="kicker">Operating company / historical FY2024</span><h3><a href="/filing-lab-apple-2024.html">Apple: follow profit, cash and capital returns</a></h3><p>Reconcile operating cash flow, subtract cash capital spending, distinguish buybacks from dividends, and check the actual cash balance.</p><a class="text-link" href="/filing-lab-apple-2024.html">Work through the source →</a></article>'
     return '<section class="wrap education-section"><div class="section-heading"><div><span class="kicker">Practice with primary evidence</span><h2>Read a real filing. Rebuild the numbers.</h2></div><a class="text-link" href="/filing-labs.html">All filing labs →</a></div><div class="lesson-grid">' + rows + '</div></section>'
 
 
 def index_page(root):
-    title = 'Filing labs: work through real REIT and BDC disclosures'
-    description = 'Two historical FY2024 exercises with exact source inputs, reproducible calculations, interpretation and answer keys for REIT AFFO and BDC NII and PIK.'
+    title = 'Filing labs: REIT, BDC and company cash-flow analysis'
+    description = 'Three historical FY2024 exercises with source inputs and answer keys: Realty Income AFFO, Ares Capital NII and PIK, and Apple cash flow and capital returns.'
     body = '<div class="wrap breadcrumbs"><a href="/">Home</a><span>/</span><span aria-current="page">Filing labs</span></div>'
     body += section_head('The filing practice room',title,description)
-    body += '''<section class="wrap policy-reading lesson-body"><h2>Turn a metric into an auditable calculation.</h2><p>Knowing a formula is only the first step. These exercises ask you to locate a number, preserve its definition and period, rebuild a reconciliation, and explain what the result cannot establish. Each uses a specific issuer’s FY2024 disclosures and a worked answer you can open after trying the task.</p><p>Start with Realty Income to learn the difference between annual paid dividends, a year-end annualized rate and the diluted AFFO denominator. Continue with Ares Capital to distinguish reported NII from Core EPS and to collect PIK income across several source rows. The companies are teaching examples, not a comparison, ranking or investment selection.</p><h2>Bring these three habits to either lab.</h2><ol><li><strong>Label the column.</strong> Record the full period, currency, scale and common-share basis before doing arithmetic.</li><li><strong>Preserve the reconciliation.</strong> An adjusted metric can add back an economically meaningful cost. Retain both the reported result and the definition.</li><li><strong>Write the unanswered question.</strong> A coverage ratio cannot by itself resolve cash timing, future spending or credit risk.</li></ol><p>All source tables, calculations and answer keys are readable without JavaScript. The linked calculators are optional ways to reproduce the arithmetic. <a href="/editorial-policy.html">How DFB prepares educational material</a>.</p></section>'''
+    body += '''<section class="wrap policy-reading lesson-body"><h2>Turn a metric into an auditable calculation.</h2><p>Knowing a formula is only the first step. These exercises ask you to locate a number, preserve its definition and period, rebuild a reconciliation, and explain what the result cannot establish. Each uses a specific issuer’s FY2024 disclosures and a worked answer you can open after trying the task.</p><p>Start with Realty Income to learn the difference between annual paid dividends, a year-end annualized rate and the diluted AFFO denominator. Continue with Ares Capital to distinguish reported NII from Core EPS and to collect PIK income across several source rows. For a nonfinancial operating company, use Apple to connect profit, operating cash, capital spending and shareholder payments, then reconcile the cash balance. These companies are teaching examples, not a comparison, ranking or investment selection.</p><h2>Bring these three habits to every lab.</h2><ol><li><strong>Label the column.</strong> Record the full period, currency, scale and common-share basis before doing arithmetic.</li><li><strong>Preserve the reconciliation.</strong> An adjusted metric can add back an economically meaningful cost. Retain both the reported result and the definition.</li><li><strong>Write the unanswered question.</strong> A coverage ratio cannot by itself resolve cash timing, future spending or credit risk.</li></ol><p>All source tables, calculations and answer keys are readable without JavaScript. The linked calculators are optional ways to reproduce the arithmetic. <a href="/editorial-policy.html">How DFB prepares educational material</a>.</p></section>'''
     body += cards(root)
     body += '<section class="wrap education-section"><h2>Keep your own source record.</h2><p>Use the <a href="/dividend-research-worksheet.html">dividend research worksheet</a> to record what you found, or revisit the <a href="/learn.html">REIT curriculum</a> and <a href="/learn-bdc.html">BDC curriculum</a> before starting. For a new period, replace every relevant input and recheck the source definition; copying the historical conclusion is not an update.</p></section>'
     return shell(root,'filing-labs.html',title,description,body,'CollectionPage')

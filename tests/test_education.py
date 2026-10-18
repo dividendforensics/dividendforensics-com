@@ -25,6 +25,8 @@ class EducationTests(unittest.TestCase):
             if path.name.startswith('filing-lab-'):
                 self.assertEqual(len(items),3)
                 self.assertEqual(urls[-2],education.DOMAIN+'/filing-labs.html')
+            elif path.name in ('operating-cash-flow-guide.html','dividends-buybacks-guide.html','cash-flow-workbench.html'):
+                self.assertEqual(urls[-2],education.DOMAIN+'/operating-companies.html')
             elif path.name.startswith(('learn-bdc-', 'course-bdc-')):
                 self.assertEqual(urls[-2],education.DOMAIN+'/learn-bdc.html')
             elif path.name.startswith('calculator-'):
