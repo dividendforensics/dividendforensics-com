@@ -39,7 +39,11 @@
 - 별도 원고 작성자 검산31개와 읽기 전용 독립 검토자의78개 산술·16퀴즈 확인은 범위를 구분한다. 스페인어4편도 별도 원문 대조·단위/수치 검토. 모든 수치가 현실 회사의 현재 상태를 뜻하지 않는다.
 - SEO 계획·저장 원본104개=사이트맵104개, BDC원고16개·Articlelastmod54개(스페인어 추가 후58개)·영어/스페인어7쌍 점검 통과. 긴 제목/설명2개는 단순 권고이며 일률적인 글자 수를 순위 기준으로 주장하지 않는다.
 - 로컬 기존 브라우저 검사에서 초기 준비 상태 타이밍 실패가 발생했다. 제품 검색/BDC코드의 오류는 별도 재현되지 않았고, 검사 도구에 실제 초기 계산·검색 준비 대기와 실패 진단을 추가했다. 재검사된 부분과 전체CI 결과를 구분한다.
-- GitHub 전체CI·최종 Pages 배포·일반 공개 응답 대조는 아래 최종 기록에 성공 후 추가한다. 아직 수행하지 않은 검사나 계정 작업을 완료로 기록하지 않는다.
+- [PR #6](https://github.com/dividendforensics/dividendforensics-com/pull/6) 병합 완료. 고정 공개 코드: `2b738e318c6b3e376da397aac1a3f9e5671d5106`. PR검사 코드 `ce9b11cdaa98e41efe30ba9a1048e3354c485aa7`와 같은 소스 트리다.
+- [Design review39103247544](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39103247544) 성공. 실제 로그: Python112·Node68·정적116·SEO104, 기존 교육 기능, 새 감사 회귀, BDC66회·스페인어21회, 전체116페이지×5폭=580회 렌더 통과. 전체 화면 검사에서 가로 넘침·깨진 이미지·기능 오류 없음. 이것은 검사 범위의 결과이며 모든 반례·접근성·실기기 보증이 아니다.
+- [Main build39103719510](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39103719510) 및 [Pages39103732360](https://github.com/dividendforensics/dividendforensics-com/actions/runs/39103732360) 성공. 앞선 자동 Pages 실행은 후속 요청으로 취소·대체됐고 최종 실행이 성공했다.
+- 배포 후 일반 공개 URL131개(HTML116+주요 자산15) 원본 대조: 첫 시도131/131 일치, 실패0. 쿼리 우회 응답으로 일반 URL 실패를 덮지 않았다. `.qa/bdc-live-verification.json`은 로컬 증거이며 공개 문서의 설명을 검증 대신 삼지 않는다.
+- 새 독립 검수 프롬프트는 `docs/INDEPENDENT-REVIEW-PROMPT.md`, 실제 노출 측정 절차는 `docs/SEO-LAUNCH-2026-10-18.md`다. Search Console 실제 색인·노출·순위·Gmail 수신·SEC 실수집·AdSense는 완료로 합산하지 않는다.
 
 ## 남은 운영 범위
 
