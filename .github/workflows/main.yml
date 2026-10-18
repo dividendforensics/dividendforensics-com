@@ -20,6 +20,7 @@ on:
       - 'scripts/**'
       - 'content/**'
       - 'sitemap.xml'
+      - 'ads.txt'
       - 'tests/**'
       - 'tools/check_site.py'
       - 'tools/seo_audit.py'
