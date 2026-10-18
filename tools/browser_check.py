@@ -43,12 +43,12 @@ def inline_source(name):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--inline',action='store_true');ap.add_argument('--widths',default='320,390,768,1024,1440');ap.add_argument('--output',default='/tmp/dfb-preview');args=ap.parse_args()
     out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
-    pages=[p.name for p in ROOT.glob('*.html') if 'name="dfb-design"' in p.read_text()]
+    pages=[p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*.html') if '.qa' not in p.parts and 'name="dfb-design"' in p.read_text()]
     server=None
     if not args.inline:
         server=ThreadingHTTPServer(('127.0.0.1',0),partial(Handler,directory=str(ROOT)))
         Thread(target=server.serve_forever,daemon=True).start();base=f'http://127.0.0.1:{server.server_port}'
-    errors=[];measurements=[];screens=['index.html','research.html','research-desk.html','learn.html','about.html','tools.html','404.html']
+    errors=[];measurements=[];screens=['index.html','research.html','research-desk.html','learn.html','about.html','tools.html','404.html','learn-bdc.html','course-bdc-beginner.html','learn-bdc-expert-income-bridge.html','es/index.html','es/calculadora-dividendos.html']
     with sync_playwright() as p:
         exe=os.environ.get('CHROMIUM_PATH')
         b=p.chromium.launch(**({'executable_path':exe} if exe else {}),headless=True,args=['--no-sandbox'])
@@ -73,8 +73,8 @@ def main():
                 if metrics['brokenImages']:errors.append(f'{name}: broken image {metrics["brokenImages"]}')
                 if name in screens and width in (390,1440):
                     suffix='mobile' if width==390 else 'desktop'
-                    page.screenshot(path=str(out/f'{Path(name).stem}-{suffix}.png'),full_page=True)
-                    if name in ('index.html','research-desk.html'):page.screenshot(path=str(out/f'{Path(name).stem}-{suffix}-top.png'))
+                    page.screenshot(path=str(out/f'{name.replace('/','-')[:-5]}-{suffix}.png'),full_page=True)
+                    if name in ('index.html','research-desk.html'):page.screenshot(path=str(out/f'{name.replace('/','-')[:-5]}-{suffix}-top.png'))
                 page.close()
         # Search and filters operate on the complete static archive.
         page=b.new_page(viewport={'width':1440,'height':900});load(page,'research.html')

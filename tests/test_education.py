@@ -14,16 +14,18 @@ class EducationTests(unittest.TestCase):
     def test_breadcrumbs_follow_the_page_section_without_duplicate_urls(self):
         output=education.education_outputs(ROOT)
         for path,text in output.items():
-            if path.suffix!='.html':continue
+            if path.suffix!='.html' or path.parent==ROOT/'es':continue
             data=[json.loads(value) for value in re.findall(r'<script type="application/ld\+json">(.*?)</script>',text,re.S)]
             items=next(s for s in data if s['@type']=='BreadcrumbList')['itemListElement']
             urls=[item['item'] for item in items]
             self.assertEqual(len(urls),len(set(urls)),path.name)
             self.assertEqual(urls[-1],education.DOMAIN+'/'+path.name)
             self.assertEqual([i['position'] for i in items],list(range(1,len(items)+1)))
-            if path.name.startswith('calculator-'):
+            if path.name.startswith(('learn-bdc-', 'course-bdc-')):
+                self.assertEqual(urls[-2],education.DOMAIN+'/learn-bdc.html')
+            elif path.name.startswith('calculator-'):
                 self.assertEqual(urls[-2],education.DOMAIN+'/tools.html')
-            elif path.name.startswith(('learn-','course-')):
+            elif path.name!='learn-bdc.html' and path.name.startswith(('learn-','course-')):
                 self.assertEqual(urls[-2],education.DOMAIN+'/learn.html')
             else:self.assertEqual(len(items),2)
 

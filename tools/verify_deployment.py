@@ -20,13 +20,13 @@ def normalized(data):
 
 
 def targets(root=ROOT):
-    pages = sorted(p.name for p in root.glob('*.html')
-                   if 'name="dfb-design"' in p.read_text(encoding='utf-8'))
+    pages = sorted(p.relative_to(root).as_posix() for p in root.rglob('*.html')
+                   if '.qa' not in p.parts and 'name="dfb-design"' in p.read_text(encoding='utf-8'))
     assets = ['bureau.css', 'education.js', 'bdc-calculators.js',
               'capital-calculators.js', 'proposal.js', 'calculators.js',
               'vendor/decimal.js/decimal.js', 'vendor/decimal.js/LICENCE.md',
               'vendor/decimal.js/package.json', 'vendor/manifest.json',
-              'research-desk.css', 'sitemap.xml', 'robots.txt', 'Refund.html']
+              'research-desk.css', 'spanish-calculators.js', 'sitemap.xml', 'robots.txt', 'Refund.html']
     return pages + assets
 
 
@@ -38,7 +38,7 @@ def fetch(url):
 
 def check(path, base, root=ROOT, fetcher=fetch):
     expected = normalized((root / path).read_bytes())
-    url = base.rstrip('/') + ('/' if path == 'index.html' else '/' + path)
+    url = base.rstrip('/') + ('/' if path == 'index.html' else '/'+path[:-10] if path.endswith('/index.html') else '/' + path)
     row = {'path': path, 'url': url, 'matches': False}
     try:
         status, body, headers = fetcher(url)

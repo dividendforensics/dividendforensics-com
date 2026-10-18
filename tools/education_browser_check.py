@@ -4,18 +4,38 @@ from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 from functools import partial
 from threading import Thread
 import json,os,sys
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from education import TOOLS
 from curriculum import LEVELS
 
-def main():
+def wait_for_library_query(page, query, errors, responses, failed_requests, output):
+    """Require both the correct document and its enhancement; expose load failures."""
+    try:
+        page.wait_for_load_state('domcontentloaded')
+        page.wait_for_function('''query => {
+            const search=document.querySelector('#lesson-search');
+            const controls=document.querySelector('[data-library-controls]');
+            return !!search && !!controls && !controls.hidden && search.value===query;
+        }''',arg=query,timeout=30000)
+    except PlaywrightTimeoutError as error:
+        state=page.evaluate('''() => ({url:location.href,readyState:document.readyState,
+            value:document.querySelector('#lesson-search')?.value,
+            controlsHidden:document.querySelector('[data-library-controls]')?.hidden,
+            scripts:Array.from(document.scripts).map(s=>({src:s.src,defer:s.defer}))})''')
+        diagnostic={'state':state,'javascript_errors':errors,'responses':responses,
+                    'failed_requests':failed_requests,'expected_query':query}
+        (output/'education-search-failure.json').write_text(json.dumps(diagnostic,indent=2),encoding='utf-8')
+        raise AssertionError('Learning-room query did not initialize: '+json.dumps(diagnostic)) from error
+
+
+def main(library_only=False):
     out=ROOT/'.qa';out.mkdir(exist_ok=True)
     server=ThreadingHTTPServer(('127.0.0.1',0),partial(SimpleHTTPRequestHandler,directory=str(ROOT)))
     Thread(target=server.serve_forever,daemon=True).start()
     base=f'http://127.0.0.1:{server.server_port}'
-    requests=[];errors=[]
+    requests=[];errors=[];responses=[];failed_requests=[]
     with sync_playwright() as p:
         options={'headless':True}
         if os.environ.get('CHROMIUM_PATH'):options['executable_path']=os.environ['CHROMIUM_PATH']
@@ -25,11 +45,13 @@ def main():
         context.route('https://fonts.gstatic.com/**',lambda route:route.abort())
         page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
         page.on('request',lambda r:requests.append(r.url))
+        page.on('response',lambda r:responses.append({'url':r.url,'status':r.status}))
+        page.on('requestfailed',lambda r:failed_requests.append({'url':r.url,'failure':r.failure}))
         page.goto(base+'/index.html')
         page.locator('#home-topic').fill('AFFO')
         page.get_by_role('button',name='Search guides').click()
         page.wait_for_url('**/learn.html?q=AFFO')
-        page.wait_for_function('document.querySelector("#lesson-search").value === "AFFO"')
+        wait_for_library_query(page,'AFFO',errors,responses,failed_requests,out)
         assert 0<page.locator('[data-lesson]:visible').count()<36
         page.locator('#lesson-category').select_option('Start here')
         page.locator('#lesson-search').fill('zzzz-no-result')
@@ -38,6 +60,12 @@ def main():
         page.locator('#lesson-level').select_option('Expert')
         assert page.locator('[data-lesson]:visible').count()==4
         page.locator('#lesson-reset').click()
+        if library_only:
+            assert not errors,errors
+            context.close();browser.close();server.shutdown();server.server_close()
+            (out/'education-library-report.json').write_text(json.dumps({'status':'passed','scope':'home query and REIT library filters only','checks':['AFFO query initializes after document readiness','AFFO results are a nonempty subset','category/empty/reset','four expert guides','36 guides restored'],'errors':errors},indent=2),encoding='utf-8')
+            print('PASS: focused REIT homepage query and library search/filter/reset; broader education checks were not run.')
+            return
         for level in LEVELS:
             page.goto(base+'/course-'+level['key']+'.html')
             for i,question in enumerate(level['quiz']):
@@ -115,4 +143,4 @@ def main():
     (out/'education-browser-report.json').write_text(json.dumps({'status':'passed','calculators':len(TOOLS),'checks':['library search/filter/reset/empty','glossary filter','seven calculators default results','CSV downloads','invalid input and reset','zero net yield','zero stressed AFFO','purchase fees denominator','mobile and desktop screenshots','no-JavaScript reading','no ad or analytics requests'],'errors':errors},indent=2),encoding='utf-8')
     print('PASS: four course quizzes, level filters, seven calculators, CSV, edge cases, images, no-JS and responsive screenshots.')
 
-if __name__=='__main__':main()
+if __name__=='__main__':main(library_only='--library-only' in sys.argv)

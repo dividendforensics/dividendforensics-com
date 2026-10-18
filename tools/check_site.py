@@ -22,7 +22,7 @@ class Page(HTMLParser):
         if tag=='script':self.scripts.append(a)
 
 def check(root=ROOT):
-    errors=[];pages={p.name:Page(p.read_text(encoding='utf-8')) for p in root.glob('*.html')}
+    errors=[];pages={p.relative_to(root).as_posix():Page(p.read_text(encoding='utf-8')) for p in root.rglob('*.html') if '.git' not in p.parts and '.qa' not in p.parts}
     active=[]
     for name,parsed in pages.items():
         text=(root/name).read_text()
@@ -45,7 +45,7 @@ def check(root=ROOT):
             if target.is_dir():target=target/'index.html'
             if not target.exists():errors.append(f'{name}: missing target {url}');continue
             if u.fragment and target.suffix=='.html':
-                dest=pages.get(target.name)
+                dest=pages.get(target.relative_to(root).as_posix())
                 if dest and unquote(u.fragment) not in dest.ids:errors.append(f'{name}: missing anchor {url}')
         if 'contributor.benzinga.com' in text:errors.append(f'{name}: private contributor URL must not be public')
     error=(root/'404.html').read_text()

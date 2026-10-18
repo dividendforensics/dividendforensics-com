@@ -97,3 +97,51 @@ test('small nonzero results retain their sign and do not round to zero',()=>{
   assert.equal(format(-0.000001,'precise'),'-0.000001');
   assert.equal(format(1e-9,'percent'),'1.000e-9%');
 });
+
+test('decimal bridge cancellation is exact rather than a visible floating-point residual',()=>{
+  for(const values of [{net:0.1,depreciation:0.2,gains:0.3},{net:'0.1',depreciation:'0.2',gains:'0.3'}]){
+    const r=calculate('bridge',{...values,ffoOther:0,capex:0,rent:0,affoOther:0});
+    assert.equal(r.metrics[0].value,0);
+    assert.equal(r.metrics[1].value,0);
+    assert.equal(format(r.metrics[0].value),'0.00');
+    assert.equal(r.formulaVersion,'original-1.1.0');
+  }
+});
+
+test('genuine tiny decimal remainders keep both signs and are never epsilon-clamped',()=>{
+  const base={net:'0.1',depreciation:'0.2',gains:'0.3',ffoOther:0,capex:0,rent:0};
+  for(const affoOther of ['0.000000000000000001','-0.000000000000000001']){
+    const r=calculate('bridge',{...base,affoOther});
+    assert.equal(r.metrics[0].value,0);
+    assert.equal(r.metrics[1].value,Number(affoOther));
+    assert.match(format(r.metrics[1].value),/1\.000e-18/);
+    assert.equal(format(r.metrics[1].value).startsWith('-'),affoOther.startsWith('-'));
+  }
+});
+
+test('raw entered decimal strings survive the Number precision boundary',()=>{
+  const r=calculate('bridge',{net:'0.100000000000000000001',depreciation:'0',gains:'0.1',ffoOther:'0',capex:'0',rent:'0',affoOther:'0'});
+  assert.equal(r.metrics[0].value,1e-21);
+  assert.equal(format(r.metrics[0].value),'1.000e-21');
+  const tiny=calculate('bridge',{net:'1e-400',depreciation:0,gains:0,ffoOther:0,capex:0,rent:0,affoOther:0});
+  assert.equal(tiny.metrics[0].value,'1e-400');
+  assert.equal(format(tiny.metrics[0].value),'1.000e-400');
+});
+
+test('all original tools use decimal operations without changing fees or withholding',()=>{
+  assert.equal(calculate('income',{capital:'0.1',yield:'0.2',tax:'0.3',target:'0'}).metrics[1].value,0.0001994);
+  assert.equal(calculate('reinvestment',{capital:'0.1',contribution:'0.2',yield:'0',tax:'0',years:'1'}).metrics[0].value,2.5);
+  assert.equal(calculate('payout',{affo:'0.3',dividend:'0.1',decline:'0'}).metrics[3].value,0.2);
+  assert.equal(calculate('nav',{noi:'0.001',cap:'1',debt:'0.3',cash:'0.2',shares:'1'}).metrics[1].value,0);
+  assert.equal(calculate('refinancing',{principal:'0.1',old:'0.1',new:'0.3',shares:'1'}).metrics[2].value,0.0002);
+  const total=calculate('return',{start:'0.1',end:'0.3',dividends:'0',buyFees:'0.1',sellFees:'0.1'});
+  assert.equal(total.metrics[0].value,0);
+  assert.equal(total.metrics[3].value,100);
+});
+
+test('decimal formatting keeps grouping, tiny signs and explicit invalid-input handling',()=>{
+  assert.equal(format('1234567.125'),'1,234,567.13');
+  assert.equal(format('-1234567.125','precise'),'-1,234,567.1250');
+  for(const value of ['', ' ', 'NaN', 'Infinity','0xff','0b11','1e-10001', null, undefined]) assert.throws(()=>calculate('income',{capital:value,yield:5,tax:0,target:500}),/finite/);
+  assert.throws(()=>calculate('income',{capital:'1e308',yield:'1e308',tax:0,target:0}),/too large/);
+});
