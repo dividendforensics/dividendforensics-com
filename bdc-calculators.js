@@ -2,6 +2,7 @@
 (function (scope) {
   'use strict';
   const Decimal = typeof module === 'object' && module.exports ? require('./vendor/decimal.js/decimal.js') : scope.Decimal;
+  if(!Decimal)return;
   const D = Decimal.clone({precision: 40, rounding: Decimal.ROUND_HALF_UP});
   const VERSION = 'bdc-1.0.1';
   const formulas = {

@@ -53,6 +53,6 @@
    });
    form.addEventListener('input',()=>{error.hidden=true;clearInvalid();clear(messages.changed);});
    form.addEventListener('reset',()=>{error.hidden=true;clearInvalid();clear(messages.pending);});
-   if(root.DFBOriginal && D)form.querySelector('[data-calculator-controls]').disabled=false;
+   if(root.DFBOriginal && D){form.querySelector('[data-calculator-controls]').disabled=false;clear(messages.pending);}
  });
 })(typeof globalThis!=='undefined'?globalThis:this);

@@ -14,3 +14,6 @@ html[lang="ja"] .international-page,html[lang="zh-Hant"] .international-page{fon
 .international-page .calculator-metrics dt{font-size:14px;line-height:1.6}
 .international-page .calculator-metrics dd{margin:8px 0 0;font-size:30px;line-height:1.3;font-variant-numeric:tabular-nums}
 @media(max-width:600px){.international-page .masthead-main{flex-wrap:wrap;gap:18px}.international-page .international-article{width:calc(100% - 40px)}.international-article p{font-size:16px}.international-page .education-heading h1{font-size:34px}}
+
+.international-page .calculator-fields>label{display:flex;flex-direction:column;gap:8px}
+.international-page .calculator-fields>label>input{margin-top:auto}

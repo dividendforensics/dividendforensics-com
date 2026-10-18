@@ -47,6 +47,6 @@
     form.addEventListener('submit',e=>{e.preventDefault();run();});
     form.addEventListener('reset',()=>setTimeout(()=>{error.hidden=true;clear('Valores iniciales restablecidos. Seleccione Calcular para actualizar el resultado.');},0));
     form.addEventListener('input',()=>{error.hidden=true;clear('Las hipótesis han cambiado. Seleccione Calcular para actualizar el resultado.');});
-    if(root.DFBOriginal && D)form.querySelector("[data-calculator-controls]").disabled=false;
+    if(root.DFBOriginal && D){form.querySelector("[data-calculator-controls]").disabled=false;clear("Seleccione Calcular para ver su escenario.");}
   });
 })(typeof globalThis!=='undefined'?globalThis:this);

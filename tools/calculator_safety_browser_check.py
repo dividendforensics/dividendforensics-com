@@ -32,11 +32,15 @@ def main():
                 for blocked in [None,'/vendor/decimal.js/decimal.js',*scripts]:
                     context=browser.new_context(java_script_enabled=blocked is not None)
                     context.route('**/*',lambda r:r.abort() if not r.request.url.startswith(base) or (blocked and urlsplit(r.request.url).path==blocked) else r.continue_())
-                    page=context.new_page();requests=[]
+                    page=context.new_page();requests=[];errors=[]
+                    page.on('pageerror',lambda e:errors.append(str(e)))
                     page.on('request',lambda r:requests.append((r.method,r.url)))
                     page.goto(base+'/'+path)
                     form=page.locator('form.calculator-form')
                     assert form.locator('input').first.is_disabled(),(path,blocked)
+                    assert form.locator('[data-calculator-loading]').is_visible(),(path,blocked)
+                    assert form.locator('input,select,textarea,button').evaluate_all("controls=>controls.every(c=>c.matches(':disabled'))"),(path,blocked)
+                    assert not errors,(path,blocked,errors)
                     button=form.locator('[type=submit]');assert button.is_disabled(),(path,blocked)
                     requests.clear();before=page.url
                     # Real pointer and keyboard actions: disabled controls must not activate.

@@ -156,7 +156,8 @@
         "Keine allgemeine Rangfolge oder Kaufempfehlung aus einem Einzelverhältnis ableiten."
       ],
       "published": "2026-10-18",
-      "updated": "2026-10-18"
+      "updated": "2026-10-18",
+      "policy_note": "Beispiel einer Emittentenpolitik, keine einheitliche Regel für alle BDCs: Prospect Capital, Form 10-Q zum 31. März 2024, Abschnitt Revenue Recognition. Bei Zweifeln an der Einbringlichkeit wird die periodengerechte Erfassung ausgesetzt. Spätere Zahlungseingänge können je nach Beurteilung der Einbringlichkeit als Ertrag oder Minderung der Kostenbasis erfasst werden. Prüfen Sie die aktuelle Politik des jeweiligen Emittenten."
     }
   },
   "income": {
@@ -184,7 +185,9 @@
         "Monatlicher Durchschnitt (USD)",
         "Kapital für das monatliche Ziel (USD)"
       ],
-      "range": "Der Wert muss zwischen 0 und {max} liegen."
+      "range": "Der Wert muss zwischen 0 und {max} liegen.",
+      "loading": "Die Eingabefelder werden freigegeben, sobald die Berechnung geladen ist. Bleiben sie gesperrt, laden Sie die Seite neu oder lesen Sie die Formel und das Beispiel unten.",
+      "waiting": "Noch kein Ergebnis. Die Berechnung setzt geladene Eingabefelder voraus."
     },
     "sections": [
       [
