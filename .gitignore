@@ -7,3 +7,7 @@ playwright-report/
 test-results/
 .qa/
 img/education/originals/
+
+# Local-only filing review state must not be served by GitHub Pages.
+.filing-review*/
+.review/

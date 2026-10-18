@@ -48,7 +48,7 @@ class PublicCopyTests(unittest.TestCase):
     def test_author_and_research_boundaries_remain_visible(self):
         self.assertIn('Analysis by Jeong-Mo Goo',build.header('index.html'))
         text=build.footer()
-        self.assertIn('The author holds no position in any security mentioned.',text)
+        self.assertIn('Position and commissioning disclosures belong to each dated research record.',text)
         self.assertIn('Structural research, not personalized investment advice.',text)
 
     def test_existing_free_report_destination_unchanged(self):

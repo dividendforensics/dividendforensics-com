@@ -174,10 +174,16 @@ def calculator_page(root,t,lookup):
 
 def tools_page(root):
     from build_site import REPORT_URL
-    tiles=''.join(f'<a class="tool-card" href="/{t["slug"]}.html"><span class="kicker">0{i} / Interactive calculator</span><h2>{E(t["title"])}</h2><p>{E(t["description"])}</p><span class="text-link">Open calculator ↗</span></a>' for i,t in enumerate(TOOLS,1))
-    body=section_head('The numbers desk','Test an assumption.<br><em>Understand the result.</em>','Free calculators for income, reinvestment, coverage, valuation and debt. Each shows its formula, a worked example and the limits of the model.')
+    tools=all_tools()
+    tiles=''.join(f'<a class="tool-card" href="/{t["slug"]}.html"><span class="kicker">{i:02d} / Calculator or worksheet</span><h2>{E(t["title"])}</h2><p>{E(t["description"])}</p><span class="text-link">Open the tool ↗</span></a>' for i,t in enumerate(tools,1))
+    body=section_head('The numbers desk','Test an assumption.<br><em>Understand the result.</em>',f'{len(tools)} free calculators and worksheets for REITs, BDCs, income, ownership and debt. Each shows its formula, a worked example and the limits of the model.')
     body+=f'<section class="wrap tool-grid">{tiles}</section><section class="wrap education-section"><div class="worked-example"><span class="kicker">Published REIT working paper / Report 001</span><h2>See the method in a real research record.</h2><p>Read the MAA / W. P. Carey working paper and its REIT Dividend Checklist. The existing free report is delivered through the original checkout; email is required for delivery.</p><div class="btns"><a class="btn btn-p" href="{E(REPORT_URL)}" target="_blank" rel="noopener">Get Report No. 001 — Free ↗</a><a class="text-link" href="/learn-checklist.html">Read the research checklist →</a></div></div></section>'
-    return shell(root,'tools.html','Free REIT & dividend calculators','Seven free tools for dividend income, reinvestment, AFFO coverage, FFO, NAV, refinancing and total return. Formulas and limitations included.',body,'CollectionPage')
+    return shell(root,'tools.html','Free REIT, BDC & capital analysis tools',f'{len(tools)} free calculators and worksheets for income, AFFO, BDC NII and PIK, non-accruals, NAV, leverage, JV debt and liquidity. Formulas and limitations included.',body,'CollectionPage')
+
+def all_tools():
+    from bdc_tools import TOOLS as bdc_tools
+    from capital_tools import TOOLS as capital_tools
+    return TOOLS+bdc_tools+capital_tools
 
 def editorial(root):
     body=section_head('About this learning library','Evidence first.<br><em>Assumptions in view.</em>','How DFB separates education, published research, advertising and future membership.')
@@ -232,6 +238,10 @@ def education_outputs(root):
     output.update({root/'learn.html':hub(root,articles),root/'tools.html':tools_page(root),root/'editorial-policy.html':editorial(root),root/'sources.html':sources_page(root,articles),root/'glossary.html':glossary(root)})
     from curriculum import course_pages
     output.update(course_pages(root,articles,shell,section_head))
+    from bdc_tools import outputs as bdc_outputs
+    from capital_tools import outputs as capital_outputs
+    output.update(bdc_outputs(root))
+    output.update(capital_outputs(root))
     pages={p:p.read_text(encoding='utf-8') for p in root.glob('*.html')}
     pages.update(output)
     urls=[]

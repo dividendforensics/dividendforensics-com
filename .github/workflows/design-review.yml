@@ -13,7 +13,7 @@ concurrency:
 jobs:
   review:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,7 +28,8 @@ jobs:
           python build_site.py --check
           python -m unittest discover -s tests -v
           python tools/check_site.py
-          node --test tests/calculators.test.cjs
+          node --test tests/*.test.cjs
+          python tools/proposal_browser_check.py
           python tools/education_browser_check.py
           python tools/browser_check.py --output /tmp/dfb-preview
       - uses: actions/upload-artifact@v4

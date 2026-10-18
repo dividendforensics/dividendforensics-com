@@ -94,7 +94,9 @@ def load(root: Path = ROOT):
 def destination(article: dict, root: Path = ROOT):
     slug = article.get('case_slug')
     if slug and (root / f'case-{slug}.html').is_file():
-        return f'/case-{slug}.html', False
+        case_text=(root / f'case-{slug}.html').read_text(encoding='utf-8')
+        if not re.search(r'<meta[^>]*name=[\"\']robots[\"\'][^>]*content=[\"\'][^\"\']*noindex',case_text,re.I):
+            return f'/case-{slug}.html', False
     return article['url'], True
 
 def link_attrs(article: dict, root: Path = ROOT) -> tuple[str, bool]:
@@ -183,10 +185,14 @@ def planned_outputs(root: Path = ROOT):
             template = 'home.html' if path.name == 'index.html' else 'research.html'
             body = (root / 'templates' / template).read_text(encoding='utf-8').replace('{{report_url}}', esc(REPORT_URL))
             if path.name == 'index.html':
-                from education import load_articles
+                from education import load_articles,all_tools
                 from curriculum import level_cards, figure
                 lessons=load_articles(root)
                 body=body.replace('{{lesson_count}}',str(len(lessons))).replace('{{education_paths}}',level_cards(lessons)).replace('{{education_atlas}}',figure('property-atlas',root))
+                alltool=all_tools()
+                body=body.replace('{{tool_count}}',str(len(alltool)))
+                extra_links=''.join(f'<a href="/{t["slug"]}.html"><span>{i:02d}</span> {esc(t["title"])} <b aria-hidden="true">↗</b></a>' for i,t in enumerate(alltool[7:],8))
+                body=body.replace('{{extra_tool_links}}',extra_links)
             opening = '<main id="main" tabindex="-1">'
             text = splice(text, body, opening, '</main>')
             text = splice(text, build_index(articles, root) if path.name == 'index.html' else build_research(articles, root))

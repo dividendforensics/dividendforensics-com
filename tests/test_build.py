@@ -22,6 +22,9 @@ class BuildTests(unittest.TestCase):
     def test_existing_local_page(self):
         (self.root/'case-test.html').write_text('test')
         self.assertEqual(b.destination(self.a,self.root),('/case-test.html',False))
+    def test_noindex_source_pointer_links_directly_to_published_article(self):
+        (self.root/'case-test.html').write_text('<meta name="robots" content="noindex,follow">')
+        self.assertEqual(b.destination(self.a,self.root),(self.a['url'],True))
     def test_optional_case_slug(self):
         a=dict(self.a);del a['case_slug'];self.write([a]);b.load(self.root)
         self.assertTrue(b.destination(a,self.root)[1])
