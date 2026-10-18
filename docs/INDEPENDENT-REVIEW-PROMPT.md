@@ -1,8 +1,8 @@
 # 다른 AI 전달용 — DFB 홈페이지 완성본 독립 검토 요청
 
 검토 기준일: 2026-10-18 (한국 시간).
-코드 배포 버전: `81d8ec3ac1840175dff1585330d2b649f2941ca2 + codex/analysis-workbenches`.
-배포·공개 응답 대조 상태: `디자인 PR #3 병합. 새 도구 확장본은 현재 로컬 검증 중이며 공개 배포 완료로 간주하지 말 것. 최종 공개 상태는 EXPANSION-RELEASE-2026-10-18.md 확인.`.
+코드 배포 버전: `f3af0fb0a836e38986dd8daf984f881ef4043c42`.
+배포·공개 응답 대조 상태: `PR #4 병합, CI 통과. 공개 HTML87개와 주요 자산·사이트맵·기존 이동 URL 총97응답이 로컬 배포 원본과 일치. 실제 Google 색인/광고/메일 수신은 미확인.`.
 
 아래 요청문은 대화 내용 없이도 검토할 수 있도록 작성했다. 그대로 전달하고, 가능하면 웹·GitHub 접근이 가능한 AI에 맡긴다. 범위를 나누려면 맨 아래 추가 초점 중 하나를 덧붙인다.
 
@@ -14,9 +14,10 @@ DFB(Dividend Forensics Bureau)의 실제 홈페이지 완성본을 독립적으�
 
 공개 사이트: https://dividendforensics.com/
 저장소: https://github.com/dividendforensics/dividendforensics-com
-이번 변경 PR: https://github.com/dividendforensics/dividendforensics-com/pull/3
-고정 코드 버전: `81d8ec3ac1840175dff1585330d2b649f2941ca2 + codex/analysis-workbenches` — main이 이후 바뀌면 이 버전과 현행 사이트를 구분해 주세요.
-구현·검수 기록: https://github.com/dividendforensics/dividendforensics-com/blob/81d8ec3ac1840175dff1585330d2b649f2941ca2 + codex/analysis-workbenches/docs/DESIGN-REVIEW-2026-10-18.md
+이번 변경 PR: https://github.com/dividendforensics/dividendforensics-com/pull/4
+고정 코드 버전: `f3af0fb0a836e38986dd8daf984f881ef4043c42` — main이 이후 바뀌면 이 버전과 현행 사이트를 구분해 주세요.
+확장 검수 기록: https://github.com/dividendforensics/dividendforensics-com/blob/main/docs/EXPANSION-RELEASE-2026-10-18.md
+디자인 검수 기록: https://github.com/dividendforensics/dividendforensics-com/blob/f3af0fb0a836e38986dd8daf984f881ef4043c42/docs/DESIGN-REVIEW-2026-10-18.md
 
 기존 DFB를 무료 REIT 교육·계산기·공시 기반 리서치 사이트로 확장했습니다. 교육은 REIT에 집중하지만 리서치 범위는 REIT/BDC에만 한정하지 않습니다. 향후 멤버십은 별도 계획이며 현재 가입·결제는 열려 있지 않습니다. 운영자의 목표는 무료 교육으로 독자를 확보하고 AdSense 수익화를 준비하는 것입니다. 현재 AdSense 게시자 ID가 없고 광고가 송출되는 상태는 아닙니다.
 
@@ -43,6 +44,12 @@ DFB(Dividend Forensics Bureau)의 실제 홈페이지 완성본을 독립적으�
 
 ## 2. 바로 확인할 공개 URL
 
+- 전체 도구15개: https://dividendforensics.com/tools.html
+- BDC NII/PIK: https://dividendforensics.com/calculator-bdc-nii-pik.html
+- JV 부채: https://dividendforensics.com/calculator-jv-debt.html
+- 만기 유동성: https://dividendforensics.com/calculator-debt-ladder.html
+- 우선주 귀속: https://dividendforensics.com/calculator-preferred-common.html
+- 선별적 의뢰: https://dividendforensics.com/research-desk.html#inquiries
 - 홈: https://dividendforensics.com/
 - 교육 허브: https://dividendforensics.com/learn.html
 - 초급: https://dividendforensics.com/course-beginner.html
@@ -73,9 +80,9 @@ DFB(Dividend Forensics Bureau)의 실제 홈페이지 완성본을 독립적으�
 4. **SEO·코드·배포**: 실제 화면과 title/description/canonical/Breadcrumb/수정일이 일치하는지, 허브가 자기 자신을 Breadcrumb에 중복하는지, 계산기가 `Home → Calculators → 계산기`로 표시되는지, JS 없이 교육 본문을 읽을 수 있는지 확인해 주세요. sitemap 제외 기본 3개와 case-* 9개와 기존 URL 이동도 확인해 주세요.
 5. **근거와 정책**: 인용 링크·기업 공시·날짜·도해·발행 이력이 실제 근거와 맞는지, 과장된 전문성·수익/승인 보장·가짜 인간 검토·유사 글 양산이 있는지 봐 주세요. 계정 접근이 필요한 AdSense/Search Console/분석 미확인 사항과 공개 사이트의 확정 결함은 분리해 주세요.
 
-주요 소스 경로: `templates/home.html`, `templates/header.html`, `templates/footer.html`, `bureau.css`, `build_site.py`, `education.py`, `curriculum.py`, `education.js`, `calculators.js`, `content/foundations.json`, `content/sectors.json`, `content/metrics.json`, `content/expert.json`, `articles.json`.
+주요 소스 경로: `templates/home.html`, `templates/header.html`, `templates/footer.html`, `bureau.css`, `build_site.py`, `education.py`, `curriculum.py`, `education.js`, `calculators.js`, `bdc_tools.py`, `bdc-calculators.js`, `capital_tools.py`, `capital-calculators.js`, `proposal.js`, `scripts/filing_review.py`, `vendor/manifest.json`, `content/foundations.json`, `content/sectors.json`, `content/metrics.json`, `content/expert.json`, `articles.json`.
 
-검증 명령: `python build_site.py --check`, `python -m unittest discover -s tests`, `node --test tests/*.test.cjs`, `python tools/check_site.py`, `python tools/education_browser_check.py`. 브라우저 검사는 Playwright/Chromium이 필요합니다. 현재 검증 기록은 Python 77개, Node 55개, 87페이지 정적 검사; 확대 화면 검사는 진행 중입니다. 실제로 재실행하지 않았다면 이 숫자를 본인의 검증 결과로 합산하지 마세요.
+검증 명령: `python build_site.py --check`, `python -m unittest discover -s tests`, `node --test tests/*.test.cjs`, `python tools/check_site.py`, `python tools/education_browser_check.py`. 브라우저 검사는 Playwright/Chromium이 필요합니다. 현재 검증 기록은 Python 77개, Node 55개, 87페이지 정적 검사; 로컬 인라인261회 렌더링 통과(87×320/390/1440), 실제 HTTP 교육 기능 재검사 통과. GitHub CI435회 렌더링 통과(87×5너비), 공개97응답 일치. 세부 범위는 릴리스 문서 확인입니다. 실제로 재실행하지 않았다면 이 숫자를 본인의 검증 결과로 합산하지 마세요.
 
 ## 4. 반드시 구분해 주세요
 
