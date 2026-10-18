@@ -1,5 +1,11 @@
 # Dividend Forensics Bureau
 
+## Historical filing labs and quality controls
+
+The free learning journey now includes two historical FY2024 filing exercises: Realty Income AFFO/dividend reconciliation and Ares Capital NII/PIK/distributions. These are dated educational analyses, separate from the selected publication archive and from current issuer assessments. `content/filing-labs.json` preserves source documents, reported decimal values, units and table locations; `filing_labs.py` renders the source trail and calculations. The home page, learning rooms, relevant lessons/calculators and research worksheet link to the labs.
+
+Publisher-readiness work improves actual usefulness and traceability; it does not certify AdSense approval or Google indexing. The Google account state, real contact-form delivery, consent/ad activation, native-speaker review and real-device testing are not established by a green build. See `docs/SEARCH-POLICY-AUDIT-2026-10-18.md` for the official-policy audit and hosting nuance.
+
 ## Free REIT and BDC education — 2026-10-18
 
 The site provides 36 REIT guides, 16 BDC guides, 15 calculators, two

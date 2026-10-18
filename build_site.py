@@ -142,7 +142,7 @@ def build_research(articles: list[dict], root: Path = ROOT) -> str:
 def header(page_name: str, root: Path = ROOT) -> str:
     nav = [('learn.html','Learn REITs'),('tools.html','Calculators'),('glossary.html','Glossary'),('research.html','Research'),('about.html','About')]
     active = page_name
-    if page_name.startswith('case-'): active = 'research.html'
+    if page_name.startswith(('case-', 'filing-lab')): active = 'research.html'
     if page_name.endswith('-guide.html') or page_name.startswith('reit-'): active = 'learn.html'
     if page_name.startswith('learn-'): active = 'learn.html'
     if page_name.startswith('course-'): active = 'learn.html'
@@ -209,6 +209,8 @@ def planned_outputs(root: Path = ROOT):
                 body=body.replace('{{lesson_count}}',str(len(lessons))).replace('{{education_paths}}',level_cards(lessons)).replace('{{education_atlas}}',figure('property-atlas',root))
                 from research_resources import resource_cards
                 body=body.replace('{{research_resources}}',resource_cards())
+                from filing_labs import cards as filing_cards
+                body=body.replace('{{filing_labs}}',filing_cards(root))
                 alltool=all_tools()
                 body=body.replace('{{tool_count}}',str(len(alltool)))
                 extra_links=''.join(f'<a href="/{t["slug"]}.html"><span>{i:02d}</span> {esc(t["title"])} <b aria-hidden="true">↗</b></a>' for i,t in enumerate(alltool[7:],8))

@@ -8,7 +8,8 @@ import os
 from playwright.sync_api import sync_playwright
 
 ROOT=Path(__file__).resolve().parents[1]
-PAGES=['reit-vs-bdc.html','dividend-dates.html','dividend-research-worksheet.html']
+PAGES=['reit-vs-bdc.html','dividend-dates.html','dividend-research-worksheet.html',
+       'filing-labs.html','filing-lab-realty-income-2024.html','filing-lab-ares-capital-2024.html']
 
 class Server(ThreadingHTTPServer):
     request_queue_size=128
@@ -45,6 +46,17 @@ def main():
                     if width in (390,1440):
                         page.screenshot(path=str(output/f'resource-{name}-{width}.png'),full_page=True)
                         page.screenshot(path=str(output/f'resource-top-{name}-{width}.png'))
+            page.goto(base+'/filing-lab-ares-capital-2024.html',wait_until='networkidle')
+            input_values=page.locator('[data-lab-input]').evaluate_all('(els)=>Object.fromEntries(els.map(el=>[el.dataset.labInput,el.textContent]))')
+            assert input_values=={'nii':'1403','pik':'463','tii':'2990','regular':'1219'}
+            page.goto(base+'/calculator-bdc-nii-pik.html',wait_until='networkidle')
+            form=page.locator('[data-bdc-tool]')
+            for key,value in {**input_values,'supplemental':'0','special':'0','periodStart':'2024-01-01','periodEnd':'2024-12-31','asOf':'2026-10-18'}.items():
+                form.locator(f'[name="{key}"]').fill(value)
+            form.locator('[type=submit]').click()
+            assert not form.locator('[data-bdc-error]').is_visible()
+            result=page.locator('[data-bdc-result]').inner_text()
+            assert '1.1509' in result and '0.7711' in result
             page.goto(base+'/dividend-research-worksheet.html',wait_until='networkidle')
             payload='Fictional issuer <script>alert(1)</script> & "quoted"'
             details='https://example.test/filing\nTable 4: USD millions; not found ≠ zero.'
@@ -88,9 +100,24 @@ def main():
             assert plain.url==base+'/dividend-research-worksheet.html'
             assert plain.locator('#note-issuer').input_value()=='No-JS private draft'
             assert plain.locator('form#research-worksheet').count()==0
+            for name in PAGES[3:]:
+                plain.goto(base+'/'+name,wait_until='networkidle')
+                assert plain.locator('main').inner_text().strip()
+                assert plain.locator('h1').count()==1
+                if name.startswith('filing-lab-'):
+                    assert plain.locator('a[href="/content/filing-labs.json"]').count()==1
+                    assert plain.locator('main table').count()>=3
+                    answer=plain.locator('details.workshop-answer').first
+                    assert answer.count()==1
+                    summary=answer.locator('summary')
+                    summary.focus();plain.keyboard.press('Enter')
+                    assert answer.evaluate('(el)=>el.open')
+                    plain.keyboard.press('Enter')
+                    assert not answer.evaluate('(el)=>el.open')
+                    assert '2024' in plain.locator('main').inner_text()
             nojs.close();context.close();browser.close()
             assert not errors and not posts
-            report.update(passed=True,checks=['9 responsive renders','actual UTF-8 text download','literal HTML-like input stays text','long-note print expansion and PDF','blank values stay missing','no storage/cookies or non-GET requests','reload clears entries','keyboard field navigation','no-JS worksheet'])
+            report.update(passed=True,checks=[f'{len(renders)} responsive renders','actual UTF-8 text download','literal HTML-like input stays text','long-note print expansion and PDF','blank values stay missing','no storage/cookies or non-GET requests','reload clears entries','keyboard field navigation','no-JS worksheet','3 filing pages without JS; source ledger links and keyboard answer keys','copy-ready lab values reproduce BDC worksheet coverage'])
     finally:
         server.shutdown();server.server_close()
         (output/'resources-browser-report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
