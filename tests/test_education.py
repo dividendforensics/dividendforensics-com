@@ -45,7 +45,7 @@ class EducationTests(unittest.TestCase):
         schema=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',text,re.S)[1])
         self.assertEqual(schema['datePublished'],'2026-10-16')
         self.assertEqual(schema['dateModified'],'2026-10-17')
-        self.assertIn('datetime="2026-10-17">17 October 2026</time>',text)
+        self.assertIn('datetime="2026-10-17">17 Oct 2026</time>',text)
         self.assertTrue(all(other['updated']=='2026-10-18' for other in lookup.values()))
 
     def test_curriculum_covers_each_guide_once(self):

@@ -10,8 +10,41 @@
     "Optional: home (boolean), home_title, case_slug, status (published/draft/internal_review)."
   ],
   "published_count": 94,
-  "_published_count_note": "Legacy running total plus verified additions. Not displayed as an independently audited count; the website displays the number of selected public records.",
+  "_published_count_note": "Historical total retained for compatibility; not maintained or displayed. The selected public archive count is generated from the articles array.",
   "articles": [
+    {
+      "url": "https://www.benzinga.com/Opinion/26/09/61993678",
+      "title": "CoreWeave’s $4.2B Private Offering And What It Changes",
+      "blurb": "Principal raised, cash available after transaction costs and potential dilution are separate measures. The convertible financing adds capital while leaving deployment and settlement choices to subsequent disclosures.",
+      "date": "2026-09-25",
+      "group": "Technology",
+      "label": "Cloud infrastructure / financing",
+      "case_key": "CRWV",
+      "status": "published",
+      "publication_verified": "2026-10-18"
+    },
+    {
+      "url": "https://www.benzinga.com/Opinion/26/09/61948093/millroses-1-billion-bond-deal-ties-500m-to-merger-deadline",
+      "title": "Millrose’s $1 Billion Bond Deal Ties $500M To Merger Deadline",
+      "blurb": "A bond redemption condition and possible bank funding make the eventual debt mix contingent on a merger and the use of proceeds. Fixed coupons do not establish the final company-wide financing cost.",
+      "date": "2026-09-23",
+      "group": "REIT",
+      "label": "Land / financing",
+      "case_key": "MRP",
+      "status": "published",
+      "publication_verified": "2026-10-18"
+    },
+    {
+      "url": "https://www.benzinga.com/Opinion/26/09/61931171/ready-capital-refinancing-not-as-straightforward-as-it-seems",
+      "title": "Ready Capital Refinancing Not As Straightforward As It Seems",
+      "blurb": "A smaller refinancing can still carry higher annual stated-coupon interest. Principal reduction, the cash funding gap and the company’s earnings recovery require separate tests.",
+      "date": "2026-09-22",
+      "group": "REIT",
+      "label": "Mortgage REIT / refinancing",
+      "case_key": "RC",
+      "status": "published",
+      "publication_verified": "2026-10-18"
+    },
     {
       "url": "https://www.benzinga.com/Opinion/26/09/61852306/piedmont-reworks-debt-stack-but-what-happens-to-core-ffo-per-share",
       "title": "Piedmont Reworks Debt Stack, But What Happens To Core FFO Per Share?",

@@ -76,7 +76,7 @@
       {"heading":"Compare scenarios rather than chasing the largest number","text":"An income-oriented investor may prefer regular cash distributions, while another values reinvestment inside the business. Neither preference makes a headline yield a safety score. Model an unchanged dividend, a reduction and a price change separately. Reinvesting dividends buys more shares but does not erase the risk of a falling asset value. If you compare a REIT with a bond, remember that the common equity dividend and redemption value are not contractual bond payments."}
     ],
     "example":{"heading":"Hypothetical: 6% income, negative return","text":"Buy one share for $100, receive $6 in distributions and finish the year with a share worth $90. Simple pretax total return is ($90 − $100 + $6) ÷ $100 = −4%. The initial 6% yield was an income ratio, not a promise of a positive return. Reinvestment, taxes and fees would change the realized result."},
-    "pitfall":"A falling price mechanically increases an unchanged indicated yield. It may be signaling risk that the current dividend does not yet reflect.",
+    "pitfall":"A falling share price mechanically increases the indicated yield if the assumed dividend stays unchanged. It may be signaling risk that the current dividend does not yet reflect.",
     "checklist":["Specify trailing, indicated or forecast dividends.","Separate recurring distributions from special payments.","Show price change alongside cash income.","Use consistent currencies and account for fees and tax assumptions."],
     "sources":[{"title":"Nareit glossary: total return and dividend yield","url":"https://www.reit.com/glossary"},{"title":"SEC REIT investor bulletin","url":"https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-65"}],"related":["learn-dividend-cuts","learn-reinvestment","learn-payout-ratio"]
   },
@@ -94,7 +94,7 @@
     "example":{"heading":"Hypothetical: the first monthly step","text":"Start with $10,000 at a constant 6% annual yield and assume no withholding. The first monthly distribution in this simplified model is $10,000 × 6% ÷ 12 = $50. Reinvesting it creates a $10,050 balance before any end-of-month contribution. This is a modeling convention, not an actual monthly payment schedule or price forecast."},
     "pitfall":"A smooth rising chart reflects smooth assumptions. It does not demonstrate that the investment is safe or that income will remain constant.",
     "checklist":["Check the broker or issuer's reinvestment terms and fees.","State whether yield, dividend per share or share price is held constant.","Separate contributions from reinvested income.","Consider concentration, taxes and the possibility of a dividend cut."],
-    "sources":[{"title":"Investor.gov: Dividend Reinvestment Plans","url":"https://www.investor.gov/introduction-investing/investing-basics/glossary/direct-investment-plans-buying-stock-directly"},{"title":"Nareit glossary","url":"https://www.reit.com/glossary"}],"related":["learn-yield-total-return","learn-dividend-cuts","learn-reit-etfs"]
+    "sources":[{"title":"Investor.gov: Direct investment and dividend reinvestment plans","url":"https://www.investor.gov/introduction-investing/investing-basics/glossary/direct-investment-plans-buying-stock-directly"},{"title":"Nareit glossary","url":"https://www.reit.com/glossary"}],"related":["learn-yield-total-return","learn-dividend-cuts","learn-reit-etfs"]
   },
   {
     "slug":"learn-interest-rates",

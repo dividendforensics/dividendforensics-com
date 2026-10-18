@@ -4,6 +4,7 @@
   if (search) {
     const category = document.getElementById('lesson-category'), level = document.getElementById('lesson-level'), lessons = [...document.querySelectorAll('[data-lesson]')];
     document.querySelector('[data-library-controls]').hidden = false;
+    search.value = new URLSearchParams(window.location.search).get('q') || '';
     function filter() {
       const query = search.value.trim().toLowerCase(); let count = 0;
       lessons.forEach(item => { const visible = item.dataset.search.includes(query) && (category.value === 'all' || item.dataset.category === category.value) && (level.value === 'all' || item.dataset.level === level.value); item.hidden = !visible; count += visible ? 1 : 0; });
@@ -12,6 +13,7 @@
     }
     search.addEventListener('input', filter); category.addEventListener('change', filter); level.addEventListener('change', filter);
     document.getElementById('lesson-reset').addEventListener('click', () => { search.value = ''; category.value = 'all'; level.value = 'all'; filter(); search.focus(); });
+    filter();
   }
   const glossary = document.getElementById('glossary-search');
   if (glossary) {
