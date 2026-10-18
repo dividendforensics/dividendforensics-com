@@ -51,6 +51,16 @@ def main():
                 form.locator('[name=yield]').fill('7,5' if locale=='de' else '7.5');form.locator('[name=tax]').fill('0')
                 form.locator('[type=submit]').click()
                 assert page.locator('[data-international-result] dd').first.inner_text()==('76,84' if locale=='de' else '76.84')
+                if locale=='de':
+                    form.locator('[name=capital]').fill('10.000');form.locator('[type=submit]').click()
+                    assert form.locator('[name=capital]').get_attribute('aria-invalid')=='true'
+                    assert form.locator('[name=capital]').get_attribute('aria-describedby')=='calculator-input-error'
+                    assert page.locator('[data-international-result] dd').count()==0
+                    assert 'Dezimalkomma' in form.locator('[role=alert]').inner_text()
+                    form.locator('[name=capital]').fill('-1');form.locator('[type=submit]').click()
+                    assert 'zwischen 0' in form.locator('[role=alert]').inner_text()
+                    form.locator('[name=capital]').fill('10000')
+                assert float(form.locator('[name=capital]').evaluate("e=>getComputedStyle(e).fontSize").replace('px',''))>=16
                 form.locator('[name=tax]').fill('100');form.locator('[type=submit]').click()
                 assert page.locator('[data-international-result] dd').last.inner_text() in ['Nicht definiert','定義できません','未定義']
                 form.locator('[name=capital]').fill('1.000,00');form.locator('[type=submit]').click()

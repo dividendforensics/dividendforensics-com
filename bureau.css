@@ -171,3 +171,9 @@ h1,h2,h3{color:var(--text)}
 .home-page .education-home .btn-s[href="/learn-bdc.html"]{color:#f7f2e6;border-color:#73848b;background:transparent}
 .home-page .education-home .btn-s[href="/learn-bdc.html"]:hover{color:#fffdf8;border-color:#a8bac2;background:#234554}
 .home-page .education-home .bureau-hero-copy .btn:focus-visible{outline:2px solid #d6bb80;outline-offset:4px}
+
+/* Local calculators remain inert until their own handlers are installed. */
+.calculator-form fieldset[data-calculator-controls]{border:0;padding:0;margin:0;min-width:0}
+.calculator-form fieldset[data-calculator-controls]>.small-note{margin:15px 0}
+.education-page .calculator-form input,.education-page .calculator-form select,.education-page .calculator-form textarea,.education-page .calculator-form button{font-size:16px}
+.calculator-form [aria-invalid="true"]{outline:2px solid #a22b36;outline-offset:2px}

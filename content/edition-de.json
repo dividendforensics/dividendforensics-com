@@ -14,7 +14,7 @@
     "calculate": "Berechnen",
     "reset": "Zurücksetzen",
     "result": "Szenarioergebnis",
-    "scope": "Diese Einführung behandelt Produkte aus den USA. USD bedeutet US-Dollar. Die Beispiele werden weder in Euro umgerechnet noch an deutsche, österreichische oder schweizerische Steuervorschriften angepasst.",
+    "scope": "Diese Einführung behandelt Produkte aus den USA. USD bedeutet US-Dollar. Die Beispiele werden weder in Euro noch in Schweizer Franken umgerechnet noch an deutsche, österreichische oder schweizerische Steuervorschriften angepasst.",
     "source_note": "Die verlinkten Primärquellen sind englischsprachig. Sie erläutern Struktur und Rechnungslegung; die Rechenbeispiele sind erfunden und keine Unternehmensdaten. Die Einführung fasst die verlinkte englische Ausgangsfassung zusammen.",
     "disclaimer": "Bildungsmaterial, keine persönliche Anlageempfehlung. Ausschüttungen und Kapitalerhalt sind nicht garantiert. Prüfen Sie Datum, Definition und Annahmen jeder Zahl.",
     "policy": "Redaktionsrichtlinien (Englisch)",
@@ -142,8 +142,8 @@
           "Ein Immobilien-NAV-Modell kann NOI mit einem Kapitalisierungssatz bewerten und vorrangige Ansprüche abziehen. Bei BDCs stehen berichtete Anlagezeitwerte, andere Nettovermögenswerte und Verbindlichkeiten im Vordergrund. Höhere Zinsen können Kreditrenditen steigern und zugleich Schuldner belasten. Sinkende Zinsen können Aktivzinsen schneller reduzieren als Finanzierungskosten. Beim REIT zählen Neuverzinsungstermine, Absicherungen und Mietanpassungen. Eine allgemeine Zinserzählung ersetzt keine datierte Übersicht über Aktiva, Schulden und Gebühren."
         ],
         [
-          "Eine nachvollziehbare Forschungsroute wählen",
-          "Verfolgen Sie beim REIT Mieten bis zu Betriebsergebnis, laufenden Investitionen und Dividenden. Verfolgen Sie bei der BDC Anlageerträge durch Finanzierung und Gebühren; prüfen Sie danach PIK, nicht mehr verzinste Problemkredite und Wertänderungen. Konzentration kann in Mietern und Märkten oder in Kreditnehmern, Branchen und Sponsoren liegen. Ein Abschlag auf NAV ist nicht automatisch günstig: NAV kann fallen und Kosten laufen weiter. Dokumentieren Sie fehlende Belege, statt sie durch optimistische Schätzungen zu ersetzen. Persönliche grenzüberschreitende Besteuerung ist nicht Gegenstand dieses Vergleichs."
+          "Einen nachvollziehbaren Analyseweg wählen",
+          "Verfolgen Sie beim REIT Mieten bis zu Betriebsergebnis, laufenden Investitionen und Dividenden. Verfolgen Sie bei der BDC Anlageerträge durch Finanzierung und Gebühren; prüfen Sie danach PIK, Kredite im Non-Accrual-Status (mit ausgesetzter periodengerechter Erfassung von Zinserträgen) und Wertänderungen. Konzentration kann in Mietern und Märkten oder in Kreditnehmern, Branchen und Sponsoren liegen. Ein Abschlag auf NAV ist nicht automatisch günstig: NAV kann fallen und Kosten laufen weiter. Dokumentieren Sie fehlende Belege, statt sie durch optimistische Schätzungen zu ersetzen. Persönliche grenzüberschreitende Besteuerung ist nicht Gegenstand dieses Vergleichs."
         ]
       ],
       "example": "Hypothetische jährliche USD je Stammaktie: Beide Aktien kosten 25 und schütten 2,00 aus; die Rendite beträgt jeweils 8 %. Der REIT berichtet AFFO 2,50, also 80 % Ausschüttungsquote. Nur unter der Annahme, dass laufende Kosten von 0,30 darin noch nicht abgezogen wurden, sinkt die analytische Größe auf 2,20: Quote 90,91 %, Puffer 0,20. Die BDC berichtet NII 2,40: Deckung 1,20×. Ein rein illustrativer Abzug von 0,40 enthaltenem PIK lässt 2,00, Deckung 1,00× und Puffer null. Dies ist weder standardisiertes AFFO noch eine vollständige Kapitalflussprognose; der PIK-Abzug modelliert keine Gebühren- oder Steuerreaktion.",
@@ -168,12 +168,12 @@
       "Angenommener Steuerabzug (%)",
       "Monatliches Ziel (USD)"
     ],
-    "input_note": "Eingaben ohne Tausendertrennzeichen. Dezimalkomma oder Dezimalpunkt sind erlaubt: 1024,5 oder 1024.5. 5 bedeutet 5 %. Kapital: 0–1.000.000.000.000 USD; Rendite und Abzug: 0–100 %; monatliches Ziel: 0–1.000.000.000 USD. Die Angaben bleiben in diesem Browser-Tab.",
+    "input_note": "Verwenden Sie ein Komma für Dezimalstellen und keine Tausendertrennzeichen: 10000 oder 10000,50. Punkte werden abgewiesen, damit 10.000 nicht versehentlich als 10 berechnet wird. 5 bedeutet 5 %. Kapital: 0–1000000000000 USD; Rendite und Abzug: 0–100 %; monatliches Ziel: 0–1000000000 USD. Die Angaben bleiben in diesem Browser-Tab.",
     "nojs": "Die interaktive Berechnung benötigt JavaScript. Formel und Beispiel bleiben unten lesbar.",
     "messages": {
       "pending": "Wählen Sie Berechnen, um das Szenario anzuzeigen.",
       "changed": "Annahmen geändert. Bitte neu berechnen.",
-      "error": "Prüfen Sie Zahlen und Grenzen. Keine Tausendertrennzeichen verwenden.",
+      "error": "Verwenden Sie Ziffern und bei Bedarf ein Dezimalkomma, ohne Tausendertrennzeichen (z. B. 10000,50).",
       "unavailable": "Die Rechenbibliothek ist nicht verfügbar. Laden Sie die Seite erneut.",
       "undefined": "Nicht definiert",
       "heading": "Szenarioergebnis",
@@ -183,7 +183,8 @@
         "Jährliches Einkommen nach angenommenem Abzug (USD)",
         "Monatlicher Durchschnitt (USD)",
         "Kapital für das monatliche Ziel (USD)"
-      ]
+      ],
+      "range": "Der Wert muss zwischen 0 und {max} liegen."
     },
     "sections": [
       [
