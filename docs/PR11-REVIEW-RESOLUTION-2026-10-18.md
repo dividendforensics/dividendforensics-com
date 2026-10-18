@@ -32,5 +32,13 @@
 각 발견은 심각도·파일/URL·원문·입력·기대/실제 결과·재현 방법을 포함하세요. 확정 결함, 취향/권고, 미검수를 구분하세요.
 
 ## 완료 기록
-현재 이 문서 작성 시점에는 로컬 수정 단계입니다. PR/CI/병합/공개 배포 완료 증거는 확인 후 이 절을 갱신합니다.
+- PR #12: https://github.com/dividendforensics/dividendforensics-com/pull/12 (병합 완료).
+- 고정 제품 커밋: `77868c9db2bd72335aa31f7a06bad3cb892b9604`.
+- 검사한 PR head: `76a06726cbdf59f30640585778195b82286dbf88`; 로컬/원격 tree `325c498316b0d8335bcc6b5a64162b0e9db338aa` 일치.
+- 전체 CI: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39116419105 — 성공. 로그에서 Python 127, Node 73, 계산기 실패 조합 65, 신규 다국어 54렌더, 전체 137페이지 685렌더 통과 확인. 전체 페이지 가로 넘침/깨진 이미지 없음. 실제 원어민·스크린리더 검수를 뜻하지 않습니다.
+- Build and publish: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39117065421 — 성공.
+- 최종 Pages: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39117090274 — 성공. 앞선 중복 Pages 작업 39117065554는 취소되고 이 작업으로 배포 완료했습니다.
+- 공개 검증: `.qa/pr12-live.json` — 일반 공개 URL 158/158이 저장본과 일치, 첫 시도 통과. CRLF/LF 및 끝 공백 정규화 비교이며 바이트 단위 동일이라는 주장은 아닙니다. 캐시 우회 URL만 맞는 경우는 통과시키지 않았습니다.
+- 사이트맵 125개, 활성 HTML 137개 유지. AdSense 확인 메타/ads.txt 유지, 실제 광고·계정 설정은 변경하지 않았습니다.
+- 이 완료 기록은 제품 검증 뒤 문서만 갱신했습니다. 외부 재검수는 위 고정 제품 커밋과 실제 공개 응답을 비교해 주세요.
 Google 색인·AdSense 승인·실제 메일 수신·실폰·스크린리더·원어민 감수는 이번 작업의 검증 범위 밖입니다.
