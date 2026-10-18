@@ -46,7 +46,9 @@
     "exercise": {
       "question": "¿Demuestra el ejemplo que los alquileres financian por sí solos la distribución de 50 USD?",
       "answer": "No. Tras las partidas indicadas quedan 45 USD. La distribución de 50 USD necesita otra fuente de financiación; el ejemplo no calcula la renta imponible ni el FFO completo."
-    }
+    },
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
   },
   {
     "english_slug": "learn-bdc-basics",
@@ -95,7 +97,9 @@
     "exercise": {
       "question": "¿Prueba la diferencia de 1 entre ingresos y distribuciones que crecieron los activos netos?",
       "answer": "No. La caída separada de 4 en la valoración y los demás cambios deben incorporarse a la conciliación de activos netos. La cobertura de distribuciones, la generación de efectivo y la conservación del capital son preguntas distintas."
-    }
+    },
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
   },
   {
     "english_slug": "learn-yield-total-return",
@@ -144,7 +148,9 @@
     "exercise": {
       "question": "¿Impide el ingreso de 6 USD que la inversión del ejemplo tenga una rentabilidad negativa?",
       "answer": "No. La pérdida de precio de 100 USD a 90 USD supera la distribución de 6 USD. El resultado simple es −4% antes de impuestos y sin reinversión ni comisiones."
-    }
+    },
+    "published": "2026-10-18",
+    "updated": "2026-10-18"
   },
   {
     "english_slug": "learn-bdc-nii-coverage",
@@ -162,7 +168,7 @@
       },
       {
         "heading": "Usa importes totales comparables o datos por acción comparables",
-        "text": "Dividir el NII total entre las distribuciones totales a los accionistas ordinarios evita combinar sin explicarlo las acciones medias ponderadas de los beneficios con un número diferente de acciones con derecho a distribución. Una comparación por acción también puede ser útil si ambas cifras se presentan con bases apropiadas y compatibles, pero una emisión durante el periodo puede complicar la conciliación con los totales. No fabriques un importe de PIK por acción dividiendo los ingresos del periodo entre el número de acciones más fácil de encontrar. Registra si calculas ingresos divididos entre distribuciones, denominado aquí cobertura, o distribuciones divididas entre ingresos, denominado porcentaje de distribución o payout. Solo son recíprocos cuando ambos datos permiten esa interpretación."
+        "text": "Dividir el NII total entre las distribuciones totales a los accionistas ordinarios evita combinar sin explicarlo las acciones medias ponderadas de los beneficios con un número diferente de acciones con derecho a distribución. Una comparación por acción también puede ser útil si ambas cifras se presentan con bases apropiadas y compatibles, pero una emisión durante el periodo puede complicar la conciliación con los totales. Los intereses pagados en especie (payment-in-kind, PIK) pueden reconocerse como ingreso sin cobrarse en efectivo en ese momento, según el contrato y la política de reconocimiento del emisor. No fabriques un importe de PIK por acción dividiendo los ingresos del periodo entre el número de acciones más fácil de encontrar. Registra si calculas ingresos divididos entre distribuciones, denominado aquí cobertura, o distribuciones divididas entre ingresos, denominado porcentaje de distribución o payout. Solo son recíprocos cuando ambos datos permiten esa interpretación."
       },
       {
         "heading": "Mantén visibles los límites de la proporción",
@@ -193,6 +199,12 @@
     "exercise": {
       "question": "Mantén el NII en 120 y aumenta la distribución extraordinaria de 5 a 20. ¿Cuáles son las coberturas regular y total?",
       "answer": "La cobertura regular permanece en 1,2000 veces. Las declaraciones totales ascienden a 130, por lo que la cobertura total baja a 120 ÷ 130 = 0,9231 veces. Es una comparación contable con bases compatibles, no una previsión de efectivo."
+    },
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "related_english": {
+      "slug": "learn-bdc-pik-income",
+      "title": "PIK: contrato, contabilidad y efectivo (inglés)"
     }
   }
 ]

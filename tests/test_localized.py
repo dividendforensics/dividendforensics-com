@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 from urllib.parse import urlsplit
 
 from bs4 import BeautifulSoup
@@ -75,6 +76,29 @@ class LocalizedTests(unittest.TestCase):
             self.assertLess(scripts.index('/calculators.js'),scripts.index('/spanish-calculators.js'))
             for input_ in soup.select('input'):
                 self.assertTrue(soup.select('label[for="'+input_['id']+'"]'))
+
+    def test_spanish_dates_are_per_article_and_visible_date_matches_schema(self):
+        articles=json.loads((ROOT/'content/spanish.json').read_text(encoding='utf-8'))
+        articles[0]['published']='2026-10-16'
+        articles[0]['updated']='2026-10-17'
+        with patch.object(localized.json,'loads',return_value=articles):
+            output=localized.outputs(ROOT)
+        for a in articles:
+            soup=BeautifulSoup(output[ROOT/'es'/(a['slug']+'.html')],'html.parser')
+            schema=json.loads(soup.select_one('script[type="application/ld+json"]').string)
+            self.assertEqual(schema['datePublished'],a['published'])
+            self.assertEqual(schema['dateModified'],a['updated'])
+            self.assertEqual(soup.select_one('time')['datetime'],a['updated'])
+        self.assertEqual(articles[1]['updated'],'2026-10-18')
+
+    def test_income_formula_defines_percentage_conversion_and_home_link_is_canonical(self):
+        soup=BeautifulSoup(self.pages[ROOT/'es/calculadora-dividendos.html'],'html.parser')
+        text=soup.select_one('main').get_text(' ',strip=True)
+        self.assertIn('Rentabilidad neta decimal = (rentabilidad anual / 100)',text)
+        self.assertIn('Capital objetivo = objetivo mensual × 12 / rentabilidad neta decimal',text)
+        self.assertIn('Restablecer valores iniciales',text)
+        home=BeautifulSoup(self.pages[ROOT/'index.html'],'html.parser')
+        self.assertEqual(home.select_one('[data-language-switch] a')['href'],localized.url('es/index.html'))
 
 
 if __name__=='__main__':unittest.main()

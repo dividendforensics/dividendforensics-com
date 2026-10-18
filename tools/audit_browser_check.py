@@ -54,6 +54,41 @@ def main():
                 page.set_default_timeout(15000)
                 page.set_default_navigation_timeout(20000)
                 page.on('pageerror', lambda error: errors.append(str(error)))
+                if not args.bdc_only:
+                    print('Home learning CTA contrast check', flush=True)
+                    page.goto(base + '/', wait_until='domcontentloaded')
+                    for width in [320, 390, 1440]:
+                        page.set_viewport_size({'width': width, 'height': 1000})
+                        for selector in ['.education-home .btn-s[href="/learn-bdc.html"]', '.education-home .bureau-hero-copy .btn-p[href="/learn.html"]']:
+                            button = page.locator(selector)
+                            page.mouse.move(0, 0)
+                            button.evaluate('(e)=>e.blur()')
+                            page.wait_for_timeout(250)
+                            measured = page.evaluate(CONTRAST, selector)
+                            measured.update(state='default', viewport=width)
+                            contrast.append(measured)
+                            assert measured['ratio'] >= 4.5, measured
+                            button.hover()
+                            page.wait_for_timeout(250)
+                            measured = page.evaluate(CONTRAST, selector)
+                            measured.update(state='hover', viewport=width)
+                            contrast.append(measured)
+                            assert measured['ratio'] >= 4.5, measured
+                            page.mouse.move(0, 0)
+                            page.wait_for_timeout(250)
+                            button.focus()
+                            page.keyboard.press('Tab')
+                            page.keyboard.press('Shift+Tab')
+                            assert button.evaluate('(e)=>e===document.activeElement&&e.matches(":focus-visible")')
+                            focus = button.evaluate('(e)=>({style:getComputedStyle(e).outlineStyle,width:parseFloat(getComputedStyle(e).outlineWidth),color:getComputedStyle(e).outlineColor,offset:parseFloat(getComputedStyle(e).outlineOffset)})')
+                            assert focus['style'] != 'none' and focus['width'] >= 2 and focus['offset'] >= 2, focus
+                            measured = page.evaluate(CONTRAST, selector)
+                            measured.update(state='keyboard focus', viewport=width, outline=focus)
+                            contrast.append(measured)
+                            assert measured['ratio'] >= 4.5, measured
+                        assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), width
+                        page.locator('.bureau-hero-copy').screenshot(path=str(output / f'home-learning-cta-reviewed-{width}.png'))
+                    checks.append('Home Study BDCs and Study REITs CTAs meet 4.5:1 in default/hover/keyboard focus at 320/390/1440px with visible outlines')
                 for slug in ['nii-pik', 'pik-ratios', 'non-accrual', 'nav-discount', 'leverage']:
                     print('BDC date check: ' + slug, flush=True)
                     page.goto(base + '/calculator-bdc-' + slug + '.html', wait_until='domcontentloaded')

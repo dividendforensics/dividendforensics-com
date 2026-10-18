@@ -166,3 +166,8 @@ h1,h2,h3{color:var(--text)}
 
 /* Spanish edition: keep the language navigation readable on narrow screens. */
 .spanish-page .masthead-main{flex-wrap:wrap;gap:16px}.spanish-page .site-brand{max-width:100%;white-space:normal}.spanish-page .brand-name{white-space:normal}.spanish-page .masthead-main .btns{flex-wrap:wrap;margin:0}.language-switch{padding-top:14px;padding-bottom:14px;font-size:13px}
+
+/* Home learning actions: keep the BDC secondary CTA readable on the navy hero. */
+.home-page .education-home .btn-s[href="/learn-bdc.html"]{color:#f7f2e6;border-color:#73848b;background:transparent}
+.home-page .education-home .btn-s[href="/learn-bdc.html"]:hover{color:#fffdf8;border-color:#a8bac2;background:#234554}
+.home-page .education-home .bureau-hero-copy .btn:focus-visible{outline:2px solid #d6bb80;outline-offset:4px}

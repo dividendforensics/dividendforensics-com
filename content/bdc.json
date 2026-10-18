@@ -63,11 +63,11 @@
       {
         "question": "A listed BDC shareholder normally exits by:",
         "options": [
-          "Demanding that a portfolio borrower repay the share's NAV",
           "Selling the share to another market participant",
+          "Demanding that a portfolio borrower repay the share's NAV",
           "Automatically redeeming at the last reported NAV"
         ],
-        "answer": 1,
+        "answer": 0,
         "explanation": "Exchange liquidity concerns the share; it does not give a contractual redemption claim on private portfolio assets."
       }
     ],
@@ -141,11 +141,11 @@
       {
         "question": "A repayment of loan principal is generally:",
         "options": [
-          "A return of invested capital, distinct from interest income",
           "Automatically NII in the same amount",
+          "A return of invested capital, distinct from interest income",
           "A second asset added to remaining principal"
         ],
-        "answer": 0,
+        "answer": 1,
         "explanation": "Principal and income must be separated before assessing the earning capacity of the remaining portfolio."
       }
     ],
@@ -225,10 +225,10 @@
         "question": "An internally managed BDC should be modeled with:",
         "options": [
           "Zero management-related operating expense",
-          "Its actual employee and operating costs",
-          "The external adviser's advertised fee regardless of structure"
+          "The external adviser's advertised fee regardless of structure",
+          "Its actual employee and operating costs"
         ],
-        "answer": 1,
+        "answer": 2,
         "explanation": "Internal management changes how costs are organized; it does not make investment professionals or administration free."
       }
     ],
@@ -304,11 +304,11 @@
       {
         "question": "A source card should preserve:",
         "options": [
-          "Only the final ratio",
           "The amount, source location, period, unit and calculation basis",
+          "Only the final ratio",
           "A guessed zero for every blank field"
         ],
-        "answer": 1,
+        "answer": 0,
         "explanation": "A ratio cannot be reproduced or compared reliably if its inputs lose their definition and provenance."
       }
     ],
@@ -464,10 +464,10 @@
         "question": "A 100% PIK deduction from reported NII is:",
         "options": [
           "A complete cash-flow calculation",
-          "A simple sensitivity with other items held unchanged",
-          "Proof that every PIK loan will default"
+          "Proof that every PIK loan will default",
+          "A simple sensitivity with other items held unchanged"
         ],
-        "answer": 1,
+        "answer": 2,
         "explanation": "The deduction isolates one assumption and does not reconcile all sources and uses of cash or forecast credit losses."
       }
     ],
@@ -716,10 +716,10 @@
         "question": "A falling equity denominator can increase leverage:",
         "options": [
           "Only if the BDC raises new debt",
-          "Even when debt stays unchanged",
-          "Only after the share price falls"
+          "Only after the share price falls",
+          "Even when debt stays unchanged"
         ],
-        "answer": 1,
+        "answer": 2,
         "explanation": "Asset-value losses can reduce common equity while the debt balance remains outstanding."
       }
     ],
@@ -795,11 +795,11 @@
       {
         "question": "A fixed-coupon note with a pay-floating, receive-fixed swap may have:",
         "options": [
-          "No interest-rate exposure under any circumstances",
           "Different economic exposure from its headline fixed coupon",
+          "No interest-rate exposure under any circumstances",
           "The same effect as removing the debt"
         ],
-        "answer": 1,
+        "answer": 0,
         "explanation": "The financing and hedge must be considered together, including their notional amounts, dates and contractual terms."
       }
     ],
@@ -960,10 +960,10 @@
         "question": "Which statement is supportable?",
         "options": [
           "BDC status automatically means every distribution is tax-free",
-          "The tax distribution base can differ from reported NII",
-          "A spillover amount guarantees the next dividend"
+          "A spillover amount guarantees the next dividend",
+          "The tax distribution base can differ from reported NII"
         ],
-        "answer": 1,
+        "answer": 2,
         "explanation": "Tax rules, financial accounting and payment liquidity are separate systems that require their own definitions and evidence."
       }
     ],
@@ -1084,11 +1084,11 @@
       {
         "question": "Reported NII is 120 after compensation expense. To retain that expense in the analytical result, start by:",
         "options": [
-          "Subtracting compensation again from 120",
           "Leaving the expense in reported NII; reverse only an actual add-back when starting from 130",
+          "Subtracting compensation again from 120",
           "Adding it back and calling the result cash earnings"
         ],
-        "answer": 1,
+        "answer": 0,
         "explanation": "The adjustment depends on the starting measure. Reversing an add-back and subtracting an expense already recognized are different operations."
       }
     ],
@@ -1237,7 +1237,7 @@
     "sections": [
       {
         "heading": "State what the baseline income already includes",
-        "text": "Use an invented full-year NII of 120 and 50 million common shares. The starting income already includes a full year of 3% interest on the 300 debt principal to be refinanced. The transaction takes effect at the start of the modeled year, and the new debt rate is 6%. Assume unchanged asset earnings and all other expenses, no swaps, no taxes and no additional amortization of issuance costs. These exclusions are explicit so that the comparison isolates funding and share-count effects. A real model must restore those items and use actual transaction dates rather than treat this exercise as a forecast."
+        "text": "All monetary totals in this workshop are USD millions; common shares are in millions; per-share amounts are in USD. Use an invented full-year NII of 120 and 50 million common shares. The starting income already includes a full year of 3% interest on the 300 debt principal to be refinanced. The transaction takes effect at the start of the modeled year, and the new debt rate is 6%. Assume unchanged asset earnings and all other expenses, no swaps, no taxes and no additional amortization of issuance costs. These exclusions are explicit so that the comparison isolates funding and share-count effects. A real model must restore those items and use actual transaction dates rather than treat this exercise as a forecast."
       },
       {
         "heading": "Calculate the debt-only branch from the incremental cost",
@@ -1254,7 +1254,7 @@
     ],
     "table": {
       "headers": [
-        "Synthetic full-year branch",
+        "Measure (amounts: USD millions; shares: millions; per share: USD)",
         "Debt only",
         "Equity-assisted"
       ],
@@ -1339,11 +1339,11 @@
       {
         "question": "Why can the equity-assisted branch have higher total NII but lower NII per share?",
         "options": [
-          "New shares expand the denominator as well as reducing debt",
           "Common distributions are an interest expense",
-          "Issuance fees create earnings automatically"
+          "Issuance fees create earnings automatically",
+          "New shares expand the denominator as well as reducing debt"
         ],
-        "answer": 0,
+        "answer": 2,
         "explanation": "The reduction in debt interest must be compared with the additional common-share denominator on a matching time basis."
       }
     ],
@@ -1371,7 +1371,7 @@
     "sections": [
       {
         "heading": "Write the question and the evidence perimeter first",
-        "text": "A useful memo begins with a bounded question, such as whether an unchanged common distribution fits the next year's stated income and funding assumptions. It does not begin with a desired rating. Record the actual issuer, form, accession, fiscal period, currency, scale, share class and review date for a real assignment. Here every figure is synthetic and there is no live issuer conclusion. Separate disclosed observations, derived arithmetic and analyst judgments into three columns. Add a fourth for unresolved information so that an unverified PIK amount, borrowing-base limit or sponsor guarantee cannot quietly become an input."
+        "text": "All monetary totals in this workshop are USD millions; shares are in millions; per-share amounts are in USD. A useful memo begins with a bounded question, such as whether an unchanged common distribution fits the next year's stated income and funding assumptions. It does not begin with a desired rating. Record the actual issuer, form, accession, fiscal period, currency, scale, share class and review date for a real assignment. Here every figure is synthetic and there is no live issuer conclusion. Separate disclosed observations, derived arithmetic and analyst judgments into three columns. Add a fourth for unresolved information so that an unverified PIK amount, borrowing-base limit or sponsor guarantee cannot quietly become an input."
       },
       {
         "heading": "Connect income quality with credit exposure without equating them",
@@ -1389,7 +1389,7 @@
     "table": {
       "headers": [
         "Synthetic analytical layer",
-        "Calculation",
+        "Calculation (amounts: USD millions; ratios: multiples)",
         "What it does not establish"
       ],
       "rows": [

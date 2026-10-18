@@ -104,7 +104,7 @@ test('decimal bridge cancellation is exact rather than a visible floating-point 
     assert.equal(r.metrics[0].value,0);
     assert.equal(r.metrics[1].value,0);
     assert.equal(format(r.metrics[0].value),'0.00');
-    assert.equal(r.formulaVersion,'original-1.1.0');
+    assert.equal(r.formulaVersion,'original-1.1.1');
   }
 });
 
@@ -144,4 +144,53 @@ test('decimal formatting keeps grouping, tiny signs and explicit invalid-input h
   assert.equal(format('-1234567.125','precise'),'-1,234,567.1250');
   for(const value of ['', ' ', 'NaN', 'Infinity','0xff','0b11','1e-10001', null, undefined]) assert.throws(()=>calculate('income',{capital:value,yield:5,tax:0,target:500}),/finite/);
   assert.throws(()=>calculate('income',{capital:'1e308',yield:'1e308',tax:0,target:0}),/too large/);
+});
+
+test('authoritative exact decimal results round below, at and above the half-cent boundary',()=>{
+  const spanish=require('../spanish-calculators.js');
+  const cases=[
+    ['1024.59999999999999999999','76.84499999999999999999925','76.84','76,84'],
+    ['1024.6','76.845','76.85','76,85'],
+    ['1024.60000000000000000001','76.84500000000000000000075','76.85','76,85']
+  ];
+  for(const [capital,exact,en,es] of cases){
+    const r=calculate('income',{capital,yield:'7.5',tax:'0',target:'0'});
+    assert.equal(r.metrics[0].exactValue,exact);
+    assert.equal(r.metrics[1].exactValue,exact);
+    assert.equal(r.exactRows[1][1],exact);
+    assert.equal(r.numericCells[1][0],false);
+    assert.equal(r.numericCells[1][1],true);
+    assert.equal(format(r.metrics[0].exactValue),en);
+    assert.equal(spanish.format(r.metrics[0].exactValue),es);
+    assert.equal(typeof r.metrics[0].value,'number'); // Compatibility convenience only.
+    assert.equal(r.arithmetic.precision,80);
+  }
+  assert.equal(format('-76.84499999999999999999925'),'-76.84');
+  assert.equal(format('-76.845'),'-76.85');
+  assert.equal(spanish.version,'es-1.0.1');
+});
+
+test('all seven calculator result paths retain decimal strings for display and serialization',()=>{
+  const cases={
+    income:{capital:'0.1',yield:'0.2',tax:'0.3',target:'0'},
+    reinvestment:{capital:'0.1',contribution:'0.2',yield:'1',tax:'15',years:'1'},
+    payout:{affo:'0.3',dividend:'0.1',decline:'0'},
+    bridge:{net:'0.100000000000000000001',depreciation:'0',gains:'0.1',ffoOther:'0',capex:'0',rent:'0',affoOther:'0'},
+    nav:{noi:'0.001',cap:'1',debt:'0.3',cash:'0.2',shares:'1'},
+    refinancing:{principal:'0.1',old:'0.1',new:'0.3',shares:'1'},
+    return:{start:'0.1',end:'0.3',dividends:'0',buyFees:'0.1',sellFees:'0.1'}
+  };
+  for(const [kind,input] of Object.entries(cases)){
+    const r=calculate(kind,input);
+    assert.ok(r.metrics.every(m=>m.exactValue===null || typeof m.exactValue==='string'),kind);
+    assert.equal(r.exactRows.length,r.rows.length);
+    assert.equal(r.numericCells.length,r.rows.length);
+    for(let i=0;i<r.rows.length;i++)for(let j=0;j<r.rows[i].length;j++)if(r.numericCells[i][j])assert.equal(typeof r.exactRows[i][j],'string');
+  }
+  assert.equal(calculate('bridge',cases.bridge).metrics[0].exactValue,'1e-21');
+  const spanish=require('../spanish-calculators.js');
+  assert.equal(spanish.format('1e-400'),'1,000e-400');
+  assert.equal(spanish.format('-1e-21'),'-1,000e-21');
+  assert.equal(spanish.format(null),'No definido');
+  assert.equal(spanish.format('141176.470588235294117647'),'141.176,47');
 });
