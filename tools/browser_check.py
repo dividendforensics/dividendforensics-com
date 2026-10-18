@@ -53,6 +53,8 @@ def main():
         exe=os.environ.get('CHROMIUM_PATH')
         b=p.chromium.launch(**({'executable_path':exe} if exe else {}),headless=True,args=['--no-sandbox'])
         def load(page,name):
+            page.route('https://fonts.googleapis.com/**',lambda route:route.abort())
+            page.route('https://fonts.gstatic.com/**',lambda route:route.abort())
             if args.inline:page.set_content(inline_source(name),wait_until='load')
             else:
                 page.goto(base+'/'+name,wait_until='networkidle')
@@ -95,7 +97,8 @@ def main():
         assert page.locator('form').get_attribute('action')=='https://formsubmit.co/ba46f1f257eba5688fcf0b5122a8b335'
         assert not page.locator('form').evaluate('(f)=>f.checkValidity()')
         for selector,value in [('#rd-n','Test reader'),('#rd-o','Test organization'),('#rd-e','reader@example.com'),('#rd-m','Local validation only; do not submit.')]:page.locator(selector).fill(value)
-        page.locator('#rd-t').select_option(label='Methodology question')
+        page.locator('#rd-t').select_option(label='Question or correction')
+        page.locator('#rd-privacy').check()
         assert page.locator('form').evaluate('(f)=>f.checkValidity()')
         page.close()
         # JavaScript is not necessary to read research or use navigation.

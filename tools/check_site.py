@@ -53,7 +53,7 @@ def check(root=ROOT):
     desk=pages['research-desk.html']
     expected='https://formsubmit.co/ba46f1f257eba5688fcf0b5122a8b335'
     if len(desk.forms)!=1 or desk.forms[0].get('action')!=expected or desk.forms[0].get('method','').upper()!='POST':errors.append('Research Desk: inquiry endpoint changed')
-    for field in ('Name','Organization','Email','Inquiry type','Message'):
+    for field in ('Name','Email','Inquiry type','Message'):
         if not any(f.get('name')==field and 'required' in f for f in desk.fields):errors.append(f'Research Desk: required field {field} missing')
     if (root/'CNAME').read_text().strip()!='dividendforensics.com':errors.append('CNAME changed')
     if (root/'google5e69369cc3191f61.html').read_text().strip()!='google-site-verification: google5e69369cc3191f61.html':errors.append('Google verification changed')

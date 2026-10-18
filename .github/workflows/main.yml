@@ -12,6 +12,9 @@ on:
       - 'build_site.py'
       - 'education.py'
       - 'curriculum.py'
+      - '*_tools.py'
+      - 'vendor/**'
+      - 'scripts/**'
       - 'content/**'
       - 'sitemap.xml'
       - 'tests/**'
@@ -40,7 +43,7 @@ jobs:
           python -m unittest discover -s tests -v
           python tools/check_site.py
           python build_site.py --check
-          node --test tests/calculators.test.cjs
+          node --test tests/*.test.cjs
       - name: Commit generated HTML only when needed
         run: |
           set -euo pipefail
