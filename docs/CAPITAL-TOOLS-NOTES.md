@@ -38,3 +38,35 @@ The primary source URLs were fetched on2026-10-18: SEC `https://www.sec.gov/answ
 - Fiscal mode totals all supplied fiscal buckets and labels that fact; it does not infer next12months from a year-end table.
 - Preferred worksheet is an earnings attribution bridge. It does not model cumulative arrears, liquidation recoveries, debt priority, redemption or contractual payment restrictions. It has no claim to legal compliance or payment capacity.
 - No refinancing, asset sale, operating cash flow, tax, fees or facility extension is manufactured. No scores, rankings or safe/unsafe labels are output. No AdSense approval or revenue prediction is made.
+
+
+## Review corrections — 2026-10-18
+
+Two P2 clarity issues were resolved without changing the other workbenches:
+
+1. Preferred bridge no longer offers or validates principal/carrying debt metadata. Its audit/export metadata retains only common date, currency and scale, plus the explicit selected earnings definition and attribution/distribution basis. Incoming irrelevant debt basis is excluded from the preferred exported audit object.
+2. Fiscal mode now exposes a distinct **resource / facility eligibility date**. It tests availability expiry and never filters supplied fiscal-year rows. The dated maturity cutoff is disabled and hidden in fiscal mode, and fiscal resource date is disabled and hidden in dated mode. Reset restores dated mode and its correct active fields. Fiscal residual headings explicitly read “after supplied fiscal buckets,” and output/CSV preserve the active date and common metadata. An aggregate fiscal bucket comparison does not prove cash timing through all supplied years.
+
+Regression evidence after this correction:
+
+- Node **21/21 PASS** and Python **4/4 PASS**.
+- Fiscal fixture2027=90 plus2028=100 includes **190**, even with resource eligibility date2027-09-30. Confirmed resources70 produce residual**−120**, then**−130** after mandatory10. Extending the resource eligibility date beyond facility expiry makes complete availability unavailable. Missing fiscal resource date is rejected; an irrelevant dated cutoff is not used.
+- Actual localhost Chrome/Playwright UI run: fiscal switching, conditional labels/hints, disabled inactive dates, reset to dated mode, numeric190/−120 output, actual result CSV download retaining only the active date, preferred absence of debt-basis UI/export and earnings-definition preservation all **PASS**, JavaScript errors**0**.
+- No actual issuer reconciliation, contractual assessment or public deployment was performed by this subtask.
+
+
+## Stronger audit correction — 2026-10-18, formula capital-1.0.1
+
+This section supersedes the earlier historical fiscal residual examples above. The audit `DFB_독립검수_f3af0fb_20261018.md` supplied a valid counterexample: a2027 resource date and2028 facility expiry cannot substantiate funding a2030 fiscal bucket. A warning alone was insufficient.
+
+**Current fiscal policy:** always withhold complete available liquidity and both residuals in fiscal mode. Preserve known maturity subtotal, complete debt sum where all amounts are known, unrestricted cash, headroom and an explicitly informational facility amount checked at the entered resource date. Fiscal year buckets lack exact timing, so this worksheet does not claim temporal alignment even when all year labels appear near the resource date. A reader must reconcile exact dates and use dated mode for a funding bridge. The resource date remains an informational facility-expiry check, not a maturity filter. Its inactive field is hidden and disabled in the static dated page as well as after JavaScript reset.
+
+**CSV correction:** maturity amounts are validated and converted to canonical decimal strings before CSV serialization on both input import and input export. Thus `+90` becomes`90`, while blank remains unknown and the original input record is retained by result export. Other text cells continue to receive spreadsheet-formula escaping. Input export now validates the full liquidity scenario before writing a file.
+
+Actual results after these changes:
+
+- Node **23/23 PASS**; Python **4/4 PASS**.
+- New2030counterexample: debt90 remains visible, informational facility30 remains separate, available liquidity and both fiscal residuals are **null / Not defined**.
+- Supplied2027=90 plus2028=100 still totals**190**, but complete funding and residuals are **withheld**, replacing the earlier−120/−130 outputs.
+- Actual localhost Chrome: both fiscal cases correctly withhold complete funding; mode switch/reset works; `+90` actual input-CSV download→upload works, and a directly imported`+90`CSV also works. Dated fixture still yields**−30** after spending. No JavaScript errors. Pure text formula escaping is retained and tested.
+- No real external submissions, issuer financial data, SEC requests or production deployment were involved in this subtask.

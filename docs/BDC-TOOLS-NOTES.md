@@ -23,7 +23,7 @@ The script `/bdc-calculators.js` follows the pinned `/vendor/decimal.js/decimal.
 - NII = −10 with regular distributions = 100 retains −0.1000× signed coverage. PIK/NII is not interpreted for nonpositive NII. A zero divisor displays an explicit zero-denominator reason; missing inputs display a missing-input reason.
 - Same validator handles `manual` and `extracted` pure-function records. Input overrides inconsistent with common currency, scale, amount/per-share unit, period, date, reported/adjusted basis, common scope or declared/paid basis are rejected.
 - The public UI supports total amounts for four tools and directly entered per-share currency units only for price/NAV. There is no weighted-average/current-share conversion, quarter/YTD conversion, FX conversion or implicit annualization.
-- Per-input notes retain source URL, accession and document locator. Output audit includes formula version `bdc-1.0.0`, formula, input IDs, raw strings, dates, units, availability, origin and source fields; absent reviewer/retrieval metadata stays null.
+- Per-input notes retain source URL, accession and document locator. Output audit includes formula version `bdc-1.0.1`, formula, input IDs, raw strings, dates, units, availability, origin and source fields; absent reviewer/retrieval metadata stays null.
 - Common-context selectors are reader assertions. A calculator cannot discover that a pasted number actually came from another period without its metadata. This limitation is explicit in the pages.
 - All PIK sensitivity columns are simple hypothetical deductions, not cash earnings, cash flow, cash available for distribution or a loss forecast. No safety score, grade, buy/sell recommendation or legal compliance conclusion exists.
 - Invalid decimal syntax (commas, exponent notation, NaN/Infinity, excessive length) is rejected. Negative NII/NAV/common equity remains allowed where meaningful; ordinary PIK income and distributions cannot be negative. PIK reversals require a separately reconciled analysis rather than a silently reclassified entry.
@@ -61,6 +61,19 @@ Browser checks used a temporary server serving generated HTML without overwritin
 - The source-and-audit disclosure is interactive on screen. `beforeprint` expands input source notes and output audit records, then `afterprint` restores their state; period/unit/formula/limitations also remain in visible output and static text. Physical print layout still needs a human check.
 - No CSV import/export, automatic issuer dataset extraction or live-price feed is added to these five worksheets. The separate filing pipeline is outside this module.
 - Full-site regression, AdSense account submission and public deployment are parent-task responsibilities; these local results do not establish them.
+
+## Chronology correction after independent review
+
+The review identified a genuine P2 validation gap: a valid ISO analysis date before `periodEnd` was accepted. Version `bdc-1.0.1` now rejects `asOf < periodEnd` in the shared pure validator, so the same rule applies to all five worksheets and the browser handler. Equality is allowed. An analysis date later than the reporting cutoff is allowed without rewriting original source dates. Arithmetic formulas and the synthetic fixture are unchanged; the version bump identifies the stricter calculation contract.
+
+The visible label now says “Analysis as-of date (not the quote date).” Static explanations distinguish the reporting context from a stock-measure snapshot and from a market-price observation. In the NAV worksheet, readers retain the NAV snapshot date and price observation date in their respective source locators. The common analysis date does not imply that NAV and price were measured simultaneously, and does not relabel a later market price as a period-end quote. Separate quote-date controls were unnecessary for this bounded manual worksheet; no automatic time adjustment is performed.
+
+Actual commands rerun after this correction:
+
+- `node --test tests/bdc-calculators.test.cjs` — PASS, 24/24. Added rejection through both `calculate` and `validate` for all five kinds, equality/later-date boundary cases, preserved distinct NAV/quote source notes, and manual/extracted per-input overrides that attempt to bypass the common chronology/context.
+- `python -m unittest discover -s tests -p test_bdc_tools.py -v` — PASS, 4/4. Added static chronology, label and NAV snapshot/quote-date distinction checks.
+
+This follow-up did not regenerate HTML, alter shared build files, deploy, run new browser checks or touch any other project directory. Parent task must rebuild and perform its integration/release checks. The earlier browser results above are historical tests of the previous validation version, not a claim that the chronology fix has already been deployed or browser-retested.
 
 ## Primary sources consulted
 

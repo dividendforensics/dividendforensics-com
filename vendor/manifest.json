@@ -7,9 +7,10 @@
     "integrity": "sha512-YpgQiITW3JXGntzdUmyUR1V812Hn8T1YVXhCu+wO3OpS4eU9l4YdD3qjyiKdV6mvV29zapkMeD390UVEf2lkUg==",
     "runtime": "browser and Node",
     "files": {
-      "decimal.js": "6e99821f8204c5f611b56077e3fce056a1562d22bc341a1f4af01afe7e527d83",
-      "LICENCE.md": "3108b546bcff5d346923a82f48b2d252ca722f9088076db6d145f6b67757ad6c",
-      "package.json": "d7e3794828ee8bc94818613c9d901a9e7c857e6ffcf027245e661ddfc63d9b72"
-    }
+      "decimal.js": "0bc0d6920e8852b4a2bb0cf9963b101c22f7029b42c8b12c9e27fd24021dff04",
+      "LICENCE.md": "a0df2307b32880324fc5f42def582b5c1fa2058a30bbab90731c948241a5c7c2",
+      "package.json": "aac06a02e21372c8248f7ee484c46a9921af08189baa9d003bf1144888cf03e8"
+    },
+    "files_hash_basis": "SHA-256 of the committed/deployed UTF-8 file bytes with LF line endings; .gitattributes pins checkout to LF. Archive integrity above identifies the unmodified upstream npm tarball."
   }
 ]

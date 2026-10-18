@@ -130,3 +130,27 @@ h1,h2,h3{color:var(--text)}
 @media(max-width:480px){.bureau-directory>.wrap{gap:0 20px}.bureau-directory a{font-size:9px}.bureau-directory a:last-of-type{display:none}.home-page .education-home h1{font-size:86px}.home-page .education-home .kicker{font-size:9px}.hero-thesis{font-size:23px}.home-page .education-home .education-lede{font-size:14px}.education-home .btns{gap:17px}.education-home .text-link{font-size:11px}.home-page .cash-sheet{padding:22px 23px}.home-page .cash-sheet h2{font-size:33px}.home-page .cash-line{font-size:11px;padding-block:13px}.home-page .cash-sheet-top{font-size:8px}.education-register dd{font-size:23px}.education-register dt{font-size:8px}.bureau-discovery .kicker{font-size:9px}.home-library-search input{font-size:12px;padding:14px 10px}.home-library-search button{padding-inline:12px}.home-library-search button span{margin-left:8px}.home-curriculum .course-card{grid-template-columns:1fr;gap:10px}.home-curriculum .course-card>.text-link{grid-column:1}.home-curriculum .course-card h3{font-size:31px}.section-heading{flex-direction:column;gap:12px}.section-heading h2{font-size:37px}.section-heading .text-link{max-width:none}.bureau-tools .sector-strip{grid-template-columns:1fr}.bureau-tools .sector-strip a{font-size:14px;padding-block:20px}.bureau-tools h2{font-size:44px}.education-heading h1{font-size:40px}.education-lede{font-size:16px}.featured-research h3{font-size:36px}.calculator-output{box-shadow:6px 6px 0 #e6e2d8}.calculator-output .result-metrics dd{font-size:31px}.article-visual .education-visual img{max-height:none}.worked-example{padding:24px 20px}.lesson-card h3{font-size:29px}.home-research .small-note{font-size:11px}.hero-bottom-line{letter-spacing:.03em}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 @media print{.bureau-directory,.home-library-search{display:none}.education-home,.bureau-tools,.calculator-output{background:#fff!important;color:#000!important;box-shadow:none!important}.education-home h1,.education-home em,.education-home p,.bureau-tools h2,.calculator-output h2,.calculator-output dd,.calculator-output dt,.calculator-output .result-note{color:#000!important}.home-page .education-hero-grid{display:block}.cash-sheet{box-shadow:none!important;border:1px solid #999!important}.hero-bottom-line{display:none}}
+
+/* Contrast on dark result/proposal panels; keep light input surfaces distinct. */
+.calculator-output .small-note{color:#c7d2d4}
+.rd-sec .rd-cta .rd-h2{color:#f7f2e6}
+.rd-cta .rd-sub,.rd-cta .rd-note,.rd-cta>.small-note,.rd-cta .rd-alt{color:#d5dddf}
+.rd-cta .rd-lab{color:#e8cf96}
+.rd-cta .proposal-terms .small-note{color:#40545f}
+.rd-cta .rd-form label,.rd-cta .proposal-privacy{color:#f7f2e6}
+.rd-cta .proposal-terms label{color:#172c39}
+.rd-cta :focus-visible{outline:2px solid #e8cf96;outline-offset:4px}
+
+.rd-cta .rd-form small{color:#d5dddf}.rd-cta .proposal-terms small{color:#40545f}.rd-cta .proposal-terms :focus-visible{outline-color:#172c39}
+
+.desk-page .rd-sec .rd-h2,.desk-page .brand-initials{color:#f7f2e6}
+.rd-cta .proposal-terms{background:#fffdf8;color:#172c39}
+.rd-cta .proposal-terms legend{background:#fffdf8;color:#172c39}
+.rd-cta .proposal-terms input,.rd-cta .proposal-terms select,.rd-cta .proposal-terms textarea{background-color:#fffdf8;color:#172c39;border-color:#7b888e}
+.rd-cta .proposal-status{background:#ebe7dc;color:#172c39}
+
+.desk-page .rd-cta .rd-form :is(input,select,textarea,button):focus-visible{outline:2px solid #e8cf96;outline-offset:4px}
+.desk-page .rd-cta .rd-form .proposal-terms :focus-visible{outline-color:#172c39}
+
+.desk-page .rd-cta .rd-form ::placeholder{color:#bcc8ce;opacity:1}
+.desk-page .rd-cta .rd-form .proposal-terms ::placeholder{color:#53636c;opacity:1}

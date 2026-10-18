@@ -10,6 +10,12 @@ sys.path.insert(0,str(ROOT))
 import build_site as build
 
 class PublicCopyTests(unittest.TestCase):
+    def test_research_desk_timeline_uses_closed_nonformatting_marks(self):
+        text = (ROOT / 'research-desk.html').read_text(encoding='utf-8')
+        self.assertNotRegex(text, r'<s(?:\s|>)')
+        self.assertEqual(text.count('class="rd-tick '), 3)
+        self.assertEqual(text.count('aria-hidden="true"></span></div>'), 3)
+
     def test_home_leads_with_free_reit_education(self):
         text=(ROOT/'templates/home.html').read_text()
         for term in ('REIT','FFO','AFFO','calculator','learn.html','research.html'):

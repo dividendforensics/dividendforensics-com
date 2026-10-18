@@ -18,7 +18,26 @@ class CapitalPages(unittest.TestCase):
             self.assertEqual(soup.find('link',rel='canonical')['href'],'https://dividendforensics.com/'+path.name)
             for field in soup.select('form input,form select,form textarea'):
                 self.assertIsNotNone(soup.find('label',attrs={'for':field['id']}))
-            self.assertIn('/capital-calculators.js',[s.get('src') for s in soup.find_all('script')])
+            self.assertIn('/capital-calculators.js',[s.get('src','').split('?')[0] for s in soup.find_all('script')])
+    def test_preferred_has_earnings_definition_without_debt_basis(self):
+        raw=capital_tools.outputs(ROOT)[ROOT/'calculator-preferred-common.html']
+        soup=BeautifulSoup(raw,'html.parser')
+        self.assertIsNone(soup.select_one('[name=basis]'))
+        self.assertIsNotNone(soup.select_one('[name=earningsDefinition]'))
+        self.assertIsNotNone(soup.select_one('[name=earningsBasis]'))
+        self.assertIn('Selected earnings measure and definition',soup.get_text())
+
+    def test_fiscal_and_dated_labels_have_separate_meanings(self):
+        raw=capital_tools.outputs(ROOT)[ROOT/'calculator-debt-ladder.html']
+        soup=BeautifulSoup(raw,'html.parser')
+        self.assertIn('Dated maturity cutoff',soup.find('label',attrs={'for':'capital-horizonEnd'}).get_text())
+        self.assertIn('not a maturity cutoff',soup.find('label',attrs={'for':'capital-resourceDate'}).get_text())
+        self.assertIsNotNone(soup.select_one('[data-fiscal-hint]'))
+        self.assertTrue(soup.select_one('[name=resourceDate]').has_attr('disabled'))
+        self.assertTrue(soup.find('label',attrs={'for':'capital-resourceDate'}).has_attr('hidden'))
+        self.assertIn('Complete liquidity and residuals are not calculated',soup.get_text())
+        self.assertIn('totals every supplied year bucket',soup.get_text())
+
     def test_no_remote_input_transmission(self):
         js=(ROOT/'capital-calculators.js').read_text(encoding='utf-8')
         for forbidden in ('fetch(', 'XMLHttpRequest', 'localStorage', 'sessionStorage'):

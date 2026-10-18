@@ -3,7 +3,7 @@
   'use strict';
   const Decimal = typeof module === 'object' && module.exports ? require('./vendor/decimal.js/decimal.js') : scope.Decimal;
   const D = Decimal.clone({precision: 40, rounding: Decimal.ROUND_HALF_UP});
-  const VERSION = 'bdc-1.0.0';
+  const VERSION = 'bdc-1.0.1';
   const formulas = {
     nii:'total=regular+supplemental+special; regularCoverage=nii/regular; totalCoverage=nii/total; PIK/TII=pik/tii; PIK/NII=pik/nii only for nii>0; sensitivity(f)=nii-pik*f; sensitivityCoverage=sensitivity/distributions; f=0,0.25,0.50,1',
     pik:'PIK/TII=pik/tii; PIK/NII=pik/nii only for nii>0',
@@ -24,6 +24,7 @@
       if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '') || !Number.isFinite(Date.parse(value+'T00:00:00Z')) || new Date(value+'T00:00:00Z').toISOString().slice(0,10)!==value) throw Error('Enter a valid '+key+' date.');
     }
     if(context.periodStart>context.periodEnd) throw Error('Period start must not be after period end.');
+    if(context.asOf<context.periodEnd) throw Error('Analysis as-of date must be on or after the reporting period end.');
     const out = {};
     for (const [id, raw] of Object.entries(inputs)) {
       const supplied = raw && typeof raw === 'object' ? {...raw} : {value:raw, availability:raw == null || raw === '' ? 'not_found' : 'scenario', origin:'manual'};
