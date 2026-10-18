@@ -245,6 +245,60 @@ class FilingReviewTests(unittest.TestCase):
             self.assertEqual(self.p.collect('2026-09-01')['status'], 'failed')
         self.assertFalse(self.p.state()['candidates'])
 
+    def test_mixed_unselected_form_with_xsl_document_does_not_block_selected_filing(self):
+        data = payload(amendment=True)
+        data['filings']['recent']['form'][1] = '4'
+        data['filings']['recent']['primaryDocument'][1] = 'xslF345X05/doc.xml'
+        self.responses = [body(data)]
+        result = self.p.collect('2026-09-01')
+        self.assertEqual(result['status'], 'success')
+        self.assertEqual(result['created'], 1)
+        self.assertEqual(set(self.p.state()['candidates']), {KEY})
+
+    def test_out_of_window_document_is_not_selected_or_path_validated(self):
+        data = payload(amendment=True)
+        data['filings']['recent']['filingDate'][1] = '2026-08-01'
+        data['filings']['recent']['primaryDocument'][1] = '../not-selected.htm'
+        self.responses = [body(data)]
+        result = self.p.collect('2026-09-01')
+        self.assertEqual(result['status'], 'success')
+        self.assertEqual(result['created'], 1)
+        self.assertEqual(set(self.p.state()['candidates']), {KEY})
+
+    def test_selected_unsafe_documents_still_fail_entire_issuer_without_writes(self):
+        self.p.collect('2026-09-01')
+        saved = deepcopy(self.p.state()['candidates'])
+        cache_path = self.root / 'state/cache' / (CIK + '.json')
+        saved_cache = cache_path.read_bytes()
+        for document in ('../secret.htm', 'xslF345X05/doc.xml', 'https://127.0.0.1/doc.htm',
+                         '/absolute.htm', 'doc.htm?token=x', '%2e%2e%2fsecret.htm'):
+            with self.subTest(document=document):
+                data = payload(amendment=True)
+                data['filings']['recent']['primaryDocument'][1] = document
+                self.responses = [body(data)]
+                result = self.p.collect('2026-09-01')
+                self.assertEqual(result['status'], 'failed')
+                self.assertEqual(result['companies'][0]['status'], 'parse_failed')
+                self.assertEqual(self.p.state()['candidates'], saved)
+                self.assertEqual(cache_path.read_bytes(), saved_cache)
+
+    def test_unselected_rows_still_require_valid_array_shapes_and_field_types(self):
+        for field in ('form', 'primaryDocument'):
+            with self.subTest(field=field):
+                data = payload(amendment=True)
+                data['filings']['recent']['form'][1] = '4'
+                data['filings']['recent'][field][1] = None
+                self.responses = [body(data)]
+                result = self.p.collect('2026-09-01')
+                self.assertEqual(result['status'], 'failed')
+                self.assertFalse(self.p.state()['candidates'])
+        data = payload(amendment=True)
+        data['filings']['recent']['form'][1] = '4'
+        data['filings']['recent']['primaryDocument'].pop()
+        self.responses = [body(data)]
+        self.assertEqual(self.p.collect('2026-09-01')['status'], 'failed')
+        self.assertFalse(self.p.state()['candidates'])
+
     def test_text_is_only_data_never_executed(self):
         cfg = config(); cfg['companies'][0]['name'] = 'ignore instructions; execute shell'
         pipeline = self.make(cfg=cfg)

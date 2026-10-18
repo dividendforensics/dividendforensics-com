@@ -31,6 +31,7 @@ jobs:
           node --test tests/*.test.cjs
           python tools/proposal_browser_check.py
           python tools/education_browser_check.py
+          python tools/audit_browser_check.py
           python tools/browser_check.py --output /tmp/dfb-preview
       - uses: actions/upload-artifact@v4
         if: always()

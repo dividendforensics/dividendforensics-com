@@ -122,7 +122,7 @@ test('debt/equity gross and optional cash-adjusted measures remain distinct',()=
 });
 test('formula version and unrounded raw inputs trace every result',()=>{
  const r=result();
- assert.equal(r.audit.formulaVersion,'bdc-1.0.0');
+ assert.equal(r.audit.formulaVersion,'bdc-1.0.1');
  assert.equal(r.audit.inputs.pik.value,'18');
  assert.equal(r.audit.inputs.pik.reviewedAt,null);
  assert.equal(r.audit.inputs.pik.periodStart,'2026-07-01');
@@ -136,4 +136,32 @@ test('malformed dates, reversed periods and invalid common units are blocked',()
  for(const patch of [{periodStart:'2026-02-30'},{periodStart:'2026-10-01'},{currency:'US dollars'},{scale:'billions'}]) assert.throws(()=>result('nii',fixture,{...context,...patch}));
  assert.throws(()=>result('nii',fixture,{...context,unit:'per-share'}),/total amounts/);
  assert.throws(()=>result('nav',{price:'18',nav:'20'},context),/per-share/);
+});
+test('analysis as-of before reporting period end is rejected by every worksheet',()=>{
+ const cases={nii:fixture,pik:{nii:'120',pik:'18',tii:'180'},'non-accrual':{nonAccrualCost:'50',portfolioCost:'1000',nonAccrualFv:'20',portfolioFv:'950'},nav:{price:'18',nav:'20'},leverage:{debt:'800',equity:'1000',cash:'50'}};
+ for(const [kind,inputs] of Object.entries(cases)){
+  const ctx={...context,asOf:'2026-09-29',...(kind==='nav'?{unit:'per-share',scale:'one'}:{})};
+  assert.throws(()=>result(kind,inputs,ctx),/as-of date must be on or after/);
+  assert.throws(()=>validate(ctx,inputs),/as-of date must be on or after/);
+ }
+});
+test('analysis as-of equals period end or is later without rewriting source dates',()=>{
+ for(const asOf of ['2026-09-30','2026-10-18']){
+  const r=result('nii',fixture,{...context,asOf});
+  assert.equal(val(r,'Total common distributions'),'115');
+  assert.equal(r.audit.context.asOf,asOf);
+  assert.equal(r.audit.inputs.nii.periodEnd,'2026-09-30');
+ }
+ const r=result('nav',{price:{value:'18',availability:'scenario',origin:'manual',sourceLocator:'Market quote observed 2026-10-17'},nav:{value:'20',availability:'scenario',origin:'manual',sourceLocator:'Common NAV snapshot 2026-09-30'}},{...context,asOf:'2026-10-18',unit:'per-share',scale:'one'});
+ assert.equal(r.audit.inputs.price.sourceLocator,'Market quote observed 2026-10-17');
+ assert.equal(r.audit.inputs.nav.sourceLocator,'Common NAV snapshot 2026-09-30');
+ assert.equal(val(r,'Price / NAV'),'0.9');
+});
+test('manual and extracted source overrides cannot bypass chronology or matching context',()=>{
+ for(const origin of ['manual','extracted']){
+  const input={value:'18',availability:'reported',origin,sourceUrl:'https://www.sec.gov/Archives/example',sourceLocator:'Synthetic source validation fixture'};
+  assert.throws(()=>result('nii',{...fixture,pik:{...input,asOf:'2026-09-29'}}),/mixed asOf/);
+  assert.throws(()=>result('nii',{...fixture,pik:{...input,periodEnd:'2026-10-01'}}),/mixed periodEnd/);
+  assert.throws(()=>result('nii',{...fixture,pik:{...input,asOf:'2026-10-18',periodEnd:'2026-09-29'}},{...context,asOf:'2026-09-29'}),/as-of date must be on or after/);
+ }
 });

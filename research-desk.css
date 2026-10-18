@@ -91,11 +91,11 @@
   text-transform:uppercase;color:var(--cream-dim)}
 .rd-tk{position:relative;height:1px;background:var(--rule)}
 .rd-tk.pending{background:none;border-top:1px dashed var(--rule-2)}
-.rd-tk s{position:absolute;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;
+.rd-tk .rd-tick{position:absolute;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;
   border-radius:50%;text-decoration:none}
-.rd-tk s.now{background:var(--gold);left:2%}
-.rd-tk s.date{background:var(--gold);left:72%}
-.rd-tk s.test{border:1px solid var(--teal);background:var(--ink-2);left:72%}
+.rd-tk .rd-tick.now{background:var(--gold);left:2%}
+.rd-tk .rd-tick.date{background:var(--gold);left:72%}
+.rd-tk .rd-tick.test{border:1px solid var(--teal);background:var(--ink-2);left:72%}
 .rd-ck>em{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:1.8px;
   text-transform:uppercase;color:var(--cream-mute)}
 

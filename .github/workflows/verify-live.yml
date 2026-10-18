@@ -1,0 +1,26 @@
+name: Verify public deployment
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compare ordinary public URLs with the saved release
+        run: |
+          python build_site.py --check
+          python tools/verify_deployment.py --attempts 21 --interval 30 --output public-verification.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-deployment-verification
+          path: public-verification.json
+          retention-days: 14

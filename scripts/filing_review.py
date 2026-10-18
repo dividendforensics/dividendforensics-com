@@ -21,7 +21,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import Request, build_opener, HTTPRedirectHandler
 
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 PUBLIC_ROOT = Path(__file__).resolve().parents[1]
 FORMS = {'10-K', '10-Q', '8-K', '10-K/A', '10-Q/A', '8-K/A'}
 ACCESSION = re.compile(r'\d{10}-\d{2}-\d{6}\Z')
@@ -142,10 +142,15 @@ def records(payload, company, since):
             raise ReviewError('Invalid accession')
         date_string(filed)
         date_string(period, allow_empty=True)
-        if not isinstance(form, str) or not isinstance(document, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,199}', document) or '..' in document:
-            raise ReviewError('Unsafe document path or invalid form')
+        if not isinstance(form, str) or not isinstance(document, str):
+            raise ReviewError('Form and primary document must be strings')
         if filed < since or form not in company['forms']:
             continue
+        # Non-target rows may legitimately use form-specific subdirectories.
+        # Validate paths only for candidates we actually admit; no ignored URL
+        # is fetched or retained, and selected documents keep the strict rule.
+        if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,199}', document) or '..' in document:
+            raise ReviewError('Unsafe selected document path')
         cik = company['cik']
         url = f'https://www.sec.gov/Archives/edgar/data/{int(cik)}/{accession.replace("-", "")}/{document}'
         output.append({'key': cik + ':' + accession, 'cik': cik, 'company': company['name'],

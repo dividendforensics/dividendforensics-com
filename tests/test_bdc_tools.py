@@ -28,7 +28,7 @@ class BdcToolsTests(unittest.TestCase):
             self.assertEqual(len(ids),len(set(ids)),path)
             for node in soup.select('input,select,textarea'):
                 self.assertTrue(soup.select('label[for="'+node['id']+'"]'),node)
-            scripts=[s.get('src') for s in soup.select('script[src]')]
+            scripts=[s.get('src','').split('?')[0] for s in soup.select('script[src]')]
             self.assertLess(scripts.index('/vendor/decimal.js/decimal.js'),scripts.index('/bdc-calculators.js'))
             for node in soup.select('a[href^="/"]'):
                 name=node['href'].split('#')[0].lstrip('/')
@@ -36,7 +36,18 @@ class BdcToolsTests(unittest.TestCase):
 
     def test_nii_static_example_and_safeguards(self):
         doc=bdc_tools.outputs(ROOT)[ROOT/'calculator-bdc-nii-pik.html']
-        for text in ['115.5/111/102','1.0043×/0.9652×/0.8870×','not cash earnings','Blank = not found','Formula version bdc-1.0.0','No automatic currency']:
+        for text in ['115.5/111/102','1.0043×/0.9652×/0.8870×','not cash earnings','Blank = not found','Formula version bdc-1.0.1','No automatic currency']:
             self.assertIn(text,doc)
+
+    def test_chronology_and_nav_snapshot_explanation_are_static(self):
+        pages=bdc_tools.outputs(ROOT)
+        for document in pages.values():
+            self.assertIn('analysis as-of date must be on or after the reporting period end',document)
+            self.assertIn('Analysis as-of date (not the quote date)',document)
+            self.assertIn('period fields identify the reporting context, not an averaging interval',document)
+        nav=pages[ROOT/'calculator-bdc-nav-discount.html']
+        self.assertIn('NAV is a stock measure at its disclosed balance-sheet snapshot date',nav)
+        self.assertIn('The market quote can have a different observation date',nav)
+        self.assertIn('does not relabel either as a period-end quote',nav)
 
 if __name__=='__main__':unittest.main()
