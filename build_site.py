@@ -169,6 +169,15 @@ def splice(text: str, inner: str, start: str = START, end: str = END) -> str:
     i, j = text.index(start) + len(start), text.index(end)
     return text[:i] + '\n' + inner.strip() + '\n' + text[j:]
 
+def search_identity(text: str) -> str:
+    """Provide a raster search icon without changing existing SVG assets."""
+    png = '<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96.png">'
+    ico = '<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">'
+    if '/img/favicon-96.png' not in text:
+        text = text.replace('</head>', png + '\n' + ico + '\n</head>')
+    return text
+
+
 def planned_outputs(root: Path = ROOT):
     _, articles = load(root)
     latest = max(articles, key=lambda a: date_key(a['date']))['date']
@@ -216,7 +225,7 @@ def planned_outputs(root: Path = ROOT):
         if root / required not in planned:
             raise BuildError(f'{required} does not contain the shared build markers.')
     from localized import inject_alternates
-    return {p:inject_alternates(p,text,root) for p,text in planned.items()}
+    return {p:inject_alternates(p,search_identity(text),root) if p.suffix == '.html' else text for p,text in planned.items()}
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)

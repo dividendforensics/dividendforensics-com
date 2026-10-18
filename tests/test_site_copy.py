@@ -52,7 +52,7 @@ class PublicCopyTests(unittest.TestCase):
         self.assertIn('https://muckrack.com/jeong-mo-goo',text)
 
     def test_author_and_research_boundaries_remain_visible(self):
-        self.assertIn('Analysis by Jeong-Mo Goo',build.header('index.html'))
+        self.assertIn('About Jeong-Mo Goo',build.header('index.html'))
         text=build.footer()
         self.assertIn('Position and commissioning disclosures belong to each dated research record.',text)
         self.assertIn('Structural research, not personalized investment advice.',text)
