@@ -137,10 +137,13 @@ def build_research(articles: list[dict], root: Path = ROOT) -> str:
     return '\n' + '\n'.join(out) + '\n'
 
 def header(page_name: str, root: Path = ROOT) -> str:
-    nav = [('research.html','Research'),('learn.html','Field guides'),('about.html','About'),('research-desk.html','Research Desk')]
+    nav = [('learn.html','Learn REITs'),('tools.html','Calculators'),('glossary.html','Glossary'),('research.html','Research'),('about.html','About')]
     active = page_name
     if page_name.startswith('case-'): active = 'research.html'
     if page_name.endswith('-guide.html') or page_name.startswith('reit-'): active = 'learn.html'
+    if page_name.startswith('learn-'): active = 'learn.html'
+    if page_name.startswith('course-'): active = 'learn.html'
+    if page_name.startswith('calculator-'): active = 'tools.html'
     items = []
     for path, label in nav:
         current = ' aria-current="page"' if path == active else ''
@@ -166,9 +169,10 @@ def splice(text: str, inner: str, start: str = START, end: str = END) -> str:
 def planned_outputs(root: Path = ROOT):
     _, articles = load(root)
     latest = max(articles, key=lambda a: date_key(a['date']))['date']
-    planned = {}
+    from education import education_outputs
+    planned = education_outputs(root)
     for path in root.glob('*.html'):
-        text = path.read_text(encoding='utf-8')
+        text = planned.get(path, path.read_text(encoding='utf-8'))
         if HEADER_START not in text:
             continue  # verification files and retired redirects are intentionally unchanged
         text = splice(text, header(path.name, root), HEADER_START, HEADER_END)
@@ -176,6 +180,11 @@ def planned_outputs(root: Path = ROOT):
         if path.name in ('index.html','research.html'):
             template = 'home.html' if path.name == 'index.html' else 'research.html'
             body = (root / 'templates' / template).read_text(encoding='utf-8').replace('{{report_url}}', esc(REPORT_URL))
+            if path.name == 'index.html':
+                from education import load_articles
+                from curriculum import level_cards, figure
+                lessons=load_articles(root)
+                body=body.replace('{{lesson_count}}',str(len(lessons))).replace('{{education_paths}}',level_cards(lessons)).replace('{{education_atlas}}',figure('property-atlas',root))
             opening = '<main id="main" tabindex="-1">'
             text = splice(text, body, opening, '</main>')
             text = splice(text, build_index(articles, root) if path.name == 'index.html' else build_research(articles, root))
@@ -195,21 +204,23 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         planned = planned_outputs()
-        changed = {p:t for p,t in planned.items() if p.read_text(encoding='utf-8') != t}
+        changed = {p:t for p,t in planned.items() if not p.exists() or p.read_text(encoding='utf-8') != t}
         if args.check:
             if changed:
                 print('Needs rebuild: ' + ', '.join(p.name for p in changed))
                 return 1
         else:
             # Validate every output first, then stage writes. Restore originals on OS failure.
-            originals = {p:p.read_bytes() for p in changed}
+            originals = {p:p.read_bytes() if p.exists() else None for p in changed}
             try:
                 for p,t in changed.items():
                     p.with_suffix(p.suffix+'.tmp').write_text(t, encoding='utf-8')
                 for p in changed:
                     p.with_suffix(p.suffix+'.tmp').replace(p)
             except OSError:
-                for p,data in originals.items(): p.write_bytes(data)
+                for p,data in originals.items():
+                    if data is None: p.unlink(missing_ok=True)
+                    else: p.write_bytes(data)
                 raise
             finally:
                 for p in changed:

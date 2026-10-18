@@ -1,0 +1,274 @@
+[
+  {
+    "slug": "learn-expert-affo-normalization",
+    "title": "Expert workshop: normalize AFFO across competing definitions",
+    "description": "Rebuild two hypothetical issuer reconciliations, distinguish owner earnings from cash timing, and test whether apparent dividend coverage survives normalization.",
+    "category": "Expert workshops",
+    "level": "Expert",
+    "sections": [
+      {
+        "heading": "Prerequisites and the analytical contract",
+        "text": "Complete the FFO, AFFO, payout-ratio, and dilution guides first. This workshop assumes you can trace a reconciliation from net income and distinguish diluted shares from shares outstanding. The assignment is to compare two hypothetical reporting policies for the same underlying property economics. All amounts below are invented millions of dollars. The goal is a reproducible comparison, not a new universal AFFO definition. Nareit explicitly notes the absence of a standardized AFFO definition. Keep the issuer's reported measure intact and place your analytical alternative beside it, with each adjustment explained and reversible."
+      },
+      {
+        "heading": "Build two reconciliations from identical economics",
+        "text": "Assume both businesses have FFO of 120, including a stock-compensation expense of 4. Both recognize 6 of noncash straight-line rental revenue. Actual recurring building maintenance is 14 and recurring tenant improvements and commissions are 6. Policy A deducts an estimated maintenance reserve of 8, deducts the rent adjustment of 6, and adds back stock compensation of 4. Its reported AFFO is 120 − 8 − 6 + 4 = 110. Policy B deducts actual maintenance and leasing costs totaling 20 and the rent adjustment, while retaining stock compensation expense: 120 − 20 − 6 = 94."
+      },
+      {
+        "heading": "Normalize without double counting",
+        "text": "Choose an owner-earnings policy that retains the stock-compensation expense and deducts the actual recurring investment of 20. Start from A's 110, reverse its compensation add-back of 4, add back its already deducted reserve of 8, then deduct actual expenditure of 20: 110 − 4 + 8 − 20 = 94. B already equals 94. Simply subtracting 20 from A would count the reserve twice. For a separate current-cash proxy, add back the noncash compensation to the normalized 94, obtaining 98 before working capital and other cash items. Label 98 separately; it does not erase the ownership cost of employee shares."
+      },
+      {
+        "heading": "Competing interpretations need evidence",
+        "text": "Management might defend the reserve because replacements are lumpy and one heavy spending year overstates normal requirements. An owner might reject it because repeated catch-up projects reveal chronic under-reserving. Resolve that disagreement with a multi-year maintenance schedule, building age, lease obligations, and actual occupancy-preservation spending. Likewise, compensation is noncash in the current period but economically relevant to owners. Retaining the accounting expense is one imperfect proxy for that cost; a dilution-based scenario is another. Do not automatically subtract both the full compensation expense and a cash amount for repurchasing every related share without explaining the overlap."
+      },
+      {
+        "heading": "A source-reading audit trail",
+        "text": "Read each real issuer's net-income-to-FFO bridge before its AFFO bridge. Record the exact fiscal period, ownership basis, adjustments, and whether recurring capital expenditure is estimated or actual. One Liberty's filed annual report provides a primary example of an AFFO policy that adds back restricted-stock compensation and warns that AFFO does not cover every cash need. It is an illustration of why definitions matter, not the source of our fictional policies or numbers. Link expenditure classifications to cash-flow and property notes; preserve unresolved items rather than silently treating missing disclosure as zero."
+      },
+      {
+        "heading": "Stress coverage and state the limits",
+        "text": "With annual common dividends of 90, A's reported payout is 90 / 110 = 81.8%, while normalized owner-earnings payout is 90 / 94 = 95.7%. The current-cash proxy gives 90 / 98 = 91.8%, still before other cash movements. If recurring investment rises another 5, normalized earnings become 89 and payout reaches 101.1%. This does not mechanically prove a dividend cut. Cash reserves, financing, timing, and taxable income remain separate questions. Actual spending also includes judgment: distinguish maintenance from genuine expansion, and test the boundary rather than claiming an exact, objective answer."
+      }
+    ],
+    "example": {
+      "heading": "Worked hypothetical bridge: the apparent advantage disappears",
+      "text": "Policy A appears to have 20 of coverage above a 90 dividend; Policy B has only 4. After applying the same expense policy, both have 94 of owner earnings and a 4 cushion. The entire 16 difference is explained by the 4 stock-compensation add-back and the 12 shortfall between the 8 reserve and 20 actual recurring spending. There is no operating advantage in this deliberately identical case. With 25 million diluted shares each, reported A AFFO is $4.40 per share, but normalized earnings for both are $3.76."
+    },
+    "pitfall": "Subtracting actual maintenance without reversing a reserve already deducted double counts expenditure; calling the compensation add-back free cash ignores dilution.",
+    "checklist": [
+      "Reconcile both policies to the same FFO and ownership basis.",
+      "Reverse existing reserves before replacing them.",
+      "Separate economic compensation cost from current cash timing.",
+      "Document recurring versus growth expenditure judgments.",
+      "Publish reported, normalized, and stressed coverage separately."
+    ],
+    "exercise": {
+      "question": "If actual recurring expenditure were 16 instead of 20, with all other assumptions unchanged, what would normalized earnings and the payout ratio be?",
+      "answer": "Normalized earnings would be 120 − 6 − 16 = 98. Starting with Policy A gives the same answer: 110 − 4 + 8 − 16 = 98. Payout would be 90 / 98 = 91.84%."
+    },
+    "sources": [
+      {
+        "title": "Nareit: AFFO is not standardized",
+        "url": "https://www.reit.com/glossary/adjusted-funds-operations-affo"
+      },
+      {
+        "title": "One Liberty Properties 2023 annual report: AFFO reconciliation and limitations",
+        "url": "https://www.sec.gov/Archives/edgar/data/712770/000117120024000178/i24199_olp-ars.pdf"
+      }
+    ],
+    "related": [
+      "learn-affo",
+      "learn-ffo",
+      "learn-payout-ratio",
+      "learn-dilution",
+      "learn-expert-investment-memo"
+    ]
+  },
+  {
+    "slug": "learn-expert-jv-nav",
+    "title": "Expert workshop: build NAV through joint ventures",
+    "description": "Reconcile proportionate ownership with consolidated reporting, eliminate duplicate assets, and stress a multi-entity NAV model.",
+    "category": "Expert workshops",
+    "level": "Expert",
+    "sections": [
+      {
+        "heading": "Prerequisites and entity map",
+        "text": "Complete the NOI, cap-rate, NAV, and debt guides before this workshop. The task requires a separate row for each legal ownership layer, not merely a company-wide cap rate. All figures are hypothetical millions of dollars. Assume plain proportional common ownership, no promote waterfalls, no guarantees, and debt valued at par. Our REIT owns one portfolio outright, 40% of an unconsolidated venture, and 60% of a controlled consolidated venture. Consolidation determines financial-statement presentation; it does not grant common shareholders 100% of every consolidated asset's economics. Build the ownership map before assigning values."
+      },
+      {
+        "heading": "Value the wholly owned and unconsolidated assets",
+        "text": "The wholly owned portfolio has NOI of 48 and an assumed 6% cap rate, producing gross property value of 800. Its property debt is 250, so net equity is 550. The unconsolidated venture has total NOI of 30, a 7.5% cap rate, debt of 180, and cash of 10. Its full property value is 400 and total equity is 400 + 10 − 180 = 230. Our 40% share is 92. The equivalent proportionate bridge is 160 of property value plus 4 of cash minus 72 of debt. Both routes must agree."
+      },
+      {
+        "heading": "Remove outside ownership from consolidated property",
+        "text": "The controlled venture has total NOI of 20, an 8% cap rate, debt of 100, and no other assets or liabilities. Its full property value is 250, leaving equity of 150. The parent's 60% interest is worth 90 under these assumptions; outside holders own the other 60. A consolidated bridge can include property value of 250 and debt of 100, then subtract 60 of noncontrolling equity. A proportionate bridge can instead include 150 of property value and 60 of debt. Do not use the proportionate bridge and subtract the outside equity again."
+      },
+      {
+        "heading": "Complete the common-equity bridge",
+        "text": "At the parent level, add cash of 30, subtract corporate debt of 200, preferred equity of 40, and other liabilities of 20. These amounts are separate from the property and venture debt above. Common NAV is 550 + 92 + 90 + 30 − 200 − 40 − 20 = 502. With 50 million diluted common-equivalent shares, NAV is $10.04 per share. If the balance sheet also records an investment carrying value for the unconsolidated venture, replace it with the modeled 92; do not add both. This model values the underlying interest, not two different assets."
+      },
+      {
+        "heading": "Competing interpretations and a cap-rate stress",
+        "text": "The proportionate method highlights economic exposure, while a legal-entity perspective emphasizes where creditors can enforce claims and where cash is trapped. Both matter: proportional debt is an analytical convention, not necessarily a parent's legal repayment obligation. Stress the unconsolidated venture's cap rate from 7.5% to 9%, holding NOI fixed. Full property value becomes 333.333, and the parent's equity interest becomes 40% × (333.333 + 10 − 180) = 65.333. Total NAV falls to 475.333, or approximately $9.507 per share. A financing covenant or distribution restriction could matter before the modeled equity value reaches zero."
+      },
+      {
+        "heading": "Verify the model and disclose omissions",
+        "text": "Use venture notes, ownership tables, property-income definitions, debt footnotes, and noncontrolling-interest disclosures to reconcile every row. Prologis's primary reporting illustrates why company-share and full-venture measures must be distinguished; its real figures are not used here. Check fee businesses separately and avoid capitalizing income already embedded in property earnings. Real ventures can contain preferred returns, promote arrangements, guarantees, taxes, transfer restrictions, and capital calls that defeat simple percentage multiplication. Where terms are unavailable, state that proportional NAV is a simplifying scenario. Assumed cap rates and debt values are not sale offers or guaranteed liquidation proceeds."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical case: Independent control total: two routes to $502 million",
+      "text": "On a proportionate basis, assets total 800 + 160 + 4 + 150 + 30 = 1,144. Deductions total 250 + 72 + 60 + 200 + 40 + 20 = 642. Their difference is 502, matching the entity-equity route. For the controlled venture alone, the full consolidation route gives 250 − 100 − 60 = 90, matching 150 − 60 = 90 on a proportionate basis. These cross-checks catch ownership mistakes before more elaborate sensitivities make the spreadsheet look authoritative."
+    },
+    "pitfall": "Combining 100% venture NOI with only proportionate debt overstates equity; adding an investment carrying amount after valuing its underlying assets counts the same interest twice.",
+    "checklist": [
+      "Map legal entities, ownership, and consolidation treatment.",
+      "Match every income stream to the same share of assets and debt.",
+      "Replace investment book values rather than adding duplicate interests.",
+      "Reconcile entity-equity and proportionate-asset totals.",
+      "Disclose waterfalls, guarantees, trapped cash, and valuation assumptions."
+    ],
+    "exercise": {
+      "question": "If the parent owned only 30% of the unconsolidated venture in the base case, with every other assumption unchanged, what would common NAV per share be?",
+      "answer": "The venture contribution would be 30% × 230 = 69, replacing 92. Common NAV would be 502 − 23 = 479, and NAV per share would be 479 / 50 = $9.58."
+    },
+    "sources": [
+      {
+        "title": "Nareit: Net Asset Value",
+        "url": "https://www.reit.com/glossary/net-asset-value"
+      },
+      {
+        "title": "Prologis 2025 results: company-share and venture disclosures",
+        "url": "https://www.prologis.com/insights-news/press-releases/prologis-reports-fourth-quarter-and-full-year-2025-results"
+      },
+      {
+        "title": "Prologis supplemental results: proportionate ownership definitions",
+        "url": "https://www.prologis.com/sites/corporate/files/documents/2026/01/2026-01-21-Prologis-Reports-Fourth-Quarter-and-Full-Year-2025-Results.pdf"
+      }
+    ],
+    "related": [
+      "learn-nav",
+      "learn-noi",
+      "learn-cap-rate",
+      "learn-debt-maturities",
+      "learn-expert-investment-memo"
+    ]
+  },
+  {
+    "slug": "learn-expert-refinancing-model",
+    "title": "Expert workshop: model refinancing, fees, and dilution",
+    "description": "Build partial-year and full-year earnings bridges for debt refinancing with and without equity, then reconcile the separate cash budget.",
+    "category": "Expert workshops",
+    "level": "Expert",
+    "sections": [
+      {
+        "heading": "Prerequisites and a dated base case",
+        "text": "Complete the debt-maturity, interest-coverage, dilution, and AFFO guides first. Every amount in this workshop is fictional, in millions except per-share figures. Assume annual recurring AFFO of 120 before refinancing, 30 million shares, and a 400 debt balance carrying 3% interest. The 120 already includes 12 of annual interest on that debt. Refinancing closes exactly July 1 at 6%. Other income, costs, taxes, and working capital stay unchanged. Use a half-year convention, no overlapping borrowings, and no early repayment penalty. These explicit simplifications make timing and ownership effects visible."
+      },
+      {
+        "heading": "Debt-only refinancing: distinguish this year from next",
+        "text": "Refinancing the entire 400 creates annual interest of 24 instead of 12. The incremental annual cost is 12, but only half affects the transaction year: 6. Transaction-year recurring AFFO is therefore 114, or $3.80 per share. The next full year's run rate is 108, or $3.60. Subtracting the entire new 24 from the original 120 would double count the old interest already embedded in the baseline. Subtracting the full incremental 12 in the transaction year would ignore the July closing. Maintain a monthly debt schedule when actual dates are more complicated."
+      },
+      {
+        "heading": "Equity-funded repayment: higher totals can hide dilution",
+        "text": "Alternatively, issue 2.5 million shares on July 1 at $20 each. Gross proceeds are 50; a 2% issuance cost is 1, leaving 49 to repay debt. Refinance only 351 at 6%, producing annual interest of 21.06. Relative to the original annual 12, incremental cost is 9.06, or 4.53 for half a year. Transaction-year recurring AFFO becomes 115.47. Weighted-average shares are 30 + (2.5 × 0.5) = 31.25, so AFFO per share is $3.69504. Next year's full run rate is 110.94 / 32.5 = approximately $3.41354, below the debt-only case despite higher aggregate AFFO."
+      },
+      {
+        "heading": "Keep financing fees in a separate cash bridge",
+        "text": "Assume either route also pays an illustrative fixed financing fee of 4 from existing cash for a five-year loan. Our recurring AFFO scenario excludes fee amortization; it is not a claim about any issuer's definition. A simplified straight-line accounting illustration would recognize 0.8 annually and 0.4 in the transaction year, while actual accounting may use an effective-interest method. Cash still leaves immediately: 4. Do not deduct both the upfront fee and its amortization in the same cash budget. Equity issuance costs already reduced the repayment proceeds from 50 to 49; charging that 1 again would also duplicate a cost."
+      },
+      {
+        "heading": "Compare liquidity protection with per-share economics",
+        "text": "The debt-only route preserves ownership but leaves 400 outstanding. The equity route reduces principal to 351, potentially improving refinancing resilience, while distributing earnings across more shares. An income-focused owner may prefer the higher debt-only per-share result; a lender-focused analysis may value lower principal exposure. Neither interpretation wins automatically. At a $2.40 annual dividend, the equity route pays 72 to original shares plus 3 to the new half-year shares: 75. Its simplified transaction-year residual after dividends and the financing fee is 115.47 − 75 − 4 = 36.47. Debt-only leaves 114 − 72 − 4 = 38."
+      },
+      {
+        "heading": "Read the documents and challenge the model",
+        "text": "Use the debt footnote for principal and coupons, the financing announcement for closing dates, the equity filing for net proceeds, and the diluted-share reconciliation for timing. Realty Income's filed debt and equity disclosures are a primary example of where these inputs live; none of its figures is being modeled here. Verify hedge settlements, premiums, covenant effects, capitalization of interest, and temporary cash interest. Our simplified residual is not unrestricted liquidity: beginning cash, other investment, working capital, and principal movements still require a full cash-flow bridge. Lower debt does not guarantee a particular credit outcome."
+      }
+    ],
+    "example": {
+      "heading": "Control checks for the hypothetical model",
+      "text": "Both routes begin with $4.00 AFFO per share. Debt-only ends the transaction year at $3.80 and the next year at $3.60. Equity-assisted refinancing ends at $3.69504 and approximately $3.41354. The equity route saves 49 × 6% = 2.94 of full-year interest relative to debt-only, exactly explaining 110.94 − 108. In the transaction year it saves 1.47, explaining 115.47 − 114. Those savings are smaller than the proportional increase in shares, so lower debt and lower per-share earnings coexist."
+    },
+    "pitfall": "Mixing a full-year interest change with a half-year share count, or subtracting costs already included in the baseline, produces misleading accretion.",
+    "checklist": [
+      "Date each borrowing, repayment, and issuance.",
+      "Adjust only the interest change from the embedded baseline.",
+      "Use net equity proceeds and weighted-average shares.",
+      "Separate recurring performance, accounting fees, and upfront cash.",
+      "Show the transaction year and the next full year."
+    ],
+    "exercise": {
+      "question": "If debt-only refinancing instead closes October 1, what is transaction-year recurring AFFO and AFFO per share under the same assumptions?",
+      "answer": "Only one quarter of the 12 annual interest increase applies: 3. Recurring AFFO is 120 − 3 = 117, or 117 / 30 = $3.90 per share. The following full-year run rate remains $3.60."
+    },
+    "sources": [
+      {
+        "title": "Realty Income 2024 Form 10-K: debt, equity, and financing disclosures",
+        "url": "https://www.sec.gov/Archives/edgar/data/726728/000072672825000055/o-20241231.htm"
+      },
+      {
+        "title": "SEC: How to Read a 10-K",
+        "url": "https://www.sec.gov/answers/reada10k.htm"
+      }
+    ],
+    "related": [
+      "learn-debt-maturities",
+      "learn-interest-coverage",
+      "learn-dilution",
+      "learn-affo",
+      "learn-expert-investment-memo"
+    ]
+  },
+  {
+    "slug": "learn-expert-investment-memo",
+    "title": "Expert workshop: write a falsifiable REIT research memo",
+    "description": "Separate facts from assumptions, test opposing explanations, and turn a valuation spreadsheet into an auditable research document.",
+    "category": "Expert workshops",
+    "level": "Expert",
+    "sections": [
+      {
+        "heading": "Prerequisites and the research question",
+        "text": "Complete the AFFO-normalization, joint-venture NAV, and refinancing workshops before attempting this synthesis. A useful memo begins with a question narrow enough to disprove: can the modeled recurring earnings cover the ordinary dividend after known refinancing and realistic maintenance? It does not begin with a preferred share-price conclusion. Our fictional REIT, Harbor Example, is an educational case with no connection to a listed company. All amounts are millions of dollars except per-share figures. The memo will distinguish assumed case facts, analyst choices, arithmetic results, and unresolved evidence. It makes no buy or sell recommendation."
+      },
+      {
+        "heading": "Create an evidence ledger before a thesis",
+        "text": "Suppose the case packet supplies FFO of 130, noncash rent of 5, a deducted maintenance reserve of 8, a compensation add-back of 3, actual recurring maintenance and leasing spending of 16, and dividends of 90. Record each as a hypothetical input. In real work, attach the filing date, section or page, ownership basis, and period to every material number. A management statement that spending is temporary is a claim; your belief that it will normalize is an inference. Do not convert either into a historical fact. Missing evidence should remain visibly missing."
+      },
+      {
+        "heading": "Construct two explanations that fit the headlines",
+        "text": "Reported AFFO in the case is 130 − 5 − 8 + 3 = 120, suggesting 75% dividend payout. The optimistic explanation says the reserve represents normal needs and current heavy spending will fade. The skeptical explanation says the portfolio requires the actual 16 every year and stock compensation remains an owner cost. Under that consistent owner-earnings policy, normalized earnings are 130 − 5 − 16 = 109, and payout is 82.57%. The two narratives share the same underlying inputs but disagree about recurring expenditure. Identify the maintenance history and lease commitments that could resolve that disagreement."
+      },
+      {
+        "heading": "Combine financing and operating stresses explicitly",
+        "text": "Assume 300 of debt, already included in earnings at 3%, resets to 6% for the entire next year. The incremental cost is 9, reducing normalized earnings from 109 to 100 if everything else is flat. Dividends of 90 then imply 90% payout. A downside case loses another 12 of NOI and requires 4 more recurring expenditure, producing 84 and payout of 107.14%. An upside case adds 8 of NOI with no extra recurring investment, producing 108 and payout of 83.33%. These are conditional calculations, not assigned probabilities. Do not average them into expected earnings without a defensible probability model."
+      },
+      {
+        "heading": "Put valuation and liquidity beside earnings",
+        "text": "Assume base property NOI of 80, a 6.5% cap rate, cash of 25, total debt of 500 including the refinancing debt, other senior claims of 40, and 50 million shares. Estimated NAV is (80 / 0.065 + 25 − 500 − 40) / 50 = approximately $14.315. At a hypothetical $12 share price, the modeled discount is 16.17%. Stress NOI to 68 and the cap rate to 7.5%; NAV becomes approximately $7.833. That same $12 price is then a 53.19% premium. A discount claim is therefore conditional on assumptions. Neither scenario supplies the cash needed for a principal repayment."
+      },
+      {
+        "heading": "Specify falsifiers and the next evidence review",
+        "text": "The optimistic maintenance thesis weakens if repeated annual spending remains above the reserve without identifiable expansion projects. The skeptical tenant thesis weakens if signed renewals commence, rent is collected, and incentives fit the modeled budget. Define observable evidence and a review date rather than moving the goalposts after results arrive. Use the SEC's filing guide to locate business risks, management discussion, financial statements, and notes, then check subsequent filings for developments. State which changes would alter the model. General economic commentary can frame uncertainty, but company-specific conclusions require company-specific evidence."
+      }
+    ],
+    "example": {
+      "heading": "Hypothetical case: Worked memo conclusion without a trade recommendation",
+      "text": "In this hypothetical case, the 75% reported payout understates the 90% normalized post-refinancing payout. The downside case exceeds recurring owner earnings by 6, because 90 − 84 = 6. That is a recurring funding gap under the scenario, not proof of immediate insolvency. The base NAV discount disappears under the joint income and cap-rate stress. A rigorous conclusion is that dividend coverage depends materially on maintenance and tenant assumptions, while valuation depends on the selected income and required return. The next research priority is evidence that distinguishes those assumptions."
+    },
+    "pitfall": "A detailed spreadsheet does not turn assumptions into facts; a valuation discount does not resolve a cash shortfall or establish a trading conclusion.",
+    "checklist": [
+      "Separate sourced facts, management claims, assumptions, and calculations.",
+      "Write the strongest competing explanation.",
+      "Reconcile earnings, cash needs, and valuation independently.",
+      "Define observable evidence that would change each thesis.",
+      "State unresolved questions and a dated review trigger."
+    ],
+    "exercise": {
+      "question": "Holding all other downside assumptions fixed, how much additional recurring earnings would bring the downside payout ratio to 90% rather than 107.14%?",
+      "answer": "A 90 dividend at a 90% payout requires earnings of 90 / 0.90 = 100. The downside case has 84, so it needs 16 more recurring earnings. Merely closing the 6 funding gap would produce 90 of earnings and a 100% payout."
+    },
+    "sources": [
+      {
+        "title": "SEC: How to Read a 10-K",
+        "url": "https://www.sec.gov/answers/reada10k.htm"
+      },
+      {
+        "title": "Nareit: Net Asset Value",
+        "url": "https://www.reit.com/glossary/net-asset-value"
+      },
+      {
+        "title": "Nareit: AFFO definition and comparability",
+        "url": "https://www.reit.com/glossary/adjusted-funds-operations-affo"
+      }
+    ],
+    "related": [
+      "learn-expert-affo-normalization",
+      "learn-expert-jv-nav",
+      "learn-expert-refinancing-model",
+      "learn-dividend-cuts",
+      "learn-nav"
+    ]
+  }
+]

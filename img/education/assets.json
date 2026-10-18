@@ -1,0 +1,26 @@
+{
+  "property-atlas": {
+    "width": 1280,
+    "height": 853,
+    "bytes": 270810,
+    "path": "/img/education/property-atlas.webp"
+  },
+  "cash-flow": {
+    "width": 1280,
+    "height": 533,
+    "bytes": 161024,
+    "path": "/img/education/cash-flow.webp"
+  },
+  "capital-stack": {
+    "width": 1280,
+    "height": 853,
+    "bytes": 216344,
+    "path": "/img/education/capital-stack.webp"
+  },
+  "evidence-desk": {
+    "width": 1280,
+    "height": 853,
+    "bytes": 222660,
+    "path": "/img/education/evidence-desk.webp"
+  }
+}

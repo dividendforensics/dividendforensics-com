@@ -10,9 +10,9 @@ sys.path.insert(0,str(ROOT))
 import build_site as build
 
 class PublicCopyTests(unittest.TestCase):
-    def test_home_describes_method_not_dividend_only_scope(self):
+    def test_home_leads_with_free_reit_education(self):
         text=(ROOT/'templates/home.html').read_text()
-        for term in ('Filing-anchored structural research','capital structure','debt','dilution','financing','refinancing','credit','payout mechanics'):
+        for term in ('REIT','FFO','AFFO','calculator','learn.html','research.html'):
             self.assertIn(term,text)
         self.assertNotIn('REITs &amp; BDCs, with selected work across other income assets',text)
 
