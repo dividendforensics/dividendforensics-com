@@ -1,7 +1,8 @@
 name: Verify public deployment
 on:
   workflow_run:
-    workflows: ['pages build and deployment']
+    # Workflow API name, not the run's human-readable display name.
+    workflows: ['pages-build-deployment']
     types: [completed]
     branches: [main]
   workflow_dispatch:
