@@ -1,26 +1,72 @@
 name: Verify public deployment
 on:
+  workflow_run:
+    workflows: ['pages build and deployment']
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   verify:
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.head_repository.full_name == github.repository &&
+       github.event.workflow_run.path == 'dynamic/pages/pages-build-deployment')
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      DFB_PAGES_RUN_ID: ${{ github.event.workflow_run.id }}
+      DFB_PAGES_RUN_URL: ${{ github.event.workflow_run.html_url }}
+      DFB_PAGES_SHA: ${{ github.event.workflow_run.head_sha }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Compare ordinary public URLs with the saved release
+      - name: Save provenance before validation
         run: |
-          python build_site.py --check
+          python - <<'PY'
+          import datetime
+          import json
+          import os
+          import pathlib
+          import subprocess
+
+          keys = ('GITHUB_REPOSITORY', 'GITHUB_RUN_ID', 'GITHUB_RUN_ATTEMPT',
+                  'GITHUB_EVENT_NAME', 'DFB_PAGES_RUN_ID', 'DFB_PAGES_RUN_URL', 'DFB_PAGES_SHA')
+          provenance = {
+              'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+              'source_tree': subprocess.check_output(['git', 'rev-parse', 'HEAD^{tree}'], text=True).strip(),
+              'started_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'provenance': {key: os.environ[key] for key in keys if os.environ.get(key)},
+          }
+          pathlib.Path('public-verification-provenance.json').write_text(json.dumps(provenance, indent=2))
+          initial = dict(provenance, passed=False, complete=False, checked=0, matched=0,
+                         error='Public URL verification has not completed.')
+          pathlib.Path('public-verification.json').write_text(json.dumps(initial, indent=2))
+          PY
+      - name: Install HTML validation dependency
+        run: python -m pip install 'beautifulsoup4>=4.12,<5'
+      - name: Validate the saved release
+        run: python build_site.py --check
+      - name: Compare ordinary public URLs with the saved release
+        # Leave time for artifact upload even when HTTP requests time out.
+        timeout-minutes: 12
+        run: |
           python tools/verify_deployment.py --attempts 21 --interval 30 --output public-verification.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: public-deployment-verification
-          path: public-verification.json
-          retention-days: 14
+          name: public-deployment-verification-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            public-verification.json
+            public-verification-provenance.json
+          if-no-files-found: error
+          retention-days: 30

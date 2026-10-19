@@ -7,7 +7,7 @@ from pathlib import Path
 import json
 from education import E, shell, section_head
 
-VERSION = 'operating-1.0.0'
+VERSION = 'operating-1.0.1'
 SEC_GUIDE = 'https://www.sec.gov/about/reports-publications/beginners-guide-financial-statements'
 SEC_NONGAAP = 'https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/non-gaap-financial-measures'
 PAGES = (

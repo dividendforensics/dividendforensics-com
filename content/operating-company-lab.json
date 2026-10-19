@@ -33,7 +33,7 @@
     "title": "Apple 2024: follow earnings through cash and capital returns",
     "description": "Reconstruct operating cash flow, a defined FCF measure, cash dividends and buybacks, and the complete cash-balance change from Apple’s historical FY2024 10-K.",
     "published": "2026-10-18",
-    "updated": "2026-10-18",
+    "updated": "2026-10-19",
     "periodStart": "2023-10-01",
     "periodEnd": "2024-09-28",
     "asOf": "2024-09-28",
@@ -507,7 +507,7 @@
         "provenance": "Transcribed from the complete SEC-hosted original filing"
       },
       "repurchases_equity": {
-        "label": "Common-stock repurchases in equity",
+        "label": "Common-stock repurchases: retained earnings / accumulated deficit",
         "value": "-95846",
         "unit": "USD million",
         "currency": "USD",
@@ -518,8 +518,8 @@
         "checkedOn": "2026-10-18",
         "sourceID": "apple-10k",
         "sourceURL": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
-        "locator": "Item 8, Consolidated Statements of Shareholders' Equity, p.32, FY2024 column; Common stock repurchased",
-        "basis": "Equity-statement reduction; not the cash-flow amount",
+        "locator": "Item 8, Consolidated Statements of Shareholders' Equity, printed p.32, Retained earnings/(Accumulated deficit) section, FY2024 column; Common stock repurchased",
+        "basis": "Reduction in retained earnings / accumulated deficit in the original filing; not the cash-flow amount or the XBRL workbook Total cell",
         "provenance": "Transcribed from the complete SEC-hosted original filing"
       },
       "dividends_declared_per_share": {

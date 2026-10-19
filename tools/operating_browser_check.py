@@ -50,11 +50,15 @@ def main():
             page.locator('a[href="/cash-flow-workbench.html?example=apple-2024"]').first.click()
             form = page.locator('[data-operating-workbench]')
             result = page.locator('[data-operating-result]')
+            status = page.locator('[data-operating-status]')
+            expect(status).to_have_attribute('role', 'status')
+            expect(status).to_have_attribute('aria-live', 'polite')
             expect(form.locator('[name=netIncome]')).to_have_value('93736')
             expect(result).to_contain_text('118254')
             text = result.inner_text()
             assert all(n in text for n in ('118254', '108807', '-1376', '29943')), text
             assert text.count('Matches entered totals (gap 0)') == 2
+            expect(status).to_contain_text('OCF matches. Cash balance matches.')
             source = form.locator('[data-operating-source]').inner_text()
             assert '2024-11-01' in source and 'convention' in source
             checks.append('Native answer key → Apple preset; OCF, FCF, residual and two independent reconciliations')
@@ -81,6 +85,7 @@ def main():
             assert bad.get_attribute('aria-invalid') == 'true'
             assert page.locator('[data-operating-export]').is_disabled()
             assert 'Results cleared' in result.inner_text()
+            expect(status).to_have_text('Calculation needs attention.')
             bad.fill('9447')
             assert not form.locator('[data-operating-error]').is_visible()
             assert bad.get_attribute('aria-invalid') is None
@@ -88,9 +93,27 @@ def main():
             checks.append('Negative payment → keyboard error focus/ARIA and stale-output clearing → correction')
             form.locator('[name=reportedOCF]').fill('')
             assert 'Not checked' in result.inner_text() and 'Not calculated' in result.inner_text()
+            expect(status).to_contain_text('OCF not checked: source input missing. Cash balance not checked: source input missing.')
+            checks.append('Missing reported OCF is announced as unchecked for both bridges')
+            form.locator('[name=reportedOCF]').fill('118254')
+            cash_fields = ('beginningCash', 'netInvesting', 'netFinancing', 'fx', 'endingCash')
+            cash_values = {key: form.locator(f'[name={key}]').input_value() for key in cash_fields}
+            for key in cash_fields:
+                form.locator(f'[name={key}]').fill('')
+            expect(form.locator('[data-operating-error]')).to_be_hidden()
+            assert result.inner_text().count('Not checked') == 1
+            assert result.inner_text().count('Matches entered totals (gap 0)') == 1
+            expect(status).to_contain_text('OCF matches. Cash balance not checked: source input missing.')
+            checks.append('Entire optional cash bridge omitted: OCF matches; cash balance is announced as unchecked')
             form.locator('[name=reportedOCF]').fill('118255')
             assert 'Unreconciled' in result.inner_text()
-            checks.append('Missing OCF remains unknown; mismatched total is visibly unreconciled')
+            expect(status).to_contain_text('OCF unreconciled: gap -1 USD million. Cash balance not checked: source input missing.')
+            for key, value in cash_values.items():
+                form.locator(f'[name={key}]').fill(value)
+            expect(status).to_contain_text('OCF unreconciled: gap -1 USD million. Cash balance unreconciled: gap 1 USD million.')
+            form.locator('[name=reportedOCF]').fill('118254')
+            expect(status).to_contain_text('OCF matches. Cash balance matches.')
+            checks.append('Actual nonzero gaps are announced as unreconciled, independently of missing cash inputs; correction restores matches')
             payload = '=SUM(1,2) <script>window.injected=true</script>'
             form.locator('[name=scenarioLabel]').fill(payload)
             assert payload in result.inner_text()
