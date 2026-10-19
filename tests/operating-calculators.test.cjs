@@ -5,7 +5,7 @@ const scenario = changes => ({...C.defaultScenario(),...changes});
 test('Synthetic bridge reconciles earnings and cash while allocation residual is negative',()=>{
  const r=C.calculate(scenario());
  assert.deepEqual(r.metrics,{operatingCashFlow:'135',reportedOCF:'135',operatingGap:'0',freeCashFlow:'80',shareholderCash:'95',residual:'-15',cashChange:'3',computedEndingCash:'103',endingCash:'103',cashGap:'0'});
- assert.equal(r.formulaVersion,'operating-1.0.0');
+ assert.equal(r.formulaVersion,'operating-1.0.1');
  assert.equal(r.steps[5].total,'80');
 });
 test('Earnings and cash mismatches are independent and never hidden',()=>{

@@ -9,8 +9,9 @@ PR #15가 병합·배포되었다. 일반 기업 학습 경로 5페이지, Apple
 - 검증한 Git tree: `28051324777984c5534b85e49c0e4bddaa9fe6d5` (로컬·PR·병합 제품 일치)
 - CI: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39127112481 — 성공
 - Build and Publish: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39128054775 — 성공
-- 최종 Pages: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39128081201 — 성공
-- 초기 Pages 작업 39128054673은 명시적 재빌드로 대체되어 취소됐다. 최종 배포 성공과 구분한다.
+- 제품 Pages (`d9b4415…`): https://github.com/dividendforensics/dividendforensics-com/actions/runs/39128081201 — 성공
+- 후속 완료 기록만 바뀐 커밋 `a51d210…`의 Pages: https://github.com/dividendforensics/dividendforensics-com/actions/runs/39128251106 — 성공. 두 커밋 사이 변경은 이 완료 문서 한 파일이다.
+- 초기 Pages 작업 39128054673은 명시적 재빌드로 대체되어 취소됐다. 제품 배포 및 후속 문서 배포와 구분한다. 이 구분은 2026-10-19 실행 기록을 재조회해 보완했다.
 
 ## 새로 이용할 수 있는 기능
 
@@ -40,7 +41,7 @@ PR #15가 병합·배포되었다. 일반 기업 학습 경로 5페이지, Apple
 
 브라우저의 Apple preset 로딩 완료를 기다리도록 통합 검사 하네스를 고쳤고, 실패 방어 검사에서는 지연된 favicon 요청을 사용자 조작의 전송으로 오인하지 않도록 초기 network-idle을 기다리게 했다. 제품의 전송 결함으로 기록하지 않는다.
 
-로컬 근거: `.qa/pr15-ci-job.log`, `.qa/pr15-node.txt`, `.qa/operating-browser.json`, `.qa/calculator-safety.json`, `.qa/calculator-quality-browser.json`, `.qa/pr15-live.json`. `.qa`는 배포하지 않는다.
+로컬 근거: `.qa/pr15-ci-job.log`, `.qa/pr15-node.txt`, `.qa/operating-browser.json`, `.qa/calculator-safety.json`, `.qa/calculator-quality-browser.json`, `.qa/pr15-live.json`. `.qa`는 배포하지 않는다. 과거 `pr15-live.json`에는 커밋·실행 시각·Actions 실행 연결이 없으므로 170/170은 당시 로컬 관측으로 한정한다. 이후 자동 검증의 공개 Actions artifact와 동일한 증거로 취급하지 않는다.
 
 ## 내용·기능 보강
 
