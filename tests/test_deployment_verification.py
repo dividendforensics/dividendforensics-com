@@ -13,6 +13,29 @@ spec.loader.exec_module(live)
 
 
 class DeploymentVerificationTests(unittest.TestCase):
+    def test_shared_assets_are_targets_and_stale_canonical_responses_fail(self):
+        targets = live.targets()
+        for asset in ('site.js', 'dfb.css', 'newsroom.css', 'education.css'):
+            with self.subTest(asset=asset), TemporaryDirectory() as folder:
+                self.assertIn(asset, targets)
+                root = Path(folder)
+                (root / asset).write_bytes(b'current')
+                urls = []
+
+                def fetcher(url):
+                    urls.append(url)
+                    return 200, b'current' if '?' in url else b'old', {}
+
+                report = live.verify([asset], 'https://example.com', root / 'report.json',
+                                     root=root, fetcher=fetcher)
+                self.assertTrue(report['complete'])
+                self.assertFalse(report['passed'])
+                self.assertEqual(report['checked'], 1)
+                self.assertEqual(report['matched'], 0)
+                self.assertEqual(urls[0], 'https://example.com/' + asset)
+                self.assertEqual(report['failures'][0]['path'], asset)
+                self.assertTrue(report['failures'][0]['cache_busted_matches'])
+
     def test_stale_plain_response_cannot_pass_with_a_fresh_query(self):
         with TemporaryDirectory() as folder:
             root = Path(folder)

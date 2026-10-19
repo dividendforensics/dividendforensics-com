@@ -25,7 +25,8 @@ def normalized(data):
 def targets(root=ROOT):
     pages = sorted(p.relative_to(root).as_posix() for p in root.rglob('*.html')
                    if '.qa' not in p.parts and 'name="dfb-design"' in p.read_text(encoding='utf-8'))
-    assets = ['bureau.css', 'education.js', 'bdc-calculators.js',
+    assets = ['site.js', 'dfb.css', 'newsroom.css', 'education.css',
+              'bureau.css', 'education.js', 'bdc-calculators.js',
               'capital-calculators.js', 'proposal.js', 'calculators.js',
               'vendor/decimal.js/decimal.js', 'vendor/decimal.js/LICENCE.md',
               'vendor/decimal.js/package.json', 'vendor/manifest.json',
