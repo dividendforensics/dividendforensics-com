@@ -170,7 +170,7 @@
       "Angenommener Steuerabzug (%)",
       "Monatliches Ziel (USD)"
     ],
-    "input_note": "Verwenden Sie ein Komma für Dezimalstellen und keine Tausendertrennzeichen: 10000 oder 10000,50. Punkte werden abgewiesen, damit 10.000 nicht versehentlich als 10 berechnet wird. 5 bedeutet 5 %. Kapital: 0–1000000000000 USD; Rendite und Abzug: 0–100 %; monatliches Ziel: 0–1000000000 USD. Die Angaben bleiben in diesem Browser-Tab.",
+    "input_note": "Verwenden Sie ein Komma für Dezimalstellen und keine Tausendertrennzeichen: 10000 oder 10000,50. Punkte werden abgewiesen, damit 10.000 nicht versehentlich als 10 berechnet wird. 5 bedeutet 5 %. Kapital: 0–1000000000000 USD; Rendite und Abzug: 0–100 %; monatliches Ziel: 0–1000000000 USD. Die Angaben bleiben in diesem Browser-Tab. Das Modell rechnet mit 80 signifikanten Ziffern. Wenn die Rundungsrichtung nicht sicher bestimmt werden kann, wird das Szenario mit einer Präzisionsmeldung abgewiesen.",
     "nojs": "Die interaktive Berechnung benötigt JavaScript. Formel und Beispiel bleiben unten lesbar.",
     "messages": {
       "pending": "Wählen Sie Berechnen, um das Szenario anzuzeigen.",
@@ -188,7 +188,8 @@
       ],
       "range": "Der Wert muss zwischen 0 und {max} liegen.",
       "loading": "Die Eingabefelder werden freigegeben, sobald die Berechnung geladen ist. Bleiben sie gesperrt, laden Sie die Seite neu oder lesen Sie die Formel und das Beispiel unten.",
-      "waiting": "Noch kein Ergebnis. Die Berechnung setzt geladene Eingabefelder voraus."
+      "waiting": "Noch kein Ergebnis. Die Berechnung setzt geladene Eingabefelder voraus.",
+      "precision": "Diese Eingaben liegen zu nahe an einer Rundungsgrenze für das Modell mit 80 signifikanten Ziffern. Verwenden Sie weniger Eingabeziffern oder ändern Sie die Annahmen."
     },
     "sections": [
       [

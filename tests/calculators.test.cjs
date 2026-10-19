@@ -104,7 +104,7 @@ test('decimal bridge cancellation is exact rather than a visible floating-point 
     assert.equal(r.metrics[0].value,0);
     assert.equal(r.metrics[1].value,0);
     assert.equal(format(r.metrics[0].value),'0.00');
-    assert.equal(r.formulaVersion,'original-1.1.2');
+    assert.equal(r.formulaVersion,'original-1.1.3');
   }
 });
 
@@ -167,7 +167,7 @@ test('authoritative exact decimal results round below, at and above the half-cen
   }
   assert.equal(format('-76.84499999999999999999925'),'-76.84');
   assert.equal(format('-76.845'),'-76.85');
-  assert.equal(spanish.version,'es-1.0.2');
+  assert.equal(spanish.version,'es-1.0.3');
 });
 
 test('all seven calculator result paths retain decimal strings for display and serialization',()=>{
@@ -222,4 +222,59 @@ test('bridge display bounds extreme precision explicitly while retaining raw CSV
     assert.equal(format(value,'bridge'),value);
     assert.equal(format(value),value);
   }
+});
+
+test('near-100 withholding preserves a positive rate through the international input limit',()=>{
+  for(const n of [78,79,125]){
+    const tax='99.'+'9'.repeat(n);
+    const r=calculate('income',{capital:'1000000000000',yield:'100',tax,target:'500'});
+    assert.equal(r.metrics[1].exactValue,`1e-${n-10}`);
+    assert.equal(r.metrics[3].exactValue,`6e+${n+5}`);
+    assert.notEqual(r.metrics[2].exactValue,'0');
+    assert.notEqual(format(r.metrics[1].exactValue),'0.00');
+    assert.equal(r.exactRows[1][2],r.metrics[1].exactValue);
+  }
+});
+test('withholding endpoints and zero target keep their original semantics',()=>{
+  for(const [tax,net,target] of [['0','1000000000000','6000'],['100','0',null]]){
+    const r=calculate('income',{capital:'1000000000000',yield:'100',tax,target:'500'});
+    assert.equal(r.metrics[1].exactValue,net);assert.equal(r.metrics[3].exactValue,target);
+    assert.equal(calculate('income',{capital:'1000000000000',yield:'100',tax,target:'0'}).metrics[3].exactValue,'0');
+  }
+});
+test('near-100 withholding keeps tiny reinvestment income rather than silently dropping it',()=>{
+  const r=calculate('reinvestment',{capital:'1000000000000',contribution:'0',yield:'100',tax:'99.'+'9'.repeat(79),years:'1'});
+  assert.ok(Number(r.metrics[2].exactValue)>0);
+  assert.ok(Math.abs(Number(r.metrics[2].exactValue)/1e-69-1)<1e-14);
+  assert.equal(r.arithmetic.precision,80);
+});
+test('maximum-length withholding retains tiny values or gives the explicit display-range error',()=>{
+  const tax='99.'+'9'.repeat(509);
+  assert.equal(tax.length,512);
+  const r=calculate('income',{capital:'1000000000000',yield:'100',tax,target:'0'});
+  assert.equal(r.metrics[1].exactValue,'1e-499');assert.equal(r.metrics[1].value,'1e-499');
+  assert.equal(r.metrics[3].exactValue,'0');
+  assert.throws(()=>calculate('income',{capital:'1000000000000',yield:'100',tax,target:'500'}),/too large to display/);
+  assert.throws(()=>calculate('income',{capital:'1000000000000',yield:'100',tax:tax+'9',target:'0'}),/finite number/);
+});
+
+test('ambiguous half-cent scenarios fail explicitly instead of displaying the wrong side',()=>{
+  for(const input of [
+    {capital:'1024.5'+'9'.repeat(77),yield:'7.5',tax:'0',target:'500'},
+    {capital:'1.005',yield:'99.'+'9'.repeat(78),tax:'0',target:'500'},
+    {capital:'1.005',yield:'100',tax:'1e-10000',target:'500'}
+  ])assert.throws(()=>calculate('income',input),e=>e.code==='PRECISION_RANGE'&&/80-significant-digit/.test(e.message));
+  assert.equal(format(calculate('income',{capital:'1024.6',yield:'7.5',tax:'0',target:'0'}).metrics[0].exactValue),'76.85');
+  assert.equal(format(calculate('income',{capital:'1024.59999999999999999999',yield:'7.5',tax:'0',target:'0'}).metrics[0].exactValue),'76.84');
+});
+test('tiny nonzero yield and cap-rate scenario labels do not collapse to zero percent',()=>{
+  const r=calculate('income',{capital:'10000',yield:'0.001',tax:'15',target:'500'});
+  assert.deepEqual(r.exactRows.map(row=>row[0]),['0.00075%','0.001%','0.00125%']);
+  const nav=calculate('nav',{noi:'1',cap:'0.001',debt:'0',cash:'0',shares:'1'});
+  assert.ok(nav.exactRows.some(row=>row[0]==='0.001%'));
+});
+
+
+test('income scenario labels also reject ambiguous rounding when all money outputs are zero',()=>{
+  assert.throws(()=>calculate('income',{capital:'0',yield:'1.33'+'9'.repeat(80),tax:'0',target:'0'}),e=>e.code==='PRECISION_RANGE');
 });

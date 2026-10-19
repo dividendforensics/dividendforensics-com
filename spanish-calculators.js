@@ -3,7 +3,7 @@
   'use strict';
   const Decimal=typeof module==='object' && module.exports ? require('./vendor/decimal.js/decimal.js') : root.Decimal;
   const D=Decimal ? Decimal.clone({precision:80,rounding:Decimal.ROUND_HALF_UP}) : null;
-  const VERSION='es-1.0.2';
+  const VERSION='es-1.0.3';
   const labels={
     'Annual gross distributions':'Distribuciones brutas anuales (USD)',
     'Annual after-withholding income':'Ingreso anual después de la retención supuesta (USD)',
@@ -45,7 +45,7 @@
         const dl=document.createElement('dl');dl.className='calculator-metrics';
         result.metrics.forEach(metric=>{const div=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=labels[metric.label];dd.textContent=shown(metric.exactValue,metric.format);div.append(dt,dd);dl.append(div);});output.append(dl);
         const note=document.createElement('p');note.className='small-note';note.textContent='Ejemplo o hipótesis del usuario; no es una previsión. La retención no determina su impuesto final. No incluye conversión de divisas. Versión de cálculo: '+result.formulaVersion;output.append(note);
-      }catch(_){clear('No hay un resultado válido.');error.textContent='Introduzca números finitos con punto decimal y revise los límites, períodos y denominadores.';error.hidden=false;}
+      }catch(e){clear('No hay un resultado válido.');error.textContent=e.code==='PRECISION_RANGE'?'Estas entradas están demasiado cerca de un límite de redondeo para el modelo de 80 cifras significativas. Reduzca las cifras de entrada o cambie las hipótesis.':'Introduzca números finitos con punto decimal y revise los límites, períodos y denominadores.';error.hidden=false;}
     }
     form.addEventListener('submit',e=>{e.preventDefault();run();});
     form.addEventListener('reset',()=>setTimeout(()=>{error.hidden=true;clear('Valores iniciales restablecidos. Seleccione Calcular para actualizar el resultado.');},0));

@@ -95,6 +95,48 @@ def main():
                     assert form.locator('[name=capital]').input_value()==capital
                     assert page.locator('[data-es-result] dd').first.inner_text()==es
                     results.append({'case':name,'input':capital,'exact_csv':exact,'english_display':en,'spanish_display':es})
+                # The same shared income engine is reached by five real submit paths.
+                # Very long inputs must retain their side of 100%, or report an
+                # explicit precision limit instead of a misleading cent value.
+                locales=[('en','calculator-dividend-income.html','[data-calculator=income]','[data-result]',False),
+                         ('es','es/calculadora-dividendos.html','[data-es-calculator=income]','[data-es-result]',True),
+                         ('de','de/income.html','[data-international-calculator]','[data-international-result]',False),
+                         ('ja','ja/income.html','[data-international-calculator]','[data-international-result]',False),
+                         ('zh-Hant','zh-hant/income.html','[data-international-calculator]','[data-international-result]',False)]
+                for locale,path,selector,result_selector,spanish in locales:
+                    page.goto(base+'/'+path);require_engine(spanish=spanish)
+                    form=page.locator(selector)
+                    def enter(values):
+                        for key,value in values.items():
+                            form.locator(f'input[name="{key}"]').fill(value.replace('.',',') if locale=='de' else value)
+                        form.locator('button[type=submit]').click()
+                    values={'capital':'1000000000000','yield':'100','tax':'99.'+'9'*79,'target':'500'}
+                    enter(values)
+                    assert page.locator(result_selector+' dd').count()==4
+                    assert page.locator(result_selector+' dd').nth(1).inner_text()=='1e-69'
+                    assert page.locator(result_selector+' dd').nth(2).inner_text()==('8,333e-71' if locale in ('de','es') else '8.333e-71')
+                    if locale=='en':
+                        with page.expect_download() as download:page.get_by_role('button',name='Download this scenario (CSV)').click()
+                        rows=list(csv.reader(io.StringIO(Path(download.value.path()).read_text(encoding='utf-8-sig'))))
+                        assert ['tax',values['tax']] in rows
+                        assert ['Annual after-withholding income','1e-69'] in rows
+                        assert ['Capital for monthly target','6e+84'] in rows
+                    for tax in ('0','100'):
+                        enter({'capital':'10000','yield':'5','tax':tax,'target':'500'})
+                        assert page.locator(result_selector+' dd').nth(1).inner_text()==(('500,00' if tax=='0' else '0,00') if locale in ('de','es') else ('500.00' if tax=='0' else '0.00'))
+                    enter({'capital':'1024.5'+'9'*77,'yield':'7.5','tax':'0','target':'500'})
+                    assert page.locator(result_selector+' dd').count()==0
+                    alert=form.locator('[role=alert]')
+                    assert alert.is_visible() and '80' in alert.inner_text()
+                    assert page.get_by_role('button',name='Download this scenario (CSV)').count()==0
+                    enter({'capital':'1024.6','yield':'7.5','tax':'0','target':'0'})
+                    assert page.locator(result_selector+' dd').first.inner_text()==('76,85' if locale in ('de','es') else '76.85')
+                    results.append({'case':'precision-boundary-'+locale,'near_100_net':'1e-69','ambiguous_half_cent':'explicit precision error','corrected_half_cent':'pass','browser_submit':True})
+                page.goto(base+'/calculator-dividend-income.html');require_engine()
+                form=page.locator('[data-calculator=income]')
+                for key,value in [('capital','10000'),('yield','0.001'),('tax','15'),('target','500')]:form.locator(f'input[name="{key}"]').fill(value)
+                form.locator('button[type=submit]').click()
+                assert page.locator('.table-scroll tbody tr th').all_inner_texts()==['0.00075%','0.001%','0.00125%']
                 # Tiny genuine differences remain signed; only actual cancellation is zero.
                 page.goto(base+'/calculator-ffo-affo.html')
                 require_engine()
