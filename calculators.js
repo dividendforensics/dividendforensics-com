@@ -23,7 +23,7 @@
   // Finite 80-significant-digit arithmetic, not unlimited/exact rational arithmetic.
   // Decimal strings remain authoritative through display and CSV serialization.
   const D = Decimal.clone({precision:80,rounding:Decimal.ROUND_HALF_UP});
-  const VERSION='original-1.1.2';
+  const VERSION='original-1.1.3';
   const FIELDS={income:['capital','yield','tax','target'],reinvestment:['capital','contribution','yield','tax','years'],payout:['affo','dividend','decline'],bridge:['net','depreciation','gains','ffoOther','capex','rent','affoOther'],nav:['noi','cap','debt','cash','shares'],refinancing:['principal','old','new','shares'],return:['start','end','dividends','buyFees','sellFees']};
   function decimal(value) {
     if (!['string','number'].includes(typeof value) || String(value).trim()==='' || String(value).length>512) throw Error('Enter a finite number in every field.');
@@ -42,6 +42,60 @@
     // Preserve real values below the Number range; never flatten them to zero.
     return n===0 ? value.toString() : n;
   }
+  function precisionError() {
+    const error=new Error('These inputs are too close to a rounding boundary for the 80-significant-digit model. Reduce the input precision or change the assumptions.');
+    error.code='PRECISION_RANGE';return error;
+  }
+  // Directed-rounding intervals enclose the exact arithmetic. If both endpoints
+  // do not have the same display, reject the scenario rather than silently
+  // rounding an uncertain value to the wrong side of a cent or to exact zero.
+  function verifyIncomePrecision(kind,v,metrics,rows) {
+    if(!['income','reinvestment'].includes(kind))return;
+    const Lo=Decimal.clone({precision:80,rounding:Decimal.ROUND_FLOOR});
+    const Hi=Decimal.clone({precision:80,rounding:Decimal.ROUND_CEIL});
+    const point=x=>({lo:new Lo(String(x)),hi:new Hi(String(x))});
+    const add=(a,b)=>({lo:a.lo.plus(b.lo),hi:a.hi.plus(b.hi)});
+    const sub=(a,b)=>({lo:a.lo.minus(b.hi),hi:a.hi.minus(b.lo)});
+    const mul=(a,b)=>({lo:Lo.min(...[a.lo,a.hi].flatMap(x=>[b.lo,b.hi].map(y=>new Lo(x).times(y)))),hi:Hi.max(...[a.lo,a.hi].flatMap(x=>[b.lo,b.hi].map(y=>new Hi(x).times(y))))});
+    const div=(a,b)=>{
+      if(b.lo.lte(0)&&b.hi.gte(0))throw precisionError();
+      return {lo:Lo.min(...[a.lo,a.hi].flatMap(x=>[b.lo,b.hi].map(y=>new Lo(x).div(y)))),hi:Hi.max(...[a.lo,a.hi].flatMap(x=>[b.lo,b.hi].map(y=>new Hi(x).div(y))))};
+    };
+    const check=(interval,value,type='number')=>{
+      if(D.isDecimal(value))exported(value); // Keep explicit display-range errors ahead of precision checks.
+      if(interval===null){if(value!==null)throw precisionError();return;}
+      if(value===null || format(interval.lo.toString(),type)!==format(interval.hi.toString(),type) || format(value.toString(),type)!==format(interval.lo.toString(),type))throw precisionError();
+    };
+    const x=Object.fromEntries(Object.entries(v).map(([key,value])=>[key,point(value)]));
+    const zero=point(0),hundred=point(100),twelve=point(12);
+    const rate=mul(div(x.yield,hundred),div(sub(hundred,x.tax),hundred));
+    let expected,expectedRows=[];
+    if(kind==='income'){
+      const gross=div(mul(x.capital,x.yield),hundred),net=mul(x.capital,rate);
+      let target=null;
+      if(v.target.isZero())target=zero;
+      else if(rate.lo.gt(0))target=div(mul(x.target,twelve),rate);
+      else if(rate.hi.gt(0))throw precisionError();
+      expected=[gross,net,div(net,twelve),target];
+      expectedRows=['0.75','1','1.25'].map(f=>[mul(x.yield,point(f)),mul(gross,point(f)),mul(net,point(f))]);
+    }else{
+      let balance=x.capital,earned=zero;
+      for(let month=1;month<=v.years.toNumber()*12;month++){
+        const income=div(mul(balance,rate),twelve);
+        earned=add(earned,income);balance=add(add(balance,income),x.contribution);
+        if(month%12===0)expectedRows.push([null,add(x.capital,mul(x.contribution,point(month))),earned,balance]);
+      }
+      expected=[balance,add(x.capital,mul(mul(x.contribution,x.years),twelve)),earned];
+    }
+    metrics.forEach((m,i)=>check(expected[i],m.value,m.format));
+    rows.forEach((row,i)=>row.forEach((value,j)=>{
+      if(D.isDecimal(value))check(expectedRows[i][j],value);
+      else if(kind==='income'&&j===0){
+        const bounds=expectedRows[i][j],lower=format(bounds.lo.toString(),'percent'),upper=format(bounds.hi.toString(),'percent');
+        if(lower!==upper||value!==lower)throw precisionError();
+      }
+    }));
+  }
   function calculate(kind, input) {
     if(!FIELDS[kind]) throw Error('Unknown calculator.');
     const v=Object.fromEntries(FIELDS[kind].map(key=>[key,decimal(input[key])]));
@@ -51,7 +105,9 @@
     if (kind === 'return' && (v.buyFees.lt(0) || v.sellFees.lt(0))) throw new Error('Fees cannot be negative.');
     if (kind === 'payout' && (v.dividend.lt(0) || v.decline.lt(0) || v.decline.gt(100))) throw new Error('Use a nonnegative dividend and an AFFO decline from 0 to 100%.');
     if (kind === 'reinvestment' && (!v.years.isInteger() || v.years.lt(1) || v.years.gt(50))) throw new Error('Enter a whole number of years from 1 to 50.');
-    const rate = (v.yield || new D(0)).div(100).times(new D(1).minus((v.tax || new D(0)).div(100)));
+    // Subtract percentage points before division: tax < 100 must not first round
+    // to 100% and erase a genuine tiny after-withholding rate. Precision stays 80.
+    const rate = (v.yield || new D(0)).div(100).times(new D(100).minus(v.tax || new D(0)).div(100));
     let metrics = [], columns = [], rows = [], note = '';
     const m = (label, value, format = 'number') => ({ label, value, format });
     switch (kind) {
@@ -59,7 +115,7 @@
         const gross = v.capital.times(v.yield).div(100), net = v.capital.times(rate);
         metrics = [m('Annual gross distributions', gross), m('Annual after-withholding income', net), m('Monthly equivalent', net.div(12)), m('Capital for monthly target', v.target.isZero() ? new D(0) : rate.gt(0) ? v.target.times(12).div(rate) : null)];
         columns = ['Yield scenario', 'Gross annual', 'After withholding'];
-        rows = ['0.75','1','1.25'].map(f => [v.yield.times(f).toFixed(2) + '%', gross.times(f), net.times(f)]);
+        rows = ['0.75','1','1.25'].map(f => [format(v.yield.times(f).toString(),'percent'), gross.times(f), net.times(f)]);
         note = 'Income scenarios assume unchanged capital. A target result shown as Not defined means a positive target cannot be funded at zero after-withholding yield. Figures do not include price change.';
         break;
       }
@@ -99,7 +155,7 @@
         const scenarios=[D.max('0.01',v.cap.minus(1)),v.cap,D.min(100,v.cap.plus(1))];
         rows = [...new Map(scenarios.map(cap=>[cap.toString(),cap])).values()].map(cap => {
           const pv = v.noi.div(cap.div(100)), ev = pv.plus(v.cash).minus(v.debt);
-          return [cap.toFixed(2) + '%', pv, ev, ev.div(v.shares)];
+          return [format(cap.toString(),'percent'), pv, ev, ev.div(v.shares)];
         });
         note = 'Negative equity values remain visible. Cap-rate scenarios hold NOI and every other assumption constant; they are not appraisals.';
         break;
@@ -120,6 +176,7 @@
         break;
       }
     }
+    verifyIncomePrecision(kind,v,metrics,rows);
     const exact=value=>D.isDecimal(value) ? value.toString() : value;
     return {
       // value/rows retain the old approximate Number API. Display/export consumers

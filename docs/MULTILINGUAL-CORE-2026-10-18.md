@@ -9,7 +9,7 @@
 - `content/edition-{zh-Hant,ja,de}.json`: 설명, 가정 예제, 해설형 연습문제, 체크리스트, 계산기 안내 및 메시지.
 - `international.py`: 정적 HTML, 자기 canonical, Article/WebPage 및 Breadcrumb, 원문 연결.
 - `localized.py`: 기존 영어·스페인어와 신규 언어를 페이지별 등록 정보로 연결한다. 존재하는 대응 페이지끼리만 같은 hreflang 집합을 사용하며 `x-default`는 해당 영어 페이지다. 새 comparison의 스페인어 번역은 없으므로 임의로 스페인어 홈을 대응시키지 않는다.
-- `international-calculators.js`: 기존 `calculators.js`의 소수 문자열 결과를 표시한다. 산식을 복제하거나 Number로 재변환하지 않는다. 독일어는 소수점 쉼표 또는 점을 받고 천 단위 입력은 허용하지 않는다. 일본어·번체 입력은 반각 숫자와 소수점만 받는다. 출력은 독일어 소수점 쉼표, 나머지 소수점 점이다.
+- `international-calculators.js`: 기존 `calculators.js`의 소수 문자열 결과를 표시한다. 산식을 복제하거나 Number로 재변환하지 않는다. 독일어는 소수점 쉼표만 받고 점과 천 단위 구분은 거부하며 천 단위 입력은 허용하지 않는다. 일본어·번체 입력은 반각 숫자와 소수점만 받는다. 출력은 독일어 소수점 쉼표, 나머지 소수점 점이다.
 - `international.css`: 긴 독일어 단어 및 CJK 줄바꿈, 모바일 입력창, 정적 본문.
 - 기존 스페인어의 남은 tú 명령형도 usted로 정리했다. PR10에서 제목 일부만 바뀐 상태를 전체 통일 완료로 확대하지 않는다.
 

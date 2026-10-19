@@ -52,7 +52,7 @@
        const dl=document.createElement('dl');dl.className='calculator-metrics';
        result.metrics.forEach((metric,i)=>{const div=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=messages.labels[i];dd.textContent=format(metric.exactValue,locale,messages.undefined);div.append(dt,dd);dl.append(div);});output.append(dl);
        const p=document.createElement('p');p.textContent=messages.note;output.append(p);
-     }catch(_){clear(messages.unavailable);error.textContent=messages.unavailable;error.hidden=false;}
+     }catch(e){const message=e.code==='PRECISION_RANGE'?messages.precision:messages.unavailable;clear(message);error.textContent=message;error.hidden=false;}
    });
    form.addEventListener('input',()=>{error.hidden=true;clearInvalid();clear(messages.changed);});
    form.addEventListener('reset',()=>{error.hidden=true;clearInvalid();clear(messages.pending);});
