@@ -86,8 +86,10 @@ inquiry route, not represented as a live paid custom-research or data product.
    contributor preview is not a published article.
 2. Add a record near the top of the root `articles.json` array. Array order is
    editorial order. Use `status: "published"` only for a public article.
-3. Run `python build_site.py` and the checks below, or commit the data and let
-   `.github/workflows/main.yml` build, check and request a Pages deployment.
+3. Run `python build_site.py` and the checks below. Commit the data and generated
+   output together in a PR, and wait for the `review` check before merging.
+   `.github/workflows/main.yml` validates committed output without changing it;
+   the branch-based Pages workflow publishes the merged main revision.
 
 Required fields: `url`, `title`, `blurb`, `date`, `group`, `label`, `case_key`.
 Optional: `case_slug`, `home` (boolean), `home_title`, `related_report`, `revision`,
@@ -142,16 +144,21 @@ python -m playwright install chromium
 python tools/browser_check.py --output /tmp/dfb-preview
 ```
 
-The browser suite renders all 28 active pages at 320, 390, 768, 1024 and 1440px.
+The browser suite discovers active pages and renders them at 320, 390, 768, 1024 and 1440px.
 It checks horizontal overflow, images, archive search, sector filters, empty
 states, mobile menu, Escape focus, form validity, no-JavaScript reading and a
 nested missing URL. It never submits a form or follows external article links.
 `--inline` is available in environments that prohibit localhost requests.
 
 `.github/workflows/design-review.yml` runs this suite on design branches/PRs and
-uploads screenshots. The main publishing workflow explicitly requests a Pages
-build after any generated HTML commit: a bot commit alone does not trigger
-branch-based Pages publishing.
+uploads screenshots. Main validation is read-only and never creates a bot commit
+or requests a duplicate Pages build. After successful Pages deployment,
+`.github/workflows/verify-live.yml` checks ordinary public URLs against the exact
+deployed SHA and uploads timestamped evidence for 30 days. Its manual trigger
+checks the main revision selected when the run starts. Incomplete or failed
+checks retain failure evidence and do not certify publication. Main branch
+protection still needs to be configured; see
+`docs/PR15-REVIEW-RESOLUTION-2026-10-19.md` for the settings and access limitation.
 
 ## Preservation and recovery
 
