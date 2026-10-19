@@ -52,6 +52,8 @@ jobs:
                          error='Public URL verification has not completed.')
           pathlib.Path('public-verification.json').write_text(json.dumps(initial, indent=2))
           PY
+      - name: Install HTML validation dependency
+        run: python -m pip install 'beautifulsoup4>=4.12,<5'
       - name: Validate the saved release
         run: python build_site.py --check
       - name: Compare ordinary public URLs with the saved release
