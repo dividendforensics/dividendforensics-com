@@ -183,6 +183,15 @@ def planned_outputs(root: Path = ROOT):
     latest = max(articles, key=lambda a: date_key(a['date']))['date']
     from education import education_outputs
     planned = education_outputs(root)
+    from daily_briefs import outputs as brief_outputs, cards as brief_cards
+    brief_pages, brief_records = brief_outputs(root)
+    planned.update(brief_pages)
+    if brief_pages:
+        sitemap = root / "sitemap.xml"
+        additions = "".join(f"  <url><loc>https://dividendforensics.com/{esc(p.name)}</loc></url>\n" for p in brief_pages if f"<loc>https://dividendforensics.com/{esc(p.name)}</loc>" not in planned[sitemap])
+        planned[sitemap] = planned[sitemap].replace("</urlset>", additions + "</urlset>")
+        entries = re.findall(r"  <url>.*?</url>\n", planned[sitemap])
+        planned[sitemap] = re.sub(r"  <url>.*?</url>\n", "", planned[sitemap]).replace("</urlset>", "".join(sorted(entries)) + "</urlset>")
     for path in root.glob('*.html'):
         text = planned.get(path, path.read_text(encoding='utf-8'))
         if HEADER_START not in text:
@@ -200,6 +209,7 @@ def planned_outputs(root: Path = ROOT):
         if path.name in ('index.html','research.html'):
             template = 'home.html' if path.name == 'index.html' else 'research.html'
             body = (root / 'templates' / template).read_text(encoding='utf-8').replace('{{report_url}}', esc(REPORT_URL))
+            body = body.replace('{{daily_briefs}}', brief_cards(brief_records))
             if path.name == 'index.html':
                 from education import load_articles,all_tools
                 from curriculum import level_cards, figure
