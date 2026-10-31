@@ -11,9 +11,37 @@
       document.getElementById('lesson-count').textContent = count + (count === 1 ? ' guide' : ' guides');
       document.getElementById('lesson-empty').hidden = count !== 0;
     }
-    search.addEventListener('input', filter); category.addEventListener('change', filter); level.addEventListener('change', filter);
-    document.getElementById('lesson-reset').addEventListener('click', () => { search.value = ''; category.value = 'all'; level.value = 'all'; filter(); search.focus(); });
+    function syncQueryUrl() {
+      const url = new URL(window.location.href);
+      const query = search.value.trim();
+      if (query) url.searchParams.set('q', query);
+      else url.searchParams.delete('q');
+      // Editing one search is not a new history entry. Keep unrelated URL state.
+      window.history.replaceState(window.history.state, '', url);
+    }
+    search.addEventListener('input', () => { filter(); syncQueryUrl(); });
+    category.addEventListener('change', filter); level.addEventListener('change', filter);
+    document.getElementById('lesson-reset').addEventListener('click', () => { search.value = ''; category.value = 'all'; level.value = 'all'; filter(); syncQueryUrl(); search.focus(); });
     filter();
+    // A submitted query should arrive at the answers, not the page introduction.
+    // Do not move focus for ordinary visits or subsequent typing/filtering.
+    if (search.value.trim()) {
+      // Fragment navigation runs after deferred scripts and can reset focus.
+      // Hand focus to the results only after navigation's pageshow lifecycle,
+      // on the next rendering frame; never refocus during later filter input.
+      const focusResults = () => window.requestAnimationFrame(() => {
+        const library = document.getElementById('library');
+        const active = document.activeElement;
+        // Preserve an explicit focus choice made while the page was loading.
+        if (active && ![document.body, document.documentElement, library, search].includes(active)) return;
+        // Search navigation should land immediately, not animate from the hero.
+        // Explicit instant also respects reduced-motion users despite global CSS.
+        library?.scrollIntoView({block: 'start', behavior: 'instant'});
+        search.focus({preventScroll: true});
+      });
+      if (document.readyState === 'complete') focusResults();
+      else window.addEventListener('pageshow', focusResults, {once: true});
+    }
   }
   const glossary = document.getElementById('glossary-search');
   if (glossary) {

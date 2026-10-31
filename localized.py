@@ -106,7 +106,7 @@ def outputs(root):
         output[root/path]=shell(path,a['title'],a['description'],body,a['english_slug']+'.html',article=a,extra='<link rel="stylesheet" href="/lesson-formats.css">')
     for kind,en,path in [('income','calculator-dividend-income.html','es/calculadora-dividendos.html'),('payout','calculator-payout-ratio.html','es/calculadora-cobertura-affo.html')]:
         title,body=calculator(kind)
-        extra='<script src="/vendor/decimal.js/decimal.js" defer></script><script src="/calculators.js?v=original-1.1.2" defer></script><script src="/spanish-calculators.js?v=es-1.0.2" defer></script>'
+        extra='<script src="/vendor/decimal.js/decimal.js" defer></script><script src="/calculators.js?v=original-1.1.3" defer></script><script src="/spanish-calculators.js?v=es-1.0.2" defer></script>'
         description=('Estime ingresos por dividendos en USD, retención supuesta y capital para un objetivo mensual; con fórmula y ejemplo.' if kind=='income' else 'Compare el dividendo anual con AFFO por acción de un REIT y pruebe un descenso; conserve pérdidas y límites del cálculo.')
         output[root/path]=shell(path,title,description,body,en,extra=extra)
     cards=''.join(f'<article class="lesson-card"><span class="kicker">Guía en español / Estados Unidos</span><h2><a href="/es/{a["slug"]}.html">{E(a["title"])}</a></h2><p>{E(a["description"])}</p></article>' for a in guides)

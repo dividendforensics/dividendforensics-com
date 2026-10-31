@@ -50,9 +50,23 @@ def main(library_only=False):
         page.goto(base+'/index.html')
         page.locator('#home-topic').fill('AFFO')
         page.get_by_role('button',name='Search guides').click()
-        page.wait_for_url('**/learn.html?q=AFFO')
+        page.wait_for_url('**/learn.html?q=AFFO#library')
         wait_for_library_query(page,'AFFO',errors,responses,failed_requests,out)
         assert 0<page.locator('[data-lesson]:visible').count()<36
+        # Focus is a post-navigation rendering contract, not synchronous with
+        # filtering in a deferred script. Wait for the condition, never a sleep.
+        try:
+            page.wait_for_function("document.activeElement === document.getElementById('lesson-search')", timeout=5000)
+        except Exception as error:
+            state = page.evaluate("({readyState:document.readyState,hash:location.hash,activeId:document.activeElement?.id,activeTag:document.activeElement?.tagName,value:document.getElementById('lesson-search')?.value})")
+            raise AssertionError('Search-result focus did not settle after navigation: '+json.dumps(state)) from error
+        assert page.locator('#lesson-search').evaluate('(el) => el === document.activeElement')
+        try:
+            page.wait_for_function("() => { const r=document.getElementById('library').getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }", timeout=5000)
+        except Exception as error:
+            state = page.evaluate("({readyState:document.readyState,hash:location.hash,scrollY,viewportHeight:innerHeight,libraryRect:document.getElementById('library').getBoundingClientRect().toJSON(),scrollBehavior:getComputedStyle(document.documentElement).scrollBehavior})")
+            raise AssertionError('Search results did not enter the viewport: '+json.dumps(state)) from error
+        assert page.locator('#library').evaluate('(el) => { const r=el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }')
         page.locator('#lesson-category').select_option('Start here')
         page.locator('#lesson-search').fill('zzzz-no-result')
         assert page.locator('#lesson-empty').is_visible()
@@ -60,10 +74,28 @@ def main(library_only=False):
         page.locator('#lesson-level').select_option('Expert')
         assert page.locator('[data-lesson]:visible').count()==4
         page.locator('#lesson-reset').click()
+        # Query edits and clearing must survive reload without accumulating
+        # history entries or discarding unrelated parameters and the anchor.
+        page.goto(base+'/learn.html?q=AFFO&source=qa#library')
+        wait_for_library_query(page,'AFFO',errors,responses,failed_requests,out)
+        history_length = page.evaluate('history.length')
+        page.locator('#lesson-search').fill('zzzxq0')
+        assert page.evaluate("new URL(location.href).searchParams.get('q')") == 'zzzxq0'
+        assert page.evaluate('history.length') == history_length
+        page.reload()
+        wait_for_library_query(page,'zzzxq0',errors,responses,failed_requests,out)
+        assert page.locator('#lesson-empty').is_visible()
+        page.locator('#lesson-reset').click()
+        assert page.evaluate("new URL(location.href).searchParams.has('q')") is False
+        assert page.evaluate("new URL(location.href).searchParams.get('source')") == 'qa'
+        assert page.evaluate('location.hash') == '#library'
+        page.reload()
+        wait_for_library_query(page,'',errors,responses,failed_requests,out)
+        assert page.locator('[data-lesson]:visible').count() == 36
         if library_only:
             assert not errors,errors
             context.close();browser.close();server.shutdown();server.server_close()
-            (out/'education-library-report.json').write_text(json.dumps({'status':'passed','scope':'home query and REIT library filters only','checks':['AFFO query initializes after document readiness','AFFO results are a nonempty subset','category/empty/reset','four expert guides','36 guides restored'],'errors':errors},indent=2),encoding='utf-8')
+            (out/'education-library-report.json').write_text(json.dumps({'status':'passed','scope':'home query and REIT library filters only','checks':['AFFO query initializes after document readiness','AFFO results are a nonempty subset','category/empty/reset','four expert guides','36 guides restored','edited query and cleared query survive reload','replaceState preserves unrelated parameters/hash without history spam'],'errors':errors},indent=2),encoding='utf-8')
             print('PASS: focused REIT homepage query and library search/filter/reset; broader education checks were not run.')
             return
         for level in LEVELS:
