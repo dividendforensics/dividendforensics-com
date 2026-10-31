@@ -69,9 +69,12 @@ class DailyBriefTests(unittest.TestCase):
         detail=a[ROOT/('brief-'+b['slug']+'.html')]
         self.assertIn('&lt;script&gt;alert(1)&lt;/script&gt;',detail)
         self.assertNotIn('<script>alert(1)</script>',detail)
-        self.assertIn('USD thousands',detail)
-        self.assertIn('Approximate ratio',detail)
-        self.assertIn('open question',detail)
+        self.assertNotIn('<table',detail)
+        self.assertNotIn('<h2',detail.split('<main',1)[1].split('</main>',1)[0])
+        self.assertNotIn('Recalculation ledger',detail)
+        self.assertNotIn('USD thousands',detail)
+        for section in b['sections']:self.assertIn(section['text'],detail)
+        for key in b['facts']:self.assertNotIn('>'+key+'<',detail)
 
     def test_full_builder_approved_fixture_rebuild_stable(self):
         import shutil
@@ -89,8 +92,14 @@ class DailyBriefTests(unittest.TestCase):
             xml=second[r/'sitemap.xml']
             self.assertEqual(xml.count('<loc>https://dividendforensics.com/daily-briefs.html</loc>'),1)
             self.assertEqual(xml.count('<loc>https://dividendforensics.com/brief-'+b['slug']+'.html</loc>'),1)
-            self.assertIn('Filing briefs',second[r/'research.html'])
-            self.assertIn('Filing briefs',second[r/'index.html'])
+            self.assertIn('Daily Brief',second[r/'research.html'])
+            self.assertIn('Daily Brief',second[r/'index.html'])
+
+    def test_newsletter_paragraph_count_without_weakening_ledger(self):
+        b=fixture();b['sections']*=2
+        with self.assertRaisesRegex(ValueError,'three or four'):validate(b,review(b),NOW)
+        b=fixture();b['calculations'][0]['expected']='999'
+        with self.assertRaisesRegex(ValueError,'arithmetic'):validate(b,review(b),NOW)
 
     def test_exact_review_may_follow_editorial_decision_not_deployment(self):
         b=fixture();r=review(b);r['reviewed_at']='2026-10-31T23:00:00Z'

@@ -6,8 +6,8 @@
       "category": "Operating Companies",
       "slug": "microsoft-fy2027-q1-cash-capex-bridge",
       "author": "DFB editorial",
-      "title": "Microsoft’s Cash-Capex Free Cash Flow Fell About 27% in Its Latest Quarter",
-      "summary": "Microsoft (NASDAQ: MSFT) presents two questions in its latest cash-flow statement: how much cash remained after property-and-equipment spending, and how cash dividends compared with that measure.",
+      "title": "Microsoft’s Cash Flow After Capital Spending Fell About 27%",
+      "summary": "Microsoft’s latest quarter shows lower cash-capex free cash flow, while dividends and finance-lease payments remain separate parts of the cash picture.",
       "event_date": "2026-10-28",
       "reporting_period": {
         "start": "2026-07-01",
@@ -203,16 +203,8 @@
       "sections": [
         {
           "type": "fact",
-          "heading": "The Print",
-          "text": "For the quarter ended September 30, Microsoft reported $58.0 billion of operating cash flow and $39.37 billion of cash additions to property and equipment. Subtracting the second from the first produces about $18.63 billion under DFB’s cash-capex free-cash-flow definition. The comparable calculation a year earlier was about $25.66 billion, implying a decline of about 27%. Calculations use the reported million-dollar figures before rounding for presentation; derived percentages should not imply greater measurement precision. SEC Form 10-Q, cash-flow statement, p. 6",
-          "source_ids": [
-            "sec"
-          ]
-        },
-        {
-          "type": "fact",
-          "heading": "A Separate Dividend Calculation",
-          "text": "Cash dividends paid were about $6.76 billion. Against the calculated free cash flow, that is about 36%; the defined cash-flow measure was approximately 2.8 times cash dividends paid. Subtracting those dividends leaves about $11.88 billion. That arithmetic remainder does not measure cash available for discretionary use; it excludes other investing and financing cash flows. The underlying cash-flow figures also appear in Microsoft’s earnings release. Microsoft FY2027 Q1 earnings release",
+          "heading": "The quarter",
+          "text": "Microsoft (NASDAQ: MSFT) generated about $18.63 billion under DFB’s cash-capex free-cash-flow calculation in its fiscal 2027 first quarter, ended September 30, 2026—down about 27% from a year earlier. DFB defines this measure as operating cash flow minus cash additions to property and equipment. The comparison uses reported figures before rounding for presentation.",
           "source_ids": [
             "sec",
             "issuer"
@@ -220,8 +212,8 @@
         },
         {
           "type": "inference",
-          "heading": "What the Comparison Does Not Establish",
-          "text": "A falling cash-flow measure does not by itself establish that distributions exceed cash generation. Nor does positive coverage establish that future dividends are secure. Both conclusions would require more than one quarter and a consistent definition of the competing cash requirements.",
+          "heading": "Dividends and other cash uses",
+          "text": "Cash dividends paid were about $6.76 billion, or roughly 36% of that measure. This comparison does not account for every competing use of cash: the amount left after dividends is not necessarily available for discretionary spending.",
           "source_ids": [
             "sec",
             "issuer"
@@ -229,16 +221,16 @@
         },
         {
           "type": "fact",
-          "heading": "Lease Principal Remains Outside This Measure",
-          "text": "Cash-capex free cash flow does not capture every infrastructure commitment. Microsoft’s lease note separately reports $1.0 billion of financing cash outflows from finance leases. Deducting that amount produces an additional analytical measure of about $17.63 billion. It is not the company’s reported free-cash-flow figure, and lease interest already reflected in operating cash flow should not be deducted again. SEC Form 10-Q, Note 12, p. 22",
+          "heading": "Finance leases",
+          "text": "Finance-lease principal also sits outside this cash-capex measure. Microsoft separately reported $1.0 billion of financing cash outflows from finance leases. Deducting that principal would produce a different analytical measure; lease interest already included in operating cash flow should not be deducted again.",
           "source_ids": [
             "sec"
           ]
         },
         {
           "type": "open_question",
-          "heading": "The Next Comparison",
-          "text": "The next-quarter comparison should use the same bridge: operating cash, cash capital spending, lease principal and distributions. Keeping those components separate makes changes visible without converting a quarterly coverage calculation into a forecast or an investment recommendation.",
+          "heading": "The next comparison",
+          "text": "The next quarter will provide another comparison. For now, these figures describe one period—not a forecast of future dividends. Keeping cash capital spending, lease principal and distributions separate makes the change easier to interpret.",
           "source_ids": [
             "sec"
           ]
@@ -250,8 +242,8 @@
   "reviews": [
     {
       "reviewer": "DFB independent assisted review",
-      "reviewed_at": "2026-10-31T13:44:14.995264+00:00",
-      "brief_sha256": "0255c18fe9979fcebd809aa6b8812e121b84f4fcf26c3b5d3f6ae1c9718465ac",
+      "reviewed_at": "2026-10-31T14:46:10.113656+00:00",
+      "brief_sha256": "6b795387af99ed9e3ca6117ffd50c98e79e34e3a30a187c2f91880f052f5cf93",
       "decision": "pass",
       "checks": {
         "sources": {
@@ -268,21 +260,21 @@
         },
         "english": {
           "result": "pass",
-          "evidence": "Compared the final headline, summary, paragraphs, calculation table and limitations with the checked manuscript. The remainder is not classified as unrestricted cash; the DFB definition and ratio denominators are explicit. NASDAQ: MSFT was checked against the SEC cover. No substantive grammar, terminology or numerical discrepancy was identified."
+          "evidence": "Independently read the shortened headline and four rendered newsletter paragraphs. The first paragraph explicitly attributes the derived measure to DFB and defines it. Approximate amounts and percentages agree with the verified inputs. No substantive grammar or terminology discrepancy found. Source links remain below the prose; raw calculation identifiers, tables and report-style headings are absent."
         },
         "neutrality": {
           "result": "pass",
-          "evidence": "No buy, sell or hold recommendation, target price, investment-safety guarantee or invented holdings disclosure appears. The text states that the quarterly ratio does not establish future dividend security and explains omitted lease principal and other cash uses."
+          "evidence": "The short text gives no transaction recommendation, price target, holdings implication or safety guarantee. It retains that dividends compete with other cash uses, the remainder is not necessarily discretionary, finance-lease principal is outside the measure, interest must not be double-counted, and the quarter is not a dividend forecast."
         },
         "freshness": {
           "result": "pass",
-          "evidence": "The filing-brief catalog was empty before this first entry, with no prior record for accession 000119312526436133. The October 28 quarterly filing supplies the current cash-capex and prior-year comparison. The October 31 analysis date is distinguished from the filing event; the article does not claim that the release occurred on the analysis date."
+          "evidence": "This is a presentation and wording revision of the already published October 31, 2026 filing brief, not a new event or a new daily article. The original publication timestamp and SEC event accession remain unchanged. The first paragraph retains the September 30 reporting-period end; the source filing event remains October 28."
         }
       },
-      "rendered_html_sha256": "c16a9b3e798a03a23216b7a58f8e8771971f454019fc7df0716cf1e892c73106",
-      "scope": "Assisted independent review of the exact serialized record and rendered text, table and source links. This is not a claim of human professional certification or a guarantee of zero errors. Browser visual checks, CI and public deployment remain separate release checks.",
-      "render_rechecked_at": "2026-10-31T13:51:52.130845+00:00",
-      "render_check_evidence": "Compared the final generated HTML with the reviewed preview. The only differences are two favicon link elements in the document head; the article body is byte-identical and no financial content changed."
+      "rendered_html_sha256": "b1bd4f781171371f0ae44d9e376aab8e2b031ee7b03d5bcebc1a1e89db9237b6",
+      "scope": "Assisted independent editorial review of the exact revised record and final full-build text/source links. Browser visual checks, CI and deployment remain separate release checks; no claim of professional certification or zero errors.",
+      "render_rechecked_at": "2026-10-31T14:46:49.390964+00:00",
+      "render_check_evidence": "Compared the final full-build HTML with the reviewed four-paragraph newsletter preview. Only two favicon links were added in the head; the body is byte-identical. No public table, raw formula, internal calculation key or report-style subsection heading appears. All source links, essential limitations and original October 31 publication date remain."
     }
   ]
 }
