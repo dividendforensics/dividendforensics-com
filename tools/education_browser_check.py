@@ -53,6 +53,13 @@ def main(library_only=False):
         page.wait_for_url('**/learn.html?q=AFFO#library')
         wait_for_library_query(page,'AFFO',errors,responses,failed_requests,out)
         assert 0<page.locator('[data-lesson]:visible').count()<36
+        # Focus is a post-navigation rendering contract, not synchronous with
+        # filtering in a deferred script. Wait for the condition, never a sleep.
+        try:
+            page.wait_for_function("document.activeElement === document.getElementById('lesson-search')", timeout=5000)
+        except Exception as error:
+            state = page.evaluate("({readyState:document.readyState,hash:location.hash,activeId:document.activeElement?.id,activeTag:document.activeElement?.tagName,value:document.getElementById('lesson-search')?.value})")
+            raise AssertionError('Search-result focus did not settle after navigation: '+json.dumps(state)) from error
         assert page.locator('#lesson-search').evaluate('(el) => el === document.activeElement')
         assert page.locator('#library').evaluate('(el) => { const r=el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }')
         page.locator('#lesson-category').select_option('Start here')

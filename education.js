@@ -17,8 +17,19 @@
     // A submitted query should arrive at the answers, not the page introduction.
     // Do not move focus for ordinary visits or subsequent typing/filtering.
     if (search.value.trim()) {
-      document.getElementById('library')?.scrollIntoView({block: 'start'});
-      search.focus({preventScroll: true});
+      // Fragment navigation runs after deferred scripts and can reset focus.
+      // Hand focus to the results only after navigation's pageshow lifecycle,
+      // on the next rendering frame; never refocus during later filter input.
+      const focusResults = () => window.requestAnimationFrame(() => {
+        const library = document.getElementById('library');
+        const active = document.activeElement;
+        // Preserve an explicit focus choice made while the page was loading.
+        if (active && ![document.body, document.documentElement, library, search].includes(active)) return;
+        library?.scrollIntoView({block: 'start'});
+        search.focus({preventScroll: true});
+      });
+      if (document.readyState === 'complete') focusResults();
+      else window.addEventListener('pageshow', focusResults, {once: true});
     }
   }
   const glossary = document.getElementById('glossary-search');
