@@ -193,7 +193,7 @@ def calculator_page(root,t,lookup):
     if t['kind'] in ('payout','bridge'):
         from filing_labs import cards as filing_cards
         body+=filing_cards(root,sector='reit')
-    return shell(root,t['slug']+'.html',t['title'],t['description'],body,extra='<script src="/vendor/decimal.js/decimal.js" defer></script><script src="/calculators.js?v=original-1.1.2" defer></script>')
+    return shell(root,t['slug']+'.html',t['title'],t['description'],body,extra='<script src="/vendor/decimal.js/decimal.js" defer></script><script src="/calculators.js?v=original-1.1.3" defer></script>')
 
 def tools_page(root):
     from build_site import REPORT_URL

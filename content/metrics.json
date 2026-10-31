@@ -38,7 +38,7 @@
     "example":{"heading":"Hypothetical arithmetic: two reasonable views","text":"Suppose FFO is $100 million. Deduct $8 million of straight-line rent and $12 million of recurring property expenditure to obtain simplified AFFO of $80 million. If the issuer also adds back $4 million of stock compensation, its reported version becomes $84 million. A $60 million common dividend is 75% of the first figure and approximately 71.4% of the second. Neither ratio changes the cash dividend; the different denominators explain the difference. This invented example is a sensitivity exercise, not an issuer definition."},
     "pitfall":"A lower published AFFO payout ratio can result from a more permissive adjustment policy rather than a safer dividend.",
     "checklist":["Copy the issuer's exact definition.","Identify recurring costs added back.","Compare maintenance deductions with actual spending.","Calculate a conservative alternative."],
-    "sources":[{"title":"Nareit: Adjusted Funds From Operations","url":"https://www.reit.com/glossary/adjusted-funds-operations-affo"},{"title":"Realty Income annual report: example of issuer reconciliation","url":"https://www.realtyincome.com/sites/realty-income/files/realty-income/quartly-and-annual/2024/2023-annual-report.pdf"}],
+    "sources":[{"title":"Nareit: Adjusted Funds From Operations","url":"https://www.reit.com/glossary/adjusted-funds-operations-affo"},{"title":"Realty Income FY2023 annual report: historical issuer reconciliation example","url":"https://www.realtyincome.com/sites/realty-income/files/realty-income/quartly-and-annual/2024/2023-annual-report.pdf"}],
     "related":["learn-ffo","learn-payout-ratio","learn-dividend-cuts"]
   },
   {
@@ -164,7 +164,7 @@
     "example":{"heading":"Hypothetical arithmetic: a two-sided stress","text":"Assume the chosen annual earnings measure is $120 million and interest is $30 million. Coverage is 4.0 times. A 15% earnings decline reduces the numerator to $102 million, while refinancing raises interest to $40 million. Coverage falls to 2.55 times. If a hypothetical covenant minimum were 2.0 times under exactly the same formula, the company would remain above it in this example. That says nothing about actual issuer covenants, scheduled principal payments, or dividend capacity."},
     "pitfall":"Comparing ratios with different numerator adjustments or treating interest coverage as cash available for debt principal produces false comfort.",
     "checklist":["Record the exact formula.","Separate operating metrics from legal covenant tests.","Check capitalized and floating-rate interest.","Stress income and rates simultaneously."],
-    "sources":[{"title":"Realty Income annual report: covenant calculation illustration","url":"https://www.realtyincome.com/sites/realty-income/files/realty-income/quartly-and-annual/2024/2023-annual-report.pdf"},{"title":"Realty Income 2024 Form 10-K","url":"https://www.sec.gov/Archives/edgar/data/726728/000072672825000055/o-20241231.htm"}],
+    "sources":[{"title":"Realty Income FY2023 annual report: historical covenant calculation illustration","url":"https://www.realtyincome.com/sites/realty-income/files/realty-income/quartly-and-annual/2024/2023-annual-report.pdf"},{"title":"Realty Income 2024 Form 10-K","url":"https://www.sec.gov/Archives/edgar/data/726728/000072672825000055/o-20241231.htm"}],
     "related":["learn-debt-maturities","learn-noi","learn-payout-ratio"]
   },
   {

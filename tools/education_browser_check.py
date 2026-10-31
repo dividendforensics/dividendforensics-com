@@ -50,9 +50,11 @@ def main(library_only=False):
         page.goto(base+'/index.html')
         page.locator('#home-topic').fill('AFFO')
         page.get_by_role('button',name='Search guides').click()
-        page.wait_for_url('**/learn.html?q=AFFO')
+        page.wait_for_url('**/learn.html?q=AFFO#library')
         wait_for_library_query(page,'AFFO',errors,responses,failed_requests,out)
         assert 0<page.locator('[data-lesson]:visible').count()<36
+        assert page.locator('#lesson-search').evaluate('(el) => el === document.activeElement')
+        assert page.locator('#library').evaluate('(el) => { const r=el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }')
         page.locator('#lesson-category').select_option('Start here')
         page.locator('#lesson-search').fill('zzzz-no-result')
         assert page.locator('#lesson-empty').is_visible()

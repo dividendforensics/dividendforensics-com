@@ -23,7 +23,7 @@
   // Finite 80-significant-digit arithmetic, not unlimited/exact rational arithmetic.
   // Decimal strings remain authoritative through display and CSV serialization.
   const D = Decimal.clone({precision:80,rounding:Decimal.ROUND_HALF_UP});
-  const VERSION='original-1.1.2';
+  const VERSION='original-1.1.3';
   const FIELDS={income:['capital','yield','tax','target'],reinvestment:['capital','contribution','yield','tax','years'],payout:['affo','dividend','decline'],bridge:['net','depreciation','gains','ffoOther','capex','rent','affoOther'],nav:['noi','cap','debt','cash','shares'],refinancing:['principal','old','new','shares'],return:['start','end','dividends','buyFees','sellFees']};
   function decimal(value) {
     if (!['string','number'].includes(typeof value) || String(value).trim()==='' || String(value).length>512) throw Error('Enter a finite number in every field.');
@@ -42,6 +42,11 @@
     // Preserve real values below the Number range; never flatten them to zero.
     return n===0 ? value.toString() : n;
   }
+  // Scenario labels are part of the calculation record (including CSV). Never
+  // round a nonzero rate to zero or label a result with a different exact rate.
+  // Preserve the familiar two-place labels when exact; bound tiny displays with
+  // Decimal's scientific notation rather than expanding thousands of zeros.
+  const rateLabel = value => (value.decimalPlaces() <= 2 ? value.toFixed(2) : value.toString()) + '%';
   function calculate(kind, input) {
     if(!FIELDS[kind]) throw Error('Unknown calculator.');
     const v=Object.fromEntries(FIELDS[kind].map(key=>[key,decimal(input[key])]));
@@ -59,7 +64,7 @@
         const gross = v.capital.times(v.yield).div(100), net = v.capital.times(rate);
         metrics = [m('Annual gross distributions', gross), m('Annual after-withholding income', net), m('Monthly equivalent', net.div(12)), m('Capital for monthly target', v.target.isZero() ? new D(0) : rate.gt(0) ? v.target.times(12).div(rate) : null)];
         columns = ['Yield scenario', 'Gross annual', 'After withholding'];
-        rows = ['0.75','1','1.25'].map(f => [v.yield.times(f).toFixed(2) + '%', gross.times(f), net.times(f)]);
+        rows = ['0.75','1','1.25'].map(f => [rateLabel(v.yield.times(f)), gross.times(f), net.times(f)]);
         note = 'Income scenarios assume unchanged capital. A target result shown as Not defined means a positive target cannot be funded at zero after-withholding yield. Figures do not include price change.';
         break;
       }
@@ -99,7 +104,7 @@
         const scenarios=[D.max('0.01',v.cap.minus(1)),v.cap,D.min(100,v.cap.plus(1))];
         rows = [...new Map(scenarios.map(cap=>[cap.toString(),cap])).values()].map(cap => {
           const pv = v.noi.div(cap.div(100)), ev = pv.plus(v.cash).minus(v.debt);
-          return [cap.toFixed(2) + '%', pv, ev, ev.div(v.shares)];
+          return [rateLabel(cap), pv, ev, ev.div(v.shares)];
         });
         note = 'Negative equity values remain visible. Cap-rate scenarios hold NOI and every other assumption constant; they are not appraisals.';
         break;

@@ -273,3 +273,6 @@
 @media(max-width:780px){.desk-page .rd-hero{padding:42px 0}.desk-page .rd-h1{font-size:53px}.desk-page .rd-lede{font-size:14px}.desk-page .rd-authorship{grid-template-columns:1fr 1fr;gap:22px}.desk-page .rd-sec{padding:46px 0}.desk-page .rd-ev,.desk-page .rd-obs{grid-template-columns:1fr;gap:35px}.desk-page .rd-row{grid-template-columns:26px 1fr;gap:16px}.desk-page .rd-ck{grid-template-columns:105px 1fr;gap:14px}.desk-page .rd-ck>em{grid-column:2}.desk-page .rd-cta{padding:25px 20px}.desk-page .rd-form .rd-2{grid-template-columns:1fr}.desk-page .rd-principle{padding:24px}.desk-page .rd-principle p{font-size:28px}.desk-page .rd-method{grid-template-columns:1fr}.desk-page .rd-cov td{font-size:11px;padding-right:13px}}
 .desk-page .btn-p { color:#202b27; }
 .desk-page .btn-p:hover { color:#202b27; }
+
+/* Avoid mobile text-input zoom without changing desktop typography. */
+@media(max-width:780px){.desk-page .rd-form input,.desk-page .rd-form textarea,.desk-page .rd-form select{font-size:16px}}

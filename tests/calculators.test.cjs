@@ -104,7 +104,7 @@ test('decimal bridge cancellation is exact rather than a visible floating-point 
     assert.equal(r.metrics[0].value,0);
     assert.equal(r.metrics[1].value,0);
     assert.equal(format(r.metrics[0].value),'0.00');
-    assert.equal(r.formulaVersion,'original-1.1.2');
+    assert.equal(r.formulaVersion,'original-1.1.3');
   }
 });
 

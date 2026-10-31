@@ -14,6 +14,12 @@
     search.addEventListener('input', filter); category.addEventListener('change', filter); level.addEventListener('change', filter);
     document.getElementById('lesson-reset').addEventListener('click', () => { search.value = ''; category.value = 'all'; level.value = 'all'; filter(); search.focus(); });
     filter();
+    // A submitted query should arrive at the answers, not the page introduction.
+    // Do not move focus for ordinary visits or subsequent typing/filtering.
+    if (search.value.trim()) {
+      document.getElementById('library')?.scrollIntoView({block: 'start'});
+      search.focus({preventScroll: true});
+    }
   }
   const glossary = document.getElementById('glossary-search');
   if (glossary) {
