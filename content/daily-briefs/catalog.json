@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "briefs": [
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "microsoft-fy2027-q1-cash-capex-bridge",
+      "author": "DFB editorial",
+      "title": "Microsoft’s Cash-Capex Free Cash Flow Fell About 27% in Its Latest Quarter",
+      "summary": "Microsoft (NASDAQ: MSFT) presents two questions in its latest cash-flow statement: how much cash remained after property-and-equipment spending, and how cash dividends compared with that measure.",
+      "event_date": "2026-10-28",
+      "reporting_period": {
+        "start": "2026-07-01",
+        "end": "2026-09-30"
+      },
+      "comparison_periods": [
+        {
+          "start": "2025-07-01",
+          "end": "2025-09-30"
+        }
+      ],
+      "source_checked_at": "2026-10-31T13:38:55.719030+00:00",
+      "published_at": "2026-10-31T13:43:17.617810+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000119312526436133",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm",
+          "title": "Microsoft Form 10-Q, quarter ended September 30, 2026",
+          "locator": "p. 6 cash-flow statement; Note 12, p. 22",
+          "published_date": "2026-10-28",
+          "publication_precision": "date",
+          "checked_at": "2026-10-31T13:38:15.490356+00:00",
+          "content_sha256": "5d344f7b0addd9e4232b7523aeec8ced84ea6a481b6540f3670bb6c4499aa985"
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast",
+          "title": "Microsoft FY2027 Q1 earnings release",
+          "locator": "Cash Flows Statements",
+          "published_date": "2026-10-28",
+          "publication_precision": "date",
+          "checked_at": "2026-10-31T13:38:55.719030+00:00",
+          "content_sha256": "0ea0c7e8b4675ce4f5eef4b8592613f6801f3c0120b36f997de21a967b75183d"
+        }
+      },
+      "facts": {
+        "cfo_current": {
+          "value": "58000",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec",
+          "locator": "p. 6",
+          "basis": "Net cash from operations"
+        },
+        "cash_ppe_current": {
+          "value": "39367",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec",
+          "locator": "p. 6",
+          "basis": "Cash additions to property and equipment, positive spending amount"
+        },
+        "cfo_prior": {
+          "value": "45057",
+          "unit": "USD millions",
+          "period": {
+            "start": "2025-07-01",
+            "end": "2025-09-30"
+          },
+          "source_id": "sec",
+          "locator": "p. 6",
+          "basis": "Net cash from operations"
+        },
+        "cash_ppe_prior": {
+          "value": "19394",
+          "unit": "USD millions",
+          "period": {
+            "start": "2025-07-01",
+            "end": "2025-09-30"
+          },
+          "source_id": "sec",
+          "locator": "p. 6",
+          "basis": "Cash additions to property and equipment, positive spending amount"
+        },
+        "cash_dividends_current": {
+          "value": "6757",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec",
+          "locator": "p. 6",
+          "basis": "Cash dividends paid, not declared per-share dividends"
+        },
+        "finance_lease_principal_current": {
+          "value": "1000",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec",
+          "locator": "Note 12, p. 22",
+          "basis": "Financing cash outflows from finance leases, reported in USD millions"
+        }
+      },
+      "calculations": [
+        {
+          "id": "fcf_current",
+          "operation": "subtract",
+          "inputs": [
+            "cfo_current",
+            "cash_ppe_current"
+          ],
+          "expected": "18633",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Approximate derived figure; calculation uses reported rounded inputs before display rounding."
+        },
+        {
+          "id": "fcf_prior",
+          "operation": "subtract",
+          "inputs": [
+            "cfo_prior",
+            "cash_ppe_prior"
+          ],
+          "expected": "25663",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Approximate derived figure; calculation uses reported rounded inputs before display rounding."
+        },
+        {
+          "id": "fcf_change",
+          "operation": "percent_change",
+          "inputs": [
+            "fcf_current",
+            "fcf_prior"
+          ],
+          "expected": "-27",
+          "unit": "percent",
+          "decimal_places": 0,
+          "precision_note": "Approximate derived figure; calculation uses reported rounded inputs before display rounding.",
+          "comparison_basis": "Year-over-year comparison of corresponding three-month quarters using the same cash-capex definition."
+        },
+        {
+          "id": "cash_dividend_ratio",
+          "operation": "ratio_percent",
+          "inputs": [
+            "cash_dividends_current",
+            "fcf_current"
+          ],
+          "expected": "36",
+          "unit": "percent",
+          "decimal_places": 0,
+          "precision_note": "Approximate derived figure; calculation uses reported rounded inputs before display rounding."
+        },
+        {
+          "id": "fcf_dividend_multiple",
+          "operation": "ratio",
+          "inputs": [
+            "fcf_current",
+            "cash_dividends_current"
+          ],
+          "expected": "2.8",
+          "unit": "times",
+          "decimal_places": 1,
+          "precision_note": "Approximate derived figure; calculation uses reported rounded inputs before display rounding."
+        },
+        {
+          "id": "after_dividends",
+          "operation": "subtract",
+          "inputs": [
+            "fcf_current",
+            "cash_dividends_current"
+          ],
+          "expected": "11876",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Approximate derived figure; calculation uses reported rounded inputs before display rounding."
+        },
+        {
+          "id": "after_lease_principal",
+          "operation": "subtract",
+          "inputs": [
+            "fcf_current",
+            "finance_lease_principal_current"
+          ],
+          "expected": "17633",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Approximate derived figure; calculation uses reported rounded inputs before display rounding."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "The Print",
+          "text": "For the quarter ended September 30, Microsoft reported $58.0 billion of operating cash flow and $39.37 billion of cash additions to property and equipment. Subtracting the second from the first produces about $18.63 billion under DFB’s cash-capex free-cash-flow definition. The comparable calculation a year earlier was about $25.66 billion, implying a decline of about 27%. Calculations use the reported million-dollar figures before rounding for presentation; derived percentages should not imply greater measurement precision. SEC Form 10-Q, cash-flow statement, p. 6",
+          "source_ids": [
+            "sec"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "A Separate Dividend Calculation",
+          "text": "Cash dividends paid were about $6.76 billion. Against the calculated free cash flow, that is about 36%; the defined cash-flow measure was approximately 2.8 times cash dividends paid. Subtracting those dividends leaves about $11.88 billion. That arithmetic remainder does not measure cash available for discretionary use; it excludes other investing and financing cash flows. The underlying cash-flow figures also appear in Microsoft’s earnings release. Microsoft FY2027 Q1 earnings release",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "What the Comparison Does Not Establish",
+          "text": "A falling cash-flow measure does not by itself establish that distributions exceed cash generation. Nor does positive coverage establish that future dividends are secure. Both conclusions would require more than one quarter and a consistent definition of the competing cash requirements.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Lease Principal Remains Outside This Measure",
+          "text": "Cash-capex free cash flow does not capture every infrastructure commitment. Microsoft’s lease note separately reports $1.0 billion of financing cash outflows from finance leases. Deducting that amount produces an additional analytical measure of about $17.63 billion. It is not the company’s reported free-cash-flow figure, and lease interest already reflected in operating cash flow should not be deducted again. SEC Form 10-Q, Note 12, p. 22",
+          "source_ids": [
+            "sec"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "The Next Comparison",
+          "text": "The next-quarter comparison should use the same bridge: operating cash, cash capital spending, lease principal and distributions. Keeping those components separate makes changes visible without converting a quarterly coverage calculation into a forecast or an investment recommendation.",
+          "source_ids": [
+            "sec"
+          ]
+        }
+      ],
+      "limitations": "Cash-capex free cash flow is DFB-defined operating cash flow less cash additions to property and equipment, not an issuer-reported FCF figure. The additional lease-principal deduction is analytical. Derived figures are arithmetic on rounded reported inputs; the dividend remainder excludes other investing and financing cash flows. One quarter does not establish future distribution capacity."
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "DFB independent assisted review",
+      "reviewed_at": "2026-10-31T13:44:14.995264+00:00",
+      "brief_sha256": "0255c18fe9979fcebd809aa6b8812e121b84f4fcf26c3b5d3f6ae1c9718465ac",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently checked the SEC Form 10-Q and Microsoft earnings release against captured HTTP 200 HTML response bodies and their SHA256 hashes. Cash-flow tables agree: operating cash flow 58000/45057, cash PP&E additions 39367/19394, cash dividends paid 6757, and finance-lease financing outflow 1000, all USD millions. Source publication dates are recorded without inventing exact publication times."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independently recalculated with decimal arithmetic: cash-capex free cash flow 18633 versus 25663 million; change approximately -27.393524%; dividends divided by that measure approximately 36.263618%; inverse ratio approximately 2.757585 times; remainder after dividends 11876 million and after lease principal 17633 million. Published rounding and rendered calculations agree."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "SEC page 6 specifies unaudited USD millions for the three months ended September 30, 2026 and 2025. The record uses July 1 to September 30 for each comparison period. Fiscal 2027 first quarter, October 28 filing event and October 31 KST editorial publication date remain distinct. Note 12 page 22 reports lease financing cash flow directly as 1000 million."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Compared the final headline, summary, paragraphs, calculation table and limitations with the checked manuscript. The remainder is not classified as unrestricted cash; the DFB definition and ratio denominators are explicit. NASDAQ: MSFT was checked against the SEC cover. No substantive grammar, terminology or numerical discrepancy was identified."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "No buy, sell or hold recommendation, target price, investment-safety guarantee or invented holdings disclosure appears. The text states that the quarterly ratio does not establish future dividend security and explains omitted lease principal and other cash uses."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "The filing-brief catalog was empty before this first entry, with no prior record for accession 000119312526436133. The October 28 quarterly filing supplies the current cash-capex and prior-year comparison. The October 31 analysis date is distinguished from the filing event; the article does not claim that the release occurred on the analysis date."
+        }
+      },
+      "rendered_html_sha256": "c16a9b3e798a03a23216b7a58f8e8771971f454019fc7df0716cf1e892c73106",
+      "scope": "Assisted independent review of the exact serialized record and rendered text, table and source links. This is not a claim of human professional certification or a guarantee of zero errors. Browser visual checks, CI and public deployment remain separate release checks.",
+      "render_rechecked_at": "2026-10-31T13:51:52.130845+00:00",
+      "render_check_evidence": "Compared the final generated HTML with the reviewed preview. The only differences are two favicon link elements in the document head; the article body is byte-identical and no financial content changed."
+    }
+  ]
+}

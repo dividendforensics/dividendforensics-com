@@ -30,6 +30,7 @@ jobs:
           python tools/check_site.py
           python tools/seo_audit.py
           node --test tests/*.test.cjs
+          python tools/daily_brief_browser_check.py
           python tools/proposal_browser_check.py
           python tools/education_browser_check.py
           python tools/audit_browser_check.py
