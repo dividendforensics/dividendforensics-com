@@ -46,7 +46,18 @@ def main():
                     assert section.count()==1 and section.is_visible()
                     assert section.get_by_role('link',name=records[0]['title'],exact=True).count()==1
                     assert 'Unpublished' not in section.inner_text()
-                    assert records[0]['category'] in section.inner_text()
+                    category=section.locator('.lesson-card .kicker').first
+                    category_state=category.evaluate('''el => ({source:el.textContent.trim(),
+                        rendered:el.innerText.trim(),transform:getComputedStyle(el).textTransform})''')
+                    category_state.update(url=page.url,width=width,expected=records[0]['category'])
+                    # Shared dfb.css intentionally renders .kicker in uppercase.
+                    # Verify the exact data AND visible text, accounting only for that CSS transform.
+                    expected_category=records[0]['category']
+                    expected_visible=(expected_category.upper() if category_state['transform']=='uppercase'
+                                      else expected_category)
+                    assert category.is_visible(),category_state
+                    assert category_state['source']==expected_category,category_state
+                    assert category_state['rendered']==expected_visible,category_state
                     if landing=='index.html':
                         assert 'Latest external publication:' in page.locator('main').inner_text()
                     section.get_by_role('link',name='All filing briefs',exact=False).click()
