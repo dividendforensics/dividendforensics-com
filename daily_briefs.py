@@ -123,7 +123,8 @@ def validate(brief, review, now):
         require(fact['period'] in [brief['reporting_period']] + brief.get('comparison_periods', []), 'fact period mismatch')
         require(date.fromisoformat(fact['period']['start']) <= date.fromisoformat(fact['period']['end']) <= event, 'invalid fact reporting period')
     require(brief.get('title') and brief.get('summary') and brief.get('limitations'), 'missing editorial fields')
-    require(brief.get('sections') and {'fact','inference','open_question'} <= {s['type'] for s in brief['sections']}, 'separate fact/inference/open question required')
+    require(brief.get('sections') and 3 <= len(brief['sections']) <= 4, 'newsletter requires three or four paragraphs')
+    require({'fact','inference','open_question'} <= {s['type'] for s in brief['sections']}, 'separate fact/inference/open question required')
     for section in brief['sections']:
         require(section['type'] in ('fact','inference','open_question') and section.get('heading') and section.get('text'), 'invalid section')
         require(section.get('source_ids') and all(s in sources for s in section['source_ids']), 'section source trail missing')
@@ -157,7 +158,7 @@ def cards(records):
     if not records:
         return ''
     rows = ''.join(f'<article class="lesson-card"><span class="kicker">{E(b["category"])}</span><time datetime="{E(str(stamp(b["published_at"]).astimezone(KST).date()) if b.get("published_at") else "")}">{E(publication_label(b))}</time><h3><a href="/brief-{E(b["slug"])}.html">{E(b["title"])}</a></h3><p>{E(b["summary"])}</p></article>' for b in records[:3])
-    return '<section class="wrap education-section" aria-labelledby="brief-title"><h2 id="brief-title">Filing briefs</h2><p>Dated source checks and calculations. New entries appear only when evidence clears review.</p><div class="lesson-grid">'+rows+'</div><a href="/daily-briefs.html">All filing briefs →</a></section>'
+    return '<section class="wrap education-section" aria-labelledby="brief-title"><h2 id="brief-title">Daily Brief</h2><p>A short read on company filings, with the facts checked before publication.</p><div class="lesson-grid">'+rows+'</div><a href="/daily-briefs.html">All daily briefs →</a></section>'
 
 
 def outputs(root):
@@ -171,16 +172,15 @@ def outputs(root):
     require(not {p.name for p in root.glob('brief-*.html')} - known, 'previously published brief removed')
     for b in records:
         name = f'brief-{b["slug"]}.html'
-        pub = (f'Publication date <time datetime="{E(stamp(b["published_at"]).astimezone(KST).date())}">{E(publication_label(b))}</time>' if b.get('published_at') else 'Unpublished review preview — no publication date assigned')
-        intro = f'<header class="wrap page-heading"><span class="kicker">DFB · Filing brief</span><h1>{E(b["title"])}</h1><p>{E(b["summary"])}</p><p>{pub} · Event {E(b["event_date"])} · Reporting period {E(b["reporting_period"]["start"])} to {E(b["reporting_period"]["end"])}</p><p>Sources checked {E(b["source_checked_at"])}</p></header>'
-        sections = ''.join(f'<section><span class="kicker">{E(s["type"].replace("_"," "))}</span><h2>{E(s["heading"])}</h2><p>{E(s["text"])}</p></section>' for s in b['sections'])
-        rows = ''.join(f'<tr><th scope="row">{E(k)}</th><td>{E(f["value"])}</td><td>{E(f["unit"])}</td><td>{E(f["period"]["start"])} to {E(f["period"]["end"])}; {E(f["basis"])}; {E(f["locator"])}</td></tr>' for k,f in b['facts'].items())
-        calc = ''.join(f'<li>{E(c["id"])}: {E(" + ".join(c["inputs"]) if c["operation"] == "sum" else " − ".join(c["inputs"]) if c["operation"] == "subtract" else "("+" / ".join(c["inputs"])+" − 1) × 100" if c["operation"] == "percent_change" else " / ".join(c["inputs"]) if c["operation"] == "ratio" else " / ".join(c["inputs"])+" × 100")} = {E(calculations(b)[c["id"]])} {E(c["unit"])}. {E(c["precision_note"])} {E(c.get("comparison_basis", ""))}</li>' for c in b['calculations'])
-        sources = ''.join(f'<li><a href="{E(s["url"])}">{E(s["title"])}</a> — {E(s["locator"])}</li>' for s in b['sources'].values())
-        body = intro+'<article class="wrap education-section">'+sections+'<h2>Recalculation ledger</h2><div style="overflow-x:auto"><table><thead><tr><th>Input</th><th>Reported value</th><th>Unit</th><th>Basis / location</th></tr></thead><tbody>'+rows+'</tbody></table></div><ul>'+calc+'</ul><h2>Limits</h2><p>'+E(b['limitations'])+'</p><h2>Primary sources</h2><ul>'+sources+'</ul><p>Structural research, not investment advice. This brief makes no recommendation or statement about the author’s holdings.</p><p><a href="/daily-briefs.html">All filing briefs</a> · <a href="/research-desk.html#inquiries">Report a factual correction</a></p></article>'
+        pub = (f'<time datetime="{E(stamp(b["published_at"]).astimezone(KST).date())}">{E(stamp(b["published_at"]).astimezone(KST).strftime("%d %B %Y"))} · KST</time>' if b.get('published_at') else 'Unpublished review preview')
+        intro = f'<header class="wrap page-heading" style="max-width:800px"><span class="kicker">Daily Brief · {E(b["category"])}</span><h1>{E(b["title"])}</h1><p>{pub}</p></header>'
+        # The public format is a short newsletter, not a second copy of the machine ledger.
+        # Claims, periods, exact inputs and independently checked calculations remain in JSON.
+        paragraphs = ''.join(f'<p>{E(section["text"])}</p>' for section in b['sections'])
+        sources = ' · '.join(f'<a href="{E(source["url"])}">{E(source["title"])}</a>' for source in b['sources'].values())
+        body = intro+'<article class="wrap education-section lesson-body daily-newsletter" style="max-width:800px"><div class="newsletter-copy">'+paragraphs+'</div><p class="small-note">Sources: '+sources+'.</p><p class="small-note">Structural research, not investment advice.</p><p><a href="/daily-briefs.html">All daily briefs</a> · <a href="/research-desk.html#inquiries">Report a factual correction</a></p></article>'
         output[root/name] = shell(root,name,b['title'],b['summary'],body)
-    archive = '<header class="wrap page-heading"><h1>Filing briefs</h1><p>Original, dated filing notes. No update is implied on days without a new reviewed entry.</p></header>'
-    # Archive lists every entry, unlike the short research landing section.
+    archive = '<header class="wrap page-heading"><h1>Daily Brief</h1><p>A short read on what changed in company filings. New notes appear only when the evidence clears review.</p></header>'
     archive += '<section class="wrap education-section"><ul>'+''.join(f'<li><time datetime="{E(str(stamp(b["published_at"]).astimezone(KST).date()) if b.get("published_at") else "")}">{E(publication_label(b))}</time> · <a href="/brief-{E(b["slug"])}.html">{E(b["title"])}</a></li>' for b in records)+'</ul></section>'
-    output[root/'daily-briefs.html'] = shell(root,'daily-briefs.html','Filing briefs','Dated primary-source checks and reproducible calculations.',archive)
+    output[root/'daily-briefs.html'] = shell(root,'daily-briefs.html','Daily Brief','Short, source-checked notes on company filings.',archive)
     return output, records

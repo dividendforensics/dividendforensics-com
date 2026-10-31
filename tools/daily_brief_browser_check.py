@@ -10,7 +10,7 @@ from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from daily_briefs import load, calculations, publication_label
+from daily_briefs import load, calculations, publication_label, stamp, KST
 
 class Handler(SimpleHTTPRequestHandler):
     def log_message(self,*args): pass
@@ -60,31 +60,37 @@ def main():
                     assert category_state['rendered']==expected_visible,category_state
                     if landing=='index.html':
                         assert 'Latest external publication:' in page.locator('main').inner_text()
-                    section.get_by_role('link',name='All filing briefs',exact=False).click()
+                    section.get_by_role('link',name='All daily briefs',exact=False).click()
                     assert urlsplit(page.url).path=='/daily-briefs.html'
-                    assert page.locator('h1').inner_text()=='Filing briefs'
+                    assert page.locator('h1').inner_text()=='Daily Brief'
                     assert page.locator('main a[href^="/brief-"]').count()==len(records)
                 for b in records:
                     path='/brief-'+b['slug']+'.html'
                     page.goto(base+path+'?qa=archive-link',wait_until='networkidle')
                     assert page.locator('h1').inner_text()==b['title']
                     body=page.locator('main').inner_text()
-                    assert publication_label(b) in body
-                    assert b['event_date'] in body and b['reporting_period']['end'] in body
-                    assert 'Recalculation ledger' in body and 'Structural research, not investment advice.' in body
-                    assert not any(x in body for x in ['Unpublished review preview','{{daily_briefs}}'])
-                    for fact in b['facts'].values():
-                        assert fact['value'] in body and fact['unit'] in body
-                        assert fact['period']['start'] in body and fact['period']['end'] in body
-                    for value in calculations(b).values():assert value in body
+                    assert stamp(b['published_at']).astimezone(KST).strftime('%d %B %Y') in body
+                    assert 'Structural research, not investment advice.' in body
+                    paragraphs=page.locator('.newsletter-copy > p')
+                    assert 3 <= paragraphs.count() <= 4
+                    assert paragraphs.count()==len(b['sections'])
+                    for index,section in enumerate(b['sections']):
+                        paragraph=paragraphs.nth(index)
+                        assert paragraph.is_visible()
+                        assert paragraph.inner_text()==section['text']
+                    # The machine ledger is checked by load()/calculations(), not dumped into the newsletter.
+                    calculations(b)
+                    assert page.locator('main table, main pre, main code, main h2').count()==0
+                    assert not any(x in body for x in ['Recalculation ledger','Unpublished review preview','{{daily_briefs}}'])
+                    for identifier in list(b['facts'])+[c['id'] for c in b['calculations']]:
+                        assert identifier not in body,identifier
                     for source in b['sources'].values():
                         assert page.locator('main a').evaluate_all('(els,url)=>els.some(a=>a.href===url)',source['url'])
-                    assert page.locator('main table tbody tr').count()==len(b['facts'])
-                    # Wide ledgers may scroll inside their wrapper, never the entire page.
+                    # Newsletter paragraphs must stay readable without horizontal page scrolling.
                     dimensions=page.evaluate('''() => ({viewport:innerWidth, document:document.documentElement.scrollWidth, body:document.body.scrollWidth})''')
                     assert dimensions['document']<=width+2 and dimensions['body']<=width+2,dimensions
                     page.screenshot(path=str(out/f'{b["slug"]}-{width}.png'),full_page=True)
-                    page.get_by_role('link',name='All filing briefs',exact=True).click()
+                    page.get_by_role('link',name='All daily briefs',exact=True).click()
                     assert urlsplit(page.url).path=='/daily-briefs.html'
                     page.get_by_role('link',name=b['title'],exact=True).click()
                     assert urlsplit(page.url).path==path
