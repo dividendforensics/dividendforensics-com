@@ -11,8 +11,17 @@
       document.getElementById('lesson-count').textContent = count + (count === 1 ? ' guide' : ' guides');
       document.getElementById('lesson-empty').hidden = count !== 0;
     }
-    search.addEventListener('input', filter); category.addEventListener('change', filter); level.addEventListener('change', filter);
-    document.getElementById('lesson-reset').addEventListener('click', () => { search.value = ''; category.value = 'all'; level.value = 'all'; filter(); search.focus(); });
+    function syncQueryUrl() {
+      const url = new URL(window.location.href);
+      const query = search.value.trim();
+      if (query) url.searchParams.set('q', query);
+      else url.searchParams.delete('q');
+      // Editing one search is not a new history entry. Keep unrelated URL state.
+      window.history.replaceState(window.history.state, '', url);
+    }
+    search.addEventListener('input', () => { filter(); syncQueryUrl(); });
+    category.addEventListener('change', filter); level.addEventListener('change', filter);
+    document.getElementById('lesson-reset').addEventListener('click', () => { search.value = ''; category.value = 'all'; level.value = 'all'; filter(); syncQueryUrl(); search.focus(); });
     filter();
     // A submitted query should arrive at the answers, not the page introduction.
     // Do not move focus for ordinary visits or subsequent typing/filtering.
@@ -25,7 +34,9 @@
         const active = document.activeElement;
         // Preserve an explicit focus choice made while the page was loading.
         if (active && ![document.body, document.documentElement, library, search].includes(active)) return;
-        library?.scrollIntoView({block: 'start'});
+        // Search navigation should land immediately, not animate from the hero.
+        // Explicit instant also respects reduced-motion users despite global CSS.
+        library?.scrollIntoView({block: 'start', behavior: 'instant'});
         search.focus({preventScroll: true});
       });
       if (document.readyState === 'complete') focusResults();
