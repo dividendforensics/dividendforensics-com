@@ -112,6 +112,22 @@ def main():
                     page.locator('[data-bdc-result] table').wait_for(state='visible')
                     assert not form.locator('[data-bdc-error]').is_visible(), slug
                     assert page.locator('[data-bdc-result] table').count() > 0, slug
+                    assert form.locator('[data-bdc-status]').count() == form.locator('[data-bdc-input]').count()
+                    assert form.locator('[data-bdc-status]').evaluate_all('els=>els.every(e=>e.getClientRects().length && !e.closest("details"))')
+                    if slug != 'nav-discount':
+                        amount=form.locator('[data-bdc-input]').first
+                        original=amount.input_value()
+                        amount.fill('not-a-number')
+                        form.locator('button[type=submit]').click()
+                        assert amount.get_attribute('aria-invalid') == 'true'
+                        assert 'bdc-input-error' in amount.get_attribute('aria-describedby').split()
+                        label=page.locator('label[for="'+amount.get_attribute('id')+'"]').inner_text()
+                        assert form.locator('[data-bdc-error]').inner_text().startswith(label+':')
+                        amount.fill(original)
+                        assert amount.get_attribute('aria-invalid') is None
+                        assert 'bdc-input-error' not in amount.get_attribute('aria-describedby').split()
+                        form.locator('button[type=submit]').click()
+                        assert not form.locator('[data-bdc-error]').is_visible()
                     if slug == 'nav-discount':
                         assert form.locator('[name=incomeBasis], [name=distributionBasis]').count() == 0
                         for price, expected in [('18','0.9'), ('22','1.1'), ('18','0.9')]:
@@ -124,7 +140,7 @@ def main():
                             assert page.evaluate("([price]) => DFBBdc.calculate('nav',{price,nav:'20'},{datasetMode:'scenario',currency:'USD',scale:'one',unit:'per-share',periodStart:'2026-07-01',periodEnd:'2026-09-30',asOf:'2026-09-30',scope:'common'}).rows[0].value", [price]) == expected
                             assert 'null NII' not in page.locator('[data-bdc-result]').inner_text()
                         form.locator('button[type=reset]').click()
-                        page.wait_for_function("JSON.parse(document.querySelector('[data-bdc-result] pre').textContent).context.datasetMode === 'synthetic'")
+                        page.wait_for_function("(() => {const record=document.querySelector('[data-bdc-result] pre');return record && JSON.parse(record.textContent).context.datasetMode === 'synthetic';})()")
                         reset_audit = json.loads(page.locator('[data-bdc-result] pre').text_content())
                         assert reset_audit['inputs']['price']['value'] == form.locator('[name=price]').input_value()
                         # A Playwright click is a trusted browser input, not dispatchEvent.
@@ -138,6 +154,89 @@ def main():
                         page.evaluate("window.dispatchEvent(new Event('beforeprint'))")
                         assert page.locator('[data-bdc-result] details').evaluate('(e)=>e.open')
                         page.evaluate("window.dispatchEvent(new Event('afterprint'))")
+                        price_input=form.locator('[name=price]');nav_input=form.locator('[name=nav]')
+                        def submit_nav():
+                            form.locator('button[type=submit]').click()
+                            assert not form.locator('[data-bdc-error]').is_visible()
+                            return json.loads(page.locator('[data-bdc-result] pre').text_content())
+                        def choose_availability(name,status):
+                            field=form.locator('[name="'+name+'"]').locator('xpath=..')
+                            field.locator('summary').click()
+                            field.locator('[name="'+name+'Availability"]').select_option(status)
+                            field.locator('summary').click()
+                            assert field.locator('[data-bdc-status]').is_visible()
+                        for status,label in [('not_applicable','Not applicable'),('not_disclosed','Not disclosed'),('not_found','Not found')]:
+                            choose_availability('price',status)
+                            assert label in form.locator('#price-status').inner_text()
+                            assert price_input.input_value() == '18'
+                            excluded=submit_nav()
+                            assert excluded['inputs']['price']['rawValue'] == '18'
+                            assert excluded['inputs']['price']['value'] is None
+                            assert excluded['inputs']['price']['availability'] == status
+                            assert excluded['inputs']['price']['reviewedBy'] is None
+                            rendered=page.locator('[data-bdc-result]').inner_text()
+                            assert 'market price per common share excluded' in rendered and label in rendered
+                            assert 'must be positive for a ratio' not in rendered
+                            choose_availability('price','scenario');submit_nav()
+                            assert '0.9000×' in page.locator('[data-bdc-result] table').inner_text()
+                        for bad_price in ('abc','1,234.5'):
+                            price_input.fill(bad_price);form.locator('button[type=submit]').click()
+                            assert price_input.input_value() == bad_price
+                            assert price_input.get_attribute('aria-invalid') == 'true'
+                            assert 'User-entered market price per common share:' in form.locator('[data-bdc-error]').inner_text()
+                            assert 'price-status' in price_input.get_attribute('aria-describedby').split()
+                            assert 'bdc-input-error' in price_input.get_attribute('aria-describedby').split()
+                            price_input.fill('18');submit_nav()
+                            assert price_input.get_attribute('aria-invalid') is None
+                        for nav_value,difference in [('0','18.0000'),('-20','38.0000')]:
+                            nav_input.fill(nav_value);submit_nav()
+                            assert 'NAV per share must be positive for a ratio' in page.locator('[data-bdc-result]').inner_text()
+                            assert difference in page.locator('[data-bdc-result] table').inner_text()
+                            assert nav_input.get_attribute('aria-invalid') is None
+                        nav_input.fill('20');submit_nav()
+                        page.evaluate("const note=document.createElement('span');note.id='persistent-nav-help';note.textContent='Test helper';document.body.append(note);document.querySelector('[name=nav]').setAttribute('aria-describedby','nav-status persistent-nav-help')")
+                        nav_input.fill('twenty');form.locator('button[type=submit]').click()
+                        assert 'Disclosed common NAV per share:' in form.locator('[data-bdc-error]').inner_text()
+                        assert nav_input.get_attribute('aria-invalid') == 'true'
+                        assert set(nav_input.get_attribute('aria-describedby').split()) == {'nav-status','persistent-nav-help','bdc-input-error'}
+                        assert 'Needs correction' in form.locator('#nav-status').inner_text()
+                        assert nav_input.evaluate('e=>e===document.activeElement')
+                        nav_input.fill('20')
+                        assert nav_input.get_attribute('aria-invalid') is None
+                        assert set(nav_input.get_attribute('aria-describedby').split()) == {'nav-status','persistent-nav-help'}
+                        submit_nav()
+                        for repeat in range(2):
+                            nav_input.fill('bad');form.locator('button[type=submit]').click()
+                            form.locator('button[type=reset]').click()
+                            page.wait_for_function("(() => {const record=document.querySelector('[data-bdc-result] pre');return record && JSON.parse(record.textContent).context.datasetMode === 'synthetic';})()")
+                            assert not form.locator('[data-bdc-error]').is_visible()
+                            assert nav_input.get_attribute('aria-invalid') is None
+                            assert set(nav_input.get_attribute('aria-describedby').split()) == {'nav-status','persistent-nav-help'}
+                            form.locator('[data-bdc-clear]').click()
+                            assert price_input.input_value() == '' and nav_input.input_value() == ''
+                            assert 'No value entered' in form.locator('#price-status').inner_text()
+                            cleared=json.loads(page.locator('[data-bdc-result] pre').text_content())
+                            assert all(item['value'] is None for item in cleared['inputs'].values())
+                            assert all(item['rawValue'] == '' for item in cleared['inputs'].values())
+                            form.locator('[data-bdc-clear]').click()
+                        form.locator('button[type=reset]').click()
+                        page.wait_for_function("(() => {const record=document.querySelector('[data-bdc-result] pre');return record && JSON.parse(record.textContent).context.datasetMode === 'synthetic';})()")
+                        assert '0.9000×' in page.locator('[data-bdc-result] table').inner_text()
+                        assert page.locator('.bdc-nav-notes').count() == 2
+                        for notes_width in (320,390,1188,1440):
+                            page.set_viewport_size({'width':notes_width,'height':1000})
+                            notes=page.evaluate("""async () => {
+                                await document.fonts.ready;
+                                await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+                                return {viewport:innerWidth,content:document.documentElement.scrollWidth,
+                                    paragraphs:[...document.querySelectorAll('.bdc-nav-notes>p')].map(e=>({width:e.getBoundingClientRect().width,maxWidth:parseFloat(getComputedStyle(e).maxWidth)})),
+                                    headings:[...document.querySelectorAll('.bdc-nav-notes>h2')].map(e=>({gap:parseFloat(getComputedStyle(e).marginBottom),font:parseFloat(getComputedStyle(e).fontSize)}))};
+                            }""")
+                            assert notes['content'] <= notes_width+1, notes
+                            assert all(item['maxWidth'] > 0 and item['width'] <= item['maxWidth']+1 for item in notes['paragraphs']), notes
+                            assert all(item['gap'] >= .49*item['font'] for item in notes['headings']), notes
+
+                        checks.append('NAV availability: exclusions name price/status, raw inputs survive, scenarios restore, nonpositive NAV stays undefined only for ratios, malformed inputs have labeled ARIA errors; repeated reset/clear preserve unrelated descriptions')
                         checks.append('NAV context: applicable fields only; repeated calculate/reset and printable JSON record preserve inputs and not-applicable income/distribution metadata')
                 checks.append('All five BDC tools reject an early analysis date and accept period-end equality')
                 if args.bdc_only:
