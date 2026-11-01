@@ -57,6 +57,13 @@ class PublicCopyTests(unittest.TestCase):
         self.assertIn('Position and commissioning disclosures belong to each dated research record.',text)
         self.assertIn('Structural research, not personalized investment advice.',text)
 
+    def test_inactive_case_generator_does_not_invent_holdings(self):
+        from tools.build_case_files import page
+        rendered=page(dict(title='Synthetic test',case_key='TEST',case_slug='synthetic-test',label='Test',date='2026-01-01',blurb='Fixture only',url='https://example.com/test'))
+        self.assertNotIn('holds no position',rendered)
+        self.assertNotIn('<dt>Position</dt>',rendered)
+        self.assertIn('Structural research, not personalized investment advice.',rendered)
+
     def test_existing_free_report_destination_unchanged(self):
         self.assertIn('0417e6b9-d489-438e-9b2c-913437003238',build.REPORT_URL)
         self.assertIn('Published REIT working paper',(ROOT/'templates/home.html').read_text())

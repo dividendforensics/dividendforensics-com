@@ -106,6 +106,25 @@ def main():
                     page.locator('[data-bdc-result] table').wait_for(state='visible')
                     assert not form.locator('[data-bdc-error]').is_visible(), slug
                     assert page.locator('[data-bdc-result] table').count() > 0, slug
+                    if slug == 'nav-discount':
+                        assert form.locator('[name=incomeBasis], [name=distributionBasis]').count() == 0
+                        for price, expected in [('18','0.9'), ('22','1.1'), ('18','0.9')]:
+                            form.locator('[name=price]').fill(price)
+                            form.locator('button[type=submit]').click()
+                            audit = json.loads(page.locator('[data-bdc-result] pre').text_content())
+                            assert audit['context']['incomeBasis'] == 'not_applicable'
+                            assert audit['context']['distributionBasis'] == 'not_applicable'
+                            assert audit['inputs']['price']['value'] == price
+                            assert page.evaluate("([price]) => DFBBdc.calculate('nav',{price,nav:'20'},{datasetMode:'scenario',currency:'USD',scale:'one',unit:'per-share',periodStart:'2026-07-01',periodEnd:'2026-09-30',asOf:'2026-09-30',scope:'common'}).rows[0].value", [price]) == expected
+                            assert 'null NII' not in page.locator('[data-bdc-result]').inner_text()
+                        form.locator('button[type=reset]').click()
+                        page.wait_for_function("JSON.parse(document.querySelector('[data-bdc-result] pre').textContent).context.datasetMode === 'synthetic'")
+                        reset_audit = json.loads(page.locator('[data-bdc-result] pre').text_content())
+                        assert reset_audit['inputs']['price']['value'] == form.locator('[name=price]').input_value()
+                        page.evaluate("window.dispatchEvent(new Event('beforeprint'))")
+                        assert page.locator('[data-bdc-result] details').evaluate('(e)=>e.open')
+                        page.evaluate("window.dispatchEvent(new Event('afterprint'))")
+                        checks.append('NAV context: applicable fields only; repeated calculate/reset and printable JSON record preserve inputs and not-applicable income/distribution metadata')
                 checks.append('All five BDC tools reject an early analysis date and accept period-end equality')
                 if args.bdc_only:
                     assert not errors, errors

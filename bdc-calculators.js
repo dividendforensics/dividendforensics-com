@@ -13,10 +13,11 @@
     leverage:'gross=debt/equity; cashAdjusted=debt-cash; cashAdjustedRatio=(debt-cash)/equity; ratios require equity>0'
   };
   const contexts = ['currency','scale','unit','periodStart','periodEnd','asOf','incomeBasis','distributionBasis','scope'];
-  function validate(context, inputs) {
+  function validate(context, inputs, kind) {
+    if(kind==='nav' && context) context={...context,incomeBasis:'not_applicable',distributionBasis:'not_applicable'};
     if (!context || !['synthetic','scenario','company'].includes(context.datasetMode)) throw Error('Choose a synthetic example, user scenario or sourced company dataset.');
-    if (!['reported','adjusted'].includes(context.incomeBasis)) throw Error('Choose reported or adjusted NII consistently.');
-    if (!['declared','paid'].includes(context.distributionBasis)) throw Error('Choose declared or paid distributions consistently.');
+    if (kind !== 'nav' && !['reported','adjusted'].includes(context.incomeBasis)) throw Error('Choose reported or adjusted NII consistently.');
+    if (kind !== 'nav' && !['declared','paid'].includes(context.distributionBasis)) throw Error('Choose declared or paid distributions consistently.');
     if (context.unit !== 'amount' && context.unit !== 'per-share') throw Error('Use a single amount or directly reported per-share basis.');
     if (!['one','thousand','million'].includes(context.scale)) throw Error('Choose currency units, thousands or millions.');
     if (!/^[A-Z]{3}$/.test(context.currency || '')) throw Error('Use a three-letter currency code.');
@@ -30,6 +31,7 @@
     for (const [id, raw] of Object.entries(inputs)) {
       const supplied = raw && typeof raw === 'object' ? {...raw} : {value:raw, availability:raw == null || raw === '' ? 'not_found' : 'scenario', origin:'manual'};
       const record = {datasetMode:context.datasetMode,currency:context.currency,scale:context.scale,unit:context.unit,periodStart:context.periodStart,periodEnd:context.periodEnd,asOf:context.asOf,incomeBasis:context.incomeBasis,distributionBasis:context.distributionBasis,scope:context.scope,sourceUrl:null,accession:null,sourceLocator:null,retrievedAt:null,reviewedAt:null,reviewedBy:null,note:null,...supplied};
+      if (kind === 'nav') {record.incomeBasis='not_applicable';record.distributionBasis='not_applicable';}
       for (const key of contexts) if (record[key] != null && record[key] !== context[key]) throw Error(id + ': mixed ' + key + ' is not comparable.');
       if (record.datasetMode != null && record.datasetMode !== context.datasetMode) throw Error(id + ': mixed dataset modes.');
       if (!['manual','extracted'].includes(record.origin || 'manual')) throw Error(id + ': invalid input origin.');
@@ -47,16 +49,18 @@
     return out;
   }
   function calculate(kind, inputs, context) {
+    // Income/distribution choices do not apply to a price-to-NAV comparison.
+    if(kind==='nav') context={...context,incomeBasis:'not_applicable',distributionBasis:'not_applicable'};
     if(kind==='nav' && (context.unit!=='per-share' || context.scale!=='one')) throw Error('Price/NAV requires directly entered per-share currency units.');
     if(kind!=='nav' && context.unit!=='amount') throw Error('This worksheet uses total amounts, not per-share conversions.');
-    const records = validate(context, inputs), warnings = [], rows = [];
+    const records = validate(context, inputs, kind), warnings = [], rows = [];
     const get = id => records[id] ? records[id].decimal : null;
     const nonnegative = ids => ids.forEach(id => {if(get(id) && get(id).lt(0)) throw Error(id + ': enter zero or a positive amount.');});
     const text = x => x == null ? null : x.toString();
     const ratio = (n,d) => n == null || d == null || d.isZero() ? null : n.div(d);
     const row = (label, value, unit='amount', reason='Missing input') => rows.push({label,value:text(value),unit,reason:value == null ? reason : null});
     const ratioRow = (label,n,d,unit='multiple') => row(label,ratio(n,d),unit,n == null || d == null ? 'Missing input' : 'Zero denominator');
-    const audit = {formulaVersion:VERSION,formula:formulas[kind],inputIds:Object.keys(records),context:{...context},inputs:Object.fromEntries(Object.entries(records).map(([k,v])=>[k,{...v,decimal:undefined}])),rounding:'40 significant-digit decimal arithmetic; display four decimal places, half up. Nonzero values smaller than 0.0001 retain five significant digits. Plain decimals are used through 24 fractional places; longer tiny values use scientific notation. Display rounding does not change the stored results.'};
+    const audit = {formulaVersion:VERSION,formula:formulas[kind],inputIds:Object.keys(records),context:{...context},inputs:Object.fromEntries(Object.entries(records).map(([k,v])=>[k,{...v,decimal:undefined}])),rounding:'40 significant-digit decimal arithmetic; display four decimal places, half up. Nonzero values smaller than 0.0001 retain five significant digits. Plain decimals are used through 24 fractional places; longer tiny values use scientific notation. Display rounding does not change the stored results. Arithmetic precision does not increase the accuracy of the source inputs.'};
     if (kind === 'nii' || kind === 'pik') {
       nonnegative(['pik','tii','regular','supplemental','special']);
       const nii=get('nii'), pik=get('pik'), tii=get('tii'), reg=get('regular');
@@ -129,7 +133,7 @@
         form.querySelectorAll('[data-bdc-input]').forEach(input=>{const id=input.name, value=input.value, selected=fd.get(id+'Availability') || 'scenario';inputs[id]={value,availability:value.trim()==='' && ['scenario','reported'].includes(selected) ? 'not_found':selected,origin:'manual',sourceUrl:fd.get(id+'Source') || null,accession:fd.get(id+'Accession') || null,sourceLocator:fd.get(id+'Locator') || null,reviewedAt:null,reviewedBy:null,note:'User-entered; not independently verified'};});
         const result=calculate(form.dataset.bdcTool,inputs,context);
         error.hidden=true;error.textContent='';
-        target.innerHTML='<p><strong>'+esc(mode==='synthetic'?'Synthetic example — not company results':'User scenario — not verified company results')+'</strong></p><p>'+esc(context.currency+' / '+context.scale+' / '+context.unit+' / '+context.periodStart+' to '+context.periodEnd+'; as of '+context.asOf+'; '+context.incomeBasis+' NII; '+context.distributionBasis+' distributions')+'</p><div class="table-scroll" style="overflow-x:auto;max-height:none"><table><caption>Calculated values — formula '+VERSION+'</caption><thead><tr><th scope="col">Measure</th><th scope="col">Value</th></tr></thead><tbody>'+result.rows.map(r=>'<tr><th scope="row">'+esc(r.label)+'</th><td>'+esc(format(r))+'</td></tr>').join('')+'</tbody></table></div>'+result.warnings.map(w=>'<p>'+esc(w)+'</p>').join('')+'<p class="small-note">'+esc(result.audit.rounding)+'</p><details><summary>Input sources and calculation record</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere">'+esc(JSON.stringify(result.audit,null,2))+'</pre></details>';
+        target.innerHTML='<p><strong>'+esc(mode==='synthetic'?'Synthetic example — not company results':'User scenario — not verified company results')+'</strong></p><p>'+esc(context.currency+' / '+context.scale+' / '+context.unit+' / '+context.periodStart+' to '+context.periodEnd+'; as of '+context.asOf+(form.dataset.bdcTool==='nav'?'':'; '+context.incomeBasis+' NII; '+context.distributionBasis+' distributions'))+'</p><div class="table-scroll" style="overflow-x:auto;max-height:none"><table><caption>Calculated values — formula '+VERSION+'</caption><thead><tr><th scope="col">Measure</th><th scope="col">Value</th></tr></thead><tbody>'+result.rows.map(r=>'<tr><th scope="row">'+esc(r.label)+'</th><td>'+esc(format(r))+'</td></tr>').join('')+'</tbody></table></div>'+result.warnings.map(w=>'<p>'+esc(w)+'</p>').join('')+'<p class="small-note">'+esc(result.audit.rounding)+'</p><details><summary>Input sources and calculation record</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere">'+esc(JSON.stringify(result.audit,null,2))+'</pre></details>';
       }catch(e){error.textContent=e.message;error.hidden=false;target.innerHTML='<p>No current result. Correct the input error to calculate again.</p>';}
     };
     form.addEventListener('submit',run);

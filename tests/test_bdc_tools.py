@@ -62,4 +62,12 @@ class BdcToolsTests(unittest.TestCase):
             self.assertIs(intro.find_next('form'),soup.select_one('[data-bdc-tool]'))
             self.assertFalse(intro.find_parent('form'))
 
+    def test_nav_has_only_applicable_context_controls(self):
+        from bdc_tools import TOOLS, page
+        for tool in TOOLS:
+            soup=BeautifulSoup(page(ROOT,tool),'html.parser')
+            controls=soup.select('[name="incomeBasis"], [name="distributionBasis"]')
+            self.assertEqual(len(controls),0 if tool['kind']=='nav' else 2)
+            self.assertIn('Arithmetic precision does not increase the accuracy of the source inputs.',soup.get_text())
+
 if __name__=='__main__':unittest.main()
