@@ -112,6 +112,9 @@ def article_page(root, a, lookup):
     body=f'<div class="wrap breadcrumbs"><a href="/">Home</a><span>/</span><a href="/learn-bdc.html">BDC learning</a><span>/</span><span aria-current="page">{E(a["title"])}</span></div>'
     body+=section_head('BDC / '+a['level'],E(a['title']),a['description'])
     body+=f'<div class="wrap article-meta"><a href="/editorial-policy.html">DFB Education</a> · <a href="/course-bdc-{level["key"]}.html">{a["level"]} route</a> · Updated <time datetime="{a["updated"]}">{display_date(a["updated"])}</time></div>'
+    if a['slug']=='learn-bdc-basics':
+        from stock_basics import prerequisite_links
+        body+=prerequisite_links()
     body+=f'<div class="wrap reading-layout"><aside class="article-toc"><span class="kicker">In this guide</span><ol>{toc}<li><a href="#worked-example">Worked example</a></li><li><a href="#source-notes">Sources</a></li></ol>{tool_link}</aside><article class="lesson-body"><section><h2>Before you start</h2><p>{prereqs}</p><ul>{objectives}</ul></section>{sections}<section id="worked-example" class="worked-example"><span class="kicker">Synthetic example / not company data</span><h2>{E(a["example"]["heading"])}</h2><p>{E(a["example"]["text"])}</p>{table}</section><section><h2>Test your reasoning</h2><p>{E(a["exercise"]["question"])}</p><details class="workshop-answer"><summary>Reveal the worked answer</summary><p>{E(a["exercise"]["answer"])}</p></details></section><section class="pitfall"><h2>A common mistake</h2><p>{E(a["pitfall"])}</p></section><section><h2>What to check in the disclosures</h2><ul>{checks}</ul>{tool_link}</section><section><h2>Check your understanding</h2>{quiz(a["quiz"])}</section><section id="source-notes"><h2>Sources &amp; scope</h2><p>US BDC education. Examples are hypothetical unless expressly attributed. Filing dates, contractual definitions and tax rules matter. An issuer source describes that issuer; it is not evidence that every BDC uses the same policy.</p><ul class="source-list">{sources}</ul><p class="small-note">Educational material, not a recommendation or personalized investment advice. <a href="/editorial-policy.html">Source and correction policy</a>.</p></section></article></div>'
     ordered=list(lookup)
     position=ordered.index(a['slug'])
@@ -150,6 +153,9 @@ def outputs(root):
         lessons=[a for a in articles if a['level']==l['name']]
         rows=''.join(f'<li><span>{j:02d}</span><div><h3><a href="/{a["slug"]}.html">{E(a["title"])}</a></h3><p>{E(a["description"])}</p></div></li>' for j,a in enumerate(lessons,1))
         body='<div class="wrap breadcrumbs"><a href="/learn-bdc.html">BDC learning room</a><span>/</span>'+l['name']+'</div>'+section_head('BDC / Level '+str(i+1),l['title'],l['outcome'])
+        if l['key']=='beginner':
+            from stock_basics import prerequisite_links
+            body+=prerequisite_links()
         body+='<section class="wrap education-section"><div class="course-note"><h2>Before you start</h2><p>'+E(l['prerequisite'])+'</p></div><p class="small-note">Four guides · Free · Self-paced. Difficulty is not a professional certification.</p><ol class="course-lessons">'+rows+'</ol><h2>Apply the route.</h2><p>Complete each guide’s worked exercise. Retain the period, units, source and assumptions with every result. The final exercise asks you to explain what remains unknown.</p><h2>Route self-check</h2>'+quiz([a['quiz'][0] for a in lessons])+'<div class="btns course-next"><a class="text-link" href="/learn-bdc.html">All BDC guides</a>'+(f'<a class="btn btn-p" href="/course-bdc-{LEVELS[i+1]["key"]}.html">Next: {LEVELS[i+1]["name"]} →</a>' if i<3 else '<a class="btn btn-p" href="/research.html">Read published research →</a>')+'</div></section>'
         name='course-bdc-'+l['key']+'.html'
         output[root/name]=shell(root,name,l['name']+' BDC learning path',l['outcome'],body,'CollectionPage')
