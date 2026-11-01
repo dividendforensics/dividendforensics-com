@@ -14,6 +14,7 @@ import json
 import os
 import subprocess
 import time
+from time import sleep as retry_sleep
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -131,7 +132,7 @@ def verify(paths, base, output, attempts=1, interval=30, root=ROOT, fetcher=fetc
             if not pending:
                 break
             if attempt + 1 < attempts:
-                time.sleep(interval)
+                retry_sleep(interval)
     except Exception as error:
         report['error'] = f'{type(error).__name__}: {error}'
         persist()
