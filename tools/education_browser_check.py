@@ -30,6 +30,59 @@ def wait_for_library_query(page, query, errors, responses, failed_requests, outp
         raise AssertionError('Learning-room query did not initialize: '+json.dumps(diagnostic)) from error
 
 
+def check_learning_search(page, base):
+    page.goto(base+'/index.html')
+    page.locator('#home-topic').fill('ticker')
+    page.get_by_role('button',name='Search guides').click()
+    page.wait_for_url('**/learning-search.html?q=ticker#search-results')
+    page.wait_for_function("document.activeElement === document.getElementById('learning-query')")
+    expected = {'ticker':'market-labels', 'market cap':'stock-classification', 'S&P500':'market-labels',
+                'buyback':'dividends-buybacks-guide', 'free cash flow':'dividends-buybacks-guide',
+                'EPS':'market-labels', 'PIK':'learn-bdc-pik-income'}
+    for query, slug in expected.items():
+        page.locator('#learning-query').fill(query)
+        assert page.locator('[data-learning-result]:visible a[href="/'+slug+'.html"]').count() == 1, query
+    page.locator('#learning-topic').select_option('REIT')
+    assert page.locator('#learning-empty').is_visible()
+    page.locator('#learning-query').focus()
+    page.keyboard.press('Tab')
+    assert page.locator('#learning-topic').evaluate('(e)=>e===document.activeElement')
+    page.keyboard.press('Tab')
+    assert page.locator('#learning-reset').evaluate('(e)=>e===document.activeElement')
+    page.keyboard.press('Enter')
+    total=page.locator('[data-learning-result]:visible').count()
+    assert total > 52
+    assert page.locator('#learning-query').evaluate('(e)=>e===document.activeElement')
+    for query in ('zzzz-unmatched-query', '없는검색어', '<script>alert(1)</script>'):
+        page.locator('#learning-query').fill(query)
+        assert page.locator('#learning-empty').is_visible()
+        assert page.locator('#learning-empty a').count() >= 4
+    page.goto(base+'/learning-search.html?q=PIK&room=BDC&source=qa#search-results')
+    page.wait_for_function("document.querySelector('#learning-query').value==='PIK'")
+    assert page.locator('#learning-topic').input_value()=='BDC'
+    initial_history=page.evaluate('history.length')
+    page.locator('#learning-query').fill('NII')
+    page.reload()
+    page.wait_for_function("document.querySelector('#learning-query').value==='NII'")
+    assert page.locator('#learning-topic').input_value()=='BDC'
+    assert page.evaluate("new URL(location.href).searchParams.get('source')")=='qa'
+    assert page.evaluate('location.hash')=='#search-results'
+    assert page.evaluate('history.length')==initial_history
+    page.locator('[data-learning-result]:visible a').first.click()
+    page.go_back()
+    page.wait_for_function("document.querySelector('#learning-query').value==='NII'")
+    assert page.locator('[data-learning-result]:visible').count()>0
+    page.locator('#learning-reset').click()
+    assert page.locator('[data-learning-result]:visible').count()==total
+    assert page.evaluate("new URL(location.href).searchParams.has('q')") is False
+    assert page.evaluate("new URL(location.href).searchParams.has('room')") is False
+    for width in (320,390,768,1188,1440):
+        page.set_viewport_size({'width':width,'height':1000})
+        page.evaluate('document.fonts.ready')
+        assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'), width
+    page.set_viewport_size({'width':1440,'height':1000})
+
+
 def main(library_only=False):
     out=ROOT/'.qa';out.mkdir(exist_ok=True)
     server=ThreadingHTTPServer(('127.0.0.1',0),partial(SimpleHTTPRequestHandler,directory=str(ROOT)))
@@ -47,25 +100,12 @@ def main(library_only=False):
         page.on('request',lambda r:requests.append(r.url))
         page.on('response',lambda r:responses.append({'url':r.url,'status':r.status}))
         page.on('requestfailed',lambda r:failed_requests.append({'url':r.url,'failure':r.failure}))
-        page.goto(base+'/index.html')
-        page.locator('#home-topic').fill('AFFO')
-        page.get_by_role('button',name='Search guides').click()
-        page.wait_for_url('**/learn.html?q=AFFO#library')
+        check_learning_search(page, base)
+        # Legacy links retain the original REIT-only q/filter contract.
+        page.goto(base+'/learn.html?q=AFFO#library')
         wait_for_library_query(page,'AFFO',errors,responses,failed_requests,out)
         assert 0<page.locator('[data-lesson]:visible').count()<36
-        # Focus is a post-navigation rendering contract, not synchronous with
-        # filtering in a deferred script. Wait for the condition, never a sleep.
-        try:
-            page.wait_for_function("document.activeElement === document.getElementById('lesson-search')", timeout=5000)
-        except Exception as error:
-            state = page.evaluate("({readyState:document.readyState,hash:location.hash,activeId:document.activeElement?.id,activeTag:document.activeElement?.tagName,value:document.getElementById('lesson-search')?.value})")
-            raise AssertionError('Search-result focus did not settle after navigation: '+json.dumps(state)) from error
-        assert page.locator('#lesson-search').evaluate('(el) => el === document.activeElement')
-        try:
-            page.wait_for_function("() => { const r=document.getElementById('library').getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }", timeout=5000)
-        except Exception as error:
-            state = page.evaluate("({readyState:document.readyState,hash:location.hash,scrollY,viewportHeight:innerHeight,libraryRect:document.getElementById('library').getBoundingClientRect().toJSON(),scrollBehavior:getComputedStyle(document.documentElement).scrollBehavior})")
-            raise AssertionError('Search results did not enter the viewport: '+json.dumps(state)) from error
+        page.wait_for_function("document.activeElement === document.getElementById('lesson-search')")
         assert page.locator('#library').evaluate('(el) => { const r=el.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; }')
         page.locator('#lesson-category').select_option('Start here')
         page.locator('#lesson-search').fill('zzzz-no-result')
@@ -95,8 +135,8 @@ def main(library_only=False):
         if library_only:
             assert not errors,errors
             context.close();browser.close();server.shutdown();server.server_close()
-            (out/'education-library-report.json').write_text(json.dumps({'status':'passed','scope':'home query and REIT library filters only','checks':['AFFO query initializes after document readiness','AFFO results are a nonempty subset','category/empty/reset','four expert guides','36 guides restored','edited query and cleared query survive reload','replaceState preserves unrelated parameters/hash without history spam'],'errors':errors},indent=2),encoding='utf-8')
-            print('PASS: focused REIT homepage query and library search/filter/reset; broader education checks were not run.')
+            (out/'education-library-report.json').write_text(json.dumps({'status':'passed','scope':'unified directory and legacy REIT library filters only','checks':['homepage ticker query reaches unified directory; legacy AFFO query initializes','AFFO results are a nonempty subset','category/empty/reset','four expert guides','36 guides restored','edited query and cleared query survive reload','replaceState preserves unrelated parameters/hash without history spam'],'errors':errors},indent=2),encoding='utf-8')
+            print('PASS: unified learning search and legacy REIT filters; broader education checks were not run.')
             return
         for level in LEVELS:
             page.goto(base+'/course-'+level['key']+'.html')
@@ -110,6 +150,19 @@ def main(library_only=False):
             assert page.locator('.quiz-feedback:visible').count()==0
             page.get_by_role('button',name='Check my answers').click()
             assert '2 of 3 correct' in page.locator('.quiz-score').inner_text()
+        for filename, anchor, legacy, hidden_anchor in (('glossary.html','ffo','term-8','affo'), ('glossary-bdc.html','nii','term-0','pik')):
+            for fragment in (anchor, legacy):
+                page.goto(base+'/'+filename+'#'+fragment)
+                page.wait_for_function("id => document.activeElement?.id===id",arg=anchor)
+            page.locator('#glossary-search').fill('zzzz-no-result')
+            assert page.locator('[data-term]:visible').count()==0
+            page.evaluate("id => location.hash=id",hidden_anchor)
+            page.wait_for_function("id => document.activeElement?.id===id",arg=hidden_anchor)
+            assert page.locator('#'+hidden_anchor).is_visible()
+            assert page.locator('#glossary-search').input_value()==''
+            page.evaluate("location.hash='%E0%A4%A'")
+            page.locator('#glossary-search').fill('zzzz-no-result')
+            assert page.locator('#glossary-empty').is_visible()
         page.goto(base+'/glossary.html');page.locator('#glossary-search').fill('triple-net')
         assert page.locator('[data-term]:visible').count()==1
         for tool in TOOLS:
@@ -167,12 +220,16 @@ def main(library_only=False):
         np=offline.new_page();np.goto(base+'/learn.html')
         assert np.locator('[data-lesson]:visible').count()==36
         assert not np.locator('[data-library-controls]').is_visible()
+        np.goto(base+'/learning-search.html?q=ticker#search-results')
+        assert np.locator('[data-learning-result]:visible').count()>52
+        assert not np.locator('[data-learning-controls]').is_visible()
+        assert np.locator('a[href="/market-labels.html"]').count()>0
         np.goto(base+'/calculator-nav.html');assert np.locator('#formula').is_visible()
         offline.close();context.close();browser.close()
     server.shutdown()
     assert not errors,errors
     assert not any('adsbygoogle' in url or 'google-analytics' in url for url in requests)
-    (out/'education-browser-report.json').write_text(json.dumps({'status':'passed','calculators':len(TOOLS),'checks':['library search/filter/reset/empty','glossary filter','seven calculators default results','CSV downloads','invalid input and reset','zero net yield','zero stressed AFFO','purchase fees denominator','mobile and desktop screenshots','no-JavaScript reading','no ad or analytics requests'],'errors':errors},indent=2),encoding='utf-8')
+    (out/'education-browser-report.json').write_text(json.dumps({'status':'passed','calculators':len(TOOLS),'checks':['unified search required topics, room filter, empty/reset, keyboard, URL reload/Back','stable and legacy glossary anchors reveal hidden definitions','library search/filter/reset/empty','glossary filter','seven calculators default results','CSV downloads','invalid input and reset','zero net yield','zero stressed AFFO','purchase fees denominator','mobile and desktop screenshots','no-JavaScript reading','no ad or analytics requests'],'errors':errors},indent=2),encoding='utf-8')
     print('PASS: four course quizzes, level filters, seven calculators, CSV, edge cases, images, no-JS and responsive screenshots.')
 
 if __name__=='__main__':main(library_only='--library-only' in sys.argv)

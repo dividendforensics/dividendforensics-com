@@ -94,8 +94,33 @@ def main():
                     assert urlsplit(page.url).path=='/daily-briefs.html'
                     page.get_by_role('link',name=b['title'],exact=True).click()
                     assert urlsplit(page.url).path==path
-                    page.keyboard.press('Tab')
-                    assert page.evaluate('document.activeElement.tagName') in ('A','BUTTON','INPUT')
+                    page.wait_for_load_state('load')
+                    page.evaluate('''async () => {
+                        await document.fonts.ready;
+                        await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+                    }''')
+                    # Check initial keyboard reachability as well as the skip-link
+                    # activation path; never manufacture focus on the target link.
+                    try:
+                        page.wait_for_function('document.activeElement === document.body')
+                        page.keyboard.press('Tab')
+                        page.wait_for_function('document.activeElement === document.querySelector("a.skip-link") && document.activeElement.getAttribute("href") === "#main"')
+                        page.keyboard.press('Enter')
+                        page.wait_for_function('document.activeElement === document.getElementById("main")')
+                        page.keyboard.press('Tab')
+                        page.wait_for_function('document.activeElement === document.querySelector("main a[rel=author]")')
+                        page.keyboard.press('Tab')
+                        page.wait_for_function('(url) => document.activeElement?.href === url', arg=next(iter(b['sources'].values()))['url'])
+                        page.keyboard.press('Shift+Tab')
+                        page.wait_for_function('document.activeElement === document.querySelector("main a[rel=author]")')
+                    except Exception:
+                        state=page.evaluate('''() => ({url:location.href,readyState:document.readyState,
+                            activeTag:document.activeElement?.tagName,activeId:document.activeElement?.id,
+                            activeHref:document.activeElement?.getAttribute('href'),
+                            activeText:document.activeElement?.textContent?.slice(0,160)})''')
+                        (out/f'keyboard-failure-{width}.json').write_text(json.dumps(state,indent=2))
+                        page.screenshot(path=str(out/f'keyboard-failure-{width}.png'),full_page=True)
+                        raise
                     checks.append({'width':width,'slug':b['slug'],'overflow':False,'source_links':len(b['sources']),'facts':len(b['facts'])})
             # Existing shared Google Fonts may be blocked; the feature must not request third-party data/APIs.
             unexpected=[x for x in external if urlsplit(x['url']).hostname not in ('fonts.googleapis.com','fonts.gstatic.com')]

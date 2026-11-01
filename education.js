@@ -46,12 +46,34 @@
   const glossary = document.getElementById('glossary-search');
   if (glossary) {
     document.querySelector('[data-glossary-control]').hidden = false;
-    glossary.addEventListener('input', () => {
+    const terms = [...document.querySelectorAll('[data-term]')];
+    function filterTerms() {
       let count = 0; const query = glossary.value.trim().toLowerCase();
-      document.querySelectorAll('[data-term]').forEach(item => { item.hidden = !item.dataset.search.includes(query); if (!item.hidden) count++; });
+      terms.forEach(item => { item.hidden = !item.dataset.search.includes(query); if (!item.hidden) count++; });
       document.getElementById('glossary-count').textContent = count + (count === 1 ? ' term' : ' terms');
       document.getElementById('glossary-empty').hidden = count !== 0;
-    });
+    }
+    function revealTerm(initial = false) {
+      let id;
+      try { id = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
+      const target = id && document.getElementById(id);
+      const term = target && target.closest('[data-term]');
+      if (!term || !terms.includes(term)) return;
+      // A bookmarked definition must not remain hidden by a previous filter.
+      if (term.hidden) { glossary.value = ''; filterTerms(); }
+      const heading = term.querySelector('dt') || term;
+      const active = document.activeElement;
+      // Initial navigation must not steal focus after the reader chose a control.
+      if (initial && active && ![document.body, document.documentElement, target, term, heading].includes(active)) return;
+      term.scrollIntoView({block: 'start', behavior: 'instant'});
+      heading.setAttribute('tabindex', '-1');
+      heading.focus({preventScroll: true});
+    }
+    glossary.addEventListener('input', filterTerms);
+    window.addEventListener('hashchange', () => revealTerm());
+    const initialTerm = () => window.requestAnimationFrame(() => revealTerm(true));
+    if (document.readyState === 'complete') initialTerm();
+    else window.addEventListener('pageshow', initialTerm, {once: true});
   }
   document.querySelectorAll('[data-quiz]').forEach(form => {
     form.addEventListener('submit', event => {

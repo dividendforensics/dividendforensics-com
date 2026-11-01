@@ -11,9 +11,9 @@ GUIDES = (
 )
 
 
-def discovery():
-    cards = ''.join(f'<article class="lesson-card"><span class="kicker">Stock basics · Beginner guide</span><h3><a href="/{g["slug"]}.html">{E(g["title"])}</a></h3><p>{E(g["description"])}</p><a class="text-link" href="/{g["slug"]}.html">Read the introduction →</a></article>' for g in GUIDES)
-    return '<section class="wrap education-section stock-basics-discovery" aria-labelledby="stock-basics-title"><div class="section-heading"><div><span class="kicker">Before choosing a learning room</span><h2 id="stock-basics-title">Start with the labels.</h2></div></div><div class="stock-basics-grid">'+cards+'</div></section>'
+def discovery(exclude_slug=""):
+    cards = ''.join(f'<article class="lesson-card"><span class="kicker">Stock basics · Beginner guide</span><h3><a href="/{g["slug"]}.html">{E(g["title"])}</a></h3><p>{E(g["description"])}</p><a class="text-link" href="/{g["slug"]}.html">Read the introduction →</a></article>' for g in GUIDES if g['slug'] != exclude_slug)
+    return '<section class="wrap education-section stock-basics-discovery" aria-labelledby="stock-basics-title"><div class="section-heading"><div><span class="kicker">Before choosing a learning room</span><h2 id="stock-basics-title">Start with the labels.</h2></div></div><div class="stock-basics-grid">'+cards+'</div><p>Ready to read company accounts? See <a href="/three-financial-statements.html">how the three financial statements connect</a>.</p></section>'
 
 
 def prerequisite_links():
@@ -28,6 +28,12 @@ def outputs(root):
         content = (root/'templates'/'stock-basics'/name).read_text(encoding='utf-8')
         body = '<div class="wrap breadcrumbs"><a href="/">Home</a><span>/</span><a href="/learn.html">Learning center</a><span>/</span><span aria-current="page">Stock basics</span></div>'
         body += f'<header class="wrap education-heading stock-basics-heading"><span class="kicker">Stock basics · Beginner guide</span><h1>{E(guide["title"])}</h1><div class="article-meta"><a href="/editorial-policy.html" rel="author">DFB Education</a> · Published <time datetime="{guide["published"]}">1 November 2026</time></div></header>'
-        body += '<article class="wrap lesson-body stock-basics-article">'+content+'</article>'+discovery()
+        next_reading = '<nav class="reading-next" aria-label="Continue learning"><h2>Keep reading</h2>'
+        if guide['slug'] == 'stock-classification':
+            next_reading += '<p>Next, distinguish <a href="/market-labels.html">tickers, exchanges, indexes, and ETFs</a>. Keep the <a href="/glossary.html#equity-reit">equity REIT definition</a> nearby when you begin the property-income route.</p>'
+        else:
+            next_reading += '<p>Choose the business you want to study: <a href="/learn.html">REITs</a>, <a href="/learn-bdc.html">BDCs</a>, or <a href="/operating-companies.html">operating companies</a>. For a lending fund, begin with the <a href="/glossary-bdc.html#nii">NII definition</a> rather than assuming earnings equal cash.</p>'
+        next_reading += '</nav>'
+        body += '<article class="wrap lesson-body stock-basics-article">'+content+next_reading+'</article>'+discovery(exclude_slug=guide['slug'])
         result[root/name] = shell(root,name,guide['title'],guide['description'],body,'Article',article=guide)
     return result

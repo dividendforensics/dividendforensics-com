@@ -182,3 +182,18 @@ The older `data/` and legacy build scripts under `tools/` are **not active**.
 Revert the single editorial-redesign release commit to restore the previous
 site. Do not replace the report checkout variant or the custom domain when
 reverting a visual change.
+
+## Learning directory and permanent glossary links
+
+The homepage searches `/learning-search.html`; `learning_search.py` builds this
+static English title/description/topic directory from generated learning pages.
+It is not issuer lookup, live data or publication-archive search. Curated synonyms
+must describe actual page content, not create unsupported matches. The optional
+`learning-search.js` enhancement preserves `q` and `room` in the URL; it sends no
+search requests. `/learn.html?q=...#library` remains the REIT-only subject/level
+filter. Glossary named anchors coexist with the original `term-N` bookmarks;
+never reassign a legacy index or named anchor to a different definition.
+
+`foundation_guides.py` renders the separate three-financial-statements primer from
+`templates/foundations/`. Its annual USD-million example is hypothetical, not an
+issuer result or a replacement for the dated filing labs.

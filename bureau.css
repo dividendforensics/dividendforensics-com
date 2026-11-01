@@ -278,3 +278,12 @@ h1,h2,h3{color:var(--text)}
 .bdc-field-status[data-excluded="true"]{border-left:3px solid var(--accent);padding-left:10px;color:var(--text)}
 .bdc-nav-notes>p{max-width:70ch}
 .bdc-nav-notes>h2{margin-bottom:.5em}
+
+/* Supporting identity labels: readable without enlarging the main masthead. */
+.brand-name{font-size:12px;letter-spacing:.08em}
+.international-page .site-brand{max-width:100%;min-width:0}
+.international-page .brand-name{min-width:0;overflow-wrap:anywhere}
+.site-footer h2{font-size:12px;line-height:1.6}
+.hero-bottom-line{font-size:12px;line-height:1.8;flex-wrap:wrap}
+#learning-results h3{font-size:1.65rem;line-height:1.2}
+#learning-empty{max-width:70ch;padding-block:20px}
