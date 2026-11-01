@@ -183,3 +183,82 @@ h1,h2,h3{color:var(--text)}
 .education-page .calculator-form input[aria-invalid="true"]{border:2px solid #a22b36;background:#fff4f4;box-shadow:inset 4px 0 #a22b36}
 .calculator-form [data-calculator-loading]{padding:14px;background:#e9ece4;border-left:4px solid #40545f;line-height:1.7;margin-bottom:18px}
 .calculator-form fieldset:not([disabled]) [data-calculator-loading]{display:none}
+
+/* Reading comfort: preserve the editorial palette, give actual copy room to breathe. */
+.education-lede{max-width:68ch;font-size:1.125rem;line-height:1.8}
+.lesson-body p,.lesson-edition .lesson-body p,.art-wrap p{font-size:1.125rem;line-height:1.85}
+.lesson-body li,.art-wrap li{font-size:1.0625rem;line-height:1.85}
+.lesson-body,.art-wrap,.newsletter-copy{overflow-wrap:break-word;min-width:0}
+.lesson-body>section,.lesson-edition .lesson-body>section{max-width:72ch}
+.lesson-body h2{line-height:1.2;margin-bottom:1.125rem}
+.lesson-body h3{line-height:1.3}
+.lesson-body .small-note,.source-list li,.source-directory small{font-size:.875rem;line-height:1.8}
+.article-meta,.breadcrumbs,.article-toc li,.lesson-jump-menu ol{font-size:.875rem;line-height:1.7}
+.article-toc a,.lesson-jump-menu a{display:inline-block;padding-block:5px}
+.lesson-card p,.course-card p,.home-curriculum .course-card p,.tool-card p,.course-lessons p{font-size:1rem;line-height:1.8}
+.home-curriculum .course-card>.text-link,.home-atlas>.text-link,.home-page .cash-sheet .text-link{font-size:.875rem}
+.home-page .education-home .education-lede{font-size:1.0625rem;line-height:1.85;color:#d5dfe1}
+.home-page .cash-line{font-size:.9375rem;line-height:1.6}
+.home-page .cash-sheet p,.atlas-note,.bureau-tools .tools-intro p{font-size:.9375rem;line-height:1.8}
+.home-page .cash-sheet-top,.education-home .hero-footnote,.tools-footnote{font-size:.8125rem;line-height:1.7;letter-spacing:.02em}
+.home-library-search input{font-size:1rem}
+.home-library-search label,.home-library-search button,.home-library-search p{font-size:.875rem}
+.bureau-directory a{font-size:.8125rem;min-height:44px;display:inline-flex;align-items:center}
+.bureau-directory>.wrap{column-gap:22px}
+.education-visual img,.article-visual .education-visual img,.home-atlas .education-visual img{mix-blend-mode:normal;object-fit:contain}
+.article-visual .education-visual{grid-template-columns:minmax(0,1fr);max-width:960px;margin-inline:auto;background:var(--paper-light)}
+.article-visual .education-visual img{height:auto;max-height:480px;width:100%}
+.education-visual figcaption,.article-visual .education-visual figcaption,.home-atlas .education-visual figcaption{font-size:.9375rem;line-height:1.75;color:var(--text);border-left:0;border-top:1px solid var(--rule);padding:18px 22px}
+.education-visual figcaption span,.home-atlas .education-visual figcaption span{font-size:.8125rem;color:var(--muted)}
+.home-atlas .education-visual img{aspect-ratio:auto}
+.daily-brief-heading .article-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:1.5rem;padding-bottom:0}
+.daily-newsletter{padding-top:1.25rem}
+.daily-newsletter .newsletter-copy p+p{margin-top:1.5rem}
+.daily-newsletter .small-note{margin-top:1.5rem}
+@media(max-width:780px){
+  .lesson-body p,.lesson-edition .lesson-body p,.art-wrap p{font-size:1.0625rem;line-height:1.85}
+  .education-lede{font-size:1.0625rem}
+  .article-visual .education-visual img{max-height:none}
+  .home-page .cash-sheet-top{flex-wrap:wrap}
+  .bureau-directory>.wrap{gap:0 18px}
+  .education-visual figcaption,.article-visual .education-visual figcaption{padding:16px}
+}
+@media(max-width:480px){
+  .home-page .education-home h1{font-size:clamp(3.5rem,17vw,5.375rem)}
+  .home-page .cash-line{align-items:baseline;flex-wrap:wrap;gap:4px 12px}
+  .home-page .cash-line b{margin-left:auto}
+  .bureau-directory a:last-of-type{display:inline-flex}
+}
+/* Small editorial labels are supporting information, not microprint. */
+.home-curriculum .course-card>.kicker,.education-register dt,.home-page .education-home .kicker{font-size:.8125rem;line-height:1.65;letter-spacing:.07em}
+.art-wrap p{font-size:1.25rem;line-height:1.75}
+.art-wrap{max-width:850px}
+@media(max-width:780px){.art-wrap p{font-size:1.1875rem;line-height:1.75}}
+.illustration-full-size{display:block;width:fit-content;margin-top:.75rem;font-size:.875rem;line-height:1.7;padding-block:5px}
+.course-card>.kicker,.lesson-card>.kicker,.entry-meta,.latest-item .entry-meta{font-size:.8125rem;letter-spacing:.06em}
+.paper-plate figcaption,.footer-statement,.site-footer li,.footer-bottom{font-size:.875rem;line-height:1.8}
+.ocf-route p,.ocf-map p,.course-lessons p{font-size:1rem;line-height:1.8}
+.ocf-map span,.ocf-table caption,.ocf-reader aside li{font-size:.875rem;line-height:1.7}
+@media(max-width:480px){.ocf-map{grid-template-columns:1fr}.ocf-map>div{border-right:0;border-bottom:1px solid var(--rule)}.ocf-map>div:last-child{border-bottom:0}}
+/* Two introductory guides supplement, rather than rename, the subject courses. */
+.stock-basics-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.stock-basics-heading,.stock-basics-article{max-width:850px}
+.stock-basics-heading .article-meta{margin-top:24px;line-height:1.8}
+.stock-basics-article{padding-top:24px;padding-bottom:48px}
+.stock-basics-article section{margin-bottom:36px}
+.stock-basics-article p+p{margin-top:1.2em}
+.stock-basics-article .kicker{font-size:.8125rem}
+.stock-labels{margin:32px 0;padding:24px;background:var(--paper-light);border:1px solid var(--rule)}
+.stock-labels h2{font-size:1.75rem;line-height:1.25}
+.stock-labels .example-company{margin:20px 0;font-size:1.125rem;font-weight:600}
+.stock-labels dl{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stock-labels dl>div{border-left:3px solid var(--accent);padding-left:14px;min-width:0}
+.stock-labels dt{font-size:.875rem;color:var(--muted)}
+.stock-labels dd{font-size:1.0625rem;font-weight:500}
+.stock-labels figcaption{font-size:.875rem;line-height:1.75;margin-top:22px;color:var(--muted)}
+@media(max-width:600px){.stock-basics-grid{grid-template-columns:1fr;gap:16px}}
+@media(max-width:480px){.stock-labels{padding:20px}.stock-labels dl{grid-template-columns:1fr}}
+
+@media(max-width:480px){.home-atlas .education-visual figcaption{padding:16px 0}}
+
+.workbench-reading-links{padding-left:1.25rem;margin-top:1rem}.workbench-reading-links li{margin-block:.75rem;font-size:1rem;line-height:1.8}

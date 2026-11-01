@@ -15,7 +15,7 @@ class BdcToolsTests(unittest.TestCase):
             self.assertGreater(len(soup.select_one('main').get_text(' ',strip=True).split()),700,path)
             self.assertEqual(soup.select_one('link[rel=canonical]')['href'],'https://dividendforensics.com/'+path.name)
             self.assertIn('Synthetic example',soup.get_text())
-            self.assertIn('Where to find the inputs.',soup.get_text())
+            self.assertEqual(soup.select_one('#filing-inputs h2').get_text(), 'How to use: find and match the inputs')
             self.assertIn('Jeong-Mo Goo',soup.select_one('main').get_text())
             self.assertTrue(soup.select('[data-bdc-tool]'))
             self.assertFalse(soup.select('[data-calculator]'))
@@ -61,5 +61,13 @@ class BdcToolsTests(unittest.TestCase):
             self.assertIn('Total investment income (TII)',intro.get_text())
             self.assertIs(intro.find_next('form'),soup.select_one('[data-bdc-tool]'))
             self.assertFalse(intro.find_parent('form'))
+
+    def test_nav_has_only_applicable_context_controls(self):
+        from bdc_tools import TOOLS, page
+        for tool in TOOLS:
+            soup=BeautifulSoup(page(ROOT,tool),'html.parser')
+            controls=soup.select('[name="incomeBasis"], [name="distributionBasis"]')
+            self.assertEqual(len(controls),0 if tool['kind']=='nav' else 2)
+            self.assertIn('Arithmetic precision does not increase the accuracy of the source inputs.',soup.get_text())
 
 if __name__=='__main__':unittest.main()

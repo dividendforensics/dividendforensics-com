@@ -177,3 +177,31 @@ test('manual and extracted source overrides cannot bypass chronology or matching
   assert.throws(()=>result('nii',{...fixture,pik:{...input,asOf:'2026-10-18',periodEnd:'2026-09-29'}},{...context,asOf:'2026-09-29'}),/as-of date must be on or after/);
  }
 });
+
+test('NAV omits irrelevant NII and distribution choices without changing the calculation record',()=>{
+ const ctx={...context,unit:'per-share',scale:'one'};
+ delete ctx.incomeBasis; delete ctx.distributionBasis;
+ const inputs={price:'18',nav:'20'};
+ const r=result('nav',inputs,ctx);
+ assert.equal(validate(ctx,inputs,'nav').price.incomeBasis,'not_applicable');
+ assert.equal(val(r,'Price / NAV'),'0.9');
+ assert.equal(val(r,'Signed premium / (discount)'),'-0.1');
+ assert.equal(r.audit.context.incomeBasis,'not_applicable');
+ assert.equal(r.audit.context.distributionBasis,'not_applicable');
+ const exported=JSON.parse(JSON.stringify(r.audit));
+ assert.equal(exported.inputs.price.incomeBasis,'not_applicable');
+ assert.equal(exported.inputs.nav.distributionBasis,'not_applicable');
+ assert.equal(exported.inputs.price.value,'18');
+ assert.equal(exported.context.periodEnd,ctx.periodEnd);
+ assert.deepEqual(result('nav',inputs,ctx),r);
+ assert.equal(val(result('nav',{price:'22',nav:'20'},ctx),'Price / NAV'),'1.1');
+ assert.deepEqual(result('nav',inputs,ctx),r);
+ assert.equal(ctx.incomeBasis,undefined,'caller context is not mutated');
+});
+
+test('other BDC worksheets keep their existing basis validation',()=>{
+ for(const kind of ['nii','pik','non-accrual','leverage']){
+  assert.throws(()=>result(kind,fixture,{...context,incomeBasis:null}),/reported or adjusted/);
+  assert.throws(()=>result(kind,fixture,{...context,distributionBasis:null}),/declared or paid/);
+ }
+});

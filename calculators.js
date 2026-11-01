@@ -94,7 +94,7 @@
         metrics = [m('Simplified FFO', ffo, 'bridge'), m('Modeled AFFO', affo, 'bridge'), m('Net FFO-to-AFFO adjustment', affo.minus(ffo), 'bridge')];
         columns = ['Bridge line', 'Amount'];
         rows = [['Common net income', v.net], ['Real-estate D&A add-back', v.depreciation], ['Qualifying sale gains deduction', v.gains.negated()], ['Other FFO adjustments', v.ffoOther], ['Simplified FFO', ffo], ['Recurring capex deduction', v.capex.negated()], ['Straight-line rent deduction', v.rent.negated()], ['Other AFFO adjustments', v.affoOther], ['Modeled AFFO', affo]];
-        note = 'All amounts retain your chosen currency and scale. Bridge lines and metrics display up to the model’s 80 significant digits, without cent rounding. An approximation sign marks any longer input shortened for display; CSV retains the stored decimal strings. Bold FFO and AFFO rows are subtotals, not additional adjustments. This teaching bridge does not define any issuer’s AFFO or replace a full Nareit reconciliation.';
+        note = 'All amounts retain your chosen currency and scale. Bridge lines and metrics display up to the model’s 80 significant digits, without cent rounding. Arithmetic precision does not increase the accuracy of the source inputs. An approximation sign marks any longer input shortened for display; CSV retains the stored decimal strings. Bold FFO and AFFO rows are subtotals, not additional adjustments. This teaching bridge does not define any issuer’s AFFO or replace a full Nareit reconciliation.';
         break;
       }
       case 'nav': {

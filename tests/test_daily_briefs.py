@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
-from daily_briefs import calculations, digest, load, outputs, validate, CHECKS
+from daily_briefs import calculations, digest, load, outputs, validate, CHECKS, stamp, KST
 ROOT=Path(__file__).resolve().parents[1]
 NOW=datetime(2026,11,1,tzinfo=timezone.utc)
 
@@ -94,6 +94,22 @@ class DailyBriefTests(unittest.TestCase):
             self.assertEqual(xml.count('<loc>https://dividendforensics.com/brief-'+b['slug']+'.html</loc>'),1)
             self.assertIn('Daily Brief',second[r/'research.html'])
             self.assertIn('Daily Brief',second[r/'index.html'])
+
+    def test_public_byline_matches_article_metadata_and_original_date(self):
+        from bs4 import BeautifulSoup
+        planned, records = outputs(ROOT)
+        for brief in records:
+            page = BeautifulSoup(planned[ROOT / ('brief-' + brief['slug'] + '.html')], 'html.parser')
+            author = page.select_one('.daily-brief-heading [rel="author"]')
+            self.assertEqual(author.get_text(), brief['author'])
+            self.assertEqual(author['href'], '/editorial-policy.html')
+            schemas = [json.loads(node.string) for node in page.select('script[type="application/ld+json"]')]
+            article = next(item for item in schemas if item['@type'] == 'Article')
+            self.assertEqual(article['author']['name'], author.get_text())
+            self.assertEqual(article['author']['@type'], 'Organization')
+            self.assertEqual(article['datePublished'], str(stamp(brief['published_at']).astimezone(KST).date()))
+            self.assertEqual(article['dateModified'], article['datePublished'])
+            self.assertEqual([p.get_text() for p in page.select('.newsletter-copy > p')], [section['text'] for section in brief['sections']])
 
     def test_newsletter_paragraph_count_without_weakening_ledger(self):
         b=fixture();b['sections']*=2

@@ -173,13 +173,13 @@ def outputs(root):
     for b in records:
         name = f'brief-{b["slug"]}.html'
         pub = (f'<time datetime="{E(stamp(b["published_at"]).astimezone(KST).date())}">{E(stamp(b["published_at"]).astimezone(KST).strftime("%d %B %Y"))} · KST</time>' if b.get('published_at') else 'Unpublished review preview')
-        intro = f'<header class="wrap page-heading" style="max-width:800px"><span class="kicker">Daily Brief · {E(b["category"])}</span><h1>{E(b["title"])}</h1><p>{pub}</p></header>'
+        intro = f'<header class="wrap page-heading daily-brief-heading" style="max-width:800px"><span class="kicker">Daily Brief · {E(b["category"])}</span><h1>{E(b["title"])}</h1><div class="article-meta"><span>By <a href="/editorial-policy.html" rel="author">{E(b["author"])}</a></span>{pub}</div></header>'
         # The public format is a short newsletter, not a second copy of the machine ledger.
         # Claims, periods, exact inputs and independently checked calculations remain in JSON.
         paragraphs = ''.join(f'<p>{E(section["text"])}</p>' for section in b['sections'])
         sources = ' · '.join(f'<a href="{E(source["url"])}">{E(source["title"])}</a>' for source in b['sources'].values())
         body = intro+'<article class="wrap education-section lesson-body daily-newsletter" style="max-width:800px"><div class="newsletter-copy">'+paragraphs+'</div><p class="small-note">Sources: '+sources+'.</p><p class="small-note">Structural research, not investment advice.</p><p><a href="/daily-briefs.html">All daily briefs</a> · <a href="/research-desk.html#inquiries">Report a factual correction</a></p></article>'
-        output[root/name] = shell(root,name,b['title'],b['summary'],body)
+        output[root/name] = shell(root,name,b['title'],b['summary'],body,'Article',article={'published':str(stamp(b['published_at']).astimezone(KST).date()),'updated':str(stamp(b['published_at']).astimezone(KST).date()),'author_name':b['author']})
     archive = '<header class="wrap page-heading"><h1>Daily Brief</h1><p>A short read on what changed in company filings. New notes appear only when the evidence clears review.</p></header>'
     archive += '<section class="wrap education-section"><ul>'+''.join(f'<li><time datetime="{E(str(stamp(b["published_at"]).astimezone(KST).date()) if b.get("published_at") else "")}">{E(publication_label(b))}</time> · <a href="/brief-{E(b["slug"])}.html">{E(b["title"])}</a></li>' for b in records)+'</ul></section>'
     output[root/'daily-briefs.html'] = shell(root,'daily-briefs.html','Daily Brief','Short, source-checked notes on company filings.',archive)

@@ -48,7 +48,7 @@ def main():
     if not args.inline:
         server=ThreadingHTTPServer(('127.0.0.1',0),partial(Handler,directory=str(ROOT)))
         Thread(target=server.serve_forever,daemon=True).start();base=f'http://127.0.0.1:{server.server_port}'
-    errors=[];measurements=[];screens=['index.html','research.html','research-desk.html','learn.html','about.html','tools.html','404.html','learn-bdc.html','course-bdc-beginner.html','learn-bdc-expert-income-bridge.html','es/index.html','es/calculadora-dividendos.html']
+    errors=[];measurements=[];screens=['operating-companies.html','brief-microsoft-fy2027-q1-cash-capex-bridge.html','stock-classification.html','market-labels.html','index.html','research.html','research-desk.html','learn.html','about.html','tools.html','404.html','learn-bdc.html','course-bdc-beginner.html','learn-bdc-expert-income-bridge.html','es/index.html','es/calculadora-dividendos.html']
     with sync_playwright() as p:
         exe=os.environ.get('CHROMIUM_PATH')
         b=p.chromium.launch(**({'executable_path':exe} if exe else {}),headless=True,args=['--no-sandbox'])
