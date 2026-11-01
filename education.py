@@ -156,6 +156,9 @@ def article_page(root,a,lookup):
 <div class="wrap reading-layout"><aside class="article-toc"><span class="kicker">In this guide</span><ol>{toc}<li><a href="#worked-example">Worked example</a></li><li><a href="#source-notes">Sources &amp; next steps</a></li></ol>{calculator_link}</aside>
 <article class="lesson-body">{content}<section class="worked-example" id="worked-example"><span class="kicker">Work through the numbers</span><h2>{E(a['example']['heading'])}</h2><p>{E(a['example']['text'])}</p></section>{exercise}<section class="pitfall"><h2>A common mistake</h2><p>{E(a['pitfall'])}</p></section><section><h2>What to check in the disclosures</h2><ul>{checklist}</ul></section><section id="source-notes"><h2>Sources &amp; scope</h2><p>This guide focuses on US REITs. Examples are hypothetical unless explicitly attributed. Definitions and issuer disclosures can change; use the current source and the issuer's own reconciliation.</p><ul class="source-list">{sources}</ul><p class="small-note">Educational material, not a recommendation or personalized investment advice. <a href="/editorial-policy.html">How these guides are prepared</a> · <a href="mailto:dividendforensics@gmail.com?subject=Education%20correction%3A%20{a['slug']}">Report a correction</a></p></section></article></div>
 <section class="wrap education-section"><div class="section-heading"><div><span class="kicker">Continue learning</span><h2>Connect the next piece.</h2></div><a class="text-link" href="/learn.html">All guides →</a></div><div class="lesson-grid">{related}</div></section>'''
+    if a['slug']=='learn-reit-basics':
+        from stock_basics import prerequisite_links
+        body=body.replace('<div class="wrap article-visual">', prerequisite_links()+'<div class="wrap article-visual">', 1)
     if a['slug'] in ('learn-reit-basics','learn-read-filings','learn-yield-total-return'):
         from research_resources import resource_cards
         body+=resource_cards()
@@ -280,6 +283,8 @@ GLOSSARY=[
 def glossary(root):
     terms=''.join(f'<div class="glossary-term" data-term data-search="{E((term+" "+meaning).lower())}" id="term-{i}"><dt>{E(term)}</dt><dd>{E(meaning)} <a href="/{slug}.html">Read the full guide ↗</a></dd></div>' for i,(term,meaning,slug) in enumerate(GLOSSARY))
     body=section_head('The language of REITs','A definition is<br><em>just the beginning.</em>','Quick explanations of 25 common terms, each connected to a full guide with examples and limitations.')
+    from stock_basics import prerequisite_links
+    body+=prerequisite_links()
     body+='<section class="wrap policy-reading"><label class="glossary-search" data-glossary-control hidden>Find a term<input id="glossary-search" type="search" placeholder="FFO, cap rate, triple-net…"></label><p id="glossary-count" aria-live="polite">25 terms</p><p id="glossary-empty" hidden>No matching terms. Try an abbreviation or a shorter word.</p><dl class="glossary-list">'+terms+'</dl><p class="small-note">These are concise educational explanations. See each linked guide for primary sources, scope and issuer-specific differences.</p></section>'
     return shell(root,'glossary.html','REIT glossary: FFO, AFFO, NAV, net lease & more','Understand 25 REIT terms with clear definitions and links to detailed, source-backed guides.',body,'CollectionPage')
 

@@ -94,6 +94,9 @@ def course_pages(root,articles,shell,section_head):
         nex=f'<a class="btn btn-p" href="/course-{LEVELS[idx+1]["key"]}.html">Next: {LEVELS[idx+1]["name"]} →</a>' if idx<3 else '<a class="btn btn-p" href="/research.html">Explore published research →</a>'
         body='<div class="wrap breadcrumbs"><a href="/learn.html">Learning center</a><span>/</span>'+l['name']+'</div>'
         body+=section_head(f'Level {l["number"]} / {l["name"]}',E(l['title']),l['description'])
+        if l['key']=='beginner':
+            from stock_basics import prerequisite_links
+            body+=prerequisite_links()
         body+='<div class="wrap course-intro"><div><div class="course-note"><h2>Before you start</h2><p>'+E(l['prerequisite'])+'</p></div><div class="course-note"><h2>What you will be able to do</h2><p>'+E(l['outcome'])+'</p></div><p class="small-note">'+str(len(l['slugs']))+' guides · Self-paced · Free access<br>Levels describe material difficulty, not a qualification or professional certification.</p></div>'+figure(l['image'],root,True)+'</div>'
         body+='<section class="wrap education-section"><div class="section-heading"><div><span class="kicker">Read in this order</span><h2>Your learning route.</h2></div><a class="text-link" href="/glossary.html">Keep the glossary nearby ↗</a></div><ol class="course-lessons">'+lessons+'</ol></section>'
         body+='<section class="wrap education-section"><div class="worked-example"><span class="kicker">Apply what you have read</span><h2>The practical exercise.</h2><p>'+E(l['task'])+'</p><a class="text-link" href="/'+l['tool']+'.html">Open the related calculator ↗</a></div></section>'

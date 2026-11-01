@@ -262,3 +262,13 @@ h1,h2,h3{color:var(--text)}
 @media(max-width:480px){.home-atlas .education-visual figcaption{padding:16px 0}}
 
 .workbench-reading-links{padding-left:1.25rem;margin-top:1rem}.workbench-reading-links li{margin-block:.75rem;font-size:1rem;line-height:1.8}
+
+/* Supporting labels remain readable without enlarging the primary masthead. */
+.masthead-note{font-size:.75rem;line-height:1.6;letter-spacing:.06em;flex-wrap:wrap;gap:4px 16px}
+.directory-label,.directory-note{font-size:.75rem;line-height:1.6;letter-spacing:.04em}
+.bureau-directory>.wrap{column-gap:18px}
+.home-page .kicker,.article-toc .kicker{font-size:.8125rem;line-height:1.65}
+.paper-plate figcaption{color:var(--text)}
+.stock-basics-prerequisites{margin-block:20px 28px}
+.stock-basics-prerequisites h2{font:600 1rem/1.5 var(--sans);margin-bottom:6px}
+.stock-basics-prerequisites p{font-size:1rem;line-height:1.8;max-width:75ch}

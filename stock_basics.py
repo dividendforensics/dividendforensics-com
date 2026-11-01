@@ -16,6 +16,11 @@ def discovery():
     return '<section class="wrap education-section stock-basics-discovery" aria-labelledby="stock-basics-title"><div class="section-heading"><div><span class="kicker">Before choosing a learning room</span><h2 id="stock-basics-title">Start with the labels.</h2></div></div><div class="stock-basics-grid">'+cards+'</div></section>'
 
 
+def prerequisite_links():
+    """Compact optional vocabulary route; not part of specialized lesson counts."""
+    return '<aside class="wrap stock-basics-prerequisites" aria-label="Stock basics reading"><h2>Stock basics</h2><p>New to the vocabulary? Start with <a href="/stock-classification.html">how stocks are classified</a> and <a href="/market-labels.html">tickers, exchanges, indexes, and ETFs</a>. These introductions are separate from the REIT and BDC lesson sequences.</p></aside>'
+
+
 def outputs(root):
     result = {}
     for guide in GUIDES:

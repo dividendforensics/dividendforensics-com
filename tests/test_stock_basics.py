@@ -30,6 +30,22 @@ class StockBasicsTests(unittest.TestCase):
             for guide in GUIDES:
                 self.assertTrue(page.select(f'a[href="/{guide["slug"]}.html"]'), (path,guide['slug']))
 
+    def test_subject_entry_points_offer_separate_stock_basics_reading(self):
+        for name in ('learn-reit-basics.html','course-beginner.html','glossary.html',
+                     'operating-companies.html','learn-bdc-basics.html','course-bdc-beginner.html'):
+            page=BeautifulSoup((ROOT/name).read_text(),'html.parser')
+            blocks=page.select('aside.stock-basics-prerequisites')
+            self.assertEqual(len(blocks),1,name)
+            for guide in GUIDES:
+                self.assertTrue(blocks[0].select(f'a[href="/{guide["slug"]}.html"]'),name)
+        glossary=BeautifulSoup((ROOT/'glossary.html').read_text(),'html.parser')
+        self.assertEqual(len(glossary.select('[data-term]')),25)
+        self.assertEqual(glossary.select_one('#glossary-count').get_text(),'25 terms')
+        from education import load_articles
+        from bdc_education import load_articles as load_bdc_articles
+        self.assertEqual(len(load_articles(ROOT)),36)
+        self.assertEqual(len(load_bdc_articles(ROOT)),16)
+
     def test_overlap_figure_keeps_labels_as_real_text(self):
         page = BeautifulSoup(outputs(ROOT)[ROOT/'stock-classification.html'], 'html.parser')
         figure = page.select_one('.stock-labels')

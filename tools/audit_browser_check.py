@@ -86,6 +86,12 @@ def main():
                             measured.update(state='keyboard focus', viewport=width, outline=focus)
                             contrast.append(measured)
                             assert measured['ratio'] >= 4.5, measured
+                        caption=page.evaluate(CONTRAST, '.paper-plate figcaption')
+                        caption.update(viewport=width,state='report-cover caption')
+                        contrast.append(caption)
+                        assert caption['ratio'] >= 4.5, caption
+                        labels=page.locator('.masthead-note,.directory-label,.directory-note,.home-page .section-heading .kicker').evaluate_all("els=>els.filter(e=>e.getClientRects().length).map(e=>({text:e.textContent.trim(),size:parseFloat(getComputedStyle(e).fontSize)}))")
+                        assert all(label['size'] >= 12 for label in labels), labels
                         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), width
                         page.locator('.bureau-hero-copy').screenshot(path=str(output / f'home-learning-cta-reviewed-{width}.png'))
                     checks.append('Home Study BDCs and Study REITs CTAs meet 4.5:1 in default/hover/keyboard focus at 320/390/1440px with visible outlines')
@@ -121,6 +127,14 @@ def main():
                         page.wait_for_function("JSON.parse(document.querySelector('[data-bdc-result] pre').textContent).context.datasetMode === 'synthetic'")
                         reset_audit = json.loads(page.locator('[data-bdc-result] pre').text_content())
                         assert reset_audit['inputs']['price']['value'] == form.locator('[name=price]').input_value()
+                        # A Playwright click is a trusted browser input, not dispatchEvent.
+                        # Stub only the OS print boundary; do not claim dialog verification.
+                        page.evaluate("window.__printCalls=0; window.__printClicks=[]; window.print=()=>{window.__printCalls++}; document.querySelector('[data-bdc-print]').addEventListener('click', e=>window.__printClicks.push(e.isTrusted))")
+                        for expected_calls in (1,2,3):
+                            form.locator('[data-bdc-print]').click()
+                            assert page.evaluate('window.__printCalls') == expected_calls
+                            assert page.evaluate('window.__printClicks.every(Boolean)')
+                        checks.append('NAV print button: one trusted click makes one print call; three separate clicks make exactly three calls (OS dialog stubbed)')
                         page.evaluate("window.dispatchEvent(new Event('beforeprint'))")
                         assert page.locator('[data-bdc-result] details').evaluate('(e)=>e.open')
                         page.evaluate("window.dispatchEvent(new Event('afterprint'))")
