@@ -65,8 +65,36 @@ def main():
                     assert form.locator('[name=capital]').evaluate('e=>getComputedStyle(e).borderTopWidth')=='2px'
                     page.screenshot(path=str(out/'international-de-error-390.png'),full_page=True)
                     page.set_viewport_size({'width':1024,'height':950})
-                    assert abs(form.locator('[name=capital]').bounding_box()['y']-form.locator('[name=yield]').bounding_box()['y'])<1
-                    page.screenshot(path=str(out/'international-de-alignment-1024.png'),full_page=True)
+                    # Compare both inputs in one layout frame. Separate protocol
+                    # reads can straddle focus scrolling after a viewport resize.
+                    measure_alignment='''async () => {
+                        await document.fonts.ready;
+                        await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+                        const box=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};};
+                        const capital=document.querySelector('[name=capital]'), yieldInput=document.querySelector('[name=yield]');
+                        return {locale:document.documentElement.lang,viewport:{width:innerWidth,height:innerHeight},scrollY,
+                            fonts:document.fonts.status,capital:box(capital),yield:box(yieldInput),
+                            capitalLabel:box(capital.closest('label')),yieldLabel:box(yieldInput.closest('label')),
+                            activeInput:document.activeElement.name};
+                    }'''
+                    alignment=page.evaluate(measure_alignment)
+                    diagnostic=Path('/tmp/dfb-preview');diagnostic.mkdir(exist_ok=True)
+                    (diagnostic/'international-de-alignment-1024.json').write_text(json.dumps(alignment,indent=2),encoding='utf-8')
+                    page.screenshot(path=str(diagnostic/'international-de-alignment-1024.png'),full_page=True)
+                    print('German input alignment: '+json.dumps(alignment),flush=True)
+                    assert abs(alignment['capital']['y']-alignment['yield']['y'])<1, alignment
+                    # Harness-only mutation proves the same measurement rejects a
+                    # genuinely offset field. Restore before continuing calculator QA.
+                    original_transform=form.locator('[name=yield]').evaluate('e=>e.style.transform')
+                    try:
+                        form.locator('[name=yield]').evaluate("e=>{e.style.transform='translateY(2px)'}")
+                        offset=page.evaluate(measure_alignment)
+                        assert abs(offset['capital']['y']-offset['yield']['y'])>=1, {'mutation_not_detected':offset}
+                    finally:
+                        form.locator('[name=yield]').evaluate('(e,original)=>{e.style.transform=original}',original_transform)
+                    restored=page.evaluate(measure_alignment)
+                    assert abs(restored['capital']['y']-restored['yield']['y'])<1, restored
+                    print('German input alignment mutation: 2px offset rejected; original alignment restored.',flush=True)
                     page.set_viewport_size({'width':390,'height':950})
                     form.locator('[name=capital]').fill('-1');form.locator('[type=submit]').click()
                     assert 'zwischen 0' in form.locator('[role=alert]').inner_text()
