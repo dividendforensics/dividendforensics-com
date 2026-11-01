@@ -70,4 +70,21 @@ class BdcToolsTests(unittest.TestCase):
             self.assertEqual(len(controls),0 if tool['kind']=='nav' else 2)
             self.assertIn('Arithmetic precision does not increase the accuracy of the source inputs.',soup.get_text())
 
+    def test_visible_availability_and_error_description_contract(self):
+        for tool in bdc_tools.TOOLS:
+            soup=BeautifulSoup(bdc_tools.page(ROOT,tool),'html.parser')
+            controls=soup.select('[data-bdc-input]')
+            self.assertEqual(len(soup.select('[data-bdc-status]')),len(controls))
+            for control in controls:
+                status=soup.find(id=control['name']+'-status')
+                self.assertIsNone(status.find_parent('details'))
+                self.assertIn(status['id'],control['aria-describedby'].split())
+                self.assertIsNotNone(soup.select_one('[name="'+control['name']+'Availability"]'))
+            error=soup.select_one('#bdc-input-error')
+            self.assertEqual(error['role'],'alert')
+            self.assertEqual(len(soup.select('.bdc-nav-notes')),2 if tool['kind']=='nav' else 0)
+            self.assertIn('bdc-1.0.2-availability-1',str(soup))
+        self.assertIn('.bdc-nav-notes>p{max-width:70ch}',(ROOT/'bureau.css').read_text())
+        self.assertIn('.bdc-nav-notes>h2{margin-bottom:.5em}',(ROOT/'bureau.css').read_text())
+
 if __name__=='__main__':unittest.main()

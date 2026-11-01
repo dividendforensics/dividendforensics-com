@@ -272,3 +272,9 @@ h1,h2,h3{color:var(--text)}
 .stock-basics-prerequisites{margin-block:20px 28px}
 .stock-basics-prerequisites h2{font:600 1rem/1.5 var(--sans);margin-bottom:6px}
 .stock-basics-prerequisites p{font-size:1rem;line-height:1.8;max-width:75ch}
+
+/* Worksheet status stays visible when provenance details are collapsed. */
+.bdc-field-status{font-size:.875rem;line-height:1.65;margin:8px 0 12px;color:var(--muted)}
+.bdc-field-status[data-excluded="true"]{border-left:3px solid var(--accent);padding-left:10px;color:var(--text)}
+.bdc-nav-notes>p{max-width:70ch}
+.bdc-nav-notes>h2{margin-bottom:.5em}

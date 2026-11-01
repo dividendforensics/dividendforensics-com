@@ -205,3 +205,56 @@ test('other BDC worksheets keep their existing basis validation',()=>{
   assert.throws(()=>result(kind,fixture,{...context,distributionBasis:null}),/declared or paid/);
  }
 });
+
+test('NAV excluded price names its status and retains entered raw value without using it',()=>{
+ const ctx={...context,unit:'per-share',scale:'one'};
+ for(const [availability,label] of [['not_applicable','Not applicable'],['not_disclosed','Not disclosed'],['not_found','Not found']]){
+  const price={value:'18',availability,origin:'manual',sourceUrl:'https://example.com/source',sourceLocator:'Test quote',reviewedAt:null,reviewedBy:null};
+  const r=result('nav',{price,nav:'20'},ctx);
+  for(const item of r.rows){assert.equal(item.value,null);assert.match(item.reason,/market price per common share excluded/);assert.ok(item.reason.includes(label));assert.doesNotMatch(item.reason,/must be positive/);}
+  assert.equal(r.audit.inputs.price.value,null);
+  assert.equal(r.audit.inputs.price.rawValue,'18');
+  assert.equal(r.audit.inputs.price.availability,availability);
+  assert.equal(r.audit.inputs.price.sourceUrl,price.sourceUrl);
+  assert.equal(r.audit.inputs.price.sourceLocator,'Test quote');
+  assert.equal(r.audit.inputs.price.reviewedBy,null);
+  assert.equal(price.value,'18','caller input not mutated');
+  const included=result('nav',{price:{...price,availability:'scenario'},nav:'20'},ctx);
+  assert.equal(val(included,'Price / NAV'),'0.9');
+  assert.equal(val(included,'Signed premium / (discount)'),'-0.1');
+  assert.equal(val(included,'Price less NAV'),'-2');
+ }
+});
+
+test('NAV missing denominator reasons differ from nonpositive denominator reasons',()=>{
+ const ctx={...context,unit:'per-share',scale:'one'};
+ for(const availability of ['not_applicable','not_disclosed']){
+  const r=result('nav',{price:'18',nav:{value:'20',availability}},ctx);
+  assert.ok(r.rows.every(item=>item.value===null));
+  assert.match(r.rows[0].reason,/Disclosed common NAV per share excluded/);
+  assert.doesNotMatch(r.rows[0].reason,/must be positive/);
+  assert.equal(r.audit.inputs.nav.rawValue,'20');
+ }
+ for(const nav of ['0','-20']){
+  const r=result('nav',{price:'18',nav},ctx);
+  assert.equal(r.rows[0].value,null);assert.match(r.rows[0].reason,/NAV per share must be positive for a ratio/);
+  assert.equal(val(r,'Price less NAV'),nav==='0'?'18':'38');
+ }
+ const absent=result('nav',{price:' ',nav:''},ctx);
+ assert.match(absent.rows[0].reason,/market price per common share excluded — No value entered/);
+ assert.match(absent.rows[0].reason,/NAV per share excluded — Not found/);
+ assert.equal(absent.audit.inputs.price.rawValue,' ');
+});
+
+test('numeric validation identifies the input without changing exclusion semantics',()=>{
+ const ctx={...context,unit:'per-share',scale:'one'};
+ for(const [id,bad] of [['nav','twenty'],['price','1e3'],['price','-1']]){
+  assert.throws(()=>result('nav',{price:'18',nav:'20',[id]:bad},ctx),e=>e.field===id && typeof e.detail==='string' && /per common share|NAV per share/.test(e.message));
+ }
+ const ignored=result('nav',{price:{value:'not a number',availability:'not_applicable'},nav:'20'},ctx);
+ assert.equal(ignored.rows[0].value,null);
+ assert.equal(ignored.audit.inputs.price.rawValue,'not a number');
+ const precise=result('nav',{price:' 18.000 ',nav:'20'},ctx);
+ assert.equal(precise.audit.inputs.price.rawValue,' 18.000 ');
+ assert.equal(precise.audit.inputs.price.value,'18.000');
+});
