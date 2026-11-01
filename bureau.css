@@ -281,6 +281,8 @@ h1,h2,h3{color:var(--text)}
 
 /* Supporting identity labels: readable without enlarging the main masthead. */
 .brand-name{font-size:12px;letter-spacing:.08em}
+.international-page .site-brand{max-width:100%;min-width:0}
+.international-page .brand-name{min-width:0;overflow-wrap:anywhere}
 .site-footer h2{font-size:12px;line-height:1.6}
 .hero-bottom-line{font-size:12px;line-height:1.8;flex-wrap:wrap}
 #learning-results h3{font-size:1.65rem;line-height:1.2}

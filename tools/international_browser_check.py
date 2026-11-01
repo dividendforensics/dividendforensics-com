@@ -33,7 +33,31 @@ def main():
                         path=path_for(locale,key);page.goto(base+'/'+path)
                         assert page.locator('html').get_attribute('lang')==locale
                         assert page.locator('h1').count()==1
-                        assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(path,width)
+                        page.evaluate('document.fonts.ready')
+                        if locale=='zh-hant' and key=='index' and width==320:
+                            # Diagnostic-only reproduction of the old unconstrained
+                            # brand sizing; remove it before asserting the real page.
+                            old_brand=page.add_style_tag(content='.international-page .site-brand{max-width:none;min-width:auto}.international-page .brand-name{min-width:auto;overflow-wrap:normal}')
+                            try:
+                                prior=page.evaluate('''() => ({viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,
+                                    brand:document.querySelector('.site-brand').getBoundingClientRect().toJSON()})''')
+                            finally:
+                                old_brand.evaluate('(e)=>e.remove()')
+                            print('Traditional Chinese old brand sizing probe: '+json.dumps(prior),flush=True)
+                        dimensions=page.evaluate('''() => ({viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,
+                            brandContainer:document.querySelector('.masthead-main').getBoundingClientRect().toJSON(),
+                            brand:[...document.querySelectorAll('.site-brand,.brand-name')].map(e=>({className:e.className,
+                                rect:e.getBoundingClientRect().toJSON(),fontSize:getComputedStyle(e).fontSize})),
+                            offenders:[...document.querySelectorAll('body *')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().right>innerWidth+1)
+                                .slice(0,20).map(e=>({tag:e.tagName,className:e.className,id:e.id,rect:e.getBoundingClientRect().toJSON()}))})''')
+                        if dimensions['scrollWidth']>dimensions['viewport']+1:
+                            diagnostic=Path('/tmp/dfb-preview');diagnostic.mkdir(exist_ok=True)
+                            (diagnostic/f'international-overflow-{locale}-{key}-{width}.json').write_text(json.dumps(dimensions,indent=2))
+                            page.screenshot(path=str(diagnostic/f'international-overflow-{locale}-{key}-{width}.png'),full_page=True)
+                        assert dimensions['scrollWidth']<=dimensions['viewport']+1,(path,width,dimensions)
+                        brand,brand_name=dimensions['brand']
+                        assert float(brand_name['fontSize'].replace('px',''))>=12,(path,width,dimensions)
+                        assert brand['rect']['left']>=dimensions['brandContainer']['left']-1 and brand['rect']['right']<=dimensions['brandContainer']['right']+1,(path,width,dimensions)
                         if key=='reit':
                             page.locator('details summary').click();assert page.locator('details[open]').count()==1
                             page.locator('.lesson-jump-menu a').first.focus();page.keyboard.press('Enter');assert page.url.endswith('#section-1')
