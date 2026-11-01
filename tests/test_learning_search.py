@@ -60,3 +60,27 @@ class LearningSearchTests(unittest.TestCase):
             soup=BeautifulSoup(self.pages[ROOT/(guide['slug']+'.html')],'html.parser')
             self.assertIsNotNone(soup.select_one('nav.reading-next'))
             self.assertFalse(soup.select(f'.stock-basics-discovery a[href="/{guide["slug"]}.html"]'))
+
+    def test_glossary_names_are_generated_topics(self):
+        from education import GLOSSARY
+        from bdc_education import TERMS
+        for slug,terms in [('glossary',GLOSSARY),('glossary-bdc',TERMS)]:
+            record=next(r for r in self.records if r['url']=='/'+slug+'.html')
+            for term,_,_ in terms:self.assertIn(term,record['search'])
+        self.assertEqual(len(self.records),83)
+    def test_added_topics_have_body_evidence(self):
+        evidence={'three-financial-statements':['balance sheet','income statement','cash-flow statement'],
+                  'stock-classification':['shares outstanding','EDGAR'],
+                  'market-labels':['Dividend yield','shares outstanding'],
+                  'dividends-buybacks-guide':['cash purchases of property, plant and equipment'],
+                  'operating-cash-flow-guide':['operating cash flow'],
+                  'cash-flow-workbench':['cash PP&E purchases']}
+        for slug,phrases in evidence.items():
+            text=BeautifulSoup(self.pages[ROOT/(slug+'.html')],'html.parser').select_one('main').get_text(' ').lower()
+            for phrase in phrases:self.assertIn(phrase.lower(),text,slug)
+    def test_mobile_search_fix_preserves_original_baseline(self):
+        import hashlib
+        from tools.loaded_font_search_check import MARKER,BASE_CSS_SHA
+        css=(ROOT/'bureau.css').read_text()
+        self.assertEqual(hashlib.sha256(css.split(MARKER)[0].encode()).hexdigest(),BASE_CSS_SHA)
+        self.assertIn('.home-library-search{min-width:0;width:100%}',css)

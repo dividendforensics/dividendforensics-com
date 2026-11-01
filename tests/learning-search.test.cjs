@@ -21,6 +21,10 @@ test('required queries reach relevant generated pages without navigation-only hi
   const expected={'ticker':'market-labels','market cap':'stock-classification','S&P500':'market-labels','buyback':'dividends-buybacks-guide','free cash flow':'dividends-buybacks-guide','EPS':'market-labels','PIK':'learn-bdc-pik-income'};
   assert(records.length>52);
   for(const [query,slug] of Object.entries(expected))assert(records.some(r=>matches(r.text,query)&&r.url===`/${slug}.html`),query);
-  assert.deepEqual(records.filter(r=>matches(r.text,'market cap')).map(r=>r.url),['/stock-classification.html']);
+  assert(!records.some(r=>matches(r.text,'market cap') && r.url==='/learn-bdc-nav-discounts.html'));
+  const expanded={'balance sheet':'three-financial-statements','income statement':'three-financial-statements','statement of cash flows':'three-financial-statements','shares outstanding':'stock-classification','EDGAR':'stock-classification','capex':'dividends-buybacks-guide','capital expenditures':'dividends-buybacks-guide','CFO':'operating-cash-flow-guide','FCF':'cash-flow-workbench','dividend yield':'market-labels'};
+  assert.equal(records.length,83);
+  for(const [query,slug] of Object.entries(expanded))assert(records.some(r=>matches(r.text,query)&&r.url===`/${slug}.html`),query);
+  assert(records.some(r=>matches(r.text,'dividend yield')&&r.url==='/glossary.html'));
   assert.equal(records.filter(r=>matches(r.text,'없는검색어')).length,0);
 });

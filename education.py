@@ -100,7 +100,7 @@ def breadcrumb_items(name,title):
 
 def shell(root,name,title,description,body,kind='WebPage',extra='',index=True,article=None):
     from build_site import header,footer
-    education_script = '/education.js?v=glossary-anchors-1' if name in ('glossary.html','glossary-bdc.html') else '/education.js'
+    education_script = '/education.js?v=glossary-anchors-1' if name in ('glossary.html','glossary-bdc.html') else ('/education.js?v=reit-search-escape-1' if name == 'learn.html' else '/education.js')
     url=DOMAIN+('/' if name=='index.html' else '/'+name)
     schema={'@context':'https://schema.org','@type':kind,'name':title,'description':description,'url':url,'inLanguage':'en','isAccessibleForFree':True,'publisher':{'@type':'Organization','name':'Dividend Forensics Bureau','url':DOMAIN}}
     if kind=='Article':
