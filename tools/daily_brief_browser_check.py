@@ -99,11 +99,12 @@ def main():
                         await document.fonts.ready;
                         await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
                     }''')
-                    # A clicked navigation does not define a portable starting point
-                    # for the next Tab. Seed the real skip link, then test its actual
-                    # keyboard activation and the precise subsequent tab sequence.
-                    page.locator('a.skip-link[href="#main"]').focus()
+                    # Check initial keyboard reachability as well as the skip-link
+                    # activation path; never manufacture focus on the target link.
                     try:
+                        page.wait_for_function('document.activeElement === document.body')
+                        page.keyboard.press('Tab')
+                        page.wait_for_function('document.activeElement === document.querySelector("a.skip-link") && document.activeElement.getAttribute("href") === "#main"')
                         page.keyboard.press('Enter')
                         page.wait_for_function('document.activeElement === document.getElementById("main")')
                         page.keyboard.press('Tab')
