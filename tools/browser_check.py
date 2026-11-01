@@ -60,6 +60,36 @@ def main():
                 page.goto(base+'/'+name,wait_until='networkidle')
                 page.evaluate("document.querySelectorAll('img').forEach(i=>i.loading='eager')")
             page.evaluate("Promise.all([...document.images].map(i=>i.decode().catch(()=>null)))")
+        # Page overflow misses text spilling into an adjacent grid track. Inspect
+        # actual text-line rectangles, including the previously colliding 1188px view.
+        for width in (320,390,600,768,1024,1051,1188,1440):
+            page=b.new_page(viewport={'width':width,'height':900})
+            load(page,'index.html')
+            page.evaluate('document.fonts.ready')
+            assert page.locator('.home-curriculum .course-card').count()==4
+            collisions=page.evaluate(r'''() => {
+              const lines=element=>{
+                const walker=document.createTreeWalker(element,NodeFilter.SHOW_TEXT), rects=[];
+                while(walker.nextNode()) {
+                  if(!walker.currentNode.textContent.trim()) continue;
+                  const range=document.createRange();range.selectNodeContents(walker.currentNode);
+                  rects.push(...[...range.getClientRects()].map(r=>({left:r.left,right:r.right,top:r.top,bottom:r.bottom})));
+                }
+                return rects;
+              };
+              return [...document.querySelectorAll('.home-curriculum .course-card')].flatMap(card=>{
+                const title=card.querySelector('h3'), copy=card.querySelector('p'), bounds=card.getBoundingClientRect();
+                const heading=lines(title), body=lines(copy);
+                const overlap=heading.some(a=>body.some(b=>Math.max(b.left-a.right,a.left-b.right)<8 && Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>1));
+                const outside=heading.some(r=>r.left<bounds.left-1 || r.right>bounds.right+1);
+                return overlap || outside ? [{title:title.textContent.trim(),overlap,outside,heading,body}] : [];
+              });
+            }''')
+            measurements.append(dict(page='index.html',width=width,curriculumTextCollisions=collisions))
+            if collisions:errors.append(f'index.html@{width}: curriculum text collision {collisions}')
+            if width==1188:
+                page.locator('.home-curriculum').screenshot(path=str(out/'home-curriculum-1188.png'))
+            page.close()
         for width in map(int,args.widths.split(',')):
             for name in pages:
                 page=b.new_page(viewport={'width':width,'height':900})
