@@ -4,6 +4,7 @@ from threading import Event
 from unittest.mock import patch
 import importlib.util
 import json
+import time
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -109,7 +110,7 @@ class DeploymentVerificationTests(unittest.TestCase):
             def fetcher(url):
                 urls.append(url)
                 return 200, b'current' if '?' in url else b'old', {}
-            with patch.object(live.time, 'sleep') as sleep:
+            with patch.object(live, 'retry_sleep') as sleep:
                 report = live.verify(['index.html'], 'https://example.com', output,
                                      attempts=2, interval=1, root=root, fetcher=fetcher)
             self.assertTrue(report['complete'])
@@ -118,6 +119,28 @@ class DeploymentVerificationTests(unittest.TestCase):
             self.assertEqual(urls.count('https://example.com/'), 2)
             self.assertEqual(len(report['history']), 2)
             sleep.assert_called_once_with(1)
+
+    def test_retry_sleep_mock_does_not_capture_subprocess_polling(self):
+        original_sleep = time.sleep
+        with TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / 'index.html').write_bytes(b'current')
+            def polling_subprocess(*args, **kwargs):
+                # subprocess timeout handling can sleep while gathering provenance.
+                # That unrelated wait must never be counted as a verifier retry.
+                self.assertIs(time.sleep, original_sleep)
+                time.sleep(0.001)
+                return 'a' * 40
+            with patch.object(live, 'retry_sleep') as retry, \
+                    patch.object(live.subprocess, 'check_output', side_effect=polling_subprocess) as process:
+                report = live.verify(['index.html'], 'https://example.com', root / 'report.json',
+                                     attempts=2, interval=1, root=root,
+                                     fetcher=lambda url: (200, b'old', {}))
+            self.assertEqual(process.call_count, 2)
+            self.assertFalse(report['passed'])
+            self.assertTrue(report['complete'])
+            self.assertEqual(len(report['history']), 2)
+            retry.assert_called_once_with(1)
 
     def test_provenance_includes_revisions_and_only_allowlisted_environment(self):
         environment = {'GITHUB_REPOSITORY': 'owner/site', 'GITHUB_RUN_ID': '123',
