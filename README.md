@@ -1,5 +1,15 @@
 # Dividend Forensics Bureau
 
+## Stock basics and reading comfort
+
+Two introductory guides explain overlapping stock classifications and market labels
+(tickers, exchanges, indexes and ETFs). `stock_basics.py` renders their reviewed
+source templates in `templates/stock-basics/`; do not edit the generated root HTML.
+They are linked from the home page and learning center, separately from the numbered
+REIT and BDC guide counts. `bureau.css` owns final reading-size and responsive rules;
+`curriculum.py` provides visible full-size links for conceptual illustrations.
+
+
 ## Operating-company analysis and historical filing labs
 
 The free learning journey includes three historical FY2024 filing exercises: Realty Income AFFO/dividend reconciliation, Ares Capital NII/PIK/distributions, and Apple earnings/cash/capital returns. These are dated educational analyses, separate from the selected publication archive and from current issuer assessments. `content/filing-labs.json` and `content/operating-company-lab.json` preserve source documents, reported decimal values, units and table locations; `filing_labs.py` and `operating_filing_lab.py` render the source trail and calculations.

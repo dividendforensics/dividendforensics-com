@@ -271,10 +271,10 @@
           "evidence": "This is a presentation and wording revision of the already published October 31, 2026 filing brief, not a new event or a new daily article. The original publication timestamp and SEC event accession remain unchanged. The first paragraph retains the September 30 reporting-period end; the source filing event remains October 28."
         }
       },
-      "rendered_html_sha256": "b1bd4f781171371f0ae44d9e376aab8e2b031ee7b03d5bcebc1a1e89db9237b6",
+      "rendered_html_sha256": "367638b08b3381a34bc39190bca29f636c6e646c84d72935378f5e834ee3236c",
       "scope": "Assisted independent editorial review of the exact revised record and final full-build text/source links. Browser visual checks, CI and deployment remain separate release checks; no claim of professional certification or zero errors.",
-      "render_rechecked_at": "2026-10-31T14:46:49.390964+00:00",
-      "render_check_evidence": "Compared the final full-build HTML with the reviewed four-paragraph newsletter preview. Only two favicon links were added in the head; the body is byte-identical. No public table, raw formula, internal calculation key or report-style subsection heading appears. All source links, essential limitations and original October 31 publication date remain."
+      "render_rechecked_at": "2026-11-01T04:49:15.624143+00:00",
+      "render_check_evidence": "Read-only comparison of the readability revision with the previously approved short-newsletter release confirmed that the entire article subtree is byte-identical: four paragraphs, amounts, qualifications and primary-source links are unchanged. The brief record and original publication timestamp are unchanged. The visible DFB editorial organization byline agrees with Article structured data; datePublished and dateModified both retain 2026-10-31. This review covers rendering and metadata only. Sources were not reopened and the existing independent source, arithmetic and editorial findings are retained. Browser and deployment checks remain separate release gates."
     }
   ]
 }

@@ -15,7 +15,7 @@ class BdcToolsTests(unittest.TestCase):
             self.assertGreater(len(soup.select_one('main').get_text(' ',strip=True).split()),700,path)
             self.assertEqual(soup.select_one('link[rel=canonical]')['href'],'https://dividendforensics.com/'+path.name)
             self.assertIn('Synthetic example',soup.get_text())
-            self.assertIn('Where to find the inputs.',soup.get_text())
+            self.assertEqual(soup.select_one('#filing-inputs h2').get_text(), 'How to use: find and match the inputs')
             self.assertIn('Jeong-Mo Goo',soup.select_one('main').get_text())
             self.assertTrue(soup.select('[data-bdc-tool]'))
             self.assertFalse(soup.select('[data-calculator]'))

@@ -76,7 +76,7 @@ def figure(key,root,compact=False):
     if not path.exists():return ''
     alt,caption=IMAGES[key]
     metadata=json.loads((root/'img/education/assets.json').read_text(encoding='utf-8'))[key]
-    return f'<figure class="education-visual {"visual-compact" if compact else ""}"><a href="/img/education/{key}.webp" target="_blank" rel="noopener" aria-label="Open full illustration"><img src="/img/education/{key}.webp" width="{metadata["width"]}" height="{metadata["height"]}" loading="lazy" alt="{E(alt)}"></a><figcaption>{E(caption)} <span>Conceptual educational illustration; not company data. <a href="/editorial-policy.html">Image and source policy</a>.</span></figcaption></figure>'
+    return f'<figure class="education-visual {"visual-compact" if compact else ""}"><a href="/img/education/{key}.webp" target="_blank" rel="noopener" aria-label="Open full illustration"><img src="/img/education/{key}.webp" width="{metadata["width"]}" height="{metadata["height"]}" loading="lazy" alt="{E(alt)}"></a><figcaption>{E(caption)} <a class="illustration-full-size" href="/img/education/{key}.webp" target="_blank" rel="noopener">Open full-size illustration ↗</a><span>Conceptual educational illustration; not company data. <a href="/editorial-policy.html">Image and source policy</a>.</span></figcaption></figure>'
 
 def level_cards(articles):
     lookup={a['slug']:a for a in articles}

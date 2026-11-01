@@ -11,6 +11,7 @@ on:
       - 'articles.json'
       - 'build_site.py'
       - 'education.py'
+      - 'stock_basics.py'
       - 'lesson_formats.py'
       - 'research_resources.py'
       - 'filing_labs.py'
