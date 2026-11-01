@@ -100,6 +100,7 @@ def breadcrumb_items(name,title):
 
 def shell(root,name,title,description,body,kind='WebPage',extra='',index=True,article=None):
     from build_site import header,footer
+    education_script = '/education.js?v=glossary-anchors-1' if name in ('glossary.html','glossary-bdc.html') else '/education.js'
     url=DOMAIN+('/' if name=='index.html' else '/'+name)
     schema={'@context':'https://schema.org','@type':kind,'name':title,'description':description,'url':url,'inLanguage':'en','isAccessibleForFree':True,'publisher':{'@type':'Organization','name':'Dividend Forensics Bureau','url':DOMAIN}}
     if kind=='Article':
@@ -115,7 +116,7 @@ def shell(root,name,title,description,body,kind='WebPage',extra='',index=True,ar
 <link rel="stylesheet" href="/dfb.css"><link rel="stylesheet" href="/newsroom.css"><link rel="stylesheet" href="/education.css">
 <script type="application/ld+json">{json.dumps(schema,ensure_ascii=False).replace('<','\\u003c')}</script>
 <script type="application/ld+json">{json.dumps(breadcrumb,ensure_ascii=False).replace('<','\\u003c')}</script>
-<script src="/site.js" defer></script><script src="/education.js" defer></script>{extra}<link rel="stylesheet" href="/bureau.css">
+<script src="/site.js" defer></script><script src="{education_script}" defer></script>{extra}<link rel="stylesheet" href="/bureau.css">
 </head><body class="education-page">
 <!-- SITE:HEADER -->
 {header(name,root)}
@@ -178,10 +179,11 @@ def hub(root,articles):
     body=section_head('The DFB learning center','Understand the property.<br><em>Then follow the cash.</em>',f'{len(articles)} free guides to REIT businesses, financial measures and dividend analysis. Start from the basics or go straight to the question in your filing.')
     level_options=''.join(f'<option value="{l["name"]}">{l["name"]}</option>' for l in LEVELS)
     from stock_basics import discovery as stock_discovery
+    body += '<section class="wrap education-section"><h2>Looking beyond REITs?</h2><p><a href="/learning-search.html#search-results">Search all learning rooms</a> for stock basics, BDCs, operating companies, calculators and historical filing practice. The filters below remain dedicated to the 36 REIT guides.</p></section>'
     body += stock_discovery()
     body+='<section class="wrap education-section"><div class="worked-example"><span class="kicker">Two learning rooms</span><h2>Studying a lender rather than a property owner?</h2><p>BDC accounting follows loan income, credit marks and funding costs. Follow the dedicated four-level BDC curriculum rather than applying REIT FFO and AFFO to a lending fund.</p><a class="btn btn-p" href="/learn-bdc.html">Open BDC learning →</a></div></section>'
     body+='<section class="wrap education-section" id="learning-paths"><div class="section-heading"><div><span class="kicker">Four levels / one connected library</span><h2>Choose your depth.</h2></div></div>'+level_cards(articles)+'</section>'
-    body+=f'<section class="wrap learning-paths" aria-label="Suggested starting questions">{pathhtml}</section><section class="wrap education-section" id="library"><div class="section-heading"><div><span class="kicker">The complete reading room</span><h2>Find your next question.</h2></div><a class="text-link" href="/glossary.html">Open the glossary ↗</a></div><div class="library-filters" data-library-controls hidden><label>Search guides<input id="lesson-search" type="search" placeholder="Try AFFO, net lease, refinancing…"></label><label>Subject<select id="lesson-category"><option value="all">All subjects</option>{options}</select></label><label>Level<select id="lesson-level"><option value="all">All levels</option>{level_options}</select></label><button id="lesson-reset" type="button" class="btn btn-s">Clear filters</button><p id="lesson-count" aria-live="polite">{len(articles)} guides</p></div><noscript><p>All guides are listed below. Search is an optional enhancement.</p></noscript><p id="lesson-empty" hidden>No guides match. Try a shorter term or clear the filters.</p><div class="lesson-grid">{cards(articles)}</div></section>'
+    body+=f'<section class="wrap learning-paths" aria-label="Suggested starting questions">{pathhtml}</section><section class="wrap education-section" id="library"><div class="section-heading"><div><span class="kicker">The REIT reading room</span><h2>Find your next question.</h2></div><a class="text-link" href="/glossary.html">Open the glossary ↗</a></div><div class="library-filters" data-library-controls hidden><label>Search guides<input id="lesson-search" type="search" placeholder="Try AFFO, net lease, refinancing…"></label><label>Subject<select id="lesson-category"><option value="all">All subjects</option>{options}</select></label><label>Level<select id="lesson-level"><option value="all">All levels</option>{level_options}</select></label><button id="lesson-reset" type="button" class="btn btn-s">Clear filters</button><p id="lesson-count" aria-live="polite">{len(articles)} guides</p></div><noscript><p>All guides are listed below. Search is an optional enhancement.</p></noscript><p id="lesson-empty" hidden>No REIT guides match these filters. Try a shorter term or clear the filters, or <a href="/learning-search.html#search-results">search all learning rooms</a> for BDCs, stock basics and operating companies.</p><div class="lesson-grid">{cards(articles)}</div></section>'
     body+='<section class="wrap education-section" id="property-sectors"><div class="section-heading"><div><span class="kicker">Different assets, different questions</span><h2>Explore the property sectors.</h2></div></div><div class="sector-strip">'+''.join(f'<a href="/{a["slug"]}.html">{E(a["title"].split(":")[0])} ↗</a>' for a in articles if a['category']=='Property sectors')+'</div></section>'
     body+='<section class="wrap education-section"><div class="section-heading"><div><span class="kicker">Beyond the REIT library</span><h2>Keep the wider context.</h2></div></div><div class="sector-strip"><a href="/research.html">Published research ↗</a><a href="/bdc-guide.html">BDC field guide ↗</a><a href="/operating-companies.html">Operating-company cash flow ↗</a><a href="/industrials-guide.html">Industrials field guide ↗</a><a href="/telecom-guide.html">Telecom field guide ↗</a><a href="/methodology.html">DFB methodology ↗</a><a href="/tools.html">Working papers &amp; calculators ↗</a></div></section>'
     from research_resources import resource_cards
@@ -281,11 +283,20 @@ GLOSSARY=[
 ('Weighted lease term','An average remaining lease term weighted by a disclosed base; it can conceal near-term concentrations.','learn-lease-expirations')]
 
 def glossary(root):
-    terms=''.join(f'<div class="glossary-term" data-term data-search="{E((term+" "+meaning).lower())}" id="term-{i}"><dt>{E(term)}</dt><dd>{E(meaning)} <a href="/{slug}.html">Read the full guide ↗</a></dd></div>' for i,(term,meaning,slug) in enumerate(GLOSSARY))
+    # Human-readable anchors are permanent; retain every existing term-N bookmark.
+    anchors = ('affo','cap-rate','common-equity','coverage','dilution','dividend-yield',
+               'drip','equity-reit','ffo','interest-coverage','lease-rollover','mortgage-reit',
+               'nav','net-lease','noi','payout-ratio','recurring-capex','refinancing',
+               'reit-etf','same-store-noi','straight-line-rent','tenant-concentration',
+               'total-return','triple-net-lease','weighted-lease-term')
+    if len(anchors) != len(GLOSSARY):
+        raise ValueError('Assign a permanent anchor before adding a REIT glossary term')
+    terms=''.join(f'<div class="glossary-term" data-term data-search="{E((term+" "+meaning).lower())}" id="term-{i}"><dt id="{anchor}">{E(term)}</dt><dd>{E(meaning)} <a href="/{slug}.html">Explore {E(term)} in the full guide ↗</a></dd></div>' for i,((term,meaning,slug),anchor) in enumerate(zip(GLOSSARY,anchors)))
     body=section_head('The language of REITs','A definition is<br><em>just the beginning.</em>','Quick explanations of 25 common terms, each connected to a full guide with examples and limitations.')
     from stock_basics import prerequisite_links
     body+=prerequisite_links()
     body+='<section class="wrap policy-reading"><label class="glossary-search" data-glossary-control hidden>Find a term<input id="glossary-search" type="search" placeholder="FFO, cap rate, triple-net…"></label><p id="glossary-count" aria-live="polite">25 terms</p><p id="glossary-empty" hidden>No matching terms. Try an abbreviation or a shorter word.</p><dl class="glossary-list">'+terms+'</dl><p class="small-note">These are concise educational explanations. See each linked guide for primary sources, scope and issuer-specific differences.</p></section>'
+    body+='<nav class="wrap policy-reading reading-next" aria-label="Continue learning"><h2>Put the terms in context</h2><p>Start with <a href="/learn-ffo.html">the FFO reconciliation</a>, then <a href="/learn-affo.html">issuer-specific AFFO adjustments</a>. For lending income rather than property income, use the <a href="/glossary-bdc.html#nii">BDC definition of NII</a>.</p></nav>'
     return shell(root,'glossary.html','REIT glossary: FFO, AFFO, NAV, net lease & more','Understand 25 REIT terms with clear definitions and links to detailed, source-backed guides.',body,'CollectionPage')
 
 def education_outputs(root):
@@ -316,6 +327,10 @@ def education_outputs(root):
     from operating_filing_lab import outputs as operating_lab_outputs, workbench_example
     output.update(operating_outputs(root,examples=[workbench_example(root)]))
     output.update(operating_lab_outputs(root))
+    from foundation_guides import outputs as foundation_outputs
+    output.update(foundation_outputs(root))
+    from learning_search import output as search_output
+    output.update(search_output(root, output))
     pages={p:p.read_text(encoding='utf-8') for p in root.glob('*.html')}
     pages.update(output)
     urls=[]

@@ -10,7 +10,7 @@ class ReadingContactTests(unittest.TestCase):
 
     def test_home_search_targets_existing_library(self):
         form = self.soup('index.html').select_one('form.home-library-search')
-        self.assertEqual(form['action'], '/learn.html#library')
+        self.assertEqual(form['action'], '/learning-search.html#search-results')
         self.assertEqual(form['method'], 'get')
         self.assertIsNotNone(self.soup('learn.html').select_one('#library'))
 
