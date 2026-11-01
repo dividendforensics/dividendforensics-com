@@ -38,10 +38,17 @@ def check_learning_search(page, base):
     page.wait_for_function("document.activeElement === document.getElementById('learning-query')")
     expected = {'ticker':'market-labels', 'market cap':'stock-classification', 'S&P500':'market-labels',
                 'buyback':'dividends-buybacks-guide', 'free cash flow':'dividends-buybacks-guide',
-                'EPS':'market-labels', 'PIK':'learn-bdc-pik-income'}
+                'EPS':'market-labels', 'PIK':'learn-bdc-pik-income',
+                'balance sheet':'three-financial-statements','income statement':'three-financial-statements',
+                'statement of cash flows':'three-financial-statements','shares outstanding':'stock-classification',
+                'EDGAR':'stock-classification','capex':'dividends-buybacks-guide',
+                'capital expenditures':'dividends-buybacks-guide','CFO':'operating-cash-flow-guide',
+                'FCF':'cash-flow-workbench','dividend yield':'market-labels'}
     for query, slug in expected.items():
         page.locator('#learning-query').fill(query)
         assert page.locator('[data-learning-result]:visible a[href="/'+slug+'.html"]').count() == 1, query
+    assert page.locator('[data-learning-result]:visible a[href="/glossary.html"]').count()==1
+    page.locator('#learning-query').fill('PIK')
     page.locator('#learning-topic').select_option('REIT')
     assert page.locator('#learning-empty').is_visible()
     page.locator('#learning-query').focus()
@@ -101,6 +108,26 @@ def main(library_only=False):
         page.on('response',lambda r:responses.append({'url':r.url,'status':r.status}))
         page.on('requestfailed',lambda r:failed_requests.append({'url':r.url,'failure':r.failure}))
         check_learning_search(page, base)
+        # Empty REIT results must carry the actual term into the wider directory.
+        for query in ('ticker', 'S&P500', '배당 & cash'):
+            page.goto(base+'/learn.html#library')
+            page.locator('#lesson-search').fill(query)
+            page.locator('#lesson-category').select_option('Start here')
+            page.locator('#lesson-level').select_option('Expert')
+            assert page.locator('#lesson-empty').is_visible()
+            escape=page.locator('#lesson-empty a')
+            assert escape.evaluate('(e)=>new URL(e.href).searchParams.get("q")')==query
+            assert escape.evaluate('(e)=>new URL(e.href).hash')=='#search-results'
+            escape.click()
+            page.wait_for_url('**/learning-search.html?**#search-results')
+            page.wait_for_function('q=>document.querySelector("#learning-query")?.value===q',arg=query)
+            assert page.locator('#learning-query').input_value()==query
+        page.goto(base+'/learn.html?q=ticker#library')
+        page.wait_for_function("document.querySelector('#lesson-search')?.value==='ticker'")
+        page.locator('#lesson-search').fill('market cap')
+        assert page.locator('#lesson-empty a').evaluate('(e)=>new URL(e.href).searchParams.get("q")')=='market cap'
+        page.locator('#lesson-reset').click()
+        assert page.locator('#lesson-empty a').evaluate('(e)=>new URL(e.href).searchParams.has("q")') is False
         # Legacy links retain the original REIT-only q/filter contract.
         page.goto(base+'/learn.html?q=AFFO#library')
         wait_for_library_query(page,'AFFO',errors,responses,failed_requests,out)

@@ -10,6 +10,12 @@
       lessons.forEach(item => { const visible = item.dataset.search.includes(query) && (category.value === 'all' || item.dataset.category === category.value) && (level.value === 'all' || item.dataset.level === level.value); item.hidden = !visible; count += visible ? 1 : 0; });
       document.getElementById('lesson-count').textContent = count + (count === 1 ? ' guide' : ' guides');
       document.getElementById('lesson-empty').hidden = count !== 0;
+      const escape = document.querySelector('#lesson-empty a[href]');
+      if (escape) {
+        const destination = new URL('/learning-search.html#search-results', window.location.origin);
+        if (search.value.trim()) destination.searchParams.set('q', search.value.trim());
+        escape.href = destination.pathname + destination.search + destination.hash;
+      }
     }
     function syncQueryUrl() {
       const url = new URL(window.location.href);

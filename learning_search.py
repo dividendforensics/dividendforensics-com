@@ -4,10 +4,13 @@ from education import E, shell, section_head
 
 # Editorial synonyms point only at pages that explain these topics.
 TOPICS = {
-    'stock-classification': 'market cap market capitalization large cap small cap sectors',
-    'market-labels': 'ticker NYSE Nasdaq S&P500 S&P 500 EPS earnings per share ETF exchange index',
-    'dividends-buybacks-guide': 'buyback share repurchase free cash flow FCF',
-    'operating-cash-flow-guide': 'free cash flow FCF operating cash flow working capital',
+    'stock-classification': 'market cap market capitalization large cap small cap sectors shares outstanding EDGAR',
+    'market-labels': 'ticker NYSE Nasdaq S&P500 S&P 500 EPS earnings per share ETF exchange index shares outstanding market capitalization market cap dividend yield',
+    'dividends-buybacks-guide': 'buyback share repurchase free cash flow FCF capital expenditures capex',
+    'operating-cash-flow-guide': 'free cash flow FCF operating cash flow cash flow from operations CFO working capital statement of cash flows',
+    'three-financial-statements': 'balance sheet income statement statement of cash flows cash flow statement cash-flow statement capital expenditures capex free cash flow FCF',
+    'cash-flow-workbench': 'cash flow from operations CFO statement of cash flows free cash flow FCF capital expenditures capex',
+    'learn-read-filings': 'EDGAR',
 }
 
 class Metadata(HTMLParser):
@@ -26,6 +29,10 @@ def records(root, pages):
     from stock_basics import GUIDES
     from operating_companies import PAGES
     from research_resources import RESOURCES
+    from education import GLOSSARY
+    from bdc_education import TERMS
+    glossary_names = {'glossary': ' '.join(term for term, _, _ in GLOSSARY),
+                      'glossary-bdc': ' '.join(term for term, _, _ in TERMS)}
     stock = {g['slug'] for g in GUIDES}
     operating = {p[0] for p in PAGES}
     practical = {r['slug'] for r in RESOURCES}
@@ -45,7 +52,7 @@ def records(root, pages):
         meta = Metadata(); meta.feed(html)
         title = meta.title.removesuffix(' · DFB')
         result.append(dict(url='/'+path.name, title=title, description=meta.description, topic=topic,
-                           search=' '.join((title, meta.description, TOPICS.get(slug, '')))))
+                           search=' '.join((title, meta.description, TOPICS.get(slug, ''), glossary_names.get(slug, '')))))
     return sorted(result, key=lambda r: (r['topic'], r['title']))
 
 def output(root, pages):

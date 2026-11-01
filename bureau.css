@@ -287,3 +287,8 @@ h1,h2,h3{color:var(--text)}
 .hero-bottom-line{font-size:12px;line-height:1.8;flex-wrap:wrap}
 #learning-results h3{font-size:1.65rem;line-height:1.2}
 #learning-empty{max-width:70ch;padding-block:20px}
+
+/* Allow the search grid item to shrink at 320px, with real web fonts too. */
+.bureau-discovery{grid-template-columns:repeat(2,minmax(0,1fr))}
+.home-library-search{min-width:0;width:100%}
+@media(max-width:780px){.bureau-discovery{grid-template-columns:minmax(0,1fr)}}
