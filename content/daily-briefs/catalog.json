@@ -237,6 +237,252 @@
         }
       ],
       "limitations": "Cash-capex free cash flow is DFB-defined operating cash flow less cash additions to property and equipment, not an issuer-reported FCF figure. The additional lease-principal deduction is analytical. Derived figures are arithmetic on rounded reported inputs; the dividend remainder excludes other investing and financing cash flows. One quarter does not establish future distribution capacity."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "kdp-q3-2026-cash-flow-common-dividends",
+      "author": "DFB editorial",
+      "title": "KDP: Nine-month cash flow covers common dividends",
+      "summary": "Keurig Dr Pepper’s nine-month free cash flow exceeded common dividends, while other distributions, lease payments and current obligations remain relevant.",
+      "event_date": "2026-11-03",
+      "reporting_period": {
+        "start": "2026-01-01",
+        "end": "2026-09-30"
+      },
+      "comparison_periods": [
+        {
+          "start": "2026-09-30",
+          "end": "2026-09-30"
+        }
+      ],
+      "source_checked_at": "2026-11-03T22:05:59.273732+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000141813526000064",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813526000064/kdp-20261103.htm",
+          "title": "Keurig Dr Pepper Form 8-K, November 3, 2026",
+          "locator": "Form 8-K cover, Item 2.02, and Exhibit 99.1 link",
+          "published_date": "2026-11-03",
+          "publication_precision": "date",
+          "checked_at": "2026-11-03T22:05:59.273732+00:00",
+          "content_sha256": "26ccb0714d7eb8e09dee8f4901857b207fe76c94dac0793d82cbfb77b01cd47c",
+          "representation_note": "SHA256 identifies the exact retrieved HTTPS response body. The served HTML contains an additional 112-byte script tag compared with the SEC index document size; it is not represented as a hash of the original submission bytes."
+        },
+        "sec_exhibit": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813526000064/ex991-keurigdrpepperreport.htm",
+          "title": "Keurig Dr Pepper Q3 2026 earnings release, SEC Exhibit 99.1",
+          "locator": "Appendix A-2 balance sheet; A-3/A-4 cash-flow statement; A-19 free-cash-flow reconciliation; opening management commentary",
+          "published_date": "2026-11-03",
+          "publication_precision": "date",
+          "checked_at": "2026-11-03T22:05:59.242583+00:00",
+          "content_sha256": "7656841220a207fe3ea0d3a0bcbdafcaa7cb45474a9ac71d65ece3e4f0399a80",
+          "representation_note": "SHA256 identifies the exact retrieved HTTPS response body. The served HTML contains an additional 112-byte script tag compared with the SEC index document size; it is not represented as a hash of the original submission bytes."
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://investors.keurigdrpepper.com/2026-11-03-Keurig-Dr-Pepper-Reports-Q3-Results-and-Reaffirms-Guidance-for-2026",
+          "title": "Keurig Dr Pepper Q3 2026 earnings release",
+          "locator": "Condensed Consolidated Balance Sheets; Condensed Consolidated Statements of Cash Flows; Free Cash Flow reconciliation; opening management commentary",
+          "published_date": "2026-11-03",
+          "publication_precision": "date",
+          "checked_at": "2026-11-03T22:05:59.238168+00:00",
+          "content_sha256": "d2ab26f82a6271ef000741ccd5f5de973fdbb4ad7e36ccf101e6df4ea714f55f"
+        }
+      },
+      "facts": {
+        "cfo_current": {
+          "value": "2220",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-01-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "A-3 cash-flow statement and A-19 FCF reconciliation",
+          "basis": "Net cash provided by operating activities, consolidated"
+        },
+        "cash_ppe_current": {
+          "value": "457",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-01-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "A-3 and A-19, purchases of property, plant, and equipment",
+          "basis": "Cash purchases of property, plant and equipment; positive spending magnitude of reported cash outflow"
+        },
+        "ppe_disposals_current": {
+          "value": "145",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-01-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "A-3 and A-19, proceeds from sales of property, plant, and equipment",
+          "basis": "Cash proceeds from sales of property, plant and equipment"
+        },
+        "reported_fcf_current": {
+          "value": "1908",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-01-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "A-19, Free Cash Flow",
+          "basis": "Issuer-reported non-GAAP free cash flow, including PP&E disposal proceeds"
+        },
+        "common_cash_dividends": {
+          "value": "938",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-01-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "A-4 financing activities, cash dividends paid to common shareholders",
+          "basis": "Cash dividends paid to common shareholders; positive spending magnitude, not per-share declared dividend"
+        },
+        "preferred_cash_dividends": {
+          "value": "107",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-01-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "A-4 financing activities, cash dividends paid to Preferred Investors",
+          "basis": "Cash dividends paid to Preferred Investors; positive spending magnitude"
+        },
+        "nci_distributions": {
+          "value": "64",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-01-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "A-4 financing activities, distributions paid to non-controlling interest holders",
+          "basis": "Cash distributions paid to non-controlling interest holders; positive spending magnitude"
+        },
+        "finance_lease_payments": {
+          "value": "146",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-01-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "A-4 financing activities, payments on finance leases",
+          "basis": "Payments on finance leases classified in financing activities; positive spending magnitude"
+        },
+        "cash_and_equivalents": {
+          "value": "1290",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-09-30",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "A-2 balance sheet, cash and cash equivalents",
+          "basis": "Consolidated balance-sheet cash and cash equivalents, excluding the separately reported restricted-cash line"
+        },
+        "current_borrowings_obligations": {
+          "value": "7270",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-09-30",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "A-2 balance sheet, current liabilities",
+          "basis": "Balance-sheet line short-term borrowings and current portion of long-term obligations; not an instrument-by-instrument maturity schedule"
+        }
+      },
+      "calculations": [
+        {
+          "id": "cash_capex_current",
+          "operation": "subtract",
+          "inputs": [
+            "cfo_current",
+            "cash_ppe_current"
+          ],
+          "expected": "1763",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Arithmetic on issuer figures reported in USD millions; no greater underlying precision is implied."
+        },
+        {
+          "id": "fcf_current_reconciled",
+          "operation": "sum",
+          "inputs": [
+            "cash_capex_current",
+            "ppe_disposals_current"
+          ],
+          "expected": "1908",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Arithmetic on issuer figures reported in USD millions; no greater underlying precision is implied."
+        },
+        {
+          "id": "difference_after_common_dividends",
+          "operation": "subtract",
+          "inputs": [
+            "fcf_current_reconciled",
+            "common_cash_dividends"
+          ],
+          "expected": "970",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Arithmetic on issuer figures reported in USD millions; no greater underlying precision is implied."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Cash generation",
+          "text": "Keurig Dr Pepper’s November 3 earnings release details cash generation alongside substantial financing obligations. For the first nine months of 2026, operating cash flow was $2.220 billion. Subtracting $457 million of property, plant and equipment purchases and adding $145 million of disposal proceeds produces KDP’s reported non-GAAP free cash flow of $1.908 billion.",
+          "source_ids": [
+            "sec_exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Other financing claims",
+          "text": "Common cash dividends of $938 million leave a calculated $970 million difference against that free-cash-flow measure. This is before other financing uses, including $107 million of preferred dividends, $64 million of distributions to non-controlling interests and $146 million of finance-lease payments. Excluding property-disposal proceeds, operating cash flow less PP&E purchases was $1.763 billion; this is a separate calculation, not KDP’s defined free cash flow.",
+          "source_ids": [
+            "sec_exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Current obligations",
+          "text": "At September 30, KDP reported $1.290 billion of cash and cash equivalents and $7.270 billion of short-term borrowings and the current portion of long-term obligations. That balance-sheet classification alone does not establish individual repayment dates.",
+          "source_ids": [
+            "sec_exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "What remains",
+          "text": "The near-term question is how much cash remains after distributions and other commitments as the company works toward its planned separation. The release supports a cash-coverage observation, not a dividend-safety guarantee.",
+          "source_ids": [
+            "sec_exhibit",
+            "issuer"
+          ]
+        }
+      ],
+      "limitations": "Issuer-defined non-GAAP free cash flow includes PP&E disposal proceeds. The common-dividend difference is not unrestricted or discretionary cash and excludes other investing and financing uses. Operating cash flow less PP&E purchases is a separate analytical measure. Balance-sheet current classification alone is not an individual repayment schedule. Historical cash coverage is not a guarantee or forecast of dividends. The release financial statements are unaudited. Exhibit 99.1 is furnished under Item 2.02, not deemed filed for Section 18; issuer and SEC copies are two official representations of the same company statement, not independent economic corroboration.",
+      "published_at": "2026-11-03T22:12:17Z"
     }
   ],
   "reviews": [
@@ -275,6 +521,41 @@
       "scope": "Assisted independent editorial review of the exact revised record and final full-build text/source links. Browser visual checks, CI and deployment remain separate release checks; no claim of professional certification or zero errors.",
       "render_rechecked_at": "2026-11-01T04:49:15.624143+00:00",
       "render_check_evidence": "Read-only comparison of the readability revision with the previously approved short-newsletter release confirmed that the entire article subtree is byte-identical: four paragraphs, amounts, qualifications and primary-source links are unchanged. The brief record and original publication timestamp are unchanged. The visible DFB editorial organization byline agrees with Article structured data; datePublished and dateModified both retain 2026-10-31. This review covers rendering and metadata only. Sources were not reopened and the existing independent source, arithmetic and editorial findings are retained. Browser and deployment checks remain separate release gates."
+    },
+    {
+      "reviewer": "Independent DFB source-and-render reviewer",
+      "reviewed_at": "2026-11-03T22:18:03.235257+00:00",
+      "brief_sha256": "36128a53e6e9ac43f6bf73aa7efefa428ac60a0ac37ef0f10d16387a9235a1ee",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently fetched the official SEC index, Form 8-K, Exhibit 99.1 and issuer release over HTTPS, receiving HTTP 200 with unchanged final URLs and bytes identical to the source captures. The SEC index identifies accession 0001418135-26-000064, CIK 1418135, and November 3, 2026 filing/report date. Independently parsed all ten decisive financial rows from both release representations. In this exact record, all source URLs, titles, locators, dates, checked-at values and SHA-256 fields match those captured sources; the three exact direct HTTPS source links appear in the generated article. SEC source representation notes correctly describe the extra 112-byte script tag. Limitations correctly identify unaudited, furnished issuer information and do not call the issuer/SEC copies independent economic corroboration. Confirmed actual production catalog record is identical field-for-field to the frozen reviewed record and source section is byte-unchanged in the final build."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independently recalculated the exact record ledger using Python Decimal strings and dependency order: cash_capex_current = 2220 - 457 = 1763; fcf_current_reconciled = 1763 + 145 = 1908; difference_after_common_dividends = 1908 - 938 = 970. Every expected result matches; each input uses USD millions for the same nine-month period and retains the source precision. Reported FCF 1908 separately matches the derived reconciliation. Verified the other financial inputs 107 preferred dividends, 64 non-controlling distributions, 146 finance-lease payments, 1290 cash and 7270 current borrowing/obligation line against independently parsed official rows. The exact HTML contains the corresponding billion/million conversions and calls the 970 and 1763 figures calculations rather than issuer-reported cash balances."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "All eight cash-flow ledger facts are explicitly January 1 through September 30, 2026, matching First Nine Months 2026 in the official statements; the two balance-sheet facts are dated September 30, 2026. Every financial fact is USD millions. The record explains positive spending magnitudes, common dividends paid rather than declared, restricted cash excluded from cash and equivalents, and current classification rather than individual maturities. The record has no remaining prior-year comparison or implied constant-scope growth. Event and source publication dates are November 3, 2026, distinct from the release-decision timestamp 2026-11-03T22:12:17Z. Conversion gives November 4 KST, which exactly matches the visible article time, archive date, datePublished and dateModified structured fields. Check/release/review chronology is internally consistent; actual public deployment is not asserted by this review."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Reconstructed title plus all four record sections and disclosure byte-for-byte into the previously reviewed 1424-byte prose, SHA-256 6d9b1b4b5c24a2c58708adf9693c8e9d1cc772c24eb63301f05cda92d92ed423. Independently decoded the exact HTML and confirmed its four newsletter paragraphs equal the four record section texts, its sole H1 equals the record title, and its new summary/description accurately states the historical coverage observation. No material grammar or terminology error found. The exact output contains one main, article and H1, unique IDs, valid parsed Article/Breadcrumb JSON, consistent canonical/OG/article URLs and title/summary/byline metadata, and all 39 local reference targets exist in the baseline or candidate. PP&E is correctly HTML-escaped without changing prose. This is structural/source inspection, not visual browser testing. Full-build recheck: inspected actual production article and archive; the complete byte diff in each consists solely of the same two favicon links before </head>. Removing these links exactly reproduces all previously reviewed bytes, proving unchanged prose, title, summary, source links, byline, structured/visible dates, canonical metadata and archive entries. The new PNG target exists and has PNG signature with 96x96 IHDR dimensions; favicon.ico exists with an ICO signature. No visual claim is made."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "The exact record and rendered prose present limited historical consolidated cash coverage, not a dividend-safety guarantee, price target or personalized buy/sell recommendation. The headline specifies nine months; the new summary does not exaggerate it. Non-GAAP FCF is labelled and reconciled, PP&E disposal proceeds are explicit, other financing uses are acknowledged without calling the list exhaustive, and current obligations are not misrepresented as an instrument-level maturity schedule. The record limitations expressly reject discretionary-cash and forecast interpretations. The exact article contains the required Structural research, not investment advice disclosure and the DFB editorial byline, without inventing ownership/conflict facts. The planned separation remains a plan, with no guaranteed completion date."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "The official November 3, 2026 earnings release and 8-K are same-day evidence as this UTC review. Newly released nine-month CFO 2220, issuer FCF 1908, common dividends paid 938, other financing distributions and September 30 balance-sheet obligations provide a material current cash-coverage/capital-claims update; the brief is not based solely on an unchanged dividend declaration. Independently inspected baseline 9bd89ffb40bd3cefc0ecbd4e88dca69543810b23 catalog (SHA-256 3bc3b462d79d35609fcfead2f72a7069b62b7adc8657ad6258e4855078fe2872): its only event is Microsoft sec:000119312526436133, published October 31 KST. No matching KDP accession, slug, or November 4 KST brief exists. Independently fetched the live daily-brief archive at 2026-11-03T22:14:38.625041+00:00: HTTP 200, 7032 bytes, SHA-256 56a6976f792f94c84ef9430152ed3629bfc677eb240584acf4ea6d010d54bf20; Microsoft is present and the new KDP slug is absent. Candidate archive preserves the Microsoft brief and adds KDP once. Duplicate/freshness finding is bound to those observed baseline/live states and must be rechecked if the publication baseline changes. Rebound production archive differs from the reviewed candidate archive only by favicon links; no article order, date, entry, event, title or slug changed."
+        }
+      },
+      "rendered_html_sha256": "e33a342e855eff12642fe1abcd4e59edc2375dadeae1df5c7eb8753a7be2514f",
+      "rendered_archive_sha256": "ea27fb5e839a5161b244d1f13293a028bf406eaf7cbfd4fe6018d4d3f5b6dc3d",
+      "scope": "Independent editorial/source review rebound to the actual full-build production record and article/archive HTML after inspecting the complete byte diff. Static byte/source/structure inspection only; no browser visual verification, CI approval, PR approval, merge authorization or live-publication assertion."
     }
   ]
 }
