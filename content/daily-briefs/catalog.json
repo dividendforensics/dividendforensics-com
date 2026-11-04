@@ -483,6 +483,394 @@
       ],
       "limitations": "Issuer-defined non-GAAP free cash flow includes PP&E disposal proceeds. The common-dividend difference is not unrestricted or discretionary cash and excludes other investing and financing uses. Operating cash flow less PP&E purchases is a separate analytical measure. Balance-sheet current classification alone is not an individual repayment schedule. Historical cash coverage is not a guarantee or forecast of dividends. The release financial statements are unaudited. Exhibit 99.1 is furnished under Item 2.02, not deemed filed for Section 18; issuer and SEC copies are two official representations of the same company statement, not independent economic corroboration.",
       "published_at": "2026-11-03T22:12:17Z"
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "3m-pfas-settlement-charge-cash-schedule",
+      "author": "DFB editorial",
+      "title": "3M’s $5.8 Billion Charge Comes With a Longer Cash Schedule",
+      "summary": "3M’s new PFAS settlement separates a present-value accounting charge from a conditional payment schedule extending through 2034.",
+      "event_date": "2026-11-03",
+      "reporting_period": {
+        "start": "2026-11-03",
+        "end": "2026-11-03"
+      },
+      "source_checked_at": "2026-11-04T22:04:42.643516+00:00",
+      "published_at": "2026-11-04T22:06:50.253741+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000006674026000318",
+      "sources": {
+        "sec": {
+          "url": "https://www.sec.gov/Archives/edgar/data/66740/000006674026000318/mmm-20261103.htm",
+          "checked_at": "2026-11-04T22:04:35.370224+00:00",
+          "content_sha256": "2255c40fcf47cd60fe9655e230582295de02cccc3ff81a54b86a46f995560ca4",
+          "kind": "sec",
+          "title": "3M Form 8-K, filed November 4, 2026",
+          "locator": "Items 1.01 and 8.01; event date November 3, 2026",
+          "published_date": "2026-11-04",
+          "publication_precision": "date",
+          "representation_note": "SHA256 identifies the exact retrieved HTTPS response body, including the served script tag. The response is 115 bytes larger than the SEC index document size; this is not represented as a hash of original submission bytes."
+        },
+        "schedule": {
+          "url": "https://www.sec.gov/Archives/edgar/data/66740/000006674026000318/exhibit11-paymentschedule0.htm",
+          "checked_at": "2026-11-04T22:04:38.581870+00:00",
+          "content_sha256": "9cd34113a828bc90234e4507626b0bbacd370a6742e616687e7489345504d429",
+          "kind": "sec",
+          "title": "3M settlement payment schedule, Exhibit 10.1A",
+          "locator": "Exhibit 11, pp. 1–2; earliest payment dates, maximum amounts and termination-right conditions",
+          "published_date": "2026-11-04",
+          "publication_precision": "date",
+          "representation_note": "SHA256 identifies the exact retrieved HTTPS response body, including the served script tag. The response is 115 bytes larger than the SEC index document size; this is not represented as a hash of original submission bytes."
+        },
+        "agreement": {
+          "url": "https://www.sec.gov/Archives/edgar/data/66740/000006674026000318/msa.htm",
+          "checked_at": "2026-11-04T22:04:35.478128+00:00",
+          "content_sha256": "3516db8d2db84e20e96f8b228ac74b3ed8453b94a6c5cab4c7288ba490e5908e",
+          "kind": "sec",
+          "title": "3M Master Settlement Agreement, Exhibit 10.1",
+          "locator": "Article 11, pp. 35–37, especially Sections 11.1, 11.2 and 11.6",
+          "published_date": "2026-11-04",
+          "publication_precision": "date",
+          "representation_note": "SHA256 identifies the exact retrieved HTTPS response body, including the served script tag. The response is 115 bytes larger than the SEC index document size; this is not represented as a hash of original submission bytes."
+        },
+        "issuer": {
+          "url": "https://investors.3m.com/news-events/press-releases/detail/1949/3m-reaches-broad-resolution-of-afff-personal-injury",
+          "checked_at": "2026-11-04T22:04:42.643516+00:00",
+          "content_sha256": "9183eabb95a0fcd741f64035dff9d0ce3348eb06448ca017305fb9e1bd87582d",
+          "kind": "issuer",
+          "title": "3M settlement announcement, November 3, 2026",
+          "locator": "Opening financial terms and Financial Considerations",
+          "published_date": "2026-11-03",
+          "publication_precision": "date"
+        }
+      },
+      "facts": {
+        "nominal_commitment": {
+          "value": "7350",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "sec",
+          "locator": "Item 1.01",
+          "basis": "Nominal settlement contribution amount described in agreement entered November 3, 2026; actual amount and timing subject to participation and other settlement conditions, across 2026–2034."
+        },
+        "planned_pretax_charge": {
+          "value": "5800",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "sec",
+          "locator": "Item 8.01",
+          "basis": "Approximate planned fourth-quarter 2026 pretax charge representing present value of settlement contributions; not an immediate payment and not a reported historical quarterly result."
+        },
+        "initial_payment": {
+          "value": "50",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.1",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "Within 30 days of settlement"
+        },
+        "main_1": {
+          "value": "1045",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.2.1",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "January 15, 2028 or 30 days after exhaustion/waiver of termination rights, whichever is later"
+        },
+        "reserve_1": {
+          "value": "34",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.5",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "April 15, 2029"
+        },
+        "main_2": {
+          "value": "1045",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.2.2",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "July 15, 2029"
+        },
+        "participation_2": {
+          "value": "125",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.3.1",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "July 15, 2029"
+        },
+        "reserve_2": {
+          "value": "68",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.5",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "April 15, 2030"
+        },
+        "main_3": {
+          "value": "1045",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.2.3",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "July 15, 2030"
+        },
+        "participation_3": {
+          "value": "125",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.3.2",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "July 15, 2030"
+        },
+        "main_4": {
+          "value": "1045",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.2.4",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "January 15, 2031"
+        },
+        "reserve_3": {
+          "value": "68",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.5",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "April 15, 2031"
+        },
+        "bonus_1": {
+          "value": "50",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.4.1",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "April 15, 2031"
+        },
+        "reserve_4": {
+          "value": "68",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.5",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "April 15, 2032"
+        },
+        "bonus_2": {
+          "value": "50",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.4.2",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "April 15, 2032"
+        },
+        "main_5": {
+          "value": "1045",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.2.5",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "July 15, 2032"
+        },
+        "reserve_5": {
+          "value": "102",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.5",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "April 15, 2033"
+        },
+        "main_6": {
+          "value": "1045",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.2.6",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "July 15, 2033"
+        },
+        "reserve_6": {
+          "value": "340",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "schedule",
+          "locator": "Exhibit 11 payment row, Settlement Agreement Section 11.5",
+          "basis": "Listed maximum payment under terms agreed November 3, 2026, not cash already paid. All except initial payment subject to termination rights; participation, bonus and reserve payments have additional conditions.",
+          "payment_timing": "April 15, 2034"
+        },
+        "payments_2027": {
+          "value": "0",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-03",
+            "end": "2026-11-03"
+          },
+          "source_id": "issuer",
+          "locator": "Opening agreement summary, second bullet",
+          "basis": "Issuer states no payments in 2027 under this settlement; excludes other settlements and other company obligations."
+        }
+      },
+      "calculations": [
+        {
+          "id": "main_installments_total",
+          "operation": "sum",
+          "inputs": [
+            "main_1",
+            "main_2",
+            "main_3",
+            "main_4",
+            "main_5",
+            "main_6"
+          ],
+          "expected": "6270",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Sum of six stated maximum installment amounts. This is a nominal contractual schedule, not present value or guaranteed realized payments."
+        },
+        {
+          "id": "listed_maximum_total",
+          "operation": "sum",
+          "inputs": [
+            "initial_payment",
+            "main_1",
+            "reserve_1",
+            "main_2",
+            "participation_2",
+            "reserve_2",
+            "main_3",
+            "participation_3",
+            "main_4",
+            "reserve_3",
+            "bonus_1",
+            "reserve_4",
+            "bonus_2",
+            "main_5",
+            "reserve_5",
+            "main_6",
+            "reserve_6"
+          ],
+          "expected": "7350",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Sum of all listed maximum payments, including conditional payments. This cross-checks the reported nominal commitment and does not imply conditions will be met."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Charge and cash",
+          "text": "3M’s November 4 filing separates a $7.35 billion nominal settlement commitment from a planned pretax charge of approximately $5.8 billion. The charge, expected in the fourth quarter of 2026, reflects the present value of contributions under its November 3 PFAS personal-injury settlement, rather than an immediate cash payment.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Payment timing",
+          "text": "An initial $50 million is due within 30 days of the settlement. No payments are scheduled in 2027. The first $1.045 billion main installment is scheduled for January 15, 2028, or 30 days after termination rights are exhausted or waived, whichever is later.",
+          "source_ids": [
+            "schedule",
+            "agreement",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Conditional schedule",
+          "text": "The six main installments add to $6.27 billion. Including the initial payment and potential additional payments, the schedule’s listed maximum totals $7.35 billion through 2034. Actual amounts and timing depend on participation and other conditions; all payments after the initial one are contingent on neither party exercising termination rights.",
+          "source_ids": [
+            "sec",
+            "schedule",
+            "agreement"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "What remains",
+          "text": "3M says the charge will be treated as a special item in adjusted results and leaves its 2026 guidance unchanged. That accounting treatment does not remove future cash obligations. The question to follow is how settlement participation and conditions translate into actual payments alongside the company’s other commitments.",
+          "source_ids": [
+            "sec",
+            "issuer",
+            "agreement"
+          ]
+        }
+      ],
+      "limitations": "This record describes settlement terms as of November 3, 2026, not a historical operating reporting period. Contractual payment dates extend into the future; the reported charge is approximate present value, not an immediate cash outflow. The schedule lists maximum amounts, with participation, termination and other conditions. The filing was dated November 3 but the SEC index gives a November 4 filing date; no exact public-availability timestamp is claimed. No estimate of dividend coverage or dividend safety is made. The issuer release and SEC filing are official company representations, not independent economic corroboration."
     }
   ],
   "reviews": [
@@ -556,6 +944,48 @@
       "rendered_html_sha256": "e33a342e855eff12642fe1abcd4e59edc2375dadeae1df5c7eb8753a7be2514f",
       "rendered_archive_sha256": "ea27fb5e839a5161b244d1f13293a028bf406eaf7cbfd4fe6018d4d3f5b6dc3d",
       "scope": "Independent editorial/source review rebound to the actual full-build production record and article/archive HTML after inspecting the complete byte diff. Static byte/source/structure inspection only; no browser visual verification, CI approval, PR approval, merge authorization or live-publication assertion."
+    },
+    {
+      "reviewer": "DFB independent assisted source and editorial review",
+      "reviewed_at": "2026-11-04T22:09:18+00:00",
+      "brief_sha256": "68942f4f5cbbf997c421364a5c7445e3a61844764907add44342c1fd1c99a660",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently opened the official SEC filing index, the issuer-hosted full 8-K, the SEC Master Settlement Agreement and payment exhibit, and the official 3M November 3 announcement. Item 1.01 confirms the nominal commitment and conditional terms; Item 8.01 confirms the approximate present-value pretax charge. The payment exhibit and Article 11 support the initial amount, first main installment, six main installments and contingent additional payments. The issuer announcement supports unchanged 2026 guidance. All five supplied capture hashes and byte lengths match their manifest. Hashes identify retrieved representations, not independent corroboration or original submission bytes."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independently recalculated six installments of 1045 million as 6270 million. The complete maximum schedule reconciles as 50 + 6270 + 250 participation + 100 bonuses + 680 reserve = 7350 million. The 17 listed payment rows sum to the same 7350 million without including the separate 5800 million accounting charge. Conversions to 1.045, 6.27 and 7.35 billion are exact; 5.8 billion remains approximate. No present-value calculation or implied dividend coverage is invented."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "SEC index distinguishes the November 4 filing date from November 3 acceptance and event dates. The charge belongs to Q4 2026; cash terms extend through 2034. Initial 50 million is due within 30 days, not described as already paid. First main payment is January 15, 2028 or 30 days after exhaustion/waiver of termination rights, whichever is later. No 2027 payment refers to this settlement. All ledger amounts use USD millions; the shared November 3 period is explicitly the agreement observation date, not a historical operating period. The release-decision timestamp converts to November 5 KST, matching detail and archive."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read the exact title, summary, four 188-word narrative paragraphs, candidate prose and generated detail/archive text. Amounts, grammatical subjects, date references and financial terminology are consistent. The prose clearly contrasts nominal cash commitments with an approximate present-value charge, and describes potential payments and termination conditions without implying unconditional timing. Generated paragraphs match the record; source links and disclaimer appear below them, with no raw ledger, formula list, section labels or table inserted into the public article."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "The article makes no buy/sell/hold recommendation, price target, claimed market reaction, dividend-safety guarantee or author-position implication. It attributes adjusted treatment and guidance to 3M, explicitly retains future cash obligations, and leaves implementation as an open question alongside other commitments. It does not claim complete PFAS resolution, achieved participation thresholds, immediate payment of the charge, or mandatory buyback spending. The informational disclaimer is present."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "The new November 3 settlement and November 4 SEC accession 0000066740-26-000318 disclose a material conditional cash schedule and approximate Q4 charge, making the charge-versus-payment distinction timely. Independently inspected the existing preview catalog: only Microsoft accession 000119312526436133 and KDP accession 000141813526000064 precede this entry. Neither its accession nor slug is duplicated. November 5 KST is the current editorial publication date, not a fabricated event date; prior archive dates are preserved."
+        }
+      },
+      "rendered_html_sha256": "c1d97ebfee79d46899db0555a998847fa6b34b4cd981236f04598bb21121b39a",
+      "archive_html_sha256": "8ac1fb1b9d33044c08deeacdf0a31fc097f927987e917a995b65810daa157d7b",
+      "scope": "Independent editorial approval of the exact final JSON record and generated detail/archive HTML text, links, dates and metadata. This is not PR approval or deployment authorization. Pixel rendering, mobile/browser checks, CI and live deployment verification remain separate release gates.",
+      "render_check_evidence": "Recomputed the canonical UTF-8 sorted-JSON digest and all five preview HTML/sitemap hashes; every supplied hash matches. Parsed the final article and archive HTML. The title and four paragraphs match the verified record/prose, all four primary-source links are exact, and archive placement/date/link are correct. A separate local Chromium attempt failed before rendering because the environment disallowed the process-singleton socket. No desktop/mobile pixel or overflow pass is claimed; exact-commit browser CI evidence must be reviewed before release.",
+      "defects": [],
+      "remaining_release_gates": [
+        "Obtain and inspect exact-commit browser/mobile rendering evidence before release.",
+        "Run the normal complete build, tests and required CI on the exact publishing commit.",
+        "Verify live bytes and dates after authorized deployment, within the recorded KST publication day."
+      ]
     }
   ]
 }
