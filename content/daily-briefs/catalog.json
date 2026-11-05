@@ -877,7 +877,7 @@
       "category": "Operating Companies",
       "slug": "conocophillips-q3-2026-cash-returns-free-cash-flow",
       "author": "DFB editorial",
-      "title": "ConocoPhillips’ Cash Returns Trail Free Cash Flow by $631 Million",
+      "title": "COP’s Cash Returns Trail Free Cash Flow by $631 Million",
       "summary": "ConocoPhillips’ third-quarter dividends and buybacks were below its defined free cash flow; asset-sale proceeds and the new dividend belong to separate cash-flow questions.",
       "event_date": "2026-11-05",
       "reporting_period": {
@@ -1270,18 +1270,18 @@
       ]
     },
     {
-      "brief_sha256": "e9ba5b81dbf7a2bd5f37ae5de98fb5f3fe71b2c3d0b3236ce629c27f78e94de4",
+      "brief_sha256": "d33fbec3491b01bf4e41e04f422ded6b338f210930b6193c50a13a17df5888db",
       "reviewer": "independently_review_filing",
-      "reviewed_at": "2026-11-05T22:04:42.291526+00:00",
+      "reviewed_at": "2026-11-05T22:14:26.947735+00:00",
       "decision": "pass",
       "checks": {
         "sources": {
           "result": "pass",
-          "evidence": "Independently opened, downloaded and read SEC accession 0001163165-26-000043 Exhibits 99.1 and 99.2, issuer release and supplemental PDFs, and Q3 10-Q accession 0001163165-26-000045. Exact SEC source response hashes independently match the candidate: EX-99.1 bb529842f1ab62eb02787447600a7cbc3e0374eddaf7a1de0ea4211e291a5c60; EX-99.2 396bd360745de13716124c5349be48d30c12f6046eb8b2c494c0f1aec449cc6d. Issuer PDF hashes independently match as well. Table 2 verifies operating cash, working capital, CFO, capex/investments and FCF; supplement page 5 verifies dividend, buyback, disposal cash and actual cash movement. No uncited 10-Q comparison remains in the final record. SEC and issuer representations are correctly not portrayed as independent economic corroboration."
+          "evidence": "Independently opened, downloaded and read SEC accession 0001163165-26-000043 Exhibits 99.1 and 99.2, issuer release and supplemental PDFs, and Q3 10-Q accession 0001163165-26-000045. Exact SEC source response hashes independently match the candidate: EX-99.1 bb529842f1ab62eb02787447600a7cbc3e0374eddaf7a1de0ea4211e291a5c60; EX-99.2 396bd360745de13716124c5349be48d30c12f6046eb8b2c494c0f1aec449cc6d. Issuer PDF hashes independently match as well. Table 2 verifies operating cash, working capital, CFO, capex/investments and FCF; supplement page 5 verifies dividend, buyback, disposal cash and actual cash movement. No uncited 10-Q comparison remains in the final record. SEC and issuer representations are correctly not portrayed as independent economic corroboration. On fresh revision review, verified the sole changed term COP against SEC Exhibit 99.1 identifying ConocoPhillips as NYSE: COP. All four source hashes and ledger inputs remain unchanged from the independently captured primary source bodies."
         },
         "arithmetic": {
           "result": "pass",
-          "evidence": "Independently recomputed in USD millions: 7195 - 23 = 7172; 7172 - 3133 = 4039; 1007 + 2401 = 3408; 4039 - 3408 = 631. All facts and expected calculation outputs agree. The 1566 asset-sale proceeds are not added to issuer FCF. The 631 residual is not presented as the 1252 actual cash/equivalents/restricted-cash change. Positive expenditure magnitudes and explicit subtraction are internally consistent. No ratios, extrapolated dividend amounts or unsupported estimates were introduced in public prose."
+          "evidence": "Independently recomputed in USD millions: 7195 - 23 = 7172; 7172 - 3133 = 4039; 1007 + 2401 = 3408; 4039 - 3408 = 631. All facts and expected calculation outputs agree. The 1566 asset-sale proceeds are not added to issuer FCF. The 631 residual is not presented as the 1252 actual cash/equivalents/restricted-cash change. Positive expenditure magnitudes and explicit subtraction are internally consistent. No ratios, extrapolated dividend amounts or unsupported estimates were introduced in public prose. Re-executed every calculation from the revised record using Decimal values and confirmed all expected results; no financial data or calculation changed."
         },
         "periods_units": {
           "result": "pass",
@@ -1289,7 +1289,7 @@
         },
         "english": {
           "result": "pass",
-          "evidence": "Read the complete exact JSON, prose, generated article HTML text and archive entry. The English title, four paragraphs, summary and category are clear and consistent. The title accurately states shareholder cash returns were 631 million below issuer-defined FCF. References to company-defined/non-GAAP FCF and separate asset-sale cash are understandable without claiming GAAP equivalence. The article is a concise historical brief, and the exact archive entry matches its title and date."
+          "evidence": "Independently compared revised JSON with approved-record-v1.json; only the title changed from ConocoPhillips’ to COP’s. Read all revised exact generated article content and the archive entry. Revised title is COP’s Cash Returns Trail Free Cash Flow by $631 Million; COP is issuer-verified, and the unchanged lead spells out ConocoPhillips. The title remains accurate, neutral and understandable; complete article/body/data/date/source labels remain unchanged. All five generated-file hashes were independently reproduced against the revised manifest."
         },
         "neutrality": {
           "result": "pass",
@@ -1297,19 +1297,21 @@
         },
         "freshness": {
           "result": "pass",
-          "evidence": "Source documents are dated November 5, 2026 and were independently retrieved during this review. At approximately 2026-11-05 22:04 UTC, directly downloaded https://data.sec.gov/submissions/CIK0001163165.json; its newest filings are Q3 10-Q 0001163165-26-000045 and 8-K 0001163165-26-000043, with no later filing or amendment displayed. Issuer IR links independently resolve to the same Nov 5 Q3 release and supplement. This check supports the historical brief as of review time; it does not promise future freshness."
+          "evidence": "Downloaded a fresh SEC submissions feed at approximately 2026-11-05 22:13:49 UTC from https://data.sec.gov/submissions/CIK0001163165.json. Newest filings remain Q3 10-Q 0001163165-26-000045 and Q3 8-K 0001163165-26-000043; no later filing or amendment was displayed. The reviewed source bodies remain the same November 5 issuer/SEC materials and current event/reporting dates are unchanged. This supports the historical brief as of revision-review time, not a future freshness promise."
         }
       },
-      "rendered_html_sha256": "e980c3e9a34047c18e1ae67f64e482c109ddd11e2005c2bef9d96baaa682ba05",
-      "archive_html_sha256": "41751c1b27c82d28c0bea3a7363fe49268695d3c52d53a105f5f5e8c35144bba",
-      "scope": "Independent source, arithmetic, period/unit, English, neutrality, freshness and exact generated-HTML content audit. Editorial approval applies only to this canonical record and these article/archive hashes. This is not a GitHub pull-request approval, authorization to publish, CI certification, visual-browser layout audit, or deployment verification. Re-review is required for material content changes or changed article/archive bytes.",
+      "rendered_html_sha256": "51897451b2e2e578c7dd67580579265c6d93fd333767d7d6f7d8b96b44cd61a0",
+      "archive_html_sha256": "9ad7e3b5a7036fb0d5db65e4efc5d83dc2bde0db5c20f9f557421b0d0a907716",
+      "scope": "Fresh independent source, arithmetic, period/unit, English, neutrality, freshness and exact generated-HTML content audit after the title-only revision. Applies only to this canonical record and article/archive hashes. This is not a GitHub pull-request approval, authorization to publish, CI certification, visual-browser layout audit, or deployment verification. In particular, this review does not certify that 320px overflow is fixed; that requires the exact-head browser/CI check. Re-review is required for changed record content or article/archive bytes.",
       "source_evidence_manifest": "/tmp/cop_review/source_manifest.json",
       "freshness_evidence": {
         "url": "https://data.sec.gov/submissions/CIK0001163165.json",
-        "captured_file": "/tmp/cop_review/sec_submissions.json",
+        "captured_file": "/tmp/cop_review/sec_submissions_v2.json",
         "sha256": "167024f579403b5dcea7bcd63b385dbcc2d03871595d1edec486b0988bc87a0c"
       },
-      "blockers": []
+      "blockers": [],
+      "supersedes_brief_sha256": "e9ba5b81dbf7a2bd5f37ae5de98fb5f3fe71b2c3d0b3236ce629c27f78e94de4",
+      "revision_description": "Only title company-name token shortened to verified ticker COP; data, calculations, prose, date and source ledger unchanged."
     }
   ]
 }
