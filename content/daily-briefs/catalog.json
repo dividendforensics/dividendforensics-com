@@ -871,6 +871,288 @@
         }
       ],
       "limitations": "This record describes settlement terms as of November 3, 2026, not a historical operating reporting period. Contractual payment dates extend into the future; the reported charge is approximate present value, not an immediate cash outflow. The schedule lists maximum amounts, with participation, termination and other conditions. The filing was dated November 3 but the SEC index gives a November 4 filing date; no exact public-availability timestamp is claimed. No estimate of dividend coverage or dividend safety is made. The issuer release and SEC filing are official company representations, not independent economic corroboration."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "conocophillips-q3-2026-cash-returns-free-cash-flow",
+      "author": "DFB editorial",
+      "title": "ConocoPhillips’ Cash Returns Trail Free Cash Flow by $631 Million",
+      "summary": "ConocoPhillips’ third-quarter dividends and buybacks were below its defined free cash flow; asset-sale proceeds and the new dividend belong to separate cash-flow questions.",
+      "event_date": "2026-11-05",
+      "reporting_period": {
+        "start": "2026-07-01",
+        "end": "2026-09-30"
+      },
+      "comparison_periods": [
+        {
+          "start": "2026-11-05",
+          "end": "2026-11-05"
+        }
+      ],
+      "source_checked_at": "2026-11-05T22:00:45.128468+00:00",
+      "published_at": "2026-11-05T22:02:47.883207+00:00",
+      "event_source_id": "sec-release",
+      "event_key": "sec:000116316526000043",
+      "sources": {
+        "sec-release": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/1163165/000116316526000043/cop-20261105x8kexx991.htm",
+          "title": "SEC earnings release (Exhibit 99.1)",
+          "locator": "Earnings release, Table 2: Reconciliation of net cash provided by operating activities to cash from operations and free cash flow, 3Q26 column; Quarterly dividend increase section",
+          "published_date": "2026-11-05",
+          "publication_precision": "date",
+          "checked_at": "2026-11-05T22:00:45.107594+00:00",
+          "content_sha256": "bb529842f1ab62eb02787447600a7cbc3e0374eddaf7a1de0ea4211e291a5c60",
+          "retrieved_bytes": 117787,
+          "representation_note": "SHA256 identifies the actual retrieved HTTPS response body, not a claim of pristine submission bytes or independent economic corroboration."
+        },
+        "sec-supplement": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/1163165/000116316526000043/cop-20261105x8kexx992.htm",
+          "title": "SEC financial supplement (Exhibit 99.2)",
+          "locator": "Third-Quarter 2026 Detailed Supplemental Information, page 5 of 9, Cash Flow Information, 2026 3rd Qtr column",
+          "published_date": "2026-11-05",
+          "publication_precision": "date",
+          "checked_at": "2026-11-05T22:00:45.128468+00:00",
+          "content_sha256": "396bd360745de13716124c5349be48d30c12f6046eb8b2c494c0f1aec449cc6d",
+          "retrieved_bytes": 1328206,
+          "representation_note": "SHA256 identifies the actual retrieved HTTPS response body, not a claim of pristine submission bytes or independent economic corroboration."
+        },
+        "issuer-release": {
+          "kind": "issuer",
+          "url": "https://static.conocophillips.com/files/resources/3q26_earnings_release_final.pdf",
+          "title": "ConocoPhillips earnings release",
+          "locator": "Earnings release, Table 2: Reconciliation of net cash provided by operating activities to cash from operations and free cash flow, 3Q26 column; Quarterly dividend increase section",
+          "published_date": "2026-11-05",
+          "publication_precision": "date",
+          "checked_at": "2026-11-05T22:00:44.155671+00:00",
+          "content_sha256": "ebed7adea6eb7291ae0289d6c5e3c88c895a0fdd42b8dff89dd42bf2e6120d13",
+          "retrieved_bytes": 279091,
+          "representation_note": "SHA256 identifies the actual retrieved HTTPS response body, not a claim of pristine submission bytes or independent economic corroboration."
+        },
+        "issuer-supplement": {
+          "kind": "issuer",
+          "url": "https://static.conocophillips.com/files/resources/3q26_supplemental-information.pdf",
+          "title": "ConocoPhillips financial supplement",
+          "locator": "Third-Quarter 2026 Detailed Supplemental Information, page 5 of 9, Cash Flow Information, 2026 3rd Qtr column",
+          "published_date": "2026-11-05",
+          "publication_precision": "date",
+          "checked_at": "2026-11-05T22:00:44.387584+00:00",
+          "content_sha256": "a2444131365502899c8e67a5013224e62ac00bb974575a9b71d8cb29d09b23ed",
+          "retrieved_bytes": 609762,
+          "representation_note": "SHA256 identifies the actual retrieved HTTPS response body, not a claim of pristine submission bytes or independent economic corroboration."
+        }
+      },
+      "facts": {
+        "operating_cash": {
+          "value": "7195",
+          "source_id": "sec-release",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "basis": "Reported GAAP operating cash provided for the quarter; cross-checked against the supplement.",
+          "locator": "Table 2, 3Q26 column: Net Cash Provided by Operating Activities"
+        },
+        "working_capital_contribution": {
+          "value": "23",
+          "source_id": "sec-release",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "basis": "Positive operating working-capital contribution; subtract to reproduce issuer non-GAAP cash from operations.",
+          "locator": "Table 2, 3Q26 column: Net operating working capital changes"
+        },
+        "issuer_cfo": {
+          "value": "7172",
+          "source_id": "sec-release",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "basis": "Issuer-defined non-GAAP CFO excludes net operating working-capital changes.",
+          "locator": "Table 2, 3Q26 column: Cash from operations"
+        },
+        "capital_spending": {
+          "value": "3133",
+          "source_id": "sec-release",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "basis": "Cash spending magnitude is positive here; source presents (3133), and the calculation subtracts it explicitly.",
+          "locator": "Table 2, 3Q26 column: Capital expenditures and investments"
+        },
+        "issuer_fcf": {
+          "value": "4039",
+          "source_id": "sec-release",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "basis": "Issuer-defined non-GAAP free cash flow, CFO less capital expenditures and investments; asset disposition proceeds excluded.",
+          "locator": "Table 2, 3Q26 column: Free cash flow"
+        },
+        "dividends_paid": {
+          "value": "1007",
+          "source_id": "sec-supplement",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "basis": "Quarterly cash dividends paid; source presents (1007); positive spending magnitude here. Not the newly announced fourth-quarter dividend.",
+          "locator": "Supplement page 5 of 9, Cash Flow Information, 2026 3rd Qtr column: Dividends paid"
+        },
+        "share_repurchases": {
+          "value": "2401",
+          "source_id": "sec-supplement",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "basis": "Quarterly cash spent repurchasing common stock; source presents (2401); positive spending magnitude here.",
+          "locator": "Supplement page 5 of 9, Cash Flow Information, 2026 3rd Qtr column: Repurchase of company common stock"
+        },
+        "asset_disposition_proceeds": {
+          "value": "1566",
+          "source_id": "sec-supplement",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "basis": "Quarterly investing cash-flow proceeds; excluded from the issuer CFO and FCF definitions.",
+          "locator": "Supplement page 5 of 9, Cash Flow Information, 2026 3rd Qtr column: Proceeds from asset dispositions"
+        },
+        "actual_cash_change": {
+          "value": "1252",
+          "source_id": "sec-supplement",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "basis": "Reported cash balance movement including restricted cash; distinct from the FCF-minus-distributions residual.",
+          "locator": "Supplement page 5 of 9, Cash Flow Information, 2026 3rd Qtr column: Net change in cash, cash equivalents and restricted cash"
+        },
+        "new_quarterly_dividend": {
+          "value": "0.93",
+          "source_id": "sec-release",
+          "unit": "USD per common share",
+          "period": {
+            "start": "2026-11-05",
+            "end": "2026-11-05"
+          },
+          "basis": "New quarterly ordinary dividend announced November 5, effective with the fourth-quarter dividend payable December 1, 2026, to holders of record November 16. Period is declaration observation date, not Q3 cash paid.",
+          "locator": "Earnings release, Quarterly dividend increase section (issuer PDF page 2)."
+        }
+      },
+      "calculations": [
+        {
+          "id": "cfo_reconciled",
+          "operation": "subtract",
+          "inputs": [
+            "operating_cash",
+            "working_capital_contribution"
+          ],
+          "expected": "7172",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Calculated using the disclosed whole-million inputs and Decimal arithmetic; source rounding limits economic precision."
+        },
+        {
+          "id": "fcf_reconciled",
+          "operation": "subtract",
+          "inputs": [
+            "cfo_reconciled",
+            "capital_spending"
+          ],
+          "expected": "4039",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Calculated using the disclosed whole-million inputs and Decimal arithmetic; source rounding limits economic precision."
+        },
+        {
+          "id": "shareholder_cash_returns",
+          "operation": "sum",
+          "inputs": [
+            "dividends_paid",
+            "share_repurchases"
+          ],
+          "expected": "3408",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Calculated using the disclosed whole-million inputs and Decimal arithmetic; source rounding limits economic precision."
+        },
+        {
+          "id": "fcf_less_shareholder_returns",
+          "operation": "subtract",
+          "inputs": [
+            "fcf_reconciled",
+            "shareholder_cash_returns"
+          ],
+          "expected": "631",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Calculated using the disclosed whole-million inputs and Decimal arithmetic; source rounding limits economic precision."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Quarterly shareholder cash returns",
+          "text": "ConocoPhillips distributed $3.408 billion through dividends and share repurchases in the third quarter, against $4.039 billion of company-defined free cash flow, according to its November 5 earnings materials. That left a calculated $631 million before other cash uses, rather than a measure of the quarter’s change in cash.",
+          "source_ids": [
+            "sec-release",
+            "sec-supplement"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "The issuer cash-flow definition",
+          "text": "The non-GAAP measure starts with $7.195 billion of operating cash flow, removes a $23 million working-capital contribution and deducts $3.133 billion of capital expenditures and investments. Dividends paid were $1.007 billion, with repurchases accounting for the remaining $2.401 billion distributed.",
+          "source_ids": [
+            "sec-release",
+            "sec-supplement",
+            "issuer-release"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Separate asset-sale proceeds",
+          "text": "Asset sales brought in a separate $1.566 billion. Those proceeds sit outside the free-cash-flow measure and should not be treated as recurring operating cash. Other investment flows, financing payments and exchange-rate effects also mean the $631 million residual is not the actual cash-balance movement.",
+          "source_ids": [
+            "sec-supplement",
+            "issuer-supplement"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "The next dividend period",
+          "text": "The company also raised its quarterly ordinary dividend to $0.93 per share, effective for the fourth-quarter payment due December 1. That future rate is separate from the third-quarter cash already paid. Whether operating cash generation can sustain dividends, investment and buybacks remains a question for subsequent periods.",
+          "source_ids": [
+            "sec-release",
+            "issuer-release"
+          ]
+        }
+      ],
+      "limitations": [
+        "All cash-flow inputs are quarterly USD millions for July 1 to September 30, 2026; the announcement event and new dividend observation date are November 5.",
+        "CFO and FCF are issuer-defined non-GAAP measures, not GAAP operating cash or necessarily comparable with similarly named measures elsewhere. CFO removes the positive 23 million operating working-capital effect.",
+        "The 631 million arithmetic residual is neither the actual 1252 million change in cash, cash equivalents and restricted cash nor a claim of unrestricted, discretionary cash. Other investing and financing flows and exchange-rate effects remain separate.",
+        "Asset-disposition proceeds of 1566 million are the quarterly cash-flow line, outside the issuer FCF measure; no transaction-value or recurring operating-cash claim is made.",
+        "The 0.93 dividend is the newly announced fourth-quarter rate, payable December 1, 2026, to holders of record November 16. It is not the rate used to derive third-quarter dividends paid; no annualization or future share-count assumption is made.",
+        "Issuer and SEC copies of the same company material are representation cross-checks, not independent economic corroboration. This historical cash-flow comparison is not a dividend forecast, investment recommendation or safety guarantee."
+      ]
     }
   ],
   "reviews": [
@@ -986,6 +1268,48 @@
         "Run the normal complete build, tests and required CI on the exact publishing commit.",
         "Verify live bytes and dates after authorized deployment, within the recorded KST publication day."
       ]
+    },
+    {
+      "brief_sha256": "e9ba5b81dbf7a2bd5f37ae5de98fb5f3fe71b2c3d0b3236ce629c27f78e94de4",
+      "reviewer": "independently_review_filing",
+      "reviewed_at": "2026-11-05T22:04:42.291526+00:00",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently opened, downloaded and read SEC accession 0001163165-26-000043 Exhibits 99.1 and 99.2, issuer release and supplemental PDFs, and Q3 10-Q accession 0001163165-26-000045. Exact SEC source response hashes independently match the candidate: EX-99.1 bb529842f1ab62eb02787447600a7cbc3e0374eddaf7a1de0ea4211e291a5c60; EX-99.2 396bd360745de13716124c5349be48d30c12f6046eb8b2c494c0f1aec449cc6d. Issuer PDF hashes independently match as well. Table 2 verifies operating cash, working capital, CFO, capex/investments and FCF; supplement page 5 verifies dividend, buyback, disposal cash and actual cash movement. No uncited 10-Q comparison remains in the final record. SEC and issuer representations are correctly not portrayed as independent economic corroboration."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independently recomputed in USD millions: 7195 - 23 = 7172; 7172 - 3133 = 4039; 1007 + 2401 = 3408; 4039 - 3408 = 631. All facts and expected calculation outputs agree. The 1566 asset-sale proceeds are not added to issuer FCF. The 631 residual is not presented as the 1252 actual cash/equivalents/restricted-cash change. Positive expenditure magnitudes and explicit subtraction are internally consistent. No ratios, extrapolated dividend amounts or unsupported estimates were introduced in public prose."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "Verified 2026 third-quarter cash-flow column, July 1 through September 30, rather than year-to-date or prior-year column. Million-to-billion conversions are correct. The 0.93 USD per-share dividend is explicitly the newly announced Q4 payment due December 1, separate from historical Q3 cash paid. Event date remains November 5. Published timestamp 2026-11-05T22:02:47.883207+00:00 converts to November 6 KST and matches article/archive display; it is an editorial timestamp, not an assertion of production deployment."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read the complete exact JSON, prose, generated article HTML text and archive entry. The English title, four paragraphs, summary and category are clear and consistent. The title accurately states shareholder cash returns were 631 million below issuer-defined FCF. References to company-defined/non-GAAP FCF and separate asset-sale cash are understandable without claiming GAAP equivalence. The article is a concise historical brief, and the exact archive entry matches its title and date."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "The text attributes figures to issuer earnings materials, distinguishes reported facts from arithmetic and a future open question, and contains no personalized recommendation, price target, dividend-safety guarantee or claim that asset sales were needed to finance Q3 dividends. It does not treat buybacks or ordinary dividends as unavoidable contractual obligations. The public disclaimer states Structural research, not investment advice. The forward-looking sentence remains a question rather than a forecast."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "Source documents are dated November 5, 2026 and were independently retrieved during this review. At approximately 2026-11-05 22:04 UTC, directly downloaded https://data.sec.gov/submissions/CIK0001163165.json; its newest filings are Q3 10-Q 0001163165-26-000045 and 8-K 0001163165-26-000043, with no later filing or amendment displayed. Issuer IR links independently resolve to the same Nov 5 Q3 release and supplement. This check supports the historical brief as of review time; it does not promise future freshness."
+        }
+      },
+      "rendered_html_sha256": "e980c3e9a34047c18e1ae67f64e482c109ddd11e2005c2bef9d96baaa682ba05",
+      "archive_html_sha256": "41751c1b27c82d28c0bea3a7363fe49268695d3c52d53a105f5f5e8c35144bba",
+      "scope": "Independent source, arithmetic, period/unit, English, neutrality, freshness and exact generated-HTML content audit. Editorial approval applies only to this canonical record and these article/archive hashes. This is not a GitHub pull-request approval, authorization to publish, CI certification, visual-browser layout audit, or deployment verification. Re-review is required for material content changes or changed article/archive bytes.",
+      "source_evidence_manifest": "/tmp/cop_review/source_manifest.json",
+      "freshness_evidence": {
+        "url": "https://data.sec.gov/submissions/CIK0001163165.json",
+        "captured_file": "/tmp/cop_review/sec_submissions.json",
+        "sha256": "167024f579403b5dcea7bcd63b385dbcc2d03871595d1edec486b0988bc87a0c"
+      },
+      "blockers": []
     }
   ]
 }
