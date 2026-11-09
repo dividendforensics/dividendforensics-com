@@ -1153,6 +1153,291 @@
         "The 0.93 dividend is the newly announced fourth-quarter rate, payable December 1, 2026, to holders of record November 16. It is not the rate used to derive third-quarter dividends paid; no annualization or future share-count assumption is made.",
         "Issuer and SEC copies of the same company material are representation cross-checks, not independent economic corroboration. This historical cash-flow comparison is not a dividend forecast, investment recommendation or safety guarantee."
       ]
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "apple-7-5-billion-debt-2029-maturities",
+      "author": "DFB editorial",
+      "title": "Apple’s New Debt: $3.25 Billion Falls Due by 2029",
+      "summary": "Apple completed a $7.5 billion note issue, with about 43% of the principal due in 2028 and 2029. Fixed and floating rates create different interest exposures.",
+      "event_date": "2026-11-09",
+      "reporting_period": {
+        "start": "2026-11-09",
+        "end": "2026-11-09"
+      },
+      "comparison_periods": [
+        {
+          "start": "2026-11-05",
+          "end": "2026-11-05"
+        }
+      ],
+      "source_checked_at": "2026-11-09T22:11:13.854722+00:00",
+      "published_at": "2026-11-09T22:12:50.251195+00:00",
+      "event_source_id": "sec-8k",
+      "event_key": "sec:000114036126042798",
+      "sources": {
+        "sec-8k": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126042798/ef20085077_8k.htm",
+          "title": "Apple completion filing (Form 8-K)",
+          "locator": "Item 8.01, completed issuance amounts, maturities, interest-payment schedule and senior unsecured ranking",
+          "published_date": "2026-11-09",
+          "publication_precision": "date",
+          "checked_at": "2026-11-09T22:11:06.446874+00:00",
+          "content_sha256": "dfde8806aa1fcc62afdce5253fdd05ff29a51fa8914cba77ff1c5c1442af5298",
+          "retrieved_bytes": 44816,
+          "representation_note": "Actual retrieved HTTPS response bytes. Both documents are issuer-authored SEC filings, not independent economic corroboration. The prospectus is dated November 5 and filed November 6; the completed issuance was reported November 9."
+        },
+        "sec-supplement": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126042505/ny20084621x2_424b2.htm",
+          "title": "Apple final prospectus supplement",
+          "locator": "Cover and Summary, offering terms; S-11, Use of Proceeds; S-13 onward, Description of the Notes",
+          "published_date": "2026-11-06",
+          "publication_precision": "date",
+          "checked_at": "2026-11-09T22:11:10.789281+00:00",
+          "content_sha256": "fdfce3bea9e1996cd0adcc59a0a823502f02b4e7434a16a1f916544e1ab325b0",
+          "retrieved_bytes": 635196,
+          "representation_note": "Actual retrieved HTTPS response bytes. Both documents are issuer-authored SEC filings, not independent economic corroboration. The prospectus is dated November 5 and filed November 6; the completed issuance was reported November 9."
+        }
+      },
+      "facts": {
+        "float_2028": {
+          "value": "500",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-09",
+            "end": "2026-11-09"
+          },
+          "source_id": "sec-8k",
+          "basis": "Issued face principal on November 9, 2026. Floating-rate notes due November 9, 2028. Not net cash proceeds.",
+          "locator": "Item 8.01, first paragraph"
+        },
+        "float_2029": {
+          "value": "750",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-09",
+            "end": "2026-11-09"
+          },
+          "source_id": "sec-8k",
+          "basis": "Issued face principal on November 9, 2026. Floating-rate notes due November 9, 2029. Not net cash proceeds.",
+          "locator": "Item 8.01, first paragraph"
+        },
+        "fixed_2028": {
+          "value": "1000",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-09",
+            "end": "2026-11-09"
+          },
+          "source_id": "sec-8k",
+          "basis": "Issued face principal on November 9, 2026. 4.650% fixed-rate notes due November 9, 2028. Not net cash proceeds.",
+          "locator": "Item 8.01, first paragraph"
+        },
+        "fixed_2029": {
+          "value": "1000",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-09",
+            "end": "2026-11-09"
+          },
+          "source_id": "sec-8k",
+          "basis": "Issued face principal on November 9, 2026. 4.750% fixed-rate notes due November 9, 2029. Not net cash proceeds.",
+          "locator": "Item 8.01, first paragraph"
+        },
+        "fixed_2031": {
+          "value": "1000",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-09",
+            "end": "2026-11-09"
+          },
+          "source_id": "sec-8k",
+          "basis": "Issued face principal on November 9, 2026. 4.900% fixed-rate notes due November 9, 2031. Not net cash proceeds.",
+          "locator": "Item 8.01, first paragraph"
+        },
+        "fixed_2033": {
+          "value": "1250",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-09",
+            "end": "2026-11-09"
+          },
+          "source_id": "sec-8k",
+          "basis": "Issued face principal on November 9, 2026. 5.100% fixed-rate notes due November 9, 2033. Not net cash proceeds.",
+          "locator": "Item 8.01, first paragraph"
+        },
+        "fixed_2036": {
+          "value": "2000",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-09",
+            "end": "2026-11-09"
+          },
+          "source_id": "sec-8k",
+          "basis": "Issued face principal on November 9, 2026. 5.350% fixed-rate notes due November 9, 2036. Not net cash proceeds.",
+          "locator": "Item 8.01, first paragraph"
+        },
+        "series_count": {
+          "value": "7",
+          "unit": "note series",
+          "period": {
+            "start": "2026-11-09",
+            "end": "2026-11-09"
+          },
+          "source_id": "sec-8k",
+          "basis": "Count of seven separately enumerated series completed November 9.",
+          "locator": "Item 8.01, first paragraph"
+        },
+        "lowest_fixed_coupon": {
+          "value": "4.650",
+          "unit": "percent per year",
+          "period": {
+            "start": "2026-11-09",
+            "end": "2026-11-09"
+          },
+          "source_id": "sec-8k",
+          "basis": "Fixed coupon of the 2028 fixed-rate notes; not yield to maturity.",
+          "locator": "Item 8.01, first paragraph"
+        },
+        "highest_fixed_coupon": {
+          "value": "5.350",
+          "unit": "percent per year",
+          "period": {
+            "start": "2026-11-09",
+            "end": "2026-11-09"
+          },
+          "source_id": "sec-8k",
+          "basis": "Fixed coupon of the 2036 fixed-rate notes; not yield to maturity.",
+          "locator": "Item 8.01, first paragraph"
+        },
+        "estimated_net_proceeds": {
+          "value": "7470",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-05",
+            "end": "2026-11-05"
+          },
+          "source_id": "sec-supplement",
+          "basis": "Approximate net proceeds estimate in November 5 prospectus, after underwriting discounts and offering expenses; not a confirmed final cash receipt.",
+          "locator": "S-11, Use of Proceeds"
+        }
+      },
+      "calculations": [
+        {
+          "id": "fixed_total",
+          "operation": "sum",
+          "inputs": [
+            "fixed_2028",
+            "fixed_2029",
+            "fixed_2031",
+            "fixed_2033",
+            "fixed_2036"
+          ],
+          "expected": "6250",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Computed from exact stated face-principal amounts in USD millions. Percentage rounded to nearest whole percent; no claim about total Apple debt, net debt, or post-hedge exposure."
+        },
+        {
+          "id": "floating_total",
+          "operation": "sum",
+          "inputs": [
+            "float_2028",
+            "float_2029"
+          ],
+          "expected": "1250",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Computed from exact stated face-principal amounts in USD millions. Percentage rounded to nearest whole percent; no claim about total Apple debt, net debt, or post-hedge exposure."
+        },
+        {
+          "id": "issue_total",
+          "operation": "sum",
+          "inputs": [
+            "fixed_total",
+            "floating_total"
+          ],
+          "expected": "7500",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Computed from exact stated face-principal amounts in USD millions. Percentage rounded to nearest whole percent; no claim about total Apple debt, net debt, or post-hedge exposure."
+        },
+        {
+          "id": "due_2028_2029",
+          "operation": "sum",
+          "inputs": [
+            "float_2028",
+            "float_2029",
+            "fixed_2028",
+            "fixed_2029"
+          ],
+          "expected": "3250",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Computed from exact stated face-principal amounts in USD millions. Percentage rounded to nearest whole percent; no claim about total Apple debt, net debt, or post-hedge exposure."
+        },
+        {
+          "id": "early_maturity_percent",
+          "operation": "ratio_percent",
+          "inputs": [
+            "due_2028_2029",
+            "issue_total"
+          ],
+          "expected": "43",
+          "unit": "percent",
+          "decimal_places": 0,
+          "precision_note": "Computed from exact stated face-principal amounts in USD millions. Percentage rounded to nearest whole percent; no claim about total Apple debt, net debt, or post-hedge exposure."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Completed new issue",
+          "text": "Apple completed a $7.5 billion debt issue on November 9, selling seven series of senior unsecured notes. Of that principal, $3.25 billion matures in 2028 and 2029, about 43% of the new borrowing. The remaining maturities extend through 2036, according to its new SEC filing.",
+          "source_ids": [
+            "sec-8k",
+            "sec-supplement"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Rate structure",
+          "text": "The issue combines $6.25 billion of fixed-rate notes, with annual coupons ranging from 4.65% to 5.35%, and $1.25 billion of floating-rate notes. The floating rates reset quarterly using compounded SOFR plus contractual spreads. These are the terms of this issue, not Apple’s entire debt portfolio.",
+          "source_ids": [
+            "sec-8k",
+            "sec-supplement"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Two separate exposures",
+          "text": "The structure separates interest-rate exposure from repayment timing. Fixed coupons keep the stated interest rate unchanged, but the principal still comes due on schedule. Floating coupons leave interest payments exposed to changes in the reference rate. Neither feature establishes how Apple will fund the eventual repayments.",
+          "source_ids": [
+            "sec-8k",
+            "sec-supplement"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "Actual use remains unspecified",
+          "text": "Apple’s prospectus estimated approximately $7.47 billion of net proceeds after underwriting discounts and expenses. It lists buybacks and dividends among several possible corporate uses, alongside investment and debt repayment. How much ultimately goes to each purpose remains unspecified; the borrowing alone does not demonstrate that dividends require debt funding.",
+          "source_ids": [
+            "sec-supplement"
+          ]
+        }
+      ],
+      "limitations": [
+        "November 9 is actual completed issuance and SEC filing date. November 5 is the underwriting agreement date and earliest event on the cover; it is not presented as the completion date. The prospectus was dated November 5 and filed November 6.",
+        "The reporting period is the point-in-time November 9 issuance, not an accounting quarter. The estimated net proceeds are a separately declared November 5 offering estimate.",
+        "All principal figures are face amounts of this new issue only, not net proceeds or total Apple debt. The $3.25 billion figure adds four series maturing November 9, 2028 and November 9, 2029.",
+        "The calculated 43 percent is 3250/7500*100 rounded to the nearest whole percent. Remaining principal matures in 2031, 2033 and 2036.",
+        "Fixed coupons are not yield to maturity or an assertion of Apple’s effective post-hedge financing costs. Floating rates reset quarterly based on compounded SOFR plus contractual spreads. No total interest-expense forecast is made.",
+        "The $7.47 billion net-proceeds figure is an approximate issuer estimate, not confirmed final realized proceeds. Permitted general corporate uses do not establish actual allocation or a need to borrow to pay dividends.",
+        "Both primary documents are issuer-authored SEC filings. No separate bond press release was found on Apple investor relations; the actual final prospectus supplement is the issuer supplement, accurately labeled as SEC-hosted. No recommendation, valuation conclusion or safety guarantee is made."
+      ]
     }
   ],
   "reviews": [
@@ -1312,6 +1597,41 @@
       "blockers": [],
       "supersedes_brief_sha256": "e9ba5b81dbf7a2bd5f37ae5de98fb5f3fe71b2c3d0b3236ce629c27f78e94de4",
       "revision_description": "Only title company-name token shortened to verified ticker COP; data, calculations, prose, date and source ledger unchanged."
+    },
+    {
+      "reviewer": "/root/publish_daily_dfb/review_apple_financing",
+      "reviewed_at": "2026-11-09T22:15:14.394409+00:00",
+      "brief_sha256": "0eb5d76a595cca4cc8c4b5d2190ac49db4b260bf82fe30600b2f83a6971e4f55",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently retrieved and read the actual SEC 8-K Item 8.01 and issuer-authored final 424B2 prospectus, including cover and S-11. Both independent byte hashes and lengths match this record. Seven series, senior unsecured ranking, coupon range, SOFR resets and estimated net proceeds are supported. SEC filing dates agree with the submissions record; prospectus document date is distinguished from filing date. No separate issuer-site corroboration is claimed."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Recomputed five fixed series: 1000+1000+1000+1250+2000=6250 USD millions; floating 500+750=1250; total 7500. Independently regrouped by maturity:1500+1750+1000+1250+2000=7500. First two maturity years total 3250;3250/7500*100=43.333333... rounds to 43 percent. All rendered billion amounts and coupon endpoints match the ledger and primary evidence."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "The principal ledger is a November 9 issuance snapshot, not a reporting quarter or total-company debt balance. The November 5 estimated 7470 million net proceeds is separately dated, not confused with 7500 million face principal or final cash receipts. Event completion November 9 differs from earliest event November 5. Coupons are annual stated rates, not yields; floating terms are quarterly compounded-SOFR resets. Publication decision converts to November 10 KST."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read the full final JSON, title, summary and all four rendered paragraphs, plus rendered archive. The prose is grammatical, concise and clear; principal, net proceeds and interest exposure are differentiated. Public article shows four natural paragraphs with no internal headings or ledger. Detail and archive display November 10 consistently, and both exact source links are present. Rendered-byte hashes verified against supplied manifest. Re-reviewed final full-build article and archive against the previously read previews. Independently verified that their only differences are two standard local favicon links in the head; all visible prose, source links, dates, metadata and archive entries remain byte-identical. Bound this renewed approval to final full-build HTML hashes, not standalone-preview hashes."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "No trade instruction, price target, market reaction, investment-safety claim or author-position claim appears. Rate exposure discussion is limited to issue terms and does not assert effective post-hedge costs or predict repayment funding. S-11 possible uses are not misrepresented as actual allocations; the dividend-funding conclusion explicitly remains unproven."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "November 9 completed issuance is the material new event in this 8-K; pricing terms were already known November 5 and the record explicitly distinguishes that chronology. The new repayment schedule and fixed/floating mix are relevant to financing exposure without implying an earnings update. Independently inspected all four existing catalog entries: Microsoft, KDP, 3M, COP; none duplicates Apple, the accession, slug or November 10 KST publication date. Final catalog now contains this approved Apple candidate exactly once; it equals the reviewed candidate in every field."
+        }
+      },
+      "rendered_html_sha256": "d10b64f856dc9dee0b83ae7237d6c720a9a4c5b2836ce34d934dd14747861a2e",
+      "archive_html_sha256": "7a92dfe1abb29c5a948d2e3c6f9b2816023fb784f58644b4a2d297ad6e15e89f",
+      "scope": "Independent editorial, numerical, source and rendered-prose review only. Does not approve or certify CI, browser/mobile layout, deployment or live-site availability. Any record or rendered-artifact change requires renewed review."
     }
   ]
 }
