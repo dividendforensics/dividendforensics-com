@@ -1,5 +1,14 @@
 # Dividend Forensics Bureau
 
+## Equinix 2025 worked example
+
+`equinix_filing_lab.py` renders a historical FFO/AFFO exercise from the source
+ledger in `content/equinix-2025-affo.json` and the reviewed lesson template in
+`templates/filing-labs/`. All 17 signed adjustments reconcile to reported AFFO.
+The homepage, filing-lab directory, related REIT guides and learning search link
+to it. This adds source-based reader value; it does not promise AdSense approval.
+No ad-account settings, ad serving, news formats or distribution denominators change.
+
 ## Stock basics and reading comfort
 
 Two introductory guides explain overlapping stock classifications and market labels

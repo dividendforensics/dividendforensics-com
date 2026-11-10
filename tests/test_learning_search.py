@@ -67,7 +67,7 @@ class LearningSearchTests(unittest.TestCase):
         for slug,terms in [('glossary',GLOSSARY),('glossary-bdc',TERMS)]:
             record=next(r for r in self.records if r['url']=='/'+slug+'.html')
             for term,_,_ in terms:self.assertIn(term,record['search'])
-        self.assertEqual(len(self.records),83)
+        self.assertEqual(len(self.records),84)
     def test_added_topics_have_body_evidence(self):
         evidence={'three-financial-statements':['balance sheet','income statement','cash-flow statement'],
                   'stock-classification':['shares outstanding','EDGAR'],

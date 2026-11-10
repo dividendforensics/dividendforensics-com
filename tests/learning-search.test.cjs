@@ -22,8 +22,8 @@ test('required queries reach relevant generated pages without navigation-only hi
   assert(records.length>52);
   for(const [query,slug] of Object.entries(expected))assert(records.some(r=>matches(r.text,query)&&r.url===`/${slug}.html`),query);
   assert(!records.some(r=>matches(r.text,'market cap') && r.url==='/learn-bdc-nav-discounts.html'));
-  const expanded={'balance sheet':'three-financial-statements','income statement':'three-financial-statements','statement of cash flows':'three-financial-statements','shares outstanding':'stock-classification','EDGAR':'stock-classification','capex':'dividends-buybacks-guide','capital expenditures':'dividends-buybacks-guide','CFO':'operating-cash-flow-guide','FCF':'cash-flow-workbench','dividend yield':'market-labels'};
-  assert.equal(records.length,83);
+  const expanded={'Equinix':'filing-lab-equinix-2025','balance sheet':'three-financial-statements','income statement':'three-financial-statements','statement of cash flows':'three-financial-statements','shares outstanding':'stock-classification','EDGAR':'stock-classification','capex':'dividends-buybacks-guide','capital expenditures':'dividends-buybacks-guide','CFO':'operating-cash-flow-guide','FCF':'cash-flow-workbench','dividend yield':'market-labels'};
+  assert.equal(records.length,84);
   for(const [query,slug] of Object.entries(expanded))assert(records.some(r=>matches(r.text,query)&&r.url===`/${slug}.html`),query);
   assert(records.some(r=>matches(r.text,'dividend yield')&&r.url==='/glossary.html'));
   assert.equal(records.filter(r=>matches(r.text,'없는검색어')).length,0);

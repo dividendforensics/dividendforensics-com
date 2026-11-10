@@ -18,6 +18,7 @@ on:
       - 'lesson_formats.py'
       - 'research_resources.py'
       - 'filing_labs.py'
+      - 'equinix_filing_lab.py'
       - 'operating_companies.py'
       - 'operating_filing_lab.py'
       - 'bdc_education.py'
