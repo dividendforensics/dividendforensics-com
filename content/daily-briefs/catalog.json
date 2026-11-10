@@ -1438,6 +1438,161 @@
         "The $7.47 billion net-proceeds figure is an approximate issuer estimate, not confirmed final realized proceeds. Permitted general corporate uses do not establish actual allocation or a need to borrow to pay dividends.",
         "Both primary documents are issuer-authored SEC filings. No separate bond press release was found on Apple investor relations; the actual final prospectus supplement is the issuer supplement, accurately labeled as SEC-hosted. No recommendation, valuation conclusion or safety guarantee is made."
       ]
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "tsmc-dividend-capital-appropriations-2026",
+      "author": "DFB editorial",
+      "title": "TSMC Pairs NT$9 Dividend With $40.93 Billion Capital Plan",
+      "summary": "TSMC’s latest board decisions pair a quarterly dividend with major capital appropriations and separate investment approvals; cash-spending timing remains unspecified.",
+      "event_date": "2026-11-10",
+      "reporting_period": {
+        "start": "2026-07-01",
+        "end": "2026-09-30"
+      },
+      "comparison_periods": [
+        {
+          "start": "2026-11-10",
+          "end": "2026-11-10"
+        }
+      ],
+      "source_checked_at": "2026-11-10T22:03:47.627358+00:00",
+      "published_at": "2026-11-10T22:05:31.884964+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000104617926000797",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/1046179/000104617926000797/tsm-boardx202611xx.htm",
+          "title": "TSMC Form 6-K, November 10, 2026",
+          "locator": "Board resolutions 1–5",
+          "published_date": "2026-11-10",
+          "publication_precision": "date",
+          "checked_at": "2026-11-10T22:03:42.687224+00:00",
+          "content_sha256": "3f3c1610e178fcb9555ab9c6645a59d1de889a999f8ff1506ca6a5a6fcba020a"
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://pr.tsmc.com/english/news/3352",
+          "title": "TSMC board meeting resolutions",
+          "locator": "Resolutions 1–5",
+          "published_date": "2026-11-10",
+          "publication_precision": "date",
+          "checked_at": "2026-11-10T22:03:44.927199+00:00",
+          "content_sha256": "e694b58e8243590b2de39c171b4935d4997ba23eac4057d0b6dd87e93902fcb8"
+        }
+      },
+      "facts": {
+        "quarterly_common_dividend": {
+          "value": "9.0",
+          "unit": "NTD per common share",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec",
+          "locator": "Resolution 2",
+          "basis": "Cash dividend approved for Q3 2026; not ADS dividend or cash paid during the quarter"
+        },
+        "quarterly_diluted_eps": {
+          "value": "29.43",
+          "unit": "NTD per common share",
+          "period": {
+            "start": "2026-07-01",
+            "end": "2026-09-30"
+          },
+          "source_id": "sec",
+          "locator": "Resolution 1",
+          "basis": "Q3 2026 diluted earnings per share, not operating cash flow"
+        },
+        "capital_appropriations": {
+          "value": "40926.70",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-10",
+            "end": "2026-11-10"
+          },
+          "source_id": "sec",
+          "locator": "Resolution 3",
+          "basis": "Approximate board-approved capital appropriations; not cash capex already incurred or a single-year capex forecast"
+        },
+        "anthropic_investment_ceiling": {
+          "value": "500",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-10",
+            "end": "2026-11-10"
+          },
+          "source_id": "sec",
+          "locator": "Resolution 5(1)",
+          "basis": "Ceiling for common shares at Anthropic IPO price; not a completed purchase"
+        },
+        "openai_investment_ceiling": {
+          "value": "500",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-10",
+            "end": "2026-11-10"
+          },
+          "source_id": "sec",
+          "locator": "Resolution 5(2)",
+          "basis": "Ceiling for OpenAI preferred-stock investment; not a completed purchase"
+        }
+      },
+      "calculations": [
+        {
+          "id": "dividend_to_diluted_eps",
+          "operation": "ratio_percent",
+          "inputs": [
+            "quarterly_common_dividend",
+            "quarterly_diluted_eps"
+          ],
+          "expected": "31",
+          "unit": "percent",
+          "decimal_places": 0,
+          "precision_note": "Approximate ratio of reported rounded per-share dividend and diluted EPS for the same quarter; not cash-flow coverage."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "New board decisions",
+          "text": "TSMC’s board approved approximately US$40.93 billion in capital appropriations on November 10, alongside a NT$9-per-common-share dividend for the third quarter of 2026. The decisions put shareholder distributions and substantial investment plans on the same agenda.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Dividend and earnings",
+          "text": "The dividend equals about 31% of the quarter’s NT$29.43 diluted earnings per share, an earnings comparison rather than cash-flow coverage. Common shareholders have a March 11, 2027 ex-dividend date, a March 17 record date and an April 8 payment date. The NT$9 figure is not a per-ADS amount.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Capital scope",
+          "text": "The capital authorization covers manufacturing and packaging capacity, fab construction and facility systems, plus 2027 research-and-development investment, sustaining expenditures and capitalized leased assets. Appropriations authorize projects; they do not establish that US$40.93 billion has already been spent or that the entire amount belongs to one year’s cash-capex budget.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "Investment timing",
+          "text": "Separately, directors approved up to US$500 million for Anthropic common shares at its initial-public-offering price and up to US$500 million for OpenAI preferred stock. These are investment ceilings, not disclosed completed purchases. The filing leaves the timing of these cash outlays, and their interaction with future operating cash generation, unresolved.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        }
+      ],
+      "limitations": "Board appropriations and investment ceilings are not realized cash expenditures, annual capex guidance or a financing commitment. Dividend/EPS uses rounded per-common-share figures for Q3, not cash-flow coverage, an ADS dividend or an annualized distribution. Common-share payment dates must not be treated as a US depositary payment promise. The filing does not set a complete cash-spending timetable or establish dividend safety."
     }
   ],
   "reviews": [
@@ -1632,6 +1787,46 @@
       "rendered_html_sha256": "d10b64f856dc9dee0b83ae7237d6c720a9a4c5b2836ce34d934dd14747861a2e",
       "archive_html_sha256": "7a92dfe1abb29c5a948d2e3c6f9b2816023fb784f58644b4a2d297ad6e15e89f",
       "scope": "Independent editorial, numerical, source and rendered-prose review only. Does not approve or certify CI, browser/mobile layout, deployment or live-site availability. Any record or rendered-artifact change requires renewed review."
+    },
+    {
+      "brief_sha256": "1ca33d5026b5fc119ed9c13b5b43a4f35bfbf8709fddcbedbc31585bda1dafe2",
+      "reviewer": "Independent native reviewer /root/publish_daily_brief/review_tsmc_brief",
+      "reviewed_at": "2026-11-10T22:07:25.453492+00:00",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently downloaded and read the official SEC 6-K, TSMC release 3352, and SEC accession index. Both narratives agree on resolutions 1–5. SEC index filing date and issuer issued-on date are November 10, 2026. Candidate SEC/issuer SHA256 values exactly match my separately retrieved response bytes. The SEC response is 37,506 bytes including a trailing script versus 37,393 in the index; hashes identify retrieved bodies, not original submission bytes. Resolution 2 supports all three common-share dates and the distinction from ADSs. Resolution 5 explicitly distinguishes Anthropic common at IPO price from OpenAI preferred. No claim that either purchase completed."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Separately computed with Decimal and exact integer fractions: 9.0 / 29.43 × 100 = 10000/327 = 30.58103975535168…%, rounded to approximately 31%. US$40,926.70 million / 1000 = US$40.9267 billion, rounding to US$40.93 billion in title and two body mentions. Each US$500 million ceiling is individually reported in resolution 5, not a summed realized spend. Reconciled every visible numerical occurrence, including Q3 2026, November 10, March 11 2027, March 17, April 8, and 2027 R&D, to its source. No unsupported dividend increase, growth rate, yield or aggregate expenditure is asserted."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "Q3 means July 1–September 30, 2026; dividend and diluted EPS are NT dollars per common share for that quarter, not USD or per ADS and not nine-month basic EPS from the separate TIFRS table. Board authorizations are November 10 event amounts, using the declared event comparison period. Common-share ex-date March 11, record March 17 and payment April 8 are all 2027; public prose does not imply ADS payment equivalence. Manufacturing/packaging, fab/facility, 2027 R&D, sustaining and capitalized leases match resolution 3. Appropriations are not treated as incurred cash capex or an annual budget, and earnings ratio is explicitly not cash-flow coverage."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read all 181 words in four paragraphs, title, summary, limitations and exact rendered detail/archive. Prose forms a coherent news brief: quantified approval hook; dividend/EPS and common-share dates; capital scope and distinction from actual spending; separately identified equity approvals and unresolved timing. Grammar and terminology are clear. Capital plan in the title is immediately specified as appropriations; investment plans in paragraph 1 precisely describes authorizations without implying binding cash commitments. Common stock versus preferred stock and IPO-price qualification are preserved. The separate investment-company authorization is omitted without claiming an exhaustive list. Rendered paragraphs exactly equal final JSON, with no internal headings or ledger table exposed."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "No recommendation, price target, market-price snapshot, asserted market reaction, dividend-safety guarantee, or author holding claim. Approximately and about correctly signal rounded amounts. Forward cash generation and spending timing remain unresolved rather than predicted. Structural research disclaimer is present in rendered detail; substantial and major describe the size of disclosed authorizations without prescribing an investment action."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "The materially new November 10 board event approves the Q3 dividend and common-share distribution schedule, approximately US$40.93bn in capital appropriations, and specifically scoped AI-company investments. These are new capital-allocation decisions rather than recycled quarterly earnings alone. Independently read the five existing catalog entries: Microsoft October 31, KDP November 4, 3M November 5, COP November 6 and Apple November 10 KST; no TSMC subject or accession 000104617926000797 duplicates them. Actual editorial decision November 10 22:05:31 UTC is November 11 KST, while event and source dates remain November 10. Detail, archive and structured metadata retain November 11 publication and preserve all five earlier dates."
+        }
+      },
+      "rendered_sha256": {
+        "brief-tsmc-dividend-capital-appropriations-2026.html": "e6dd7e53f11704ad563a6efca2a1a078079e83e0604cb0dd938dd00afead7b95",
+        "daily-briefs.html": "7ac1314e5d7a985d11eb936eba0e7a6e34631f98363a95edf7cadd4eb5900835",
+        "index.html": "45278f337d824114d9b9bc3d2e5e4c8b6b915cdbd67d8a580242a35c4ceb0f25",
+        "research.html": "e709c112e69d130f3e9b903addd7f287bab8f0553b5a79f3683557a4c235b069",
+        "sitemap.xml": "a101dd5fd4ccf13f5514134a7cbcacb3b621839fe687cd096b7a0781bbe3d0bd"
+      },
+      "render_review": "Independently regenerated full build_site.planned_outputs against existing approved records plus exact candidate in memory, without modifying public catalog or fabricating a prior approval. All five candidate preview outputs byte-match regenerated outputs. Inspected detail and archive text, source links, publication dates and JSON-LD. Approval binds this exact record and these rendered bytes; subsequent normal-build output must match. Browser/mobile QA and deployment remain publisher release gates."
     }
   ]
 }
