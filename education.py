@@ -323,6 +323,8 @@ def education_outputs(root):
     output.update(stock_outputs(root))
     from filing_labs import outputs as filing_outputs
     output.update(filing_outputs(root))
+    from equinix_filing_lab import outputs as equinix_outputs
+    output.update(equinix_outputs(root))
     from operating_companies import outputs as operating_outputs
     from operating_filing_lab import outputs as operating_lab_outputs, workbench_example
     output.update(operating_outputs(root,examples=[workbench_example(root)]))

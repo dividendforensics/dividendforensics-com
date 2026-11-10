@@ -4,6 +4,7 @@ from education import E, shell, section_head
 
 # Editorial synonyms point only at pages that explain these topics.
 TOPICS = {
+    'filing-lab-equinix-2025': 'FFO AFFO reconciliation recurring capex stock compensation add backs',
     'stock-classification': 'market cap market capitalization large cap small cap sectors shares outstanding EDGAR',
     'market-labels': 'ticker NYSE Nasdaq S&P500 S&P 500 EPS earnings per share ETF exchange index shares outstanding market capitalization market cap dividend yield',
     'dividends-buybacks-guide': 'buyback share repurchase free cash flow FCF capital expenditures capex',

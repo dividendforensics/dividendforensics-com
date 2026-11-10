@@ -39,6 +39,7 @@ jobs:
           python tools/spanish_browser_check.py
           python tools/precision_browser_check.py
           python tools/resources_browser_check.py
+          python tools/equinix_lab_browser_check.py
           python tools/lesson_formats_browser_check.py
           python tools/calculator_safety_browser_check.py
           python tools/calculator_quality_browser_check.py

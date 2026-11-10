@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "1.0",
+  "slug": "filing-lab-equinix-2025",
+  "title": "Why AFFO can be higher than FFO: Equinix 2025",
+  "description": "Rebuild Equinix’s 2025 FFO-to-AFFO reconciliation from 17 disclosed adjustments. Explain the capex deduction, add-backs and limits before judging dividend coverage.",
+  "published": "2026-11-10",
+  "updated": "2026-11-10",
+  "checkedOn": "2026-11-10",
+  "periodStart": "2025-01-01",
+  "periodEnd": "2025-12-31",
+  "unit": "USD million",
+  "basis": "FFO and AFFO attributable to common stockholders",
+  "source": {
+    "title": "Equinix 2025 Form 10-K",
+    "url": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+    "filed": "2026-02-11",
+    "accession": "0001101239-26-000032",
+    "locator": "Item 7, pp.60–61, Funds from Operations (FFO) and AFFO; annual 2025 column",
+    "metadataURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/0001101239-26-000032-index.html"
+  },
+  "definitionSource": {
+    "title": "Nareit FFO White Paper, December 2018 restatement",
+    "url": "https://www.reit.com/sites/default/files/2018-FFO-white-paper-%2811-27-18%29.pdf",
+    "locator": "pp.1–5, FFO definition and limitations"
+  },
+  "ffoRows": [
+    {
+      "key": "net_income",
+      "label": "Net income",
+      "value": "1348",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, first reconciliation, year ended December 31, 2025, row: Net income",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "nci",
+      "label": "Net (income) loss attributable to non-controlling interests",
+      "value": "2",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, first reconciliation, year ended December 31, 2025, row: Net (income) loss attributable to non-controlling interests",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "common_income",
+      "label": "Net income attributable to common stockholders",
+      "value": "1350",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, first reconciliation, year ended December 31, 2025, row: Net income attributable to common stockholders",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "real_estate_depreciation",
+      "label": "Real estate depreciation",
+      "value": "1282",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, first reconciliation, year ended December 31, 2025, row: Real estate depreciation",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "real_estate_disposition",
+      "label": "(Gain) loss on disposition of real estate assets",
+      "value": "0",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, first reconciliation, year ended December 31, 2025, row: (Gain) loss on disposition of real estate assets",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "ffo_jv",
+      "label": "Adjustments for FFO from unconsolidated joint ventures",
+      "value": "36",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, first reconciliation, year ended December 31, 2025, row: Adjustments for FFO from unconsolidated joint ventures",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "ffo",
+      "label": "FFO attributable to common stockholders",
+      "value": "2668",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, first reconciliation, year ended December 31, 2025, row: FFO attributable to common stockholders",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    }
+  ],
+  "adjustments": [
+    {
+      "key": "installation",
+      "label": "Installation revenue adjustment",
+      "value": "20",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Installation revenue adjustment",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "rent",
+      "label": "Straight-line rent expense adjustment",
+      "value": "5",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Straight-line rent expense adjustment",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "contract_cost",
+      "label": "Contract cost adjustment",
+      "value": "-52",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Contract cost adjustment",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "financing_amortization",
+      "label": "Amortization of deferred financing costs and debt discounts",
+      "value": "23",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Amortization of deferred financing costs and debt discounts",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "share_compensation",
+      "label": "Stock-based compensation expense",
+      "value": "498",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Stock-based compensation expense",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "share_charity",
+      "label": "Stock-based charitable contributions",
+      "value": "3",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Stock-based charitable contributions",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "non_real_estate_depreciation",
+      "label": "Non-real estate depreciation expense",
+      "value": "568",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Non-real estate depreciation expense",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "asset_disposition",
+      "label": "(Gain) loss on disposition of non-real estate assets",
+      "value": "-1",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: (Gain) loss on disposition of non-real estate assets",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "amortization",
+      "label": "Amortization expense",
+      "value": "200",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Amortization expense",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "accretion",
+      "label": "Accretion expense adjustment",
+      "value": "16",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Accretion expense adjustment",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "recurring_capex",
+      "label": "Recurring capital expenditures",
+      "value": "-284",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Recurring capital expenditures",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "debt_extinguishment",
+      "label": "(Gain) loss on debt extinguishment",
+      "value": "-1",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: (Gain) loss on debt extinguishment",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "restructuring",
+      "label": "Restructuring and other exit charges",
+      "value": "33",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Restructuring and other exit charges",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "transaction_costs",
+      "label": "Transaction costs",
+      "value": "18",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Transaction costs",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "impairment",
+      "label": "Impairment charges",
+      "value": "68",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Impairment charges",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "tax",
+      "label": "Income tax expense adjustment",
+      "value": "-24",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Income tax expense adjustment",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    },
+    {
+      "key": "affo_jv",
+      "label": "Adjustments for AFFO from unconsolidated joint ventures",
+      "value": "3",
+      "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+      "locator": "p.61, second reconciliation, year ended December 31, 2025, row: Adjustments for AFFO from unconsolidated joint ventures",
+      "unit": "USD million",
+      "periodStart": "2025-01-01",
+      "periodEnd": "2025-12-31",
+      "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+    }
+  ],
+  "affo": "3761",
+  "affoFact": {
+    "key": "affo",
+    "label": "AFFO attributable to common stockholders",
+    "value": "3761",
+    "sourceURL": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+    "locator": "p.61, second reconciliation, year ended December 31, 2025, final row: AFFO attributable to common stockholders",
+    "unit": "USD million",
+    "periodStart": "2025-01-01",
+    "periodEnd": "2025-12-31",
+    "provenance": "Issuer-reported; transcribed from the cited SEC filing. Dash in the real-estate-disposition row is recorded as zero."
+  }
+}
