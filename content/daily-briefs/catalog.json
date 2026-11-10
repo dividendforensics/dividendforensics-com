@@ -1790,8 +1790,8 @@
     },
     {
       "brief_sha256": "1ca33d5026b5fc119ed9c13b5b43a4f35bfbf8709fddcbedbc31585bda1dafe2",
-      "reviewer": "Independent native reviewer /root/publish_daily_brief/review_tsmc_brief",
-      "reviewed_at": "2026-11-10T22:07:25.453492+00:00",
+      "reviewer": "Independent assisted source and editorial review",
+      "reviewed_at": "2026-11-10T22:10:05.322421+00:00",
       "decision": "pass",
       "checks": {
         "sources": {
