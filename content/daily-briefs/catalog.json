@@ -1593,6 +1593,180 @@
         }
       ],
       "limitations": "Board appropriations and investment ceilings are not realized cash expenditures, annual capex guidance or a financing commitment. Dividend/EPS uses rounded per-common-share figures for Q3, not cash-flow coverage, an ADS dividend or an annualized distribution. Common-share payment dates must not be treated as a US depositary payment promise. The filing does not set a complete cash-spending timetable or establish dividend safety."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "costco-special-dividend-buyback-reset-2026",
+      "author": "DFB editorial",
+      "title": "Costco’s $13.3 Billion Special Dividend Comes With a Buyback Reset",
+      "summary": "Costco declared a $30 special dividend and replaced its repurchase program; the new ceiling is distinct from both unused authorization and completed spending.",
+      "event_date": "2026-11-10",
+      "reporting_period": {
+        "start": "2026-11-10",
+        "end": "2026-11-10"
+      },
+      "source_checked_at": "2026-11-11T21:57:05.672082+00:00",
+      "published_at": "2026-11-11T21:58:37.637496+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000090983226000134",
+      "sources": {
+        "sec": {
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000134/cost-20261107.htm",
+          "checked_at": "2026-11-11T21:57:03.798421+00:00",
+          "content_sha256": "18fe3c60e8d1316ca7f742d8989464a844a55377fffa60982d3f3a9b8f6d82f6",
+          "kind": "sec",
+          "title": "Costco Form 8-K, filed November 10, 2026",
+          "locator": "Item 8.01 and Exhibit 99.1; filing date independently confirmed in accession index, not the November 7 earliest report date",
+          "published_date": "2026-11-10",
+          "publication_precision": "date",
+          "representation_note": "SHA256 identifies the exact retrieved HTTPS response body, including the appended script tag; not a claim to hash original SEC submission bytes."
+        },
+        "sec_exhibit": {
+          "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000134/costex9918-k111026.htm",
+          "checked_at": "2026-11-11T21:57:03.842530+00:00",
+          "content_sha256": "4ff2e6c9b36ed9f2fff99f944a1090570ccc4a999779ed0ea460f58462f1ecc1",
+          "kind": "sec",
+          "title": "Costco special-dividend release, SEC Exhibit 99.1",
+          "locator": "First and second release paragraphs, special cash dividend and replacement repurchase authorization",
+          "published_date": "2026-11-10",
+          "publication_precision": "date",
+          "representation_note": "SHA256 identifies the exact retrieved HTTPS response body, including the appended script tag; not a claim to hash original SEC submission bytes."
+        },
+        "issuer": {
+          "url": "https://investor.costco.com/news/news-details/2026/Costco-Wholesale-Corporation-Declares-30-Special-Cash-Dividend-and-Reauthorizes-Stock-Repurchase-Program/default.aspx",
+          "checked_at": "2026-11-11T21:57:05.672082+00:00",
+          "content_sha256": "c668069e0791f6d5c1908aaa8f57767ddbe123f1228ef71581ef812536223fbe",
+          "kind": "issuer",
+          "title": "Costco investor-relations release, November 10, 2026",
+          "locator": "First and second release paragraphs, special cash dividend and replacement repurchase authorization",
+          "published_date": "2026-11-10",
+          "publication_precision": "date"
+        }
+      },
+      "facts": {
+        "special_dividend_per_share": {
+          "value": "30",
+          "unit": "USD per common share",
+          "period": {
+            "start": "2026-11-10",
+            "end": "2026-11-10"
+          },
+          "source_id": "sec",
+          "locator": "Item 8.01",
+          "basis": "Declared special cash dividend per common share; not the regular quarterly dividend"
+        },
+        "estimated_special_payment": {
+          "value": "13.3",
+          "unit": "USD billions",
+          "period": {
+            "start": "2026-11-10",
+            "end": "2026-11-10"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "First release paragraph",
+          "basis": "Issuer estimated aggregate special-dividend payment, approximately, not actual cash already paid"
+        },
+        "new_buyback_ceiling": {
+          "value": "4",
+          "unit": "USD billions",
+          "period": {
+            "start": "2026-11-10",
+            "end": "2026-11-10"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "Second release paragraph",
+          "basis": "Reauthorized repurchase ceiling replacing the old program, not additive to it"
+        },
+        "old_buyback_ceiling": {
+          "value": "4",
+          "unit": "USD billions",
+          "period": {
+            "start": "2026-11-10",
+            "end": "2026-11-10"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "Second release paragraph",
+          "basis": "Ceiling of the 2023 program replaced by the November 10 2026 authorization"
+        },
+        "old_program_purchases": {
+          "value": "3.1",
+          "unit": "USD billions",
+          "period": {
+            "start": "2026-11-10",
+            "end": "2026-11-10"
+          },
+          "source_id": "sec_exhibit",
+          "locator": "Second release paragraph",
+          "basis": "Reported cumulative purchases under the old program as disclosed November 10 2026; positive spending amount"
+        }
+      },
+      "calculations": [
+        {
+          "id": "unused_old_authorization",
+          "operation": "subtract",
+          "inputs": [
+            "old_buyback_ceiling",
+            "old_program_purchases"
+          ],
+          "expected": "0.9",
+          "unit": "USD billions",
+          "decimal_places": 1,
+          "precision_note": "Approximate arithmetic on issuer amounts reported in billions; unused authorization and its change are not cash balances or executed purchases."
+        },
+        {
+          "id": "additional_capacity",
+          "operation": "subtract",
+          "inputs": [
+            "new_buyback_ceiling",
+            "unused_old_authorization"
+          ],
+          "expected": "3.1",
+          "unit": "USD billions",
+          "decimal_places": 1,
+          "precision_note": "Approximate arithmetic on issuer amounts reported in billions; unused authorization and its change are not cash balances or executed purchases."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Special distribution",
+          "text": "Costco (NASDAQ: COST) declared a $30-per-share special cash dividend on November 10, 2026, with an estimated total payment of $13.3 billion. The dividend is payable on December 4, 2026, to common shareholders of record at the close of business on November 24. Its Form 8-K and accompanying release set out the terms.",
+          "source_ids": [
+            "sec",
+            "sec_exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Replacement authorization",
+          "text": "The board also reauthorized up to $4 billion of common-stock repurchases through November 2030. This replaces a $4 billion program adopted in 2023 that was scheduled to expire in January 2027. Costco said $3.1 billion had already been purchased under that earlier program.",
+          "source_ids": [
+            "sec_exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Unused authorization comparison",
+          "text": "Subtracting reported purchases from the old ceiling leaves roughly $0.9 billion of unused authorization. On those rounded figures, the replacement increases available repurchase capacity by approximately $3.1 billion, rather than adding $4 billion to the unused balance. Authorization does not mean the purchases have occurred.",
+          "source_ids": [
+            "sec_exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "Spending and funding limits",
+          "text": "The release does not specify a funding plan for the special dividend or a timetable for using the repurchase authorization. It establishes a distribution date and a buyback ceiling, rather than a combined cash-spending forecast.",
+          "source_ids": [
+            "sec_exhibit",
+            "issuer"
+          ]
+        }
+      ],
+      "limitations": "The estimated total special-dividend payment and reported repurchases are rounded issuer amounts. Unused authorization is calculated from the old ceiling and disclosed cumulative purchases as of the announcement, not a cash balance. The new program replaces the earlier authorization; neither authorization is a completed cash outflow. The release does not specify funding or an execution schedule, and this brief makes no coverage, yield or future dividend prediction."
     }
   ],
   "reviews": [
@@ -1827,6 +2001,46 @@
         "sitemap.xml": "a101dd5fd4ccf13f5514134a7cbcacb3b621839fe687cd096b7a0781bbe3d0bd"
       },
       "render_review": "Independently regenerated full build_site.planned_outputs against existing approved records plus exact candidate in memory, without modifying public catalog or fabricating a prior approval. All five candidate preview outputs byte-match regenerated outputs. Inspected detail and archive text, source links, publication dates and JSON-LD. Approval binds this exact record and these rendered bytes; subsequent normal-build output must match. Browser/mobile QA and deployment remain publisher release gates."
+    },
+    {
+      "reviewer": "Independent Costco filing reviewer",
+      "reviewed_at": "2026-11-11T22:00:06.756165+00:00",
+      "brief_sha256": "0f3f32d300fbacba52fac45b05f71b5e68404b3acc0218bfa46c932c45e13574",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently opened the official SEC 8-K and Exhibit 99.1 via web and independently retrieved their HTTPS bodies. Main/exhibit SHA256 values match this record. Independently retrieved accession index (SHA256 6a9469483f73531bb4c3189a8f97f37198dea3149fb00ec6e6a0421e596d3713) confirms November 10 filing date; November 7 earliest report date relates to director resignation, not dividend. Item 8.01 confirms November 10 dividend declaration, $30/common share, December 4 payment, and November 24 close-of-business record date. Exhibit paragraphs 1–2 confirm approximately $13.3 billion total, both $4 billion program ceilings, $3.1 billion previously purchased, 2023 adoption, January 2027 old expiry and November 2030 replacement expiry. My direct issuer fetch returned 403; I separately read the actual preserved issuer HTML, verified its c668069e0791f6d5c1908aaa8f57767ddbe123f1228ef71581ef812536223fbe hash and November 10 dateline, and reconciled its original release text with independently retrieved SEC Exhibit 99.1. No issuer retrieval success is claimed for this reviewer."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Recomputed with Decimal: $4.0B minus $3.1B reported prior purchases equals approximately $0.9B unused; $4.0B replacement ceiling minus $0.9B unused equals approximately $3.1B increased capacity. Independently checked in $100M units: 40−31=9 and 40−9=31. daily_briefs.calculations returns 0.9 and 3.1. Rounded input qualifications are retained; new authorization replaces the old program rather than adding to it. $13.3B is the issuer estimate, not a derived precise denominator or already paid cash."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "November 10 is the declaration and announcement snapshot, not the November 7 earliest reported event. Old purchases are explicitly cumulative under the 2023 program as disclosed on November 10, not single-day spending. All authorization arithmetic uses USD billions and no per-share/aggregate mixing. $30 is USD per common share. November 24 record date and December 4 payment date are 2026; old/new authorization expiry dates remain January 2027/November 2030. Source dates use date precision without invented availability or acceptance-zone claims. Editorial timestamp converts to November 12 KST and precedes this review."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Reviewed full exact JSON and regenerated detail HTML, archive, home/research cards and sitemap. Four natural paragraphs total 175 words; detail paragraph text exactly equals record sections. Title, summary, source link labels and KST date agree. No machine ledger, headings per paragraph or internal classification labels appear in newsletter prose. Roughly/approximately and estimated preserve source precision. The final paragraph correctly limits its missing-funding/execution-timetable statement to this release; expiry is stated separately. All five regenerated output bytes match the supplied preview hashes."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "Prose distinguishes declared future distribution, cumulative historical purchases, unused authorization and replacement capacity. No cash balance, executed future buyback, combined spending forecast, funding assurance, dividend coverage or dividend-safety claim is inferred. No recommendation, target price, invented market reaction, yield snapshot, or author-position assertion appears. Informational structural-research disclaimer remains."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "Material new November 10 SEC event is the approximately $13.3B special dividend payable December 4 plus replacement repurchase authorization before the old January 2027 expiry. It matters for near-term capital distributions and capacity; it is not an old earnings repackage. Independently checked six prior catalog briefs (Microsoft, KDP, 3M, ConocoPhillips, Apple, TSMC): none covers Costco or accession 000090983226000134. November 12 KST is the actual current editorial release date; previous archive dates remain unchanged. This approval does not certify browser QA, CI, merge, or deployment."
+        }
+      },
+      "rendered_sha256": {
+        "sitemap.xml": "afab580d9032cacab2567b6462fae886c8096e53a51b19119a985c3103467a77",
+        "brief-costco-special-dividend-buyback-reset-2026.html": "9a75cb8252662aba7364adbf401c220eff09aab13b7fdcde5955386357eed111",
+        "daily-briefs.html": "494af74c3816eb079719956788cf2376a285a1f15654500c260a2f3acead9c92",
+        "index.html": "4fd3e6b4b78ececf49a12489cef0830f7037eca6876660010a98fb36fc4c4e10",
+        "research.html": "e6730f1f0b50d0f16a60c86044dca6105895721978f43792669de9f05b2cb1e3"
+      },
+      "review_scope": "Exact record, financial evidence, and exact regenerated HTML outputs only. Publisher retains browser QA, build/CI, release-date and deployment gates."
     }
   ]
 }
