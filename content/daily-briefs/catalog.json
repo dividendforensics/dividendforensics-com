@@ -1767,6 +1767,201 @@
         }
       ],
       "limitations": "The estimated total special-dividend payment and reported repurchases are rounded issuer amounts. Unused authorization is calculated from the old ceiling and disclosed cumulative purchases as of the announcement, not a cash balance. The new program replaces the earlier authorization; neither authorization is a completed cash outflow. The release does not specify funding or an execution schedule, and this brief makes no coverage, yield or future dividend prediction."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "applied-materials-q4-buybacks-cash-flow-2026",
+      "author": "DFB editorial",
+      "title": "Applied Materials Returned Nearly All Its Quarterly Free Cash Flow",
+      "summary": "Quarterly buybacks and dividends nearly matched free cash flow, but the difference is not the change in cash on hand.",
+      "event_date": "2026-11-12",
+      "reporting_period": {
+        "start": "2026-07-27",
+        "end": "2026-10-25"
+      },
+      "source_checked_at": "2026-11-12T22:08:35.963089+00:00",
+      "published_at": "2026-11-12T22:08:35.963089+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000162828026073360",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/6951/000162828026073360/amat-20261112.htm",
+          "title": "Applied Materials Form 8-K, November 12, 2026",
+          "locator": "Item 2.02 and Exhibit 99.1; filing date checked against accession index",
+          "published_date": "2026-11-12",
+          "publication_precision": "date",
+          "checked_at": "2026-11-12T22:08:35.963089+00:00",
+          "content_sha256": "e2c93cce0caeb99945bdd7f2b90014d11d4d4adabb0bb436e1b315d6b82b8afc"
+        },
+        "exhibit": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/6951/000162828026073360/exhibit991q42026earningsre.htm",
+          "title": "SEC Exhibit 99.1: Applied Materials fiscal 2026 results",
+          "locator": "Quarterly cash-flow statement and non-GAAP free-cash-flow reconciliation",
+          "published_date": "2026-11-12",
+          "publication_precision": "date",
+          "checked_at": "2026-11-12T22:08:35.963089+00:00",
+          "content_sha256": "a87c888a6ed662df3a90694e9d5ddb7deab51300c700f22ea8a0989f5fae4f11"
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-fourth-quarter-and-fiscal-year-2026",
+          "title": "Applied Materials investor-relations earnings release",
+          "locator": "Fourth Quarter Results; cash-flow statement; non-GAAP free-cash-flow reconciliation",
+          "published_date": "2026-11-12",
+          "publication_precision": "date",
+          "checked_at": "2026-11-12T22:08:35.963089+00:00",
+          "content_sha256": "d48d875dc495c4b40ea0d2076e766d5eefbf1c097329fc613d24678fb2a9fc66",
+          "representation_note": "Issuer bytes independently retrieved by the separate reviewer, preserved and read by the author after author HTTPS fetch returned 503; author also opened issuer page using web retrieval."
+        }
+      },
+      "facts": {
+        "cfo": {
+          "value": "3300",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-27",
+            "end": "2026-10-25"
+          },
+          "source_id": "exhibit",
+          "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
+          "basis": "Cash provided by operating activities"
+        },
+        "capex": {
+          "value": "684",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-27",
+            "end": "2026-10-25"
+          },
+          "source_id": "exhibit",
+          "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
+          "basis": "Capital expenditures, positive cash spending"
+        },
+        "fcf_reported": {
+          "value": "2616",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-27",
+            "end": "2026-10-25"
+          },
+          "source_id": "exhibit",
+          "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
+          "basis": "Issuer non-GAAP free cash flow: operating cash less capital expenditures"
+        },
+        "buybacks": {
+          "value": "2000",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-27",
+            "end": "2026-10-25"
+          },
+          "source_id": "exhibit",
+          "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
+          "basis": "Common stock repurchases, positive cash spending"
+        },
+        "dividends": {
+          "value": "421",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-27",
+            "end": "2026-10-25"
+          },
+          "source_id": "exhibit",
+          "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
+          "basis": "Payments of dividends to stockholders, positive cash spending"
+        },
+        "equity_withholding": {
+          "value": "133",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-27",
+            "end": "2026-10-25"
+          },
+          "source_id": "exhibit",
+          "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
+          "basis": "Tax withholding payments for vested equity awards, separate positive cash spending"
+        }
+      },
+      "calculations": [
+        {
+          "id": "fcf",
+          "operation": "subtract",
+          "inputs": [
+            "cfo",
+            "capex"
+          ],
+          "expected": "2616",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Arithmetic on issuer amounts reported in USD millions; not an unrestricted cash balance."
+        },
+        {
+          "id": "distributions",
+          "operation": "sum",
+          "inputs": [
+            "buybacks",
+            "dividends"
+          ],
+          "expected": "2421",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Arithmetic on issuer amounts reported in USD millions; not an unrestricted cash balance."
+        },
+        {
+          "id": "difference",
+          "operation": "subtract",
+          "inputs": [
+            "fcf",
+            "distributions"
+          ],
+          "expected": "195",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Arithmetic on issuer amounts reported in USD millions; not an unrestricted cash balance."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Quarterly cash allocation",
+          "text": "Applied Materials (NASDAQ: AMAT) spent $2 billion on share repurchases and $421 million on dividends in its fiscal fourth quarter ended October 25, 2026. Those payments nearly matched the semiconductor-equipment maker’s $2.616 billion in non-GAAP free cash flow, according to results released on November 12 and furnished to the SEC.",
+          "source_ids": [
+            "exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Cash flow definition",
+          "text": "The company generated $3.3 billion in operating cash and spent $684 million on capital expenditures. Subtracting that spending produces its reported free-cash-flow measure. This is cash after capital investment, not net income, and it does not deduct shareholder distributions.",
+          "source_ids": [
+            "exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Arithmetic and boundary",
+          "text": "Buybacks and dividends together totaled $2.421 billion, leaving a calculated difference of $195 million against free cash flow. That difference is not an increase in cash on hand: the cash-flow statement separately includes investment transactions, share-issuance proceeds and $133 million of tax withholding on vested equity awards.",
+          "source_ids": [
+            "exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "No recurring commitment",
+          "text": "The quarter shows how closely these shareholder payments tracked cash generated after capital spending. It does not establish that the same buyback pace will recur, or that this comparison captures every demand on the company’s cash.",
+          "source_ids": [
+            "exhibit",
+            "issuer"
+          ]
+        }
+      ],
+      "limitations": "The calculation compares reported quarterly operating cash less capital expenditures with common-stock repurchases and dividends. It is not a complete cash bridge: equity-award tax withholding, investment transactions, issuance proceeds and other movements are separate. It is not a recurring distribution forecast or a dividend-safety assessment."
     }
   ],
   "reviews": [
@@ -2041,6 +2236,46 @@
         "research.html": "e6730f1f0b50d0f16a60c86044dca6105895721978f43792669de9f05b2cb1e3"
       },
       "review_scope": "Exact record, financial evidence, and exact regenerated HTML outputs only. Publisher retains browser QA, build/CI, release-date and deployment gates."
+    },
+    {
+      "reviewer": "Independent Applied Materials filing reviewer",
+      "reviewed_at": "2026-11-12T22:09:40.932543+00:00",
+      "brief_sha256": "bbf86d742f9209ab60c1130c4115bce48d767fce4c7e73150b5dfbaff5005b5a",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently retrieved SEC 8-K, its linked Exhibit 99.1, and issuer earnings HTML directly over HTTPS. All three raw-byte SHA256 values match the exact record. Independently retrieved accession index (0448a5278f2cc8a80b9a7b45400be3c1d7a2ca87da75f813ac357164f99f44a7) confirms November 12 filing. 8-K Item 2.02 identifies November 12 announcement and October 25 fiscal end, and correctly describes the release as furnished. Exhibit and issuer cash-flow/reconciliation tables agree on operating cash 3300, capex spending 684, non-GAAP FCF 2616, stock repurchases 2000, dividends 421 and vested-equity tax withholding 133, all in USD millions. Issuer-byte custody note is accurate: this reviewer retrieved and supplied bytes, and author separately read them."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independently recomputed using Decimal: 3300 minus 684 equals 2616; 2000 plus 421 equals 2421; 2616 minus 2421 equals 195. Second-method check: 195 plus 2000 plus 421 plus 684 equals 3300. Renderer calculation function independently returns 2616, 2421 and 195. Main prose retains reported-million precision; billion conversions are consistent. Nearly all/nearly matched is supported by 2421/2616 = approximately 92.55 percent, without publishing unnecessary ratio precision."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "All cash figures cover the three months ended October 25, 2026, not full-year values. Independently fetched preceding SEC 10-Q (raw hash 70e9abe668173e4a314405ede2d1811c02e753efe45833b50fee420ebff1797b) confirms July 26 prior-quarter end, supporting July 27 current-quarter start. USD millions ledger converts correctly to billions in prose. Capex, buybacks, dividends and withholding are positive spending amounts, not inflows. November 12 event/source date and November 13 KST publication are distinct; no SEC acceptance time is portrayed as public availability."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read the exact JSON record, all four paragraphs, title, summary, source labels and regenerated detail/archive/home/research/sitemap outputs. All five preview files byte-match an independent full planned_outputs regeneration with candidate supplied in memory, without modifying public catalog or inventing approval. Detail paragraph strings exactly equal the record. Four short natural paragraphs use cash-flow terms consistently and no internal headings, labels or ledger appear in the newsletter body. Sources resolve to the precise official pages inspected. Public date and Article metadata use November 13 KST."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "The $195 million difference is explicitly not a cash-balance increase or a complete cash bridge. Separate equity withholding, investment transactions and stock issuance proceeds are stated, and no recurring buyback promise is inferred. The FCF definition is non-GAAP operating cash less capex, not net income, and shareholder payments are not deducted within that definition. No investment instruction, target, return guarantee, dividend-safety assertion, author-position implication or market-reaction claim appears."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "New November 12 SEC accession 000162828026073360 and same-day issuer earnings release newly report fiscal-Q4 cash allocation and substantial actual repurchases. This is a newly disclosed cash-flow comparison, not an old earnings retimestamp. Independently inspected seven prior briefs: Microsoft, KDP, 3M, ConocoPhillips, Apple, TSMC and Costco; no AMAT or same accession duplicate. Existing dates are preserved in regenerated archive. Editorial timestamp is actual November 12 22:08 UTC, corresponding to November 13 KST, before this review."
+        }
+      },
+      "rendered_sha256": {
+        "index.html": "d6cb54f8616df1b9b0bac59a05b1b30639f3358f0ad0c3ccae8a17914989c530",
+        "sitemap.xml": "e05cf88fad189fbfde2cba0887cba12c226ebdc3e908b6f6b58abbd2b786d94a",
+        "brief-applied-materials-q4-buybacks-cash-flow-2026.html": "576b3a342f5e0ff259df9afdc64e0cea8018ebf9b87dd053a65a3d03bf46d867",
+        "daily-briefs.html": "580692524290eb14b4711e56079c9e03f2571f79c76892841508b20f7862fd7c",
+        "research.html": "792d0e47da919f0e2c4b78ba7f940f8b6af500c4a78808a72dd2a0f24612336d"
+      },
+      "review_scope": "Exact record, independently retrieved primary evidence, arithmetic, language and independently regenerated HTML bytes. Browser/mobile QA, full CI, exact-commit merge and live-deployment verification remain publisher gates."
     }
   ]
 }
