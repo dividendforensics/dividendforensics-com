@@ -1818,7 +1818,7 @@
         }
       },
       "facts": {
-        "cfo": {
+        "cfo_q4_usdm": {
           "value": "3300",
           "unit": "USD millions",
           "period": {
@@ -1829,7 +1829,7 @@
           "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
           "basis": "Cash provided by operating activities"
         },
-        "capex": {
+        "capex_q4_usdm": {
           "value": "684",
           "unit": "USD millions",
           "period": {
@@ -1840,7 +1840,7 @@
           "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
           "basis": "Capital expenditures, positive cash spending"
         },
-        "fcf_reported": {
+        "fcf_reported_q4_usdm": {
           "value": "2616",
           "unit": "USD millions",
           "period": {
@@ -1851,7 +1851,7 @@
           "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
           "basis": "Issuer non-GAAP free cash flow: operating cash less capital expenditures"
         },
-        "buybacks": {
+        "buybacks_q4_usdm": {
           "value": "2000",
           "unit": "USD millions",
           "period": {
@@ -1862,7 +1862,7 @@
           "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
           "basis": "Common stock repurchases, positive cash spending"
         },
-        "dividends": {
+        "dividends_q4_usdm": {
           "value": "421",
           "unit": "USD millions",
           "period": {
@@ -1873,7 +1873,7 @@
           "locator": "Unaudited consolidated condensed statements of cash flows, three months ended October 25, 2026; FCF reconciliation",
           "basis": "Payments of dividends to stockholders, positive cash spending"
         },
-        "equity_withholding": {
+        "equity_withholding_q4_usdm": {
           "value": "133",
           "unit": "USD millions",
           "period": {
@@ -1887,11 +1887,11 @@
       },
       "calculations": [
         {
-          "id": "fcf",
+          "id": "fcf_calculated_usdm",
           "operation": "subtract",
           "inputs": [
-            "cfo",
-            "capex"
+            "cfo_q4_usdm",
+            "capex_q4_usdm"
           ],
           "expected": "2616",
           "unit": "USD millions",
@@ -1899,11 +1899,11 @@
           "precision_note": "Arithmetic on issuer amounts reported in USD millions; not an unrestricted cash balance."
         },
         {
-          "id": "distributions",
+          "id": "distributions_calculated_usdm",
           "operation": "sum",
           "inputs": [
-            "buybacks",
-            "dividends"
+            "buybacks_q4_usdm",
+            "dividends_q4_usdm"
           ],
           "expected": "2421",
           "unit": "USD millions",
@@ -1911,11 +1911,11 @@
           "precision_note": "Arithmetic on issuer amounts reported in USD millions; not an unrestricted cash balance."
         },
         {
-          "id": "difference",
+          "id": "difference_calculated_usdm",
           "operation": "subtract",
           "inputs": [
-            "fcf",
-            "distributions"
+            "fcf_calculated_usdm",
+            "distributions_calculated_usdm"
           ],
           "expected": "195",
           "unit": "USD millions",
@@ -2239,8 +2239,8 @@
     },
     {
       "reviewer": "Independent Applied Materials filing reviewer",
-      "reviewed_at": "2026-11-12T22:09:40.932543+00:00",
-      "brief_sha256": "bbf86d742f9209ab60c1130c4115bce48d767fce4c7e73150b5dfbaff5005b5a",
+      "reviewed_at": "2026-11-12T22:14:30.161051+00:00",
+      "brief_sha256": "ea47286935a309369a15be121259eb6bc4d059932f8434da988622d9bdc566a3",
       "decision": "pass",
       "checks": {
         "sources": {
@@ -2249,7 +2249,7 @@
         },
         "arithmetic": {
           "result": "pass",
-          "evidence": "Independently recomputed using Decimal: 3300 minus 684 equals 2616; 2000 plus 421 equals 2421; 2616 minus 2421 equals 195. Second-method check: 195 plus 2000 plus 421 plus 684 equals 3300. Renderer calculation function independently returns 2616, 2421 and 195. Main prose retains reported-million precision; billion conversions are consistent. Nearly all/nearly matched is supported by 2421/2616 = approximately 92.55 percent, without publishing unnecessary ratio precision."
+          "evidence": "Independently recomputed using Decimal: 3300 minus 684 equals 2616; 2000 plus 421 equals 2421; 2616 minus 2421 equals 195. Second-method check: 195 plus 2000 plus 421 plus 684 equals 3300. Renderer calculation function independently returns 2616, 2421 and 195. Main prose retains reported-million precision; billion conversions are consistent. Nearly all/nearly matched is supported by 2421/2616 = approximately 92.55 percent, without publishing unnecessary ratio precision. Re-review after CI: ledger identifiers alone were renamed to distinctive *_q4_usdm and *_calculated_usdm keys with corresponding references. Independently reran calculations and regenerated all five rendered outputs; all remain identical to previously approved hashes. Public prose and figures are unchanged. No test changes or bypass were used."
         },
         "periods_units": {
           "result": "pass",
