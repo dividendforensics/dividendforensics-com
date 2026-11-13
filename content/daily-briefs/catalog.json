@@ -1962,6 +1962,213 @@
         }
       ],
       "limitations": "The calculation compares reported quarterly operating cash less capital expenditures with common-stock repurchases and dividends. It is not a complete cash bridge: equity-award tax withholding, investment transactions, issuance proceeds and other movements are separate. It is not a recurring distribution forecast or a dividend-safety assessment."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "cisco-q1-fy2027-cash-returns-equity-withholding",
+      "author": "DFB editorial",
+      "title": "Cisco’s Cash Returns Extend Beyond Buybacks and Dividends",
+      "summary": "A separate equity-withholding payment changes the comparison between shareholder-related outlays and cash generated after capital spending.",
+      "event_date": "2026-11-12",
+      "reporting_period": {
+        "start": "2026-07-26",
+        "end": "2026-10-24"
+      },
+      "source_checked_at": "2026-11-13T22:02:10.479548+00:00",
+      "published_at": "2026-11-13T22:02:10.479548+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000085887726000170",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/858877/000085887726000170/csco-20261112.htm",
+          "title": "Cisco Form 8-K, November 12, 2026",
+          "locator": "Item 2.02 and Exhibit 99.1; accession index confirms filing date",
+          "published_date": "2026-11-12",
+          "publication_precision": "date",
+          "checked_at": "2026-11-13T22:01:04.570188+00:00",
+          "content_sha256": "b7005119e2164ffbda824642dbde70370de69ee0d3b017389e089b431b1820e6"
+        },
+        "exhibit": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/858877/000085887726000170/exhibit991pressrelease-q1f.htm",
+          "title": "SEC Exhibit 99.1: Cisco fiscal 2027 first-quarter results",
+          "locator": "Page 8, consolidated statements of cash flows, three months ended October 24, 2026",
+          "published_date": "2026-11-12",
+          "publication_precision": "date",
+          "checked_at": "2026-11-13T22:00:34.411628+00:00",
+          "content_sha256": "e70637dda145f4a86dc662c1f079091805c9eb947034ce40381c4e69304e5df1"
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://s21.q4cdn.com/812015656/files/doc_earnings/2027/q1/earnings-result/Q1FY27-Press-Release.pdf",
+          "title": "Cisco investor-relations earnings release (PDF)",
+          "locator": "Pages 1 and 8; report date, period and cash-flow statement",
+          "published_date": "2026-11-12",
+          "publication_precision": "date",
+          "checked_at": "2026-11-13T22:01:27.847738+00:00",
+          "content_sha256": "dad874871b14cfb5478c76cfb56a88f6296bc4a04ab556e1ff0e8cb5232fbe37"
+        }
+      },
+      "facts": {
+        "csco_ocf_usdm": {
+          "value": "4357",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-26",
+            "end": "2026-10-24"
+          },
+          "source_id": "exhibit",
+          "locator": "Page 8 cash-flow statement; three months ended October 24, 2026",
+          "basis": "Net cash provided by operating activities"
+        },
+        "csco_capex_usdm": {
+          "value": "502",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-26",
+            "end": "2026-10-24"
+          },
+          "source_id": "exhibit",
+          "locator": "Page 8 cash-flow statement; three months ended October 24, 2026",
+          "basis": "Acquisition of property and equipment, positive cash spending"
+        },
+        "csco_buybacks_usdm": {
+          "value": "1997",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-26",
+            "end": "2026-10-24"
+          },
+          "source_id": "exhibit",
+          "locator": "Page 8 cash-flow statement; three months ended October 24, 2026",
+          "basis": "Repurchases under stock repurchase program, positive cash spending"
+        },
+        "csco_dividends_usdm": {
+          "value": "1654",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-26",
+            "end": "2026-10-24"
+          },
+          "source_id": "exhibit",
+          "locator": "Page 8 cash-flow statement; three months ended October 24, 2026",
+          "basis": "Dividends paid, positive cash spending"
+        },
+        "csco_withholding_usdm": {
+          "value": "414",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-07-26",
+            "end": "2026-10-24"
+          },
+          "source_id": "exhibit",
+          "locator": "Page 8 cash-flow statement; three months ended October 24, 2026",
+          "basis": "Shares repurchased for tax withholdings on vesting of restricted stock units, positive cash spending"
+        }
+      },
+      "calculations": [
+        {
+          "id": "csco_after_capex_calculated",
+          "operation": "subtract",
+          "inputs": [
+            "csco_ocf_usdm",
+            "csco_capex_usdm"
+          ],
+          "expected": "3855",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Calculated from amounts reported in USD millions; not a complete cash-balance reconciliation."
+        },
+        {
+          "id": "csco_returns_calculated",
+          "operation": "sum",
+          "inputs": [
+            "csco_buybacks_usdm",
+            "csco_dividends_usdm"
+          ],
+          "expected": "3651",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Calculated from amounts reported in USD millions; not a complete cash-balance reconciliation."
+        },
+        {
+          "id": "csco_gap_calculated",
+          "operation": "subtract",
+          "inputs": [
+            "csco_after_capex_calculated",
+            "csco_returns_calculated"
+          ],
+          "expected": "204",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Calculated from amounts reported in USD millions; not a complete cash-balance reconciliation."
+        },
+        {
+          "id": "csco_including_withholding_calculated",
+          "operation": "sum",
+          "inputs": [
+            "csco_returns_calculated",
+            "csco_withholding_usdm"
+          ],
+          "expected": "4065",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Calculated from amounts reported in USD millions; not a complete cash-balance reconciliation."
+        },
+        {
+          "id": "csco_excess_calculated",
+          "operation": "subtract",
+          "inputs": [
+            "csco_including_withholding_calculated",
+            "csco_after_capex_calculated"
+          ],
+          "expected": "210",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Calculated from amounts reported in USD millions; not a complete cash-balance reconciliation."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Reported quarterly outlays",
+          "text": "Cisco (NASDAQ: CSCO) spent $3.651 billion on program share repurchases and dividends in its fiscal first quarter ended October 24, 2026. Its November 12 earnings release also disclosed a separate $414 million payment for shares repurchased to cover taxes when restricted stock units vested.",
+          "source_ids": [
+            "exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Cash comparison",
+          "text": "Operating cash flow of $4.357 billion less $502 million spent on property and equipment leaves $3.855 billion, calculated by DFB. Program buybacks and dividends were $204 million below that amount. Adding the separate equity-withholding outlay brings the combined payments to $4.065 billion, or $210 million above cash generated after this capital spending.",
+          "source_ids": [
+            "exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Different categories",
+          "text": "The distinction matters because the withholding payment is reported separately from the company’s stock-repurchase program. It should not be silently combined with program buybacks or treated as an additional dividend. The figures are quarterly cash movements, not earnings or future repurchase commitments.",
+          "source_ids": [
+            "exhibit",
+            "issuer"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "Limits of comparison",
+          "text": "This comparison is not the change in Cisco’s cash balance. Debt transactions, acquisitions and investment flows also affect cash. One quarter does not establish whether these outlays will recur or determine the sustainability of future distributions.",
+          "source_ids": [
+            "exhibit",
+            "issuer"
+          ]
+        }
+      ],
+      "limitations": "Cash after property and equipment spending is a DFB calculation, not an unrestricted cash balance. Program buybacks, dividends and equity tax withholding are distinct outlays. The comparison excludes other investing and financing movements and does not forecast distributions or assess dividend safety."
     }
   ],
   "reviews": [
@@ -2276,6 +2483,46 @@
         "research.html": "792d0e47da919f0e2c4b78ba7f940f8b6af500c4a78808a72dd2a0f24612336d"
       },
       "review_scope": "Exact record, independently retrieved primary evidence, arithmetic, language and independently regenerated HTML bytes. Browser/mobile QA, full CI, exact-commit merge and live-deployment verification remain publisher gates."
+    },
+    {
+      "reviewer": "Independent Cisco filing reviewer",
+      "reviewed_at": "2026-11-13T22:05:03.585465+00:00",
+      "brief_sha256": "4abb1957d86218287e6cb4a57c23db1c45e25d1bf2a7657af9f242ef2b2d0fd3",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently re-fetched SEC 8-K, Exhibit 99.1 and official Cisco IR earnings PDF over HTTPS; all three byte hashes match record. Read issuer PDF extracted text and SEC cash-flow statement. Current-quarter USD million rows are operating cash 4357, property/equipment acquisition 502, program repurchases 1997, RSU tax-withholding repurchases 414, dividends paid 1654. Separate capital-allocation table shows repurchases 2002 and total3656; prose correctly uses cash-flow values, not these alternate figures. SEC accession index and 8-K confirm November 12 filing/announcement."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independent Decimal recomputation: 4357-502=3855; 1997+1654=3651; 3855-3651=204; 3651+414=4065; 4065-3855=210. Cross-check: 210+4357=1997+1654+414+502. Independently ran renderer ledger function and got all five expected results. Billion conversions preserve reported million-dollar precision. Initial 3651 is an aggregation of two reported cash rows, not a company-labelled standalone total."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "Current cash-flow columns cover three months ended October 24, 2026. July 25, 2026 preceding fiscal-end balance sheet supports July 26 start. All five inputs are USD millions and outlays use positive spending magnitudes. Fiscal Q1 FY2027 is not calendar Q1. November 12 event and November 14 KST publication are distinct. Review follows the recorded November 13 22:02 UTC editorial decision. Withholding is not asserted to be paid specifically to IRS or counted as an extra dividend."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read exact title, summary, all four narrative paragraphs, source labels, limits and rendered date. Independently regenerated full planned_outputs with proposed record in memory; detail, archive, home, research and sitemap byte-match previews. Detail paragraph strings exactly equal JSON sections. No internal headings, formulas, machine labels or ledger are displayed in public prose. Language correctly distinguishes cash after capex from a cash-balance change. Text is original concise financial-news prose; numeric detail is relatively dense but supports a single cash-allocation comparison."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "No buy/sell/hold suggestion, target price, return guarantee, position assertion or dividend-safety claim. Separate equity withholding is explicitly distinguished from discretionary program repurchases. Combined outlays are not represented as company-labelled shareholder returns or financing needs; debt causation is not inferred. Final paragraph clearly states omitted cash-flow categories and one-quarter limitation."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "November 12 accession000085887726000170 newly reports Cisco fiscal-Q1 cash allocation. Material observation is separate RSU withholding changing the comparison against operating cash less property/equipment spending from a204million cushion to a210million excess. Independently inspected eight prior catalog briefs: AMAT, Costco, TSMC, Apple, ConocoPhillips,3M,KDP,Microsoft. No Cisco or accession duplicate. Existing archive dates remain unchanged; this is not a retimestamped Cisco story."
+        }
+      },
+      "rendered_sha256": {
+        "index.html": "36967057ada2b82ca371bea30193b20b0668aaef7ab2dac72cda3b5ca22308fe",
+        "daily-briefs.html": "8d6812a11fde22cd16cbbcb278327d0dc001ab8b0c90140f749ac7c4f848ff1f",
+        "research.html": "8ad9a1c08f29d5d2e710c88ddd5a795e67c85793b143982a3ae71d5ed0bdd2d2",
+        "sitemap.xml": "8321d2ec1479107ebbd71dbc4b3c094bc26f29dc7abef610d91b3500bfbd9306",
+        "brief-cisco-q1-fy2027-cash-returns-equity-withholding.html": "d5384b2808172c4b96131bc3f91678d5eb34ca0e8d92194e2ad09735030982a3"
+      },
+      "review_scope": "Exact record, independently fetched primary evidence, arithmetic, language and independently regenerated HTML bytes. This is not browser screenshot/mobile QA, CI, merge or public deployment approval; publisher must complete those gates."
     }
   ]
 }
