@@ -2169,6 +2169,144 @@
         }
       ],
       "limitations": "Cash after property and equipment spending is a DFB calculation, not an unrestricted cash balance. Program buybacks, dividends and equity tax withholding are distinct outlays. The comparison excludes other investing and financing movements and does not forecast distributions or assess dividend safety."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "apollo-600-million-notes-2036-rate-reset",
+      "author": "DFB editorial",
+      "title": "Apollo Closes $600 Million Debt Sale With a 2036 Rate Reset",
+      "summary": "The new subordinated notes mature in 2056, but their initial fixed coupon does not last until maturity.",
+      "event_date": "2026-11-13",
+      "reporting_period": {
+        "start": "2026-11-13",
+        "end": "2026-11-13"
+      },
+      "source_checked_at": "2026-11-14T22:02:30.167487+00:00",
+      "published_at": "2026-11-14T22:02:30.167487+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000119312526460879",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/1858681/000119312526460879/d143669d8k.htm",
+          "title": "Apollo Form 8-K, November 13, 2026",
+          "locator": "Item 1.01, issuance, interest terms and use of proceeds",
+          "published_date": "2026-11-13",
+          "publication_precision": "date",
+          "checked_at": "2026-11-14T22:02:30.167487+00:00",
+          "content_sha256": "e80210fdf5b8e8c958b2e9d3c4b2fb9d4cf675d59a061d012b7600d8852ec068"
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://www.apollo.com/insights-news/pressreleases/2026/11/apollo-prices-offering-of-fixed-rate-resettable-junior-subordinated-notes-3399052",
+          "title": "Apollo pricing announcement, November 9, 2026",
+          "locator": "Offering amount, interest terms and estimated net proceeds paragraphs",
+          "published_date": "2026-11-09",
+          "publication_precision": "date",
+          "checked_at": "2026-11-14T22:02:30.167487+00:00",
+          "content_sha256": "85174fc6b78a06b077b43da0d63b0e62f3a356fb86e8b8da76c6df99df357f67"
+        }
+      },
+      "facts": {
+        "apo_principal_usdm": {
+          "value": "600",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-13",
+            "end": "2026-11-13"
+          },
+          "source_id": "sec",
+          "locator": "Item 1.01, issuance, interest terms and use of proceeds",
+          "basis": "Aggregate principal amount issued, not net cash proceeds"
+        },
+        "apo_est_net_usdm": {
+          "value": "594",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-13",
+            "end": "2026-11-13"
+          },
+          "source_id": "issuer",
+          "locator": "Offering amount, interest terms and estimated net proceeds paragraphs",
+          "basis": "Approximate estimated proceeds after underwriting discount but before offering expenses, announced November 9 for November 13 closing"
+        },
+        "apo_initial_coupon_percent": {
+          "value": "7.550",
+          "unit": "percent per year",
+          "period": {
+            "start": "2026-11-13",
+            "end": "2026-11-13"
+          },
+          "source_id": "sec",
+          "locator": "Item 1.01, issuance, interest terms and use of proceeds",
+          "basis": "Fixed annual interest rate until December 15, 2036"
+        },
+        "apo_reset_spread_pp": {
+          "value": "2.672",
+          "unit": "percentage points",
+          "period": {
+            "start": "2026-11-13",
+            "end": "2026-11-13"
+          },
+          "source_id": "sec",
+          "locator": "Item 1.01, issuance, interest terms and use of proceeds",
+          "basis": "Spread over five-year US Treasury rate after first reset date"
+        }
+      },
+      "calculations": [
+        {
+          "id": "apo_gross_estnet_gap_usdm",
+          "operation": "subtract",
+          "inputs": [
+            "apo_principal_usdm",
+            "apo_est_net_usdm"
+          ],
+          "expected": "6",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Approximate difference using issuer estimated net proceeds before offering expenses; not total financing costs."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Completed issuance",
+          "text": "Apollo Global Management (NYSE: APO) completed a $600 million sale of junior subordinated notes on November 13, according to a new SEC filing. The transaction moves a previously announced financing from pricing to issuance, adding debt intended for general corporate purposes, including its planned investment in Mubadala Capital Asset Management.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Rate reset",
+          "text": "The notes mature on December 15, 2056, but the initial 7.550% annual interest rate is fixed only until December 15, 2036. After that first reset date, the rate for each reset period becomes the applicable five-year U.S. Treasury rate plus 2.672 percentage points. Apollo also has the right to defer interest payments.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Proceeds distinction",
+          "text": "The headline borrowing amount is not the cash available to spend. In its November 9 pricing announcement, Apollo estimated proceeds of approximately $594 million after the underwriting discount but before offering expenses. Those additional expenses still reduce the proceeds; the estimate should not be treated as a final cash balance.",
+          "source_ids": [
+            "issuer",
+            "sec"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "Limits",
+          "text": "The closing confirms that the notes were issued, not that the proceeds have already been invested. The filing does not establish the return on the planned investment, and today’s coupon does not determine the borrowing cost after the reset.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        }
+      ],
+      "limitations": "Junior subordinated debt, not common equity or senior notes. Net proceeds are an estimate before offering expenses, not reported actual final proceeds. Initial coupon ends at first reset date; interest can be deferred. No investment return or credit-safety inference."
     }
   ],
   "reviews": [
@@ -2523,6 +2661,46 @@
         "brief-cisco-q1-fy2027-cash-returns-equity-withholding.html": "d5384b2808172c4b96131bc3f91678d5eb34ca0e8d92194e2ad09735030982a3"
       },
       "review_scope": "Exact record, independently fetched primary evidence, arithmetic, language and independently regenerated HTML bytes. This is not browser screenshot/mobile QA, CI, merge or public deployment approval; publisher must complete those gates."
+    },
+    {
+      "reviewer": "Independent Apollo filing reviewer",
+      "reviewed_at": "2026-11-14T22:04:09.159285+00:00",
+      "brief_sha256": "29ea8dabae2b210dcda2033235f417f12f0c7652bef7eb4bf90f78d8d97793c7",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently retrieved and read the actual SEC 8-K and Apollo issuer pricing release over HTTPS. Both raw-byte hashes match the exact record. Independently retrieved the SEC accession index, which confirms November 13 filing date. Item 1.01 confirms completed $600 million issuance, junior subordinated classification, 7.550% coupon through December 15, 2036, subsequent five-year Treasury rate plus 2.672 percentage points, interest deferral right, December 15, 2056 maturity and intended use of proceeds. Issuer November 9 release confirms approximately $594 million net proceeds after underwriting discount but before expenses. No unsupported claim of actual final net proceeds is made."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independently used Decimal to calculate 600 minus 594 equals 6 USD million and cross-checked 594 plus 6 equals 600. Ran daily_briefs.calculations and obtained the same result. This is an approximate gross-versus-estimated-proceeds difference, not total financing costs, and is not unnecessarily printed in the prose. Million conversion from SEC $600,000,000 is exact. Coupon percentage and Treasury spread percentage points are not confused."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "The record covers a November 13 issuance event rather than a quarterly performance period. November 9 pricing release is clearly distinguished from November 13 actual closing and November 15 KST publication. Estimated proceeds fact explicitly identifies its November 9 estimate for November 13 closing, not a reported November 13 final cash amount. 2036 first reset is distinguished from 2056 maturity. Publication date comes from actual editorial timestamp, not SEC acceptance time."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read exact title, summary, all four paragraphs, limitations and source labels. Independently regenerated planned_outputs using the proposed record only in memory; all five root detail/archive/home/research/sitemap hashes match supplied previews. Parsed detail paragraph strings exactly equal the JSON sections; public date is November 15 KST. No table, machine ledger, calculation labels or paragraph headings appear in public body. Original 191-word prose is grammatical and distinguishes borrowing principal from estimated spendable proceeds."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "No buy/sell/hold instruction, target, return promise, safety claim, author-position assertion or market-reaction claim appears. Investment use is intended, not asserted completed. Rate reset and interest deferral limitations remain explicit. Proceeds estimate is not portrayed as cash balance, and the filing is not treated as proof of investment returns."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "New SEC accession 000119312526460879 confirms November 13 completion of previously priced debt, creating an actual financing obligation rather than merely recirculating the November 9 pricing plan. Material new fact is completed $600 million borrowing with reset and deferral terms relevant to financing cost. Independently inspected nine existing catalog entries including Cisco, Applied Materials, Costco, TSMC, Apple, ConocoPhillips, 3M, KDP and Microsoft; no Apollo or accession duplicate. Existing dates are preserved in independently regenerated archive. No claim that November 15 is the event date."
+        }
+      },
+      "rendered_sha256": {
+        "sitemap.xml": "849bc58f3d748cc125cf8351deda1057b08161a8cda5e4ab9b809849edd62c75",
+        "brief-apollo-600-million-notes-2036-rate-reset.html": "3f4871997d7ca0b714c95982b281600f0f9cd510dd081156e979c408cfccb1a8",
+        "daily-briefs.html": "6bf3734bf084bfd69d69d45e20c68a7078f01485ddf8df93b87cfe6f69dbf57d",
+        "research.html": "40dc85377f18067a39e43ceddca920464753bf6ed2a2262d1a650284e580b046",
+        "index.html": "65d4485d926b5bb09f81ac389d52a52624fab1230341e6bfcef01a85f86ab0b3"
+      },
+      "review_scope": "Exact record, independently retrieved sources, arithmetic, dates, language, neutrality and independently regenerated HTML bytes. This review does not certify browser/mobile QA, full CI, merge or public deployment; those remain publisher gates."
     }
   ]
 }
