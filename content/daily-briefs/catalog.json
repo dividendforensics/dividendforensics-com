@@ -2169,6 +2169,167 @@
         }
       ],
       "limitations": "Cash after property and equipment spending is a DFB calculation, not an unrestricted cash balance. Program buybacks, dividends and equity tax withholding are distinct outlays. The comparison excludes other investing and financing movements and does not forecast distributions or assess dividend safety."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "home-depot-nine-month-cash-debt-repayments-2026",
+      "author": "DFB editorial",
+      "title": "Home Depot’s Cash Flow Faces Debt Repayments and Acquisition Spending",
+      "summary": "Nine-month operating cash exceeded capital spending and dividends, but debt repayments and acquisitions also drew on cash.",
+      "event_date": "2026-11-17",
+      "reporting_period": {
+        "start": "2026-02-02",
+        "end": "2026-11-01"
+      },
+      "source_checked_at": "2026-11-17T22:03:25.679219+00:00",
+      "published_at": "2026-11-17T22:03:25.679219+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000035495026000184",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/354950/000035495026000184/hd_exhibit991x11012026.htm",
+          "title": "Home Depot SEC Exhibit 99.1, November 17, 2026",
+          "locator": "Condensed consolidated statements of cash flows, nine months ended November 1, 2026",
+          "published_date": "2026-11-17",
+          "publication_precision": "date",
+          "checked_at": "2026-11-17T22:03:25.679219+00:00",
+          "content_sha256": "c5eac56204d014b0e757f2550356061763448c1393aa2bc840bc871661acb205"
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://ir.homedepot.com/~/media/Files/H/HomeDepot-IR/press-release/q3-2026-earnings-release.pdf",
+          "title": "Home Depot third-quarter fiscal 2026 earnings release",
+          "locator": "Condensed consolidated statements of cash flows, nine months ended November 1, 2026",
+          "published_date": "2026-11-17",
+          "publication_precision": "date",
+          "checked_at": "2026-11-17T22:03:25.679219+00:00",
+          "content_sha256": "94d3fc95cda842e2a6872aa33cfd653f0c9338c286afded5efb0a6bb45f11d7c"
+        }
+      },
+      "facts": {
+        "hd_ocf": {
+          "value": "15496",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-02-02",
+            "end": "2026-11-01"
+          },
+          "source_id": "sec",
+          "locator": "Cash flow statement, current nine-month column",
+          "basis": "Net cash provided by operating activities"
+        },
+        "hd_capex": {
+          "value": "2679",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-02-02",
+            "end": "2026-11-01"
+          },
+          "source_id": "sec",
+          "locator": "Cash flow statement, current nine-month column",
+          "basis": "Capital expenditures, positive cash spending"
+        },
+        "hd_dividends": {
+          "value": "6968",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-02-02",
+            "end": "2026-11-01"
+          },
+          "source_id": "sec",
+          "locator": "Cash flow statement, current nine-month column",
+          "basis": "Cash dividends, positive cash spending"
+        },
+        "hd_debt_repaid": {
+          "value": "4910",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-02-02",
+            "end": "2026-11-01"
+          },
+          "source_id": "sec",
+          "locator": "Cash flow statement, current nine-month column",
+          "basis": "Repayments of long-term debt, positive cash spending"
+        },
+        "hd_acquisitions": {
+          "value": "1813",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-02-02",
+            "end": "2026-11-01"
+          },
+          "source_id": "sec",
+          "locator": "Cash flow statement, current nine-month column",
+          "basis": "Payments for businesses acquired, net; positive cash spending"
+        }
+      },
+      "calculations": [
+        {
+          "id": "hd_after_capex",
+          "operation": "subtract",
+          "inputs": [
+            "hd_ocf",
+            "hd_capex"
+          ],
+          "expected": "12817",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "DFB calculation from reported USD millions; not cash balance."
+        },
+        {
+          "id": "hd_after_dividends",
+          "operation": "subtract",
+          "inputs": [
+            "hd_after_capex",
+            "hd_dividends"
+          ],
+          "expected": "5849",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "DFB calculation; excludes other investing and financing movements."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Reported cash generation",
+          "text": "Home Depot (NYSE: HD) generated $15.496 billion in operating cash during the nine months ended November 1, 2026, according to its November 17 earnings release. The cash-flow statement provides a different view from the quarterly sales and earnings figures released alongside it.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Cash after spending",
+          "text": "Subtracting $2.679 billion of capital expenditures leaves $12.817 billion, calculated by DFB. Cash dividends of $6.968 billion were below that amount, leaving a $5.849 billion difference. This is a comparison of reported cash flows, not an unrestricted cash balance or a forecast of future distributions.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Other uses of cash",
+          "text": "Other substantial uses included $4.910 billion of long-term debt repayments and $1.813 billion of net payments for acquired businesses. These outlays are separate from capital expenditures and dividends. Debt proceeds and other cash movements also appear in the statement, so repayments alone do not measure the change in total debt.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "Limits",
+          "text": "The figures cover nine months rather than the third quarter alone. They do not establish that current cash generation will recur, and the calculated difference should not be treated as cash available for another payout. A complete cash reconciliation must include the remaining investing and financing items and exchange-rate effects.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        }
+      ],
+      "limitations": "Nine-month cash data, not quarterly. DFB difference is not a cash-balance reconciliation, unrestricted cash, payout capacity or dividend safety assessment."
     }
   ],
   "reviews": [
@@ -2523,6 +2684,46 @@
         "brief-cisco-q1-fy2027-cash-returns-equity-withholding.html": "d5384b2808172c4b96131bc3f91678d5eb34ca0e8d92194e2ad09735030982a3"
       },
       "review_scope": "Exact record, independently fetched primary evidence, arithmetic, language and independently regenerated HTML bytes. This is not browser screenshot/mobile QA, CI, merge or public deployment approval; publisher must complete those gates."
+    },
+    {
+      "brief_sha256": "70b5a1bd3a11099a9036d6a2e46cdfcfabba558d3bb2380730ee37afe6cf4810",
+      "reviewer": "Independent reviewer /root/dfb_check",
+      "reviewed_at": "2026-11-17T22:05:45.245147+00:00",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently downloaded SEC Exhibit 99.1 and issuer PDF; SHA256 exactly matches recorded source hashes. Read SEC HTML cash flow table and issuer PDF extracted statement. All five inputs 15496,2679,6968,4910,1813 match USD millions. Release dated November 17, 2026. Web tool opens failed but direct source byte downloads succeeded."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independently recomputed Decimal 15496-2679=12817 and 12817-6968=5849. All billion conversions retain the source million-dollar precision. These differences exclude debt repayments, acquisitions and other financing/investing rows, not ending unrestricted cash."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "Both statements label nine months ended November 1, 2026, not Q3-only. Release explicitly references prior fiscal year ended February 1, 2026, supporting February 2 start. Outflows recorded as positive spending magnitudes and subtraction is explicit. Event November 17 versus KST publication November 18 correctly distinct."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read final title, summary, all four paragraphs and independently regenerated final HTML. All narrative strings and 5 preview output bytes match. Earlier title Rises removed because comparative cash input absent from ledger/body. Current title and neutral cash-allocation narrative are grammatically acceptable. No internal headings, table, equations or machine labels displayed."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "No trade recommendation, price target, safety promise or position statement. Difference explicitly not unrestricted cash or future payout forecast. Debt repayments not confused with net change in total debt. Cash generation not assumed recurring."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "November 17 earnings release reports new nine-month cash allocation: operating cash exceeds capex/dividends while debt repayments and acquisitions are separate significant uses. Inspected all existing catalog records; neither Home Depot slug nor accession duplicates prior entry. No historical dates changed."
+        }
+      },
+      "rendered_sha256": {
+        "sitemap.xml": "cbce213e4cd33ed909a82c269a91dd10256dca8a423bf5d7a6a3cfe4d9a81942",
+        "brief-home-depot-nine-month-cash-debt-repayments-2026.html": "00a4ced7f9f6dd6dcecd93c78ea3a4cfc0367639a794234a479192af5ebd3046",
+        "daily-briefs.html": "18f3b1ca8c3203cb75306652b08cb4593c5e9969953d4798dfe7c7ecaf55508e",
+        "research.html": "f77d8bb92830aa21f570d16f8623b3e44eafa028b3762b90252aa7594ffecbb7",
+        "index.html": "d130bf1c68bd36a97fdb1b8a3533343d921ad3afeff166e4f32e06ecca81514f"
+      },
+      "review_scope": "Exact record, source bytes, arithmetic, text and independently regenerated HTML. Not browser/mobile screenshot QA, required CI, merge or public deployment approval."
     }
   ]
 }
