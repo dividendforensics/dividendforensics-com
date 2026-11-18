@@ -2330,6 +2330,194 @@
         }
       ],
       "limitations": "Nine-month cash data, not quarterly. DFB difference is not a cash-balance reconciliation, unrestricted cash, payout capacity or dividend safety assessment."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "tjx-tariff-refunds-adjusted-margin-2026",
+      "author": "DFB editorial",
+      "title": "TJX’s Tariff Refunds Change the Direction of Its Margin Comparison",
+      "summary": "Reported pretax margin improved, but the company’s adjusted measure declined after tariff refunds and related compensation accruals were excluded.",
+      "event_date": "2026-11-18",
+      "reporting_period": {
+        "start": "2026-08-02",
+        "end": "2026-10-31"
+      },
+      "comparison_periods": [
+        {
+          "start": "2025-08-03",
+          "end": "2025-11-01"
+        }
+      ],
+      "source_checked_at": "2026-11-18T22:00:11.429885+00:00",
+      "published_at": "2026-11-18T22:00:11.429885+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000010919826000058",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/109198/000010919826000058/tjxq3fy27earningspressrele.htm",
+          "title": "TJX Q3 FY2027 earnings release, SEC Exhibit 99.1",
+          "locator": "Q3 profitability discussion and IEEPA Tariff Refunds and Related Expense Accruals; issuer PDF pp. 3–4",
+          "published_date": "2026-11-18",
+          "publication_precision": "date",
+          "checked_at": "2026-11-18T22:00:11.429885+00:00",
+          "content_sha256": "37d5e8bac5c918bb8fd2afda2cbe778831c2f8ac60a16ac16b182ac5a20943ee"
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://www.tjx.com/docs/default-source/investor-docs/quarterly-results/tjx-third-quarter-fiscal-year-2027-earnings-press-release.pdf",
+          "title": "TJX third-quarter fiscal 2027 earnings release",
+          "locator": "Q3 profitability discussion and IEEPA Tariff Refunds and Related Expense Accruals; issuer PDF pp. 3–4",
+          "published_date": "2026-11-18",
+          "publication_precision": "date",
+          "checked_at": "2026-11-18T22:00:11.429885+00:00",
+          "content_sha256": "28edf11d27795c87a40bde4b199c65ffc942495dbef0997191109330900f660d"
+        }
+      },
+      "facts": {
+        "tjx_refunds_q3": {
+          "value": "132",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-08-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Q3 profitability discussion and IEEPA Tariff Refunds and Related Expense Accruals; issuer PDF pp. 3–4",
+          "basis": "Aggregate tariff refunds received during Q3"
+        },
+        "tjx_compensation_q3": {
+          "value": "55",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-08-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Q3 profitability discussion and IEEPA Tariff Refunds and Related Expense Accruals; issuer PDF pp. 3–4",
+          "basis": "Incremental compensation expense accrued during Q3, not necessarily cash paid"
+        },
+        "tjx_net_benefit_q3": {
+          "value": "77",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-08-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Q3 profitability discussion and IEEPA Tariff Refunds and Related Expense Accruals; issuer PDF pp. 3–4",
+          "basis": "Reported net pretax benefit from refunds and related expense accruals"
+        },
+        "tjx_margin_q3": {
+          "value": "13.0",
+          "unit": "percent",
+          "period": {
+            "start": "2026-08-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Q3 profitability discussion and IEEPA Tariff Refunds and Related Expense Accruals; issuer PDF pp. 3–4",
+          "basis": "Reported pretax profit margin"
+        },
+        "tjx_adjusted_margin_q3": {
+          "value": "12.5",
+          "unit": "percent",
+          "period": {
+            "start": "2026-08-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Q3 profitability discussion and IEEPA Tariff Refunds and Related Expense Accruals; issuer PDF pp. 3–4",
+          "basis": "Company adjusted pretax profit margin excluding net refund benefit"
+        },
+        "tjx_prior_margin_q3": {
+          "value": "12.7",
+          "unit": "percent",
+          "period": {
+            "start": "2025-08-03",
+            "end": "2025-11-01"
+          },
+          "source_id": "sec",
+          "locator": "Q3 profitability discussion and IEEPA Tariff Refunds and Related Expense Accruals; issuer PDF pp. 3–4",
+          "basis": "Prior-year third-quarter pretax profit margin"
+        },
+        "tjx_margin_change_q3": {
+          "value": "0.3",
+          "unit": "percentage points",
+          "period": {
+            "start": "2026-08-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Q3 profitability discussion and IEEPA Tariff Refunds and Related Expense Accruals; issuer PDF pp. 3–4",
+          "basis": "Issuer-reported year-over-year increase in reported pretax margin"
+        },
+        "tjx_adjusted_change_q3": {
+          "value": "-0.2",
+          "unit": "percentage points",
+          "period": {
+            "start": "2026-08-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Q3 profitability discussion and IEEPA Tariff Refunds and Related Expense Accruals; issuer PDF pp. 3–4",
+          "basis": "Issuer-reported year-over-year change in adjusted pretax margin"
+        }
+      },
+      "calculations": [
+        {
+          "id": "net_refund_benefit",
+          "operation": "subtract",
+          "inputs": [
+            "tjx_refunds_q3",
+            "tjx_compensation_q3"
+          ],
+          "expected": "77",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Arithmetic uses the reported million-dollar amounts; independently matches the issuer net benefit."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "The margin comparison",
+          "text": "TJX’s third-quarter pretax profit margin rose to 13.0% from 12.7% a year earlier, but the comparison changed after tariff refunds and related compensation expenses were excluded. The company reported an adjusted margin of 12.5%, below the prior-year level, in its November 18 earnings release.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Refunds and compensation",
+          "text": "For the quarter ended October 31, 2026, TJX received $132 million in refunds of previously paid International Emergency Economic Powers Act tariffs. It also accrued $55 million of incremental expenses for year-end incentive compensation and non-executive discretionary bonuses. Subtracting those expenses produces the $77 million net pretax benefit reported by the company.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Different measures",
+          "text": "That distinction matters when reading the margin trend. The reported measure improved by 0.3 percentage points, while the company’s adjusted measure declined by 0.2 points. The adjustment removes both the refund benefit and the related compensation expense accruals, rather than treating every dollar received as an addition to pretax profit.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "Limits of the comparison",
+          "text": "The refund receipts and compensation accruals also describe different accounting events: an expense accrual does not establish when cash will be paid. Whether subsequent quarters show a similar margin pattern remains open. This quarter’s reconciliation does not establish recurring earnings or cash available for distributions.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        }
+      ],
+      "limitations": "Company-defined adjusted margin is not GAAP margin. Refund receipts are not equivalent to net pretax income; compensation accruals are not asserted to be current cash payments. One quarter does not establish recurring earnings or distribution capacity."
     }
   ],
   "reviews": [
@@ -2724,6 +2912,46 @@
         "index.html": "d130bf1c68bd36a97fdb1b8a3533343d921ad3afeff166e4f32e06ecca81514f"
       },
       "review_scope": "Exact record, source bytes, arithmetic, text and independently regenerated HTML. Not browser/mobile screenshot QA, required CI, merge or public deployment approval."
+    },
+    {
+      "brief_sha256": "1596510e1df439a38d7ec41ded1097c2624045ca79e25fd157c049ebeb82642d",
+      "reviewer": "Independent reviewer /root/dfb_check",
+      "reviewed_at": "2026-11-18T22:02:56.003866+00:00",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently downloaded SEC exhibit and TJX issuer PDF; source-byte SHA256 values exactly match record and author captures. Read issuer pp. 3–4, financial summary, and SEC accession index; checked every published number and tariff/compensation definition."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independent Decimal checks: 132 minus 55 equals 77 million dollars; 13.0 minus 12.7 equals +0.3 percentage points; 12.5 minus 12.7 equals -0.2 points. Financial summary cross-check: pretax 2070 / sales 15952 rounds to 13.0%; (2070-77)/15952 rounds to 12.5%. Uses source-rounded margin comparisons, not false precision."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "Verified 13 weeks ended October 31, 2026 versus November 1, 2025 in the financial summary; inclusive starts August 2, 2026 and August 3, 2025. FY2027 Q3 is not calendar Q3. USD millions and percentage points kept distinct. Compensation is accrued expense, not necessarily paid cash; 77 million is pretax profit effect, not free cash flow."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read exact final JSON and independently regenerated top-level detail/archive/home/research/sitemap. Exact title and four narrative paragraphs preserved in HTML, 191 words. Natural neutral English; no visible ledger IDs, per-paragraph headings, or tables. Direct source links and November 19 KST public date verified."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "No trade recommendation, market reaction, investment-safety claim, target, or author-position claim. Company adjusted margin clearly distinguished from reported margin. Accrual/cash timing and one-quarter recurring earnings/distribution limits explicitly retained. Future margin pattern is open, not forecast."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "SEC accession index confirms November 18, 2026 filing/report date; source release supplies new FY2027 Q3 earnings. Material new issue is reported margin improvement reversing to decline on company adjusted basis after net tariff-refund benefit. Existing ten-entry catalog contains neither TJX nor this accession. November 19 KST editorial date follows this new release; no claim acceptance time equals public availability."
+        }
+      },
+      "rendered_sha256": {
+        "sitemap.xml": "95f0a35d527c86f9f5a3b0c4fa219e9f3192871734013962f9e633bcefe2434f",
+        "brief-tjx-tariff-refunds-adjusted-margin-2026.html": "f59097609253bbb4b280ef1f321daf578fea9b2d286f7b1d6fd4f7c52edb5a18",
+        "daily-briefs.html": "4cdc3f1ebc50fafe7b5d9bb71674e42ae4412592eed72c7585dd74b306cda3ae",
+        "research.html": "4ae4dd8283968b9fc143737166d4b7f96dbbdaf9f6205ef28859ad2345d1f2ea",
+        "index.html": "a0bcb1d58873181b56f56beed4f8839974a44f55f655e4abc62c8e0cca3c1803"
+      },
+      "review_scope": "Exact record, independently retrieved primary source bytes, accounting definitions, arithmetic, prose and independently regenerated HTML. Excludes browser/mobile visual QA, CI, merge and public deployment. Approval expires for changed content or release on a different KST date."
     }
   ]
 }
