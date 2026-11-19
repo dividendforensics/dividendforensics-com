@@ -2518,6 +2518,245 @@
         }
       ],
       "limitations": "Company-defined adjusted margin is not GAAP margin. Refund receipts are not equivalent to net pretax income; compensation accruals are not asserted to be current cash payments. One quarter does not establish recurring earnings or distribution capacity."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "walmart-cash-flow-capital-spending-2026",
+      "author": "DFB editorial",
+      "title": "Walmart’s Operating Cash Rises, but Capital Spending Pulls Free Cash Flow Lower",
+      "summary": "Higher property-and-equipment payments more than offset the increase in nine-month operating cash, reducing company-defined free cash flow by $2.010 billion.",
+      "event_date": "2026-11-19",
+      "reporting_period": {
+        "start": "2026-02-01",
+        "end": "2026-10-31"
+      },
+      "comparison_periods": [
+        {
+          "start": "2025-02-01",
+          "end": "2025-10-31"
+        }
+      ],
+      "source_checked_at": "2026-11-19T22:06:59.056269+00:00",
+      "published_at": "2026-11-19T22:06:59.056269+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000010416926000168",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000168/earningsreleasefy27q3.htm",
+          "title": "Walmart Q3 FY2027 earnings release, SEC Exhibit 99.1",
+          "locator": "Condensed Consolidated Statements of Cash Flows and Free Cash Flow reconciliation; issuer PDF pp. 10 and 15",
+          "published_date": "2026-11-19",
+          "publication_precision": "date",
+          "checked_at": "2026-11-19T22:06:59.056269+00:00",
+          "content_sha256": "fc25616909b2c0060f2ef64a301496e6ab602dd4e5a47f872edae641bc0c3113"
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://stock.walmart.com/_assets/_8c8425b76a1d46bbbbc16466da2a6b9c/walmart/db/938/10001/earnings_release/Earnings_Release_%28FY27_Q3%29.pdf",
+          "title": "Walmart Q3 FY2027 earnings release",
+          "locator": "Condensed Consolidated Statements of Cash Flows and Free Cash Flow reconciliation; issuer PDF pp. 10 and 15",
+          "published_date": "2026-11-19",
+          "publication_precision": "date",
+          "checked_at": "2026-11-19T22:06:59.056269+00:00",
+          "content_sha256": "e7fba7a74e65a50e53d47c563e7beb3c8508b66cca0cc26702810abf1ca72e9b"
+        }
+      },
+      "facts": {
+        "wmt_cfo_current": {
+          "value": "29436",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-02-01",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows and Free Cash Flow reconciliation; issuer PDF pp. 10 and 15",
+          "basis": "Net cash provided by operating activities"
+        },
+        "wmt_cfo_prior": {
+          "value": "27452",
+          "unit": "USD millions",
+          "period": {
+            "start": "2025-02-01",
+            "end": "2025-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows and Free Cash Flow reconciliation; issuer PDF pp. 10 and 15",
+          "basis": "Net cash provided by operating activities"
+        },
+        "wmt_capex_current": {
+          "value": "22621",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-02-01",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows and Free Cash Flow reconciliation; issuer PDF pp. 10 and 15",
+          "basis": "Payments for property and equipment, positive spending magnitude"
+        },
+        "wmt_capex_prior": {
+          "value": "18627",
+          "unit": "USD millions",
+          "period": {
+            "start": "2025-02-01",
+            "end": "2025-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows and Free Cash Flow reconciliation; issuer PDF pp. 10 and 15",
+          "basis": "Payments for property and equipment, positive spending magnitude"
+        },
+        "wmt_fcf_current": {
+          "value": "6815",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-02-01",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows and Free Cash Flow reconciliation; issuer PDF pp. 10 and 15",
+          "basis": "Company-defined free cash flow: operating cash less payments for property and equipment"
+        },
+        "wmt_fcf_prior": {
+          "value": "8825",
+          "unit": "USD millions",
+          "period": {
+            "start": "2025-02-01",
+            "end": "2025-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows and Free Cash Flow reconciliation; issuer PDF pp. 10 and 15",
+          "basis": "Company-defined free cash flow: operating cash less payments for property and equipment"
+        },
+        "wmt_dividends_current": {
+          "value": "5913",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-02-01",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows and Free Cash Flow reconciliation; issuer PDF pp. 10 and 15",
+          "basis": "Cash dividends paid"
+        },
+        "wmt_repurchases_current": {
+          "value": "7830",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-02-01",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows and Free Cash Flow reconciliation; issuer PDF pp. 10 and 15",
+          "basis": "Purchase of Company stock, cash-flow statement"
+        }
+      },
+      "calculations": [
+        {
+          "id": "calc_fcf_current",
+          "operation": "subtract",
+          "inputs": [
+            "wmt_cfo_current",
+            "wmt_capex_current"
+          ],
+          "expected": "6815",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Exact arithmetic on reported million-dollar inputs; billion figures preserve that precision."
+        },
+        {
+          "id": "calc_fcf_prior",
+          "operation": "subtract",
+          "inputs": [
+            "wmt_cfo_prior",
+            "wmt_capex_prior"
+          ],
+          "expected": "8825",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Exact arithmetic on reported million-dollar inputs; billion figures preserve that precision."
+        },
+        {
+          "id": "calc_cfo_increase",
+          "operation": "subtract",
+          "inputs": [
+            "wmt_cfo_current",
+            "wmt_cfo_prior"
+          ],
+          "expected": "1984",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Exact arithmetic on reported million-dollar inputs; billion figures preserve that precision.",
+          "comparison_basis": "Corresponding nine-month periods ended October 31, 2026 and 2025, using identical issuer definitions."
+        },
+        {
+          "id": "calc_capex_increase",
+          "operation": "subtract",
+          "inputs": [
+            "wmt_capex_current",
+            "wmt_capex_prior"
+          ],
+          "expected": "3994",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Exact arithmetic on reported million-dollar inputs; billion figures preserve that precision.",
+          "comparison_basis": "Corresponding nine-month periods ended October 31, 2026 and 2025, using identical issuer definitions."
+        },
+        {
+          "id": "calc_fcf_decline",
+          "operation": "subtract",
+          "inputs": [
+            "wmt_fcf_prior",
+            "wmt_fcf_current"
+          ],
+          "expected": "2010",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Exact arithmetic on reported million-dollar inputs; billion figures preserve that precision.",
+          "comparison_basis": "Corresponding nine-month periods ended October 31, 2026 and 2025, using identical issuer definitions."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Cash and capital spending",
+          "text": "Walmart (NASDAQ: WMT) generated more operating cash in the nine months ended October 31, 2026, yet its free cash flow fell. The company’s November 19 release reported $29.436 billion of operating cash and $22.621 billion of payments for property and equipment, leaving $6.815 billion under its free-cash-flow definition.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "The year-over-year bridge",
+          "text": "A year earlier, operating cash was $27.452 billion and property-and-equipment payments were $18.627 billion, producing $8.825 billion of free cash flow. The arithmetic explains the reversal: operating cash increased by $1.984 billion, but capital spending rose by $3.994 billion. Free cash flow therefore declined by $2.010 billion.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Other uses and timing",
+          "text": "Walmart attributed the capital-spending increase to its omnichannel growth strategy. Operating cash also reflected payment timing and inventory receipts, so its improvement should not be read solely as a change in underlying profitability. The cash-flow statement separately shows $5.913 billion of dividends and $7.830 billion of company-stock purchases.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "What the measure leaves out",
+          "text": "These are nine-month totals, not third-quarter cash flows alone. Walmart’s non-GAAP free cash flow is not residual cash available for discretionary spending: its definition does not deduct debt service, other contractual obligations or acquisition payments. Whether operating cash can keep pace with investment remains a question for subsequent periods, not a conclusion from this release.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        }
+      ],
+      "limitations": "Nine-month totals, not Q3 alone. Company-defined non-GAAP free cash flow is operating cash less payments for property and equipment, not residual discretionary cash. Timing influences operating cash and no future distribution capacity is established."
     }
   ],
   "reviews": [
@@ -2952,6 +3191,46 @@
         "index.html": "a0bcb1d58873181b56f56beed4f8839974a44f55f655e4abc62c8e0cca3c1803"
       },
       "review_scope": "Exact record, independently retrieved primary source bytes, accounting definitions, arithmetic, prose and independently regenerated HTML. Excludes browser/mobile visual QA, CI, merge and public deployment. Approval expires for changed content or release on a different KST date."
+    },
+    {
+      "brief_sha256": "1262c0905bb90c84b7f60decc630392a2e7c0d13bc2c623f66deda5eb164bcb3",
+      "reviewer": "Independent reviewer /root/dfb_check",
+      "reviewed_at": "2026-11-19T22:07:58.674510+00:00",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently downloaded SEC Exhibit 99.1, issuer PDF and accession index. Read cash-flow statement on p10 and FCF definition/reconciliation on p15. Independently captured source-byte hashes match final record. Checked all eight financial inputs and NASDAQ: WMT against release; SEC index confirms November 19 filing and report date."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independent Decimal subtraction of every five recorded calculations: 29436-22621=6815; 27452-18627=8825; 29436-27452=1984; 22621-18627=3994; 8825-6815=2010. Bridge check 3994-1984=2010. Both source reconciliation tables match derived FCF. Billion notation retains reported million-dollar precision; positive spending magnitudes explicitly subtracted."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "Nine months ended October 31, 2026 and 2025 correspond to February 1 starts, not standalone fiscal Q3. Statement date and prior January 31 fiscal balance sheet agree. Dividends 5913 and stock purchases 7830 are cash-flow statement amounts for same nine months. FCF excludes debt service, other contractual obligations and acquisition payments, so is not discretionary cash. Payment and inventory timing explanation correctly attributed."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read final structured record and independently regenerated all five top-level outputs. Detail title, four paragraphs and source links exactly match approved prose; November 20 KST displayed. No engineering headings, raw IDs or financial tables in copy. Grammar and terms clear; title trend is supported and period specified in first and last paragraphs."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "No recommendation, target, safety guarantee, market reaction or author-position claim. Accurately distinguishes company-defined non-GAAP free cash flow from residual discretionary cash; no dividend coverage or future capacity assertion. Later cash/investment balance remains an open question, not a projection."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "November 19 new SEC accession 000010416926000168 adds FY2027 nine-month cash-flow evidence: CFO increase is more than offset by larger property-and-equipment payments, reducing FCF by 2010 million. Existing catalog has no Walmart entry or duplicate accession. Release-decision timestamp is November 20 KST; source precision remains date-only, without invented public availability time."
+        }
+      },
+      "rendered_sha256": {
+        "sitemap.xml": "d1bf88afa407190be792f54881af3818e560473e371e25618bfcb6eba372f392",
+        "brief-walmart-cash-flow-capital-spending-2026.html": "ef072d77d283e4063630c4340520799cf3ba67d7b8a58a078c89d2774443052e",
+        "daily-briefs.html": "3e3d98e71aca4435217b70d51b69134985c7abdf826e0edb09b5ab8200f3438c",
+        "research.html": "4ee3b5b0de57330a572051d77b534db15ea7520ac505637e3799b1c15fe653d5",
+        "index.html": "e60722790ba4f572faadf8b9dec2257068a25ee0ad7f91b678cc5589d3cf94a7"
+      },
+      "review_scope": "Exact final record, independent primary source retrieval, arithmetic/accounting/editorial checks and independently regenerated HTML. Does not certify mobile/browser visual QA, CI, merge or public deployment. Changed record or later KST release date requires fresh approval."
     }
   ]
 }
