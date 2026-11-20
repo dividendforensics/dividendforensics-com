@@ -2757,6 +2757,197 @@
         }
       ],
       "limitations": "Nine-month totals, not Q3 alone. Company-defined non-GAAP free cash flow is operating cash less payments for property and equipment, not residual discretionary cash. Timing influences operating cash and no future distribution capacity is established."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "intuit-mailchimp-sale-buyback-proceeds-2026",
+      "author": "DFB editorial",
+      "title": "Intuit Plans to Use Mailchimp Sale Proceeds for Buybacks",
+      "summary": "A proposed $3.68 billion sale and a separate equity reinvestment would leave about $3.31 billion in cash before closing adjustments, with Intuit planning to use the cash proceeds for fiscal 2027 buybacks.",
+      "event_date": "2026-11-19",
+      "reporting_period": {
+        "start": "2026-08-01",
+        "end": "2026-10-31"
+      },
+      "comparison_periods": [
+        {
+          "start": "2026-11-19",
+          "end": "2026-11-19"
+        }
+      ],
+      "source_checked_at": "2026-11-20T22:01:33.161768+00:00",
+      "published_at": "2026-11-20T22:01:33.161768+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000119312526468834",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/896878/000119312526468834/d182669d8k.htm",
+          "title": "Intuit November 19 Form 8-K",
+          "locator": "Item 1.01, Purchase Agreement and concurrent Investment Agreement",
+          "published_date": "2026-11-19",
+          "publication_precision": "date",
+          "checked_at": "2026-11-20T22:01:33.161768+00:00",
+          "content_sha256": "3c4f9c37feb90e5245e043f4afea00ca898b9eec848987e2a394c51aa241f226"
+        },
+        "quarter": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/896878/000089687826000045/intu-20261031.htm",
+          "title": "Intuit fiscal Q1 2027 Form 10-Q",
+          "locator": "Consolidated Statements of Cash Flows pp. 8–9; Note 14 p. 30; MD&A p. 31",
+          "published_date": "2026-11-19",
+          "publication_precision": "date",
+          "checked_at": "2026-11-20T22:01:33.161768+00:00",
+          "content_sha256": "71c8115aeaa1771b44aa70cb1af4cc9a046f24e6edcb5eb9d9bfbfcbba26a519"
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://investors.intuit.com/news-events/press-releases/detail/1331/intuit-reports-first-quarter-results-and-enters-agreement-to-sell-mailchimp-to-bending-spoons",
+          "title": "Intuit earnings and Mailchimp sale release",
+          "locator": "Mailchimp transaction and Condensed Consolidated Statements of Cash Flows",
+          "published_date": "2026-11-19",
+          "publication_precision": "date",
+          "checked_at": "2026-11-20T22:01:33.161768+00:00",
+          "content_sha256": "1958827eba1a3c64d7c9d67aeb5d6bf9696f4b921efd0ea873e4662644af86e0"
+        }
+      },
+      "facts": {
+        "intu_base": {
+          "value": "3680",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-19",
+            "end": "2026-11-19"
+          },
+          "source_id": "sec",
+          "locator": "Item 1.01, Purchase Agreement and concurrent Investment Agreement",
+          "basis": "All-cash base purchase price, before contractual closing adjustments"
+        },
+        "intu_reinvest": {
+          "value": "368",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-11-19",
+            "end": "2026-11-19"
+          },
+          "source_id": "sec",
+          "locator": "Item 1.01, Purchase Agreement and concurrent Investment Agreement",
+          "basis": "Approximate portion of purchase price committed under separate Investment Agreement at closing"
+        },
+        "intu_ocf": {
+          "value": "1062",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-08-01",
+            "end": "2026-10-31"
+          },
+          "source_id": "quarter",
+          "locator": "Consolidated Statements of Cash Flows pp. 8–9; Note 14 p. 30; MD&A p. 31",
+          "basis": "Net cash provided by operating activities, consolidated"
+        },
+        "intu_ppe": {
+          "value": "75",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-08-01",
+            "end": "2026-10-31"
+          },
+          "source_id": "quarter",
+          "locator": "Consolidated Statements of Cash Flows pp. 8–9; Note 14 p. 30; MD&A p. 31",
+          "basis": "Purchases of property and equipment, positive outflow magnitude"
+        },
+        "intu_repurchases": {
+          "value": "1472",
+          "unit": "USD millions",
+          "period": {
+            "start": "2026-08-01",
+            "end": "2026-10-31"
+          },
+          "source_id": "quarter",
+          "locator": "Consolidated Statements of Cash Flows pp. 8–9; Note 14 p. 30; MD&A p. 31",
+          "basis": "Cash paid for stock repurchases, positive outflow magnitude"
+        }
+      },
+      "calculations": [
+        {
+          "id": "calc_cash_before_adjustments",
+          "operation": "subtract",
+          "inputs": [
+            "intu_base",
+            "intu_reinvest"
+          ],
+          "expected": "3312",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Approximate calculation from stated base terms, before customary closing adjustments; displayed to two decimal places in billions."
+        },
+        {
+          "id": "calc_operating_cash_after_ppe",
+          "operation": "subtract",
+          "inputs": [
+            "intu_ocf",
+            "intu_ppe"
+          ],
+          "expected": "987",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Arithmetic on reported USD million figures for the quarter."
+        },
+        {
+          "id": "calc_repurchases_above_residual",
+          "operation": "subtract",
+          "inputs": [
+            "intu_repurchases",
+            "calc_operating_cash_after_ppe"
+          ],
+          "expected": "485",
+          "unit": "USD millions",
+          "decimal_places": 0,
+          "precision_note": "Exact arithmetic on million-dollar inputs; not evidence of actual financing source."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Intended use",
+          "text": "Intuit (NASDAQ: INTU) plans to use the cash proceeds from its proposed Mailchimp sale to repurchase shares in fiscal 2027. The company expects the deal to close in early calendar 2027, subject to regulatory approvals and other closing conditions.",
+          "source_ids": [
+            "sec",
+            "quarter",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Cash and equity at closing",
+          "text": "The November 19 agreement sets a cash base price of $3.68 billion. Under a separate agreement, Intuit would reinvest approximately $368 million at closing in newly issued Bending Spoons shares, leaving about $3.31 billion in cash before closing adjustments. The shares are subject to a six-month sale restriction, and their fair value at closing may differ from their value at signing.",
+          "source_ids": [
+            "sec",
+            "quarter",
+            "issuer"
+          ]
+        },
+        {
+          "type": "fact",
+          "heading": "Quarterly cash context",
+          "text": "Operating cash flow less purchases of property and equipment was $987 million in the quarter ended October 31, 2026. Intuit paid about $1.47 billion for stock repurchases in that period. The figures cover one quarter and include Mailchimp in Intuit’s consolidated results.",
+          "source_ids": [
+            "quarter"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "What remains conditional",
+          "text": "The proposed sale would provide a one-time cash source for buybacks, not more recurring operating cash flow. Actual proceeds and repurchases remain to be seen; the announced terms do not establish after-tax cash or any buybacks funded with sale proceeds.",
+          "source_ids": [
+            "sec",
+            "quarter",
+            "issuer"
+          ]
+        }
+      ],
+      "limitations": "Proposed deal subject to closing conditions and adjustments. Cash figure is approximate and not after-tax proceeds or an executed repurchase amount. Fiscal Q1 historical comparison is consolidated including Mailchimp, not recurring run-rate, financing attribution or a forward forecast."
     }
   ],
   "reviews": [
@@ -3231,6 +3422,46 @@
         "index.html": "e60722790ba4f572faadf8b9dec2257068a25ee0ad7f91b678cc5589d3cf94a7"
       },
       "review_scope": "Exact final record, independent primary source retrieval, arithmetic/accounting/editorial checks and independently regenerated HTML. Does not certify mobile/browser visual QA, CI, merge or public deployment. Changed record or later KST release date requires fresh approval."
+    },
+    {
+      "brief_sha256": "cf6cad64a3b99bab89a38f11ac71cf552c755c717501a14aeb53c68c663c24c1",
+      "reviewer": "Independent reviewer /root/dfb_check",
+      "reviewed_at": "2026-11-20T22:01:51.944761+00:00",
+      "decision": "pass",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently downloaded transaction 8-K, Q1 10-Q and issuer release; bytes match all three record hashes. Independently retrieved SEC index entries confirm both filings dated November 19. Opened Item 1.01, 10-Q cash flow p. 8, Note 14 p. 30 and MD&A p. 31, and issuer Mailchimp Divestiture section; verified INTU on Nasdaq, agreement mechanics, restriction, reported figures and intended use."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Independent Decimal subtraction: 3680 minus approximately 368 equals approximately 3312 USD million, displayed as about 3.31 billion, consistent with Note 14 and issuer release. Q1 operating cash 1062 less purchases of PP&E 75 equals 987 USD million; repurchase cash 1472 rounds to 1.47 billion and exceeds 987 by 485 million, a comparison not evidence of funding."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "Fiscal Q1 ran August 1 to October 31, following July 31 fiscal year-end, and includes Mailchimp; the November 19 transaction terms are subsequent and encoded separately at signing. Early calendar 2027 is expected closing, whereas fiscal 2027 is intended repurchase window. USD millions converted to billions where appropriate. The equity stake has a six-month sale restriction and value can change at closing."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read entire final record and independently regenerated five top-level outputs byte-for-byte. Detail has the exact title, four narrative paragraphs (182 words), source links and November 21 KST date. It separates historical reported repurchase spending from hypothetical use of sale cash and exposes no internal ledger IDs or tables."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "No investment recommendation, price, forecast assurance or position claim. Signed proposal distinguished from actual close, expected buybacks from completed spending, and simplified cash bridge from after-tax cash, recurring operating flow or source-of-funds attribution."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "New November 19 transaction 8-K discloses a $3.68B all-cash base price and a separate closing reinvestment, with intended cash use supported by Q1 10-Q and release. Direct live Daily Brief archive and current 12-entry catalog contain no Intuit, Mailchimp or duplicate accession. November 21 KST is editorial date and does not mislabel filing/public availability time."
+        }
+      },
+      "rendered_sha256": {
+        "sitemap.xml": "a555139da70ebbe08867463705b6deaa50f6766913c8193d239599c983400265",
+        "brief-intuit-mailchimp-sale-buyback-proceeds-2026.html": "da10383b7a1d0a402edd3d37821a2a6ac196ccc5347309535c2186a3e4769d75",
+        "daily-briefs.html": "a0835662448126371625fb292b3e8a2d247dc6bd2f12ae2d8617eeb54cfaeb5a",
+        "research.html": "09dcb0f4fb96ab0134791182845a5db0917b706e77da68bccf540e53690509bc",
+        "index.html": "259e867e01b8c0c437d500f6eb00067f98528d6582c8509f5dbe2eb289782029"
+      },
+      "review_scope": "Exact final record, independently retrieved primary sources, arithmetic/accounting/editorial checks and independently regenerated HTML. Does not certify mobile/browser visual QA, CI, merge or live deployment. New content or KST date requires fresh review."
     }
   ]
 }
