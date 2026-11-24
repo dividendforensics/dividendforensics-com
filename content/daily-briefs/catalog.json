@@ -2948,6 +2948,272 @@
         }
       ],
       "limitations": "Proposed deal subject to closing conditions and adjustments. Cash figure is approximate and not after-tax proceeds or an executed repurchase amount. Fiscal Q1 historical comparison is consolidated including Mailchimp, not recurring run-rate, financing attribution or a forward forecast."
+    },
+    {
+      "status": "approved",
+      "category": "Operating Companies",
+      "slug": "analog-devices-fy2026-dividends-buybacks-free-cash-flow",
+      "author": "DFB editorial",
+      "title": "Analog Devices Returned Nearly All of Its Fiscal 2026 Free Cash Flow",
+      "summary": "Analog Devices spent about 99% of its fiscal 2026 free cash flow on cash dividends and share repurchases; that comparison excludes acquisition payments.",
+      "event_date": "2026-11-24",
+      "reporting_period": {
+        "start": "2025-11-02",
+        "end": "2026-10-31"
+      },
+      "comparison_periods": [
+        {
+          "start": "2024-11-03",
+          "end": "2025-11-01"
+        }
+      ],
+      "source_checked_at": "2026-11-24T22:07:56.749695+00:00",
+      "published_at": "2026-11-24T22:07:56.749695+00:00",
+      "event_source_id": "sec",
+      "event_key": "sec:000000628126000087",
+      "sources": {
+        "sec": {
+          "kind": "sec",
+          "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628126000087/adiq426exhibit991.htm",
+          "title": "SEC Form 8-K, Exhibit 99.1",
+          "locator": "Condensed Consolidated Statements of Cash Flows; GAAP operating cash flow to free cash flow reconciliation",
+          "published_date": "2026-11-24",
+          "publication_precision": "date",
+          "checked_at": "2026-11-24T22:06:16.022659+00:00",
+          "content_sha256": "938fd6b74f3adc745770b028e1369454b7a8c3701090a7b20c799fbdd27ed71e"
+        },
+        "issuer": {
+          "kind": "issuer",
+          "url": "https://www.analog.com/en/newsroom/press-releases/2026/11-24-26-adi-reports-record-4th-qtr-and-fiscal-2026-financial-results.html",
+          "title": "Analog Devices fiscal 2026 results",
+          "locator": "November 24 release opening highlights; FY2026 performance PDF",
+          "published_date": "2026-11-24",
+          "publication_precision": "date",
+          "checked_at": "2026-11-24T22:06:22.738850+00:00",
+          "content_sha256": "9d475cfce97a0823653a2736b948b4be2e4ae9252cf3cb7b5be2b7e57fa176c3"
+        }
+      },
+      "facts": {
+        "cfo": {
+          "value": "6185545",
+          "unit": "USD thousands",
+          "period": {
+            "start": "2025-11-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows, Operating activities, Twelve Months Ended",
+          "basis": "Net cash provided by operating activities"
+        },
+        "capex": {
+          "value": "732910",
+          "unit": "USD thousands",
+          "period": {
+            "start": "2025-11-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows, Investing activities, Twelve Months Ended",
+          "basis": "Net additions to property, plant and equipment, positive cash spending"
+        },
+        "cfoLast": {
+          "value": "4812202",
+          "unit": "USD thousands",
+          "period": {
+            "start": "2024-11-03",
+            "end": "2025-11-01"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows, Operating activities, Twelve Months Ended",
+          "basis": "Net cash provided by operating activities"
+        },
+        "capexLast": {
+          "value": "533552",
+          "unit": "USD thousands",
+          "period": {
+            "start": "2024-11-03",
+            "end": "2025-11-01"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows, Investing activities, Twelve Months Ended",
+          "basis": "Net additions to property, plant and equipment, positive cash spending"
+        },
+        "dividends": {
+          "value": "2088489",
+          "unit": "USD thousands",
+          "period": {
+            "start": "2025-11-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows, Financing activities, Twelve Months Ended",
+          "basis": "Cash dividend payments to shareholders, positive cash spending"
+        },
+        "repurchases": {
+          "value": "3324371",
+          "unit": "USD thousands",
+          "period": {
+            "start": "2025-11-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows, Financing activities, Twelve Months Ended",
+          "basis": "Cash repurchase of common stock, positive cash spending"
+        },
+        "dividendsLast": {
+          "value": "1924413",
+          "unit": "USD thousands",
+          "period": {
+            "start": "2024-11-03",
+            "end": "2025-11-01"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows, Financing activities, Twelve Months Ended",
+          "basis": "Cash dividend payments to shareholders, positive cash spending"
+        },
+        "repurchasesLast": {
+          "value": "2164638",
+          "unit": "USD thousands",
+          "period": {
+            "start": "2024-11-03",
+            "end": "2025-11-01"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows, Financing activities, Twelve Months Ended",
+          "basis": "Cash repurchase of common stock, positive cash spending"
+        },
+        "netAcquisitions": {
+          "value": "1536049",
+          "unit": "USD thousands",
+          "period": {
+            "start": "2025-11-02",
+            "end": "2026-10-31"
+          },
+          "source_id": "sec",
+          "locator": "Condensed Consolidated Statements of Cash Flows, Investing activities, Twelve Months Ended",
+          "basis": "Payments for acquisitions net of cash acquired, positive cash spending"
+        }
+      },
+      "calculations": [
+        {
+          "id": "fcf",
+          "operation": "subtract",
+          "inputs": [
+            "cfo",
+            "capex"
+          ],
+          "expected": "5452635",
+          "unit": "USD thousands",
+          "decimal_places": 0,
+          "precision_note": "Computed using reported amounts in USD thousands; ratios rounded to whole percent."
+        },
+        {
+          "id": "fcf_prior",
+          "operation": "subtract",
+          "inputs": [
+            "cfoLast",
+            "capexLast"
+          ],
+          "expected": "4278650",
+          "unit": "USD thousands",
+          "decimal_places": 0,
+          "precision_note": "Computed using reported amounts in USD thousands; ratios rounded to whole percent."
+        },
+        {
+          "id": "cash_returns",
+          "operation": "sum",
+          "inputs": [
+            "dividends",
+            "repurchases"
+          ],
+          "expected": "5412860",
+          "unit": "USD thousands",
+          "decimal_places": 0,
+          "precision_note": "Computed using reported amounts in USD thousands; ratios rounded to whole percent."
+        },
+        {
+          "id": "cash_returns_share",
+          "operation": "ratio_percent",
+          "inputs": [
+            "cash_returns",
+            "fcf"
+          ],
+          "expected": "99",
+          "unit": "percent",
+          "decimal_places": 0,
+          "precision_note": "Computed using reported amounts in USD thousands; ratios rounded to whole percent."
+        },
+        {
+          "id": "fcf_growth",
+          "operation": "percent_change",
+          "inputs": [
+            "fcf",
+            "fcf_prior"
+          ],
+          "expected": "27",
+          "unit": "percent",
+          "decimal_places": 0,
+          "precision_note": "Computed using reported amounts in USD thousands; ratios rounded to whole percent.",
+          "comparison_basis": "Comparable full fiscal years using the same cash flow line item."
+        },
+        {
+          "id": "buyback_growth",
+          "operation": "percent_change",
+          "inputs": [
+            "repurchases",
+            "repurchasesLast"
+          ],
+          "expected": "54",
+          "unit": "percent",
+          "decimal_places": 0,
+          "precision_note": "Computed using reported amounts in USD thousands; ratios rounded to whole percent.",
+          "comparison_basis": "Comparable full fiscal years using the same cash flow line item."
+        },
+        {
+          "id": "dividend_growth",
+          "operation": "percent_change",
+          "inputs": [
+            "dividends",
+            "dividendsLast"
+          ],
+          "expected": "9",
+          "unit": "percent",
+          "decimal_places": 0,
+          "precision_note": "Computed using reported amounts in USD thousands; ratios rounded to whole percent.",
+          "comparison_basis": "Comparable full fiscal years using the same cash flow line item."
+        }
+      ],
+      "sections": [
+        {
+          "type": "fact",
+          "heading": "Cash returned",
+          "text": "Analog Devices (NASDAQ: ADI) returned about $5.41 billion in cash dividends and share repurchases in its fiscal year ended October 31, 2026. That was approximately 99% of its $5.45 billion in free cash flow, based on the cash-flow statement furnished with the chipmaker’s November 24 Form 8-K.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "inference",
+          "heading": "Full-year comparison",
+          "text": "Analog Devices defines its non-GAAP free cash flow as operating cash flow less net additions to property, plant and equipment. On that basis, free cash flow rose about 27% from fiscal 2025. But repurchases increased faster than cash dividends and accounted for most of the increase in cash returned to shareholders. The combined figure includes repurchases already made, not unused buyback authorization.",
+          "source_ids": [
+            "sec",
+            "issuer"
+          ]
+        },
+        {
+          "type": "open_question",
+          "heading": "Other uses of cash",
+          "text": "That comparison leaves out other investing and financing flows. The company separately reported about $1.54 billion in acquisition payments, net of cash acquired. The 99% figure therefore describes how shareholder payouts compared with free cash flow over the year. It does not show that a particular payout was funded with debt. Whether buybacks continue at that pace remains an open question.",
+          "source_ids": [
+            "sec"
+          ]
+        }
+      ],
+      "limitations": [
+        "Free cash flow is a non-GAAP measure and excludes acquisition payments and financing flows. The comparison does not attribute specific financing proceeds to a payment."
+      ]
     }
   ],
   "reviews": [
@@ -3462,6 +3728,42 @@
         "index.html": "259e867e01b8c0c437d500f6eb00067f98528d6582c8509f5dbe2eb289782029"
       },
       "review_scope": "Exact final record, independently retrieved primary sources, arithmetic/accounting/editorial checks and independently regenerated HTML. Does not certify mobile/browser visual QA, CI, merge or live deployment. New content or KST date requires fresh review."
+    },
+    {
+      "brief_sha256": "18593c9e5ed991e3407f675d201c4ba086e7e07897665a2809810c53ea30ad81",
+      "reviewer": "DFB independent reviewer",
+      "reviewed_at": "2026-11-24T22:10:23.175398+00:00",
+      "decision": "pass",
+      "rendered_sha256": {
+        "brief-analog-devices-fy2026-dividends-buybacks-free-cash-flow.html": "aad88bf4d66115f9d473fbbd4daef709b2eb222efd5d2b2ad4d1bc65497d5e79"
+      },
+      "review_scope": "Exact private candidate JSON and final full-build detail HTML. Independently reproduced the direct detail output from main 0950566 and verified the full-build bytes differ only by two sitewide favicon link tags in the head. Independently verified sources and six editorial gates. Does not certify other built pages, browser/mobile QA, CI, merge, or deployment.",
+      "checks": {
+        "sources": {
+          "result": "pass",
+          "evidence": "Independently downloaded SEC 8-K Exhibit 99.1, the SEC acceptance/index page, and Analog Devices issuer release; exact exhibit and issuer source-byte hashes match this record. Read FY2026 cash-flow comparison and FCF reconciliation; cross-checked figures with the same-day audited FY2026 10-K and original FY2025 SEC exhibit. Issuer page confirms headline rounded amounts and SEC exhibit supports precise line items."
+        },
+        "arithmetic": {
+          "result": "pass",
+          "evidence": "Verified all nine cash-flow inputs in USD thousands and independently recalculated seven outputs: FY26 FCF 5,452,635, FY25 FCF 4,278,650, FY26 returns 5,412,860; returns/FCF 99.2705%, FCF growth 27.4382%, repurchase growth 53.576%, dividends growth 8.526%. Repurchases explain 1,159,733 of 1,323,809 increase in cash returns. Acquisition payments 1,536,049 net of cash acquired are separate."
+        },
+        "periods_units": {
+          "result": "pass",
+          "evidence": "FY2026 Nov 2, 2025–Oct 31, 2026 and FY2025 Nov 3, 2024–Nov 1, 2025 are separate 364-day fiscal years per 10-K. Used twelve-month not fourth-quarter consolidated cash values. Converted USD thousands to USD billions and whole percentages. Acquisitions are net only of acquired cash, not separate divestiture proceeds. Cash dividends paid/repurchases executed are not declarations or authorization."
+        },
+        "english": {
+          "result": "pass",
+          "evidence": "Read all 170 words in three English paragraphs and matched title, exact copy, two direct source links and Nov 25 KST time label to final JSON. Independently reproduced the repository's direct detail output. The final full-build detail HTML differs from the reproduced bytes only by the two sitewide favicon link tags in the head; all content and metadata are identical. Plain-English explanations retain non-GAAP and financing distinctions."
+        },
+        "neutrality": {
+          "result": "pass",
+          "evidence": "No trade, price, distribution safety or funding-source attribution claims. Realized payouts are compared with company-defined non-GAAP FCF; stated exclusions identify noncovered acquisition/financing flows. No assumption annual buyback pace recurs."
+        },
+        "freshness": {
+          "result": "pass",
+          "evidence": "SEC index and issuer release dated November 24, 2026; material new full-year combination is roughly 99% payout-to-FCF comparison alongside substantial separate acquisition payments. Independently checked 13 existing repository records and live archive; no ADI or repeated accession and no November 25 KST catalog collision. Editorial release date is distinct from source and fiscal end dates."
+        }
+      }
     }
   ]
 }
